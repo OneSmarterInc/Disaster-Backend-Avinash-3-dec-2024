@@ -34,7 +34,7 @@ const Home = () => {
             pl={6}
           />
           <Input
-            cursor={"pointer"}
+            cursor={"pointer"} 
             mt={10}
             type="submit"
             value={"Start"}

@@ -8,8 +8,15 @@ import {
   Input,
 } from "@chakra-ui/react";
 import warehouse from "../Images/dataware.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+
+  const navigate = useNavigate();
+
+  const handleSubmit = ()=>{
+    navigate("/intro")
+  }
   return (
     <>
       <Box
@@ -22,7 +29,7 @@ const Home = () => {
       ></Box>
 
       <Box w={"30%"} position={"absolute"} top={"35%"} left={"34%"}>
-        <FormControl m={"auto"} fontFamily={"Fredoka"} >
+        <Box m={"auto"} fontFamily={"Fredoka"} >
           <Input
             h={"65px"}
             fontSize={25}
@@ -46,8 +53,9 @@ const Home = () => {
             bgColor={"white"}
             fontWeight={500}
             fontFamily={"Fredoka"}
+            onClick={handleSubmit}
           />
-        </FormControl>
+        </Box>
       </Box>
     </>
   );

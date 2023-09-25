@@ -8,7 +8,7 @@
   }
 
    .active {
-    background-color: #91ee67;
+    background-color: black;
   }
 
   #sender{
@@ -40,3 +40,16 @@
     transform: translateY(-20px);
   }
   
+  .content{
+    animation:scroll 10s linear infinite;
+
+  }
+
+  @keyframes scroll{
+    0%{
+      transform: translateY(0);
+    }
+    100%{
+      transform: translateY(-100%);
+    }
+  }

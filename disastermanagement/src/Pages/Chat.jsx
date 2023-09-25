@@ -9,7 +9,11 @@ const Chat = () => {
   const [showBox, setShowBox] = useState(false);
   const [value, setValue] = useState("");
 
-  console.log(value);
+  //console.log(value);
+
+  
+
+
 
   const handleClick = () => {};
 
@@ -21,14 +25,10 @@ const Chat = () => {
     "Company Distribution",
   ];
 
-  const chatContainerRef = useRef(null);
-
-  // Function to scroll the chat to the bottom
-  const scrollToBottom = () => {
-    chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-  };
+ 
 
   useEffect(() => {
+    
     // Simulate messages from 5 users with a 2-second delay between each message
     const dayOne = [
       {
@@ -76,7 +76,7 @@ const Chat = () => {
     };
 
     addMessageWithDelay();
-    scrollToBottom();
+    
     return () => {
       clearTimeout(addMessageWithDelay);
     };
@@ -153,7 +153,7 @@ const Chat = () => {
             h={"100%"}
             w={"83%"}
             overflow={"auto"}
-            ref={chatContainerRef}
+            
           >
             <Box
               border={"1px solid black"}
@@ -344,6 +344,7 @@ const Chat = () => {
           </Box>
         </Flex>
       </Box>
+      {/* <div ref={chatEndRef} /> */}
     </>
   );
 };

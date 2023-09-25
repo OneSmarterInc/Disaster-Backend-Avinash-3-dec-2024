@@ -1,0 +1,42 @@
+.techExpert {
+    align-self: flex-start;
+  }
+  
+  /* Style for User2's messages */
+  .cio {
+    align-self: flex-end;
+  }
+
+   .active {
+    background-color: #91ee67;
+  }
+
+  #sender{
+    font-weight:500;
+  }
+
+  /* App.css */
+
+/* Animation for message entrance */
+.message-enter {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .message-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .message-exit {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .message-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  

@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import React from "react";
 import "./intro.css"
+import { Link } from "react-router-dom";
 
 const Intro = () => {
   return (
@@ -12,7 +13,7 @@ const Intro = () => {
           h={"100vh"}
           bg={"#f7fadc"}
         ></Box> */}
-        <Box h={"100vh"} w={"100%"}>
+        <Box w={"100%"}>
           <Box
             w={"40%"}
             border={"2px solid black"}
@@ -24,8 +25,8 @@ const Intro = () => {
             pl={'20px'}
             className="intro"
           >
-            <Heading fontFamily={'Fredoka'}>Introduction !</Heading>
-            <Text textAlign={'justify'} fontFamily={'Fredoka'} mt={'20px'}>
+            <Heading fontFamily={'Fredoka'} fontSize={40}>Introduction !</Heading>
+            <Text textAlign={'justify'} fontFamily={'Fredoka'} mt={'20px'} fontSize={"1rem"}>
               Over the course of several days, we will follow the CIO's journey
               as he navigates through a major data center incident that
               threatens to disrupt critical business operations. We will delve
@@ -43,7 +44,9 @@ const Intro = () => {
               significantly impact the outcome of a crisis and lead to
               unexpected resolutions.
             </Text>
-            <Button border={'1px solid black'} mt={'45px'}>Begin</Button>
+            <Link to="/chat">
+            <Button  border={'1px solid black'} mt={'45px'}>Begin</Button>
+            </Link>
           </Box>
         </Box>
       {/* </Flex> */}

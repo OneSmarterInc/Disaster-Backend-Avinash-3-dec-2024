@@ -8,6 +8,7 @@ const Chat = () => {
 
     const [chatData, setChatData] = useState([]);
     const [activeUser, setActiveUser] = useState(null);
+    const [showBox, setShowBox] = useState(false);
 
     const users = ["CIO", "Tech Expert", "Storage Vendor", "Data Center", "Company Distribution"];
 
@@ -41,6 +42,9 @@ const Chat = () => {
                 setActiveUser(message.sender);
                 timeoutIndex++;
                 setTimeout(addMessageWithDelay, messageDelay);
+            }
+            else {
+                setShowBox(true);
             }
         };
 
@@ -92,7 +96,7 @@ const Chat = () => {
                                 when he received a call inviting him to a conference call concern a problem at the data center.
                             </Text>
                         </Box>
-                        <Box w={"90%"} h={"68vh"} border="0px solid red" m={"auto"} pl={5} pr={5}>
+                        <Box w={"90%"} h={"68vh"}  border="0px solid red" m={"auto"} pl={5} pr={5}>
                             <TransitionGroup>
                                 {chatData.map((el, i) => {
                                     const isCIO = el.sender === 'CIO';
@@ -121,10 +125,15 @@ const Chat = () => {
 
                                     )
                                 })}
-
+                                {showBox && (
+                                        <Box className="box">
+                                            <Heading>This is a Box</Heading>
+                                            <p>Content goes here.</p>
+                                        </Box>
+                                    )}
+                               
                             </TransitionGroup>
                         </Box>
-
                     </Box>
                 </Flex>
             </Box>

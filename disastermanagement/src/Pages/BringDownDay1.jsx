@@ -1,20 +1,13 @@
-
-import {  Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-
 import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import disasterLogo from "../Images/disasterLogo.png";
 
-const Chat = () => {
+const BringDownDay1 = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
   const [value, setValue] = useState("");
-  const containerRef = useRef(null);
-  //console.log(value);
-
-  const handleClick = () => {};
 
   const users = [
     "CIO",
@@ -23,6 +16,8 @@ const Chat = () => {
     "Data Center",
     "Company Distribution",
   ];
+
+  const handleClick = ()=>{}
 
  
 
@@ -75,16 +70,6 @@ const Chat = () => {
     };
 
     addMessageWithDelay();
-
-    const scrollToBottom = () => {
-      const container = containerRef.current;
-      if (container) {
-        container.scrollTop = container.scrollHeight;
-      }
-    };
-
-    // Call scrollToBottom when children change or initially
-    scrollToBottom();
     
     return () => {
       clearTimeout(addMessageWithDelay);
@@ -96,17 +81,13 @@ const Chat = () => {
       <Flex
         bgColor="#a1e8f0"
         fontFamily={"Croissant One"}
-        justifyContent={"space-around"}
+        justifyContent={"center"}
         alignItems={"center"}
         w={"80%"}
         m={"auto"}
         border={"1px solid black"}
         h={"20"}
-        pr={40}
-        pl={40}
-
->
-        <Image w={"12%"} src={disasterLogo} />
+      >
         <Heading fontFamily={"Croissant One"} fontStyle={"italic"}>
           Disaster Recovery Business Case
         </Heading>
@@ -118,7 +99,7 @@ const Chat = () => {
         m={"auto"}
         h={"100%"}
       >
-        <Flex h={"100%"} >
+        <Flex h={"100%"}>
           <Box h={"100%"} w={"17%"} borderRight={"1px solid black"}>
             <Box bgColor="#a1e8f0" pt={5} borderBottom={"1px solid black"}>
               <Text fontWeight={500} fontSize={30}>
@@ -126,22 +107,22 @@ const Chat = () => {
               </Text>
               {users.map((el) => {
                 return (
-                  <Box borderBottom={"1px solid black"} className={el === activeUser ? "active" : ""}>
+                  <Box borderBottom={"1px solid black"}>
                     <Box
                       boxShadow={
                         "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                       }
                       key={el}
+                      
                       h={"35px"}
                       w={"44px"}
                       m={"auto"}
                       mt={"50px"}
                       border={"0px solid black"}
                       borderRadius={"50%"}
-                      
                     >
                         
-                        <img src="https://i.ibb.co/QP9DvZK/user-2.png" alt="" />
+                        <img src="https://i.ibb.co/QP9DvZK/user-2.png" alt="" className={el === activeUser ? "active" : ""}/>
                     </Box>
                     <Text fontSize={20} mt={3}>
                       {el}
@@ -331,7 +312,7 @@ const Chat = () => {
                     </Flex>
 
                    
-                    <Button onClick={handleClick} cursor={"pointer"} _hover={{"bg":"black", "color":"white"}}>
+                    <Button onClick={handleClick} cursor={"pointer"}>
                       PROCEED
                     </Button>
                   </>
@@ -341,9 +322,8 @@ const Chat = () => {
           </Box>
         </Flex>
       </Box>
-      {/* <div ref={chatEndRef} /> */}
     </>
-  );
-};
+  )
+}
 
-export default Chat;
+export default BringDownDay1

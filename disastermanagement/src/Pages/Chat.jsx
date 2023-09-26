@@ -1,6 +1,6 @@
 
-import {  Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -11,10 +11,16 @@ const Chat = () => {
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
   const [value, setValue] = useState("");
-  const containerRef = useRef(null);
-  //console.log(value);
+  const chatContainerRef = useRef(null);
+  
+  const handleClick = () => { };
 
-  const handleClick = () => {};
+  const scrollToBottom = () => {
+    const container = chatContainerRef.current;
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
+  };
 
   const users = [
     "CIO",
@@ -24,10 +30,10 @@ const Chat = () => {
     "Company Distribution",
   ];
 
- 
+
 
   useEffect(() => {
-    
+
     // Simulate messages from 5 users with a 2-second delay between each message
     const dayOne = [
       {
@@ -76,20 +82,27 @@ const Chat = () => {
 
     addMessageWithDelay();
 
-    const scrollToBottom = () => {
-      const container = containerRef.current;
-      if (container) {
-        container.scrollTop = container.scrollHeight;
-      }
-    };
+  
 
     // Call scrollToBottom when children change or initially
-    scrollToBottom();
-    
+    // scrollToBottom();
+
     return () => {
       clearTimeout(addMessageWithDelay);
     };
   }, []);
+
+  useLayoutEffect(() => {
+    // Scroll to the bottom after chatData changes
+    scrollToBottom();
+  }, [chatData]);
+
+  useLayoutEffect(() => {
+    // Scroll to the bottom when showBox becomes true
+    if (showBox) {
+      scrollToBottom();
+    }
+  }, [showBox]);
 
   return (
     <>
@@ -105,8 +118,8 @@ const Chat = () => {
         pr={40}
         pl={40}
 
->
-        <Image w={"12%"} src={disasterLogo} />
+      >
+        <Image cursor={"pointer"} w={"12%"} src={disasterLogo} />
         <Heading fontFamily={"Croissant One"} fontStyle={"italic"}>
           Disaster Recovery Business Case
         </Heading>
@@ -120,13 +133,11 @@ const Chat = () => {
       >
         <Flex h={"100%"} >
           <Box h={"100%"} w={"17%"} borderRight={"1px solid black"}>
-            <Box bgColor="#a1e8f0" pt={5} borderBottom={"1px solid black"}>
-              <Text fontWeight={500} fontSize={30}>
-                Day 1
-              </Text>
+            <Box bgColor="#a1e8f0" pt={3} borderBottom={"1px solid black"}>
+
               {users.map((el) => {
                 return (
-                  <Box borderBottom={"1px solid black"} className={el === activeUser ? "active" : ""}>
+                  <Box borderBottom={"1px solid black"} >
                     <Box
                       boxShadow={
                         "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
@@ -138,12 +149,12 @@ const Chat = () => {
                       mt={"50px"}
                       border={"0px solid black"}
                       borderRadius={"50%"}
-                      
+                      className={el === activeUser ? "active" : ""}
                     >
-                        
-                        <img src="https://i.ibb.co/QP9DvZK/user-2.png" alt="" />
+
+                      <img src="https://i.ibb.co/QP9DvZK/user-2.png" alt="" />
                     </Box>
-                    <Text fontSize={20} mt={3}>
+                    <Text className={el === activeUser ? "Tactive" : ""} fontSize={20} mt={3}>
                       {el}
                     </Text>
                   </Box>
@@ -157,7 +168,7 @@ const Chat = () => {
             h={"100%"}
             w={"83%"}
             overflow={"auto"}
-            
+            ref={chatContainerRef}
           >
             <Box
               border={"1px solid black"}
@@ -196,39 +207,44 @@ const Chat = () => {
                       classNames="message"
                       timeout={{ enter: 300, exit: 300 }}
                     >
-                      <Box
+                      <Box border={"0px solid black"} w={"100%"}
                         display="flex"
-                        alignItems={alignMessage}
-                        w={"50%"}
-                        className={`message ${messageClass} ${
-                          el.sender === "CIO" ? "cio" : "techExpert"
-                        }`}
-                      >
+                        justifyContent={alignMessage} 
+                        className={`message ${messageClass} ${el.sender === "CIO" ? "cio" : "techExpert"}`} >
+
+
                         <Box
-                          boxShadow={
-                            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                          }
-                          border={"0px solid black"}
-                          bgColor={el.sender === "CIO" ? "#030405" : "#f0f0f0"}
-                          color={el.sender === "CIO" ? "white" : "black"}
-                          w={"100%"}
-                          borderRadius={"10px"}
-                          textAlign={"justify"}
-                          p={4}
-                          pl={5}
-                          pr={5}
-                          mt={10}
+                          border={"0px solid red"}
+
+                          w={"70%"}
+
                         >
-                          <Text>
-                            <span id="sender">{el.sender}</span> : {el.message}
-                          </Text>
+                          <Box
+                            boxShadow={
+                              "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                            }
+                            border={"0px solid black"}
+                            bgColor={el.sender === "CIO" ? "#030405" : "#f0f0f0"}
+                            color={el.sender === "CIO" ? "white" : "black"}
+                            w={"100%"}
+                            borderRadius={"10px"}
+                            textAlign={"justify"}
+                            p={4}
+                            pl={5}
+                            pr={5}
+                            mt={10}
+                          >
+                            <Text>
+                              <span id="sender">{el.sender}</span> : {el.message}
+                            </Text>
+                          </Box>
                         </Box>
                       </Box>
                     </CSSTransition>
                   );
                 })}
                 {showBox && (
-                  <>
+                  <Box>
                     <Flex className="box" mb={"5"} mt={"10"} border={'1px solid gray'} w={'50%'} alignItems={'center'} justifyContent={'center'} h={'50px'} bg={'#c8cfca'} color={'black'}>
                       <Text>Decision goes here.</Text>
                     </Flex>
@@ -250,9 +266,9 @@ const Chat = () => {
                       justifyContent={"center"}
                       bg={'black'}
                       color={'white'}
-                      _hover={{'bgColor':'#c8cfca',"color":"black"}}
+                      _hover={{ 'bgColor': '#c8cfca', "color": "black" }}
                       cursor={'pointer'}
-                      
+
                     >
                       <Text>
                         Continue with the call to gather more information
@@ -276,7 +292,7 @@ const Chat = () => {
                       justifyContent={"center"}
                       bg={'black'}
                       color={'white'}
-                      _hover={{'bgColor':'#c8cfca',"color":"black"}}
+                      _hover={{ 'bgColor': '#c8cfca', "color": "black" }}
                       cursor={'pointer'}
                     >
                       <Text>
@@ -301,7 +317,7 @@ const Chat = () => {
                       justifyContent={"center"}
                       bg={'black'}
                       color={'white'}
-                      _hover={{'bgColor':'#c8cfca',"color":"black"}}
+                      _hover={{ 'bgColor': '#c8cfca', "color": "black" }}
                       cursor={'pointer'}
                     >
                       <Text>
@@ -324,17 +340,17 @@ const Chat = () => {
                       justifyContent={"center"}
                       bg={'black'}
                       color={'white'}
-                      _hover={{'bgColor':'#c8cfca',"color":"black"}}
+                      _hover={{ 'bgColor': '#c8cfca', "color": "black" }}
                       cursor={'pointer'}
                     >
                       <Text>Notify the users of the incident</Text>
                     </Flex>
 
-                   
-                    <Button onClick={handleClick} cursor={"pointer"} _hover={{"bg":"black", "color":"white"}}>
+
+                    <Button onClick={handleClick} cursor={"pointer"} _hover={{ "bg": "black", "color": "white" }}>
                       PROCEED
                     </Button>
-                  </>
+                  </Box>
                 )}
               </TransitionGroup>
             </Box>

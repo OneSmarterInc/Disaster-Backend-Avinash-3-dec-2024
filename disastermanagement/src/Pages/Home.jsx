@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Box,
+  Heading,
   Input,
 } from "@chakra-ui/react";
 import warehouse from "../Images/dataware.jpg";

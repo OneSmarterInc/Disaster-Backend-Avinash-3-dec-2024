@@ -211,7 +211,7 @@ const GatherMoreDay1 = () => {
                 })}
                 {showBox && (
                   <>
-                    <Flex className="box" mb={"5"} mt={"10"} border={'1px solid gray'} w={'50%'} alignItems={'center'} justifyContent={'center'} h={'50px'} bg={'#c8cfca'} color={'black'}>
+                    <Flex className="box" mb={"5"} mt={"10"} fontWeight={'bold'} alignItems={'center'} justifyContent={'center'} h={'50px'} bg={'#c8cfca'} color={'black'}>
                       <Text>Decision goes here.</Text>
                     </Flex>
 

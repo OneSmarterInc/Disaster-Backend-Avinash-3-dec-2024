@@ -26,31 +26,52 @@ const BringDownDay1 = () => {
     // Simulate messages from 5 users with a 2-second delay between each message
     const dayOne = [
       {
-        sender: "Tech Expert",
+        sender: "CIO",
         message:
-          " Hey, CIO, sorry to bother you, but we've got a problem at the data center. Can you join a conference call ?",
+          " Alright, folks, here's the plan. We're bringing down all applications immediately. We might lose some data, but we can't risk further corruption.",
       },
-      { sender: "CIO", message: "Sure, I'm in. What's going on?" },
-      {
-        sender: "Tech Expert",
-        message:
-          " Applications at the data center are failing with data corruption errors. We've already submitted an incident report to the storage vendor. The weird part is, it's happening across different servers and storage units.",
-      },
+      { sender: "Storage Vendor", message: "Understood. We'll send an email to the company and keep everyone informed." },
       {
         sender: "CIO",
-        message: " I see. Let's gather more information. What's our next step?",
+        message:
+          "Interestingly, our email and phone systems are fine, despite the storage issue. They use proprietary infrastructure",
       },
       {
-        sender: "Tech Expert",
-        message:
-          "We have two data centers linked by high-speed fiber, with mirrored setups for high availability applications. Some apps are on mirrored clusters at both sites.",
+        sender: "Storage Vendor",
+        message: "We've got around 500 applications to shut down systematically, but there are more failures.",
       },
       {
         sender: "CIO",
         message:
-          "  Got it. We need to assess the situation. Decision time, folks.",
+          "This doesn't look good. Let's see what comes next.",
       },
-      { sender: "Tech Expert", message: " We're at a decision point here" },
+      {
+        sender: "Storage Vendor",
+        message:
+          "Bad news, everyone. One of our major disco controllers failed and corrupted data on ALL mirrored copies across both sites. We've never seen this before.",
+      },
+      { sender: "CIO", message: "So, we don't have any good, non-corrupt data left?"
+     },
+     {
+      sender: "Storage Vendor",
+      message:
+        "Unfortunately, no. Our only solution is to replace the bad controller, reboot the storage systems at Site 1, and restore from backup for the failed systems.",
+    },
+    {
+      sender: "CIO",
+      message:
+        "How much data are we looking at losing?",
+    },
+    {
+      sender: "Storage Vendor",
+      message:
+        "About 18 hours of data for the failed systems.",
+    },
+    {
+      sender: "CIO",
+      message:
+        "These are all critical questions. Let's discuss our next steps carefully.",
+    },
     ];
 
     const messageDelay = 3000; // 2 seconds
@@ -113,7 +134,6 @@ const BringDownDay1 = () => {
                         "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                       }
                       key={el}
-                      
                       h={"35px"}
                       w={"44px"}
                       m={"auto"}
@@ -169,7 +189,7 @@ const BringDownDay1 = () => {
               <TransitionGroup>
                 {chatData.map((el, i) => {
                   const isCIO = el.sender === "CIO";
-                  const messageClass = isCIO ? "cio" : "techExpert";
+                  const messageClass = isCIO ? "cio" : "storagevendor";
                   const alignMessage = isCIO ? "flex-end" : "flex-start";
                   return (
                     <CSSTransition
@@ -182,7 +202,7 @@ const BringDownDay1 = () => {
                         alignItems={alignMessage}
                         w={"50%"}
                         className={`message ${messageClass} ${
-                          el.sender === "CIO" ? "cio" : "techExpert"
+                          el.sender === "CIO" ? "cio" : "storagevendor"
                         }`}
                       >
                         <Box
@@ -190,8 +210,8 @@ const BringDownDay1 = () => {
                             "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                           }
                           border={"0px solid black"}
-                          bgColor={el.sender === "CIO" ? "#030405" : "#f0f0f0"}
-                          color={el.sender === "CIO" ? "white" : "black"}
+                          bgColor={el.sender === "CIO" ? "#f0f0f0"  : "#030405"}
+                          color={el.sender === "CIO" ? "black" : "white"}
                           w={"100%"}
                           borderRadius={"10px"}
                           textAlign={"justify"}

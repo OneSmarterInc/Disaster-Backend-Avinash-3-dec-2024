@@ -8,7 +8,8 @@
   }
 
    .active {
-    background-color: black;
+    border: 2px solid black;
+    width: 150%;
   }
 
   #sender{
@@ -53,3 +54,5 @@
       transform: translateY(-100%);
     }
   }
+
+  

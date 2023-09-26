@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Radio, Text } from "@chakra-ui/react";
+import { Avatar, Box, Button, Flex, Heading, Radio, Text } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState } from "react";
 import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -119,15 +119,18 @@ const Chat = () => {
                         "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                       }
                       key={el}
-                      className={el === activeUser ? "active" : ""}
+                      
                       h={"35px"}
                       w={"44px"}
                       m={"auto"}
                       mt={"50px"}
                       border={"0px solid black"}
                       borderRadius={"50%"}
-                    ></Box>
-                    <Text fontSize={20} mt={1}>
+                    >
+                        
+                        <img src="https://i.ibb.co/QP9DvZK/user-2.png" alt="" className={el === activeUser ? "active" : ""}/>
+                    </Box>
+                    <Text fontSize={20} mt={3}>
                       {el}
                     </Text>
                   </Box>

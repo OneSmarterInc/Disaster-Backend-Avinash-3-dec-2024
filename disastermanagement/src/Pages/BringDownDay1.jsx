@@ -1,13 +1,63 @@
-import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import {
+  ChakraProvider,
+  extendTheme,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from "@chakra-ui/react";
+
+import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+
 import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import disasterLogo from "../Images/disasterLogo.png";
+import { useNavigate } from "react-router";
 
 const BringDownDay1 = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
-  const [value, setValue] = useState("");
+
+  const [value, setValue] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const chatContainerRef = useRef(null);
+  const spacerRef = useRef(null);
+
+  const navigate = useNavigate();
+
+  const handleClick = (option) => {
+    setValue(option);
+    setIsModalOpen(true);
+  };
+
+  const handleRedirect = () => {
+    if (value === "Continue with the call to gather more information.") {
+      navigate("/gathermore");
+    } else if (
+      value === "Immediately include the disc drive vendor on the call"
+    ) {
+      navigate("/diskdrive");
+    } else if (
+      value === "Immediately bring down ALL the remaining applications"
+    ) {
+      navigate("/bringdown");
+    } else {
+      navigate("/notify");
+    }
+  }
+ 
+  
+
+  const scrollToBottom = () => {
+    const container = chatContainerRef.current;
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
+  };
 
   const users = [
     "CIO",
@@ -17,12 +67,10 @@ const BringDownDay1 = () => {
     "Company Distribution",
   ];
 
-  const handleClick = ()=>{}
 
- 
 
   useEffect(() => {
-    
+
     // Simulate messages from 5 users with a 2-second delay between each message
     const dayOne = [
       {
@@ -74,6 +122,7 @@ const BringDownDay1 = () => {
     },
     ];
 
+
     const messageDelay = 3000; // 2 seconds
 
     let timeoutIndex = 0;
@@ -91,24 +140,45 @@ const BringDownDay1 = () => {
     };
 
     addMessageWithDelay();
-    
+
+  
+
+    // Call scrollToBottom when children change or initially
+    // scrollToBottom();
+
     return () => {
       clearTimeout(addMessageWithDelay);
     };
   }, []);
+
+  useLayoutEffect(() => {
+    // Scroll to the bottom after chatData changes
+    scrollToBottom();
+  }, [chatData]);
+
+  useLayoutEffect(() => {
+    // Scroll to the bottom when showBox becomes true
+    if (showBox) {
+      scrollToBottom();
+    }
+  }, [showBox]);
 
   return (
     <>
       <Flex
         bgColor="#a1e8f0"
         fontFamily={"Croissant One"}
-        justifyContent={"center"}
+        justifyContent={"space-around"}
         alignItems={"center"}
         w={"80%"}
         m={"auto"}
         border={"1px solid black"}
         h={"20"}
+        pr={40}
+        pl={40}
+
       >
+        <Image cursor={"pointer"} w={"12%"} src={disasterLogo} />
         <Heading fontFamily={"Croissant One"} fontStyle={"italic"}>
           Disaster Recovery Business Case
         </Heading>
@@ -120,15 +190,13 @@ const BringDownDay1 = () => {
         m={"auto"}
         h={"100%"}
       >
-        <Flex h={"100%"}>
-          <Box h={"100%"} w={"17%"} borderRight={"1px solid black"}>
-            <Box bgColor="#a1e8f0" pt={5} borderBottom={"1px solid black"}>
-              <Text fontWeight={500} fontSize={30}>
-                Day 1
-              </Text>
+        <Flex h={"100%"} >
+          <Box h={"100%"} w={"10%"} borderRight={"1px solid black"}>
+            <Box bgColor="#a1e8f0" pt={3} borderBottom={"1px solid black"}>
+
               {users.map((el) => {
                 return (
-                  <Box borderBottom={"1px solid black"}>
+                  <Box borderBottom={"1px solid black"} >
                     <Box
                       boxShadow={
                         "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
@@ -137,14 +205,14 @@ const BringDownDay1 = () => {
                       h={"35px"}
                       w={"44px"}
                       m={"auto"}
-                      mt={"50px"}
+                      mt={"26%"}
                       border={"0px solid black"}
                       borderRadius={"50%"}
+                      className={el === activeUser ? "active" : ""}
                     >
-                        
-                        <img src="https://i.ibb.co/QP9DvZK/user-2.png" alt="" className={el === activeUser ? "active" : ""}/>
+                      <img src="https://i.ibb.co/QP9DvZK/user-2.png" alt="" />
                     </Box>
-                    <Text fontSize={20} mt={3}>
+                    <Text className={el === activeUser ? "Tactive" : ""} fontSize={20} mt={3}>
                       {el}
                     </Text>
                   </Box>
@@ -154,16 +222,17 @@ const BringDownDay1 = () => {
           </Box>
           <Box
             pt={5}
-            pb={2}
-            h={"100%"}
-            w={"83%"}
+            maxH={"50%"}
+            w={"90%"}
+            border={"0px solid red"}
             overflow={"auto"}
-            
+            ref={chatContainerRef}
+            pb={2}
           >
             <Box
               border={"1px solid black"}
               bgColor={"#030405"}
-              color={'white'}
+              color={"white"}
               borderRadius={"20px"}
               m={"auto"}
               textAlign={"left"}
@@ -197,32 +266,37 @@ const BringDownDay1 = () => {
                       classNames="message"
                       timeout={{ enter: 300, exit: 300 }}
                     >
-                      <Box
+                      <Box border={"0px solid black"} w={"100%"}
                         display="flex"
-                        alignItems={alignMessage}
-                        w={"50%"}
-                        className={`message ${messageClass} ${
-                          el.sender === "CIO" ? "cio" : "storagevendor"
-                        }`}
-                      >
+                        justifyContent={alignMessage} 
+                        className={`message ${messageClass} ${el.sender === "CIO" ? "cio" : "storagevendor"}`} >
+
+
                         <Box
-                          boxShadow={
-                            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                          }
-                          border={"0px solid black"}
-                          bgColor={el.sender === "CIO" ? "#f0f0f0"  : "#030405"}
-                          color={el.sender === "CIO" ? "black" : "white"}
-                          w={"100%"}
-                          borderRadius={"10px"}
-                          textAlign={"justify"}
-                          p={4}
-                          pl={5}
-                          pr={5}
-                          mt={10}
+                          border={"0px solid red"}
+                         
+                          w={"70%"}
+
                         >
-                          <Text>
-                            <span id="sender">{el.sender}</span> : {el.message}
-                          </Text>
+                          <Box
+                            boxShadow={
+                              "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                            }
+                            border={"0px solid black"}
+                            bgColor={el.sender === "CIO" ? "#f0f0f0" : "#030405"}
+                            color={el.sender === "CIO" ? "black" : "white"}
+                            w={"100%"}
+                            borderRadius={"10px"}
+                            textAlign={"justify"}
+                            p={4}
+                            pl={5}
+                            pr={5}
+                            mt={10}
+                          >
+                            <Text>
+                              <span id="sender">{el.sender}</span> : {el.message}
+                            </Text>
+                          </Box>
                         </Box>
                       </Box>
                     </CSSTransition>
@@ -230,15 +304,26 @@ const BringDownDay1 = () => {
                 })}
                 {showBox && (
                   <>
-                    <Flex className="box" mb={"5"} mt={"10"} border={'1px solid gray'} w={'50%'} alignItems={'center'} justifyContent={'center'} h={'50px'} bg={'#c8cfca'} color={'black'}>
+                    <Flex
+                      className="box"
+                      mb={"5"}
+                      mt={"10"}
+                      boxShadow= "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                     
+                      alignItems={"center"}
+                      justifyContent={"center"}
+                      h={"50px"}
+                      bg={"#c8cfca"}
+                      color={"black"}
+                      fontWeight={'bold'}
+                    >
                       <Text>Decision goes here.</Text>
                     </Flex>
 
                     <Flex
-                      value={value}
                       onClick={() =>
-                        setValue(
-                          "Continue with the call to gather more information"
+                        handleClick(
+                          "Continue with the call to gather more information."
                         )
                       }
                       className="box"
@@ -246,24 +331,22 @@ const BringDownDay1 = () => {
                       w={"50%"}
                       m={"auto"}
                       mb={"5"}
-                      h={"50px"}
+                      h={"60px"}
                       alignItems={"center"}
                       justifyContent={"center"}
-                      bg={'black'}
-                      color={'white'}
-                      _hover={{'bgColor':'#c8cfca',"color":"black"}}
-                      cursor={'pointer'}
-                      
+                      bg={"black"}
+                      color={"white"}
+                      _hover={{ bgColor: "#c8cfca", color: "black" }}
+                      cursor={"pointer"}
                     >
                       <Text>
-                        Continue with the call to gather more information
+                        A : Continue with the call to gather more information
                       </Text>
                     </Flex>
 
                     <Flex
-                      value={value}
                       onClick={() =>
-                        setValue(
+                        handleClick(
                           "Immediately include the disc drive vendor on the call"
                         )
                       }
@@ -272,23 +355,23 @@ const BringDownDay1 = () => {
                       w={"50%"}
                       m={"auto"}
                       mb={"5"}
-                      h={"50px"}
+                      h={"60px"}
                       alignItems={"center"}
                       justifyContent={"center"}
-                      bg={'black'}
-                      color={'white'}
-                      _hover={{'bgColor':'#c8cfca',"color":"black"}}
-                      cursor={'pointer'}
+                      bg={"black"}
+                      color={"white"}
+                      _hover={{ bgColor: "#c8cfca", color: "black" }}
+                      cursor={"pointer"}
                     >
                       <Text>
-                        Immediately include the disc drive vendor on the call
+                        B : Immediately include the disc drive vendor on the
+                        call
                       </Text>
                     </Flex>
 
                     <Flex
-                      value={value}
                       onClick={() =>
-                        setValue(
+                        handleClick(
                           "Immediately bring down ALL the remaining applications"
                         )
                       }
@@ -297,53 +380,70 @@ const BringDownDay1 = () => {
                       w={"50%"}
                       m={"auto"}
                       mb={"5"}
-                      h={"50px"}
+                      h={"60px"}
                       alignItems={"center"}
                       justifyContent={"center"}
-                      bg={'black'}
-                      color={'white'}
-                      _hover={{'bgColor':'#c8cfca',"color":"black"}}
-                      cursor={'pointer'}
+                      bg={"black"}
+                      color={"white"}
+                      _hover={{ bgColor: "#c8cfca", color: "black" }}
+                      cursor={"pointer"}
                     >
                       <Text>
-                        Immediately bring down ALL the remaining applications
+                        C : Immediately bring down ALL the remaining
+                        applications
                       </Text>
                     </Flex>
 
                     <Flex
-                      value={value}
                       onClick={() =>
-                        setValue("Notify the users of the incident")
+                        handleClick("Notify the users of the incident")
                       }
                       className="box"
                       border={"1px solid gray"}
                       w={"50%"}
                       m={"auto"}
                       mb={"5"}
-                      h={"50px"}
+                      h={"60px"}
                       alignItems={"center"}
                       justifyContent={"center"}
-                      bg={'black'}
-                      color={'white'}
-                      _hover={{'bgColor':'#c8cfca',"color":"black"}}
-                      cursor={'pointer'}
+                      bg={"black"}
+                      color={"white"}
+                      _hover={{ bgColor: "#c8cfca", color: "black" }}
+                      cursor={"pointer"}
                     >
-                      <Text>Notify the users of the incident</Text>
+                      <Text>D : Notify the users of the incident</Text>
                     </Flex>
 
-                   
-                    <Button onClick={handleClick} cursor={"pointer"}>
-                      PROCEED
-                    </Button>
+                    <Modal
+                      isOpen={isModalOpen}
+                      onClose={() => setIsModalOpen(false)}
+                      
+                    >
+                      <ModalOverlay />
+                      <ModalContent mt={200} boxShadow={"rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"}>
+                        <ModalHeader fontWeight={'bold'} fontSize={'25px'}>YOUR DECISION...</ModalHeader>
+                        <ModalBody fontSize={'18px'}>{value}</ModalBody>
+                        <ModalFooter>
+                          
+                          <Button colorScheme="teal" onClick={handleRedirect} textAlign={'center'} fontFamily={'Croissant One'} bg={'black'} _hover={{"bgColor":"#a1e8f0","color":"black"}} mr={'150px'}>
+                            Proceed
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   </>
                 )}
+                      <div ref={spacerRef} style={{ height: "40px" }}></div>
+
               </TransitionGroup>
             </Box>
           </Box>
         </Flex>
       </Box>
+      {/* <div ref={chatEndRef} /> */}
     </>
-  )
-}
+  );
+};
 
-export default BringDownDay1
+
+export default BringDownDay1;

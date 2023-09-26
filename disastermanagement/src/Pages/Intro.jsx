@@ -16,10 +16,10 @@ const Intro = () => {
         <Box w={"100%"}>
           <Box
             w={"40%"}
-            border={"0px solid black"}
+            border={"1px solid black"}
             margin={"auto"}
-            h={"80vh"}
-            mt={"70px"}
+            pb={10}
+            mt={"2%"}
             borderRadius={"50px"}
             pr={10}
             pl={10}

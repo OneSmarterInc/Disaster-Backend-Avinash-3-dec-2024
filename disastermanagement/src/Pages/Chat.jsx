@@ -12,6 +12,7 @@ const Chat = () => {
   const [showBox, setShowBox] = useState(false);
   const [value, setValue] = useState("");
   const chatContainerRef = useRef(null);
+  const spacerRef = useRef(null);
   
   const handleClick = () => { };
 
@@ -132,7 +133,7 @@ const Chat = () => {
         h={"100%"}
       >
         <Flex h={"100%"} >
-          <Box h={"100%"} w={"17%"} borderRight={"1px solid black"}>
+          <Box h={"100%"} w={"10%"} borderRight={"1px solid black"}>
             <Box bgColor="#a1e8f0" pt={3} borderBottom={"1px solid black"}>
 
               {users.map((el) => {
@@ -146,7 +147,7 @@ const Chat = () => {
                       h={"35px"}
                       w={"44px"}
                       m={"auto"}
-                      mt={"50px"}
+                      mt={"26%"}
                       border={"0px solid black"}
                       borderRadius={"50%"}
                       className={el === activeUser ? "active" : ""}
@@ -164,11 +165,12 @@ const Chat = () => {
           </Box>
           <Box
             pt={5}
-            pb={2}
-            h={"100%"}
-            w={"83%"}
+            maxH={"50%"}
+            w={"90%"}
+            border={"0px solid red"}
             overflow={"auto"}
             ref={chatContainerRef}
+            pb={2}
           >
             <Box
               border={"1px solid black"}
@@ -215,7 +217,7 @@ const Chat = () => {
 
                         <Box
                           border={"0px solid red"}
-
+                         
                           w={"70%"}
 
                         >
@@ -352,6 +354,8 @@ const Chat = () => {
                     </Button>
                   </Box>
                 )}
+                      <div ref={spacerRef} style={{ height: "40px" }}></div>
+
               </TransitionGroup>
             </Box>
           </Box>

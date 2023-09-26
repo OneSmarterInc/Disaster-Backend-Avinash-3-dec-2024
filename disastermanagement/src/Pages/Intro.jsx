@@ -16,16 +16,21 @@ const Intro = () => {
         <Box w={"100%"}>
           <Box
             w={"40%"}
-            border={"2px solid black"}
+            border={"0px solid black"}
             margin={"auto"}
             h={"80vh"}
             mt={"70px"}
             borderRadius={"50px"}
-            pr={'20px'}
-            pl={'20px'}
+            pr={10}
+            pl={10}
+            pt={10}
             className="intro"
+            bgColor="#a1e8f0"
+            boxShadow={
+              "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+            }
           >
-            <Heading fontFamily={'Fredoka'} fontSize={40}>Introduction !</Heading>
+            <Heading fontFamily={"Croissant One"} fontSize={42} fontStyle={"italic"}>Introduction !</Heading>
             <Text textAlign={'justify'} fontFamily={'Fredoka'} mt={'20px'} fontSize={"1rem"}>
               Over the course of several days, we will follow the CIO's journey
               as he navigates through a major data center incident that
@@ -45,7 +50,7 @@ const Intro = () => {
               unexpected resolutions.
             </Text>
             <Link to="/chat">
-            <Button  border={'1px solid black'} mt={'45px'}>Begin</Button>
+            <Button w={"25%"} h={"10%"} fontFamily={"Fredoka"} id="begin" bgColor={"black"} color={"white"} border={'1px solid black'} fontSize={30} mt={'45px'}>Begin</Button>
             </Link>
           </Box>
         </Box>

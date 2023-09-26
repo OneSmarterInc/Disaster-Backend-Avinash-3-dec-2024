@@ -1,14 +1,17 @@
+
 import {  Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+
 import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import disasterLogo from "../Images/disasterLogo.png";
 
 const Chat = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
   const [value, setValue] = useState("");
-
+  const containerRef = useRef(null);
   //console.log(value);
 
   const handleClick = () => {};
@@ -72,6 +75,16 @@ const Chat = () => {
     };
 
     addMessageWithDelay();
+
+    const scrollToBottom = () => {
+      const container = containerRef.current;
+      if (container) {
+        container.scrollTop = container.scrollHeight;
+      }
+    };
+
+    // Call scrollToBottom when children change or initially
+    scrollToBottom();
     
     return () => {
       clearTimeout(addMessageWithDelay);
@@ -83,13 +96,17 @@ const Chat = () => {
       <Flex
         bgColor="#a1e8f0"
         fontFamily={"Croissant One"}
-        justifyContent={"center"}
+        justifyContent={"space-around"}
         alignItems={"center"}
         w={"80%"}
         m={"auto"}
         border={"1px solid black"}
         h={"20"}
-      >
+        pr={40}
+        pl={40}
+
+>
+        <Image w={"12%"} src={disasterLogo} />
         <Heading fontFamily={"Croissant One"} fontStyle={"italic"}>
           Disaster Recovery Business Case
         </Heading>

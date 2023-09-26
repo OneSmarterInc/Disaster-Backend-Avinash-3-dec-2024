@@ -8,8 +8,8 @@
   }
 
    .active {
-    border: 2px solid black;
-    width: 150%;
+    padding-top: 1px;
+    font-weight: bold;
   }
 
   #sender{
@@ -55,4 +55,5 @@
     }
   }
 
+  
   

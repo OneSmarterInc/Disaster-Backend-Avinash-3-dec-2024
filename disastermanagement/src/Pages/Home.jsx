@@ -1,10 +1,6 @@
 import React from "react";
 import {
   Box,
-  FormControl,
-  FormHelperText,
-  FormLabel,
-  Heading,
   Input,
 } from "@chakra-ui/react";
 import warehouse from "../Images/dataware.jpg";

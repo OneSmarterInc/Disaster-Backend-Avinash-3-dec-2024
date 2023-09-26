@@ -1,17 +1,13 @@
-import {  Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
+import React, { useEffect,useState } from "react";
 import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-const Chat = () => {
+const GatherMoreDay1 = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
   const [value, setValue] = useState("");
-
-  //console.log(value);
-
-  const handleClick = () => {};
 
   const users = [
     "CIO",
@@ -20,6 +16,8 @@ const Chat = () => {
     "Data Center",
     "Company Distribution",
   ];
+
+  const handleClick = ()=>{}
 
  
 
@@ -78,6 +76,7 @@ const Chat = () => {
     };
   }, []);
 
+
   return (
     <>
       <Flex
@@ -101,7 +100,7 @@ const Chat = () => {
         m={"auto"}
         h={"100%"}
       >
-        <Flex h={"100%"} >
+        <Flex h={"100%"}>
           <Box h={"100%"} w={"17%"} borderRight={"1px solid black"}>
             <Box bgColor="#a1e8f0" pt={5} borderBottom={"1px solid black"}>
               <Text fontWeight={500} fontSize={30}>
@@ -109,22 +108,22 @@ const Chat = () => {
               </Text>
               {users.map((el) => {
                 return (
-                  <Box borderBottom={"1px solid black"} className={el === activeUser ? "active" : ""}>
+                  <Box borderBottom={"1px solid black"}>
                     <Box
                       boxShadow={
                         "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                       }
                       key={el}
+                      
                       h={"35px"}
                       w={"44px"}
                       m={"auto"}
                       mt={"50px"}
                       border={"0px solid black"}
                       borderRadius={"50%"}
-                      
                     >
                         
-                        <img src="https://i.ibb.co/QP9DvZK/user-2.png" alt="" />
+                        <img src="https://i.ibb.co/QP9DvZK/user-2.png" alt="" className={el === activeUser ? "active" : ""}/>
                     </Box>
                     <Text fontSize={20} mt={3}>
                       {el}
@@ -314,7 +313,7 @@ const Chat = () => {
                     </Flex>
 
                    
-                    <Button onClick={handleClick} cursor={"pointer"} _hover={{"bg":"black", "color":"white"}}>
+                    <Button onClick={handleClick} cursor={"pointer"}>
                       PROCEED
                     </Button>
                   </>
@@ -324,9 +323,8 @@ const Chat = () => {
           </Box>
         </Flex>
       </Box>
-      {/* <div ref={chatEndRef} /> */}
     </>
-  );
-};
+  )
+}
 
-export default Chat;
+export default GatherMoreDay1

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
   ChakraProvider,
   extendTheme,
@@ -12,6 +13,11 @@ import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { Image } from "@chakra-ui/react";
+=======
+
+import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
 
 import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -22,6 +28,7 @@ const Chat = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
+<<<<<<< HEAD
 
   const [value, setValue] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,6 +54,18 @@ const Chat = () => {
       navigate("/bringdown");
     } else {
       navigate("/notify");
+=======
+  const [value, setValue] = useState("");
+  const chatContainerRef = useRef(null);
+  const spacerRef = useRef(null);
+  
+  const handleClick = () => { };
+
+  const scrollToBottom = () => {
+    const container = chatContainerRef.current;
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
     }
   };
 
@@ -58,7 +77,15 @@ const Chat = () => {
     "Company Distribution",
   ];
 
+<<<<<<< HEAD
   useEffect(() => {
+=======
+
+
+  useEffect(() => {
+
+    // Simulate messages from 5 users with a 2-second delay between each message
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
     const dayOne = [
       {
         sender: "Tech Expert",
@@ -106,20 +133,31 @@ const Chat = () => {
 
     addMessageWithDelay();
 
-    const scrollToBottom = () => {
-      const container = containerRef.current;
-      if (container) {
-        container.scrollTop = container.scrollHeight;
-      }
-    };
+  
 
     // Call scrollToBottom when children change or initially
+<<<<<<< HEAD
     scrollToBottom();
+=======
+    // scrollToBottom();
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
 
     return () => {
       clearTimeout(addMessageWithDelay);
     };
   }, []);
+
+  useLayoutEffect(() => {
+    // Scroll to the bottom after chatData changes
+    scrollToBottom();
+  }, [chatData]);
+
+  useLayoutEffect(() => {
+    // Scroll to the bottom when showBox becomes true
+    if (showBox) {
+      scrollToBottom();
+    }
+  }, [showBox]);
 
   return (
     <>
@@ -134,8 +172,14 @@ const Chat = () => {
         h={"20"}
         pr={40}
         pl={40}
+<<<<<<< HEAD
       >
         <Image w={"12%"} src={disasterLogo} />
+=======
+
+      >
+        <Image cursor={"pointer"} w={"12%"} src={disasterLogo} />
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
         <Heading fontFamily={"Croissant One"} fontStyle={"italic"}>
           Disaster Recovery Business Case
         </Heading>
@@ -147,6 +191,7 @@ const Chat = () => {
         m={"auto"}
         h={"100%"}
       >
+<<<<<<< HEAD
         <Flex h={"100%"}>
           <Box h={"100%"} w={"17%"} borderRight={"1px solid black"}>
             <Box bgColor="#a1e8f0" pt={5} borderBottom={"1px solid black"}>
@@ -156,6 +201,15 @@ const Chat = () => {
               {users.map((el) => {
                 return (
                   <Box borderBottom={"1px solid black"}>
+=======
+        <Flex h={"100%"} >
+          <Box h={"100%"} w={"10%"} borderRight={"1px solid black"}>
+            <Box bgColor="#a1e8f0" pt={3} borderBottom={"1px solid black"}>
+
+              {users.map((el) => {
+                return (
+                  <Box borderBottom={"1px solid black"} >
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
                     <Box
                       boxShadow={
                         "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
@@ -164,14 +218,18 @@ const Chat = () => {
                       h={"35px"}
                       w={"44px"}
                       m={"auto"}
-                      mt={"50px"}
+                      mt={"26%"}
                       border={"0px solid black"}
                       borderRadius={"50%"}
                       className={el === activeUser ? "active" : ""}
                     >
+<<<<<<< HEAD
+=======
+
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
                       <img src="https://i.ibb.co/QP9DvZK/user-2.png" alt="" />
                     </Box>
-                    <Text fontSize={20} mt={3}>
+                    <Text className={el === activeUser ? "Tactive" : ""} fontSize={20} mt={3}>
                       {el}
                     </Text>
                   </Box>
@@ -179,7 +237,19 @@ const Chat = () => {
               })}
             </Box>
           </Box>
+<<<<<<< HEAD
           <Box pt={5} pb={2} h={"100%"} w={"83%"} overflow={"auto"}>
+=======
+          <Box
+            pt={5}
+            maxH={"50%"}
+            w={"90%"}
+            border={"0px solid red"}
+            overflow={"auto"}
+            ref={chatContainerRef}
+            pb={2}
+          >
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
             <Box
               border={"1px solid black"}
               bgColor={"#030405"}
@@ -217,8 +287,9 @@ const Chat = () => {
                       classNames="message"
                       timeout={{ enter: 300, exit: 300 }}
                     >
-                      <Box
+                      <Box border={"0px solid black"} w={"100%"}
                         display="flex"
+<<<<<<< HEAD
                         alignItems={alignMessage}
                         w={"100%"}
                         className={`message ${messageClass} ${
@@ -239,16 +310,44 @@ const Chat = () => {
                           pl={5}
                           pr={5}
                           mt={10}
+=======
+                        justifyContent={alignMessage} 
+                        className={`message ${messageClass} ${el.sender === "CIO" ? "cio" : "techExpert"}`} >
+
+
+                        <Box
+                          border={"0px solid red"}
+                         
+                          w={"70%"}
+
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
                         >
-                          <Text>
-                            <span id="sender">{el.sender}</span> : {el.message}
-                          </Text>
+                          <Box
+                            boxShadow={
+                              "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                            }
+                            border={"0px solid black"}
+                            bgColor={el.sender === "CIO" ? "#030405" : "#f0f0f0"}
+                            color={el.sender === "CIO" ? "white" : "black"}
+                            w={"100%"}
+                            borderRadius={"10px"}
+                            textAlign={"justify"}
+                            p={4}
+                            pl={5}
+                            pr={5}
+                            mt={10}
+                          >
+                            <Text>
+                              <span id="sender">{el.sender}</span> : {el.message}
+                            </Text>
+                          </Box>
                         </Box>
                       </Box>
                     </CSSTransition>
                   );
                 })}
                 {showBox && (
+<<<<<<< HEAD
                   <>
                     <Flex
                       className="box"
@@ -263,6 +362,10 @@ const Chat = () => {
                       color={"black"}
                       fontWeight={'bold'}
                     >
+=======
+                  <Box>
+                    <Flex className="box" mb={"5"} mt={"10"} border={'1px solid gray'} w={'50%'} alignItems={'center'} justifyContent={'center'} h={'50px'} bg={'#c8cfca'} color={'black'}>
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
                       <Text>Decision goes here.</Text>
                     </Flex>
 
@@ -280,10 +383,18 @@ const Chat = () => {
                       h={"60px"}
                       alignItems={"center"}
                       justifyContent={"center"}
+<<<<<<< HEAD
                       bg={"black"}
                       color={"white"}
                       _hover={{ bgColor: "#c8cfca", color: "black" }}
                       cursor={"pointer"}
+=======
+                      bg={'black'}
+                      color={'white'}
+                      _hover={{ 'bgColor': '#c8cfca', "color": "black" }}
+                      cursor={'pointer'}
+
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
                     >
                       <Text>
                         A : Continue with the call to gather more information
@@ -304,10 +415,17 @@ const Chat = () => {
                       h={"60px"}
                       alignItems={"center"}
                       justifyContent={"center"}
+<<<<<<< HEAD
                       bg={"black"}
                       color={"white"}
                       _hover={{ bgColor: "#c8cfca", color: "black" }}
                       cursor={"pointer"}
+=======
+                      bg={'black'}
+                      color={'white'}
+                      _hover={{ 'bgColor': '#c8cfca', "color": "black" }}
+                      cursor={'pointer'}
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
                     >
                       <Text>
                         B : Immediately include the disc drive vendor on the
@@ -329,10 +447,17 @@ const Chat = () => {
                       h={"60px"}
                       alignItems={"center"}
                       justifyContent={"center"}
+<<<<<<< HEAD
                       bg={"black"}
                       color={"white"}
                       _hover={{ bgColor: "#c8cfca", color: "black" }}
                       cursor={"pointer"}
+=======
+                      bg={'black'}
+                      color={'white'}
+                      _hover={{ 'bgColor': '#c8cfca', "color": "black" }}
+                      cursor={'pointer'}
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
                     >
                       <Text>
                         C : Immediately bring down ALL the remaining
@@ -352,14 +477,22 @@ const Chat = () => {
                       h={"60px"}
                       alignItems={"center"}
                       justifyContent={"center"}
+<<<<<<< HEAD
                       bg={"black"}
                       color={"white"}
                       _hover={{ bgColor: "#c8cfca", color: "black" }}
                       cursor={"pointer"}
+=======
+                      bg={'black'}
+                      color={'white'}
+                      _hover={{ 'bgColor': '#c8cfca', "color": "black" }}
+                      cursor={'pointer'}
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
                     >
                       <Text>D : Notify the users of the incident</Text>
                     </Flex>
 
+<<<<<<< HEAD
                     <Modal
                       isOpen={isModalOpen}
                       onClose={() => setIsModalOpen(false)}
@@ -378,7 +511,16 @@ const Chat = () => {
                       </ModalContent>
                     </Modal>
                   </>
+=======
+
+                    <Button onClick={handleClick} cursor={"pointer"} _hover={{ "bg": "black", "color": "white" }}>
+                      PROCEED
+                    </Button>
+                  </Box>
+>>>>>>> a2c8a92f5004536855b563b35c4dacd843ef4f17
                 )}
+                      <div ref={spacerRef} style={{ height: "40px" }}></div>
+
               </TransitionGroup>
             </Box>
           </Box>

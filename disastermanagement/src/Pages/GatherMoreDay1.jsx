@@ -36,17 +36,17 @@ const GatherMoreDay1 = () => {
 
   const handleRedirect = () => {
     if (value === "Continue with the call to gather more information.") {
-      navigate("/gathermore");
+      // navigate("/gathermore");
     } else if (
       value === "Immediately include the disc drive vendor on the call"
     ) {
-      navigate("/diskdrive");
+      //navigate("/diskdrive");
     } else if (
       value === "Immediately bring down ALL the remaining applications"
     ) {
-      navigate("/bringdown");
+     // navigate("/bringdown");
     } else {
-      navigate("/notify");
+     // navigate("/notify");
     }
   }
  

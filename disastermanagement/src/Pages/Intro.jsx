@@ -50,7 +50,7 @@ const Intro = () => {
               unexpected resolutions.
             </Text>
             <Link to="/chat">
-            <Button w={"25%"} h={"10%"} fontFamily={"Fredoka"} id="begin" bgColor={"black"} color={"white"} border={'1px solid black'} fontSize={30} mt={'45px'}>Begin</Button>
+            <Button w={"28%"} pt={8} pb={8} fontFamily={"Fredoka"} id="begin" bgColor={"black"} color={"white"} border={'1px solid black'} fontSize={30} mt={'45px'}>Begin</Button>
             </Link>
           </Box>
         </Box>

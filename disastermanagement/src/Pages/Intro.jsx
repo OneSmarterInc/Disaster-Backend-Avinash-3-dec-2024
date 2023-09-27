@@ -49,7 +49,7 @@ const Intro = () => {
               significantly impact the outcome of a crisis and lead to
               unexpected resolutions.
             </Text>
-            <Link to="/chat">
+            <Link to="/start">
             <Button w={"28%"} pt={8} pb={8} fontFamily={"Fredoka"} id="begin" bgColor={"black"} color={"white"} border={'1px solid black'} fontSize={30} mt={'45px'}>Begin</Button>
             </Link>
           </Box>

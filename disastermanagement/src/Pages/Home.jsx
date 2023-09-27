@@ -7,17 +7,19 @@ import {
 import warehouse from "../Images/dataware.jpg";
 import serverroom from "../Images/serverroom.jpg"
 import { useNavigate } from "react-router-dom";
-import "./Home.css"
+import "./Home.css";
+
 
 const Home = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = ()=>{
+  const handleSubmit = () => {
     navigate("/intro")
   }
   return (
     <>
+
       <Box
         bgPosition={"center"}
         bgSize={"cover"}
@@ -43,8 +45,8 @@ const Home = () => {
             pl={6}
           />
           <Input
-          id="start"
-            cursor={"pointer"} 
+            id="start"
+            cursor={"pointer"}
             mt={10}
             type="submit"
             value={"Start"}
@@ -60,6 +62,7 @@ const Home = () => {
           />
         </Box>
       </Box>
+
     </>
   );
 };

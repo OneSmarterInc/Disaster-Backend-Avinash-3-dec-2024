@@ -16,6 +16,9 @@ import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import disasterLogo from "../Images/disasterLogo.png";
 import { useNavigate } from "react-router";
+import BringDownDay1 from "./BringDownDay1";
+import BringDown from "../Components/Day1/BringDown";
+import DefaultChat from "../Components/Day1/DefaultChat";
 
 const Chat = () => {
   const [chatData, setChatData] = useState([]);
@@ -60,11 +63,11 @@ const Chat = () => {
   };
 
   const users = [
-    "CIO",
-    "Tech Expert",
-    "Storage Vendor",
-    "Data Center",
-    "Company Distribution",
+    "Ben Carter",
+    "Kate Sullivan",
+    "Liam Turner",
+    "Mia Rodriguez",
+    "Sophia Kim",
   ];
 
 
@@ -74,34 +77,37 @@ const Chat = () => {
     // Simulate messages from 5 users with a 2-second delay between each message
     const dayOne = [
       {
-        sender: "Tech Expert",
+        sender: "Kate Sullivan",
         message:
           " Hey, CIO, sorry to bother you, but we've got a problem at the data center. Can you join a conference call ?",
       },
-      { sender: "CIO", message: "Sure, I'm in. What's going on?" },
+      { sender: "Ben Carter", message: "Sure, I'm in. What's going on?" },
       {
-        sender: "Tech Expert",
+        sender: "Kate Sullivan",
         message:
           " Applications at the data center are failing with data corruption errors. We've already submitted an incident report to the storage vendor. The weird part is, it's happening across different servers and storage units.",
       },
       {
-        sender: "CIO",
+        sender: "Ben Carter",
         message: " I see. Let's gather more information. What's our next step?",
       },
       {
-        sender: "Tech Expert",
+        sender: "Kate Sullivan",
         message:
           "We have two data centers linked by high-speed fiber, with mirrored setups for high availability applications. Some apps are on mirrored clusters at both sites.",
       },
       {
-        sender: "CIO",
+        sender: "Ben Carter",
         message:
           "  Got it. We need to assess the situation. Decision time, folks.",
       },
-      { sender: "Tech Expert", message: " We're at a decision point here" },
+      { sender: "Kate Sullivan", message: "We're at a decision point here" },
     ];
 
-    const messageDelay = 3000; // 2 seconds
+
+
+
+    const messageDelay = 4000; // 4 seconds
 
     let timeoutIndex = 0;
 
@@ -143,7 +149,7 @@ const Chat = () => {
 
   return (
     <>
-      <Flex
+      {/* <Flex
         bgColor="#a1e8f0"
         fontFamily={"Croissant One"}
         justifyContent={"space-around"}
@@ -160,16 +166,16 @@ const Chat = () => {
         <Heading fontFamily={"Croissant One"} fontStyle={"italic"}>
           Disaster Recovery Business Case
         </Heading>
-      </Flex>
+      </Flex> */}
       <Box
         fontFamily={"Fredoka"}
-        border={"1px solid black"}
-        w={"80%"}
+        border={"0px solid red"}
+        w={"100%"}
         m={"auto"}
-        h={"100%"}
+        h={"88vh"}
       >
-        <Flex h={"100%"} >
-          <Box h={"100%"} w={"10%"} borderRight={"1px solid black"}>
+        <Flex h={"88vh"} >
+          <Box h={"88vh"} w={"20%"} borderRight={"1px solid black"} overflow={"auto"}>
             <Box bgColor="#a1e8f0" pt={3} borderBottom={"1px solid black"}>
 
               {users.map((el) => {
@@ -180,7 +186,7 @@ const Chat = () => {
                         "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                       }
                       key={el}
-                      h={"35px"}
+                      h={"6vh"}
                       w={"44px"}
                       m={"auto"}
                       mt={"26%"}
@@ -198,9 +204,10 @@ const Chat = () => {
               })}
             </Box>
           </Box>
-          <Box
+          {value === "Immediately bring down ALL the remaining" ? <BringDown/> : <DefaultChat/> }
+          {/* <Box
             pt={5}
-            maxH={"50%"}
+            maxH={"88vh"}
             w={"90%"}
             border={"0px solid red"}
             overflow={"auto"}
@@ -235,8 +242,8 @@ const Chat = () => {
             >
               <TransitionGroup>
                 {chatData.map((el, i) => {
-                  const isCIO = el.sender === "CIO";
-                  const messageClass = isCIO ? "cio" : "techExpert";
+                  const isCIO = el.sender === "Ben Carter";
+                  const messageClass = isCIO ? "BenCarter" : "KateSullivan";
                   const alignMessage = isCIO ? "flex-end" : "flex-start";
                   return (
                     <CSSTransition
@@ -247,7 +254,7 @@ const Chat = () => {
                       <Box border={"0px solid black"} w={"100%"}
                         display="flex"
                         justifyContent={alignMessage} 
-                        className={`message ${messageClass} ${el.sender === "CIO" ? "cio" : "techExpert"}`} >
+                        className={`message ${messageClass} ${el.sender === "Ben Carter" ? "BenCarter" : "KateSullivan"}`} >
 
 
                         <Box
@@ -261,8 +268,8 @@ const Chat = () => {
                               "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                             }
                             border={"0px solid black"}
-                            bgColor={el.sender === "CIO" ? "#030405" : "#f0f0f0"}
-                            color={el.sender === "CIO" ? "white" : "black"}
+                            bgColor={el.sender === "Ben Carter" ? "#030405" : "#f0f0f0"}
+                            color={el.sender === "Ben Carter" ? "white" : "black"}
                             w={"100%"}
                             borderRadius={"10px"}
                             textAlign={"justify"}
@@ -415,7 +422,7 @@ const Chat = () => {
 
               </TransitionGroup>
             </Box>
-          </Box>
+          </Box> */}
         </Flex>
       </Box>
       {/* <div ref={chatEndRef} /> */}

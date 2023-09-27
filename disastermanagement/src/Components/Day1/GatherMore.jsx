@@ -16,7 +16,7 @@ import "./BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router";
 
-const BringDown = () => {
+const GatherMore = () => {
     const [chatData, setChatData] = useState([]);
     const [activeUser, setActiveUser] = useState(null);
     const [showBox, setShowBox] = useState(false);
@@ -34,19 +34,19 @@ const BringDown = () => {
     };
 
     const handleRedirect = () => {
-        if (value === "Continue with the call to gather more information.") {
-            navigate("/gathermore");
-        } else if (
-            value === "Immediately include the disc drive vendor on the call"
-        ) {
-            navigate("/diskdrive");
-        } else if (
-            value === "Immediately bring down ALL the remaining applications"
-        ) {
-            navigate("/bringdown");
-        } else {
-            navigate("/notify");
-        }
+        // if (value === "Continue with the call to gather more information.") {
+        //     navigate("/gathermore");
+        // } else if (
+        //     value === "Immediately include the disc drive vendor on the call"
+        // ) {
+        //     navigate("/diskdrive");
+        // } else if (
+        //     value === "Immediately bring down ALL the remaining applications"
+        // ) {
+        //     navigate("/bringdown");
+        // } else {
+        //     navigate("/notify");
+        // }
     }
 
 
@@ -227,7 +227,7 @@ const BringDown = () => {
                         })}
                         {showBox && (
                             <>
-                                <Flex
+                               <Flex
                                     className="box"
                                     mb={"5"}
                                     mt={"10"}
@@ -431,4 +431,4 @@ const BringDown = () => {
 };
 
 
-export default BringDown;
+export default GatherMore;

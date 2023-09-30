@@ -7,18 +7,21 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  RadioGroup,
+  Stack,
+  Radio,
+  Input,
 } from "@chakra-ui/react";
 
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-
+import Cookies from 'js-cookie';
 import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import disasterLogo from "../Images/disasterLogo.png";
 import { useNavigate } from "react-router";
 import BringDownDay1 from "./BringDownDay1";
 import BringDown from "../Components/Day1/BringDown";
-import DefaultChat from "../Components/Day1/DefaultChat";
 import GatherMore from "../Components/Day1/GatherMore";
 import DiskDrive from "../Components/Day1/DiskDrive";
 import Notify from "../Components/Day1/Notify";
@@ -27,33 +30,50 @@ const Chat = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
-
   const [value, setValue] = useState(null);
+  const [modalValue, setModalValue] = useState(null);
+  const [explaination, setExplanation] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const navigate = useNavigate();
 
-  const handleClick = (option) => {
-    setValue(option);
+  const handleChange = (value) => {
+
+    setValue(value);
     setIsModalOpen(true);
+    //  console.log(value);
   };
 
-  const handleRedirect = () => {
-    if (value === "Continue with the call to gather more information.") {
-      navigate("/gathermore");
-    } else if (
-      value === "Immediately include the disc drive vendor on the call"
-    ) {
-      navigate("/diskdrive");
-    } else if (
-      value === "Immediately bring down ALL the remaining applications"
-    ) {
-      navigate("/bringdown");
-    } else {
-      navigate("/notify");
+  const handleClick = () => {
+    //modalValue set
+    //cookies marks set
+    //text store cookies
+    if (value === "Continue with the call to gather more information") {
+      Cookies.set("day1marks", "1");
+      Cookies.set("day1explaination", explaination)
+      setModalValue(value);
     }
+    else if (value === "Immediately include the disc drive vendor on the call") {
+      Cookies.set("day1marks", "0");
+      Cookies.set("day1explaination", explaination)
+      setModalValue(value);
+    }
+    else if (value === "Immediately bring down ALL the remaining applications") {
+      Cookies.set("day1marks", "1");
+      Cookies.set("day1explaination", explaination)
+      setModalValue(value);
+    }
+    else if (value === "Notify the users of the incident") {
+      Cookies.set("day1marks", "0");
+      Cookies.set("day1explaination", explaination)
+      setModalValue(value);
+    }
+
+    // const cookiemarks = Cookies.get('day1marks') || "";
+    // const cookieex = Cookies.get('day1explaination') || "";
+    // console.log(cookiemarks, cookieex);
+
   };
 
   const scrollToBottom = () => {
@@ -77,7 +97,7 @@ const Chat = () => {
       {
         sender: "Ben Carter",
         message:
-        "Kate, can you look into this? Let me know if I need to be in the loop.",
+          "Kate, can you look into this? Let me know if I need to be in the loop.",
       },
       {
         sender: "Kate Sullivan",
@@ -140,24 +160,6 @@ const Chat = () => {
 
   return (
     <>
-      {/* <Flex
-        bgColor="#a1e8f0"
-        fontFamily={"Croissant One"}
-        justifyContent={"space-around"}
-        alignItems={"center"}
-        w={"80%"}
-        m={"auto"}
-        border={"1px solid black"}
-        h={"20"}
-        pr={40}
-        pl={40}
-
-      >
-        <Image cursor={"pointer"} w={"12%"} src={disasterLogo} />
-        <Heading fontFamily={"Croissant One"} fontStyle={"italic"}>
-          Disaster Recovery Business Case
-        </Heading>
-      </Flex> */}
       <Box
         fontFamily={"Fredoka"}
         border={"0px solid red"}
@@ -175,12 +177,11 @@ const Chat = () => {
             <Box bgColor="#a1e8f0" pt={3} borderBottom={"1px solid black"}>
               {users.map((el) => {
                 return (
-                  <Box borderBottom={"1px solid black"}>
+                  <Box borderBottom={"1px solid black"} key={el}>
                     <Box
                       boxShadow={
                         "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                       }
-                      key={el}
                       h={"6vh"}
                       w={"44px"}
                       m={"auto"}
@@ -203,14 +204,14 @@ const Chat = () => {
               })}
             </Box>
           </Box>
-          {value === "Immediately bring down ALL the remaining applications" ? (
+          {modalValue === "Immediately bring down ALL the remaining applications" ? (
             <BringDown />
-          ) : value === "Continue with the call to gather more information." ? (
+          ) : modalValue === "Continue with the call to gather more information" ? (
             <GatherMore />
-          ) : value ===
+          ) : modalValue ===
             "Immediately include the disc drive vendor on the call" ? (
             <DiskDrive />
-          ) : value === "Notify the users of the incident" ? (
+          ) : modalValue === "Notify the users of the incident" ? (
             <Notify />
           ) : (
             <Box
@@ -251,7 +252,7 @@ const Chat = () => {
                 <TransitionGroup>
                   {chatData.map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";
-                    const messageClass = isCIO ? "KateSullivan"  : "BenCarter" ;
+                    const messageClass = isCIO ? "KateSullivan" : "BenCarter";
                     const alignMessage = isCIO ? "flex-start" : "flex-end";
                     return (
                       <CSSTransition
@@ -264,11 +265,10 @@ const Chat = () => {
                           w={"100%"}
                           display="flex"
                           justifyContent={alignMessage}
-                          className={`message ${messageClass} ${
-                            el.sender === "Ben Carter"
-                              ? "BenCarter"
-                              : "KateSullivan"
-                          }`}
+                          className={`message ${messageClass} ${el.sender === "Ben Carter"
+                            ? "BenCarter"
+                            : "KateSullivan"
+                            }`}
                         >
                           <Box border={"0px solid red"} w={"70%"}>
                             <Box
@@ -319,7 +319,19 @@ const Chat = () => {
                         <Text>Decision goes here.</Text>
                       </Flex>
 
-                      <Flex
+
+
+                      <RadioGroup m={"auto"}  onChange={handleChange} value={value}>
+                        <Stack direction='column' >
+                          <Radio border="1px solid black" fontFamily={"Fredoka"} size={"lg"} colorScheme="orange" value='Continue with the call to gather more information'>Continue with the call to gather more information</Radio>
+                          <Radio border="1px solid black" fontFamily={"Fredoka"} size={"lg"} colorScheme="orange" value='Immediately include the disc drive vendor on the call'>Immediately include the disc drive vendor on the call</Radio>
+                          <Radio border="1px solid black" fontFamily={"Fredoka"} size={"lg"} colorScheme="orange" value='Immediately bring down ALL the remaining applications'>Immediately bring down ALL the remaining applications</Radio>
+                          <Radio border="1px solid black" fontFamily={"Fredoka"} size={"lg"} colorScheme="orange" value="Notify the users of the incident">Notify the users of the incident</Radio>
+                        </Stack>
+                      </RadioGroup>
+
+
+                      {/* <Flex
                         onClick={() =>
                           handleClick(
                             "Continue with the call to gather more information."
@@ -411,7 +423,7 @@ const Chat = () => {
                         cursor={"pointer"}
                       >
                         <Text>D : Notify the users of the incident</Text>
-                      </Flex>
+                      </Flex> */}
 
                       <Modal
                         isOpen={isModalOpen}
@@ -427,11 +439,15 @@ const Chat = () => {
                           <ModalHeader fontWeight={"bold"} fontSize={"25px"}>
                             YOUR DECISION...
                           </ModalHeader>
-                          <ModalBody fontSize={"18px"}>{value}</ModalBody>
+                          <ModalBody fontSize={"18px"}>
+                            <Text fontWeight={500}>{value}</Text>
+                            <br />
+                            <Input onChange={(e) => setExplanation(e.target.value)} value={explaination} placeholder="Please provide an explanation for your answer" />
+                          </ModalBody>
                           <ModalFooter>
                             <Button
                               colorScheme="teal"
-                              onClick={handleRedirect}
+                              onClick={handleClick}
                               textAlign={"center"}
                               fontFamily={"Croissant One"}
                               bg={"black"}

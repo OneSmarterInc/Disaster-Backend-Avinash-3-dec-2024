@@ -11,11 +11,12 @@ import {
   Stack,
   Radio,
   Input,
+  VisuallyHidden,
 } from "@chakra-ui/react";
 
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import disasterLogo from "../Images/disasterLogo.png";
@@ -37,9 +38,7 @@ const Chat = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-
   const handleChange = (value) => {
-
     setValue(value);
     setIsModalOpen(true);
     //  console.log(value);
@@ -49,31 +48,47 @@ const Chat = () => {
     //modalValue set
     //cookies marks set
     //text store cookies
-    if (value === "Continue with the call to gather more information") {
+    if (value === "Making clear and swift decisions under pressure") {
       Cookies.set("day1marks", "1");
-      Cookies.set("day1explaination", explaination)
+      Cookies.set("day1explaination", explaination);
       setModalValue(value);
-    }
-    else if (value === "Immediately include the disc drive vendor on the call") {
+    } else if (value === "Remaining calm and level-headed during challenges") {
       Cookies.set("day1marks", "0");
-      Cookies.set("day1explaination", explaination)
+      Cookies.set("day1explaination", explaination);
       setModalValue(value);
-    }
-    else if (value === "Immediately bring down ALL the remaining applications") {
+    } else if (
+      value ===
+      "Emphasizing teamwork, both internally and with external partners"
+    ) {
       Cookies.set("day1marks", "1");
-      Cookies.set("day1explaination", explaination)
+      Cookies.set("day1explaination", explaination);
       setModalValue(value);
-    }
-    else if (value === "Notify the users of the incident") {
+    } else if (
+      value ===
+      "Effectively conveying information, even in challenging circumstances"
+    ) {
       Cookies.set("day1marks", "0");
-      Cookies.set("day1explaination", explaination)
+      Cookies.set("day1explaination", explaination);
+      setModalValue(value);
+    } else if (
+      value ===
+      "Quickly adjusting strategies based on new information or changing scenarios"
+    ) {
+      Cookies.set("day1marks", "0");
+      Cookies.set("day1explaination", explaination);
+      setModalValue(value);
+    } else if (
+      value ===
+      "Keeping an eye on long-term impacts and future implications during the crisis"
+    ) {
+      Cookies.set("day1marks", "0");
+      Cookies.set("day1explaination", explaination);
       setModalValue(value);
     }
 
     // const cookiemarks = Cookies.get('day1marks') || "";
     // const cookieex = Cookies.get('day1explaination') || "";
     // console.log(cookiemarks, cookieex);
-
   };
 
   const scrollToBottom = () => {
@@ -111,13 +126,14 @@ const Chat = () => {
       },
       {
         sender: "Kate Sullivan",
-        message: "Ben, it's getting worse. More applications are failing, and we've isolated the issue to data corruption errors. It's... it's not looking like a simple operational hiccup anymore.",
+        message:
+          "Ben, it's getting worse. More applications are failing, and we've isolated the issue to data corruption errors. It's... it's not looking like a simple operational hiccup anymore.",
       },
       {
         sender: "Ben Carter",
         message:
           "What?! Alright, I'll be there. We need to handle this urgently.",
-      }
+      },
     ];
 
     const messageDelay = 4000; // 4 seconds
@@ -204,14 +220,17 @@ const Chat = () => {
               })}
             </Box>
           </Box>
-          {modalValue === "Immediately bring down ALL the remaining applications" ? (
+          {modalValue ===
+          "Emphasizing teamwork, both internally and with external partners" ? (
             <BringDown />
-          ) : modalValue === "Continue with the call to gather more information" ? (
+          ) : modalValue ===
+            "Making clear and swift decisions under pressure" ? (
             <GatherMore />
           ) : modalValue ===
-            "Immediately include the disc drive vendor on the call" ? (
+            "Remaining calm and level-headed during challenges" ? (
             <DiskDrive />
-          ) : modalValue === "Notify the users of the incident" ? (
+          ) : modalValue ===
+            "Effectively conveying information, even in challenging circumstances" ? (
             <Notify />
           ) : (
             <Box
@@ -265,10 +284,11 @@ const Chat = () => {
                           w={"100%"}
                           display="flex"
                           justifyContent={alignMessage}
-                          className={`message ${messageClass} ${el.sender === "Ben Carter"
-                            ? "BenCarter"
-                            : "KateSullivan"
-                            }`}
+                          className={`message ${messageClass} ${
+                            el.sender === "Ben Carter"
+                              ? "BenCarter"
+                              : "KateSullivan"
+                          }`}
                         >
                           <Box border={"0px solid red"} w={"70%"}>
                             <Box
@@ -316,114 +336,165 @@ const Chat = () => {
                         color={"black"}
                         fontWeight={"bold"}
                       >
-                        <Text>Decision goes here.</Text>
+                        <Text>
+                          Which trade of the customer representative do you feel
+                          has stood out during your latest interaction ?
+                        </Text>
                       </Flex>
 
+                      <RadioGroup
+                        m={"auto"}
+                        onChange={handleChange}
+                        value={value}
+                      >
+                        <Box className="flex" w={"80%"} m={"auto"}>
+                          <Box
+                            border={"1px solid black"}
+                            w={"70%"}
+                            borderRadius={"50px"}
+                          >
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Making clear and swift decisions under pressure"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Decisive
+                            </label>
+                          </Box>
 
+                          <Box
+                            border={"1px solid black"}
+                            w={"80%"}
+                            borderRadius={"50px"}
+                          >
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Remaining calm and level-headed during challenges"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Composed
+                            </label>
+                          </Box>
 
-                      <RadioGroup m={"auto"}  onChange={handleChange} value={value}>
-                        <Stack direction='column' >
-                          <Radio border="1px solid black" fontFamily={"Fredoka"} size={"lg"} colorScheme="orange" value='Continue with the call to gather more information'>Continue with the call to gather more information</Radio>
-                          <Radio border="1px solid black" fontFamily={"Fredoka"} size={"lg"} colorScheme="orange" value='Immediately include the disc drive vendor on the call'>Immediately include the disc drive vendor on the call</Radio>
-                          <Radio border="1px solid black" fontFamily={"Fredoka"} size={"lg"} colorScheme="orange" value='Immediately bring down ALL the remaining applications'>Immediately bring down ALL the remaining applications</Radio>
-                          <Radio border="1px solid black" fontFamily={"Fredoka"} size={"lg"} colorScheme="orange" value="Notify the users of the incident">Notify the users of the incident</Radio>
-                        </Stack>
+                          <Box border={"1px solid black"} borderRadius={"50px"}>
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Emphasizing teamwork, both internally and with external partners"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Collaborative
+                            </label>
+                          </Box>
+
+                          <Box border={"1px solid black"} borderRadius={"50px"}>
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Effectively conveying information, even in challenging circumstances"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Communicative
+                            </label>
+                          </Box>
+
+                          <Box border={"1px solid black"} borderRadius={"50px"}>
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Quickly adjusting strategies based on new information or changing scenarios"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Adaptive
+                            </label>
+                          </Box>
+
+                          <Box border={"1px solid black"} borderRadius={"50px"}>
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Keeping an eye on long-term impacts and future implications during the crisis"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Visionary
+                            </label>
+                          </Box>
+                        </Box>
                       </RadioGroup>
-
-
-                      {/* <Flex
-                        onClick={() =>
-                          handleClick(
-                            "Continue with the call to gather more information."
-                          )
-                        }
-                        className="box"
-                        border={"1px solid gray"}
-                        w={"50%"}
-                        m={"auto"}
-                        mb={"5"}
-                        h={"60px"}
-                        alignItems={"center"}
-                        justifyContent={"center"}
-                        bg={"black"}
-                        color={"white"}
-                        _hover={{ bgColor: "#c8cfca", color: "black" }}
-                        cursor={"pointer"}
-                      >
-                        <Text>
-                          A : Continue with the call to gather more information
-                        </Text>
-                      </Flex>
-
-                      <Flex
-                        onClick={() =>
-                          handleClick(
-                            "Immediately include the disc drive vendor on the call"
-                          )
-                        }
-                        className="box"
-                        border={"1px solid gray"}
-                        w={"50%"}
-                        m={"auto"}
-                        mb={"5"}
-                        h={"60px"}
-                        alignItems={"center"}
-                        justifyContent={"center"}
-                        bg={"black"}
-                        color={"white"}
-                        _hover={{ bgColor: "#c8cfca", color: "black" }}
-                        cursor={"pointer"}
-                      >
-                        <Text>
-                          B : Immediately include the disc drive vendor on the
-                          call
-                        </Text>
-                      </Flex>
-
-                      <Flex
-                        onClick={() =>
-                          handleClick(
-                            "Immediately bring down ALL the remaining applications"
-                          )
-                        }
-                        className="box"
-                        border={"1px solid gray"}
-                        w={"50%"}
-                        m={"auto"}
-                        mb={"5"}
-                        h={"60px"}
-                        alignItems={"center"}
-                        justifyContent={"center"}
-                        bg={"black"}
-                        color={"white"}
-                        _hover={{ bgColor: "#c8cfca", color: "black" }}
-                        cursor={"pointer"}
-                      >
-                        <Text>
-                          C : Immediately bring down ALL the remaining
-                          applications
-                        </Text>
-                      </Flex>
-
-                      <Flex
-                        onClick={() =>
-                          handleClick("Notify the users of the incident")
-                        }
-                        className="box"
-                        border={"1px solid gray"}
-                        w={"50%"}
-                        m={"auto"}
-                        mb={"5"}
-                        h={"60px"}
-                        alignItems={"center"}
-                        justifyContent={"center"}
-                        bg={"black"}
-                        color={"white"}
-                        _hover={{ bgColor: "#c8cfca", color: "black" }}
-                        cursor={"pointer"}
-                      >
-                        <Text>D : Notify the users of the incident</Text>
-                      </Flex> */}
 
                       <Modal
                         isOpen={isModalOpen}
@@ -437,12 +508,19 @@ const Chat = () => {
                           }
                         >
                           <ModalHeader fontWeight={"bold"} fontSize={"25px"}>
-                            YOUR DECISION...
+                            Refined Leadership Trait Scale
                           </ModalHeader>
                           <ModalBody fontSize={"18px"}>
+                            <Image src="https://epyqh8r42ug.exactdn.com/wp-content/uploads/2021/12/organic-flat-feedback-concept_52683-62653.jpeg?strip=all&lossy=1&ssl=1" />
+                            <Text>
+                              Which trade of the customer representative do you
+                              feel has stood out during your latest interaction
+                              ?
+                            </Text>
+                            <br />
                             <Text fontWeight={500}>{value}</Text>
                             <br />
-                            <Input onChange={(e) => setExplanation(e.target.value)} value={explaination} placeholder="Please provide an explanation for your answer" />
+                            {/* <Input onChange={(e) => setExplanation(e.target.value)} value={explaination} placeholder="Please provide an explanation for your answer" /> */}
                           </ModalBody>
                           <ModalFooter>
                             <Button

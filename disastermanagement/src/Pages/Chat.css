@@ -56,3 +56,12 @@
     transform: translateY(-100%);
   }
 }
+
+.flex{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
+}
+[type="radio"]:focus {
+  outline: none;
+}

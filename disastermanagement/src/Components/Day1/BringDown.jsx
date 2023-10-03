@@ -168,7 +168,11 @@ const BringDown = () => {
         message:
           " We're in uncharted waters here. Before we make any decisions, we need to consider the ripple effects",
       },
-      { sender: "Kate Sullivan", message: "Agreed. We've yet to inform senior leadership. They'll want answers, and we don't have many right now" },
+      {
+        sender: "Kate Sullivan",
+        message:
+          "Agreed. We've yet to inform senior leadership. They'll want answers, and we don't have many right now",
+      },
       {
         sender: "Liam Turner",
         message:
@@ -188,15 +192,46 @@ const BringDown = () => {
         message:
           "And that could lead to penalties, not to mention reputational damage. ",
       },
-      { sender: "Kate Sullivan", message: "We might need to prepare for potential lawsuits, especially if client data is compromised or lost. " },
-      { sender: "Sophia Kim", message: "We need a clear communication strategy. Maybe involve PR and have them draft a statement, just in case." },
-      { sender: "Liam Turner", message: "I'll coordinate with them. But how transparent should we be? " },
-      { sender: "Ben Carter", message: "We can't hide this. But let's be strategic about what we disclose and when." },
-      { sender: "Julia Harper (on screen)", message: "): I understand the gravity, but the longer we wait, the harder recovery might be." },
-      { sender: "Kate Sullivan", message: ": Julia's right. We need to act. But we also need to think about the aftermath." },
-      { sender: "Ben Carter", message: "And I haven't even thought about the board. They'll want an emergency meeting. And then there's the shareholders..." },
-      { sender: "Sophia Kim", message: "One step at a time, Ben. First, let's stabilize the situation, then manage the fallout." },
-
+      {
+        sender: "Kate Sullivan",
+        message:
+          "We might need to prepare for potential lawsuits, especially if client data is compromised or lost. ",
+      },
+      {
+        sender: "Sophia Kim",
+        message:
+          "We need a clear communication strategy. Maybe involve PR and have them draft a statement, just in case.",
+      },
+      {
+        sender: "Liam Turner",
+        message:
+          "I'll coordinate with them. But how transparent should we be? ",
+      },
+      {
+        sender: "Ben Carter",
+        message:
+          "We can't hide this. But let's be strategic about what we disclose and when.",
+      },
+      {
+        sender: "Julia Harper (on screen)",
+        message:
+          "): I understand the gravity, but the longer we wait, the harder recovery might be.",
+      },
+      {
+        sender: "Kate Sullivan",
+        message:
+          ": Julia's right. We need to act. But we also need to think about the aftermath.",
+      },
+      {
+        sender: "Ben Carter",
+        message:
+          "And I haven't even thought about the board. They'll want an emergency meeting. And then there's the shareholders...",
+      },
+      {
+        sender: "Sophia Kim",
+        message:
+          "One step at a time, Ben. First, let's stabilize the situation, then manage the fallout.",
+      },
     ];
 
     const messageDelay = 4000; // 4 seconds
@@ -253,16 +288,16 @@ const BringDown = () => {
           <EarlyMorning />
         ) : modalValue ===
           "Remaining calm and level-headed during challenges" ? (
-            <EarlyMorning />
+          <EarlyMorning />
         ) : modalValue ===
           "Effectively conveying information, even in challenging circumstances" ? (
-            <EarlyMorning />
+          <EarlyMorning />
         ) : modalValue ===
           "Quickly adjusting strategies based on new information or changing scenarios" ? (
-            <EarlyMorning />
+          <EarlyMorning />
         ) : modalValue ===
           "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-            <EarlyMorning />
+          <EarlyMorning />
         ) : (
           <Box
             pt={5}
@@ -290,9 +325,10 @@ const BringDown = () => {
                 about to leave the office. when he received a call inviting him
                 to a conference call concern a problem at the data center.
               </Text>
-              
             </Box>
-            <Text fontSize={20} fontWeight={'bold'}>Day1 Evening</Text>
+            <Text fontSize={20} fontWeight={"bold"}>
+              Day1 Evening
+            </Text>
             <Box
               w={"90%"}
               h={"68vh"}
@@ -359,12 +395,12 @@ const BringDown = () => {
                   <>
                     <Box
                       bg={"white"}
-                      h={"700px"}
-                      w={"70%"}
+                      h={"650px"}
+                      w={"60%"}
                       m={"auto"}
                       mt={"50px"}
                     >
-                      <Image src="https://www.timefixed.com/static/img/app.3b5132a.gif" />
+                      <Image w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/app.3b5132a.gif" />
                       <Flex
                         className="box"
                         mb={"5"}
@@ -640,12 +676,12 @@ const BringDown = () => {
                   <>
                     <Box
                       bg={"white"}
-                      h={"750px"}
-                      w={"70%"}
+                      h={"700px"}
+                      w={"60%"}
                       m={"auto"}
                       mt={"50px"}
                     >
-                      <Image src="https://www.timefixed.com/static/img/hr.5d824eb.gif" />
+                      <Image w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/hr.5d824eb.gif" />
                       <Flex
                         className="box"
                         mb={"5"}

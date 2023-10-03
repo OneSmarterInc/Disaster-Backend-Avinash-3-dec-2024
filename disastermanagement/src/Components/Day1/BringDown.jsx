@@ -1,434 +1,897 @@
 import {
-    ChakraProvider,
-    extendTheme,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalBody,
-    ModalFooter,
+  ChakraProvider,
+  extendTheme,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
 } from "@chakra-ui/react";
-
+import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import Cookies from "js-cookie";
 
 import "./BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router";
+import EarlyMorning from "../Day2/EarlyMorning";
 
 const BringDown = () => {
-    const [chatData, setChatData] = useState([]);
-    const [activeUser, setActiveUser] = useState(null);
-    const [showBox, setShowBox] = useState(false);
+  const [chatData, setChatData] = useState([]);
+  const [activeUser, setActiveUser] = useState(null);
+  const [showBox, setShowBox] = useState(false);
+  const [explaination, setExplanation] = useState("");
+  const [value, setValue] = useState(null);
+  const [value1, setValue1] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
+  const [isModalOpen2, setIsModalOpen2] = useState(false);
 
-    const [value, setValue] = useState(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const chatContainerRef = useRef(null);
-    const spacerRef = useRef(null);
+  const [modalValue, setModalValue] = useState(null);
+  const [modalValue1, setModalValue1] = useState(null);
 
-    const navigate = useNavigate();
+  const chatContainerRef = useRef(null);
+  const spacerRef = useRef(null);
 
-    const handleClick = (option) => {
-        setValue(option);
-        setIsModalOpen(true);
-    };
+  const handleChange = (value) => {
+    setValue(value);
+    setIsModalOpen(true);
+    //  console.log(value);
+  };
 
-    const handleRedirect = () => {
-        if (value === "Continue with the call to gather more information.") {
-            navigate("/gathermore");
-        } else if (
-            value === "Immediately include the disc drive vendor on the call"
-        ) {
-            navigate("/diskdrive");
-        } else if (
-            value === "Immediately bring down ALL the remaining applications"
-        ) {
-            navigate("/bringdown");
-        } else {
-            navigate("/notify");
-        }
+  const handleClick = () => {
+    if (value === "Making clear and swift decisions under pressure") {
+      Cookies.set("day1marks", "1");
+      Cookies.set("day1explaination", explaination);
+      setModalValue(value);
+    } else if (value === "Remaining calm and level-headed during challenges") {
+      Cookies.set("day1marks", "0");
+      Cookies.set("day1explaination", explaination);
+      setModalValue(value);
+    } else if (
+      value ===
+      "Emphasizing teamwork, both internally and with external partners"
+    ) {
+      Cookies.set("day1marks", "1");
+      Cookies.set("day1explaination", explaination);
+      setModalValue(value);
+    } else if (
+      value ===
+      "Effectively conveying information, even in challenging circumstances"
+    ) {
+      Cookies.set("day1marks", "0");
+      Cookies.set("day1explaination", explaination);
+      setModalValue(value);
+    } else if (
+      value ===
+      "Quickly adjusting strategies based on new information or changing scenarios"
+    ) {
+      Cookies.set("day1marks", "0");
+      Cookies.set("day1explaination", explaination);
+      setModalValue(value);
+    } else if (
+      value ===
+      "Keeping an eye on long-term impacts and future implications during the crisis"
+    ) {
+      Cookies.set("day1marks", "0");
+      Cookies.set("day1explaination", explaination);
+      setModalValue(value);
     }
 
+    const cookiemarks = Cookies.get("day1marks") || "";
+    const cookieex = Cookies.get("day1explaination") || "";
+    console.log(cookiemarks, cookieex);
+  };
 
+  const handleChange2 = (value1) => {
+    setValue1(value1);
+    setIsModalOpen1(true);
 
-    const scrollToBottom = () => {
-        const container = chatContainerRef.current;
-        if (container) {
-            container.scrollTop = container.scrollHeight;
-        }
-    };
+    //  console.log(value);
+  };
 
-    const users = [
-        "Ben Carter",
-        "Kate Sullivan",
-        "Liam Turner",
-        "Mia Rodriguez",
-        "Sophia Kim",
+  const handleClick2 = () => {
+    setIsModalOpen1(false);
+    setIsModalOpen2(true);
+    if (
+      value1 ===
+      "Weaknesses in the system that can be exploited, leading to potential disasters"
+    ) {
+      Cookies.set("day1marks", "1");
+      Cookies.set("day1explaination", explaination);
+
+      setModalValue1(value1);
+    } else if (
+      value1 ===
+      "Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery"
+    ) {
+      // Cookies.set("day1marks", "0");
+      // Cookies.set("day1explaination", explaination);
+      // setModalValue(value1);
+    } else if (
+      value1 ===
+      "Hardware or network breakdowns that can disrupt normal operations"
+    ) {
+      // Cookies.set("day1marks", "1");
+      // Cookies.set("day1explaination", explaination);
+      // setModalValue(value1);
+    } else if (
+      value1 ===
+      "Inadequate or failed backups that prevent or delay recovery efforts"
+    ) {
+      // Cookies.set("day1marks", "0");
+      // Cookies.set("day1explaination", explaination);
+      // setModalValue(value1);
+    } else if (
+      value1 ===
+      "Failures in internal and external communication systems during critical times"
+    ) {
+      // Cookies.set("day1marks", "0");
+      // Cookies.set("day1explaination", explaination);
+      // setModalValue(value1);
+    } else if (
+      value1 ===
+      "Absence of failover systems or processes that can act as a backup during primary system failures"
+    ) {
+      // Cookies.set("day1marks", "0");
+      // Cookies.set("day1explaination", explaination);
+      // setModalValue(value1);
+    }
+
+    // const cookiemarks = Cookies.get('day1marks') || "";
+    //  const cookieex = Cookies.get('day1explaination') || "";
+    //  console.log( cookieex);
+  };
+
+  const scrollToBottom = () => {
+    const container = chatContainerRef.current;
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
+  };
+
+  const users = [
+    "Ben Carter",
+    "Kate Sullivan",
+    "Liam Turner",
+    "Mia Rodriguez",
+    "Sophia Kim",
+  ];
+
+  useEffect(() => {
+    // Simulate messages from 5 users with a 2-second delay between each message
+    const dayOne = [
+      {
+        sender: "Ben Carter",
+        message:
+          " We're in uncharted waters here. Before we make any decisions, we need to consider the ripple effects",
+      },
+      { sender: "Kate Sullivan", message: "Agreed. We've yet to inform senior leadership. They'll want answers, and we don't have many right now" },
+      {
+        sender: "Liam Turner",
+        message:
+          "And when the news gets out, there will be panic. The CFO will be worried about the financial impact, and the legal team will be all over the potential breaches of SLAs and customer contracts.",
+      },
+      {
+        sender: "Sophia Kim",
+        message: "Speaking of SLAs, what's our commitment on uptime?",
+      },
+      {
+        sender: "Mia Rodriguez",
+        message:
+          "99.9% annually. This outage, if it lasts a week, would breach that.",
+      },
+      {
+        sender: "Ben Carter",
+        message:
+          "And that could lead to penalties, not to mention reputational damage. ",
+      },
+      { sender: "Kate Sullivan", message: "We might need to prepare for potential lawsuits, especially if client data is compromised or lost. " },
+      { sender: "Sophia Kim", message: "We need a clear communication strategy. Maybe involve PR and have them draft a statement, just in case." },
+      { sender: "Liam Turner", message: "I'll coordinate with them. But how transparent should we be? " },
+      { sender: "Ben Carter", message: "We can't hide this. But let's be strategic about what we disclose and when." },
+      { sender: "Julia Harper (on screen)", message: "): I understand the gravity, but the longer we wait, the harder recovery might be." },
+      { sender: "Kate Sullivan", message: ": Julia's right. We need to act. But we also need to think about the aftermath." },
+      { sender: "Ben Carter", message: "And I haven't even thought about the board. They'll want an emergency meeting. And then there's the shareholders..." },
+      { sender: "Sophia Kim", message: "One step at a time, Ben. First, let's stabilize the situation, then manage the fallout." },
+
     ];
 
+    const messageDelay = 4000; // 4 seconds
 
+    let timeoutIndex = 0;
 
-    useEffect(() => {
+    const addMessageWithDelay = () => {
+      if (timeoutIndex < dayOne.length) {
+        const message = dayOne[timeoutIndex];
+        setChatData((prevChatData) => [...prevChatData, message]);
+        setActiveUser(message.sender);
+        timeoutIndex++;
+        setTimeout(addMessageWithDelay, messageDelay);
+      } else {
+        setShowBox(true);
+      }
+    };
 
-        // Simulate messages from 5 users with a 2-second delay between each message
-        const dayOne = [
-            {
-                sender: "Kate Sullivan",
-                message:
-                    " Hey, CIO, sorry to bother you, but we've got a problem at the data center. Can you join a conference call ?",
-            },
-            { sender: "Ben Carter", message: "Sure, I'm in. What's going on?" },
-            {
-                sender: "Kate Sullivan",
-                message:
-                    " Applications at the data center are failing with data corruption errors. We've already submitted an incident report to the storage vendor. The weird part is, it's happening across different servers and storage units.",
-            },
-            {
-                sender: "Ben Carter",
-                message: " I see. Let's gather more information. What's our next step?",
-            },
-            {
-                sender: "Kate Sullivan",
-                message:
-                    "We have two data centers linked by high-speed fiber, with mirrored setups for high availability applications. Some apps are on mirrored clusters at both sites.",
-            },
-            {
-                sender: "Ben Carter",
-                message:
-                    "  Got it. We need to assess the situation. Decision time, folks.",
-            },
-            { sender: "Kate Sullivan", message: " We're at a decision point here" },
-        ];
+    addMessageWithDelay();
 
+    // Call scrollToBottom when children change or initially
+    // scrollToBottom();
 
-        const messageDelay = 4000; // 4 seconds
+    return () => {
+      clearTimeout(addMessageWithDelay);
+    };
+  }, []);
 
-        let timeoutIndex = 0;
+  useLayoutEffect(() => {
+    // Scroll to the bottom after chatData changes
+    scrollToBottom();
+  }, [chatData]);
 
-        const addMessageWithDelay = () => {
-            if (timeoutIndex < dayOne.length) {
-                const message = dayOne[timeoutIndex];
-                setChatData((prevChatData) => [...prevChatData, message]);
-                setActiveUser(message.sender);
-                timeoutIndex++;
-                setTimeout(addMessageWithDelay, messageDelay);
-            } else {
-                setShowBox(true);
-            }
-        };
+  useLayoutEffect(() => {
+    // Scroll to the bottom when showBox becomes true
+    if (showBox) {
+      scrollToBottom();
+    }
+  }, [showBox]);
 
-        addMessageWithDelay();
-
-
-
-        // Call scrollToBottom when children change or initially
-        // scrollToBottom();
-
-        return () => {
-            clearTimeout(addMessageWithDelay);
-        };
-    }, []);
-
-    useLayoutEffect(() => {
-        // Scroll to the bottom after chatData changes
-        scrollToBottom();
-    }, [chatData]);
-
-    useLayoutEffect(() => {
-        // Scroll to the bottom when showBox becomes true
-        if (showBox) {
-            scrollToBottom();
-        }
-    }, [showBox]);
-
-    return (
-        <>
+  return (
+    <>
+      <Box
+        fontFamily={"Fredoka"}
+        border={"0px solid red"}
+        w={"100%"}
+        m={"auto"}
+        h={"88vh"}
+      >
+        {modalValue ===
+        "Emphasizing teamwork, both internally and with external partners" ? (
+          <EarlyMorning />
+        ) : modalValue === "Making clear and swift decisions under pressure" ? (
+          <EarlyMorning />
+        ) : modalValue ===
+          "Remaining calm and level-headed during challenges" ? (
+            <EarlyMorning />
+        ) : modalValue ===
+          "Effectively conveying information, even in challenging circumstances" ? (
+            <EarlyMorning />
+        ) : modalValue ===
+          "Quickly adjusting strategies based on new information or changing scenarios" ? (
+            <EarlyMorning />
+        ) : modalValue ===
+          "Keeping an eye on long-term impacts and future implications during the crisis" ? (
+            <EarlyMorning />
+        ) : (
+          <Box
+            pt={5}
+            maxH={"88vh"}
+            w={"100%"}
+            border={"0px solid red"}
+            overflow={"auto"}
+            ref={chatContainerRef}
+            pb={2}
+          >
             <Box
-                pt={5}
-                maxH={"88vh"}
-                w={"90%"}
-                border={"0px solid red"}
-                overflow={"auto"}
-                ref={chatContainerRef}
-                pb={2}
+              border={"1px solid black"}
+              bgColor={"#030405"}
+              color={"white"}
+              borderRadius={"20px"}
+              m={"auto"}
+              textAlign={"left"}
+              w={"90%"}
+              pl={3}
+              pt={3}
+              pb={3}
             >
-                <Box
-                    border={"1px solid black"}
-                    bgColor={"#030405"}
-                    color={"white"}
-                    borderRadius={"20px"}
-                    m={"auto"}
-                    textAlign={"left"}
-                    w={"90%"}
-                    pl={3}
-                    pt={3}
-                    pb={3}
-                >
-                    <Text fontSize={"20"}>
-                        It was a typical February Monday night, and the CIO is just
-                        about to leave the office. when he received a call inviting him
-                        to a conference call concern a problem at the data center.
-                    </Text>
-                </Box>
-                <Box
-                    w={"90%"}
-                    h={"68vh"}
-                    border="0px solid red"
-                    m={"auto"}
-                    pl={5}
-                    pr={5}
-                >
-                    <TransitionGroup>
-                        {chatData.map((el, i) => {
-                            const isCIO = el.sender === "Ben Carter";
-                            const messageClass = isCIO ? "BenCarter" : "KateSullivan";
-                            const alignMessage = isCIO ? "flex-end" : "flex-start";
-                            return (
-                                <CSSTransition
-                                    key={i}
-                                    classNames="message"
-                                    timeout={{ enter: 300, exit: 300 }}
-                                >
-                                    <Box border={"0px solid black"} w={"100%"}
-                                        display="flex"
-                                        justifyContent={alignMessage}
-                                        className={`message ${messageClass} ${el.sender === "Ben Carter" ? "BenCarter" : "KateSullivan"}`} >
-
-
-                                        <Box
-                                            border={"0px solid red"}
-
-                                            w={"70%"}
-
-                                        >
-                                            <Box
-                                                boxShadow={
-                                                    "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                                                }
-                                                border={"0px solid black"}
-                                                bgColor={el.sender === "Ben Carter" ? "#030405" : "#f0f0f0"}
-                                                color={el.sender === "Ben Carter" ? "white" : "black"}
-                                                w={"100%"}
-                                                borderRadius={"10px"}
-                                                textAlign={"justify"}
-                                                p={4}
-                                                pl={5}
-                                                pr={5}
-                                                mt={10}
-                                            >
-                                                <Text>
-                                                    <span id="sender">{el.sender}</span> : {el.message}
-                                                </Text>
-                                            </Box>
-                                        </Box>
-                                    </Box>
-                                </CSSTransition>
-                            );
-                        })}
-                        {showBox && (
-                            <>
-                                <Flex
-                                    className="box"
-                                    mb={"5"}
-                                    mt={"10"}
-                                    boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-
-                                    alignItems={"center"}
-                                    justifyContent={"center"}
-                                    h={"50px"}
-                                    bg={"#c8cfca"}
-                                    color={"black"}
-                                    fontWeight={'bold'}
-                                >
-                                    <Text>Decision goes here.</Text>
-                                </Flex>
-
-                                <Flex
-                                    onClick={() =>
-                                        handleClick(
-                                            "Do you take the vendors recommendation?"
-                                        )
-                                    }
-                                    className="box"
-                                    border={"1px solid gray"}
-                                    w={"50%"}
-                                    m={"auto"}
-                                    mb={"5"}
-                                    h={"60px"}
-                                    alignItems={"center"}
-                                    justifyContent={"center"}
-                                    bg={"black"}
-                                    color={"white"}
-                                    _hover={{ bgColor: "#c8cfca", color: "black" }}
-                                    cursor={"pointer"}
-                                >
-                                    <Text>
-                                        A : Do you take the vendors recommendation?
-
-                                    </Text>
-                                </Flex>
-
-                                <Flex
-                                    onClick={() =>
-                                        handleClick(
-                                            "What other things do you consider?"
-                                        )
-                                    }
-                                    className="box"
-                                    border={"1px solid gray"}
-                                    w={"50%"}
-                                    m={"auto"}
-                                    mb={"5"}
-                                    h={"60px"}
-                                    alignItems={"center"}
-                                    justifyContent={"center"}
-                                    bg={"black"}
-                                    color={"white"}
-                                    _hover={{ bgColor: "#c8cfca", color: "black" }}
-                                    cursor={"pointer"}
-                                >
-                                    <Text>
-                                        B : What other things do you consider?
-
-                                    </Text>
-                                </Flex>
-
-                                <Flex
-                                    onClick={() =>
-                                        handleClick(
-                                            "Do you escalate higher through the vendor management for a better solution?"
-                                        )
-                                    }
-                                    className="box"
-                                    border={"1px solid gray"}
-                                    w={"50%"}
-                                    m={"auto"}
-                                    mb={"5"}
-                                    h={"60px"}
-                                    alignItems={"center"}
-                                    justifyContent={"center"}
-                                    bg={"black"}
-                                    color={"white"}
-                                    _hover={{ bgColor: "#c8cfca", color: "black" }}
-                                    cursor={"pointer"}
-                                >
-                                    <Text>
-                                        C :	Do you escalate higher through the vendor management for a better solution?
-
-                                    </Text>
-                                </Flex>
-
-                                <Flex
-                                    onClick={() =>
-                                        handleClick("Who would you call at this point?")
-                                    }
-                                    className="box"
-                                    border={"1px solid gray"}
-                                    w={"50%"}
-                                    m={"auto"}
-                                    mb={"5"}
-                                    h={"60px"}
-                                    alignItems={"center"}
-                                    justifyContent={"center"}
-                                    bg={"black"}
-                                    color={"white"}
-                                    _hover={{ bgColor: "#c8cfca", color: "black" }}
-                                    cursor={"pointer"}
-                                >
-                                    <Text>D : Who would you call at this point?</Text>
-                                </Flex>
-
-                                <Flex
-                                    onClick={() =>
-                                        handleClick("What message do you provide your user?")
-                                    }
-                                    className="box"
-                                    border={"1px solid gray"}
-                                    w={"50%"}
-                                    m={"auto"}
-                                    mb={"5"}
-                                    h={"60px"}
-                                    alignItems={"center"}
-                                    justifyContent={"center"}
-                                    bg={"black"}
-                                    color={"white"}
-                                    _hover={{ bgColor: "#c8cfca", color: "black" }}
-                                    cursor={"pointer"}
-                                >
-                                    <Text>E : What message do you provide your user?</Text>
-                                </Flex>
-
-                                <Flex
-                                    onClick={() =>
-                                        handleClick("What do you tell your customer?")
-                                    }
-                                    className="box"
-                                    border={"1px solid gray"}
-                                    w={"50%"}
-                                    m={"auto"}
-                                    mb={"5"}
-                                    h={"60px"}
-                                    alignItems={"center"}
-                                    justifyContent={"center"}
-                                    bg={"black"}
-                                    color={"white"}
-                                    _hover={{ bgColor: "#c8cfca", color: "black" }}
-                                    cursor={"pointer"}
-                                >
-                                    <Text>F : What do you tell your customer?</Text>
-                                </Flex>
-
-                                <Flex
-                                    onClick={() =>
-                                        handleClick("Do you have to make a statement Wall Street? You are a Fortune 500 company.?")
-                                    }
-                                    className="box"
-                                    border={"1px solid gray"}
-                                    w={"50%"}
-                                    m={"auto"}
-                                    mb={"5"}
-                                    h={"60px"}
-                                    alignItems={"center"}
-                                    justifyContent={"center"}
-                                    bg={"black"}
-                                    color={"white"}
-                                    _hover={{ bgColor: "#c8cfca", color: "black" }}
-                                    cursor={"pointer"}
-                                >
-                                    <Text>G : Do you have to make a statement Wall Street? You are a Fortune 500 company.?</Text>
-                                </Flex>
-
-                                <Modal
-                                    isOpen={isModalOpen}
-                                    onClose={() => setIsModalOpen(false)}
-
-                                >
-                                    <ModalOverlay />
-                                    <ModalContent mt={200} boxShadow={"rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"}>
-                                        <ModalHeader fontWeight={'bold'} fontSize={'25px'}>YOUR DECISION...</ModalHeader>
-                                        <ModalBody fontSize={'18px'}>{value}</ModalBody>
-                                        <ModalFooter>
-
-                                            <Button colorScheme="teal" onClick={handleRedirect} textAlign={'center'} fontFamily={'Croissant One'} bg={'black'} _hover={{ "bgColor": "#a1e8f0", "color": "black" }} mr={'150px'}>
-                                                Proceed
-                                            </Button>
-                                        </ModalFooter>
-                                    </ModalContent>
-                                </Modal>
-                            </>
-                        )}
-                        <div ref={spacerRef} style={{ height: "40px" }}></div>
-
-                    </TransitionGroup>
-                </Box>
+              <Text fontSize={"20"}>
+                It was a typical February Monday night, and the CIO is just
+                about to leave the office. when he received a call inviting him
+                to a conference call concern a problem at the data center.
+              </Text>
+              
             </Box>
+            <Text fontSize={20} fontWeight={'bold'}>Day1 Evening</Text>
+            <Box
+              w={"90%"}
+              h={"68vh"}
+              border="0px solid red"
+              m={"auto"}
+              pl={5}
+              pr={5}
+            >
+              <TransitionGroup>
+                {chatData.map((el, i) => {
+                  const isCIO = el.sender === "Ben Carter";
+                  const senderName = el.sender;
+                  const messageClass = isCIO ? "CIO" : "OtherSender";
+                  // const messageClass = isCIO ? "KateSullivan" : "BenCarter";
+                  const alignMessage = isCIO ? "flex-start" : "flex-end";
+                  return (
+                    <CSSTransition
+                      key={i}
+                      classNames="message"
+                      timeout={{ enter: 300, exit: 300 }}
+                    >
+                      <Box
+                        border={"0px solid black"}
+                        w={"100%"}
+                        display="flex"
+                        justifyContent={alignMessage}
+                        className={`message ${messageClass} ${
+                          el.sender === "Ben Carter"
+                            ? "BenCarter"
+                            : "KateSullivan"
+                        }`}
+                      >
+                        <Box border={"0px solid red"} w={"50%"}>
+                          <Box
+                            boxShadow={
+                              "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                            }
+                            border={"0px solid black"}
+                            bgColor={
+                              el.sender === "Ben Carter" ? "#f0f0f0" : "#030405"
+                            }
+                            color={
+                              el.sender === "Ben Carter" ? "black" : "white"
+                            }
+                            w={"100%"}
+                            borderRadius={"10px"}
+                            textAlign={"justify"}
+                            p={4}
+                            pl={5}
+                            pr={5}
+                            mt={10}
+                          >
+                            <Text>
+                              <span id="sender">{senderName}</span> :{" "}
+                              {el.message}
+                            </Text>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </CSSTransition>
+                  );
+                })}
+                {showBox && (
+                  <>
+                    <Box
+                      bg={"white"}
+                      h={"700px"}
+                      w={"70%"}
+                      m={"auto"}
+                      mt={"50px"}
+                    >
+                      <Image src="https://www.timefixed.com/static/img/app.3b5132a.gif" />
+                      <Flex
+                        className="box"
+                        mb={"5"}
+                        mt={"10"}
+                        boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                        alignItems={"center"}
+                        justifyContent={"center"}
+                        h={"50px"}
+                        bg={"#c8cfca"}
+                        color={"black"}
+                        fontWeight={"bold"}
+                      >
+                        <Text>
+                          Which of the following technical challenges do you see
+                          as dominant in the scripts which you just saw ?
+                        </Text>
+                      </Flex>
 
+                      <RadioGroup
+                        m={"auto"}
+                        onChange={handleChange2}
+                        value={value}
+                      >
+                        <Box className="flex2" w={"80%"} m={"auto"}>
+                          <Box
+                            border={"1px solid black"}
+                            _hover={{ bgColor: "black", color: "white" }}
+                            borderRadius={"50px"}
+                          >
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Weaknesses in the system that can be exploited, leading to potential disasters"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              System Vulnerabilities
+                            </label>
+                          </Box>
 
+                          <Box
+                            border={"1px solid black"}
+                            w={"80%"}
+                            borderRadius={"50px"}
+                            _hover={{ bgColor: "black", color: "white" }}
+                          >
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Data Integrity
+                            </label>
+                          </Box>
 
+                          <Box
+                            border={"1px solid black"}
+                            borderRadius={"50px"}
+                            _hover={{ bgColor: "black", color: "white" }}
+                          >
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Hardware or network breakdowns that can disrupt normal operations"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Infrastructure Failures
+                            </label>
+                          </Box>
 
-        </>
-    );
+                          <Box
+                            border={"1px solid black"}
+                            borderRadius={"50px"}
+                            _hover={{ bgColor: "black", color: "white" }}
+                          >
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Inadequate or failed backups that prevent or delay recovery efforts"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Backup Failures
+                            </label>
+                          </Box>
+
+                          <Box
+                            border={"1px solid black"}
+                            borderRadius={"50px"}
+                            _hover={{ bgColor: "black", color: "white" }}
+                          >
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Failures in internal and external communication systems during critical times"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Communication Breakdowns
+                            </label>
+                          </Box>
+
+                          <Box
+                            border={"1px solid black"}
+                            borderRadius={"50px"}
+                            _hover={{ bgColor: "black", color: "white" }}
+                          >
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Absence of failover systems or processes that can act as a backup during primary system failures"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Lack of Redundancy
+                            </label>
+                          </Box>
+                        </Box>
+                      </RadioGroup>
+
+                      <Modal
+                        isOpen={isModalOpen1}
+                        onClose={() => setIsModalOpen1(false)}
+                      >
+                        <ModalOverlay />
+                        <ModalContent
+                          boxShadow={
+                            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                          }
+                        >
+                          <ModalHeader
+                            fontWeight={"bold"}
+                            fontSize={"25px"}
+                          ></ModalHeader>
+                          <ModalBody fontSize={"18px"}>
+                            <Image src="https://img.freepik.com/premium-vector/video-tutorials-background-vector-illustration-watching-streaming-online-computer-about-education-knowledge-web-banner-brochures-poster-book-cover_2175-1338.jpg?w=900" />
+                            <Text>
+                              Which of the following technical challenges do you
+                              see as dominant in the scripts which you just saw
+                              ?
+                            </Text>
+                            <br />
+                            <Text fontWeight={500}>{value1}</Text>
+                            <br />
+                            {/* <Input onChange={(e) => setExplanation(e.target.value)} value={explaination} placeholder="Please provide an explanation for your answer" /> */}
+                          </ModalBody>
+                          <ModalFooter>
+                            <Button
+                              colorScheme="teal"
+                              onClick={handleClick2}
+                              textAlign={"center"}
+                              fontFamily={"Croissant One"}
+                              bg={"black"}
+                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                              mr={"150px"}
+                            >
+                              Proceed
+                            </Button>
+                          </ModalFooter>
+                        </ModalContent>
+                      </Modal>
+
+                      <Modal
+                        isOpen={isModalOpen2}
+                        onClose={() => setIsModalOpen2(false)}
+                      >
+                        <ModalOverlay />
+                        <ModalContent
+                          boxShadow={
+                            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                          }
+                        >
+                          <ModalBody
+                            fontSize={"18px"}
+                            pt={100}
+                            textAlign={"center"}
+                          >
+                            <Image
+                              src="https://www.marvelmatrimony.com/img/icon2.png"
+                              m={"auto "}
+                            />
+                            <Heading>Thank You !</Heading>
+                            <Text>Your submission has been sent</Text>
+                          </ModalBody>
+                          <ModalFooter>
+                            <Button
+                              colorScheme="teal"
+                              onClick={() => setIsModalOpen2(false)}
+                              textAlign={"center"}
+                              fontFamily={"Croissant One"}
+                              bg={"black"}
+                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                              mr={"150px"}
+                            >
+                              Close
+                            </Button>
+                          </ModalFooter>
+                        </ModalContent>
+                      </Modal>
+                    </Box>
+                  </>
+                )}
+
+                {showBox && (
+                  <>
+                    <Box
+                      bg={"white"}
+                      h={"750px"}
+                      w={"70%"}
+                      m={"auto"}
+                      mt={"50px"}
+                    >
+                      <Image src="https://www.timefixed.com/static/img/hr.5d824eb.gif" />
+                      <Flex
+                        className="box"
+                        mb={"5"}
+                        mt={"10"}
+                        boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                        alignItems={"center"}
+                        justifyContent={"center"}
+                        h={"50px"}
+                        bg={"#c8cfca"}
+                        color={"black"}
+                        fontWeight={"bold"}
+                      >
+                        <Text>
+                          Which trade of the customer representative do you feel
+                          has stood out during your latest interaction ?
+                        </Text>
+                      </Flex>
+
+                      <RadioGroup
+                        m={"auto"}
+                        onChange={handleChange}
+                        value={value}
+                      >
+                        <Box
+                          className="flex"
+                          w={"80%"}
+                          m={"auto"}
+                          pb={"40px"}
+                          mt={"50px"}
+                        >
+                          <Box
+                            border={"1px solid black"}
+                            w={"70%"}
+                            borderRadius={"50px"}
+                            _hover={{ bgColor: "black", color: "white" }}
+                          >
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Making clear and swift decisions under pressure"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Decisive
+                            </label>
+                          </Box>
+
+                          <Box
+                            border={"1px solid black"}
+                            w={"80%"}
+                            borderRadius={"50px"}
+                            _hover={{ bgColor: "black", color: "white" }}
+                          >
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Remaining calm and level-headed during challenges"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Composed
+                            </label>
+                          </Box>
+
+                          <Box
+                            border={"1px solid black"}
+                            borderRadius={"50px"}
+                            _hover={{ bgColor: "black", color: "white" }}
+                          >
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Emphasizing teamwork, both internally and with external partners"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Collaborative
+                            </label>
+                          </Box>
+
+                          <Box
+                            border={"1px solid black"}
+                            borderRadius={"50px"}
+                            _hover={{ bgColor: "black", color: "white" }}
+                          >
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Effectively conveying information, even in challenging circumstances"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Communicative
+                            </label>
+                          </Box>
+
+                          <Box
+                            border={"1px solid black"}
+                            borderRadius={"50px"}
+                            _hover={{ bgColor: "black", color: "white" }}
+                          >
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Quickly adjusting strategies based on new information or changing scenarios"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Adaptive
+                            </label>
+                          </Box>
+
+                          <Box
+                            border={"1px solid black"}
+                            borderRadius={"50px"}
+                            _hover={{ bgColor: "black", color: "white" }}
+                          >
+                            <label
+                              style={{
+                                cursor: "pointer",
+                                position: "relative",
+                              }}
+                            >
+                              <Radio
+                                border="1px solid black"
+                                fontFamily={"Fredoka"}
+                                size={"lg"}
+                                colorScheme="orange"
+                                value="Keeping an eye on long-term impacts and future implications during the crisis"
+                                style={{
+                                  position: "absolute",
+                                  opacity: 0,
+                                  cursor: "pointer",
+                                }}
+                              />
+                              Visionary
+                            </label>
+                          </Box>
+                        </Box>
+                      </RadioGroup>
+
+                      <Modal
+                        isOpen={isModalOpen}
+                        onClose={() => setIsModalOpen(false)}
+                      >
+                        <ModalOverlay />
+                        <ModalContent
+                          boxShadow={
+                            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                          }
+                        >
+                          <ModalHeader fontWeight={"bold"} fontSize={"25px"}>
+                            Refined Leadership Trait Scale
+                          </ModalHeader>
+                          <ModalBody fontSize={"18px"}>
+                            <Image src="https://epyqh8r42ug.exactdn.com/wp-content/uploads/2021/12/organic-flat-feedback-concept_52683-62653.jpeg?strip=all&lossy=1&ssl=1" />
+                            <Text>
+                              Which trade of the customer representative do you
+                              feel has stood out during your latest interaction
+                              ?
+                            </Text>
+                            <br />
+                            <Text fontWeight={500}>{value}</Text>
+                            <br />
+                            {/* <Input onChange={(e) => setExplanation(e.target.value)} value={explaination} placeholder="Please provide an explanation for your answer" /> */}
+                          </ModalBody>
+                          <ModalFooter>
+                            <Button
+                              colorScheme="teal"
+                              onClick={handleClick}
+                              textAlign={"center"}
+                              fontFamily={"Croissant One"}
+                              bg={"black"}
+                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                              mr={"150px"}
+                            >
+                              Proceed
+                            </Button>
+                          </ModalFooter>
+                        </ModalContent>
+                      </Modal>
+                    </Box>
+                  </>
+                )}
+                <div ref={spacerRef} style={{ height: "40px" }}></div>
+              </TransitionGroup>
+            </Box>
+          </Box>
+        )}
+      </Box>
+    </>
+  );
 };
-
 
 export default BringDown;

@@ -25,6 +25,7 @@ import BringDown from "../Components/Day1/BringDown";
 import GatherMore from "../Components/Day1/GatherMore";
 import DiskDrive from "../Components/Day1/DiskDrive";
 import Notify from "../Components/Day1/Notify";
+import chatbg from "../Images/chatbg.png"
 
 const Chat = () => {
   const [chatData, setChatData] = useState([]);
@@ -222,6 +223,7 @@ const Chat = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
+              bgImage={chatbg}
             >
               <Box
                 border={"1px solid black"}

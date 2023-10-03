@@ -17,9 +17,9 @@ import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router";
 import BringDown from "../Day1/BringDown";
-import LateMorning from "./LateMoring";
+import EarlyMorning from "../Day2/EarlyMorning";
 
-const EarlyMorning = () => {
+const Morning5 = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
@@ -29,6 +29,9 @@ const EarlyMorning = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const [day5Popup,setDay5Popup] = useState(true);
 
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
@@ -165,103 +168,88 @@ const EarlyMorning = () => {
     // Simulate messages from 5 users with a 2-second delay between each message
     const dayOne = [
       {
-        sender: "Ben Carter",
         message:
-          "Tom, it's Ben. I never imagined we'd be in this situation, especially given how smoothly things have run over the years ",
+          "At noon, that the recovery process was complete.  At 4:00PM, an announcement went out that the crisis was over.",
       },
       {
-        sender: "Tom Mitchell",
+        sender: "Kate Sullivan (looking at the systems dashboard)",
+        message: "Everything seems stable. We're almost there.",
+      },
+      {
+        sender: "Liam Turner",
         message:
-          "You and me both, Ben. We value our partnership with XYZ, and we're just as baffled about this situation. But we're here for you.",
+          "A few more checks and validations, and we should be good to go.",
       },
       {
-        sender: "Kate Sullivan (whispering to Ben)",
-        message: "We need to understand their immediate protocols.",
-      },
-      {
-        sender: "Ben Carter",
+        sender: "Sophia  Kim",
         message:
-          "Tom, can you walk us through your immediate response protocols? We need to align our efforts.",
+          "It's been a long journey. I can't believe we're finally seeing the light at the end of the tunnel.",
       },
+
       {
-        sender: "Tom Mitchell",
         message:
-          "Absolutely. I've already escalated this to our top-tier engineers. We're treating this with utmost priority.            ",
+          "The clock strikes noon. Ben Carter stands at the head of the room, gathering everyone's attention.",
       },
+
       {
-        sender: "Ben Carter",
+        sender: "Ben Carter (voice filled with emotion)",
         message:
-          "I appreciate that, Tom. Let's work together and find a way out of this.            ",
-      },
-      {
-        sender: "Tom Mitchell",
-        message: "We're on it, Ben. We'll navigate this together",
+          "Team, as of now, the recovery process is complete. We've weathered the storm.",
       },
       {
         message:
-          "After briefing the CEO, Ben Carter gets back on the call with Julia Harper from the vendor's team.",
-      },
-      {
-        sender: "Ben Carter",
-        message:
-          "Julia, our CEO is understandably concerned. We've always spoken highly of your systems, and this has caught us off guard.",
-      },
-      {
-        sender: "Julia Harper",
-        message:
-          "We're just as surprised, Ben. But we're committed to finding a solution. Our preliminary findings suggest the corruption is in the data headers",
-      },
-      {
-        sender: "Sophia Kim",
-        message:
-          "That's consistent with our observations. But what could've caused it?",
-      },
-      {
-        sender: "Julia Harper",
-        message:
-          "We're diving deep into that. It could be a software glitch or a rare hardware anomaly.",
+          "A loud cheer erupts, with team members clapping and some even hugging each other",
       },
       {
         sender: "Mia Rodriguez",
-        message:
-          "We need to understand the root cause to ensure this doesn't happen again",
-      },
-      {
-        sender: "Ben Carter",
-        message: "Thanks, Julia. We're counting on your team.",
-      },
-      { sender: "Julia Harper", message: "We won't let you down, Ben." },
-      {
-        message:
-          "Before making the decision to proceed, Ben Carter has another call with Tom Mitchell",
-      },
-      {
-        sender: "Ben Carter",
-        message:
-          "Tom, we're considering your team's proposed solution. But I've got to be honest, the stakes are high.",
-      },
-      {
-        sender: "Tom Mitchell",
-        message:
-          "I completely understand, Ben. We've been partners for years, and we want to ensure we navigate this challenge together",
+        message: "It feels surreal. I can't believe we made it.",
       },
       {
         sender: "Kate Sullivan",
-        message: "We're in uncharted territory here, Tom. It's concerning.",
-      },
-      {
-        sender: "Tom Mitchell",
         message:
-          "I share your concern, Kate. We're pooling all our resources into this. It's a tricky situation, but we believe the solution has merit.",
+          "It was a team effort. Every single person here played a part.",
       },
+
+      
       {
         sender: "Ben Carter",
         message:
-          "We've always trusted your expertise, Tom. Let's work together and find our way through this.",
+          "(to the Communications Lead) Make sure the announcement is clear and reassuring. We owe it to our users and stakeholders to communicate transparently about the crisis resolution.",
       },
       {
-        sender: "Tom Mitchell",
-        message: "We're with you every step of the way, Ben.",
+        sender: "Communications Lead",
+        message:
+          "Absolutely, Ben. We'll ensure it's comprehensive and conveys gratitude for everyone's patience and support.",
+      },
+      {
+        message:
+          "4:00 PM. Emails ping across the company, and an announcement is broadcasted on internal communication channels.",
+      },
+
+      {
+        sender: "Liam Turner",
+        message: "Validation complete. Everything looks good. ERP is back up!",
+      },
+      {
+        sender: "Ben Carter (sighing with profound relief)",
+        message: "Gajji, you and your team are magicians.",
+      },
+      {
+        sender: "Gajji (smiling)",
+        message: "No magic, just determination and teamwork.",
+      },
+      {
+        sender: "Mia Rodriguez (frustrated)",
+        message: "This can't be right! Who validated these backup processes?",
+      },
+      {
+        sender: "Liam Turner (defensively)",
+        message:
+          "We've followed protocols to the letter. This isn't a standard issue!",
+      },
+      {
+        sender: "Ben Carter",
+        message: "Enough! We can't fracture now. We need unity and focus.",
       },
     ];
 
@@ -275,7 +263,13 @@ const EarlyMorning = () => {
         setChatData((prevChatData) => [...prevChatData, message]);
         setActiveUser(message.sender);
         timeoutIndex++;
-        setTimeout(addMessageWithDelay, messageDelay);
+        if (message.sender === "Communications Lead") {
+          // Show the popup message
+          setShowPopup(true);
+        } else {
+          setTimeout(addMessageWithDelay, messageDelay);
+        }
+        //setTimeout(addMessageWithDelay, messageDelay);
       } else {
         setShowBox(true);
       }
@@ -303,6 +297,11 @@ const EarlyMorning = () => {
     }
   }, [showBox]);
 
+  const handlePopup = ()=>{
+    setDay5Popup(false)
+    //setTimeout(addMessageWithDelay, messageDelay);
+  }
+
   return (
     <>
       <Box
@@ -314,21 +313,21 @@ const EarlyMorning = () => {
       >
         {modalValue ===
         "Emphasizing teamwork, both internally and with external partners" ? (
-          <LateMorning />
+          <EarlyMorning />
         ) : modalValue === "Making clear and swift decisions under pressure" ? (
-          <LateMorning />
+          <EarlyMorning />
         ) : modalValue ===
           "Remaining calm and level-headed during challenges" ? (
-          <LateMorning />
+          <EarlyMorning />
         ) : modalValue ===
           "Effectively conveying information, even in challenging circumstances" ? (
-          <LateMorning />
+          <EarlyMorning />
         ) : modalValue ===
           "Quickly adjusting strategies based on new information or changing scenarios" ? (
-          <LateMorning />
+          <EarlyMorning />
         ) : modalValue ===
           "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-          <LateMorning />
+          <EarlyMorning />
         ) : (
           <Box
             pt={5}
@@ -358,8 +357,20 @@ const EarlyMorning = () => {
               </Text>
             </Box>
             <Text fontSize={20} fontWeight={"bold"}>
-              Day2 EarlyMorning
+              Day5 EarlyMorning
             </Text>
+            <br />
+
+            <Box
+              w={"90%"}
+              m={"auto"}
+              border={"1px solid gray"}
+              bg={"gray.200"}
+              color={"black"}
+            >
+              The office is buzzing with activity. Phones are ringing, and IT
+              professionals are working at their stations.
+            </Box>
             <Box
               w={"90%"}
               h={"68vh"}
@@ -422,6 +433,49 @@ const EarlyMorning = () => {
                     </CSSTransition>
                   );
                 })}
+                {showPopup && (
+                  <Modal isOpen={day5Popup} onClose={() => setDay5Popup(false)}>
+                    <ModalOverlay />
+                    <ModalContent
+                      boxShadow={
+                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                      }
+                    >
+                      <ModalHeader
+                        fontWeight={"bold"}
+                        fontSize={"25px"}
+                      ></ModalHeader>
+                      <ModalBody fontSize={"18px"}>
+                        <Heading>Announcement</Heading>
+                        <Text>
+                          "To all our valued team members and
+                          stakeholders, we are pleased to inform you that the
+                          recent IT crisis has been fully resolved. We
+                          appreciate your patience, support, and understanding
+                          during this challenging period. Thanks to the
+                          concerted efforts of our IT teams and partners, our
+                          systems are now fully operational. We remain committed
+                          to serving you with excellence and ensuring such
+                          disruptions are mitigated in the future."
+                        </Text>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button
+                          colorScheme="teal"
+                          onClick={handlePopup}
+                          textAlign={"center"}
+                          fontFamily={"Croissant One"}
+                          bg={"black"}
+                          _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                          mr={"150px"}
+                        >
+                         Close Mail
+                        </Button>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+                
                 {showBox && (
                   <>
                     <Box
@@ -707,7 +761,7 @@ const EarlyMorning = () => {
                   <>
                     <Box
                       bg={"white"}
-                      h={"700px"}
+                      h={"650px"}
                       w={"60%"}
                       m={"auto"}
                       mt={"50px"}
@@ -961,4 +1015,4 @@ const EarlyMorning = () => {
   );
 };
 
-export default EarlyMorning;
+export default Morning5;

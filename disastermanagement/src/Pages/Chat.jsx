@@ -20,6 +20,8 @@ import Cookies from "js-cookie";
 import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import BringDown from "../Components/Day1/BringDown";
+import chatbg from "../Images/chatbg.png"
+import Morning5 from "../Components/Day5/Morning5";
 
 
 const Chat = () => {
@@ -325,9 +327,9 @@ const Chat = () => {
                   about to leave the office. when he received a call inviting
                   him to a conference call concern a problem at the data center.
                 </Text>
-                <Text>Day1 Morning</Text>
+                
               </Box>
-              <Text fontSize={20} fontWeight={'bold'}>Day1 Morning</Text>
+              <Text fontSize={20} fontWeight={'bold'} color={'white'}>Day1 Morning</Text>
               <Box
                 w={"90%"}
                 h={"68vh"}

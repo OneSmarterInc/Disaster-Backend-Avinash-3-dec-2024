@@ -1,10 +1,56 @@
 import React, { useState } from 'react';
 import { Box, Text, VStack } from '@chakra-ui/react';
 import Prepare from '../Pages/Prepare';
-// import Hierarchy from './Hierarchy';
+import Hierarchy from './Hierarchy';
 import Chat from '../Pages/Chat';
+// import OrgChart from './OrgChart';
 
 const Sidebar = () => {
+  
+const orgData = {
+  name: 'CEO (Carlos Mendoza)',
+  subordinates: [
+    {
+      name: 'COO (Aisha Patel)',
+      subordinates: [
+        {
+          name: 'CIO (Ben Carter)',
+          subordinates: [
+            {
+              name: 'IT Director (Chloe Zhang)',
+              subordinates: [
+                {
+                  name: 'IT Manager (Kate Sullivan)',
+                  subordinates: [
+                    { name: 'Senior Systems Analyst (Liam Turner)' },
+                    { name: 'Network Specialist (Mia Rodriguez)' },
+                    { name: 'Database Administrator (Sophia Kim)' },
+                  ],
+                },
+                {
+                  name: 'IT Infrastructure Head (Jabari Nkosi)',
+                  subordinates: [
+                    { name: 'IT Security Head (Tariq Al-Hashim)' },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'CFO (Elena Ivanova)',
+    },
+    {
+      name: 'CMO (Lucas Oliveira)',
+    },
+    {
+      name: 'CHRO (Priya Narayanan)',
+    },
+  ],
+};
+
   const [selectedSection, setSelectedSection] = useState("Prepare");
 
   const handleSectionClick = (section) => {
@@ -24,9 +70,9 @@ const Sidebar = () => {
           Chat
         </Text>
       </VStack>
-      <Box bg={"gray.100"}>
+      <Box bg={"gray.100"} overflowX="auto">
         {selectedSection === 'Prepare' && <Prepare />}
-        {/* {selectedSection === 'Hierarchy' && <Hierarchy />} */}
+        {/* {selectedSection === 'Hierarchy' && <OrgChart {...orgData} />} */}
         {selectedSection === 'Chat' && <Chat />}
       </Box>
     </Box>

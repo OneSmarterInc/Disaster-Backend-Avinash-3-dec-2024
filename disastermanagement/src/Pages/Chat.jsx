@@ -21,6 +21,7 @@ import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import BringDown from "../Components/Day1/BringDown";
 
+
 const Chat = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
@@ -305,6 +306,7 @@ const Chat = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
+              bgImage={chatbg}
             >
               <Box
                 border={"1px solid black"}

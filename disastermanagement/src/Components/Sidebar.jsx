@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Text, VStack } from '@chakra-ui/react';
 import Prepare from '../Pages/Prepare';
-import Hierarchy from './Hierarchy';
 import Chat from '../Pages/Chat';
+import StyledTreeExample from './Hierarchy/StyledTreeExample';
 // import OrgChart from './OrgChart';
 
 const Sidebar = () => {
@@ -70,9 +70,9 @@ const orgData = {
           Chat
         </Text>
       </VStack>
-      <Box bg={"gray.100"} overflowX="auto">
+      <Box bg={"gray.100"} overflowX="auto" padding={selectedSection === 'Hierarchy' ? '10' : '0'} >
         {selectedSection === 'Prepare' && <Prepare />}
-        {/* {selectedSection === 'Hierarchy' && <OrgChart {...orgData} />} */}
+        {selectedSection === 'Hierarchy' && <StyledTreeExample/>}
         {selectedSection === 'Chat' && <Chat />}
       </Box>
     </Box>

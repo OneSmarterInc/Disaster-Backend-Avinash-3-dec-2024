@@ -7,7 +7,7 @@ export const ORGDATA = {
       {
         name: "Aisha Patel",
         role: "Chief Operating Officer",
-        img: "https://gdba.com/wp-content/uploads/2018/10/Lebron.jpg",
+        img: "https://gumlet.assettype.com/barandbench%2Fimport%2F2018%2F05%2FScreen-Shot-2018-05-31-at-4.14.18-PM.png?auto=format%2Ccompress&fit=max&w=400&dpr=2.6",
       },
       {
         name: "Ben Carter",

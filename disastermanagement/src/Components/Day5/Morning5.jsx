@@ -1,23 +1,22 @@
 import {
-  ChakraProvider,
-  extendTheme,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
   ModalBody,
   ModalFooter,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
-
 import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { useNavigate } from "react-router";
-import BringDown from "../Day1/BringDown";
 import EarlyMorning from "../Day2/EarlyMorning";
+import { dayFiveMorning } from "../../mainData";
+import bencarter from "./bencarter.png";
+
 
 const Morning5 = () => {
   const [chatData, setChatData] = useState([]);
@@ -30,19 +29,21 @@ const Morning5 = () => {
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-
-  const [day5Popup,setDay5Popup] = useState(true);
-
+  const [day5Popup, setDay5Popup] = useState(true);
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
+
+  const [isChatPaused, setIsChatPaused] = useState(false);
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const handleChange = (value) => {
     setValue(value);
     setIsModalOpen(true);
-    //  console.log(value);
   };
 
   const handleClick = () => {
@@ -92,8 +93,6 @@ const Morning5 = () => {
   const handleChange2 = (value1) => {
     setValue1(value1);
     setIsModalOpen1(true);
-
-    //  console.log(value);
   };
 
   const handleClick2 = () => {
@@ -157,124 +156,60 @@ const Morning5 = () => {
   };
 
   const users = [
-    "Ben Carter",
-    "Kate Sullivan",
-    "Liam Turner",
-    "Mia Rodriguez",
-    "Sophia Kim",
+    {
+      name: "Ben Carter",
+      url: bencarter,
+    },
+    {
+      name: "Gajji",
+      url: bencarter,
+    },
+    {
+      name: "Kate Sullivan",
+      url: bencarter,
+    },
+    {
+      name: "Liam Turner",
+      url: bencarter,
+    },
+    {
+      name: "Sophia Kim",
+      url: bencarter,
+    },
+    {
+      name: "Mia Rodriguez",
+      url: bencarter,
+    },
+    {
+      name: "Communications Lead",
+      url: bencarter,
+    },
   ];
 
-  useEffect(() => {
-    // Simulate messages from 5 users with a 2-second delay between each message
-    const dayOne = [
-      {
-        message:
-          "At noon, that the recovery process was complete.  At 4:00PM, an announcement went out that the crisis was over.",
-      },
-      {
-        sender: "Kate Sullivan (looking at the systems dashboard)",
-        message: "Everything seems stable. We're almost there.",
-      },
-      {
-        sender: "Liam Turner",
-        message:
-          "A few more checks and validations, and we should be good to go.",
-      },
-      {
-        sender: "Sophia  Kim",
-        message:
-          "It's been a long journey. I can't believe we're finally seeing the light at the end of the tunnel.",
-      },
+  // Simulate messages from 5 users with a 2-second delay between each message
 
-      {
-        message:
-          "The clock strikes noon. Ben Carter stands at the head of the room, gathering everyone's attention.",
-      },
+  const messageDelay = 500; // 4 seconds
 
-      {
-        sender: "Ben Carter (voice filled with emotion)",
-        message:
-          "Team, as of now, the recovery process is complete. We've weathered the storm.",
-      },
-      {
-        message:
-          "A loud cheer erupts, with team members clapping and some even hugging each other",
-      },
-      {
-        sender: "Mia Rodriguez",
-        message: "It feels surreal. I can't believe we made it.",
-      },
-      {
-        sender: "Kate Sullivan",
-        message:
-          "It was a team effort. Every single person here played a part.",
-      },
+  let timeoutIndex = 0;
 
-      
-      {
-        sender: "Ben Carter",
-        message:
-          "(to the Communications Lead) Make sure the announcement is clear and reassuring. We owe it to our users and stakeholders to communicate transparently about the crisis resolution.",
-      },
-      {
-        sender: "Communications Lead",
-        message:
-          "Absolutely, Ben. We'll ensure it's comprehensive and conveys gratitude for everyone's patience and support.",
-      },
-      {
-        message:
-          "4:00 PM. Emails ping across the company, and an announcement is broadcasted on internal communication channels.",
-      },
-
-      {
-        sender: "Liam Turner",
-        message: "Validation complete. Everything looks good. ERP is back up!",
-      },
-      {
-        sender: "Ben Carter (sighing with profound relief)",
-        message: "Gajji, you and your team are magicians.",
-      },
-      {
-        sender: "Gajji (smiling)",
-        message: "No magic, just determination and teamwork.",
-      },
-      {
-        sender: "Mia Rodriguez (frustrated)",
-        message: "This can't be right! Who validated these backup processes?",
-      },
-      {
-        sender: "Liam Turner (defensively)",
-        message:
-          "We've followed protocols to the letter. This isn't a standard issue!",
-      },
-      {
-        sender: "Ben Carter",
-        message: "Enough! We can't fracture now. We need unity and focus.",
-      },
-    ];
-
-    const messageDelay = 4000; // 4 seconds
-
-    let timeoutIndex = 0;
-
-    const addMessageWithDelay = () => {
-      if (timeoutIndex < dayOne.length) {
-        const message = dayOne[timeoutIndex];
-        setChatData((prevChatData) => [...prevChatData, message]);
-        setActiveUser(message.sender);
-        timeoutIndex++;
-        if (message.sender === "Communications Lead") {
-          // Show the popup message
-          setShowPopup(true);
-        } else {
-          setTimeout(addMessageWithDelay, messageDelay);
-        }
-        //setTimeout(addMessageWithDelay, messageDelay);
-      } else {
-        setShowBox(true);
+  const addMessageWithDelay = () => {
+    if (timeoutIndex < dayFiveMorning.length) {
+      const message = dayFiveMorning[timeoutIndex];
+      setChatData((prevChatData) => [...prevChatData, message]);
+      setActiveUser(message.sender);
+      timeoutIndex++;
+      if (message.sender === "Communications Lead") {
+        // Pause the chat and show the popup
+        setIsChatPaused(true);
+        setShowPopup(true);
+      } else if (!isChatPaused) {
+        setTimeout(addMessageWithDelay, messageDelay);
       }
-    };
-
+    } else {
+      setShowBox(true);
+    }
+  };
+  useEffect(() => {
     addMessageWithDelay();
 
     // Call scrollToBottom when children change or initially
@@ -297,11 +232,16 @@ const Morning5 = () => {
     }
   }, [showBox]);
 
-  const handlePopup = ()=>{
-    setDay5Popup(false)
-    //setTimeout(addMessageWithDelay, messageDelay);
-  }
+  const handlePopupClose = () => {
+    // Close the popup and resume the chat
+    // setShowPopup(false);
+    // onClose();
+    setDay5Popup(false);
+    setIsChatPaused(false);
+    // Resume the chat by calling addMessageWithDelay
 
+    addMessageWithDelay();
+  };
   return (
     <>
       <Box
@@ -448,34 +388,34 @@ const Morning5 = () => {
                       <ModalBody fontSize={"18px"}>
                         <Heading>Announcement</Heading>
                         <Text>
-                          "To all our valued team members and
-                          stakeholders, we are pleased to inform you that the
-                          recent IT crisis has been fully resolved. We
-                          appreciate your patience, support, and understanding
-                          during this challenging period. Thanks to the
-                          concerted efforts of our IT teams and partners, our
-                          systems are now fully operational. We remain committed
-                          to serving you with excellence and ensuring such
-                          disruptions are mitigated in the future."
+                          "To all our valued team members and stakeholders, we
+                          are pleased to inform you that the recent IT crisis
+                          has been fully resolved. We appreciate your patience,
+                          support, and understanding during this challenging
+                          period. Thanks to the concerted efforts of our IT
+                          teams and partners, our systems are now fully
+                          operational. We remain committed to serving you with
+                          excellence and ensuring such disruptions are mitigated
+                          in the future."
                         </Text>
                       </ModalBody>
                       <ModalFooter>
                         <Button
                           colorScheme="teal"
-                          onClick={handlePopup}
+                          onClick={handlePopupClose}
                           textAlign={"center"}
                           fontFamily={"Croissant One"}
                           bg={"black"}
                           _hover={{ bgColor: "#a1e8f0", color: "black" }}
                           mr={"150px"}
                         >
-                         Close Mail
+                          Close Mail
                         </Button>
                       </ModalFooter>
                     </ModalContent>
                   </Modal>
                 )}
-                
+
                 {showBox && (
                   <>
                     <Box
@@ -485,7 +425,11 @@ const Morning5 = () => {
                       m={"auto"}
                       mt={"50px"}
                     >
-                      <Image w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/app.3b5132a.gif" />
+                      <Image
+                        w={"80%"}
+                        m={"auto"}
+                        src="https://www.timefixed.com/static/img/app.3b5132a.gif"
+                      />
                       <Flex
                         className="box"
                         mb={"5"}
@@ -673,7 +617,6 @@ const Morning5 = () => {
                           </Box>
                         </Box>
                       </RadioGroup>
-
                       <Modal
                         isOpen={isModalOpen1}
                         onClose={() => setIsModalOpen1(false)}
@@ -766,7 +709,11 @@ const Morning5 = () => {
                       m={"auto"}
                       mt={"50px"}
                     >
-                      <Image w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/hr.5d824eb.gif" />
+                      <Image
+                        w={"80%"}
+                        m={"auto"}
+                        src="https://www.timefixed.com/static/img/hr.5d824eb.gif"
+                      />
                       <Flex
                         className="box"
                         mb={"5"}

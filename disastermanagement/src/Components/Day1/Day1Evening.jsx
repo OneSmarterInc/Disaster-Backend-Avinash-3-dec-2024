@@ -12,15 +12,15 @@ import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
-import day2morning from "./day2morning.png"
-import "../Day1/BringDown.css";
+import day1evening from "./day1evening.jpg";
+import "./BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router";
-import LateMorning from "./LateMoring";
-import { dayTwoEarlyMorning } from "../../mainData";
-import bencarter from "./bencarter.png"
+import EarlyMorning from "../Day2/EarlyMorning";
+import { dayOneEvening } from "../../mainData";
+import bencarter from "./bencarter.png";
 
-const EarlyMorning = () => {
+const BringDown = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
@@ -154,7 +154,7 @@ const EarlyMorning = () => {
     }
   };
 
-
+ 
 
   const users = [
     {
@@ -181,34 +181,18 @@ const EarlyMorning = () => {
       name: "Julia Harper",
       url: bencarter,
     },
-    {
-      name: "Tom Mitchell",
-      url: bencarter,
-    },
-    {
-      name: "Grace Patterson",
-      url: bencarter,
-    },
-    {
-      name: "Raj Patel",
-      url: bencarter,
-    },
-    {
-      name: "Mr. Williams",
-      url: bencarter,
-    }
   ];
 
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
-    
+
     const messageDelay = 500; // 4 seconds
 
     let timeoutIndex = 0;
 
     const addMessageWithDelay = () => {
-      if (timeoutIndex < dayTwoEarlyMorning.length) {
-        const message = dayTwoEarlyMorning[timeoutIndex];
+      if (timeoutIndex < dayOneEvening.length) {
+        const message = dayOneEvening[timeoutIndex];
         setChatData((prevChatData) => [...prevChatData, message]);
         setActiveUser(message.sender);
         timeoutIndex++;
@@ -233,6 +217,7 @@ const EarlyMorning = () => {
     scrollToBottom();
   }, [chatData]);
 
+
   useLayoutEffect(() => {
     // Scroll to the bottom when showBox becomes true
     if (showBox) {
@@ -242,22 +227,22 @@ const EarlyMorning = () => {
 
   return (
     <>
-     {modalValue ===
+      {modalValue ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <LateMorning />
+        <EarlyMorning />
       ) : modalValue === "Making clear and swift decisions under pressure" ? (
-        <LateMorning />
+        <EarlyMorning />
       ) : modalValue === "Remaining calm and level-headed during challenges" ? (
-        <LateMorning />
+        <EarlyMorning />
       ) : modalValue ===
         "Effectively conveying information, even in challenging circumstances" ? (
-        <LateMorning />
+        <EarlyMorning />
       ) : modalValue ===
         "Quickly adjusting strategies based on new information or changing scenarios" ? (
-        <LateMorning />
+        <EarlyMorning />
       ) : modalValue ===
         "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-        <LateMorning />
+        <EarlyMorning />
       ) : (
         <Box
           fontFamily={"Fredoka"}
@@ -311,7 +296,7 @@ const EarlyMorning = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              bgImage={day2morning}
+              bgImage={day1evening}
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
@@ -334,7 +319,7 @@ const EarlyMorning = () => {
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>
-                Day2 Early Morning
+                Day1 Evening
               </Text>
               <Box
                 w={"90%"}
@@ -942,9 +927,9 @@ const EarlyMorning = () => {
             </Box>
           </Flex>
         </Box>
-      )}
+      )}{" "}
     </>
   );
 };
 
-export default EarlyMorning;
+export default BringDown;

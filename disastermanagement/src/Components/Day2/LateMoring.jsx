@@ -7,37 +7,32 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  RadioGroup,
-  Stack,
-  Radio,
-  Input,
-  VisuallyHidden,
 } from "@chakra-ui/react";
-
+import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
-import "./Chat.css";
+
+import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import BringDown from "../Components/Day1/BringDown";
-import chatbg from "../Images/chatbg.png"
-import Morning5 from "../Components/Day5/Morning5";
+import { useNavigate } from "react-router";
+import BringDown from "../Day1/BringDown";
+import EarlyMorning from "./EarlyMorning";
+import Morning from "../Day3/Morning";
 
-
-const Chat = () => {
+const LateMorning = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
+  const [explaination, setExplanation] = useState("");
   const [value, setValue] = useState(null);
   const [value1, setValue1] = useState(null);
-
-  const [modalValue, setModalValue] = useState(null);
-  const [modalValue1, setModalValue1] = useState(null);
-
-  const [explaination, setExplanation] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+
+  const [modalValue, setModalValue] = useState(null);
+  const [modalValue1, setModalValue1] = useState(null);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -87,8 +82,8 @@ const Chat = () => {
       setModalValue(value);
     }
 
-    const cookiemarks = Cookies.get('day1marks') || "";
-    const cookieex = Cookies.get('day1explaination') || "";
+    const cookiemarks = Cookies.get("day1marks") || "";
+    const cookieex = Cookies.get("day1explaination") || "";
     console.log(cookiemarks, cookieex);
   };
 
@@ -108,7 +103,7 @@ const Chat = () => {
     ) {
       Cookies.set("day1marks", "1");
       Cookies.set("day1explaination", explaination);
-     
+
       setModalValue1(value1);
     } else if (
       value1 ===
@@ -171,29 +166,87 @@ const Chat = () => {
     // Simulate messages from 5 users with a 2-second delay between each message
     const dayOne = [
       {
+        sender: "Sophia Kim",
+        message:
+          "The Worldwide Customer Service team has just sent out an announcement to all customers. They've explained the outage",
+      },
+      {
         sender: "Ben Carter",
         message:
-          "Kate, can you look into this? Let me know if I need to be in the loop.",
+          "Good. Transparency is crucial right now. What about our internal users?",
+      },
+      {
+        sender: "Liam Turner",
+        message:
+          "An outage update has just been sent to all of them. We're keeping everyone in the loop.",
+      },
+      {
+        message:
+          "The clock strikes 1:00 PM. The atmosphere in the room is cautiously optimistic.",
+      },
+      {
+        sender: "Mia Rodriguez",
+        message:
+          "The storage vendor's fix has been validated. We're making progress!Kate ",
       },
       {
         sender: "Kate Sullivan",
         message:
-          "Hey Ben, I saw your email. I thought it was just a minor glitch, but we've received a couple more reports. Still, everything seems under control.",
+          "Fantastic! Let's prioritize the restoration. Our U.S.-based Worldwide Customer Service applications should be first",
       },
       {
         sender: "Ben Carter",
         message:
-          "Alright, keep me posted. And, Kate? If this escalates, don't hesitate to pull in external support. Better safe than sorry.",
+          "Agreed. I've got the prioritization list right here. Let's get WCS up and running. We'll also send out an internal message about the planned restorations",
       },
+      {
+        sender: "Sophia Kim",
+        message:
+          "In parallel, I suggest we start with all Tier 1 and Tier 2 applications. The WCS apps in Europe and the Middle East, the Global Product Database, Web Services, and Professional Services applications should be next",
+      },
+      { sender: "Ben Carter", message: "Sounds like a plan. Let's execute" },
+      {
+        message:
+          "The room is bathed in the golden light of late afternoon. The clock reads 4:00 PM.",
+      },
+
       {
         sender: "Kate Sullivan",
-        message:
-          "Ben, it's getting worse. More applications are failing, and we've isolated the issue to data corruption errors. It's... it's not looking like a simple operational hiccup anymore.",
+        message: "It's time to begin the ERP system restoration",
+      },
+      {
+        sender: "Mia Rodriguez",
+        message: "It's going to be a significant task. The ERP system is vast",
       },
       {
         sender: "Ben Carter",
         message:
-          "What?! Alright, I'll be there. We need to handle this urgently.",
+          "We've come this far. Let's keep the momentum going. Keep me updated on the progress",
+      },
+      {
+        message:
+          "The night deepens, and the office is quieter, with only the IT team still working diligently. The clock is about to strike midnight.",
+      },
+
+      {
+        sender: "Sophia Kim",
+        message:
+          "All Tier 3 and Tier 4 applications are in the process of being restored. We're on track",
+      },
+      {
+        sender: "Ben Carter",
+        message:
+          "(looking visibly tired but satisfied) Great job, team. It's been a long day, but we're getting there. Let's keep pushing",
+      },
+      {
+        sender: "Liam Turner",
+        message:
+          "The feedback from internal users has been positive. They appreciate the timely updates and transparency",
+      },
+      {
+        sender: "Ben Carter",
+        message:
+          "Communication has been our strength through this. Let's ensure we maintain it as we work towards full restoration",
       },
     ];
 
@@ -244,158 +297,138 @@ const Chat = () => {
         m={"auto"}
         h={"88vh"}
       >
-        <Flex h={"88vh"}>
-          <Box
-            h={"88vh"}
-            w={"20%"}
-            borderRight={"1px solid black"}
-            overflow={"auto"}
-          >
-            <Box bgColor="#a1e8f0" pt={3} borderBottom={"1px solid black"}>
-              {users.map((el) => {
-                return (
-                  <Box borderBottom={"1px solid black"} key={el}>
-                    <Box
-                      boxShadow={
-                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                      }
-                      h={"6vh"}
-                      w={"44px"}
-                      m={"auto"}
-                      mt={"26%"}
-                      border={"0px solid black"}
-                      borderRadius={"50%"}
-                      className={el === activeUser ? "active" : ""}
-                    >
-                      <img src="https://i.ibb.co/QP9DvZK/user-2.png" alt="" />
-                    </Box>
-                    <Text
-                      className={el === activeUser ? "Tactive" : ""}
-                      fontSize={20}
-                      mt={3}
-                    >
-                      {el}
-                    </Text>
-                  </Box>
-                );
-              })}
-            </Box>
-          </Box>
-          {modalValue ===
-          "Emphasizing teamwork, both internally and with external partners" ? (
-            <BringDown />
-          ) : modalValue ===
-            "Making clear and swift decisions under pressure" ? (
-              <BringDown />
-          ) : modalValue ===
-            "Remaining calm and level-headed during challenges" ? (
-              <BringDown />
-          ) : modalValue ===
-            "Effectively conveying information, even in challenging circumstances" ? (
-              <BringDown />
-          ) : modalValue ===
-          "Quickly adjusting strategies based on new information or changing scenarios" ? (
-            <BringDown />
+        {modalValue ===
+        "Emphasizing teamwork, both internally and with external partners" ? (
+          <Morning />
+        ) : modalValue === "Making clear and swift decisions under pressure" ? (
+          <Morning />
         ) : modalValue ===
-        "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-          <BringDown />
-      ) : (
+          "Remaining calm and level-headed during challenges" ? (
+          <Morning />
+        ) : modalValue ===
+          "Effectively conveying information, even in challenging circumstances" ? (
+          <Morning />
+        ) : modalValue ===
+          "Quickly adjusting strategies based on new information or changing scenarios" ? (
+          <Morning />
+        ) : modalValue ===
+          "Keeping an eye on long-term impacts and future implications during the crisis" ? (
+          <Morning />
+        ) : (
+          <Box
+            pt={5}
+            maxH={"88vh"}
+            w={"100%"}
+            border={"0px solid red"}
+            overflow={"auto"}
+            ref={chatContainerRef}
+            pb={2}
+          >
             <Box
-              pt={5}
-              maxH={"88vh"}
+              border={"1px solid black"}
+              bgColor={"#030405"}
+              color={"white"}
+              borderRadius={"20px"}
+              m={"auto"}
+              textAlign={"left"}
               w={"90%"}
-              border={"0px solid red"}
-              overflow={"auto"}
-              ref={chatContainerRef}
-              pb={2}
-              bgImage={chatbg}
+              pl={3}
+              pt={3}
+              pb={3}
             >
-              <Box
-                border={"1px solid black"}
-                bgColor={"#030405"}
-                color={"white"}
-                borderRadius={"20px"}
-                m={"auto"}
-                textAlign={"left"}
-                w={"90%"}
-                pl={3}
-                pt={3}
-                pb={3}
-              >
-                <Text fontSize={"20"}>
-                  It was a typical February Monday night, and the CIO is just
-                  about to leave the office. when he received a call inviting
-                  him to a conference call concern a problem at the data center.
-                </Text>
-                
-              </Box>
-              <Text fontSize={20} fontWeight={'bold'} color={'white'}>Day1 Morning</Text>
-              <Box
-                w={"90%"}
-                h={"68vh"}
-                border="0px solid red"
-                m={"auto"}
-                pl={5}
-                pr={5}
-              >
-                <TransitionGroup>
-                  {chatData.map((el, i) => {
-                    const isCIO = el.sender === "Ben Carter";
-                    const messageClass = isCIO ? "KateSullivan" : "BenCarter";
-                    const alignMessage = isCIO ? "flex-start" : "flex-end";
-                    return (
-                      <CSSTransition
-                        key={i}
-                        classNames="message"
-                        timeout={{ enter: 300, exit: 300 }}
+              <Text fontSize={"20"}>
+                It was a typical February Monday night, and the CIO is just
+                about to leave the office. when he received a call inviting him
+                to a conference call concern a problem at the data center.
+              </Text>
+            </Box>
+            <Text fontSize={20} fontWeight={"bold"}>
+              Day2 LateMorning
+            </Text>
+            <br />
+
+            <Box
+              w={"90%"}
+              m={"auto"}
+              border={"1px solid gray"}
+              bg={"gray.200"}
+              color={"black"}
+            >
+              The office is buzzing with activity. Phones are ringing, and IT
+              professionals are working at their stations.
+            </Box>
+            <Box
+              w={"90%"}
+              h={"68vh"}
+              border="0px solid red"
+              m={"auto"}
+              pl={5}
+              pr={5}
+            >
+              <TransitionGroup>
+                {chatData.map((el, i) => {
+                  const isCIO = el.sender === "Ben Carter";
+                  const senderName = el.sender;
+                  const messageClass = isCIO ? "CIO" : "OtherSender";
+                  // const messageClass = isCIO ? "KateSullivan" : "BenCarter";
+                  const alignMessage = isCIO ? "flex-start" : "flex-end";
+                  return (
+                    <CSSTransition
+                      key={i}
+                      classNames="message"
+                      timeout={{ enter: 300, exit: 300 }}
+                    >
+                      <Box
+                        border={"0px solid black"}
+                        w={"100%"}
+                        display="flex"
+                        justifyContent={alignMessage}
+                        className={`message ${messageClass} ${
+                          el.sender === "Ben Carter"
+                            ? "BenCarter"
+                            : "KateSullivan"
+                        }`}
                       >
-                        <Box
-                          border={"0px solid black"}
-                          w={"100%"}
-                          display="flex"
-                          justifyContent={alignMessage}
-                          className={`message ${messageClass} ${
-                            el.sender === "Ben Carter"
-                              ? "BenCarter"
-                              : "KateSullivan"
-                          }`}
-                        >
-                          <Box border={"0px solid red"} w={"50%"}>
-                            <Box
-                              boxShadow={
-                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                              }
-                              border={"0px solid black"}
-                              bgColor={
-                                el.sender === "Ben Carter"
-                                  ? "#f0f0f0"
-                                  : "#030405"
-                              }
-                              color={
-                                el.sender === "Ben Carter" ? "black" : "white"
-                              }
-                              w={"100%"}
-                              borderRadius={"10px"}
-                              textAlign={"justify"}
-                              p={4}
-                              pl={5}
-                              pr={5}
-                              mt={10}
-                            >
-                              <Text>
-                                <span id="sender">{el.sender}</span> :{" "}
-                                {el.message}
-                              </Text>
-                            </Box>
+                        <Box border={"0px solid red"} w={"50%"}>
+                          <Box
+                            boxShadow={
+                              "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                            }
+                            border={"0px solid black"}
+                            bgColor={
+                              el.sender === "Ben Carter" ? "#f0f0f0" : "#030405"
+                            }
+                            color={
+                              el.sender === "Ben Carter" ? "black" : "white"
+                            }
+                            w={"100%"}
+                            borderRadius={"10px"}
+                            textAlign={"justify"}
+                            p={4}
+                            pl={5}
+                            pr={5}
+                            mt={10}
+                          >
+                            <Text>
+                              <span id="sender">{senderName}</span> :{" "}
+                              {el.message}
+                            </Text>
                           </Box>
                         </Box>
-                      </CSSTransition>
-                    );
-                  })}
-                  {showBox && (
-                    <>
-                    <Box bg={'white'} h={'650px'} w={'60%'} m={'auto'} mt={'50px'}>
-                      <Image  w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/app.3b5132a.gif"/>
+                      </Box>
+                    </CSSTransition>
+                  );
+                })}
+                {showBox && (
+                  <>
+                    <Box
+                      bg={"white"}
+                      h={"650px"}
+                      w={"60%"}
+                      m={"auto"}
+                      mt={"50px"}
+                    >
+                      <Image w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/app.3b5132a.gif" />
                       <Flex
                         className="box"
                         mb={"5"}
@@ -424,7 +457,6 @@ const Chat = () => {
                             border={"1px solid black"}
                             _hover={{ bgColor: "black", color: "white" }}
                             borderRadius={"50px"}
-                            
                           >
                             <label
                               style={{
@@ -591,7 +623,6 @@ const Chat = () => {
                       >
                         <ModalOverlay />
                         <ModalContent
-                         
                           boxShadow={
                             "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                           }
@@ -634,7 +665,6 @@ const Chat = () => {
                       >
                         <ModalOverlay />
                         <ModalContent
-                          
                           boxShadow={
                             "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                           }
@@ -666,14 +696,20 @@ const Chat = () => {
                           </ModalFooter>
                         </ModalContent>
                       </Modal>
-                      </Box>
-                    </>
-                  )}
+                    </Box>
+                  </>
+                )}
 
-                  {showBox && (
-                    <>
-                    <Box bg={'white'} h={'600px'} w={'60%'} m={'auto'} mt={'50px'}>
-                      <Image w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/hr.5d824eb.gif"/>
+                {showBox && (
+                  <>
+                    <Box
+                      bg={"white"}
+                      h={"700px"}
+                      w={"60%"}
+                      m={"auto"}
+                      mt={"50px"}
+                    >
+                      <Image w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/hr.5d824eb.gif" />
                       <Flex
                         className="box"
                         mb={"5"}
@@ -697,7 +733,13 @@ const Chat = () => {
                         onChange={handleChange}
                         value={value}
                       >
-                        <Box className="flex" w={"80%"} m={"auto"} pb={'40px'} mt={'50px'}>
+                        <Box
+                          className="flex"
+                          w={"80%"}
+                          m={"auto"}
+                          pb={"40px"}
+                          mt={"50px"}
+                        >
                           <Box
                             border={"1px solid black"}
                             w={"70%"}
@@ -869,7 +911,6 @@ const Chat = () => {
                       >
                         <ModalOverlay />
                         <ModalContent
-                          
                           boxShadow={
                             "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                           }
@@ -904,20 +945,17 @@ const Chat = () => {
                           </ModalFooter>
                         </ModalContent>
                       </Modal>
-                      </Box>
-                    </>
-                  )}
-                  
-                  <div ref={spacerRef} style={{ height: "40px" }}></div>
-                </TransitionGroup>
-              </Box>
+                    </Box>
+                  </>
+                )}
+                <div ref={spacerRef} style={{ height: "40px" }}></div>
+              </TransitionGroup>
             </Box>
-          )}
-        </Flex>
+          </Box>
+        )}
       </Box>
-     
     </>
   );
 };
 
-export default Chat;
+export default LateMorning;

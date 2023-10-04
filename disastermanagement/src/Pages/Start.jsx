@@ -11,7 +11,7 @@ const Start = () => {
       fontFamily={"Croissant One"}
       justifyContent={"space-around"}
       alignItems={"center"}
-      w={"80%"}
+      w={"100%"}
       m={"auto"}
       border={"1px solid black"}
       h={"20"}
@@ -27,7 +27,7 @@ const Start = () => {
     <Box
       fontFamily={"Fredoka"}
       border={"1px solid black"}
-      w={"80%"}
+      w={"100%"}
       m={"auto"}
       h={"100%"}
     >

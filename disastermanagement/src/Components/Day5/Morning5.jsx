@@ -7,37 +7,34 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  RadioGroup,
-  Stack,
-  Radio,
-  Input,
-  VisuallyHidden,
 } from "@chakra-ui/react";
-
+import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
-import "./Chat.css";
+
+import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import BringDown from "../Components/Day1/BringDown";
-import chatbg from "../Images/chatbg.png"
-import Morning5 from "../Components/Day5/Morning5";
+import { useNavigate } from "react-router";
+import BringDown from "../Day1/BringDown";
+import EarlyMorning from "../Day2/EarlyMorning";
 
-
-const Chat = () => {
+const Morning5 = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
+  const [explaination, setExplanation] = useState("");
   const [value, setValue] = useState(null);
   const [value1, setValue1] = useState(null);
-
-  const [modalValue, setModalValue] = useState(null);
-  const [modalValue1, setModalValue1] = useState(null);
-
-  const [explaination, setExplanation] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const [day5Popup,setDay5Popup] = useState(true);
+
+  const [modalValue, setModalValue] = useState(null);
+  const [modalValue1, setModalValue1] = useState(null);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -87,8 +84,8 @@ const Chat = () => {
       setModalValue(value);
     }
 
-    const cookiemarks = Cookies.get('day1marks') || "";
-    const cookieex = Cookies.get('day1explaination') || "";
+    const cookiemarks = Cookies.get("day1marks") || "";
+    const cookieex = Cookies.get("day1explaination") || "";
     console.log(cookiemarks, cookieex);
   };
 
@@ -108,7 +105,7 @@ const Chat = () => {
     ) {
       Cookies.set("day1marks", "1");
       Cookies.set("day1explaination", explaination);
-     
+
       setModalValue1(value1);
     } else if (
       value1 ===
@@ -171,29 +168,88 @@ const Chat = () => {
     // Simulate messages from 5 users with a 2-second delay between each message
     const dayOne = [
       {
-        sender: "Ben Carter",
         message:
-          "Kate, can you look into this? Let me know if I need to be in the loop.",
+          "At noon, that the recovery process was complete.  At 4:00PM, an announcement went out that the crisis was over.",
+      },
+      {
+        sender: "Kate Sullivan (looking at the systems dashboard)",
+        message: "Everything seems stable. We're almost there.",
+      },
+      {
+        sender: "Liam Turner",
+        message:
+          "A few more checks and validations, and we should be good to go.",
+      },
+      {
+        sender: "Sophia  Kim",
+        message:
+          "It's been a long journey. I can't believe we're finally seeing the light at the end of the tunnel.",
+      },
+
+      {
+        message:
+          "The clock strikes noon. Ben Carter stands at the head of the room, gathering everyone's attention.",
+      },
+
+      {
+        sender: "Ben Carter (voice filled with emotion)",
+        message:
+          "Team, as of now, the recovery process is complete. We've weathered the storm.",
+      },
+      {
+        message:
+          "A loud cheer erupts, with team members clapping and some even hugging each other",
+      },
+      {
+        sender: "Mia Rodriguez",
+        message: "It feels surreal. I can't believe we made it.",
       },
       {
         sender: "Kate Sullivan",
         message:
-          "Hey Ben, I saw your email. I thought it was just a minor glitch, but we've received a couple more reports. Still, everything seems under control.",
+          "It was a team effort. Every single person here played a part.",
       },
+
+      
       {
         sender: "Ben Carter",
         message:
-          "Alright, keep me posted. And, Kate? If this escalates, don't hesitate to pull in external support. Better safe than sorry.",
+          "(to the Communications Lead) Make sure the announcement is clear and reassuring. We owe it to our users and stakeholders to communicate transparently about the crisis resolution.",
       },
       {
-        sender: "Kate Sullivan",
+        sender: "Communications Lead",
         message:
-          "Ben, it's getting worse. More applications are failing, and we've isolated the issue to data corruption errors. It's... it's not looking like a simple operational hiccup anymore.",
+          "Absolutely, Ben. We'll ensure it's comprehensive and conveys gratitude for everyone's patience and support.",
+      },
+      {
+        message:
+          "4:00 PM. Emails ping across the company, and an announcement is broadcasted on internal communication channels.",
+      },
+
+      {
+        sender: "Liam Turner",
+        message: "Validation complete. Everything looks good. ERP is back up!",
+      },
+      {
+        sender: "Ben Carter (sighing with profound relief)",
+        message: "Gajji, you and your team are magicians.",
+      },
+      {
+        sender: "Gajji (smiling)",
+        message: "No magic, just determination and teamwork.",
+      },
+      {
+        sender: "Mia Rodriguez (frustrated)",
+        message: "This can't be right! Who validated these backup processes?",
+      },
+      {
+        sender: "Liam Turner (defensively)",
+        message:
+          "We've followed protocols to the letter. This isn't a standard issue!",
       },
       {
         sender: "Ben Carter",
-        message:
-          "What?! Alright, I'll be there. We need to handle this urgently.",
+        message: "Enough! We can't fracture now. We need unity and focus.",
       },
     ];
 
@@ -207,7 +263,13 @@ const Chat = () => {
         setChatData((prevChatData) => [...prevChatData, message]);
         setActiveUser(message.sender);
         timeoutIndex++;
-        setTimeout(addMessageWithDelay, messageDelay);
+        if (message.sender === "Communications Lead") {
+          // Show the popup message
+          setShowPopup(true);
+        } else {
+          setTimeout(addMessageWithDelay, messageDelay);
+        }
+        //setTimeout(addMessageWithDelay, messageDelay);
       } else {
         setShowBox(true);
       }
@@ -235,6 +297,11 @@ const Chat = () => {
     }
   }, [showBox]);
 
+  const handlePopup = ()=>{
+    setDay5Popup(false)
+    //setTimeout(addMessageWithDelay, messageDelay);
+  }
+
   return (
     <>
       <Box
@@ -244,158 +311,181 @@ const Chat = () => {
         m={"auto"}
         h={"88vh"}
       >
-        <Flex h={"88vh"}>
+        {modalValue ===
+        "Emphasizing teamwork, both internally and with external partners" ? (
+          <EarlyMorning />
+        ) : modalValue === "Making clear and swift decisions under pressure" ? (
+          <EarlyMorning />
+        ) : modalValue ===
+          "Remaining calm and level-headed during challenges" ? (
+          <EarlyMorning />
+        ) : modalValue ===
+          "Effectively conveying information, even in challenging circumstances" ? (
+          <EarlyMorning />
+        ) : modalValue ===
+          "Quickly adjusting strategies based on new information or changing scenarios" ? (
+          <EarlyMorning />
+        ) : modalValue ===
+          "Keeping an eye on long-term impacts and future implications during the crisis" ? (
+          <EarlyMorning />
+        ) : (
           <Box
-            h={"88vh"}
-            w={"20%"}
-            borderRight={"1px solid black"}
+            pt={5}
+            maxH={"88vh"}
+            w={"100%"}
+            border={"0px solid red"}
             overflow={"auto"}
+            ref={chatContainerRef}
+            pb={2}
           >
-            <Box bgColor="#a1e8f0" pt={3} borderBottom={"1px solid black"}>
-              {users.map((el) => {
-                return (
-                  <Box borderBottom={"1px solid black"} key={el}>
-                    <Box
+            <Box
+              border={"1px solid black"}
+              bgColor={"#030405"}
+              color={"white"}
+              borderRadius={"20px"}
+              m={"auto"}
+              textAlign={"left"}
+              w={"90%"}
+              pl={3}
+              pt={3}
+              pb={3}
+            >
+              <Text fontSize={"20"}>
+                It was a typical February Monday night, and the CIO is just
+                about to leave the office. when he received a call inviting him
+                to a conference call concern a problem at the data center.
+              </Text>
+            </Box>
+            <Text fontSize={20} fontWeight={"bold"}>
+              Day5 EarlyMorning
+            </Text>
+            <br />
+
+            <Box
+              w={"90%"}
+              m={"auto"}
+              border={"1px solid gray"}
+              bg={"gray.200"}
+              color={"black"}
+            >
+              The office is buzzing with activity. Phones are ringing, and IT
+              professionals are working at their stations.
+            </Box>
+            <Box
+              w={"90%"}
+              h={"68vh"}
+              border="0px solid red"
+              m={"auto"}
+              pl={5}
+              pr={5}
+            >
+              <TransitionGroup>
+                {chatData.map((el, i) => {
+                  const isCIO = el.sender === "Ben Carter";
+                  const senderName = el.sender;
+                  const messageClass = isCIO ? "CIO" : "OtherSender";
+                  // const messageClass = isCIO ? "KateSullivan" : "BenCarter";
+                  const alignMessage = isCIO ? "flex-start" : "flex-end";
+                  return (
+                    <CSSTransition
+                      key={i}
+                      classNames="message"
+                      timeout={{ enter: 300, exit: 300 }}
+                    >
+                      <Box
+                        border={"0px solid black"}
+                        w={"100%"}
+                        display="flex"
+                        justifyContent={alignMessage}
+                        className={`message ${messageClass} ${
+                          el.sender === "Ben Carter"
+                            ? "BenCarter"
+                            : "KateSullivan"
+                        }`}
+                      >
+                        <Box border={"0px solid red"} w={"50%"}>
+                          <Box
+                            boxShadow={
+                              "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                            }
+                            border={"0px solid black"}
+                            bgColor={
+                              el.sender === "Ben Carter" ? "#f0f0f0" : "#030405"
+                            }
+                            color={
+                              el.sender === "Ben Carter" ? "black" : "white"
+                            }
+                            w={"100%"}
+                            borderRadius={"10px"}
+                            textAlign={"justify"}
+                            p={4}
+                            pl={5}
+                            pr={5}
+                            mt={10}
+                          >
+                            <Text>
+                              <span id="sender">{senderName}</span> :{" "}
+                              {el.message}
+                            </Text>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </CSSTransition>
+                  );
+                })}
+                {showPopup && (
+                  <Modal isOpen={day5Popup} onClose={() => setDay5Popup(false)}>
+                    <ModalOverlay />
+                    <ModalContent
                       boxShadow={
                         "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                       }
-                      h={"6vh"}
-                      w={"44px"}
-                      m={"auto"}
-                      mt={"26%"}
-                      border={"0px solid black"}
-                      borderRadius={"50%"}
-                      className={el === activeUser ? "active" : ""}
                     >
-                      <img src="https://i.ibb.co/QP9DvZK/user-2.png" alt="" />
-                    </Box>
-                    <Text
-                      className={el === activeUser ? "Tactive" : ""}
-                      fontSize={20}
-                      mt={3}
-                    >
-                      {el}
-                    </Text>
-                  </Box>
-                );
-              })}
-            </Box>
-          </Box>
-          {modalValue ===
-          "Emphasizing teamwork, both internally and with external partners" ? (
-            <BringDown />
-          ) : modalValue ===
-            "Making clear and swift decisions under pressure" ? (
-              <BringDown />
-          ) : modalValue ===
-            "Remaining calm and level-headed during challenges" ? (
-              <BringDown />
-          ) : modalValue ===
-            "Effectively conveying information, even in challenging circumstances" ? (
-              <BringDown />
-          ) : modalValue ===
-          "Quickly adjusting strategies based on new information or changing scenarios" ? (
-            <BringDown />
-        ) : modalValue ===
-        "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-          <BringDown />
-      ) : (
-            <Box
-              pt={5}
-              maxH={"88vh"}
-              w={"90%"}
-              border={"0px solid red"}
-              overflow={"auto"}
-              ref={chatContainerRef}
-              pb={2}
-              bgImage={chatbg}
-            >
-              <Box
-                border={"1px solid black"}
-                bgColor={"#030405"}
-                color={"white"}
-                borderRadius={"20px"}
-                m={"auto"}
-                textAlign={"left"}
-                w={"90%"}
-                pl={3}
-                pt={3}
-                pb={3}
-              >
-                <Text fontSize={"20"}>
-                  It was a typical February Monday night, and the CIO is just
-                  about to leave the office. when he received a call inviting
-                  him to a conference call concern a problem at the data center.
-                </Text>
-                
-              </Box>
-              <Text fontSize={20} fontWeight={'bold'} color={'white'}>Day1 Morning</Text>
-              <Box
-                w={"90%"}
-                h={"68vh"}
-                border="0px solid red"
-                m={"auto"}
-                pl={5}
-                pr={5}
-              >
-                <TransitionGroup>
-                  {chatData.map((el, i) => {
-                    const isCIO = el.sender === "Ben Carter";
-                    const messageClass = isCIO ? "KateSullivan" : "BenCarter";
-                    const alignMessage = isCIO ? "flex-start" : "flex-end";
-                    return (
-                      <CSSTransition
-                        key={i}
-                        classNames="message"
-                        timeout={{ enter: 300, exit: 300 }}
-                      >
-                        <Box
-                          border={"0px solid black"}
-                          w={"100%"}
-                          display="flex"
-                          justifyContent={alignMessage}
-                          className={`message ${messageClass} ${
-                            el.sender === "Ben Carter"
-                              ? "BenCarter"
-                              : "KateSullivan"
-                          }`}
+                      <ModalHeader
+                        fontWeight={"bold"}
+                        fontSize={"25px"}
+                      ></ModalHeader>
+                      <ModalBody fontSize={"18px"}>
+                        <Heading>Announcement</Heading>
+                        <Text>
+                          "To all our valued team members and
+                          stakeholders, we are pleased to inform you that the
+                          recent IT crisis has been fully resolved. We
+                          appreciate your patience, support, and understanding
+                          during this challenging period. Thanks to the
+                          concerted efforts of our IT teams and partners, our
+                          systems are now fully operational. We remain committed
+                          to serving you with excellence and ensuring such
+                          disruptions are mitigated in the future."
+                        </Text>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button
+                          colorScheme="teal"
+                          onClick={handlePopup}
+                          textAlign={"center"}
+                          fontFamily={"Croissant One"}
+                          bg={"black"}
+                          _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                          mr={"150px"}
                         >
-                          <Box border={"0px solid red"} w={"50%"}>
-                            <Box
-                              boxShadow={
-                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                              }
-                              border={"0px solid black"}
-                              bgColor={
-                                el.sender === "Ben Carter"
-                                  ? "#f0f0f0"
-                                  : "#030405"
-                              }
-                              color={
-                                el.sender === "Ben Carter" ? "black" : "white"
-                              }
-                              w={"100%"}
-                              borderRadius={"10px"}
-                              textAlign={"justify"}
-                              p={4}
-                              pl={5}
-                              pr={5}
-                              mt={10}
-                            >
-                              <Text>
-                                <span id="sender">{el.sender}</span> :{" "}
-                                {el.message}
-                              </Text>
-                            </Box>
-                          </Box>
-                        </Box>
-                      </CSSTransition>
-                    );
-                  })}
-                  {showBox && (
-                    <>
-                    <Box bg={'white'} h={'650px'} w={'60%'} m={'auto'} mt={'50px'}>
-                      <Image  w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/app.3b5132a.gif"/>
+                         Close Mail
+                        </Button>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+                
+                {showBox && (
+                  <>
+                    <Box
+                      bg={"white"}
+                      h={"650px"}
+                      w={"60%"}
+                      m={"auto"}
+                      mt={"50px"}
+                    >
+                      <Image w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/app.3b5132a.gif" />
                       <Flex
                         className="box"
                         mb={"5"}
@@ -424,7 +514,6 @@ const Chat = () => {
                             border={"1px solid black"}
                             _hover={{ bgColor: "black", color: "white" }}
                             borderRadius={"50px"}
-                            
                           >
                             <label
                               style={{
@@ -591,7 +680,6 @@ const Chat = () => {
                       >
                         <ModalOverlay />
                         <ModalContent
-                         
                           boxShadow={
                             "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                           }
@@ -634,7 +722,6 @@ const Chat = () => {
                       >
                         <ModalOverlay />
                         <ModalContent
-                          
                           boxShadow={
                             "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                           }
@@ -666,14 +753,20 @@ const Chat = () => {
                           </ModalFooter>
                         </ModalContent>
                       </Modal>
-                      </Box>
-                    </>
-                  )}
+                    </Box>
+                  </>
+                )}
 
-                  {showBox && (
-                    <>
-                    <Box bg={'white'} h={'600px'} w={'60%'} m={'auto'} mt={'50px'}>
-                      <Image w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/hr.5d824eb.gif"/>
+                {showBox && (
+                  <>
+                    <Box
+                      bg={"white"}
+                      h={"650px"}
+                      w={"60%"}
+                      m={"auto"}
+                      mt={"50px"}
+                    >
+                      <Image w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/hr.5d824eb.gif" />
                       <Flex
                         className="box"
                         mb={"5"}
@@ -697,7 +790,13 @@ const Chat = () => {
                         onChange={handleChange}
                         value={value}
                       >
-                        <Box className="flex" w={"80%"} m={"auto"} pb={'40px'} mt={'50px'}>
+                        <Box
+                          className="flex"
+                          w={"80%"}
+                          m={"auto"}
+                          pb={"40px"}
+                          mt={"50px"}
+                        >
                           <Box
                             border={"1px solid black"}
                             w={"70%"}
@@ -869,7 +968,6 @@ const Chat = () => {
                       >
                         <ModalOverlay />
                         <ModalContent
-                          
                           boxShadow={
                             "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                           }
@@ -904,20 +1002,17 @@ const Chat = () => {
                           </ModalFooter>
                         </ModalContent>
                       </Modal>
-                      </Box>
-                    </>
-                  )}
-                  
-                  <div ref={spacerRef} style={{ height: "40px" }}></div>
-                </TransitionGroup>
-              </Box>
+                    </Box>
+                  </>
+                )}
+                <div ref={spacerRef} style={{ height: "40px" }}></div>
+              </TransitionGroup>
             </Box>
-          )}
-        </Flex>
+          </Box>
+        )}
       </Box>
-     
     </>
   );
 };
 
-export default Chat;
+export default Morning5;

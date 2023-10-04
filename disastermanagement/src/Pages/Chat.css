@@ -56,3 +56,19 @@
     transform: translateY(-100%);
   }
 }
+
+.flex{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+.flex2{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 25px;
+}
+
+[type="radio"]:focus {
+  outline: none;
+}

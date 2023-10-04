@@ -7,19 +7,17 @@ const Start = () => {
   return (
     <Box h={"88vh"}>
     <Flex
-      bgColor="#a1e8f0"
+      bgColor="#691212"
       fontFamily={"Croissant One"}
-      justifyContent={"space-around"}
+      justifyContent={"flex-start"}
       alignItems={"center"}
       w={"100%"}
       m={"auto"}
       border={"1px solid black"}
       h={"20"}
-      pr={40}
-      pl={40}
-
+      pl={5}
+      color={"white"}
     >
-      <Image cursor={"pointer"} w={"12%"} src={disasterLogo} />
       <Heading fontFamily={"Croissant One"} fontStyle={"italic"}>
         Disaster Recovery Business Case
       </Heading>

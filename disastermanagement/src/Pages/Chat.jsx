@@ -19,10 +19,11 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import BringDown from "../Components/Day1/BringDown";
-import chatbg from "../Images/chatbg.png"
+import BringDown from "../Components/Day1/Day1Evening";
+import day1morning from "../Images/chatbg/day1morning.png";
 import Morning5 from "../Components/Day5/Morning5";
-
+import bencarter from "../Images/org/bencarter.png";
+import { dayOneMorning } from "../mainData";
 
 const Chat = () => {
   const [chatData, setChatData] = useState([]);
@@ -38,6 +39,7 @@ const Chat = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [showUser, setShowUser] = useState(true);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -49,6 +51,8 @@ const Chat = () => {
   };
 
   const handleClick = () => {
+    setShowUser(false);
+
     if (value === "Making clear and swift decisions under pressure") {
       Cookies.set("day1marks", "1");
       Cookies.set("day1explaination", explaination);
@@ -87,8 +91,8 @@ const Chat = () => {
       setModalValue(value);
     }
 
-    const cookiemarks = Cookies.get('day1marks') || "";
-    const cookieex = Cookies.get('day1explaination') || "";
+    const cookiemarks = Cookies.get("day1marks") || "";
+    const cookieex = Cookies.get("day1explaination") || "";
     console.log(cookiemarks, cookieex);
   };
 
@@ -108,7 +112,7 @@ const Chat = () => {
     ) {
       Cookies.set("day1marks", "1");
       Cookies.set("day1explaination", explaination);
-     
+
       setModalValue1(value1);
     } else if (
       value1 ===
@@ -160,50 +164,26 @@ const Chat = () => {
   };
 
   const users = [
-    "Ben Carter",
-    "Kate Sullivan",
-    "Liam Turner",
-    "Mia Rodriguez",
-    "Sophia Kim",
+    {
+      name: "Ben Carter",
+      url: bencarter,
+    },
+    {
+      name: "Kate Sullivan",
+      url: bencarter,
+    },
   ];
 
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
-    const dayOne = [
-      {
-        sender: "Ben Carter",
-        message:
-          "Kate, can you look into this? Let me know if I need to be in the loop.",
-      },
-      {
-        sender: "Kate Sullivan",
-        message:
-          "Hey Ben, I saw your email. I thought it was just a minor glitch, but we've received a couple more reports. Still, everything seems under control.",
-      },
-      {
-        sender: "Ben Carter",
-        message:
-          "Alright, keep me posted. And, Kate? If this escalates, don't hesitate to pull in external support. Better safe than sorry.",
-      },
-      {
-        sender: "Kate Sullivan",
-        message:
-          "Ben, it's getting worse. More applications are failing, and we've isolated the issue to data corruption errors. It's... it's not looking like a simple operational hiccup anymore.",
-      },
-      {
-        sender: "Ben Carter",
-        message:
-          "What?! Alright, I'll be there. We need to handle this urgently.",
-      },
-    ];
 
-    const messageDelay = 4000; // 4 seconds
+    const messageDelay = 500; // 4 seconds
 
     let timeoutIndex = 0;
 
     const addMessageWithDelay = () => {
-      if (timeoutIndex < dayOne.length) {
-        const message = dayOne[timeoutIndex];
+      if (timeoutIndex < dayOneMorning.length) {
+        const message = dayOneMorning[timeoutIndex];
         setChatData((prevChatData) => [...prevChatData, message]);
         setActiveUser(message.sender);
         timeoutIndex++;
@@ -237,69 +217,68 @@ const Chat = () => {
 
   return (
     <>
-      <Box
-        fontFamily={"Fredoka"}
-        border={"0px solid red"}
-        w={"100%"}
-        m={"auto"}
-        h={"88vh"}
-      >
-        <Flex h={"88vh"}>
-          <Box
-            h={"88vh"}
-            w={"20%"}
-            borderRight={"1px solid black"}
-            overflow={"auto"}
-          >
-            <Box bgColor="#a1e8f0" pt={3} borderBottom={"1px solid black"}>
-              {users.map((el) => {
-                return (
-                  <Box borderBottom={"1px solid black"} key={el}>
-                    <Box
-                      boxShadow={
-                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                      }
-                      h={"6vh"}
-                      w={"44px"}
-                      m={"auto"}
-                      mt={"26%"}
-                      border={"0px solid black"}
-                      borderRadius={"50%"}
-                      className={el === activeUser ? "active" : ""}
-                    >
-                      <img src="https://i.ibb.co/QP9DvZK/user-2.png" alt="" />
-                    </Box>
-                    <Text
-                      className={el === activeUser ? "Tactive" : ""}
-                      fontSize={20}
-                      mt={3}
-                    >
-                      {el}
-                    </Text>
-                  </Box>
-                );
-              })}
-            </Box>
-          </Box>
-          {modalValue ===
-          "Emphasizing teamwork, both internally and with external partners" ? (
-            <BringDown />
-          ) : modalValue ===
-            "Making clear and swift decisions under pressure" ? (
-              <BringDown />
-          ) : modalValue ===
-            "Remaining calm and level-headed during challenges" ? (
-              <BringDown />
-          ) : modalValue ===
-            "Effectively conveying information, even in challenging circumstances" ? (
-              <BringDown />
-          ) : modalValue ===
-          "Quickly adjusting strategies based on new information or changing scenarios" ? (
-            <BringDown />
-        ) : modalValue ===
+      {modalValue ===
+      "Emphasizing teamwork, both internally and with external partners" ? (
+        <BringDown />
+      ) : modalValue === "Making clear and swift decisions under pressure" ? (
+        <BringDown />
+      ) : modalValue === "Remaining calm and level-headed during challenges" ? (
+        <BringDown />
+      ) : modalValue ===
+        "Effectively conveying information, even in challenging circumstances" ? (
+        <BringDown />
+      ) : modalValue ===
+        "Quickly adjusting strategies based on new information or changing scenarios" ? (
+        <BringDown />
+      ) : modalValue ===
         "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-          <BringDown />
+        <BringDown />
       ) : (
+        <Box
+          fontFamily={"Fredoka"}
+          border={"0px solid red"}
+          w={"100%"}
+          m={"auto"}
+          h={"88vh"}
+        >
+          <Flex h={"88vh"}>
+            <Box
+              h={"88vh"}
+              w={"20%"}
+              borderRight={"1px solid black"}
+              overflow={"auto"}
+              bgColor="#948888"
+            >
+              <Box  pt={3} borderBottom={"1px solid black"}>
+                {users.map((el) => {
+                  return (
+                    <Box borderBottom={"1px solid black"} key={el}>
+                      <Box
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        h={"6vh"}
+                        w={"44px"}
+                        m={"auto"}
+                        mt={"17%"}
+                        border={"0px solid black"}
+                        borderRadius={"50%"}
+                        className={el.name === activeUser ? "active" : ""}
+                      >
+                        <Image borderRadius={"50%"} src={el.url} alt="" />
+                      </Box>
+                      <Text
+                        className={el.name === activeUser ? "Tactive" : ""}
+                        fontSize={20}
+                        mt={3}
+                      >
+                        {el.name}
+                      </Text>
+                    </Box>
+                  );
+                })}
+              </Box>
+            </Box>
             <Box
               pt={5}
               maxH={"88vh"}
@@ -308,7 +287,9 @@ const Chat = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              bgImage={chatbg}
+              bgImage={day1morning}
+              bgRepeat={"no-repeat"}
+              bgSize={"cover"}
             >
               <Box
                 border={"1px solid black"}
@@ -327,9 +308,10 @@ const Chat = () => {
                   about to leave the office. when he received a call inviting
                   him to a conference call concern a problem at the data center.
                 </Text>
-                
               </Box>
-              <Text fontSize={20} fontWeight={'bold'} color={'white'}>Day1 Morning</Text>
+              <Text fontSize={20} fontWeight={"bold"} color={"white"}>
+                Day1 Morning
+              </Text>
               <Box
                 w={"90%"}
                 h={"68vh"}
@@ -394,528 +376,549 @@ const Chat = () => {
                   })}
                   {showBox && (
                     <>
-                    <Box bg={'white'} h={'650px'} w={'60%'} m={'auto'} mt={'50px'}>
-                      <Image  w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/app.3b5132a.gif"/>
-                      <Flex
-                        className="box"
-                        mb={"5"}
-                        mt={"10"}
-                        boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                        alignItems={"center"}
-                        justifyContent={"center"}
-                        h={"50px"}
-                        bg={"#c8cfca"}
-                        color={"black"}
-                        fontWeight={"bold"}
-                      >
-                        <Text>
-                          Which of the following technical challenges do you see
-                          as dominant in the scripts which you just saw ?
-                        </Text>
-                      </Flex>
-
-                      <RadioGroup
+                      <Box
+                        bg={"white"}
+                        h={"650px"}
+                        w={"60%"}
                         m={"auto"}
-                        onChange={handleChange2}
-                        value={value}
+                        mt={"50px"}
                       >
-                        <Box className="flex2" w={"80%"} m={"auto"}>
-                          <Box
-                            border={"1px solid black"}
-                            _hover={{ bgColor: "black", color: "white" }}
-                            borderRadius={"50px"}
-                            
-                          >
-                            <label
-                              style={{
-                                cursor: "pointer",
-                                position: "relative",
-                              }}
-                            >
-                              <Radio
-                                fontFamily={"Fredoka"}
-                                size={"lg"}
-                                colorScheme="orange"
-                                value="Weaknesses in the system that can be exploited, leading to potential disasters"
-                                style={{
-                                  position: "absolute",
-                                  opacity: 0,
-                                  cursor: "pointer",
-                                }}
-                              />
-                              System Vulnerabilities
-                            </label>
-                          </Box>
-
-                          <Box
-                            border={"1px solid black"}
-                            w={"80%"}
-                            borderRadius={"50px"}
-                            _hover={{ bgColor: "black", color: "white" }}
-                          >
-                            <label
-                              style={{
-                                cursor: "pointer",
-                                position: "relative",
-                              }}
-                            >
-                              <Radio
-                                border="1px solid black"
-                                fontFamily={"Fredoka"}
-                                size={"lg"}
-                                colorScheme="orange"
-                                value="Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery"
-                                style={{
-                                  position: "absolute",
-                                  opacity: 0,
-                                  cursor: "pointer",
-                                }}
-                              />
-                              Data Integrity
-                            </label>
-                          </Box>
-
-                          <Box
-                            border={"1px solid black"}
-                            borderRadius={"50px"}
-                            _hover={{ bgColor: "black", color: "white" }}
-                          >
-                            <label
-                              style={{
-                                cursor: "pointer",
-                                position: "relative",
-                              }}
-                            >
-                              <Radio
-                                border="1px solid black"
-                                fontFamily={"Fredoka"}
-                                size={"lg"}
-                                colorScheme="orange"
-                                value="Hardware or network breakdowns that can disrupt normal operations"
-                                style={{
-                                  position: "absolute",
-                                  opacity: 0,
-                                  cursor: "pointer",
-                                }}
-                              />
-                              Infrastructure Failures
-                            </label>
-                          </Box>
-
-                          <Box
-                            border={"1px solid black"}
-                            borderRadius={"50px"}
-                            _hover={{ bgColor: "black", color: "white" }}
-                          >
-                            <label
-                              style={{
-                                cursor: "pointer",
-                                position: "relative",
-                              }}
-                            >
-                              <Radio
-                                border="1px solid black"
-                                fontFamily={"Fredoka"}
-                                size={"lg"}
-                                colorScheme="orange"
-                                value="Inadequate or failed backups that prevent or delay recovery efforts"
-                                style={{
-                                  position: "absolute",
-                                  opacity: 0,
-                                  cursor: "pointer",
-                                }}
-                              />
-                              Backup Failures
-                            </label>
-                          </Box>
-
-                          <Box
-                            border={"1px solid black"}
-                            borderRadius={"50px"}
-                            _hover={{ bgColor: "black", color: "white" }}
-                          >
-                            <label
-                              style={{
-                                cursor: "pointer",
-                                position: "relative",
-                              }}
-                            >
-                              <Radio
-                                border="1px solid black"
-                                fontFamily={"Fredoka"}
-                                size={"lg"}
-                                colorScheme="orange"
-                                value="Failures in internal and external communication systems during critical times"
-                                style={{
-                                  position: "absolute",
-                                  opacity: 0,
-                                  cursor: "pointer",
-                                }}
-                              />
-                              Communication Breakdowns
-                            </label>
-                          </Box>
-
-                          <Box
-                            border={"1px solid black"}
-                            borderRadius={"50px"}
-                            _hover={{ bgColor: "black", color: "white" }}
-                          >
-                            <label
-                              style={{
-                                cursor: "pointer",
-                                position: "relative",
-                              }}
-                            >
-                              <Radio
-                                border="1px solid black"
-                                fontFamily={"Fredoka"}
-                                size={"lg"}
-                                colorScheme="orange"
-                                value="Absence of failover systems or processes that can act as a backup during primary system failures"
-                                style={{
-                                  position: "absolute",
-                                  opacity: 0,
-                                  cursor: "pointer",
-                                }}
-                              />
-                              Lack of Redundancy
-                            </label>
-                          </Box>
-                        </Box>
-                      </RadioGroup>
-
-                      <Modal
-                        isOpen={isModalOpen1}
-                        onClose={() => setIsModalOpen1(false)}
-                      >
-                        <ModalOverlay />
-                        <ModalContent
-                         
-                          boxShadow={
-                            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                          }
+                        <Image
+                          w={"80%"}
+                          m={"auto"}
+                          src="https://www.timefixed.com/static/img/app.3b5132a.gif"
+                        />
+                        <Flex
+                          className="box"
+                          mb={"5"}
+                          mt={"10"}
+                          boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                          alignItems={"center"}
+                          justifyContent={"center"}
+                          h={"50px"}
+                          bg={"#c8cfca"}
+                          color={"black"}
+                          fontWeight={"bold"}
                         >
-                          <ModalHeader
-                            fontWeight={"bold"}
-                            fontSize={"25px"}
-                          ></ModalHeader>
-                          <ModalBody fontSize={"18px"}>
-                            <Image src="https://img.freepik.com/premium-vector/video-tutorials-background-vector-illustration-watching-streaming-online-computer-about-education-knowledge-web-banner-brochures-poster-book-cover_2175-1338.jpg?w=900" />
-                            <Text>
-                              Which of the following technical challenges do you
-                              see as dominant in the scripts which you just saw
-                              ?
-                            </Text>
-                            <br />
-                            <Text fontWeight={500}>{value1}</Text>
-                            <br />
-                            {/* <Input onChange={(e) => setExplanation(e.target.value)} value={explaination} placeholder="Please provide an explanation for your answer" /> */}
-                          </ModalBody>
-                          <ModalFooter>
-                            <Button
-                              colorScheme="teal"
-                              onClick={handleClick2}
-                              textAlign={"center"}
-                              fontFamily={"Croissant One"}
-                              bg={"black"}
-                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                              mr={"150px"}
-                            >
-                              Proceed
-                            </Button>
-                          </ModalFooter>
-                        </ModalContent>
-                      </Modal>
+                          <Text>
+                            Which of the following technical challenges do you
+                            see as dominant in the scripts which you just saw ?
+                          </Text>
+                        </Flex>
 
-                      <Modal
-                        isOpen={isModalOpen2}
-                        onClose={() => setIsModalOpen2(false)}
-                      >
-                        <ModalOverlay />
-                        <ModalContent
-                          
-                          boxShadow={
-                            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                          }
+                        <RadioGroup
+                          m={"auto"}
+                          onChange={handleChange2}
+                          value={value}
                         >
-                          <ModalBody
-                            fontSize={"18px"}
-                            pt={100}
-                            textAlign={"center"}
-                          >
-                            <Image
-                              src="https://www.marvelmatrimony.com/img/icon2.png"
-                              m={"auto "}
-                            />
-                            <Heading>Thank You !</Heading>
-                            <Text>Your submission has been sent</Text>
-                          </ModalBody>
-                          <ModalFooter>
-                            <Button
-                              colorScheme="teal"
-                              onClick={() => setIsModalOpen2(false)}
-                              textAlign={"center"}
-                              fontFamily={"Croissant One"}
-                              bg={"black"}
-                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                              mr={"150px"}
+                          <Box className="flex2" w={"80%"} m={"auto"}>
+                            <Box
+                              border={"1px solid black"}
+                              _hover={{ bgColor: "black", color: "white" }}
+                              borderRadius={"50px"}
                             >
-                              Close
-                            </Button>
-                          </ModalFooter>
-                        </ModalContent>
-                      </Modal>
+                              <label
+                                style={{
+                                  cursor: "pointer",
+                                  position: "relative",
+                                }}
+                              >
+                                <Radio
+                                  fontFamily={"Fredoka"}
+                                  size={"lg"}
+                                  colorScheme="orange"
+                                  value="Weaknesses in the system that can be exploited, leading to potential disasters"
+                                  style={{
+                                    position: "absolute",
+                                    opacity: 0,
+                                    cursor: "pointer",
+                                  }}
+                                />
+                                System Vulnerabilities
+                              </label>
+                            </Box>
+
+                            <Box
+                              border={"1px solid black"}
+                              w={"80%"}
+                              borderRadius={"50px"}
+                              _hover={{ bgColor: "black", color: "white" }}
+                            >
+                              <label
+                                style={{
+                                  cursor: "pointer",
+                                  position: "relative",
+                                }}
+                              >
+                                <Radio
+                                  border="1px solid black"
+                                  fontFamily={"Fredoka"}
+                                  size={"lg"}
+                                  colorScheme="orange"
+                                  value="Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery"
+                                  style={{
+                                    position: "absolute",
+                                    opacity: 0,
+                                    cursor: "pointer",
+                                  }}
+                                />
+                                Data Integrity
+                              </label>
+                            </Box>
+
+                            <Box
+                              border={"1px solid black"}
+                              borderRadius={"50px"}
+                              _hover={{ bgColor: "black", color: "white" }}
+                            >
+                              <label
+                                style={{
+                                  cursor: "pointer",
+                                  position: "relative",
+                                }}
+                              >
+                                <Radio
+                                  border="1px solid black"
+                                  fontFamily={"Fredoka"}
+                                  size={"lg"}
+                                  colorScheme="orange"
+                                  value="Hardware or network breakdowns that can disrupt normal operations"
+                                  style={{
+                                    position: "absolute",
+                                    opacity: 0,
+                                    cursor: "pointer",
+                                  }}
+                                />
+                                Infrastructure Failures
+                              </label>
+                            </Box>
+
+                            <Box
+                              border={"1px solid black"}
+                              borderRadius={"50px"}
+                              _hover={{ bgColor: "black", color: "white" }}
+                            >
+                              <label
+                                style={{
+                                  cursor: "pointer",
+                                  position: "relative",
+                                }}
+                              >
+                                <Radio
+                                  border="1px solid black"
+                                  fontFamily={"Fredoka"}
+                                  size={"lg"}
+                                  colorScheme="orange"
+                                  value="Inadequate or failed backups that prevent or delay recovery efforts"
+                                  style={{
+                                    position: "absolute",
+                                    opacity: 0,
+                                    cursor: "pointer",
+                                  }}
+                                />
+                                Backup Failures
+                              </label>
+                            </Box>
+
+                            <Box
+                              border={"1px solid black"}
+                              borderRadius={"50px"}
+                              _hover={{ bgColor: "black", color: "white" }}
+                            >
+                              <label
+                                style={{
+                                  cursor: "pointer",
+                                  position: "relative",
+                                }}
+                              >
+                                <Radio
+                                  border="1px solid black"
+                                  fontFamily={"Fredoka"}
+                                  size={"lg"}
+                                  colorScheme="orange"
+                                  value="Failures in internal and external communication systems during critical times"
+                                  style={{
+                                    position: "absolute",
+                                    opacity: 0,
+                                    cursor: "pointer",
+                                  }}
+                                />
+                                Communication Breakdowns
+                              </label>
+                            </Box>
+
+                            <Box
+                              border={"1px solid black"}
+                              borderRadius={"50px"}
+                              _hover={{ bgColor: "black", color: "white" }}
+                            >
+                              <label
+                                style={{
+                                  cursor: "pointer",
+                                  position: "relative",
+                                }}
+                              >
+                                <Radio
+                                  border="1px solid black"
+                                  fontFamily={"Fredoka"}
+                                  size={"lg"}
+                                  colorScheme="orange"
+                                  value="Absence of failover systems or processes that can act as a backup during primary system failures"
+                                  style={{
+                                    position: "absolute",
+                                    opacity: 0,
+                                    cursor: "pointer",
+                                  }}
+                                />
+                                Lack of Redundancy
+                              </label>
+                            </Box>
+                          </Box>
+                        </RadioGroup>
+
+                        <Modal
+                          isOpen={isModalOpen1}
+                          onClose={() => setIsModalOpen1(false)}
+                        >
+                          <ModalOverlay />
+                          <ModalContent
+                            boxShadow={
+                              "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                            }
+                          >
+                            <ModalHeader
+                              fontWeight={"bold"}
+                              fontSize={"25px"}
+                            ></ModalHeader>
+                            <ModalBody fontSize={"18px"}>
+                              <Image src="https://img.freepik.com/premium-vector/video-tutorials-background-vector-illustration-watching-streaming-online-computer-about-education-knowledge-web-banner-brochures-poster-book-cover_2175-1338.jpg?w=900" />
+                              <Text>
+                                Which of the following technical challenges do
+                                you see as dominant in the scripts which you
+                                just saw ?
+                              </Text>
+                              <br />
+                              <Text fontWeight={500}>{value1}</Text>
+                              <br />
+                              {/* <Input onChange={(e) => setExplanation(e.target.value)} value={explaination} placeholder="Please provide an explanation for your answer" /> */}
+                            </ModalBody>
+                            <ModalFooter>
+                              <Button
+                                colorScheme="teal"
+                                onClick={handleClick2}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                mr={"150px"}
+                              >
+                                Proceed
+                              </Button>
+                            </ModalFooter>
+                          </ModalContent>
+                        </Modal>
+
+                        <Modal
+                          isOpen={isModalOpen2}
+                          onClose={() => setIsModalOpen2(false)}
+                        >
+                          <ModalOverlay />
+                          <ModalContent
+                            boxShadow={
+                              "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                            }
+                          >
+                            <ModalBody
+                              fontSize={"18px"}
+                              pt={100}
+                              textAlign={"center"}
+                            >
+                              <Image
+                                src="https://www.marvelmatrimony.com/img/icon2.png"
+                                m={"auto "}
+                              />
+                              <Heading>Thank You !</Heading>
+                              <Text>Your submission has been sent</Text>
+                            </ModalBody>
+                            <ModalFooter>
+                              <Button
+                                colorScheme="teal"
+                                onClick={() => setIsModalOpen2(false)}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                mr={"150px"}
+                              >
+                                Close
+                              </Button>
+                            </ModalFooter>
+                          </ModalContent>
+                        </Modal>
                       </Box>
                     </>
                   )}
 
                   {showBox && (
                     <>
-                    <Box bg={'white'} h={'600px'} w={'60%'} m={'auto'} mt={'50px'}>
-                      <Image w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/hr.5d824eb.gif"/>
-                      <Flex
-                        className="box"
-                        mb={"5"}
-                        mt={"10"}
-                        boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                        alignItems={"center"}
-                        justifyContent={"center"}
-                        h={"50px"}
-                        bg={"#c8cfca"}
-                        color={"black"}
-                        fontWeight={"bold"}
-                      >
-                        <Text>
-                          Which trade of the customer representative do you feel
-                          has stood out during your latest interaction ?
-                        </Text>
-                      </Flex>
-
-                      <RadioGroup
+                      <Box
+                        bg={"white"}
+                        h={"600px"}
+                        w={"60%"}
                         m={"auto"}
-                        onChange={handleChange}
-                        value={value}
+                        mt={"50px"}
                       >
-                        <Box className="flex" w={"80%"} m={"auto"} pb={'40px'} mt={'50px'}>
-                          <Box
-                            border={"1px solid black"}
-                            w={"70%"}
-                            borderRadius={"50px"}
-                            _hover={{ bgColor: "black", color: "white" }}
-                          >
-                            <label
-                              style={{
-                                cursor: "pointer",
-                                position: "relative",
-                              }}
-                            >
-                              <Radio
-                                fontFamily={"Fredoka"}
-                                size={"lg"}
-                                colorScheme="orange"
-                                value="Making clear and swift decisions under pressure"
-                                style={{
-                                  position: "absolute",
-                                  opacity: 0,
-                                  cursor: "pointer",
-                                }}
-                              />
-                              Decisive
-                            </label>
-                          </Box>
-
-                          <Box
-                            border={"1px solid black"}
-                            w={"80%"}
-                            borderRadius={"50px"}
-                            _hover={{ bgColor: "black", color: "white" }}
-                          >
-                            <label
-                              style={{
-                                cursor: "pointer",
-                                position: "relative",
-                              }}
-                            >
-                              <Radio
-                                border="1px solid black"
-                                fontFamily={"Fredoka"}
-                                size={"lg"}
-                                colorScheme="orange"
-                                value="Remaining calm and level-headed during challenges"
-                                style={{
-                                  position: "absolute",
-                                  opacity: 0,
-                                  cursor: "pointer",
-                                }}
-                              />
-                              Composed
-                            </label>
-                          </Box>
-
-                          <Box
-                            border={"1px solid black"}
-                            borderRadius={"50px"}
-                            _hover={{ bgColor: "black", color: "white" }}
-                          >
-                            <label
-                              style={{
-                                cursor: "pointer",
-                                position: "relative",
-                              }}
-                            >
-                              <Radio
-                                border="1px solid black"
-                                fontFamily={"Fredoka"}
-                                size={"lg"}
-                                colorScheme="orange"
-                                value="Emphasizing teamwork, both internally and with external partners"
-                                style={{
-                                  position: "absolute",
-                                  opacity: 0,
-                                  cursor: "pointer",
-                                }}
-                              />
-                              Collaborative
-                            </label>
-                          </Box>
-
-                          <Box
-                            border={"1px solid black"}
-                            borderRadius={"50px"}
-                            _hover={{ bgColor: "black", color: "white" }}
-                          >
-                            <label
-                              style={{
-                                cursor: "pointer",
-                                position: "relative",
-                              }}
-                            >
-                              <Radio
-                                border="1px solid black"
-                                fontFamily={"Fredoka"}
-                                size={"lg"}
-                                colorScheme="orange"
-                                value="Effectively conveying information, even in challenging circumstances"
-                                style={{
-                                  position: "absolute",
-                                  opacity: 0,
-                                  cursor: "pointer",
-                                }}
-                              />
-                              Communicative
-                            </label>
-                          </Box>
-
-                          <Box
-                            border={"1px solid black"}
-                            borderRadius={"50px"}
-                            _hover={{ bgColor: "black", color: "white" }}
-                          >
-                            <label
-                              style={{
-                                cursor: "pointer",
-                                position: "relative",
-                              }}
-                            >
-                              <Radio
-                                border="1px solid black"
-                                fontFamily={"Fredoka"}
-                                size={"lg"}
-                                colorScheme="orange"
-                                value="Quickly adjusting strategies based on new information or changing scenarios"
-                                style={{
-                                  position: "absolute",
-                                  opacity: 0,
-                                  cursor: "pointer",
-                                }}
-                              />
-                              Adaptive
-                            </label>
-                          </Box>
-
-                          <Box
-                            border={"1px solid black"}
-                            borderRadius={"50px"}
-                            _hover={{ bgColor: "black", color: "white" }}
-                          >
-                            <label
-                              style={{
-                                cursor: "pointer",
-                                position: "relative",
-                              }}
-                            >
-                              <Radio
-                                border="1px solid black"
-                                fontFamily={"Fredoka"}
-                                size={"lg"}
-                                colorScheme="orange"
-                                value="Keeping an eye on long-term impacts and future implications during the crisis"
-                                style={{
-                                  position: "absolute",
-                                  opacity: 0,
-                                  cursor: "pointer",
-                                }}
-                              />
-                              Visionary
-                            </label>
-                          </Box>
-                        </Box>
-                      </RadioGroup>
-
-                      <Modal
-                        isOpen={isModalOpen}
-                        onClose={() => setIsModalOpen(false)}
-                      >
-                        <ModalOverlay />
-                        <ModalContent
-                          
-                          boxShadow={
-                            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                          }
+                        <Image
+                          w={"80%"}
+                          m={"auto"}
+                          src="https://www.timefixed.com/static/img/hr.5d824eb.gif"
+                        />
+                        <Flex
+                          className="box"
+                          mb={"5"}
+                          mt={"10"}
+                          boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                          alignItems={"center"}
+                          justifyContent={"center"}
+                          h={"50px"}
+                          bg={"#c8cfca"}
+                          color={"black"}
+                          fontWeight={"bold"}
                         >
-                          <ModalHeader fontWeight={"bold"} fontSize={"25px"}>
-                            Refined Leadership Trait Scale
-                          </ModalHeader>
-                          <ModalBody fontSize={"18px"}>
-                            <Image src="https://epyqh8r42ug.exactdn.com/wp-content/uploads/2021/12/organic-flat-feedback-concept_52683-62653.jpeg?strip=all&lossy=1&ssl=1" />
-                            <Text>
-                              Which trade of the customer representative do you
-                              feel has stood out during your latest interaction
-                              ?
-                            </Text>
-                            <br />
-                            <Text fontWeight={500}>{value}</Text>
-                            <br />
-                            {/* <Input onChange={(e) => setExplanation(e.target.value)} value={explaination} placeholder="Please provide an explanation for your answer" /> */}
-                          </ModalBody>
-                          <ModalFooter>
-                            <Button
-                              colorScheme="teal"
-                              onClick={handleClick}
-                              textAlign={"center"}
-                              fontFamily={"Croissant One"}
-                              bg={"black"}
-                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                              mr={"150px"}
+                          <Text>
+                            Which trade of the customer representative do you
+                            feel has stood out during your latest interaction ?
+                          </Text>
+                        </Flex>
+
+                        <RadioGroup
+                          m={"auto"}
+                          onChange={handleChange}
+                          value={value}
+                        >
+                          <Box
+                            className="flex"
+                            w={"80%"}
+                            m={"auto"}
+                            pb={"40px"}
+                            mt={"50px"}
+                          >
+                            <Box
+                              border={"1px solid black"}
+                              w={"70%"}
+                              borderRadius={"50px"}
+                              _hover={{ bgColor: "black", color: "white" }}
                             >
-                              Proceed
-                            </Button>
-                          </ModalFooter>
-                        </ModalContent>
-                      </Modal>
+                              <label
+                                style={{
+                                  cursor: "pointer",
+                                  position: "relative",
+                                }}
+                              >
+                                <Radio
+                                  fontFamily={"Fredoka"}
+                                  size={"lg"}
+                                  colorScheme="orange"
+                                  value="Making clear and swift decisions under pressure"
+                                  style={{
+                                    position: "absolute",
+                                    opacity: 0,
+                                    cursor: "pointer",
+                                  }}
+                                />
+                                Decisive
+                              </label>
+                            </Box>
+
+                            <Box
+                              border={"1px solid black"}
+                              w={"80%"}
+                              borderRadius={"50px"}
+                              _hover={{ bgColor: "black", color: "white" }}
+                            >
+                              <label
+                                style={{
+                                  cursor: "pointer",
+                                  position: "relative",
+                                }}
+                              >
+                                <Radio
+                                  border="1px solid black"
+                                  fontFamily={"Fredoka"}
+                                  size={"lg"}
+                                  colorScheme="orange"
+                                  value="Remaining calm and level-headed during challenges"
+                                  style={{
+                                    position: "absolute",
+                                    opacity: 0,
+                                    cursor: "pointer",
+                                  }}
+                                />
+                                Composed
+                              </label>
+                            </Box>
+
+                            <Box
+                              border={"1px solid black"}
+                              borderRadius={"50px"}
+                              _hover={{ bgColor: "black", color: "white" }}
+                            >
+                              <label
+                                style={{
+                                  cursor: "pointer",
+                                  position: "relative",
+                                }}
+                              >
+                                <Radio
+                                  border="1px solid black"
+                                  fontFamily={"Fredoka"}
+                                  size={"lg"}
+                                  colorScheme="orange"
+                                  value="Emphasizing teamwork, both internally and with external partners"
+                                  style={{
+                                    position: "absolute",
+                                    opacity: 0,
+                                    cursor: "pointer",
+                                  }}
+                                />
+                                Collaborative
+                              </label>
+                            </Box>
+
+                            <Box
+                              border={"1px solid black"}
+                              borderRadius={"50px"}
+                              _hover={{ bgColor: "black", color: "white" }}
+                            >
+                              <label
+                                style={{
+                                  cursor: "pointer",
+                                  position: "relative",
+                                }}
+                              >
+                                <Radio
+                                  border="1px solid black"
+                                  fontFamily={"Fredoka"}
+                                  size={"lg"}
+                                  colorScheme="orange"
+                                  value="Effectively conveying information, even in challenging circumstances"
+                                  style={{
+                                    position: "absolute",
+                                    opacity: 0,
+                                    cursor: "pointer",
+                                  }}
+                                />
+                                Communicative
+                              </label>
+                            </Box>
+
+                            <Box
+                              border={"1px solid black"}
+                              borderRadius={"50px"}
+                              _hover={{ bgColor: "black", color: "white" }}
+                            >
+                              <label
+                                style={{
+                                  cursor: "pointer",
+                                  position: "relative",
+                                }}
+                              >
+                                <Radio
+                                  border="1px solid black"
+                                  fontFamily={"Fredoka"}
+                                  size={"lg"}
+                                  colorScheme="orange"
+                                  value="Quickly adjusting strategies based on new information or changing scenarios"
+                                  style={{
+                                    position: "absolute",
+                                    opacity: 0,
+                                    cursor: "pointer",
+                                  }}
+                                />
+                                Adaptive
+                              </label>
+                            </Box>
+
+                            <Box
+                              border={"1px solid black"}
+                              borderRadius={"50px"}
+                              _hover={{ bgColor: "black", color: "white" }}
+                            >
+                              <label
+                                style={{
+                                  cursor: "pointer",
+                                  position: "relative",
+                                }}
+                              >
+                                <Radio
+                                  border="1px solid black"
+                                  fontFamily={"Fredoka"}
+                                  size={"lg"}
+                                  colorScheme="orange"
+                                  value="Keeping an eye on long-term impacts and future implications during the crisis"
+                                  style={{
+                                    position: "absolute",
+                                    opacity: 0,
+                                    cursor: "pointer",
+                                  }}
+                                />
+                                Visionary
+                              </label>
+                            </Box>
+                          </Box>
+                        </RadioGroup>
+
+                        <Modal
+                          isOpen={isModalOpen}
+                          onClose={() => setIsModalOpen(false)}
+                        >
+                          <ModalOverlay />
+                          <ModalContent
+                            boxShadow={
+                              "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                            }
+                          >
+                            <ModalHeader fontWeight={"bold"} fontSize={"25px"}>
+                              Refined Leadership Trait Scale
+                            </ModalHeader>
+                            <ModalBody fontSize={"18px"}>
+                              <Image src="https://epyqh8r42ug.exactdn.com/wp-content/uploads/2021/12/organic-flat-feedback-concept_52683-62653.jpeg?strip=all&lossy=1&ssl=1" />
+                              <Text>
+                                Which trade of the customer representative do
+                                you feel has stood out during your latest
+                                interaction ?
+                              </Text>
+                              <br />
+                              <Text fontWeight={500}>{value}</Text>
+                              <br />
+                              {/* <Input onChange={(e) => setExplanation(e.target.value)} value={explaination} placeholder="Please provide an explanation for your answer" /> */}
+                            </ModalBody>
+                            <ModalFooter>
+                              <Button
+                                colorScheme="teal"
+                                onClick={handleClick}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                mr={"150px"}
+                              >
+                                Proceed
+                              </Button>
+                            </ModalFooter>
+                          </ModalContent>
+                        </Modal>
                       </Box>
                     </>
                   )}
-                  
+
                   <div ref={spacerRef} style={{ height: "40px" }}></div>
                 </TransitionGroup>
               </Box>
             </Box>
-          )}
-        </Flex>
-      </Box>
-     
+          </Flex>
+        </Box>
+      )}
     </>
   );
 };

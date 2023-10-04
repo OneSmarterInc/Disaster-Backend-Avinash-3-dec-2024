@@ -59,7 +59,7 @@ const orgData = {
 
   return (
     <Box display="flex" flexDirection="row" height={"88vh"} >
-      <VStack spacing={4} alignItems="flex-start" border={"0px solid red"} bgColor={"#08cdd4"} fontFamily={"Fredoka"} fontSize={20} pl={5} pr={5} pt={5} >
+      <VStack spacing={4} alignItems="flex-start" border={"0px solid red"} bgColor={" #856262 "} fontFamily={"Fredoka"} fontSize={20} pl={5} pr={5} pt={5} >
         <Text onClick={() => handleSectionClick('Prepare')} cursor="pointer" fontWeight={selectedSection === 'Prepare' ? 'bold' : 'none'}>
           Prepare
         </Text>

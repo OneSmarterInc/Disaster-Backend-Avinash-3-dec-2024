@@ -12,10 +12,11 @@ import {
   import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
   import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
   import Cookies from "js-cookie";
-  
+  import bencarter from "./bencarter.png";
   import "../Day1/BringDown.css";
   import { CSSTransition, TransitionGroup } from "react-transition-group";
   import Morning5 from "../Day5/Morning5";
+import { dayFourMorning } from "../../mainData";
   
   const EarlyMorning4 = () => {
     const [chatData, setChatData] = useState([]);
@@ -152,116 +153,50 @@ import {
     };
   
     const users = [
-      "Ben Carter",
-      "Kate Sullivan",
-      "Liam Turner",
-      "Mia Rodriguez",
-      "Sophia Kim",
+      {
+        name: "Ben Carter",
+        url: bencarter,
+      },
+      {
+        name: "Gajji",
+        url: bencarter,
+      },
+      {
+        name: "Kate Sullivan",
+        url: bencarter,
+      },
+      {
+        name: "Liam Turner",
+        url: bencarter,
+      },
+      {
+        name: "Sophia Kim",
+        url: bencarter,
+      },
+      {
+        name: "Mia Rodriguez",
+        url: bencarter,
+      },
+      {
+        name: "System One Developer #1",
+        url: bencarter,
+      },
+      {
+        name: "System One Developer #2",
+        url: bencarter,
+      }
     ];
   
     useEffect(() => {
       // Simulate messages from 5 users with a 2-second delay between each message
-      const dayOne = [
-        { message:"Gajji's team begins their work, replacing the corrupted files. The room's screens display lines of code and logs. The atmosphere is thick with anticipation."},
-        {
-          sender: "Sophia Kim (whispering to Kate)",
-          message:
-            "Are we sure this is going to work? If it doesn't...",
-        },
-        {
-          sender: "Kate Sullivan",
-          message:
-            "We have to trust them. It's our best shot.",
-        },
-        {message:"A sudden error message pops up on the main screen. The room goes tense."},
-        {
-          sender: "Liam Turner",
-          message:
-            "What was that? Did it fail?",
-        },
-        
-        {
-          sender: "System One Developer #1",
-          message:
-            "Hold on, it's an expected hiccup. Let's rerun the process.",
-        },
-        {
-            message:
-              "Everyone watches with bated breath. Minutes feel like hours.",
-          },
-        {
-          sender: "System One Developer #2 (murmuring to Gajji)",
-          message:
-            "There's a minor glitch. The file from Site 2 isn't syncing as expected.",
-        },
-        {
-          sender: "Gajji (firmly)",
-          message:
-            "Find a workaround. We can't afford a full stop here.",
-        },
-        {
-            message:
-              "The developers scramble, making adjustments. The room is silent except for the tapping of keyboards."},
-        {
-          sender: "Ben Carter",
-          message:
-            "(to Gajji) Time's ticking, Gajji. How are we looking?",
-        },
-        { sender: "Gajji (calmly)", message: "Challenges are expected, Ben. We'll get through this." },
-
-        {
-            message:
-              "After what feels like an eternity, the screens show positive signs. Processes start running smoothly.",
-          },
-        {
-          sender: "Mia Rodriguez",
-          message: "The sync... it's stabilizing!",
-        },
-        {
-          sender: "Sophia Kim",
-          message:
-            "We're not out of the woods yet. Let's see it through.",
-        },
-  
-        {
-          sender: "Liam Turner",
-          message:
-            "Validation complete. Everything looks good. ERP is back up!",
-        },
-        {
-          sender: "Ben Carter",
-          message:
-            "(sighing with profound relief) Gajji, you and your team are magicians.",
-        },
-        {
-            sender: "Gajji (smiling)",
-            message:
-              "No magic, just determination and teamwork.",
-          },
-        {
-          sender: "Mia Rodriguez (frustrated)",
-          message:
-            "This can't be right! Who validated these backup processes?",
-        },
-        {
-          sender: "Liam Turner (defensively)",
-          message:
-            "We've followed protocols to the letter. This isn't a standard issue!",
-        },
-        {
-            sender: "Ben Carter",
-            message:
-              "Enough! We can't fracture now. We need unity and focus.",
-          },
-      ];
-  
-      const messageDelay = 4000; // 4 seconds
+     
+      const messageDelay = 500; // 4 seconds
   
       let timeoutIndex = 0;
   
       const addMessageWithDelay = () => {
-        if (timeoutIndex < dayOne.length) {
-          const message = dayOne[timeoutIndex];
+        if (timeoutIndex < dayFourMorning.length) {
+          const message = dayFourMorning[timeoutIndex];
           setChatData((prevChatData) => [...prevChatData, message]);
           setActiveUser(message.sender);
           timeoutIndex++;
@@ -295,6 +230,23 @@ import {
   
     return (
       <>
+       {modalValue ===
+      "Emphasizing teamwork, both internally and with external partners" ? (
+        <Morning5 />
+      ) : modalValue === "Making clear and swift decisions under pressure" ? (
+        <Morning5 />
+      ) : modalValue === "Remaining calm and level-headed during challenges" ? (
+        <Morning5 />
+      ) : modalValue ===
+        "Effectively conveying information, even in challenging circumstances" ? (
+        <Morning5 />
+      ) : modalValue ===
+        "Quickly adjusting strategies based on new information or changing scenarios" ? (
+        <Morning5 />
+      ) : modalValue ===
+        "Keeping an eye on long-term impacts and future implications during the crisis" ? (
+        <Morning5 />
+      ) : (
         <Box
           fontFamily={"Fredoka"}
           border={"0px solid red"}
@@ -302,32 +254,54 @@ import {
           m={"auto"}
           h={"88vh"}
         >
-          {modalValue ===
-          "Emphasizing teamwork, both internally and with external partners" ? (
-            <Morning5 />
-          ) : modalValue === "Making clear and swift decisions under pressure" ? (
-            <Morning5 />
-          ) : modalValue ===
-            "Remaining calm and level-headed during challenges" ? (
-            <Morning5 />
-          ) : modalValue ===
-            "Effectively conveying information, even in challenging circumstances" ? (
-            <Morning5 />
-          ) : modalValue ===
-            "Quickly adjusting strategies based on new information or changing scenarios" ? (
-            <Morning5 />
-          ) : modalValue ===
-            "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-            <Morning5 />
-          ) : (
+          <Flex h={"88vh"}>
+            <Box
+              h={"88vh"}
+              w={"20%"}
+              borderRight={"1px solid black"}
+              overflow={"auto"}
+            >
+              <Box bgColor="#948888" pt={3} borderBottom={"1px solid black"}>
+                {users.map((el) => {
+                  return (
+                    <Box borderBottom={"1px solid black"} key={el}>
+                      <Box
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        h={"6vh"}
+                        w={"44px"}
+                        m={"auto"}
+                        mt={"17%"}
+                        border={"0px solid black"}
+                        borderRadius={"50%"}
+                        className={el.name === activeUser ? "active" : ""}
+                      >
+                        <Image borderRadius={"50%"} src={el.url} alt="" />
+                      </Box>
+                      <Text
+                        className={el.name === activeUser ? "Tactive" : ""}
+                        fontSize={20}
+                        mt={3}
+                      >
+                        {el.name}
+                      </Text>
+                    </Box>
+                  );
+                })}
+              </Box>
+            </Box>
             <Box
               pt={5}
               maxH={"88vh"}
-              w={"100%"}
+              w={"90%"}
               border={"0px solid red"}
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
+              // bgImage={day1morning}
+              // bgRepeat={"no-repeat"}
+              // bgSize={"cover"}
             >
               <Box
                 border={"1px solid black"}
@@ -343,25 +317,13 @@ import {
               >
                 <Text fontSize={"20"}>
                   It was a typical February Monday night, and the CIO is just
-                  about to leave the office. when he received a call inviting him
-                  to a conference call concern a problem at the data center.
+                  about to leave the office. when he received a call inviting
+                  him to a conference call concern a problem at the data center.
                 </Text>
               </Box>
-              <Text fontSize={20} fontWeight={"bold"}>
-                Day4 EarlyMorning
+              <Text fontSize={20} fontWeight={"bold"} color={"white"}>
+                Day1 Morning
               </Text>
-              <br />
-  
-              <Box
-                w={"90%"}
-                m={"auto"}
-                border={"1px solid gray"}
-                bg={"gray.200"}
-                color={"black"}
-              >
-                The office is buzzing with activity. Phones are ringing, and IT
-                professionals are working at their stations.
-              </Box>
               <Box
                 w={"90%"}
                 h={"68vh"}
@@ -373,9 +335,7 @@ import {
                 <TransitionGroup>
                   {chatData.map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";
-                    const senderName = el.sender;
-                    const messageClass = isCIO ? "CIO" : "OtherSender";
-                    // const messageClass = isCIO ? "KateSullivan" : "BenCarter";
+                    const messageClass = isCIO ? "KateSullivan" : "BenCarter";
                     const alignMessage = isCIO ? "flex-start" : "flex-end";
                     return (
                       <CSSTransition
@@ -401,7 +361,9 @@ import {
                               }
                               border={"0px solid black"}
                               bgColor={
-                                el.sender === "Ben Carter" ? "#f0f0f0" : "#030405"
+                                el.sender === "Ben Carter"
+                                  ? "#f0f0f0"
+                                  : "#030405"
                               }
                               color={
                                 el.sender === "Ben Carter" ? "black" : "white"
@@ -415,7 +377,7 @@ import {
                               mt={10}
                             >
                               <Text>
-                                <span id="sender">{senderName}</span> :{" "}
+                                <span id="sender">{el.sender}</span> :{" "}
                                 {el.message}
                               </Text>
                             </Box>
@@ -433,7 +395,11 @@ import {
                         m={"auto"}
                         mt={"50px"}
                       >
-                        <Image w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/app.3b5132a.gif" />
+                        <Image
+                          w={"80%"}
+                          m={"auto"}
+                          src="https://www.timefixed.com/static/img/app.3b5132a.gif"
+                        />
                         <Flex
                           className="box"
                           mb={"5"}
@@ -447,11 +413,11 @@ import {
                           fontWeight={"bold"}
                         >
                           <Text>
-                            Which of the following technical challenges do you see
-                            as dominant in the scripts which you just saw ?
+                            Which of the following technical challenges do you
+                            see as dominant in the scripts which you just saw ?
                           </Text>
                         </Flex>
-  
+
                         <RadioGroup
                           m={"auto"}
                           onChange={handleChange2}
@@ -483,7 +449,7 @@ import {
                                 System Vulnerabilities
                               </label>
                             </Box>
-  
+
                             <Box
                               border={"1px solid black"}
                               w={"80%"}
@@ -511,7 +477,7 @@ import {
                                 Data Integrity
                               </label>
                             </Box>
-  
+
                             <Box
                               border={"1px solid black"}
                               borderRadius={"50px"}
@@ -538,7 +504,7 @@ import {
                                 Infrastructure Failures
                               </label>
                             </Box>
-  
+
                             <Box
                               border={"1px solid black"}
                               borderRadius={"50px"}
@@ -565,7 +531,7 @@ import {
                                 Backup Failures
                               </label>
                             </Box>
-  
+
                             <Box
                               border={"1px solid black"}
                               borderRadius={"50px"}
@@ -592,7 +558,7 @@ import {
                                 Communication Breakdowns
                               </label>
                             </Box>
-  
+
                             <Box
                               border={"1px solid black"}
                               borderRadius={"50px"}
@@ -621,7 +587,7 @@ import {
                             </Box>
                           </Box>
                         </RadioGroup>
-  
+
                         <Modal
                           isOpen={isModalOpen1}
                           onClose={() => setIsModalOpen1(false)}
@@ -639,9 +605,9 @@ import {
                             <ModalBody fontSize={"18px"}>
                               <Image src="https://img.freepik.com/premium-vector/video-tutorials-background-vector-illustration-watching-streaming-online-computer-about-education-knowledge-web-banner-brochures-poster-book-cover_2175-1338.jpg?w=900" />
                               <Text>
-                                Which of the following technical challenges do you
-                                see as dominant in the scripts which you just saw
-                                ?
+                                Which of the following technical challenges do
+                                you see as dominant in the scripts which you
+                                just saw ?
                               </Text>
                               <br />
                               <Text fontWeight={500}>{value1}</Text>
@@ -663,7 +629,7 @@ import {
                             </ModalFooter>
                           </ModalContent>
                         </Modal>
-  
+
                         <Modal
                           isOpen={isModalOpen2}
                           onClose={() => setIsModalOpen2(false)}
@@ -704,17 +670,21 @@ import {
                       </Box>
                     </>
                   )}
-  
+
                   {showBox && (
                     <>
                       <Box
                         bg={"white"}
-                        h={"700px"}
+                        h={"600px"}
                         w={"60%"}
                         m={"auto"}
                         mt={"50px"}
                       >
-                        <Image w={'80%'} m={'auto'} src="https://www.timefixed.com/static/img/hr.5d824eb.gif" />
+                        <Image
+                          w={"80%"}
+                          m={"auto"}
+                          src="https://www.timefixed.com/static/img/hr.5d824eb.gif"
+                        />
                         <Flex
                           className="box"
                           mb={"5"}
@@ -728,11 +698,11 @@ import {
                           fontWeight={"bold"}
                         >
                           <Text>
-                            Which trade of the customer representative do you feel
-                            has stood out during your latest interaction ?
+                            Which trade of the customer representative do you
+                            feel has stood out during your latest interaction ?
                           </Text>
                         </Flex>
-  
+
                         <RadioGroup
                           m={"auto"}
                           onChange={handleChange}
@@ -771,7 +741,7 @@ import {
                                 Decisive
                               </label>
                             </Box>
-  
+
                             <Box
                               border={"1px solid black"}
                               w={"80%"}
@@ -799,7 +769,7 @@ import {
                                 Composed
                               </label>
                             </Box>
-  
+
                             <Box
                               border={"1px solid black"}
                               borderRadius={"50px"}
@@ -826,7 +796,7 @@ import {
                                 Collaborative
                               </label>
                             </Box>
-  
+
                             <Box
                               border={"1px solid black"}
                               borderRadius={"50px"}
@@ -853,7 +823,7 @@ import {
                                 Communicative
                               </label>
                             </Box>
-  
+
                             <Box
                               border={"1px solid black"}
                               borderRadius={"50px"}
@@ -880,7 +850,7 @@ import {
                                 Adaptive
                               </label>
                             </Box>
-  
+
                             <Box
                               border={"1px solid black"}
                               borderRadius={"50px"}
@@ -909,7 +879,7 @@ import {
                             </Box>
                           </Box>
                         </RadioGroup>
-  
+
                         <Modal
                           isOpen={isModalOpen}
                           onClose={() => setIsModalOpen(false)}
@@ -926,9 +896,9 @@ import {
                             <ModalBody fontSize={"18px"}>
                               <Image src="https://epyqh8r42ug.exactdn.com/wp-content/uploads/2021/12/organic-flat-feedback-concept_52683-62653.jpeg?strip=all&lossy=1&ssl=1" />
                               <Text>
-                                Which trade of the customer representative do you
-                                feel has stood out during your latest interaction
-                                ?
+                                Which trade of the customer representative do
+                                you feel has stood out during your latest
+                                interaction ?
                               </Text>
                               <br />
                               <Text fontWeight={500}>{value}</Text>
@@ -953,12 +923,14 @@ import {
                       </Box>
                     </>
                   )}
+
                   <div ref={spacerRef} style={{ height: "40px" }}></div>
                 </TransitionGroup>
               </Box>
             </Box>
-          )}
+          </Flex>
         </Box>
+      )}
       </>
     );
   };

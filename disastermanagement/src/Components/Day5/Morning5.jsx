@@ -15,8 +15,10 @@ import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import EarlyMorning from "../Day2/EarlyMorning";
 import { dayFiveMorning } from "../../mainData";
-import bencarter from "./bencarter.png";
-
+import bencarter from "../userImages/bencarter.png";
+import sophia from "../userImages/sophia_kim.png"
+import kate from "../userImages/kate_sullivan.png"
+import mia from "../userImages/Mia Rodriguez.png"
 
 const Morning5 = () => {
   const [chatData, setChatData] = useState([]);
@@ -166,7 +168,7 @@ const Morning5 = () => {
     },
     {
       name: "Kate Sullivan",
-      url: bencarter,
+      url: kate,
     },
     {
       name: "Liam Turner",
@@ -174,11 +176,11 @@ const Morning5 = () => {
     },
     {
       name: "Sophia Kim",
-      url: bencarter,
+      url: sophia,
     },
     {
       name: "Mia Rodriguez",
-      url: bencarter,
+      url: mia,
     },
     {
       name: "Communications Lead",
@@ -291,9 +293,7 @@ const Morning5 = () => {
               pb={3}
             >
               <Text fontSize={"20"}>
-                It was a typical February Monday night, and the CIO is just
-                about to leave the office. when he received a call inviting him
-                to a conference call concern a problem at the data center.
+              At noon, that the recovery process was complete.  At 4:00PM, an announcement went out that the crisis was over.
               </Text>
             </Box>
             <Text fontSize={20} fontWeight={"bold"}>

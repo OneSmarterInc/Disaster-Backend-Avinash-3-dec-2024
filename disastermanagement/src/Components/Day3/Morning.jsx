@@ -12,7 +12,6 @@ import {
   import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
   import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
   import Cookies from "js-cookie";
-  import bencarter from "./bencarter.png"
   import "../Day1/BringDown.css";
   import { CSSTransition, TransitionGroup } from "react-transition-group";
   import { useNavigate } from "react-router";
@@ -20,6 +19,10 @@ import {
   import EarlyMorning from "../Day2/EarlyMorning";
 import EarlyMorning4 from "../Day4/EarlyMorning4";
 import { dayThreeMorning } from "../../mainData";
+import bencarter from "../userImages/bencarter.png";
+import sophia from "../userImages/sophia_kim.png"
+import kate from "../userImages/kate_sullivan.png"
+import mia from "../userImages/Mia Rodriguez.png"
   
   const Morning = () => {
     const [chatData, setChatData] = useState([]);
@@ -166,7 +169,7 @@ import { dayThreeMorning } from "../../mainData";
       },
       {
         name: "Kate Sullivan",
-        url: bencarter,
+        url: kate,
       },
       {
         name: "Liam Turner",
@@ -174,11 +177,11 @@ import { dayThreeMorning } from "../../mainData";
       },
       {
         name: "Sophia Kim",
-        url: bencarter,
+        url: sophia,
       },
       {
         name: "Mia Rodriguez",
-        url: bencarter,
+        url: mia,
       },
       {
         name: "Tom Mitchell",
@@ -258,7 +261,7 @@ import { dayThreeMorning } from "../../mainData";
           <Flex h={"88vh"}>
             <Box
               h={"88vh"}
-              w={"20%"}
+              w={"13%"}
               borderRight={"1px solid black"}
               overflow={"auto"}
             >
@@ -317,13 +320,11 @@ import { dayThreeMorning } from "../../mainData";
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                  It was a typical February Monday night, and the CIO is just
-                  about to leave the office. when he received a call inviting
-                  him to a conference call concern a problem at the data center.
+                Morning light filters into the office. Ben Carter looks weary. He's on a teleconference with the company's Leadership Team.
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>
-                Day1 Morning
+                Day3 Morning
               </Text>
               <Box
                 w={"90%"}

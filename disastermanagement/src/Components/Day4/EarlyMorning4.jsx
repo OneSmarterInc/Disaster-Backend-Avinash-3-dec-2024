@@ -12,11 +12,15 @@ import {
   import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
   import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
   import Cookies from "js-cookie";
-  import bencarter from "./bencarter.png";
   import "../Day1/BringDown.css";
   import { CSSTransition, TransitionGroup } from "react-transition-group";
   import Morning5 from "../Day5/Morning5";
 import { dayFourMorning } from "../../mainData";
+import bencarter from "../userImages/bencarter.png";
+import sophia from "../userImages/sophia_kim.png"
+import kate from "../userImages/kate_sullivan.png"
+import mia from "../userImages/Mia Rodriguez.png"
+import gajji from "../userImages/gajji.png"
   
   const EarlyMorning4 = () => {
     const [chatData, setChatData] = useState([]);
@@ -159,11 +163,11 @@ import { dayFourMorning } from "../../mainData";
       },
       {
         name: "Gajji",
-        url: bencarter,
+        url: gajji,
       },
       {
         name: "Kate Sullivan",
-        url: bencarter,
+        url: kate,
       },
       {
         name: "Liam Turner",
@@ -171,11 +175,11 @@ import { dayFourMorning } from "../../mainData";
       },
       {
         name: "Sophia Kim",
-        url: bencarter,
+        url: sophia,
       },
       {
         name: "Mia Rodriguez",
-        url: bencarter,
+        url: mia,
       },
       {
         name: "System One Developer #1",
@@ -257,7 +261,7 @@ import { dayFourMorning } from "../../mainData";
           <Flex h={"88vh"}>
             <Box
               h={"88vh"}
-              w={"20%"}
+              w={"13%"}
               borderRight={"1px solid black"}
               overflow={"auto"}
             >
@@ -316,13 +320,11 @@ import { dayFourMorning } from "../../mainData";
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                  It was a typical February Monday night, and the CIO is just
-                  about to leave the office. when he received a call inviting
-                  him to a conference call concern a problem at the data center.
+                Gajji's team begins their work, replacing the corrupted files. The room's screens display lines of code and logs. The atmosphere is thick with anticipation.
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>
-                Day1 Morning
+                Day4 Early Morning
               </Text>
               <Box
                 w={"90%"}

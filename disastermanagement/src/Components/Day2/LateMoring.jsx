@@ -12,7 +12,6 @@ import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
-import bencarter from "./bencarter.png"
 import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router";
@@ -20,6 +19,10 @@ import BringDown from "../Day1/Day1Evening";
 import EarlyMorning from "./EarlyMorning";
 import Morning from "../Day3/Morning";
 import { dayTwoLateMorning } from "../../mainData";
+import bencarter from "../userImages/bencarter.png";
+import sophia from "../userImages/sophia_kim.png"
+import kate from "../userImages/kate_sullivan.png"
+import mia from "../userImages/Mia Rodriguez.png"
 
 const LateMorning = () => {
   const [chatData, setChatData] = useState([]);
@@ -164,7 +167,7 @@ const LateMorning = () => {
     },
     {
       name: "Kate Sullivan",
-      url: bencarter,
+      url: kate,
     },
     {
       name: "Liam Turner",
@@ -172,11 +175,11 @@ const LateMorning = () => {
     },
     {
       name: "Sophia Kim",
-      url: bencarter,
+      url: sophia,
     },
     {
       name: "Mia Rodriguez",
-      url: bencarter,
+      url: mia,
     }
   ];
 
@@ -251,7 +254,7 @@ const LateMorning = () => {
           <Flex h={"88vh"}>
             <Box
               h={"88vh"}
-              w={"20%"}
+              w={"13%"}
               borderRight={"1px solid black"}
               overflow={"auto"}
             >
@@ -310,13 +313,11 @@ const LateMorning = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                  It was a typical February Monday night, and the CIO is just
-                  about to leave the office. when he received a call inviting
-                  him to a conference call concern a problem at the data center.
+                The office is buzzing with activity. Phones are ringing, and IT professionals are working at their stations.
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>
-                Day1 Morning
+                Day2 Late Morning
               </Text>
               <Box
                 w={"90%"}

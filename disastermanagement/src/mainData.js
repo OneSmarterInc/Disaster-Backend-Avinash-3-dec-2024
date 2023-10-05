@@ -112,8 +112,8 @@ export const dayOneMorning = [
         "You and me both, Ben. We value our partnership with XYZ, and we're just as baffled about this situation. But we're here for you.",
     },
     {
-      sender: "Kate Sullivan (whispering to Ben)",
-      message: "We need to understand their immediate protocols.",
+      sender: "Kate Sullivan",
+      message: "(whispering to Ben) We need to understand their immediate protocols.",
     },
     {
       sender: "Ben Carter",
@@ -275,7 +275,7 @@ export const dayOneMorning = [
     {
       sender: "Ben Carter",
       message:
-        "(looking visibly tired but satisfied) Great job, team. It's been a long day, but we're getting there. Let's keep pushing",
+        "looking visibly tired but satisfied) Great job, team. It's been a long day, but we're getting there. Let's keep pushing",
     },
     {
       sender: "Liam Turner",
@@ -297,9 +297,9 @@ export const dayOneMorning = [
         "(voice slightly strained) Good morning. We've made progress, but ERP remains a challenge",
     },
     {
-      sender: "COO (on call)",
+      sender: "COO",
       message:
-        "): Ben, we've invested heavily in these systems. How did we end up here?",
+        "(on call) Ben, we've invested heavily in these systems. How did we end up here?",
     },
     {
       sender: "Ben Carter",
@@ -311,14 +311,14 @@ export const dayOneMorning = [
         "The office atmosphere is tense. People are visibly tired.",
     },
     {
-      sender: "Mia Rodriguez (sounding exhausted)",
+      sender: "Mia Rodriguez",
       message:
-        "System One ERP is live again.",
+        "(sounding exhausted) System One ERP is live again.",
     },
     {
-      sender: "Kate Sullivan (with a hint of frustration)",
+      sender: "Kate Sullivan",
       message:
-        "This should have been resolved sooner. Why did it take this long?",
+        "(with a hint of frustration) This should have been resolved sooner. Why did it take this long?",
     },
     {
       sender: "Ben Carter",
@@ -334,7 +334,7 @@ export const dayOneMorning = [
       message:
         "The ERP system is down again. This is a nightmare!",
     },
-    { sender: "Sophia Kim (pointedly)", message: "Maybe if we'd received timely updates from the storage vendor, we could've anticipated this." },
+    { sender: "Sophia Kim", message: "(pointedly) Maybe if we'd received timely updates from the storage vendor, we could've anticipated this." },
 
     {
       sender: "Ben Carter",
@@ -349,9 +349,9 @@ export const dayOneMorning = [
       message: "The corruption seems to be in the end of block record.Kate ",
     },
     {
-      sender: "Kate Sullivan (sarcastically)",
+      sender: "Kate Sullivan",
       message:
-        "Oh, another surprise! Were there any other minor details we missed?",
+        "(sarcastically) Oh, another surprise! Were there any other minor details we missed?",
     },
 
     {
@@ -373,14 +373,14 @@ export const dayOneMorning = [
           "After the first failure...",
       },
     {
-      sender: "Mia Rodriguez (frustrated)",
+      sender: "Mia Rodriguez",
       message:
-        "This can't be right! Who validated these backup processes?",
+        "(frustrated) This can't be right! Who validated these backup processes?",
     },
     {
-      sender: "Liam Turner (defensively)",
+      sender: "Liam Turner",
       message:
-        "We've followed protocols to the letter. This isn't a standard issue!",
+        "(defensively) We've followed protocols to the letter. This isn't a standard issue!",
     },
     {
         sender: "Ben Carter",
@@ -390,11 +390,10 @@ export const dayOneMorning = [
   ];
 
   export const dayFourMorning = [
-    { message:"Gajji's team begins their work, replacing the corrupted files. The room's screens display lines of code and logs. The atmosphere is thick with anticipation."},
     {
-      sender: "Sophia Kim (whispering to Kate)",
+      sender: "Sophia Kim",
       message:
-        "Are we sure this is going to work? If it doesn't...",
+        "(whispering to Kate) Are we sure this is going to work? If it doesn't...",
     },
     {
       sender: "Kate Sullivan",
@@ -418,14 +417,14 @@ export const dayOneMorning = [
           "Everyone watches with bated breath. Minutes feel like hours.",
       },
     {
-      sender: "System One Developer #2 (murmuring to Gajji)",
+      sender: "System One Developer #2",
       message:
-        "There's a minor glitch. The file from Site 2 isn't syncing as expected.",
+        "(murmuring to Gajji) There's a minor glitch. The file from Site 2 isn't syncing as expected.",
     },
     {
-      sender: "Gajji (firmly)",
+      sender: "Gajji",
       message:
-        "Find a workaround. We can't afford a full stop here.",
+        "(firmly) Find a workaround. We can't afford a full stop here.",
     },
     {
         message:
@@ -435,7 +434,7 @@ export const dayOneMorning = [
       message:
         "(to Gajji) Time's ticking, Gajji. How are we looking?",
     },
-    { sender: "Gajji (calmly)", message: "Challenges are expected, Ben. We'll get through this." },
+    { sender: "Gajji", message: "(calmly) Challenges are expected, Ben. We'll get through this." },
 
     {
         message:
@@ -462,19 +461,19 @@ export const dayOneMorning = [
         "(sighing with profound relief) Gajji, you and your team are magicians.",
     },
     {
-        sender: "Gajji (smiling)",
+        sender: "Gajji",
         message:
-          "No magic, just determination and teamwork.",
+          "(smiling) No magic, just determination and teamwork.",
       },
     {
-      sender: "Mia Rodriguez (frustrated)",
+      sender: "Mia Rodriguez",
       message:
-        "This can't be right! Who validated these backup processes?",
+        "(frustrated) This can't be right! Who validated these backup processes?",
     },
     {
-      sender: "Liam Turner (defensively)",
+      sender: "Liam Turner",
       message:
-        "We've followed protocols to the letter. This isn't a standard issue!",
+        "(defensively) We've followed protocols to the letter. This isn't a standard issue!",
     },
     {
         sender: "Ben Carter",
@@ -490,8 +489,8 @@ export const dayOneMorning = [
         "At noon, that the recovery process was complete.  At 4:00PM, an announcement went out that the crisis was over.",
     },
     {
-      sender: "Kate Sullivan (looking at the systems dashboard)",
-      message: "Everything seems stable. We're almost there.",
+      sender: "Kate Sullivan",
+      message: "(looking at the systems dashboard) Everything seems stable. We're almost there.",
     },
     {
       sender: "Liam Turner",
@@ -510,9 +509,9 @@ export const dayOneMorning = [
     },
 
     {
-      sender: "Ben Carter (voice filled with emotion)",
+      sender: "Ben Carter",
       message:
-        "Team, as of now, the recovery process is complete. We've weathered the storm.",
+        "(voice filled with emotion) Team, as of now, the recovery process is complete. We've weathered the storm.",
     },
     {
       message:
@@ -548,21 +547,21 @@ export const dayOneMorning = [
       message: "Validation complete. Everything looks good. ERP is back up!",
     },
     {
-      sender: "Ben Carter (sighing with profound relief)",
-      message: "Gajji, you and your team are magicians.",
+      sender: "Ben Carter",
+      message: "(sighing with profound relief) Gajji, you and your team are magicians.",
     },
     {
-      sender: "Gajji (smiling)",
-      message: "No magic, just determination and teamwork.",
+      sender: "Gajji",
+      message: "(smiling) No magic, just determination and teamwork.",
     },
     {
-      sender: "Mia Rodriguez (frustrated)",
-      message: "This can't be right! Who validated these backup processes?",
+      sender: "Mia Rodriguez",
+      message: "(frustrated) This can't be right! Who validated these backup processes?",
     },
     {
-      sender: "Liam Turner (defensively)",
+      sender: "Liam Turner",
       message:
-        "We've followed protocols to the letter. This isn't a standard issue!",
+        "(defensively) We've followed protocols to the letter. This isn't a standard issue!",
     },
     {
       sender: "Ben Carter",

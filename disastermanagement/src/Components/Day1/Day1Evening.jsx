@@ -18,7 +18,10 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router";
 import EarlyMorning from "../Day2/EarlyMorning";
 import { dayOneEvening } from "../../mainData";
-import bencarter from "./bencarter.png";
+import bencarter from "../userImages/bencarter.png";
+import sophia from "../userImages/sophia_kim.png"
+import kate from "../userImages/kate_sullivan.png"
+import mia from "../userImages/Mia Rodriguez.png"
 
 const BringDown = () => {
   const [chatData, setChatData] = useState([]);
@@ -163,7 +166,7 @@ const BringDown = () => {
     },
     {
       name: "Kate Sullivan",
-      url: bencarter,
+      url: kate,
     },
     {
       name: "Liam Turner",
@@ -171,11 +174,11 @@ const BringDown = () => {
     },
     {
       name: "Sophia Kim",
-      url: bencarter,
+      url: sophia,
     },
     {
       name: "Mia Rodriguez",
-      url: bencarter,
+      url: mia,
     },
     {
       name: "Julia Harper",
@@ -254,7 +257,7 @@ const BringDown = () => {
           <Flex h={"88vh"}>
             <Box
               h={"88vh"}
-              w={"20%"}
+              w={"13%"}
               borderRight={"1px solid black"}
               overflow={"auto"}
             >
@@ -313,9 +316,7 @@ const BringDown = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                  It was a typical February Monday night, and the CIO is just
-                  about to leave the office. when he received a call inviting
-                  him to a conference call concern a problem at the data center.
+                Ben Carter rubs his temples, trying to process the magnitude of the situation.
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>

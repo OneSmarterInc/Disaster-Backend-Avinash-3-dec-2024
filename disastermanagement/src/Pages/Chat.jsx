@@ -24,6 +24,7 @@ import day1morning from "../Images/chatbg/day1morning.png";
 import Morning5 from "../Components/Day5/Morning5";
 import bencarter from "../Images/org/bencarter.png";
 import { dayOneMorning } from "../mainData";
+import kate from "../Images/org/kate_sullivan.png"
 
 const Chat = () => {
   const [chatData, setChatData] = useState([]);
@@ -170,7 +171,7 @@ const Chat = () => {
     },
     {
       name: "Kate Sullivan",
-      url: bencarter,
+      url: kate,
     },
   ];
 
@@ -244,7 +245,7 @@ const Chat = () => {
           <Flex h={"88vh"}>
             <Box
               h={"88vh"}
-              w={"20%"}
+              w={"13%"}
               borderRight={"1px solid black"}
               overflow={"auto"}
               bgColor="#948888"
@@ -304,9 +305,7 @@ const Chat = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                  It was a typical February Monday night, and the CIO is just
-                  about to leave the office. when he received a call inviting
-                  him to a conference call concern a problem at the data center.
+                The office of Ben Carter. He's wrapping up for the day, shutting down his computer and gathering his things.
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>

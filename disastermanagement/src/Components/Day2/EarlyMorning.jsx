@@ -18,7 +18,11 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router";
 import LateMorning from "./LateMoring";
 import { dayTwoEarlyMorning } from "../../mainData";
-import bencarter from "./bencarter.png"
+import bencarter from "../userImages/bencarter.png";
+import sophia from "../userImages/sophia_kim.png"
+import kate from "../userImages/kate_sullivan.png"
+import mia from "../userImages/Mia Rodriguez.png"
+
 
 const EarlyMorning = () => {
   const [chatData, setChatData] = useState([]);
@@ -163,7 +167,7 @@ const EarlyMorning = () => {
     },
     {
       name: "Kate Sullivan",
-      url: bencarter,
+      url: kate,
     },
     {
       name: "Liam Turner",
@@ -171,11 +175,11 @@ const EarlyMorning = () => {
     },
     {
       name: "Sophia Kim",
-      url: bencarter,
+      url: sophia,
     },
     {
       name: "Mia Rodriguez",
-      url: bencarter,
+      url: mia,
     },
     {
       name: "Julia Harper",
@@ -269,7 +273,7 @@ const EarlyMorning = () => {
           <Flex h={"88vh"}>
             <Box
               h={"88vh"}
-              w={"20%"}
+              w={"13%"}
               borderRight={"1px solid black"}
               overflow={"auto"}
             >
@@ -328,9 +332,7 @@ const EarlyMorning = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                  It was a typical February Monday night, and the CIO is just
-                  about to leave the office. when he received a call inviting
-                  him to a conference call concern a problem at the data center.
+                Ben Carter is on the phone with Tom Mitchell, the VP of Customer Services from the storage vendor.
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>

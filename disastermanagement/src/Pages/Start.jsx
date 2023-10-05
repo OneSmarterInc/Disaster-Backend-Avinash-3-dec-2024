@@ -2,6 +2,7 @@ import { Box, Flex, Heading, Image } from '@chakra-ui/react'
 import React from 'react'
 import disasterLogo from "../Images/disasterLogo.png"
 import Sidebar from '../Components/Sidebar'
+import {AiOutlineMail} from "react-icons/ai"
 
 const Start = () => {
   return (
@@ -9,18 +10,20 @@ const Start = () => {
     <Flex
       bgColor="#691212"
       fontFamily={"Croissant One"}
-      justifyContent={"flex-start"}
+      justifyContent={"space-between"}
       alignItems={"center"}
       w={"100%"}
       m={"auto"}
       border={"1px solid black"}
       h={"20"}
       pl={5}
+      pr={5}
       color={"white"}
     >
-      <Heading fontFamily={"Croissant One"} fontStyle={"italic"}>
+      <Heading fontFamily={"Fredoka"} >
         Disaster Recovery Business Case
       </Heading>
+      <AiOutlineMail size={'30px'} cursor={'pointer'}/>
     </Flex>
     <Box
       fontFamily={"Fredoka"}

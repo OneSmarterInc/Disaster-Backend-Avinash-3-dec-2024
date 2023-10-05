@@ -245,7 +245,7 @@ const Chat = () => {
           <Flex h={"88vh"}>
             <Box
               h={"88vh"}
-              w={"13%"}
+              w={"20%"}
               borderRight={"1px solid black"}
               overflow={"auto"}
               bgColor="#948888"

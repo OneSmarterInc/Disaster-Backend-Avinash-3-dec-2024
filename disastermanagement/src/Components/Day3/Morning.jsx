@@ -164,7 +164,7 @@ import mia from "../userImages/Mia Rodriguez.png"
         url: bencarter,
       },
       {
-        name: "COO",
+        name: "Aisha Patel",
         url: bencarter,
       },
       {

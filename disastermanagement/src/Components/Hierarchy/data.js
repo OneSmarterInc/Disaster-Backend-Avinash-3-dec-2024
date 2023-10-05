@@ -1,3 +1,14 @@
+import bencarter from "../userImages/bencarter.png";
+import kate from "../userImages/kate_sullivan.png";
+import sophia from "../userImages/sophia_kim.png";
+import mia from "../userImages/Mia Rodriguez.png";
+import aisha from "../userImages/Aishapatel.png";
+import chloe from "../userImages/ChiocZang.png";
+import elena from "../userImages/ElenaLvanova.png";
+import jabari from "../userImages/jabarinkosi.png";
+import priya from "../userImages/priyanarayana.png";
+import tariq from "../userImages/Rarqalhashim.png";
+
 export const ORGDATA = {
     name: "Carlos Mendoza",
     role: "Chief Executive Officer",
@@ -7,25 +18,25 @@ export const ORGDATA = {
       {
         name: "Aisha Patel",
         role: "Chief Operating Officer",
-        img: "https://gumlet.assettype.com/barandbench%2Fimport%2F2018%2F05%2FScreen-Shot-2018-05-31-at-4.14.18-PM.png?auto=format%2Ccompress&fit=max&w=400&dpr=2.6",
+        img: aisha,
       },
       {
         name: "Ben Carter",
         role: "Chief Information Officer",
         img:
-          "https://gumlet.assettype.com/barandbench%2Fimport%2F2018%2F05%2FScreen-Shot-2018-05-31-at-4.14.18-PM.png?auto=format%2Ccompress&fit=max&w=400&dpr=2.6",
+          bencarter,
         child: [
           {
             name: "Chloe Zhang",
             role: "IT Director",
             img:
-              "https://gumlet.assettype.com/barandbench%2Fimport%2F2018%2F05%2FScreen-Shot-2018-05-31-at-4.14.18-PM.png?auto=format%2Ccompress&fit=max&w=400&dpr=2.6",
+              chloe,
             child: [
               {
                 name: "Kate Sullivan",
                 role: "IT Manager",
                 img:
-                  "https://gumlet.assettype.com/barandbench%2Fimport%2F2018%2F05%2FScreen-Shot-2018-05-31-at-4.14.18-PM.png?auto=format%2Ccompress&fit=max&w=400&dpr=2.6",
+                  kate,
                 child: [
                   {
                     name: "Liam Turner",
@@ -38,14 +49,14 @@ export const ORGDATA = {
                     name: "Mia Rodriguez",
                     role: "Network Specialist",
                     img:
-                      "https://gumlet.assettype.com/barandbench%2Fimport%2F2018%2F05%2FScreen-Shot-2018-05-31-at-4.14.18-PM.png?auto=format%2Ccompress&fit=max&w=400&dpr=2.6",
+                      mia,
                     // child: []
                   },
                   {
                     name: "Sophia Kim",
                     role: "Database Administrator",
                     img:
-                      "https://gumlet.assettype.com/barandbench%2Fimport%2F2018%2F05%2FScreen-Shot-2018-05-31-at-4.14.18-PM.png?auto=format%2Ccompress&fit=max&w=400&dpr=2.6",
+                      sophia,
                     // child: []
                   }
                 ]
@@ -54,14 +65,14 @@ export const ORGDATA = {
                 name: "Jabari Nkosi ",
                 role: "IT Infrastructure Head",
                 img:
-                  "https://gumlet.assettype.com/barandbench%2Fimport%2F2018%2F05%2FScreen-Shot-2018-05-31-at-4.14.18-PM.png?auto=format%2Ccompress&fit=max&w=400&dpr=2.6",
+                  jabari,
                 // child: []
               },
               {
                 name: "Tariq Al-Hashim",
                 role: "IT Security Head",
                 img:
-                  "https://gumlet.assettype.com/barandbench%2Fimport%2F2018%2F05%2FScreen-Shot-2018-05-31-at-4.14.18-PM.png?auto=format%2Ccompress&fit=max&w=400&dpr=2.6",
+                  tariq,
                 // child: []
               }
             ]
@@ -71,9 +82,8 @@ export const ORGDATA = {
       {
         name: "Elena Ivanova",
         role: "Chief Financial Officer",
-        img:
-          "https://film-book.com/wp-content/uploads/2022/06/Matt-Dillon-Smiling-Close-Up-01-700x400-1.jpg",
-      },
+        img:elena
+                  },
       {
         name: "Lucas Oliveira",
         role: "Chief Marketing Officer",
@@ -83,9 +93,8 @@ export const ORGDATA = {
       {
         name: "Priya Narayanan",
         role: "Chief Human Resources Officer",
-        img:
-          "https://film-book.com/wp-content/uploads/2022/06/Matt-Dillon-Smiling-Close-Up-01-700x400-1.jpg",
-      }
+        img: priya
+                  }
     ]
   };
   

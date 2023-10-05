@@ -420,7 +420,7 @@ const Morning5 = () => {
                   <>
                     <Box
                       bg={"white"}
-                      h={"650px"}
+                      p={10}
                       w={"60%"}
                       m={"auto"}
                       mt={"50px"}
@@ -704,7 +704,6 @@ const Morning5 = () => {
                   <>
                     <Box
                       bg={"white"}
-                      h={"650px"}
                       w={"60%"}
                       m={"auto"}
                       mt={"50px"}

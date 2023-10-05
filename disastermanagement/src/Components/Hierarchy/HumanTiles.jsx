@@ -4,7 +4,7 @@ const HumanTiles = ({ data }) => {
   return (
     <Box
       borderRadius="8px"
-      bg="white"
+      bg="#948888"
       display="inline-block"
       border={"0px solid red"}
       p={2}
@@ -13,7 +13,7 @@ const HumanTiles = ({ data }) => {
         <Avatar src={data.url} boxSize={20} borderRadius="50%" />
         <Box textAlign="center">
           <Text fontWeight="600">{data.name}</Text>
-          <Text color="#475467" fontSize="12px">
+          <Text color="black" fontSize="12px">
             {data.designation}
           </Text>
         </Box>

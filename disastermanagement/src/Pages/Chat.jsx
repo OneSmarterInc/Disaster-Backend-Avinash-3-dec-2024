@@ -24,7 +24,7 @@ import day1morning from "../Images/chatbg/day1morning.png";
 import Morning5 from "../Components/Day5/Morning5";
 import bencarter from "../Images/org/bencarter.png";
 import { dayOneMorning } from "../mainData";
-import kate from "../Images/org/kate_sullivan.png"
+import kate from "../Images/org/kate_sullivan.png";
 
 const Chat = () => {
   const [chatData, setChatData] = useState([]);
@@ -178,7 +178,7 @@ const Chat = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
 
-    const messageDelay = 500; // 4 seconds
+    const messageDelay = 4000; // 4 seconds
 
     let timeoutIndex = 0;
 
@@ -250,7 +250,7 @@ const Chat = () => {
               overflow={"auto"}
               bgColor="#948888"
             >
-              <Box  pt={3} borderBottom={"1px solid black"}>
+              <Box pt={3} borderBottom={"1px solid black"}>
                 {users.map((el) => {
                   return (
                     <Box borderBottom={"1px solid black"} key={el}>
@@ -305,7 +305,8 @@ const Chat = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                The office of Ben Carter. He's wrapping up for the day, shutting down his computer and gathering his things.
+                  The office of Ben Carter. He's wrapping up for the day,
+                  shutting down his computer and gathering his things.
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>
@@ -377,7 +378,7 @@ const Chat = () => {
                     <>
                       <Box
                         bg={"white"}
-                        h={"650px"}
+                        pb={10}
                         w={"60%"}
                         m={"auto"}
                         mt={"50px"}
@@ -660,13 +661,7 @@ const Chat = () => {
 
                   {showBox && (
                     <>
-                      <Box
-                        bg={"white"}
-                        h={"600px"}
-                        w={"60%"}
-                        m={"auto"}
-                        mt={"50px"}
-                      >
+                      <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
                           w={"80%"}
                           m={"auto"}

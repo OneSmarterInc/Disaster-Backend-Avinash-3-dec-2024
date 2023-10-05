@@ -392,7 +392,7 @@ import mia from "../userImages/Mia Rodriguez.png"
                     <>
                       <Box
                         bg={"white"}
-                        h={"650px"}
+                        p={10}
                         w={"60%"}
                         m={"auto"}
                         mt={"50px"}
@@ -677,7 +677,6 @@ import mia from "../userImages/Mia Rodriguez.png"
                     <>
                       <Box
                         bg={"white"}
-                        h={"600px"}
                         w={"60%"}
                         m={"auto"}
                         mt={"50px"}

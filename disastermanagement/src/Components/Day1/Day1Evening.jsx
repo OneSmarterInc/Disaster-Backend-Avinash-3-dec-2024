@@ -19,9 +19,9 @@ import { useNavigate } from "react-router";
 import EarlyMorning from "../Day2/EarlyMorning";
 import { dayOneEvening } from "../../mainData";
 import bencarter from "../userImages/bencarter.png";
-import sophia from "../userImages/sophia_kim.png"
-import kate from "../userImages/kate_sullivan.png"
-import mia from "../userImages/Mia Rodriguez.png"
+import sophia from "../userImages/sophia_kim.png";
+import kate from "../userImages/kate_sullivan.png";
+import mia from "../userImages/Mia Rodriguez.png";
 
 const BringDown = () => {
   const [chatData, setChatData] = useState([]);
@@ -157,8 +157,6 @@ const BringDown = () => {
     }
   };
 
- 
-
   const users = [
     {
       name: "Ben Carter",
@@ -219,7 +217,6 @@ const BringDown = () => {
     // Scroll to the bottom after chatData changes
     scrollToBottom();
   }, [chatData]);
-
 
   useLayoutEffect(() => {
     // Scroll to the bottom when showBox becomes true
@@ -316,7 +313,8 @@ const BringDown = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                Ben Carter rubs his temples, trying to process the magnitude of the situation.
+                  Ben Carter rubs his temples, trying to process the magnitude
+                  of the situation.
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>
@@ -386,13 +384,7 @@ const BringDown = () => {
                   })}
                   {showBox && (
                     <>
-                      <Box
-                        bg={"white"}
-                        h={"650px"}
-                        w={"60%"}
-                        m={"auto"}
-                        mt={"50px"}
-                      >
+                      <Box bg={"white"} p={10} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
                           w={"80%"}
                           m={"auto"}
@@ -671,13 +663,7 @@ const BringDown = () => {
 
                   {showBox && (
                     <>
-                      <Box
-                        bg={"white"}
-                        h={"600px"}
-                        w={"60%"}
-                        m={"auto"}
-                        mt={"50px"}
-                      >
+                      <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
                           w={"80%"}
                           m={"auto"}

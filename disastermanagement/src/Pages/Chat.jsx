@@ -178,7 +178,7 @@ const Chat = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
 
-    const messageDelay = 500; // 4 seconds
+    const messageDelay = 4000; // 4 seconds
 
     let timeoutIndex = 0;
 
@@ -245,7 +245,7 @@ const Chat = () => {
           <Flex h={"88vh"}>
             <Box
               h={"88vh"}
-              w={"13%"}
+              w={"20%"}
               borderRight={"1px solid black"}
               overflow={"auto"}
               bgColor="#948888"

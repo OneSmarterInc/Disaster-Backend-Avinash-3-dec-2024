@@ -320,8 +320,10 @@ import mia from "../userImages/Mia Rodriguez.png"
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                Morning light filters into the office. Ben Carter looks weary. He's on a teleconference with the company's Leadership Team.
-                </Text>
+                Morning light filters into the office, 
+                casting a soft glow on the tired face of 
+                Ben Carter. He's on a teleconference with the 
+                company's Leadership Team.                </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>
                 Day3 Morning

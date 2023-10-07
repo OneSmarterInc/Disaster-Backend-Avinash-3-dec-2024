@@ -135,10 +135,6 @@ export const dayOneMorning = [
       message: "We're on it, Ben. We'll navigate this together",
     },
     {
-      message:
-        "After briefing the CEO, Ben Carter gets back on the call with Julia Harper from the vendor's team.",
-    },
-    {
       sender: "Ben Carter",
       message:
         "Julia, our CEO is understandably concerned. We've always spoken highly of your systems, and this has caught us off guard.",
@@ -168,10 +164,6 @@ export const dayOneMorning = [
       message: "Thanks, Julia. We're counting on your team.",
     },
     { sender: "Julia Harper", message: "We won't let you down, Ben." },
-    {
-      message:
-        "Before making the decision to proceed, Ben Carter has another call with Tom Mitchell",
-    },
     {
       sender: "Ben Carter",
       message:

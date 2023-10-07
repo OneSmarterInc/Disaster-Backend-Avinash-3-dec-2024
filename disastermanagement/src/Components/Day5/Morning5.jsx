@@ -16,27 +16,28 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import EarlyMorning from "../Day2/EarlyMorning";
 import { dayFiveMorning } from "../../mainData";
 import bencarter from "../userImages/bencarter.png";
-import sophia from "../userImages/sophia_kim.png"
-import kate from "../userImages/kate_sullivan.png"
-import mia from "../userImages/Mia Rodriguez.png"
+import sophia from "../userImages/sophia_kim.png";
+import kate from "../userImages/kate_sullivan.png";
+import mia from "../userImages/Mia Rodriguez.png";
 
 const Morning5 = () => {
-  const [chatData, setChatData] = useState([]);
+  // const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
+  const [showBox2, setShowBox2] = useState(false);
   const [explaination, setExplanation] = useState("");
   const [value, setValue] = useState(null);
   const [value1, setValue1] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
   const [day5Popup, setDay5Popup] = useState(true);
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
 
-  const [isChatPaused, setIsChatPaused] = useState(false);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
+  const [chatPaused, setChatPaused] = useState(false);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -99,7 +100,8 @@ const Morning5 = () => {
 
   const handleClick2 = () => {
     setIsModalOpen1(false);
-    setIsModalOpen2(true);
+    setShowBox2(true)
+    // setIsModalOpen2(true);
     if (
       value1 ===
       "Weaknesses in the system that can be exploited, leading to potential disasters"
@@ -190,42 +192,49 @@ const Morning5 = () => {
 
   // Simulate messages from 5 users with a 2-second delay between each message
 
-  const messageDelay = 500; // 4 seconds
+  // const messageDelay = 2000; // 4 seconds
 
-  let timeoutIndex = 0;
+  // let timeoutIndex = 0;
 
-  const addMessageWithDelay = () => {
-    if (timeoutIndex < dayFiveMorning.length) {
-      const message = dayFiveMorning[timeoutIndex];
-      setChatData((prevChatData) => [...prevChatData, message]);
-      setActiveUser(message.sender);
-      timeoutIndex++;
-      if (message.sender === "Communications Lead") {
-        // Pause the chat and show the popup
-        setIsChatPaused(true);
-        setShowPopup(true);
-      } else if (!isChatPaused) {
-        setTimeout(addMessageWithDelay, messageDelay);
-      }
-    } else {
-      setShowBox(true);
-    }
-  };
-  useEffect(() => {
-    addMessageWithDelay();
+  // let flag = false;
+  // const addMessageWithDelay = () => {
+  //   if (timeoutIndex < dayFiveMorning.length) {
+  //     const message = dayFiveMorning[timeoutIndex];
+  //     setChatData((prevChatData) => [...prevChatData, message]);
+  //     setActiveUser(message.sender);
+  //     timeoutIndex++;
+  //     // setTimeoutIndex((prev)=>prev+1);
+  //     console.log(timeoutIndex);
 
-    // Call scrollToBottom when children change or initially
-    // scrollToBottom();
+  //     if (message.sender === "Communications Lead") {
+  //       // Pause the chat and show the popup
+  //       setIsChatPaused(true);
+  //       setShowAnnouncement(true);
+  //       setTimeoutIndex(timeoutIndex);
+  //       // timeoutIndex++;
+  //       // console.log(timeoutIndex);
+  //     } else if (!isChatPaused) {
+  //       setTimeout(addMessageWithDelay, messageDelay);
+  //     }
+  //   } else {
+  //     setShowBox(true);
+  //   }
+  // };
+  // useEffect(() => {
+  //   addMessageWithDelay();
 
-    return () => {
-      clearTimeout(addMessageWithDelay);
-    };
-  }, []);
+  //   // Call scrollToBottom when children change or initially
+  //   // scrollToBottom();
+
+  //   return () => {
+  //     clearTimeout(addMessageWithDelay);
+  //   };
+  // }, [flag]);
 
   useLayoutEffect(() => {
     // Scroll to the bottom after chatData changes
     scrollToBottom();
-  }, [chatData]);
+  }, [currentMessageIndex]);
 
   useLayoutEffect(() => {
     // Scroll to the bottom when showBox becomes true
@@ -234,16 +243,47 @@ const Morning5 = () => {
     }
   }, [showBox]);
 
-  const handlePopupClose = () => {
-    // Close the popup and resume the chat
-    // setShowPopup(false);
-    // onClose();
-    setDay5Popup(false);
-    setIsChatPaused(false);
-    // Resume the chat by calling addMessageWithDelay
+  useLayoutEffect(() => {
+    // Scroll to the bottom when showBox becomes true
+    if (showBox2) {
+      scrollToBottom();
+    }
+  }, [showBox2]);
 
-    addMessageWithDelay();
+  useEffect(() => {
+    const displayNextMessage = () => {
+      if (!chatPaused && currentMessageIndex < dayFiveMorning.length) {
+        const message = dayFiveMorning[currentMessageIndex];
+        setCurrentMessageIndex((prevIndex) => prevIndex + 1);
+
+        if (message.sender === "Communications Lead") {
+          setShowPopup(true);
+          setChatPaused(true);
+        }
+      }
+      else {
+        if (currentMessageIndex === dayFiveMorning.length) {
+          // The chat has ended completely, set showBox to true
+          setShowBox(true);
+        }
+      }
+    };
+
+    const messageInterval = setInterval(displayNextMessage, 500);
+
+    return () => {
+      clearInterval(messageInterval);
+    };
+  }, [currentMessageIndex, chatPaused]);
+
+  const closePopup = () => {
+    // setShowPopup(false);
+    setDay5Popup(false);
+    // onClose();
+    setChatPaused(false);
   };
+
+ 
   return (
     <>
       <Box
@@ -293,7 +333,9 @@ const Morning5 = () => {
               pb={3}
             >
               <Text fontSize={"20"}>
-              At noon, that the recovery process was complete.  At 4:00PM, an announcement went out that the crisis was over.
+                At 4:00 PM, an announcement went out, spreading like wildfire,
+                declaring that the crisis was over, and a collective sigh of
+                relief echoed throughout the office.{" "}
               </Text>
             </Box>
             <Text fontSize={20} fontWeight={"bold"}>
@@ -320,7 +362,7 @@ const Morning5 = () => {
               pr={5}
             >
               <TransitionGroup>
-                {chatData.map((el, i) => {
+                {dayFiveMorning.slice(0, currentMessageIndex).map((el, i) => {
                   const isCIO = el.sender === "Ben Carter";
                   const senderName = el.sender;
                   const messageClass = isCIO ? "CIO" : "OtherSender";
@@ -374,17 +416,16 @@ const Morning5 = () => {
                   );
                 })}
                 {showPopup && (
-                  <Modal isOpen={day5Popup} onClose={() => setDay5Popup(false)}>
+                  <Modal isOpen={day5Popup}>
                     <ModalOverlay />
                     <ModalContent
                       boxShadow={
                         "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                       }
                     >
-                      <ModalHeader
-                        fontWeight={"bold"}
-                        fontSize={"25px"}
-                      ></ModalHeader>
+                      <ModalHeader fontWeight={"bold"} fontSize={"25px"}>
+                        Announcement
+                      </ModalHeader>
                       <ModalBody fontSize={"18px"}>
                         <Heading>Announcement</Heading>
                         <Text>
@@ -402,7 +443,7 @@ const Morning5 = () => {
                       <ModalFooter>
                         <Button
                           colorScheme="teal"
-                          onClick={handlePopupClose}
+                          onClick={closePopup}
                           textAlign={"center"}
                           fontFamily={"Croissant One"}
                           bg={"black"}
@@ -418,13 +459,7 @@ const Morning5 = () => {
 
                 {showBox && (
                   <>
-                    <Box
-                      bg={"white"}
-                      p={10}
-                      w={"60%"}
-                      m={"auto"}
-                      mt={"50px"}
-                    >
+                    <Box  bg={"white"} p={5} w={"60%"} m={"auto"} mt={"50px"}>
                       <Image
                         w={"80%"}
                         m={"auto"}
@@ -659,7 +694,7 @@ const Morning5 = () => {
                         </ModalContent>
                       </Modal>
 
-                      <Modal
+                      {/* <Modal
                         isOpen={isModalOpen2}
                         onClose={() => setIsModalOpen2(false)}
                       >
@@ -695,19 +730,14 @@ const Morning5 = () => {
                             </Button>
                           </ModalFooter>
                         </ModalContent>
-                      </Modal>
+                      </Modal> */}
                     </Box>
                   </>
                 )}
 
-                {showBox && (
+                {showBox2 && (
                   <>
-                    <Box
-                      bg={"white"}
-                      w={"60%"}
-                      m={"auto"}
-                      mt={"50px"}
-                    >
+                    <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"}>
                       <Image
                         w={"80%"}
                         m={"auto"}

@@ -320,8 +320,9 @@ import gajji from "../userImages/gajji.png"
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                Gajji's team begins their work, replacing the corrupted files. The room's screens display lines of code and logs. The atmosphere is thick with anticipation.
-                </Text>
+                Gajji's team begins their work, replacing
+                the corrupted files. The room's screens display
+                lines of code and logs. The atmosphere is thick with anticipation.                </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>
                 Day4 Early Morning

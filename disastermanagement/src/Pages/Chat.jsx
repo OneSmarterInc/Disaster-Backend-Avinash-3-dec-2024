@@ -30,6 +30,7 @@ const Chat = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
+  const [showBox2, setShowBox2] = useState(false);
   const [value, setValue] = useState(null);
   const [value1, setValue1] = useState(null);
 
@@ -40,7 +41,6 @@ const Chat = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
-  const [showUser, setShowUser] = useState(true);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -52,7 +52,6 @@ const Chat = () => {
   };
 
   const handleClick = () => {
-    setShowUser(false);
 
     if (value === "Making clear and swift decisions under pressure") {
       Cookies.set("day1marks", "1");
@@ -101,12 +100,16 @@ const Chat = () => {
     setValue1(value1);
     setIsModalOpen1(true);
 
+    // setShowBox(false)
     //  console.log(value);
   };
 
   const handleClick2 = () => {
     setIsModalOpen1(false);
-    setIsModalOpen2(true);
+    setShowBox(false);
+
+    // setShowBox2(true)
+   console.log(showBox);
     if (
       value1 ===
       "Weaknesses in the system that can be exploited, leading to potential disasters"
@@ -157,6 +160,10 @@ const Chat = () => {
     //  console.log( cookieex);
   };
 
+  const handleModel = ()=>{
+    setIsModalOpen2(false);
+    setShowBox2(true)
+  }
   const scrollToBottom = () => {
     const container = chatContainerRef.current;
     if (container) {
@@ -178,7 +185,7 @@ const Chat = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
 
-    const messageDelay = 4000; // 4 seconds
+    const messageDelay = 500; // 4 seconds
 
     let timeoutIndex = 0;
 
@@ -189,7 +196,8 @@ const Chat = () => {
         setActiveUser(message.sender);
         timeoutIndex++;
         setTimeout(addMessageWithDelay, messageDelay);
-      } else {
+      }
+       else {
         setShowBox(true);
       }
     };
@@ -220,7 +228,7 @@ const Chat = () => {
     <>
       {modalValue ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <BringDown />
+        <Morning5 />
       ) : modalValue === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : modalValue === "Remaining calm and level-headed during challenges" ? (
@@ -245,7 +253,7 @@ const Chat = () => {
           <Flex h={"88vh"}>
             <Box
               h={"88vh"}
-              w={"20%"}
+              w={"13%"}
               borderRight={"1px solid black"}
               overflow={"auto"}
               bgColor="#948888"
@@ -305,8 +313,10 @@ const Chat = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                  The office of Ben Carter. He's wrapping up for the day,
-                  shutting down his computer and gathering his things.
+                The office of Ben Carter. He's wrapping up for the day,
+                shutting down his computer,gathering
+                his things, and exchanging a few words with his colleagues
+                before heading out.
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>
@@ -377,16 +387,17 @@ const Chat = () => {
                   {showBox && (
                     <>
                       <Box
-                        bg={"white"}
+                        bg={"#948888"}
                         pb={10}
                         w={"60%"}
                         m={"auto"}
                         mt={"50px"}
+                        
                       >
                         <Image
                           w={"80%"}
                           m={"auto"}
-                          src="https://www.timefixed.com/static/img/app.3b5132a.gif"
+                          src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
                         />
                         <Flex
                           className="box"
@@ -618,7 +629,7 @@ const Chat = () => {
                           </ModalContent>
                         </Modal>
 
-                        <Modal
+                        {/* <Modal
                           isOpen={isModalOpen2}
                           onClose={() => setIsModalOpen2(false)}
                         >
@@ -643,7 +654,9 @@ const Chat = () => {
                             <ModalFooter>
                               <Button
                                 colorScheme="teal"
-                                onClick={() => setIsModalOpen2(false)}
+                                onClick={handleModel}
+                                
+                                  
                                 textAlign={"center"}
                                 fontFamily={"Croissant One"}
                                 bg={"black"}
@@ -654,18 +667,18 @@ const Chat = () => {
                               </Button>
                             </ModalFooter>
                           </ModalContent>
-                        </Modal>
+                        </Modal> */}
                       </Box>
                     </>
                   )}
 
                   {showBox && (
                     <>
-                      <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"}>
+                      <Box bg={"#948888"} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
                           w={"80%"}
                           m={"auto"}
-                          src="https://www.timefixed.com/static/img/hr.5d824eb.gif"
+                          src="https://img.freepik.com/free-vector/business-decisions-concept-illustration_114360-4096.jpg?w=740&t=st=1696672316~exp=1696672916~hmac=0b5a3d793d15d5eccf6f03a04e907baee2f1e59dc4292775fe4e025c871152be"
                         />
                         <Flex
                           className="box"
@@ -885,7 +898,6 @@ const Chat = () => {
                               <br />
                               <Text fontWeight={500}>{value}</Text>
                               <br />
-                              {/* <Input onChange={(e) => setExplanation(e.target.value)} value={explaination} placeholder="Please provide an explanation for your answer" /> */}
                             </ModalBody>
                             <ModalFooter>
                               <Button

@@ -187,7 +187,7 @@ const BringDown = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
 
-    const messageDelay = 500; // 4 seconds
+    const messageDelay = 200; // 4 seconds
 
     let timeoutIndex = 0;
 
@@ -313,8 +313,10 @@ const BringDown = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                  Ben Carter rubs his temples, trying to process the magnitude
-                  of the situation.
+                Ben Carter rubs his temples, trying to process
+                the magnitude of the situation. He can feel the
+                eight of responsibility pressing down on him, 
+                knowing that critical decisions lie ahead.
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>

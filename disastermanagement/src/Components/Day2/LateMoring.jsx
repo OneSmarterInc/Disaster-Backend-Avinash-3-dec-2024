@@ -257,6 +257,7 @@ const LateMorning = () => {
               w={"13%"}
               borderRight={"1px solid black"}
               overflow={"auto"}
+              bgColor="#948888"
             >
               <Box bgColor="#948888" pt={3} borderBottom={"1px solid black"}>
                 {users.map((el) => {
@@ -313,7 +314,10 @@ const LateMorning = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                The office is buzzing with activity. Phones are ringing, and IT professionals are working at their stations.
+                The office is buzzing with activity. 
+                Phones are ringing incessantly, and IT 
+                professionals are working at their stations 
+                with a sense of urgency.
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>

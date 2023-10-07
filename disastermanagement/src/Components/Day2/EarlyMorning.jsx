@@ -12,29 +12,36 @@ import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
-import day2morning from "./day2morning.png"
+import day2morning from "./day2morning.png";
 import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router";
 import LateMorning from "./LateMoring";
 import { dayTwoEarlyMorning } from "../../mainData";
 import bencarter from "../userImages/bencarter.png";
-import sophia from "../userImages/sophia_kim.png"
-import kate from "../userImages/kate_sullivan.png"
-import mia from "../userImages/Mia Rodriguez.png"
-
+import sophia from "../userImages/sophia_kim.png";
+import kate from "../userImages/kate_sullivan.png";
+import mia from "../userImages/Mia Rodriguez.png";
 
 const EarlyMorning = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
+  const [showBox2, setShowBox2] = useState(false);
+
   const [explaination, setExplanation] = useState("");
   const [value, setValue] = useState(null);
   const [value1, setValue1] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [day5Popup, setDay5Popup] = useState(true);
+  const [day5Popup2, setDay5Popup2] = useState(true);
 
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup2,setShowPopup2] = useState(false);
+  const [chatPaused, setChatPaused] = useState(false);
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
 
@@ -158,8 +165,6 @@ const EarlyMorning = () => {
     }
   };
 
-
-
   const users = [
     {
       name: "Ben Carter",
@@ -200,42 +205,27 @@ const EarlyMorning = () => {
     {
       name: "Mr. Williams",
       url: bencarter,
-    }
+    },
   ];
 
-  useEffect(() => {
-    // Simulate messages from 5 users with a 2-second delay between each message
-    
-    const messageDelay = 500; // 4 seconds
+  const closePopup = () => {
+    // setShowPopup(false);
+    setDay5Popup(false);
+    // onClose();
+    setChatPaused(false);
+  };
 
-    let timeoutIndex = 0;
-
-    const addMessageWithDelay = () => {
-      if (timeoutIndex < dayTwoEarlyMorning.length) {
-        const message = dayTwoEarlyMorning[timeoutIndex];
-        setChatData((prevChatData) => [...prevChatData, message]);
-        setActiveUser(message.sender);
-        timeoutIndex++;
-        setTimeout(addMessageWithDelay, messageDelay);
-      } else {
-        setShowBox(true);
-      }
-    };
-
-    addMessageWithDelay();
-
-    // Call scrollToBottom when children change or initially
-    // scrollToBottom();
-
-    return () => {
-      clearTimeout(addMessageWithDelay);
-    };
-  }, []);
+  const closePopup2 = () => {
+    // setShowPopup(false);
+    setDay5Popup2(false);
+    // onClose();
+    setChatPaused(false);
+  };
 
   useLayoutEffect(() => {
     // Scroll to the bottom after chatData changes
     scrollToBottom();
-  }, [chatData]);
+  }, [currentMessageIndex]);
 
   useLayoutEffect(() => {
     // Scroll to the bottom when showBox becomes true
@@ -244,9 +234,49 @@ const EarlyMorning = () => {
     }
   }, [showBox]);
 
+  useLayoutEffect(() => {
+    // Scroll to the bottom when showBox becomes true
+    if (showBox2) {
+      scrollToBottom();
+    }
+  }, [showBox2]);
+
+  useEffect(() => {
+    const displayNextMessage = () => {
+      if (!chatPaused && currentMessageIndex < dayTwoEarlyMorning.length) {
+        const message = dayTwoEarlyMorning[currentMessageIndex];
+        setCurrentMessageIndex((prevIndex) => prevIndex + 1);
+
+        if (currentMessageIndex === 6) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup(true);
+          }, 2000);
+        }
+        else if (currentMessageIndex === 13) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup2(true)
+          }, 2000);
+        }
+      } else {
+        if (currentMessageIndex === dayTwoEarlyMorning.length) {
+          // The chat has ended completely, set showBox to true
+          setShowBox(true);
+        }
+      }
+    };
+
+    const messageInterval = setInterval(displayNextMessage, 500);
+
+    return () => {
+      clearInterval(messageInterval);
+    };
+  }, [currentMessageIndex, chatPaused]);
+
   return (
     <>
-     {modalValue ===
+      {modalValue ===
       "Emphasizing teamwork, both internally and with external partners" ? (
         <LateMorning />
       ) : modalValue === "Making clear and swift decisions under pressure" ? (
@@ -276,6 +306,7 @@ const EarlyMorning = () => {
               w={"13%"}
               borderRight={"1px solid black"}
               overflow={"auto"}
+              bgColor="#948888"
             >
               <Box bgColor="#948888" pt={3} borderBottom={"1px solid black"}>
                 {users.map((el) => {
@@ -332,7 +363,9 @@ const EarlyMorning = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                Ben Carter is on the phone with Tom Mitchell, the VP of Customer Services from the storage vendor.
+                  Ben Carter is on the phone with Tom Mitchell, the VP of
+                  Customer Services from the storage vendor. They engage in a
+                  lengthy conversation, discussing the technical intricacies.
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>
@@ -347,68 +380,133 @@ const EarlyMorning = () => {
                 pr={5}
               >
                 <TransitionGroup>
-                  {chatData.map((el, i) => {
-                    const isCIO = el.sender === "Ben Carter";
-                    const messageClass = isCIO ? "KateSullivan" : "BenCarter";
-                    const alignMessage = isCIO ? "flex-start" : "flex-end";
-                    return (
-                      <CSSTransition
-                        key={i}
-                        classNames="message"
-                        timeout={{ enter: 300, exit: 300 }}
-                      >
-                        <Box
-                          border={"0px solid black"}
-                          w={"100%"}
-                          display="flex"
-                          justifyContent={alignMessage}
-                          className={`message ${messageClass} ${
-                            el.sender === "Ben Carter"
-                              ? "BenCarter"
-                              : "KateSullivan"
-                          }`}
+                  {dayTwoEarlyMorning
+                    .slice(0, currentMessageIndex)
+                    .map((el, i) => {
+                      const isCIO = el.sender === "Ben Carter";
+                      const messageClass = isCIO ? "KateSullivan" : "BenCarter";
+                      const alignMessage = isCIO ? "flex-start" : "flex-end";
+                      return (
+                        <CSSTransition
+                          key={i}
+                          classNames="message"
+                          timeout={{ enter: 300, exit: 300 }}
                         >
-                          <Box border={"0px solid red"} w={"50%"}>
-                            <Box
-                              boxShadow={
-                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                              }
-                              border={"0px solid black"}
-                              bgColor={
-                                el.sender === "Ben Carter"
-                                  ? "#f0f0f0"
-                                  : "#030405"
-                              }
-                              color={
-                                el.sender === "Ben Carter" ? "black" : "white"
-                              }
-                              w={"100%"}
-                              borderRadius={"10px"}
-                              textAlign={"justify"}
-                              p={4}
-                              pl={5}
-                              pr={5}
-                              mt={10}
-                            >
-                              <Text>
-                                <span id="sender">{el.sender}</span> :{" "}
-                                {el.message}
-                              </Text>
+                          <Box
+                            border={"0px solid black"}
+                            w={"100%"}
+                            display="flex"
+                            justifyContent={alignMessage}
+                            className={`message ${messageClass} ${
+                              el.sender === "Ben Carter"
+                                ? "BenCarter"
+                                : "KateSullivan"
+                            }`}
+                          >
+                            <Box border={"0px solid red"} w={"50%"}>
+                              <Box
+                                boxShadow={
+                                  "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                                }
+                                border={"0px solid black"}
+                                bgColor={
+                                  el.sender === "Ben Carter"
+                                    ? "#f0f0f0"
+                                    : "#030405"
+                                }
+                                color={
+                                  el.sender === "Ben Carter" ? "black" : "white"
+                                }
+                                w={"100%"}
+                                borderRadius={"10px"}
+                                textAlign={"justify"}
+                                p={4}
+                                pl={5}
+                                pr={5}
+                                mt={10}
+                              >
+                                <Text>
+                                  <span id="sender">{el.sender}</span> :{" "}
+                                  {el.message}
+                                </Text>
+                              </Box>
                             </Box>
                           </Box>
-                        </Box>
-                      </CSSTransition>
-                    );
-                  })}
+                        </CSSTransition>
+                      );
+                    })}
+
+                  {showPopup && (
+                    <Modal isOpen={day5Popup}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+                        <ModalBody fontSize={"18px"}>
+                          <Text>
+                            After briefing the CEO, Ben Carter gets back on the
+                            call with Julia Harper from the vendor's team.
+                          </Text>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup}
+                            textAlign={"center"}
+                            fontFamily={"Croissant One"}
+                            bg={"black"}
+                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                            mr={"150px"}
+                          >
+                            Close Mail
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+
+                  {showPopup2 && (
+                    <Modal isOpen={day5Popup2}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+                        <ModalBody fontSize={"18px"}>
+                          <Text>
+                          Before making the decision to proceed, Ben Carter has another call with Tom Mitchell
+                          </Text>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup2}
+                            textAlign={"center"}
+                            fontFamily={"Croissant One"}
+                            bg={"black"}
+                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                            mr={"150px"}
+                          >
+                            Close Mail
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
                   {showBox && (
                     <>
-                      <Box
-                        bg={"white"}
-                        p={10}
-                        w={"60%"}
-                        m={"auto"}
-                        mt={"50px"}
-                      >
+                      <Box bg={"white"} p={10} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
                           w={"80%"}
                           m={"auto"}
@@ -687,12 +785,7 @@ const EarlyMorning = () => {
 
                   {showBox && (
                     <>
-                      <Box
-                        bg={"white"}
-                        w={"60%"}
-                        m={"auto"}
-                        mt={"50px"}
-                      >
+                      <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
                           w={"80%"}
                           m={"auto"}

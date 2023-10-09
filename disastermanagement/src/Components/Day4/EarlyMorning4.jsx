@@ -17,6 +17,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Morning5 from "../Day5/Morning5";
 import { dayFourMorning } from "../../mainData";
 import bencarter from "../userImages/bencarter.png";
+
 import sophia from "../userImages/sophia_kim.png";
 import kate from "../userImages/kate_sullivan.png";
 import mia from "../userImages/Mia Rodriguez.png";
@@ -26,6 +27,7 @@ const EarlyMorning4 = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
+  const [showBox2, setShowBox2] = useState(false);
   const [explaination, setExplanation] = useState("");
   const [value, setValue] = useState(null);
   const [value1, setValue1] = useState(null);
@@ -44,6 +46,7 @@ const EarlyMorning4 = () => {
   const [showPopup2, setShowPopup2] = useState(false);
   const [showPopup3, setShowPopup3] = useState(false);
   const [showPopup4, setShowPopup4] = useState(false);
+  const [ShowScroll,setShowScroll] = useState(false);
 
 
   const [chatPaused, setChatPaused] = useState(false);
@@ -110,7 +113,8 @@ const EarlyMorning4 = () => {
 
   const handleClick2 = () => {
     setIsModalOpen1(false);
-    setIsModalOpen2(true);
+    setShowBox2(true);
+      setShowScroll(true);
     if (
       value1 ===
       "Weaknesses in the system that can be exploited, leading to potential disasters"
@@ -202,6 +206,7 @@ const EarlyMorning4 = () => {
       url: bencarter,
     },
   ];
+
 
   
 
@@ -817,49 +822,15 @@ const EarlyMorning4 = () => {
                             </ModalFooter>
                           </ModalContent>
                         </Modal>
-
-                        <Modal
-                          isOpen={isModalOpen2}
-                          onClose={() => setIsModalOpen2(false)}
-                        >
-                          <ModalOverlay />
-                          <ModalContent
-                            boxShadow={
-                              "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                            }
-                          >
-                            <ModalBody
-                              fontSize={"18px"}
-                              pt={100}
-                              textAlign={"center"}
-                            >
-                              <Image
-                                src="https://www.marvelmatrimony.com/img/icon2.png"
-                                m={"auto "}
-                              />
-                              <Heading>Thank You !</Heading>
-                              <Text>Your submission has been sent</Text>
-                            </ModalBody>
-                            <ModalFooter>
-                              <Button
-                                colorScheme="teal"
-                                onClick={() => setIsModalOpen2(false)}
-                                textAlign={"center"}
-                                fontFamily={"Croissant One"}
-                                bg={"black"}
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mr={"150px"}
-                              >
-                                Close
-                              </Button>
-                            </ModalFooter>
-                          </ModalContent>
-                        </Modal>
+                        {ShowScroll && (
+                        <ScrollDown />
+                       )}
+                       
                       </Box>
                     </>
                   )}
 
-                  {showBox && (
+                  {showBox2 && (
                     <>
                       <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image

@@ -19,6 +19,7 @@ import bencarter from "../userImages/bencarter.png";
 import sophia from "../userImages/sophia_kim.png";
 import kate from "../userImages/kate_sullivan.png";
 import mia from "../userImages/Mia Rodriguez.png";
+import ScrollDown from "../ScrollDown";
 
 const Morning5 = () => {
   // const [chatData, setChatData] = useState([]);
@@ -34,6 +35,8 @@ const Morning5 = () => {
   const [day5Popup, setDay5Popup] = useState(true);
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
+  const [ShowScroll,setShowScroll] = useState(false);
+
 
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
@@ -101,6 +104,7 @@ const Morning5 = () => {
   const handleClick2 = () => {
     setIsModalOpen1(false);
     setShowBox2(true)
+    setShowScroll(true);
     // setIsModalOpen2(true);
     if (
       value1 ===
@@ -657,43 +661,9 @@ const Morning5 = () => {
                         </ModalContent>
                       </Modal>
 
-                      {/* <Modal
-                        isOpen={isModalOpen2}
-                        onClose={() => setIsModalOpen2(false)}
-                      >
-                        <ModalOverlay />
-                        <ModalContent
-                          boxShadow={
-                            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                          }
-                        >
-                          <ModalBody
-                            fontSize={"18px"}
-                            pt={100}
-                            textAlign={"center"}
-                          >
-                            <Image
-                              src="https://www.marvelmatrimony.com/img/icon2.png"
-                              m={"auto "}
-                            />
-                            <Heading>Thank You !</Heading>
-                            <Text>Your submission has been sent</Text>
-                          </ModalBody>
-                          <ModalFooter>
-                            <Button
-                              colorScheme="teal"
-                              onClick={() => setIsModalOpen2(false)}
-                              textAlign={"center"}
-                              fontFamily={"Croissant One"}
-                              bg={"black"}
-                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                              mr={"150px"}
-                            >
-                              Close
-                            </Button>
-                          </ModalFooter>
-                        </ModalContent>
-                      </Modal> */}
+                      {ShowScroll && (
+                        <ScrollDown />
+                       )}
                     </Box>
                   </>
                 )}

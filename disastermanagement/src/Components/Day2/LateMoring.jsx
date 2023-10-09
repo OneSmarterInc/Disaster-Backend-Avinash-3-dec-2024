@@ -23,20 +23,36 @@ import bencarter from "../userImages/bencarter.png";
 import sophia from "../userImages/sophia_kim.png"
 import kate from "../userImages/kate_sullivan.png"
 import mia from "../userImages/Mia Rodriguez.png"
+import ScrollDown from "../ScrollDown";
 
 const LateMorning = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
+  const [showBox2, setShowBox2] = useState(false);
+
   const [explaination, setExplanation] = useState("");
   const [value, setValue] = useState(null);
   const [value1, setValue1] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [day5Popup, setDay5Popup] = useState(true);
+  const [day5Popup2, setDay5Popup2] = useState(true);
+  const [day5Popup3, setDay5Popup3] = useState(true);
+
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  const [chatPaused, setChatPaused] = useState(false);
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup2,setShowPopup2] = useState(false);
+  const [showPopup3, setShowPopup3] = useState(false);
 
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
+  const [ShowScroll,setShowScroll] = useState(false);
+
+  
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -100,7 +116,9 @@ const LateMorning = () => {
 
   const handleClick2 = () => {
     setIsModalOpen1(false);
-    setIsModalOpen2(true);
+    setShowBox2(true);
+    setShowScroll(true);
+
     if (
       value1 ===
       "Weaknesses in the system that can be exploited, leading to potential disasters"
@@ -183,40 +201,32 @@ const LateMorning = () => {
     }
   ];
 
+  const closePopup = () => {
+    // setShowPopup(false);
+    setDay5Popup(false);
+    // onClose();
+    setChatPaused(false);
+  };
 
-  useEffect(() => {
-    // Simulate messages from 5 users with a 2-second delay between each message
-   
-    const messageDelay = 500; // 4 seconds
+  const closePopup2 = () => {
+    // setShowPopup(false);
+    setDay5Popup2(false);
+    // onClose();
+    setChatPaused(false);
+  };
 
-    let timeoutIndex = 0;
+  const closePopup3 = () => {
+    // setShowPopup(false);
+    setDay5Popup3(false);
+    // onClose();
+    setChatPaused(false);
+  };
 
-    const addMessageWithDelay = () => {
-      if (timeoutIndex < dayTwoLateMorning.length) {
-        const message = dayTwoLateMorning[timeoutIndex];
-        setChatData((prevChatData) => [...prevChatData, message]);
-        setActiveUser(message.sender);
-        timeoutIndex++;
-        setTimeout(addMessageWithDelay, messageDelay);
-      } else {
-        setShowBox(true);
-      }
-    };
-
-    addMessageWithDelay();
-
-    // Call scrollToBottom when children change or initially
-    // scrollToBottom();
-
-    return () => {
-      clearTimeout(addMessageWithDelay);
-    };
-  }, []);
 
   useLayoutEffect(() => {
     // Scroll to the bottom after chatData changes
     scrollToBottom();
-  }, [chatData]);
+  }, [currentMessageIndex]);
 
   useLayoutEffect(() => {
     // Scroll to the bottom when showBox becomes true
@@ -224,6 +234,54 @@ const LateMorning = () => {
       scrollToBottom();
     }
   }, [showBox]);
+
+  useLayoutEffect(() => {
+    // Scroll to the bottom when showBox becomes true
+    if (showBox2) {
+      scrollToBottom();
+    }
+  }, [showBox2]);
+
+  useEffect(() => {
+    const displayNextMessage = () => {
+      if (!chatPaused && currentMessageIndex < dayTwoLateMorning.length) {
+        const message = dayTwoLateMorning[currentMessageIndex];
+        setCurrentMessageIndex((prevIndex) => prevIndex + 1);
+
+        if (currentMessageIndex === 2) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup(true);
+          }, 2000);
+        }
+        else if (currentMessageIndex === 7) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup2(true)
+          }, 2000);
+        }
+        else if (currentMessageIndex === 10) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup3(true)
+          }, 2000);
+        }
+      } else {
+        if (currentMessageIndex === dayTwoLateMorning.length) {
+          // The chat has ended completely, set showBox to true
+          setShowBox(true);
+        }
+      }
+    };
+
+    const messageInterval = setInterval(displayNextMessage, 500);
+
+    return () => {
+      clearInterval(messageInterval);
+    };
+  }, [currentMessageIndex, chatPaused]);
+
+
 
   return (
     <>
@@ -332,7 +390,8 @@ const LateMorning = () => {
                 pr={5}
               >
                 <TransitionGroup>
-                  {chatData.map((el, i) => {
+                  {dayTwoLateMorning
+                    .slice(0, currentMessageIndex).map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";
                     const messageClass = isCIO ? "KateSullivan" : "BenCarter";
                     const alignMessage = isCIO ? "flex-start" : "flex-end";
@@ -385,6 +444,106 @@ const LateMorning = () => {
                       </CSSTransition>
                     );
                   })}
+                  {showPopup && (
+                    <Modal isOpen={day5Popup}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+                        <ModalBody fontSize={"18px"}>
+                          <Text>
+                          The clock strikes 1:00 PM. The atmosphere in the room is cautiously optimistic.
+                          </Text>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup}
+                            textAlign={"center"}
+                            fontFamily={"Croissant One"}
+                            bg={"black"}
+                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                            mr={"150px"}
+                          >
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+
+                  {showPopup2 && (
+                    <Modal isOpen={day5Popup2}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+                        <ModalBody fontSize={"18px"}>
+                          <Text>
+                          The room is bathed in the golden light of late afternoon. The clock reads 4:00 PM.
+                          </Text>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup2}
+                            textAlign={"center"}
+                            fontFamily={"Croissant One"}
+                            bg={"black"}
+                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                            mr={"150px"}
+                          >
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup3 && (
+                    <Modal isOpen={day5Popup3}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+                        <ModalBody fontSize={"18px"}>
+                          <Text>
+                          The night deepens, and the office is quieter, with only the IT team still working diligently. The clock is about to strike midnight.
+                          </Text>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup3}
+                            textAlign={"center"}
+                            fontFamily={"Croissant One"}
+                            bg={"black"}
+                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                            mr={"150px"}
+                          >
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
                   {showBox && (
                     <>
                       <Box
@@ -629,48 +788,14 @@ const LateMorning = () => {
                           </ModalContent>
                         </Modal>
 
-                        <Modal
-                          isOpen={isModalOpen2}
-                          onClose={() => setIsModalOpen2(false)}
-                        >
-                          <ModalOverlay />
-                          <ModalContent
-                            boxShadow={
-                              "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                            }
-                          >
-                            <ModalBody
-                              fontSize={"18px"}
-                              pt={100}
-                              textAlign={"center"}
-                            >
-                              <Image
-                                src="https://www.marvelmatrimony.com/img/icon2.png"
-                                m={"auto "}
-                              />
-                              <Heading>Thank You !</Heading>
-                              <Text>Your submission has been sent</Text>
-                            </ModalBody>
-                            <ModalFooter>
-                              <Button
-                                colorScheme="teal"
-                                onClick={() => setIsModalOpen2(false)}
-                                textAlign={"center"}
-                                fontFamily={"Croissant One"}
-                                bg={"black"}
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mr={"150px"}
-                              >
-                                Close
-                              </Button>
-                            </ModalFooter>
-                          </ModalContent>
-                        </Modal>
+                        {ShowScroll && (
+                        <ScrollDown />
+                       )}
                       </Box>
                     </>
                   )}
 
-                  {showBox && (
+                  {showBox2 && (
                     <>
                       <Box
                         bg={"white"}

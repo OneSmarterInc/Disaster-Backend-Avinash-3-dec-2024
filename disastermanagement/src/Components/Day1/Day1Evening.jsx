@@ -22,11 +22,14 @@ import bencarter from "../userImages/bencarter.png";
 import sophia from "../userImages/sophia_kim.png";
 import kate from "../userImages/kate_sullivan.png";
 import mia from "../userImages/Mia Rodriguez.png";
+import ScrollDown from "../ScrollDown";
 
 const BringDown = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
+  const [showBox2, setShowBox2] = useState(false);
+
   const [explaination, setExplanation] = useState("");
   const [value, setValue] = useState(null);
   const [value1, setValue1] = useState(null);
@@ -36,6 +39,8 @@ const BringDown = () => {
 
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
+  const [ShowScroll,setShowScroll] = useState(false);
+
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -99,7 +104,8 @@ const BringDown = () => {
 
   const handleClick2 = () => {
     setIsModalOpen1(false);
-    setIsModalOpen2(true);
+    setShowBox2(true);
+    setShowScroll(true);
     if (
       value1 ===
       "Weaknesses in the system that can be exploited, leading to potential disasters"
@@ -659,11 +665,14 @@ const BringDown = () => {
                             </ModalFooter>
                           </ModalContent>
                         </Modal>
+                        {ShowScroll && (
+                        <ScrollDown />
+                       )}
                       </Box>
                     </>
                   )}
 
-                  {showBox && (
+                  {showBox2 && (
                     <>
                       <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image

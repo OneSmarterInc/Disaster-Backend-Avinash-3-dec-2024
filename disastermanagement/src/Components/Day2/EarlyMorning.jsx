@@ -22,6 +22,7 @@ import bencarter from "../userImages/bencarter.png";
 import sophia from "../userImages/sophia_kim.png";
 import kate from "../userImages/kate_sullivan.png";
 import mia from "../userImages/Mia Rodriguez.png";
+import ScrollDown from "../ScrollDown";
 
 const EarlyMorning = () => {
   const [chatData, setChatData] = useState([]);
@@ -37,13 +38,23 @@ const EarlyMorning = () => {
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const [day5Popup, setDay5Popup] = useState(true);
   const [day5Popup2, setDay5Popup2] = useState(true);
+  const [day5Popup3, setDay5Popup3] = useState(true);
+  const [day5Popup4, setDay5Popup4] = useState(true);
+  const [day5Popup5, setDay5Popup5] = useState(true);
+
 
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [showPopup2,setShowPopup2] = useState(false);
+  const [showPopup3, setShowPopup3] = useState(false);
+  const [showPopup4, setShowPopup4] = useState(false);
+  const [showPopup5, setShowPopup5] = useState(false);
+
   const [chatPaused, setChatPaused] = useState(false);
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
+  const [ShowScroll,setShowScroll] = useState(false);
+
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -107,7 +118,9 @@ const EarlyMorning = () => {
 
   const handleClick2 = () => {
     setIsModalOpen1(false);
-    setIsModalOpen2(true);
+    setShowBox2(true);
+    setShowScroll(true);
+
     if (
       value1 ===
       "Weaknesses in the system that can be exploited, leading to potential disasters"
@@ -222,6 +235,26 @@ const EarlyMorning = () => {
     setChatPaused(false);
   };
 
+  const closePopup3 = () => {
+    // setShowPopup(false);
+    setDay5Popup3(false);
+    // onClose();
+    setChatPaused(false);
+  };
+
+  const closePopup4 = () => {
+    // setShowPopup(false);
+    setDay5Popup4(false);
+    // onClose();
+    setChatPaused(false);
+  };
+  const closePopup5 = () => {
+    // setShowPopup(false);
+    setDay5Popup5(false);
+    // onClose();
+    setChatPaused(false);
+  };
+
   useLayoutEffect(() => {
     // Scroll to the bottom after chatData changes
     scrollToBottom();
@@ -257,6 +290,24 @@ const EarlyMorning = () => {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup2(true)
+          }, 2000);
+        }
+        else if (currentMessageIndex === 19) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup3(true)
+          }, 2000);
+        }
+        else if (currentMessageIndex === 24) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup4(true)
+          }, 2000);
+        }
+        else if (currentMessageIndex === 29) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup5(true)
           }, 2000);
         }
       } else {
@@ -464,7 +515,7 @@ const EarlyMorning = () => {
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
                             mr={"150px"}
                           >
-                            Close Mail
+                            Close
                           </Button>
                         </ModalFooter>
                       </ModalContent>
@@ -498,7 +549,106 @@ const EarlyMorning = () => {
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
                             mr={"150px"}
                           >
-                            Close Mail
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup3 && (
+                    <Modal isOpen={day5Popup3}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+                        <ModalBody fontSize={"18px"}>
+                          <Text>
+                          Ben Carter is on a video call with a key client, Mr. Williams.
+                          </Text>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup3}
+                            textAlign={"center"}
+                            fontFamily={"Croissant One"}
+                            bg={"black"}
+                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                            mr={"150px"}
+                          >
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup4 && (
+                    <Modal isOpen={day5Popup4}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+                        <ModalBody fontSize={"18px"}>
+                          <Text>
+                          Back in the war room, Ben gathers the executive team for a quick huddle.
+                          </Text>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup4}
+                            textAlign={"center"}
+                            fontFamily={"Croissant One"}
+                            bg={"black"}
+                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                            mr={"150px"}
+                          >
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup5 && (
+                    <Modal isOpen={day5Popup5}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+                        <ModalBody fontSize={"18px"}>
+                          <Text>
+                          The executive team gathers around the conference table. The room's atmosphere is tense, but there's a shared determination to address the situation head-on.
+                          </Text>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup5}
+                            textAlign={"center"}
+                            fontFamily={"Croissant One"}
+                            bg={"black"}
+                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                            mr={"150px"}
+                          >
+                            Close
                           </Button>
                         </ModalFooter>
                       </ModalContent>
@@ -779,11 +929,14 @@ const EarlyMorning = () => {
                             </ModalFooter>
                           </ModalContent>
                         </Modal>
+                        {ShowScroll && (
+                        <ScrollDown />
+                       )}
                       </Box>
                     </>
                   )}
 
-                  {showBox && (
+                  {showBox2 && (
                     <>
                       <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image

@@ -192,6 +192,150 @@ export const dayOneMorning = [
       sender: "Tom Mitchell",
       message: "We're with you every step of the way, Ben.",
     },
+    
+    {
+      sender: "Ben Carter",
+      message:
+        "I know we're all anxious and concerned. This crisis is unprecedented, but we've weathered storms before. Our partnership with the storage vendor has been solid for years. We need to trust that, together, we'll find a solution.",
+    },
+    {
+      sender: "Grace Patterson ",
+      message:
+        "(Head of Legal) Our clients are getting restless. They need assurances.",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "I've been in touch with our key clients. Assured them we're doing everything possible. But we also need to be transparent about the challenges.",
+    },
+    {
+      sender: "Raj Patel",
+      message:
+        "(CFO) The financial implications are severe. We need a solution, but we also need a contingency plan.",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "Agreed. I'm coordinating with both our internal teams and the vendor to get a clear timeline. But I need everyone here to support the message and keep our teams calm",
+    },
+
+    {
+      sender: "Mr. Williams",
+      message:
+        "Ben, my team is getting jittery. We rely on your systems, and this outage is hurting us.",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "Mr. Williams, I completely understand. It's an unfortunate situation, but I assure you, we're working round the clock with our vendor. They've been our partners for years and have never let us down.",
+    },
+    {
+      sender: "Mr. Williams",
+      message:
+        "I appreciate your reassurances, Ben. But we need timelines. Can you provide that?",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "We're aiming to have a clearer picture within the next few hours. As soon as I have concrete information, you'll be the first to know.",
+    },
+    {
+      sender: "Mr. Williams",
+      message:
+        "I trust you, Ben. Please keep us updated.",
+    },
+    
+    {
+      sender: "Ben Carter",
+      message:
+        "Team, we need to stay united. The situation is fluid, and there's a lot we don't know. But infighting or panic won't help.",
+    },
+    {
+      sender: "Kate Sullivan",
+      message:
+        "Ben's right. We've faced challenges before. We need to trust our processes and each other.",
+    },
+    {
+      sender: "Liam Turner",
+      message:
+        "Communication is key. We need a united front, both internally and externally.",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "Let's ensure our teams are well-informed, and we're projecting calm and control. Together, we'll get through this.",
+    },
+    
+    {
+      sender: "Ben Carter",
+      message:
+        "The rumors are swirling, and the media has caught wind of our situation. We need to decide on a public statement.",
+    },
+    {
+      sender: "Grace Patterson",
+      message:
+        "We need to be very careful with our wording. Any statement could have legal implications.",
+    },
+    {
+      sender: "Liam Turner ",
+      message:
+        "While I understand the legal concerns, silence can be seen as an admission of guilt or ineptitude. We need to control the narrative.",
+    },
+    {
+      sender: "Raj Patel ",
+      message:
+        "Any statement we make will also impact our stock price and investor relations. We have to strike the right balance",
+    },
+    {
+      sender: "Kate Sullivan",
+      message:
+        "Let's start with the basics. Why did this happen, what are we doing about it, and what's our commitment going forward?",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "I like that approach. Simple, direct, and transparent. Liam, can you draft something along those lines?",
+    },
+    {
+      sender: "Liam Turner",
+      message:
+        "Certainly. How about this , We're aware of the technical issues impacting our services. Preliminary investigations indicate a system anomaly, which we, alongside our long-time partners, are working tirelessly to resolve. We understand the importance of our systems to our clients and are dedicated to restoring operations as swiftly as possible. We appreciate your patience and trust.",
+    },
+    {
+      sender: "Grace Patterson",
+      message:
+        "That's a good starting point. Let's ensure we don't make any promises we can't keep. We need to be hopeful, yet cautious",
+    },
+    {
+      sender: "Sophia Kim",
+      message:
+        "We should also mention that we're taking measures to prevent such incidents in the future, without going into specifics.",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "Agreed. Liam, can you incorporate that?",
+    },
+    {
+      sender: "Liam Turner",
+      message:
+        "Sure. Additionally, we're committed to understanding the root cause and implementing measures to bolster our systems against future anomalies.",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "It's succinct and addresses the main concerns. Any objections?",
+    },
+    {
+      sender: "Raj Patel",
+      message:
+        "It works for me. It's honest, transparent, and proactive.",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "Alright, let's finalize it and get it out there. We owe it to our clients and stakeholders to keep them informed.",
+    },
   ];
 
 
@@ -210,10 +354,6 @@ export const dayOneMorning = [
       sender: "Liam Turner",
       message:
         "An outage update has just been sent to all of them. We're keeping everyone in the loop.",
-    },
-    {
-      message:
-        "The clock strikes 1:00 PM. The atmosphere in the room is cautiously optimistic.",
     },
     {
       sender: "Mia Rodriguez",
@@ -236,10 +376,7 @@ export const dayOneMorning = [
         "In parallel, I suggest we start with all Tier 1 and Tier 2 applications. The WCS apps in Europe and the Middle East, the Global Product Database, Web Services, and Professional Services applications should be next",
     },
     { sender: "Ben Carter", message: "Sounds like a plan. Let's execute" },
-    {
-      message:
-        "The room is bathed in the golden light of late afternoon. The clock reads 4:00 PM.",
-    },
+   
 
     {
       sender: "Kate Sullivan",
@@ -456,21 +593,6 @@ export const dayOneMorning = [
         sender: "Gajji",
         message:
           "(smiling) No magic, just determination and teamwork.",
-      },
-    {
-      sender: "Mia Rodriguez",
-      message:
-        "(frustrated) This can't be right! Who validated these backup processes?",
-    },
-    {
-      sender: "Liam Turner",
-      message:
-        "(defensively) We've followed protocols to the letter. This isn't a standard issue!",
-    },
-    {
-        sender: "Ben Carter",
-        message:
-          "Enough! We can't fracture now. We need unity and focus.",
       },
   ];
 

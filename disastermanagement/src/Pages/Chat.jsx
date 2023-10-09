@@ -25,6 +25,7 @@ import Morning5 from "../Components/Day5/Morning5";
 import bencarter from "../Images/org/bencarter.png";
 import { dayOneMorning } from "../mainData";
 import kate from "../Images/org/kate_sullivan.png";
+import ScrollDown from "../Components/ScrollDown";
 
 const Chat = () => {
   const [chatData, setChatData] = useState([]);
@@ -41,6 +42,7 @@ const Chat = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [ShowScroll,setShowScroll] = useState(false);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -106,10 +108,11 @@ const Chat = () => {
 
   const handleClick2 = () => {
     setIsModalOpen1(false);
-    setShowBox(false);
+    //setShowBox(false);
 
-    // setShowBox2(true)
-   console.log(showBox);
+    setShowBox2(true)
+    setShowScroll(true);
+    //console.log(showBox);
     if (
       value1 ===
       "Weaknesses in the system that can be exploited, leading to potential disasters"
@@ -629,50 +632,14 @@ const Chat = () => {
                           </ModalContent>
                         </Modal>
 
-                        {/* <Modal
-                          isOpen={isModalOpen2}
-                          onClose={() => setIsModalOpen2(false)}
-                        >
-                          <ModalOverlay />
-                          <ModalContent
-                            boxShadow={
-                              "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                            }
-                          >
-                            <ModalBody
-                              fontSize={"18px"}
-                              pt={100}
-                              textAlign={"center"}
-                            >
-                              <Image
-                                src="https://www.marvelmatrimony.com/img/icon2.png"
-                                m={"auto "}
-                              />
-                              <Heading>Thank You !</Heading>
-                              <Text>Your submission has been sent</Text>
-                            </ModalBody>
-                            <ModalFooter>
-                              <Button
-                                colorScheme="teal"
-                                onClick={handleModel}
-                                
-                                  
-                                textAlign={"center"}
-                                fontFamily={"Croissant One"}
-                                bg={"black"}
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mr={"150px"}
-                              >
-                                Close
-                              </Button>
-                            </ModalFooter>
-                          </ModalContent>
-                        </Modal> */}
+                       {ShowScroll && (
+                        <ScrollDown />
+                       )}
                       </Box>
                     </>
                   )}
 
-                  {showBox && (
+                  {showBox2 && (
                     <>
                       <Box bg={"#948888"} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image

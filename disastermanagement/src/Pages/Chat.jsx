@@ -270,7 +270,7 @@ const Chat = () => {
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
                         h={"6vh"}
-                        w={"44px"}
+                        w={"55px"}
                         m={"auto"}
                         mt={"17%"}
                         border={"0px solid black"}
@@ -282,7 +282,7 @@ const Chat = () => {
                       <Text
                         className={el.name === activeUser ? "Tactive" : ""}
                         fontSize={20}
-                        mt={3}
+                        mt={5}
                       >
                         {el.name}
                       </Text>
@@ -390,15 +390,16 @@ const Chat = () => {
                   {showBox && (
                     <>
                       <Box
-                        bg={"#948888"}
+                        bg={"white"}
                         pb={10}
                         w={"60%"}
                         m={"auto"}
                         mt={"50px"}
+                        borderRadius={10}
                         
                       >
                         <Image
-                          w={"80%"}
+                          w={"50%"}
                           m={"auto"}
                           src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
                         />
@@ -641,9 +642,9 @@ const Chat = () => {
 
                   {showBox2 && (
                     <>
-                      <Box bg={"#948888"} w={"60%"} m={"auto"} mt={"50px"}>
+                      <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"} borderRadius={10}>
                         <Image
-                          w={"80%"}
+                          w={"50%"}
                           m={"auto"}
                           src="https://img.freepik.com/free-vector/business-decisions-concept-illustration_114360-4096.jpg?w=740&t=st=1696672316~exp=1696672916~hmac=0b5a3d793d15d5eccf6f03a04e907baee2f1e59dc4292775fe4e025c871152be"
                         />

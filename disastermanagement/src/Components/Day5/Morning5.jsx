@@ -19,6 +19,8 @@ import bencarter from "../userImages/bencarter.png";
 import sophia from "../userImages/sophia_kim.png";
 import kate from "../userImages/kate_sullivan.png";
 import mia from "../userImages/Mia Rodriguez.png";
+import gaji from "../userImages/gaji.jpg";
+import communicationlead from "../userImages/communicationlead.jpg"
 import ScrollDown from "../ScrollDown";
 
 const Morning5 = () => {
@@ -170,7 +172,7 @@ const Morning5 = () => {
     },
     {
       name: "Gajji",
-      url: bencarter,
+      url: gaji,
     },
     {
       name: "Kate Sullivan",
@@ -190,7 +192,7 @@ const Morning5 = () => {
     },
     {
       name: "Communications Lead",
-      url: bencarter,
+      url: communicationlead,
     },
   ];
 

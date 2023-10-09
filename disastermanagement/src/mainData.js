@@ -435,10 +435,7 @@ export const dayOneMorning = [
       message:
         "We're still investigating, but right now, our focus is on restoring operations",
     },
-    {
-      message:
-        "The office atmosphere is tense. People are visibly tired.",
-    },
+    
     {
       sender: "Mia Rodriguez",
       message:
@@ -454,10 +451,7 @@ export const dayOneMorning = [
       message:
         "We're doing our best, Kate. It's an unprecedented situation",
     },
-    {
-        message:
-          "Alarms jolt everyone. There's an immediate sense of dread",
-      },
+    
     {
       sender: "Liam Turner",
       message:
@@ -469,10 +463,7 @@ export const dayOneMorning = [
       sender: "Ben Carter",
       message: "Let's not play the blame game now. We need solutions, not accusations.",
     },
-    {
-        message:
-          "The room is thick with tension as the storage vendor team joins.",
-      },
+    
     {
       sender: "Tom Mitchell",
       message: "The corruption seems to be in the end of block record.Kate ",
@@ -488,19 +479,13 @@ export const dayOneMorning = [
       message:
         "(interjecting) Let's stay focused. We need to work together, not against each other",
     },
-    {
-        message:
-          "The weight of the situation is pressing down on everyone.",
-      },
+    
     {
       sender: "Sophia Kim",
       message:
         "Let's try the backup again.",
     },
-    {
-        message:
-          "After the first failure...",
-      },
+   
     {
       sender: "Mia Rodriguez",
       message:
@@ -529,7 +514,6 @@ export const dayOneMorning = [
       message:
         "We have to trust them. It's our best shot.",
     },
-    {message:"A sudden error message pops up on the main screen. The room goes tense."},
     {
       sender: "Liam Turner",
       message:
@@ -541,10 +525,7 @@ export const dayOneMorning = [
       message:
         "Hold on, it's an expected hiccup. Let's rerun the process.",
     },
-    {
-        message:
-          "Everyone watches with bated breath. Minutes feel like hours.",
-      },
+   
     {
       sender: "System One Developer #2",
       message:
@@ -556,19 +537,11 @@ export const dayOneMorning = [
         "(firmly) Find a workaround. We can't afford a full stop here.",
     },
     {
-        message:
-          "The developers scramble, making adjustments. The room is silent except for the tapping of keyboards."},
-    {
       sender: "Ben Carter",
       message:
         "(to Gajji) Time's ticking, Gajji. How are we looking?",
     },
     { sender: "Gajji", message: "(calmly) Challenges are expected, Ben. We'll get through this." },
-
-    {
-        message:
-          "After what feels like an eternity, the screens show positive signs. Processes start running smoothly.",
-      },
     {
       sender: "Mia Rodriguez",
       message: "The sync... it's stabilizing!",

@@ -23,6 +23,11 @@ import bencarter from "../userImages/bencarter.png";
 import sophia from "../userImages/sophia_kim.png";
 import kate from "../userImages/kate_sullivan.png";
 import mia from "../userImages/Mia Rodriguez.png";
+import julia from "../userImages/juliaharper.jpg";
+import tom from "../userImages/tom.jpg";
+import raj from "../userImages/rajpatel.jpg";
+import grace from "../userImages/gracepatterson.jpg";
+import williams from "../userImages/williams.jpg";
 import ScrollDown from "../ScrollDown";
 
 const EarlyMorning = () => {
@@ -202,23 +207,23 @@ const EarlyMorning = () => {
     },
     {
       name: "Julia Harper",
-      url: bencarter,
+      url: julia,
     },
     {
       name: "Tom Mitchell",
-      url: bencarter,
+      url: tom,
     },
     {
       name: "Grace Patterson",
-      url: bencarter,
+      url: grace,
     },
     {
       name: "Raj Patel",
-      url: bencarter,
+      url: raj,
     },
     {
       name: "Mr. Williams",
-      url: bencarter,
+      url: williams,
     },
   ];
 
@@ -369,7 +374,7 @@ const EarlyMorning = () => {
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
                         h={"6vh"}
-                        w={"44px"}
+                        w={"55px"}
                         m={"auto"}
                         mt={"17%"}
                         border={"0px solid black"}
@@ -381,7 +386,7 @@ const EarlyMorning = () => {
                       <Text
                         className={el.name === activeUser ? "Tactive" : ""}
                         fontSize={20}
-                        mt={3}
+                        mt={5}
                       >
                         {el.name}
                       </Text>

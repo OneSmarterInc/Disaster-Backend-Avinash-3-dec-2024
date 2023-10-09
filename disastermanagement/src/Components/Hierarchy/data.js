@@ -8,6 +8,7 @@ import elena from "../userImages/ElenaLvanova.png";
 import jabari from "../userImages/jabarinkosi.png";
 import priya from "../userImages/priyanarayana.png";
 import tariq from "../userImages/Rarqalhashim.png";
+import lucas from "../userImages/lucasoliveria.jpg"
 
 export const ORGDATA = {
     name: "Carlos Mendoza",
@@ -87,8 +88,7 @@ export const ORGDATA = {
       {
         name: "Lucas Oliveira",
         role: "Chief Marketing Officer",
-        img:
-          "https://film-book.com/wp-content/uploads/2022/06/Matt-Dillon-Smiling-Close-Up-01-700x400-1.jpg",
+        img: lucas
       },
       {
         name: "Priya Narayanan",

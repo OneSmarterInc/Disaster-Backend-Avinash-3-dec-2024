@@ -193,7 +193,7 @@ const BringDown = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
 
-    const messageDelay = 200; // 4 seconds
+    const messageDelay = 4000; // 4 seconds
 
     let timeoutIndex = 0;
 
@@ -394,9 +394,9 @@ const BringDown = () => {
                     <>
                       <Box bg={"white"} p={10} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
-                          w={"80%"}
+                          w={"50%"}
                           m={"auto"}
-                          src="https://www.timefixed.com/static/img/app.3b5132a.gif"
+                          src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
                         />
                         <Flex
                           className="box"
@@ -676,9 +676,9 @@ const BringDown = () => {
                     <>
                       <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
-                          w={"80%"}
+                          w={"50%"}
                           m={"auto"}
-                          src="https://www.timefixed.com/static/img/hr.5d824eb.gif"
+                          src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
                         />
                         <Flex
                           className="box"

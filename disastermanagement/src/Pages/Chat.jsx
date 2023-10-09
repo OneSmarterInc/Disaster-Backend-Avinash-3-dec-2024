@@ -188,7 +188,7 @@ const Chat = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
 
-    const messageDelay = 500; // 4 seconds
+    const messageDelay = 4000; // 4 seconds
 
     let timeoutIndex = 0;
 
@@ -390,7 +390,7 @@ const Chat = () => {
                   {showBox && (
                     <>
                       <Box
-                        bg={"#948888"}
+                        bg={"white"}
                         pb={10}
                         w={"60%"}
                         m={"auto"}
@@ -398,7 +398,7 @@ const Chat = () => {
                         
                       >
                         <Image
-                          w={"80%"}
+                          w={"50%"}
                           m={"auto"}
                           src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
                         />
@@ -641,9 +641,9 @@ const Chat = () => {
 
                   {showBox2 && (
                     <>
-                      <Box bg={"#948888"} w={"60%"} m={"auto"} mt={"50px"}>
+                      <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
-                          w={"80%"}
+                          w={"40%"}
                           m={"auto"}
                           src="https://img.freepik.com/free-vector/business-decisions-concept-illustration_114360-4096.jpg?w=740&t=st=1696672316~exp=1696672916~hmac=0b5a3d793d15d5eccf6f03a04e907baee2f1e59dc4292775fe4e025c871152be"
                         />

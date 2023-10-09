@@ -572,10 +572,6 @@ export const dayOneMorning = [
 
   export const dayFiveMorning = [
     {
-      message:
-        "At noon, that the recovery process was complete.  At 4:00PM, an announcement went out that the crisis was over.",
-    },
-    {
       sender: "Kate Sullivan",
       message: "(looking at the systems dashboard) Everything seems stable. We're almost there.",
     },
@@ -590,20 +586,14 @@ export const dayOneMorning = [
         "It's been a long journey. I can't believe we're finally seeing the light at the end of the tunnel.",
     },
 
-    {
-      message:
-        "The clock strikes noon. Ben Carter stands at the head of the room, gathering everyone's attention.",
-    },
+   
 
     {
       sender: "Ben Carter",
       message:
         "(voice filled with emotion) Team, as of now, the recovery process is complete. We've weathered the storm.",
     },
-    {
-      message:
-        "A loud cheer erupts, with team members clapping and some even hugging each other",
-    },
+   
     {
       sender: "Mia Rodriguez",
       message: "It feels surreal. I can't believe we made it.",
@@ -624,10 +614,7 @@ export const dayOneMorning = [
       message:
         "Absolutely, Ben. We'll ensure it's comprehensive and conveys gratitude for everyone's patience and support.",
     },
-    {
-      message:
-        "4:00 PM. Emails ping across the company, and an announcement is broadcasted on internal communication channels.",
-    },
+   
 
     {
       sender: "Liam Turner",

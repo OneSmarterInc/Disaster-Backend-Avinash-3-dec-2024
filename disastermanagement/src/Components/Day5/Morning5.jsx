@@ -192,44 +192,7 @@ const Morning5 = () => {
 
   // Simulate messages from 5 users with a 2-second delay between each message
 
-  // const messageDelay = 2000; // 4 seconds
-
-  // let timeoutIndex = 0;
-
-  // let flag = false;
-  // const addMessageWithDelay = () => {
-  //   if (timeoutIndex < dayFiveMorning.length) {
-  //     const message = dayFiveMorning[timeoutIndex];
-  //     setChatData((prevChatData) => [...prevChatData, message]);
-  //     setActiveUser(message.sender);
-  //     timeoutIndex++;
-  //     // setTimeoutIndex((prev)=>prev+1);
-  //     console.log(timeoutIndex);
-
-  //     if (message.sender === "Communications Lead") {
-  //       // Pause the chat and show the popup
-  //       setIsChatPaused(true);
-  //       setShowAnnouncement(true);
-  //       setTimeoutIndex(timeoutIndex);
-  //       // timeoutIndex++;
-  //       // console.log(timeoutIndex);
-  //     } else if (!isChatPaused) {
-  //       setTimeout(addMessageWithDelay, messageDelay);
-  //     }
-  //   } else {
-  //     setShowBox(true);
-  //   }
-  // };
-  // useEffect(() => {
-  //   addMessageWithDelay();
-
-  //   // Call scrollToBottom when children change or initially
-  //   // scrollToBottom();
-
-  //   return () => {
-  //     clearTimeout(addMessageWithDelay);
-  //   };
-  // }, [flag]);
+  
 
   useLayoutEffect(() => {
     // Scroll to the bottom after chatData changes

@@ -17,7 +17,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Morning5 from "../Day5/Morning5";
 import { dayFourMorning } from "../../mainData";
 import bencarter from "../userImages/bencarter.png";
-
+import ScrollDown from "../ScrollDown";
 import sophia from "../userImages/sophia_kim.png";
 import kate from "../userImages/kate_sullivan.png";
 import mia from "../userImages/Mia Rodriguez.png";
@@ -267,7 +267,7 @@ const EarlyMorning4 = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 500);
+    const messageInterval = setInterval(displayNextMessage, 4000);
 
     return () => {
       clearInterval(messageInterval);
@@ -593,9 +593,9 @@ const EarlyMorning4 = () => {
                     <>
                       <Box bg={"white"} p={10} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
-                          w={"80%"}
+                          w={"50%"}
                           m={"auto"}
-                          src="https://www.timefixed.com/static/img/app.3b5132a.gif"
+                          src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
                         />
                         <Flex
                           className="box"
@@ -838,9 +838,9 @@ const EarlyMorning4 = () => {
                     <>
                       <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
-                          w={"80%"}
+                          w={"50%"}
                           m={"auto"}
-                          src="https://www.timefixed.com/static/img/hr.5d824eb.gif"
+                          src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
                         />
                         <Flex
                           className="box"

@@ -13,6 +13,7 @@ import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import day2morning from "./day2morning.png";
+import loss from "./loss.png"
 import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router";
@@ -323,7 +324,7 @@ const EarlyMorning = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 500);
+    const messageInterval = setInterval(displayNextMessage, 4000);
 
     return () => {
       clearInterval(messageInterval);
@@ -402,7 +403,7 @@ const EarlyMorning = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              bgImage={day2morning}
+              bgImage={ currentMessageIndex > 20 ? loss : day2morning}
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
@@ -663,9 +664,9 @@ const EarlyMorning = () => {
                     <>
                       <Box bg={"white"} p={10} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
-                          w={"80%"}
+                          w={"50%"}
                           m={"auto"}
-                          src="https://www.timefixed.com/static/img/app.3b5132a.gif"
+                          src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
                         />
                         <Flex
                           className="box"
@@ -945,9 +946,9 @@ const EarlyMorning = () => {
                     <>
                       <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
-                          w={"80%"}
+                          w={"50%"}
                           m={"auto"}
-                          src="https://www.timefixed.com/static/img/hr.5d824eb.gif"
+                          src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
                         />
                         <Flex
                           className="box"

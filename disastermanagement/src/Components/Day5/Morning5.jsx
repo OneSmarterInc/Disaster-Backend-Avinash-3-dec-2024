@@ -34,14 +34,22 @@ const Morning5 = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
-  const [day5Popup, setDay5Popup] = useState(true);
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
-  const [ShowScroll,setShowScroll] = useState(false);
-
+  const [ShowScroll, setShowScroll] = useState(false);
+  const [day5Popup, setDay5Popup] = useState(true);
+  const [day5Popup2, setDay5Popup2] = useState(true);
+  const [day5Popup3, setDay5Popup3] = useState(true);
+  const [day5Popup4, setDay5Popup4] = useState(true);
+  const [day5Popup5, setDay5Popup5] = useState(true);
 
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
+  const [showPopup2, setShowPopup2] = useState(false);
+  const [showPopup3, setShowPopup3] = useState(false);
+  const [showPopup4, setShowPopup4] = useState(false);
+  const [showPopup5, setShowPopup5] = useState(false);
+
   const [chatPaused, setChatPaused] = useState(false);
 
   const chatContainerRef = useRef(null);
@@ -105,7 +113,7 @@ const Morning5 = () => {
 
   const handleClick2 = () => {
     setIsModalOpen1(false);
-    setShowBox2(true)
+    setShowBox2(true);
     setShowScroll(true);
     // setIsModalOpen2(true);
     if (
@@ -198,8 +206,6 @@ const Morning5 = () => {
 
   // Simulate messages from 5 users with a 2-second delay between each message
 
-  
-
   useLayoutEffect(() => {
     // Scroll to the bottom after chatData changes
     scrollToBottom();
@@ -228,9 +234,28 @@ const Morning5 = () => {
         if (message.sender === "Communications Lead") {
           setShowPopup(true);
           setChatPaused(true);
+        } else if (currentMessageIndex === 0) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup2(true);
+          }, 2000);
+        } else if (currentMessageIndex === 2) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup3(true);
+          }, 2000);
+        } else if (currentMessageIndex === 3) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup4(true);
+          }, 2000);
+        } else if (currentMessageIndex === 7) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup5(true);
+          }, 2000);
         }
-      }
-      else {
+      } else {
         if (currentMessageIndex === dayFiveMorning.length) {
           // The chat has ended completely, set showBox to true
           setShowBox(true);
@@ -238,7 +263,7 @@ const Morning5 = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 500);
+    const messageInterval = setInterval(displayNextMessage, 4000);
 
     return () => {
       clearInterval(messageInterval);
@@ -252,7 +277,34 @@ const Morning5 = () => {
     setChatPaused(false);
   };
 
- 
+  const closePopup2 = () => {
+    // setShowPopup(false);
+    setDay5Popup2(false);
+    // onClose();
+    setChatPaused(false);
+  };
+
+  const closePopup3 = () => {
+    // setShowPopup(false);
+    setDay5Popup3(false);
+    // onClose();
+    setChatPaused(false);
+  };
+
+  const closePopup4 = () => {
+    // setShowPopup(false);
+    setDay5Popup4(false);
+    // onClose();
+    setChatPaused(false);
+  };
+
+  const closePopup5 = () => {
+    // setShowPopup(false);
+    setDay5Popup5(false);
+    // onClose();
+    setChatPaused(false);
+  };
+
   return (
     <>
       <Box
@@ -426,13 +478,151 @@ const Morning5 = () => {
                   </Modal>
                 )}
 
+                {showPopup2 && (
+                  <Modal isOpen={day5Popup2}>
+                    <ModalOverlay />
+                    <ModalContent
+                      boxShadow={
+                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                      }
+                    >
+                      <ModalHeader
+                        fontWeight={"bold"}
+                        fontSize={"25px"}
+                      ></ModalHeader>
+                      <ModalBody fontSize={"18px"}>
+                        <Text>
+                          At noon, that the recovery process was complete. At
+                          4:00PM, an announcement went out that the crisis was
+                          over.
+                        </Text>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button
+                          colorScheme="teal"
+                          onClick={closePopup2}
+                          textAlign={"center"}
+                          fontFamily={"Croissant One"}
+                          bg={"black"}
+                          _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                          mr={"150px"}
+                        >
+                          Close Mail
+                        </Button>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+                {showPopup3 && (
+                  <Modal isOpen={day5Popup3}>
+                    <ModalOverlay />
+                    <ModalContent
+                      boxShadow={
+                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                      }
+                    >
+                      <ModalHeader
+                        fontWeight={"bold"}
+                        fontSize={"25px"}
+                      ></ModalHeader>
+                      <ModalBody fontSize={"18px"}>
+                        <Text>
+                          The clock strikes noon. Ben Carter stands at the head
+                          of the room, gathering everyone's attention.
+                        </Text>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button
+                          colorScheme="teal"
+                          onClick={closePopup3}
+                          textAlign={"center"}
+                          fontFamily={"Croissant One"}
+                          bg={"black"}
+                          _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                          mr={"150px"}
+                        >
+                          Close Mail
+                        </Button>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+                {showPopup4 && (
+                  <Modal isOpen={day5Popup4}>
+                    <ModalOverlay />
+                    <ModalContent
+                      boxShadow={
+                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                      }
+                    >
+                      <ModalHeader
+                        fontWeight={"bold"}
+                        fontSize={"25px"}
+                      ></ModalHeader>
+                      <ModalBody fontSize={"18px"}>
+                        <Text>
+                          A loud cheer erupts, with team members clapping and
+                          some even hugging each other
+                        </Text>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button
+                          colorScheme="teal"
+                          onClick={closePopup4}
+                          textAlign={"center"}
+                          fontFamily={"Croissant One"}
+                          bg={"black"}
+                          _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                          mr={"150px"}
+                        >
+                          Close Mail
+                        </Button>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+
+                {showPopup5 && (
+                  <Modal isOpen={day5Popup5}>
+                    <ModalOverlay />
+                    <ModalContent
+                      boxShadow={
+                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                      }
+                    >
+                      <ModalHeader
+                        fontWeight={"bold"}
+                        fontSize={"25px"}
+                      ></ModalHeader>
+                      <ModalBody fontSize={"18px"}>
+                        <Text>
+                        4:00 PM. Emails ping across the company, and an announcement is broadcasted on internal communication channels.
+                        </Text>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button
+                          colorScheme="teal"
+                          onClick={closePopup5}
+                          textAlign={"center"}
+                          fontFamily={"Croissant One"}
+                          bg={"black"}
+                          _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                          mr={"150px"}
+                        >
+                          Close Mail
+                        </Button>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+
                 {showBox && (
                   <>
-                    <Box  bg={"white"} p={5} w={"60%"} m={"auto"} mt={"50px"}>
+                    <Box bg={"white"} p={5} w={"60%"} m={"auto"} mt={"50px"}>
                       <Image
-                        w={"80%"}
+                        w={"50%"}
                         m={"auto"}
-                        src="https://www.timefixed.com/static/img/app.3b5132a.gif"
+                        src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
                       />
                       <Flex
                         className="box"
@@ -663,9 +853,7 @@ const Morning5 = () => {
                         </ModalContent>
                       </Modal>
 
-                      {ShowScroll && (
-                        <ScrollDown />
-                       )}
+                      {ShowScroll && <ScrollDown />}
                     </Box>
                   </>
                 )}
@@ -674,9 +862,9 @@ const Morning5 = () => {
                   <>
                     <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"}>
                       <Image
-                        w={"80%"}
+                        w={"50%"}
                         m={"auto"}
-                        src="https://www.timefixed.com/static/img/hr.5d824eb.gif"
+                        src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
                       />
                       <Flex
                         className="box"

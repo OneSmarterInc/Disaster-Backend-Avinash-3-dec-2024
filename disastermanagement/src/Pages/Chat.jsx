@@ -95,7 +95,7 @@ const Chat = () => {
 
     const cookiemarks = Cookies.get("day1marks") || "";
     const cookieex = Cookies.get("day1explaination") || "";
-    console.log(cookiemarks, cookieex);
+    //console.log(cookiemarks, cookieex);
   };
 
   const handleChange2 = (value1) => {
@@ -188,7 +188,7 @@ const Chat = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
 
-    const messageDelay = 4000; // 4 seconds
+    const messageDelay = 500; // 4 seconds
 
     let timeoutIndex = 0;
 
@@ -231,7 +231,7 @@ const Chat = () => {
     <>
       {modalValue ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <Morning5 />
+        <BringDown />
       ) : modalValue === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : modalValue === "Remaining calm and level-headed during challenges" ? (
@@ -282,7 +282,7 @@ const Chat = () => {
                       <Text
                         className={el.name === activeUser ? "Tactive" : ""}
                         fontSize={20}
-                        mt={5}
+                        mt={6}
                       >
                         {el.name}
                       </Text>

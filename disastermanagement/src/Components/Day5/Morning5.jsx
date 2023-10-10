@@ -230,7 +230,7 @@ const Morning5 = () => {
       if (!chatPaused && currentMessageIndex < dayFiveMorning.length) {
         const message = dayFiveMorning[currentMessageIndex];
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
-
+        setActiveUser(message.sender);
         if (message.sender === "Communications Lead") {
           setShowPopup(true);
           setChatPaused(true);
@@ -263,7 +263,7 @@ const Morning5 = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 4000);
+    const messageInterval = setInterval(displayNextMessage, 500);
 
     return () => {
       clearInterval(messageInterval);
@@ -307,13 +307,7 @@ const Morning5 = () => {
 
   return (
     <>
-      <Box
-        fontFamily={"Fredoka"}
-        border={"0px solid red"}
-        w={"100%"}
-        m={"auto"}
-        h={"88vh"}
-      >
+      
         {modalValue ===
         "Emphasizing teamwork, both internally and with external partners" ? (
           <EarlyMorning />
@@ -332,6 +326,50 @@ const Morning5 = () => {
           "Keeping an eye on long-term impacts and future implications during the crisis" ? (
           <EarlyMorning />
         ) : (
+          <Box
+          fontFamily={"Fredoka"}
+          border={"0px solid red"}
+          w={"100%"}
+          m={"auto"}
+          h={"88vh"}
+        >
+          <Flex h={"88vh"}>
+            <Box
+              h={"88vh"}
+              w={"13%"}
+              borderRight={"1px solid black"}
+              overflow={"auto"}
+            >
+              <Box bgColor="#948888" pt={3} borderBottom={"1px solid black"}>
+                {users.map((el) => {
+                  return (
+                    <Box borderBottom={"1px solid black"} key={el}>
+                      <Box
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        h={"6vh"}
+                        w={"55px"}
+                        m={"auto"}
+                        mt={"17%"}
+                        border={"0px solid black"}
+                        borderRadius={"50%"}
+                        className={el.name === activeUser ? "active" : ""}
+                      >
+                        <Image borderRadius={"50%"} src={el.url} alt="" />
+                      </Box>
+                      <Text
+                        className={el.name === activeUser ? "Tactive" : ""}
+                        fontSize={20}
+                        mt={6}
+                      >
+                        {el.name}
+                      </Text>
+                    </Box>
+                  );
+                })}
+              </Box>
+            </Box>
           <Box
             pt={5}
             maxH={"88vh"}
@@ -1108,8 +1146,9 @@ const Morning5 = () => {
               </TransitionGroup>
             </Box>
           </Box>
+          </Flex>
+        </Box>
         )}
-      </Box>
     </>
   );
 };

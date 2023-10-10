@@ -285,7 +285,7 @@ const EarlyMorning = () => {
       if (!chatPaused && currentMessageIndex < dayTwoEarlyMorning.length) {
         const message = dayTwoEarlyMorning[currentMessageIndex];
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
-
+        setActiveUser(message.sender);
         if (currentMessageIndex === 6) {
           setChatPaused(true);
           setTimeout(() => {
@@ -324,7 +324,7 @@ const EarlyMorning = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 4000);
+    const messageInterval = setInterval(displayNextMessage, 500);
 
     return () => {
       clearInterval(messageInterval);
@@ -386,7 +386,7 @@ const EarlyMorning = () => {
                       <Text
                         className={el.name === activeUser ? "Tactive" : ""}
                         fontSize={20}
-                        mt={5}
+                        mt={6}
                       >
                         {el.name}
                       </Text>

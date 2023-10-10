@@ -25,7 +25,6 @@ import gaji from "../userImages/gaji.jpg";
 import dev1 from "../userImages/systemdev1.jpg";
 import dev2 from "../userImages/systemdev2.jpg";
 
-import ScrollDown from "../ScrollDown";
 
 const EarlyMorning4 = () => {
   const [chatData, setChatData] = useState([]);
@@ -232,7 +231,7 @@ const EarlyMorning4 = () => {
       if (!chatPaused && currentMessageIndex < dayFourMorning.length) {
         const message = dayFourMorning[currentMessageIndex];
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
-
+        setActiveUser(message.sender);
        
         if (currentMessageIndex === 1) {
           setChatPaused(true);
@@ -267,7 +266,7 @@ const EarlyMorning4 = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 4000);
+    const messageInterval = setInterval(displayNextMessage, 500);
 
     return () => {
       clearInterval(messageInterval);
@@ -355,7 +354,7 @@ const EarlyMorning4 = () => {
                       <Text
                         className={el.name === activeUser ? "Tactive" : ""}
                         fontSize={20}
-                        mt={5}
+                        mt={6}
                       >
                         {el.name}
                       </Text>

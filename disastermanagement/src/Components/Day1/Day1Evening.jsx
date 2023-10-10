@@ -22,7 +22,7 @@ import bencarter from "../userImages/bencarter.png";
 import sophia from "../userImages/sophia_kim.png";
 import kate from "../userImages/kate_sullivan.png";
 import mia from "../userImages/Mia Rodriguez.png";
-import julia from "../userImages/juliaharper.jpg"
+import julia from "../userImages/juliaharper.jpg";
 import ScrollDown from "../ScrollDown";
 
 const BringDown = () => {
@@ -40,9 +40,9 @@ const BringDown = () => {
 
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
-  const [ShowScroll,setShowScroll] = useState(false);
-
-
+  const [ShowScroll, setShowScroll] = useState(false);
+  const [activeUserMessageSent, setActiveUserMessageSent] = useState(false);
+  const userListContainerRef = useRef(null);
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
@@ -194,7 +194,7 @@ const BringDown = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
 
-    const messageDelay = 4000; // 4 seconds
+    const messageDelay = 500; // 4 seconds
 
     let timeoutIndex = 0;
 
@@ -204,6 +204,12 @@ const BringDown = () => {
         setChatData((prevChatData) => [...prevChatData, message]);
         setActiveUser(message.sender);
         timeoutIndex++;
+        // if (message.sender === activeUser) {
+        //   console.log(message.sender);
+        //   setActiveUser(message.sender);
+        //   scrollToActiveUserItem();
+
+        // }
         setTimeout(addMessageWithDelay, messageDelay);
       } else {
         setShowBox(true);
@@ -231,6 +237,14 @@ const BringDown = () => {
       scrollToBottom();
     }
   }, [showBox]);
+
+  // const scrollToActiveUserItem = () => {
+  //   const activeUserItem = document.querySelector(".active-user");
+  //   console.log(activeUserItem);
+  //   if (activeUserItem && userListContainerRef.current) {
+  //     userListContainerRef.current.scrollBottom = activeUserItem.offsetTop;
+  //   } 
+  // };
 
   return (
     <>
@@ -264,11 +278,12 @@ const BringDown = () => {
               w={"13%"}
               borderRight={"1px solid black"}
               overflow={"auto"}
+              // ref={userListContainerRef}
             >
               <Box bgColor="#948888" pt={3} borderBottom={"1px solid black"}>
                 {users.map((el) => {
                   return (
-                    <Box borderBottom={"1px solid black"} key={el}>
+                    <Box borderBottom={"1px solid black"} key={el} >
                       <Box
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
@@ -285,8 +300,9 @@ const BringDown = () => {
                       </Box>
                       <Text
                         className={el.name === activeUser ? "Tactive" : ""}
+                        //className={`user-item ${el.name === activeUser ? "active-user" : ""}`}
                         fontSize={20}
-                        mt={5}
+                        mt={6}
                       >
                         {el.name}
                       </Text>
@@ -320,10 +336,10 @@ const BringDown = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                Ben Carter rubs his temples, trying to process
-                the magnitude of the situation. He can feel the
-                eight of responsibility pressing down on him, 
-                knowing that critical decisions lie ahead.
+                  Ben Carter rubs his temples, trying to process the magnitude
+                  of the situation. He can feel the eight of responsibility
+                  pressing down on him, knowing that critical decisions lie
+                  ahead.
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>
@@ -666,9 +682,7 @@ const BringDown = () => {
                             </ModalFooter>
                           </ModalContent>
                         </Modal>
-                        {ShowScroll && (
-                        <ScrollDown />
-                       )}
+                        {ShowScroll && <ScrollDown />}
                       </Box>
                     </>
                   )}

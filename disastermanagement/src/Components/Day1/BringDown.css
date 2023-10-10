@@ -13,8 +13,16 @@
   }
   .Tactive {
     font-weight: bold;
+    background-color: #f0f0f0; 
+    color: black; 
   }
   
+  /* .active-user {
+    background-color: #f0f0f0; 
+    color: black; 
+  } */
+  
+
   #sender {
     font-weight: 500;
   }

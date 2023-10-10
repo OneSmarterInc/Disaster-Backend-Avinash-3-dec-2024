@@ -6,6 +6,7 @@ import Home from '../Pages/Home'
 import Intro from '../Pages/Intro'
 import Chat from '../Pages/Chat'
 import Start from '../Pages/Start';
+import Result from '../Pages/Result';
 
 
 const pageVariants = {
@@ -47,6 +48,12 @@ const MainRoutes = () => {
             variants={pageVariants}
           ><Start/></motion.div>} />
         
+        <Route path='/result' element={<motion.div
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={pageVariants}
+          ><Result/></motion.div>} />
       
     </Routes>
   )

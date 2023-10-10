@@ -25,7 +25,6 @@ import gaji from "../userImages/gaji.jpg";
 import dev1 from "../userImages/systemdev1.jpg";
 import dev2 from "../userImages/systemdev2.jpg";
 
-import ScrollDown from "../ScrollDown";
 
 const EarlyMorning4 = () => {
   const [chatData, setChatData] = useState([]);

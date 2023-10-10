@@ -194,7 +194,7 @@ const BringDown = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
 
-    const messageDelay = 500; // 4 seconds
+    const messageDelay = 4000; // 4 seconds
 
     let timeoutIndex = 0;
 

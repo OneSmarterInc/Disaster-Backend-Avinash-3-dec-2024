@@ -266,7 +266,7 @@ const Morning5 = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 500);
+    const messageInterval = setInterval(displayNextMessage, 4000);
 
     return () => {
       clearInterval(messageInterval);
@@ -486,7 +486,6 @@ const Morning5 = () => {
                       }
                     >
                       <ModalHeader fontWeight={"bold"} fontSize={"25px"}>
-                        Announcement
                       </ModalHeader>
                       <ModalBody fontSize={"18px"}>
                         <Heading>Announcement</Heading>

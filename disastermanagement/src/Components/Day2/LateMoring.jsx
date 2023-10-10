@@ -274,7 +274,7 @@ const LateMorning = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 500);
+    const messageInterval = setInterval(displayNextMessage, 4000);
 
     return () => {
       clearInterval(messageInterval);

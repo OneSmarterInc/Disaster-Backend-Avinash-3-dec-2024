@@ -22,6 +22,7 @@ import mia from "../userImages/Mia Rodriguez.png";
 import gaji from "../userImages/gaji.jpg";
 import communicationlead from "../userImages/communicationlead.jpg"
 import ScrollDown from "../ScrollDown";
+import { useNavigate } from "react-router-dom";
 
 const Morning5 = () => {
   // const [chatData, setChatData] = useState([]);
@@ -56,6 +57,8 @@ const Morning5 = () => {
   const spacerRef = useRef(null);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const navigate = useNavigate();
 
   const handleChange = (value) => {
     setValue(value);
@@ -310,21 +313,21 @@ const Morning5 = () => {
       
         {modalValue ===
         "Emphasizing teamwork, both internally and with external partners" ? (
-          <EarlyMorning />
+          navigate("/result")
         ) : modalValue === "Making clear and swift decisions under pressure" ? (
-          <EarlyMorning />
+          navigate("/result")
         ) : modalValue ===
           "Remaining calm and level-headed during challenges" ? (
-          <EarlyMorning />
+          navigate("/result")
         ) : modalValue ===
           "Effectively conveying information, even in challenging circumstances" ? (
-          <EarlyMorning />
+          navigate("/result")
         ) : modalValue ===
           "Quickly adjusting strategies based on new information or changing scenarios" ? (
-          <EarlyMorning />
+          navigate("/result")
         ) : modalValue ===
           "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-          <EarlyMorning />
+          navigate("/result")
         ) : (
           <Box
           fontFamily={"Fredoka"}

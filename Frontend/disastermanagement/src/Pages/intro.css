@@ -1,0 +1,11 @@
+@media screen and (max-width: 1240px) {
+    .intro{
+        height: auto;
+    }
+  }
+
+  #begin:hover{
+    color: black;
+    background-color: white;
+    font-weight: bold;
+  }

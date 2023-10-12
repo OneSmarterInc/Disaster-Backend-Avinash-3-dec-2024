@@ -6,6 +6,8 @@ import Home from '../Pages/Home'
 import Intro from '../Pages/Intro'
 import Chat from '../Pages/Chat'
 import Start from '../Pages/Start';
+import { Login } from '../Pages/Login';
+import { Signup } from '../Pages/Signup';
 
 
 
@@ -28,7 +30,7 @@ const MainRoutes = () => {
             variants={pageVariants}
           ><Home/></motion.div>
           }  />
-        <Route path='/intro' element={<motion.div
+        <Route path='/DSRBC' element={<motion.div
             initial="initial"
             animate="animate"
             exit="exit"
@@ -54,6 +56,9 @@ const MainRoutes = () => {
             exit="exit"
             variants={pageVariants}
           ><Debrief/></motion.div>} /> */}
+
+    <Route path='/login' element={<Login />}/>
+    <Route path='/signup' element={<Signup />}/>
       
     </Routes>
   )

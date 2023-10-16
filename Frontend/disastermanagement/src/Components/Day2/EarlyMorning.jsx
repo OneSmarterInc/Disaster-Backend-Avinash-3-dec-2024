@@ -29,6 +29,10 @@ import raj from "../userImages/rajpatel.jpg";
 import grace from "../userImages/gracepatterson.jpg";
 import williams from "../userImages/williams.jpg";
 import ScrollDown from "../ScrollDown";
+import oncall from "../userImages/oncall.png";
+import withtom from "../userImages/withtom.png";
+import warroom from "../userImages/warroom.png";
+import liam from "../userImages/liam.jpeg"
 
 const EarlyMorning = () => {
   const [chatData, setChatData] = useState([]);
@@ -195,7 +199,7 @@ const EarlyMorning = () => {
     },
     {
       name: "Liam Turner",
-      url: bencarter,
+      url: liam,
     },
     {
       name: "Sophia Kim",
@@ -286,6 +290,7 @@ const EarlyMorning = () => {
         const message = dayTwoEarlyMorning[currentMessageIndex];
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
         setActiveUser(message.sender);
+        
         if (currentMessageIndex === 6) {
           setChatPaused(true);
           setTimeout(() => {
@@ -403,7 +408,13 @@ const EarlyMorning = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              bgImage={ currentMessageIndex > 20 ? loss : day2morning}
+              bgImage={
+                currentMessageIndex > 30 ? loss :
+                currentMessageIndex > 25 ? warroom :
+                currentMessageIndex > 14 ? withtom :
+                currentMessageIndex > 7 ? oncall :
+                day2morning
+              }
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
@@ -425,7 +436,7 @@ const EarlyMorning = () => {
                   lengthy conversation, discussing the technical intricacies.
                 </Text>
               </Box>
-              <Text fontSize={20} fontWeight={"bold"} color={"white"}>
+              <Text fontSize={20} fontWeight={"bold"} color={"black"}>
                 Day2 Early Morning
               </Text>
               <Box

@@ -8,13 +8,14 @@ import elena from "../userImages/ElenaLvanova.png";
 import jabari from "../userImages/jabarinkosi.png";
 import priya from "../userImages/priyanarayana.png";
 import tariq from "../userImages/Rarqalhashim.png";
-import lucas from "../userImages/lucasoliveria.jpg"
+import lucas from "../userImages/lucasoliveria.jpg";
+import carlos from "../userImages/carlos.jpg";
+import liam from "../userImages/liam.jpeg";
 
 export const ORGDATA = {
     name: "Carlos Mendoza",
     role: "Chief Executive Officer",
-    img:
-      "https://www.wbcsd.org/var/site/storage/images/overview/about-us/our-team/exco/alan-jope/127293-4-eng-GB/Alan-Jope_i480.jpg",
+    img: carlos,
     child: [
       {
         name: "Aisha Patel",
@@ -43,8 +44,7 @@ export const ORGDATA = {
                     name: "Liam Turner",
                     role: "Senior Systems Analyst",
                     img:
-                      "https://gumlet.assettype.com/barandbench%2Fimport%2F2018%2F05%2FScreen-Shot-2018-05-31-at-4.14.18-PM.png?auto=format%2Ccompress&fit=max&w=400&dpr=2.6",
-                    // child: []
+liam                    // child: []
                   },
                   {
                     name: "Mia Rodriguez",

@@ -24,6 +24,10 @@ import mia from "../userImages/Mia Rodriguez.png";
 import gaji from "../userImages/gaji.jpg";
 import dev1 from "../userImages/systemdev1.jpg";
 import dev2 from "../userImages/systemdev2.jpg";
+import begin from "../userImages/begingajji.png";
+import room from "../userImages/theroom.png";
+import liam from "../userImages/liam.jpeg"
+
 
 
 const EarlyMorning4 = () => {
@@ -190,7 +194,7 @@ const EarlyMorning4 = () => {
     },
     {
       name: "Liam Turner",
-      url: bencarter,
+      url: liam,
     },
     {
       name: "Sophia Kim",
@@ -371,9 +375,15 @@ const EarlyMorning4 = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              // bgImage={day1morning}
-              // bgRepeat={"no-repeat"}
-              // bgSize={"cover"}
+              bgImage={
+                currentMessageIndex > 8 ? begin :
+                currentMessageIndex > 6 ? room :
+                currentMessageIndex > 4 ? begin :
+                currentMessageIndex > 2 ? begin :
+                begin
+              }
+              bgRepeat={"no-repeat"}
+              bgSize={"cover"}
             >
               <Box
                 border={"1px solid black"}

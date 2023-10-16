@@ -23,6 +23,12 @@ import gaji from "../userImages/gaji.jpg";
 import communicationlead from "../userImages/communicationlead.jpg"
 import ScrollDown from "../ScrollDown";
 import { useNavigate } from "react-router-dom";
+import recovery from "../userImages/recovery.png";
+import clock from "../userImages/clock.png";
+import clapping from "../userImages/clapping.png";
+import email from "../userImages/email.png";
+import liam from "../userImages/liam.jpeg"
+
 
 const Morning5 = () => {
   // const [chatData, setChatData] = useState([]);
@@ -191,7 +197,7 @@ const Morning5 = () => {
     },
     {
       name: "Liam Turner",
-      url: bencarter,
+      url: liam,
     },
     {
       name: "Sophia Kim",
@@ -381,6 +387,15 @@ const Morning5 = () => {
             overflow={"auto"}
             ref={chatContainerRef}
             pb={2}
+            bgImage={
+              currentMessageIndex > 8 ? email :
+              currentMessageIndex > 4 ? clapping :
+              currentMessageIndex > 3 ? clock :
+              currentMessageIndex > 1 ? recovery :
+              recovery
+            }
+            bgRepeat={"no-repeat"}
+            bgSize={"cover"}
           >
             <Box
               border={"1px solid black"}

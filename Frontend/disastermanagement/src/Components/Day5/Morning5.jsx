@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -23,6 +23,7 @@ import gaji from "../userImages/gaji.jpg";
 import communicationlead from "../userImages/communicationlead.jpg"
 import ScrollDown from "../ScrollDown";
 import { useNavigate } from "react-router-dom";
+
 import recovery from "../userImages/recovery.png";
 import clock from "../userImages/clock.png";
 import clapping from "../userImages/clapping.png";
@@ -30,7 +31,13 @@ import email from "../userImages/email.png";
 import liam from "../userImages/liam.jpeg"
 
 
+import MyContext from "../ContextApi/MyContext";
+import Debrief from "../Debrief";
+
+
 const Morning5 = () => {
+
+  const { enableBox, globalState } = useContext(MyContext);
   // const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
@@ -319,21 +326,21 @@ const Morning5 = () => {
       
         {modalValue ===
         "Emphasizing teamwork, both internally and with external partners" ? (
-          navigate("/result")
+          <Debrief/>
         ) : modalValue === "Making clear and swift decisions under pressure" ? (
-          navigate("/result")
+           <Debrief/>
         ) : modalValue ===
           "Remaining calm and level-headed during challenges" ? (
-          navigate("/result")
+           <Debrief/>
         ) : modalValue ===
           "Effectively conveying information, even in challenging circumstances" ? (
-          navigate("/result")
+           <Debrief/>
         ) : modalValue ===
           "Quickly adjusting strategies based on new information or changing scenarios" ? (
-          navigate("/result")
+           <Debrief/>
         ) : modalValue ===
           "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-          navigate("/result")
+           <Debrief/>
         ) : (
           <Box
           fontFamily={"Fredoka"}

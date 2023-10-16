@@ -3,6 +3,9 @@ const cors = require("cors");
 const main = require("./Config/db");
 const UserRouter = require("./Routes/user.route");
 const AllSimsRouter = require("./Routes/allsims.route");
+const StartSimRouter = require("./Routes/startsim.route");
+const JoinGroupRouter = require("./Routes/joingroup.route");
+const JoinLobbyRouter = require("./Routes/joinlobby.route");
 require("dotenv").config();
 
 const PORT = 3500 || process.env.PORT;
@@ -19,6 +22,9 @@ app.get("/",(req,res)=>{
 
 app.use("/api/user",UserRouter);
 app.use("/api/allsim", AllSimsRouter);
+app.use("/api/startsim",StartSimRouter);
+app.use("/api/joingroup",JoinGroupRouter);
+app.use("/api/joinlobby",JoinLobbyRouter);
 
 
 app.listen(PORT, ()=>{

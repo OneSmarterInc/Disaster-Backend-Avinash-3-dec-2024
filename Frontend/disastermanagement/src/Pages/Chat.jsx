@@ -95,7 +95,7 @@ const Chat = () => {
 
     const cookiemarks = Cookies.get("day1marks") || "";
     const cookieex = Cookies.get("day1explaination") || "";
-    //console.log(cookiemarks, cookieex);
+    // console.log(cookiemarks);
   };
 
   const handleChange2 = (value1) => {
@@ -231,20 +231,20 @@ const Chat = () => {
     <>
       {modalValue ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <BringDown />
+        <Morning5 />
       ) : modalValue === "Making clear and swift decisions under pressure" ? (
-        <BringDown />
+        <Morning5 />
       ) : modalValue === "Remaining calm and level-headed during challenges" ? (
-        <BringDown />
+        <Morning5 />
       ) : modalValue ===
         "Effectively conveying information, even in challenging circumstances" ? (
-        <BringDown />
+          <Morning5 />
       ) : modalValue ===
         "Quickly adjusting strategies based on new information or changing scenarios" ? (
-        <BringDown />
+          <Morning5 />
       ) : modalValue ===
         "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-        <BringDown />
+          <Morning5 />
       ) : (
         <Box
           fontFamily={"Fredoka"}

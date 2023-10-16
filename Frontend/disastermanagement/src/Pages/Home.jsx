@@ -40,13 +40,13 @@ const Home = () => {
        <br />
         <Flex m={"auto"} fontFamily={"Fredoka"} w={"80%"} gap={20}>
           <Text color={"white"} fontSize={"30px"}> 1. Disaster Recovery Business Case</Text>
-          <Button mt={"1px"}><Link to={"/DSRBC"}>Run Simulation</Link></Button>
+          <Button mt={"1px"}><Link to={"/info"}>Run Simulation</Link></Button>
         </Flex>
-        <br />
+        {/* <br />
         <Flex m={"auto"} fontFamily={"Fredoka"} w={"80%"} gap={20}>
           <Text color={"white"} fontSize={"30px"}> 2. Disaster</Text>
-          <Button mt={"1px"}><Link to={"/DSRBC"}>Run Simulation</Link></Button>
-        </Flex>
+          <Button mt={"1px"}><Link to={"/"}>Run Simulation</Link></Button>
+        </Flex> */}
       </Box>
 
     </>

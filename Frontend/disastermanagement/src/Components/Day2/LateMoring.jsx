@@ -24,6 +24,12 @@ import sophia from "../userImages/sophia_kim.png"
 import kate from "../userImages/kate_sullivan.png"
 import mia from "../userImages/Mia Rodriguez.png"
 import ScrollDown from "../ScrollDown";
+import officebuzz from "../userImages/officebuzz.png";
+import pm from "../userImages/1PM.png";
+import room from "../userImages/theroom.png";
+import night from "../userImages/night.png";
+import liam from "../userImages/liam.jpeg"
+
 
 const LateMorning = () => {
   const [chatData, setChatData] = useState([]);
@@ -189,7 +195,7 @@ const LateMorning = () => {
     },
     {
       name: "Liam Turner",
-      url: bencarter,
+      url: liam,
     },
     {
       name: "Sophia Kim",
@@ -248,6 +254,7 @@ const LateMorning = () => {
         const message = dayTwoLateMorning[currentMessageIndex];
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
         setActiveUser(message.sender);
+
         if (currentMessageIndex === 2) {
           setChatPaused(true);
           setTimeout(() => {
@@ -355,7 +362,12 @@ const LateMorning = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              // bgImage={day1morning}
+              bgImage={
+                currentMessageIndex > 11 ? night :
+                currentMessageIndex > 8 ? room :
+                currentMessageIndex > 3 ? pm :
+                officebuzz
+              }
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
@@ -378,7 +390,7 @@ const LateMorning = () => {
                 with a sense of urgency.
                 </Text>
               </Box>
-              <Text fontSize={20} fontWeight={"bold"} color={"white"}>
+              <Text fontSize={20} fontWeight={"bold"} color={"black"}>
                 Day2 Late Morning
               </Text>
               <Box

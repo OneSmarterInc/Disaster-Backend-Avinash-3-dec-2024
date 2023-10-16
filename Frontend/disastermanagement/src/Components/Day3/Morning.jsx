@@ -26,15 +26,15 @@ import kate from "../userImages/kate_sullivan.png"
 import mia from "../userImages/Mia Rodriguez.png"
 import aisha from "../userImages/Aishapatel.png"
 import tom from "../userImages/tom.jpg";
-
+import morninglight from "../userImages/morninglight.png";
+import room from "../userImages/theroom.png";
+import alarms from "../userImages/alarms.png";
+import vendor from "../userImages/vendor.png";
 import ScrollDown from "../ScrollDown";
-  
+import warroom from "../userImages/warroom.png";
+import liam from "../userImages/liam.jpeg"
 
   
-  
-   
-
-
 const Morning = () => {
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
@@ -202,7 +202,7 @@ const Morning = () => {
     },
     {
       name: "Liam Turner",
-      url: bencarter,
+      url: liam,
     },
     {
       name: "Sophia Kim",
@@ -236,6 +236,7 @@ const Morning = () => {
         const message = dayThreeMorning[currentMessageIndex];
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
         setActiveUser(message.sender);
+
         if (currentMessageIndex === 2) {
           setChatPaused(true);
           setTimeout(() => {
@@ -383,9 +384,16 @@ const Morning = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              // bgImage={day1morning}
-              // bgRepeat={"no-repeat"}
-              // bgSize={"cover"}
+              bgImage={
+                currentMessageIndex > 13 ? warroom :
+                currentMessageIndex > 12 ? room :
+                currentMessageIndex > 9 ? vendor :
+                currentMessageIndex > 6 ? alarms :
+                currentMessageIndex > 3 ? room :
+                morninglight
+              }
+              bgRepeat={"no-repeat"}
+              bgSize={"cover"}
             >
               <Box
                 border={"1px solid black"}

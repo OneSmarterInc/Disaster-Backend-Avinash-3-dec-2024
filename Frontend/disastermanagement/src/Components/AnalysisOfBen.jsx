@@ -14,13 +14,16 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import "./Debrief.css";
+import { FcPlus } from 'react-icons/fc';
+
 
 const AnalysisOfBen = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Box mt={10} className="containerChild" onClick={onOpen}>
+      <Box display={"flex"} justifyContent={"space-around"} alignItems={"center"} mt={10} className="containerChild" onClick={onOpen}>
         Analysis of Ben Carter's Leadership
+        <FcPlus />
       </Box>
 
       <Modal isOpen={isOpen} onClose={onClose} size={"4xl"}>

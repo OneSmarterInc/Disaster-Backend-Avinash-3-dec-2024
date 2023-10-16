@@ -10,30 +10,12 @@ import Drform from './Drform';
 const Debrief = () => {
   return (
     <>
-    {/* <Flex
-      bgColor="#691212"
-      fontFamily={"Croissant One"}
-      justifyContent={"space-between"}
-      alignItems={"center"}
-      w={"100%"}
-      m={"auto"}
-      border={"1px solid black"}
-      h={"20"}
-      pl={5}
-      pr={5}
-      color={"white"}
-    >
-      <Heading fontFamily={"Fredoka"} >
-        Disaster Recovery Business Case
-      </Heading>
-    </Flex> */}
-    <Box id='container'  >
+    <Box id='container' bg={"gray.300"} >
       <AnalysisOfBen />
       <DimensionMatrix/>
       <LeadershipFramework/>
-      <BenAwareness/>
+      {/* <BenAwareness/> */}
     </Box>
-    <Drform/>
     </>
   )
 }

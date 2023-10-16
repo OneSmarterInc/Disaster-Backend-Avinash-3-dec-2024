@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Box, Text, VStack } from "@chakra-ui/react";
 import Prepare from "../Pages/Prepare";
 import Chat from "../Pages/Chat";
 import StyledTreeExample from "./Hierarchy/StyledTreeExample";
 import Debrief from "./Debrief";
+import MyContext from "./ContextApi/MyContext";
+import Deliverable from "./Deliverable";
 
 const Sidebar = () => {
+  const { globalState } = useContext(MyContext);
   const [selectedSection, setSelectedSection] = useState("Prepare");
 
   const handleSectionClick = (section) => {
@@ -16,7 +19,7 @@ const Sidebar = () => {
     <Box display="flex" flexDirection="row" height={"88vh"}>
       <VStack
         spacing={4}
-        alignItems="flex-start"
+        alignItems="flex-start" 
         border={"0px solid red"}
         bgColor={" #856262 "}
         fontFamily={"Fredoka"}
@@ -47,6 +50,13 @@ const Sidebar = () => {
           Chat
         </Text>
         <Text
+          onClick={() => handleSectionClick("deliverable")}
+          cursor="pointer"
+          fontWeight={selectedSection === "deliverable" ? "bold" : "none"}
+        >
+          Deliverable
+        </Text>
+        <Text
           onClick={() => handleSectionClick("debrief")}
           cursor="pointer"
           fontWeight={selectedSection === "debrief" ? "bold" : "none"}
@@ -58,11 +68,16 @@ const Sidebar = () => {
         bg={"gray.100"}
         overflowX="auto"
         padding={selectedSection === "Hierarchy" ? "10" : "0"}
-        w={selectedSection === "debrief" && "100%"}
+        w={
+          selectedSection === "debrief" || selectedSection === "deliverable"
+            ? "100%"
+            : undefined
+        }
       >
         {selectedSection === "Prepare" && <Prepare />}
         {selectedSection === "Hierarchy" && <StyledTreeExample />}
         {selectedSection === "Chat" && <Chat />}
+        {selectedSection === "deliverable" && <Deliverable />}
         {selectedSection === "debrief" && <Debrief />}
       </Box>
     </Box>

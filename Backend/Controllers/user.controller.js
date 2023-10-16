@@ -31,7 +31,7 @@ const signin = async(req,res)=>{
     try {
         const payload = req.body;
         let data = await UserModel.findOne({email:payload.email});
-        console.log(data);
+        // console.log(data);
         if(!data){
             res.send({result:"Please signup first"});
         }
@@ -42,8 +42,13 @@ const signin = async(req,res)=>{
         )
 
         if(correctPassword){
-            const token = await jwt.sign({email:data.email, user_id:data._id},process.env.KEY);
-            res.send({result: "Signin successful", token});
+            const token = await jwt.sign({email:data.email, userId:data._id, gpId:data.gpId},"avinashkalmegh123");
+            const decoded = verifyToken(token);
+            if (decoded) {
+                res.send({ result: "Signin successful", token, userData: decoded });
+            } else {
+                res.send({ result: "Token verification failed" });
+            }
         }
         else{
             res.send({result: "Please signup first"})
@@ -52,6 +57,15 @@ const signin = async(req,res)=>{
         res.send(error.message);
     }
 }
+
+const verifyToken = (token) => {
+    try {
+        const decoded = jwt.verify(token, "avinashkalmegh123");
+        return decoded;
+    } catch (err) {
+        return null; // Token is invalid
+    }
+};
 
 
 

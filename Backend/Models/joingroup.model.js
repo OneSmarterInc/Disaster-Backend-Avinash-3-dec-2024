@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
-const allGpTable = mongoose.Schema({
+const joingroup = mongoose.Schema({
     name: String,
     pgId: {type: mongoose.Schema.Types.ObjectId,ref: "user"},
     dp: String
 })
 
 
-const AllDpTableModel = mongoose.model("user",allGpTable);
+const joingroupModel = mongoose.model("allgroups",joingroup);
 
 
-module.exports = AllDpTableModel;
+module.exports = joingroupModel;

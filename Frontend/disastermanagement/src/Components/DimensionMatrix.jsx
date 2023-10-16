@@ -22,13 +22,16 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import "./Debrief.css";
+import { FcPlus } from 'react-icons/fc';
+
 
 const DimensionMatrix = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Box mt={10} className="containerChild" onClick={onOpen}>
+      <Box pl={5} pr={6} display={"flex"} justifyContent={"space-between"} alignItems={"center"} mt={10} className="containerChild" onClick={onOpen}>
         Dimensions of our matrix
+        <FcPlus/>
       </Box>
 
       <Modal isOpen={isOpen} onClose={onClose} size={"4xl"}>

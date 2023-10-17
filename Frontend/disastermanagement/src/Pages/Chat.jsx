@@ -188,7 +188,7 @@ const Chat = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
 
-    const messageDelay = 4000; // 4 seconds
+    const messageDelay = 100; // 4 seconds
 
     let timeoutIndex = 0;
 
@@ -231,20 +231,20 @@ const Chat = () => {
     <>
       {modalValue ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <Morning5 />
+        <BringDown />
       ) : modalValue === "Making clear and swift decisions under pressure" ? (
-        <Morning5 />
+        <BringDown />
       ) : modalValue === "Remaining calm and level-headed during challenges" ? (
-        <Morning5 />
+        <BringDown />
       ) : modalValue ===
         "Effectively conveying information, even in challenging circumstances" ? (
-          <Morning5 />
+          <BringDown />
       ) : modalValue ===
         "Quickly adjusting strategies based on new information or changing scenarios" ? (
-          <Morning5 />
+          <BringDown />
       ) : modalValue ===
         "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-          <Morning5 />
+          <BringDown />
       ) : (
         <Box
           fontFamily={"Fredoka"}
@@ -266,14 +266,10 @@ const Chat = () => {
                   return (
                     <Box borderBottom={"1px solid black"} key={el}>
                       <Box
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
                         h={"6vh"}
                         w={"55px"}
                         m={"auto"}
                         mt={"17%"}
-                        border={"0px solid black"}
                         borderRadius={"50%"}
                         className={el.name === activeUser ? "active" : ""}
                       >
@@ -322,9 +318,7 @@ const Chat = () => {
                 before heading out.
                 </Text>
               </Box>
-              <Text fontSize={20} fontWeight={"bold"} color={"white"}>
-                Day1 Morning
-              </Text>
+              
               <Box
                 w={"90%"}
                 h={"68vh"}

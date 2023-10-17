@@ -36,9 +36,9 @@ import warroom from "../userImages/warroom.png";
 import liam from "../userImages/liam.jpeg";
 import tense from "../userImages/tense.jpeg";
 
-import liam from "../userImages/liam.jpeg"
 import MyContext from "../ContextApi/MyContext";
-
+import pressingdown from "../userImages/pressingdown.jpeg";
+import failure from "../userImages/failure.jpeg";
 
   
 const Morning = () => {
@@ -395,8 +395,8 @@ const Morning = () => {
               ref={chatContainerRef}
               pb={2}
               bgImage={
-                currentMessageIndex > 13 ? warroom :
-                currentMessageIndex > 12 ? room :
+                currentMessageIndex > 13 ? failure :
+                currentMessageIndex > 12 ? pressingdown :
                 currentMessageIndex > 9 ? vendor :
                 currentMessageIndex > 6 ? alarms :
                 currentMessageIndex > 3 ? tense :

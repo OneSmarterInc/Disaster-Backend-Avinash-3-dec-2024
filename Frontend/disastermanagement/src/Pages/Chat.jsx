@@ -251,7 +251,6 @@ const Chat = () => {
         "Keeping an eye on long-term impacts and future implications during the crisis" ? (
           <BringDown />
 
-        <BringDown />
       ) : modalValue ===
         "Quickly adjusting strategies based on new information or changing scenarios" ? (
         <BringDown />

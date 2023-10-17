@@ -9,12 +9,34 @@ import {
   Alert, AlertDescription, AlertIcon, AlertTitle,
   CloseButton, useDisclosure
 } from "@chakra-ui/react";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Form } from "react-router-dom";
 import MyContext from "./ContextApi/MyContext";
 
 
 const Drform = () => {
+  const  [executivePurpose,setExecutivePurpose] = useState("");
+  const [riskPotential,setRiskPotential] = useState("");
+  const [riskAction,setRiskAction] = useState("");
+  const [dataProtection,setDataProtection] = useState("");
+  const [dataAction,setDataAction] = useState("");
+  const [infrastructureMonitoring,setInfrastructureMonitoring] = useState("");
+  const [infrastructureAction,setInfrastructureAction] = useState("");
+  const [backupMethods,setBackupMethods] = useState("");
+  const [backupAction,setBackupAction] = useState("");
+  const [communicationChannel,setCommunicationChannel] = useState("");
+  const [communicationAction,setCommunicationAction] = useState("");
+  const [redundancyFailover,setRedundancyFailover] = useState("");
+  const [redundencyAction,setRedundencyAction] = useState("");
+  const [trainingModules,setTrainingModules] = useState("");
+  const [trainingAction,setTrainingAction] = useState("");
+  const [testingFrequency,setTestingFrequency] = useState("");
+  const [testingSimulated,setTestingSimulated] = useState("");
+  const [maintenanceReview,setMaintenanceReview] = useState("");
+  const [maintenanceAction,setMaintenanceAction] = useState("");
+  const [vendorThirdParty,setVendorThirdParty] = useState("")
+  const [vendorAction,setVendorAction] = useState("");
+  const [appendices,setAppendices] = useState("");
 
   const {enableBox} = useContext(MyContext);
   const {
@@ -51,93 +73,93 @@ const Drform = () => {
       <form onSubmit={handleSubmit}>
         <FormLabel fontWeight={"700"}>1. Executive Summary</FormLabel>
         <FormLabel>Purpose of the DR Plan:</FormLabel>
-        <Input type="text" border={"1px solid black"} />
+        <Input type="text" border={"1px solid black"} value={executivePurpose} onChange={(e)=>setExecutivePurpose(e.target.value)}/>
 
         <FormLabel mt={10} fontWeight={"700"}>
           2. Risk Assessment & System Vulnerabilities
         </FormLabel>
         <FormLabel>Potential Disasters:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={riskPotential} onChange={(e)=>setRiskPotential(e.target.value)}/>
         <FormLabel>Action:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={riskAction} onChange={(e)=>setRiskAction(e.target.value)}/>
 
         <FormLabel mt={10} fontWeight={"700"}>
           3. Data Protection & Integrity
         </FormLabel>
         <FormLabel>Protection Measures:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={dataProtection} onChange={(e)=>setDataProtection(e.target.value)}/>
         <FormLabel>Action:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={dataAction} onChange={(e)=>setDataAction(e.target.value)}/>
 
         <FormLabel mt={10} fontWeight={"700"}>
           4. Infrastructure & Failures
         </FormLabel>
         <FormLabel>Monitoring Tools:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={infrastructureMonitoring} onChange={(e)=>setInfrastructureMonitoring(e.target.value)}/>
         <FormLabel>Action:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={infrastructureAction} onChange={(e)=>setInfrastructureAction(e.target.value)}/>
 
         <FormLabel mt={10} fontWeight={"700"}>
           5. Backup Strategy & Failures
         </FormLabel>
         <FormLabel>Backup Methods:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={backupMethods} onChange={(e)=>setBackupMethods(e.target.value)}/>
         <FormLabel>Action:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={backupAction} onChange={(e)=>setBackupAction(e.target.value)}/>
 
         <FormLabel mt={10} fontWeight={"700"}>
           6. Communication Strategy & Breakdowns
         </FormLabel>
         <FormLabel>Channels:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={communicationChannel} onChange={(e)=>setCommunicationChannel(e.target.value)}/>
         <FormLabel>Action:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={communicationAction} onChange={(e)=>setCommunicationAction(e.target.value)}/>
 
         <FormLabel mt={10} fontWeight={"700"}>
           7. Redundancy Strategy
         </FormLabel>
         <FormLabel>Failover Systems:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={redundancyFailover} onChange={(e)=>setRedundancyFailover(e.target.value)}/>
         <FormLabel>Action:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={redundencyAction} onChange={(e)=>setRedundencyAction(e.target.value)}/>
 
         <FormLabel mt={10} fontWeight={"700"}>
           8. Training and Awareness
         </FormLabel>
         <FormLabel>Training Modules for the Team:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={trainingModules} onChange={(e)=>setTrainingModules(e.target.value)}/>
         <FormLabel>Action:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={trainingAction} onChange={(e)=>setTrainingAction(e.target.value)}/>
 
         <FormLabel mt={10} fontWeight={"700"}>
           9. Testing and Drills
         </FormLabel>
         <FormLabel>Frequency of DR Tests:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={testingFrequency} onChange={(e)=>setTestingFrequency(e.target.value)}/>
         <FormLabel>Simulated Disaster Scenarios:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={testingSimulated} onChange={(e)=>setTestingSimulated(e.target.value)}/>
 
         <FormLabel mt={10} fontWeight={"700"}>
           10. Maintenance & Review
         </FormLabel>
         <FormLabel>Review Schedule:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={maintenanceReview} onChange={(e)=>setMaintenanceReview(e.target.value)}/>
         <FormLabel>Action:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={maintenanceAction} onChange={(e)=>setMaintenanceAction(e.target.value)}/>
 
         <FormLabel mt={10} fontWeight={"700"}>
           11. Vendor Details & Dependencies
         </FormLabel>
         <FormLabel>Third-party DR Solutions:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={vendorThirdParty} onChange={(e)=>setVendorThirdParty(e.target.value)}/>
         <FormLabel>Action:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={vendorAction} onChange={(e)=>setVendorAction(e.target.value)}/>
 
         <FormLabel mt={10} fontWeight={"700"}>
           12. Appendices
         </FormLabel>
         <FormLabel>Additional Notes:</FormLabel>
-        <Input type="text" border={"1px solid black"}/>
+        <Input type="text" border={"1px solid black"} value={appendices} onChange={(e)=>setAppendices(e.target.value)}/>
 
         <Input
           mt={10}

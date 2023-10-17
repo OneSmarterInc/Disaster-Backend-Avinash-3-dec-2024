@@ -214,6 +214,7 @@ const LateMorning = () => {
 
   const closePopup = () => {
     // setShowPopup(false);
+    
     setDay5Popup(false);
     // onClose();
     setChatPaused(false);
@@ -254,8 +255,19 @@ const LateMorning = () => {
   }, [showBox2]);
 
   useEffect(() => {
+    if(currentMessageIndex >3 && currentMessageIndex <=11){
+    setHead("Day 2 Afternoon");
 
-    setHead("Day 2 Late Morning");
+    }
+    else if(currentMessageIndex>11){
+    setHead("Day 2 Night");
+
+    }
+    else{
+
+      setHead("Day 2 Late Morning");
+    }
+   
     
     const displayNextMessage = () => {
       if (!chatPaused && currentMessageIndex < dayTwoLateMorning.length) {

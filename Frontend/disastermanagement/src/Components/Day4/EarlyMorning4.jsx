@@ -242,7 +242,7 @@ const EarlyMorning4 = () => {
 
   useEffect(() => {
 
-    setHead("Day 4 Early Morning");
+    setHead("Day 4 Evening");
     
     const displayNextMessage = () => {
       if (!chatPaused && currentMessageIndex < dayFourMorning.length) {

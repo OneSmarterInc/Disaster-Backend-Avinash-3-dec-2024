@@ -193,7 +193,8 @@ const Chat = () => {
     // Simulate messages from 5 users with a 2-second delay between each message
     setHead("Day 1 Morning")
 
-    const messageDelay = 2000; // 4 seconds
+    const messageDelay = 4000; // 4 seconds
+
 
     let timeoutIndex = 0;
 

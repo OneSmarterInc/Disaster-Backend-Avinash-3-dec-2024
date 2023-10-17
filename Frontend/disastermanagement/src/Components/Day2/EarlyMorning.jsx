@@ -32,8 +32,12 @@ import ScrollDown from "../ScrollDown";
 import oncall from "../userImages/oncall.png";
 import withtom from "../userImages/withtom.png";
 import warroom from "../userImages/warroom.png";
+
+import liam from "../userImages/liam.jpeg";
+
 import liam from "../userImages/liam.jpeg"
 import MyContext from "../ContextApi/MyContext";
+
 
 const EarlyMorning = () => {
   const [chatData, setChatData] = useState([]);
@@ -65,6 +69,7 @@ const EarlyMorning = () => {
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
   const [ShowScroll,setShowScroll] = useState(false);
+  const [img, showImg] = useState(false)
 
 
   const chatContainerRef = useRef(null);
@@ -326,7 +331,7 @@ const EarlyMorning = () => {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup5(true)
-          }, 2000);
+          }, 1000);
         }
       } else {
         if (currentMessageIndex === dayTwoEarlyMorning.length) {
@@ -336,7 +341,7 @@ const EarlyMorning = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 4000);
+    const messageInterval = setInterval(displayNextMessage, 100);
 
     return () => {
       clearInterval(messageInterval);
@@ -382,14 +387,11 @@ const EarlyMorning = () => {
                   return (
                     <Box borderBottom={"1px solid black"} key={el.name}>
                       <Box
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
+                        
                         h={"6vh"}
                         w={"55px"}
                         m={"auto"}
                         mt={"17%"}
-                        border={"0px solid black"}
                         borderRadius={"50%"}
                         className={el.name === activeUser ? "active" : ""}
                       >
@@ -418,7 +420,7 @@ const EarlyMorning = () => {
               bgImage={
                 currentMessageIndex > 30 ? loss :
                 currentMessageIndex > 25 ? warroom :
-                currentMessageIndex > 14 ? withtom :
+                currentMessageIndex > 43 ? withtom :
                 currentMessageIndex > 7 ? oncall :
                 day2morning
               }
@@ -443,9 +445,7 @@ const EarlyMorning = () => {
                   lengthy conversation, discussing the technical intricacies.
                 </Text>
               </Box>
-              <Text fontSize={20} fontWeight={"bold"} color={"black"}>
-                Day2 Early Morning
-              </Text>
+             
               <Box
                 w={"90%"}
                 h={"68vh"}

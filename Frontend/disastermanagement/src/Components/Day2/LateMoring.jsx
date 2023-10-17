@@ -289,7 +289,7 @@ const LateMorning = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 4000);
+    const messageInterval = setInterval(displayNextMessage, 100);
 
     return () => {
       clearInterval(messageInterval);
@@ -337,14 +337,11 @@ const LateMorning = () => {
                   return (
                     <Box borderBottom={"1px solid black"} key={el.name}>
                       <Box
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
+                      
                         h={"6vh"}
                         w={"55px"}
                         m={"auto"}
                         mt={"17%"}
-                        border={"0px solid black"}
                         borderRadius={"50%"}
                         className={el.name === activeUser ? "active" : ""}
                       >
@@ -398,9 +395,7 @@ const LateMorning = () => {
                 with a sense of urgency.
                 </Text>
               </Box>
-              <Text fontSize={20} fontWeight={"bold"} color={"black"}>
-                Day2 Late Morning
-              </Text>
+              
               <Box
                 w={"90%"}
                 h={"68vh"}

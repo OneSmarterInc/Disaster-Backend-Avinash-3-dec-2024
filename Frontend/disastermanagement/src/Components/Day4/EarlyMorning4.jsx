@@ -25,8 +25,13 @@ import gaji from "../userImages/gaji.jpg";
 import dev1 from "../userImages/systemdev1.jpg";
 import dev2 from "../userImages/systemdev2.jpg";
 import begin from "../userImages/begingajji.png";
-import room from "../userImages/theroom.png";
 import liam from "../userImages/liam.jpeg"
+
+import scene2 from "../userImages/2ndscene.jpeg";
+import begin2 from "../userImages/begin2.png";
+import tapping from "../userImages/tapping.png";
+import starts from "../userImages/starts.png";
+
 import MyContext from "../ContextApi/MyContext";
 
 
@@ -278,7 +283,7 @@ const EarlyMorning4 = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 4000);
+    const messageInterval = setInterval(displayNextMessage, 500);
 
     return () => {
       clearInterval(messageInterval);
@@ -350,14 +355,11 @@ const EarlyMorning4 = () => {
                   return (
                     <Box borderBottom={"1px solid black"} key={el.name}>
                       <Box
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
+                       
                         h={"6vh"}
                         w={"55px"}
                         m={"auto"}
                         mt={"17%"}
-                        border={"0px solid black"}
                         borderRadius={"50%"}
                         className={el.name === activeUser ? "active" : ""}
                       >
@@ -384,11 +386,11 @@ const EarlyMorning4 = () => {
               ref={chatContainerRef}
               pb={2}
               bgImage={
-                currentMessageIndex > 8 ? begin :
-                currentMessageIndex > 6 ? room :
+                currentMessageIndex > 8 ? starts :
+                currentMessageIndex > 6 ? tapping :
                 currentMessageIndex > 4 ? begin :
-                currentMessageIndex > 2 ? begin :
-                begin
+                currentMessageIndex > 2 ? scene2 :
+                begin2
               }
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
@@ -411,9 +413,7 @@ const EarlyMorning4 = () => {
                   atmosphere is thick with anticipation.{" "}
                 </Text>
               </Box>
-              <Text fontSize={20} fontWeight={"bold"} color={"white"}>
-                Day4 Early Morning
-              </Text>
+              
               <Box
                 w={"90%"}
                 h={"68vh"}
@@ -504,7 +504,7 @@ const EarlyMorning4 = () => {
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
                             mr={"150px"}
                           >
-                            Close Mail
+                            Close
                           </Button>
                         </ModalFooter>
                       </ModalContent>
@@ -536,7 +536,7 @@ const EarlyMorning4 = () => {
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
                             mr={"150px"}
                           >
-                            Close Mail
+                            Close
                           </Button>
                         </ModalFooter>
                       </ModalContent>
@@ -568,7 +568,7 @@ const EarlyMorning4 = () => {
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
                             mr={"150px"}
                           >
-                            Close Mail
+                            Close
                           </Button>
                         </ModalFooter>
                       </ModalContent>
@@ -600,7 +600,7 @@ const EarlyMorning4 = () => {
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
                             mr={"150px"}
                           >
-                            Close Mail
+                            Close
                           </Button>
                         </ModalFooter>
                       </ModalContent>

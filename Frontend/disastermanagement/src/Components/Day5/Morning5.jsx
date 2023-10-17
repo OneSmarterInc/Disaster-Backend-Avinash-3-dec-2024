@@ -288,7 +288,7 @@ const Morning5 = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 4000);
+    const messageInterval = setInterval(displayNextMessage, 500);
 
     return () => {
       clearInterval(messageInterval);
@@ -370,14 +370,10 @@ const Morning5 = () => {
                   return (
                     <Box borderBottom={"1px solid black"} key={el.name}>
                       <Box
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
                         h={"6vh"}
                         w={"55px"}
                         m={"auto"}
                         mt={"17%"}
-                        border={"0px solid black"}
                         borderRadius={"50%"}
                         className={el.name === activeUser ? "active" : ""}
                       >
@@ -431,9 +427,7 @@ const Morning5 = () => {
                 relief echoed throughout the office.{" "}
               </Text>
             </Box>
-            <Text fontSize={20} fontWeight={"bold"}>
-              Day5 EarlyMorning
-            </Text>
+           
             <br />
 
             <Box
@@ -541,9 +535,9 @@ const Morning5 = () => {
                           fontFamily={"Croissant One"}
                           bg={"black"}
                           _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                          mr={"150px"}
+                          mr={"100px"}
                         >
-                          Close Mail
+                          Close Announcement
                         </Button>
                       </ModalFooter>
                     </ModalContent>
@@ -579,7 +573,7 @@ const Morning5 = () => {
                           _hover={{ bgColor: "#a1e8f0", color: "black" }}
                           mr={"150px"}
                         >
-                          Close Mail
+                          Close
                         </Button>
                       </ModalFooter>
                     </ModalContent>
@@ -613,7 +607,7 @@ const Morning5 = () => {
                           _hover={{ bgColor: "#a1e8f0", color: "black" }}
                           mr={"150px"}
                         >
-                          Close Mail
+                          Close
                         </Button>
                       </ModalFooter>
                     </ModalContent>
@@ -647,7 +641,7 @@ const Morning5 = () => {
                           _hover={{ bgColor: "#a1e8f0", color: "black" }}
                           mr={"150px"}
                         >
-                          Close Mail
+                          Close
                         </Button>
                       </ModalFooter>
                     </ModalContent>
@@ -681,7 +675,7 @@ const Morning5 = () => {
                           _hover={{ bgColor: "#a1e8f0", color: "black" }}
                           mr={"150px"}
                         >
-                          Close Mail
+                          Close
                         </Button>
                       </ModalFooter>
                     </ModalContent>

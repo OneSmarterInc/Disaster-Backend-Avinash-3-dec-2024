@@ -32,8 +32,13 @@ import alarms from "../userImages/alarms.png";
 import vendor from "../userImages/vendor.png";
 import ScrollDown from "../ScrollDown";
 import warroom from "../userImages/warroom.png";
+
+import liam from "../userImages/liam.jpeg";
+import tense from "../userImages/tense.jpeg";
+
 import liam from "../userImages/liam.jpeg"
 import MyContext from "../ContextApi/MyContext";
+
 
   
 const Morning = () => {
@@ -280,7 +285,7 @@ const Morning = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 4000);
+    const messageInterval = setInterval(displayNextMessage, 500);
 
     return () => {
       clearInterval(messageInterval);
@@ -359,14 +364,11 @@ const Morning = () => {
                   return (
                     <Box borderBottom={"1px solid black"} key={el.name}>
                       <Box
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
+                       
                         h={"6vh"}
                         w={"55px"}
                         m={"auto"}
                         mt={"17%"}
-                        border={"0px solid black"}
                         borderRadius={"50%"}
                         className={el.name === activeUser ? "active" : ""}
                       >
@@ -397,7 +399,7 @@ const Morning = () => {
                 currentMessageIndex > 12 ? room :
                 currentMessageIndex > 9 ? vendor :
                 currentMessageIndex > 6 ? alarms :
-                currentMessageIndex > 3 ? room :
+                currentMessageIndex > 3 ? tense :
                 morninglight
               }
               bgRepeat={"no-repeat"}
@@ -421,9 +423,7 @@ const Morning = () => {
                   the company's Leadership Team.{" "}
                 </Text>
               </Box>
-              <Text fontSize={20} fontWeight={"bold"} color={"white"}>
-                Day3 Morning
-              </Text>
+              
               <Box
                 w={"90%"}
                 h={"68vh"}
@@ -518,7 +518,7 @@ const Morning = () => {
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
                             mr={"150px"}
                           >
-                            Close Mail
+                            Close
                           </Button>
                         </ModalFooter>
                       </ModalContent>
@@ -553,7 +553,7 @@ const Morning = () => {
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
                             mr={"150px"}
                           >
-                            Close Mail
+                            Close
                           </Button>
                         </ModalFooter>
                       </ModalContent>
@@ -587,7 +587,7 @@ const Morning = () => {
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
                             mr={"150px"}
                           >
-                            Close Mail
+                            Close
                           </Button>
                         </ModalFooter>
                       </ModalContent>
@@ -621,7 +621,7 @@ const Morning = () => {
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
                             mr={"150px"}
                           >
-                            Close Mail
+                            Close
                           </Button>
                         </ModalFooter>
                       </ModalContent>
@@ -653,7 +653,7 @@ const Morning = () => {
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
                             mr={"150px"}
                           >
-                            Close Mail
+                            Close
                           </Button>
                         </ModalFooter>
                       </ModalContent>

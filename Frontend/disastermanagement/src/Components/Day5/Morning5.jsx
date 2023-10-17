@@ -27,7 +27,7 @@ import { useNavigate } from "react-router-dom";
 import recovery from "../userImages/recovery.png";
 import clock from "../userImages/clock.png";
 import clapping from "../userImages/clapping.png";
-import email from "../userImages/email.png";
+import email from "../userImages/email.jpeg";
 import liam from "../userImages/liam.jpeg"
 
 

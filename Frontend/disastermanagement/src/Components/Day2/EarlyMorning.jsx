@@ -32,8 +32,7 @@ import ScrollDown from "../ScrollDown";
 import oncall from "../userImages/oncall.png";
 import withtom from "../userImages/withtom.png";
 import warroom from "../userImages/warroom.png";
-
-
+import liam from "../userImages/liam.jpeg";
 import MyContext from "../ContextApi/MyContext";
 
 
@@ -339,7 +338,7 @@ const EarlyMorning = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 4000);
+    const messageInterval = setInterval(displayNextMessage, 2000);
 
     return () => {
       clearInterval(messageInterval);
@@ -418,7 +417,7 @@ const EarlyMorning = () => {
               bgImage={
                 currentMessageIndex > 30 ? loss :
                 currentMessageIndex > 25 ? warroom :
-                currentMessageIndex > 43 ? withtom :
+                currentMessageIndex > 13 ? withtom :
                 currentMessageIndex > 7 ? oncall :
                 day2morning
               }

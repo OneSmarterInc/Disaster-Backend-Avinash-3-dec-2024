@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import day1evening from "./day1evening.jpg";
 import "./BringDown.css";
@@ -24,8 +24,12 @@ import kate from "../userImages/kate_sullivan.png";
 import mia from "../userImages/Mia Rodriguez.png";
 import julia from "../userImages/juliaharper.jpg";
 import ScrollDown from "../ScrollDown";
+
 import liam from "../userImages/liam.jpeg"
 import architecture from "../userImages/architecture.jpeg";
+
+import MyContext from "../ContextApi/MyContext";
+
 
 const BringDown = () => {
   const [chatData, setChatData] = useState([]);
@@ -48,9 +52,13 @@ const BringDown = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
+  const {setHead} = useContext(MyContext);
+
+
   const handleChange = (value) => {
     setValue(value);
     setIsModalOpen(true);
+    Cookies.set("day1evening2", value);
     //  console.log(value);
   };
 
@@ -101,7 +109,7 @@ const BringDown = () => {
   const handleChange2 = (value1) => {
     setValue1(value1);
     setIsModalOpen1(true);
-
+    Cookies.set("day1evening1", value1);
     //  console.log(value);
   };
 
@@ -195,6 +203,7 @@ const BringDown = () => {
 
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
+    setHead("Day 1 Evening")
 
     const messageDelay = 4000; // 4 seconds
 
@@ -222,6 +231,8 @@ const BringDown = () => {
 
     // Call scrollToBottom when children change or initially
     // scrollToBottom();
+    const cookiemarks = Cookies.get("dayvalue") || "";
+    console.log(cookiemarks);
 
     return () => {
       clearTimeout(addMessageWithDelay);
@@ -285,7 +296,7 @@ const BringDown = () => {
               <Box bgColor="#948888" pt={3} borderBottom={"1px solid black"}>
                 {users.map((el) => {
                   return (
-                    <Box borderBottom={"1px solid black"} key={el} >
+                    <Box borderBottom={"1px solid black"} key={el.name} >
                       <Box
                         h={"6vh"}
                         w={"55px"}
@@ -361,6 +372,7 @@ const BringDown = () => {
                         timeout={{ enter: 300, exit: 300 }}
                       >
                         <Box
+                        key={i}
                           border={"0px solid black"}
                           w={"100%"}
                           display="flex"

@@ -33,6 +33,7 @@ import liam from "../userImages/liam.jpeg"
 
 import MyContext from "../ContextApi/MyContext";
 import Debrief from "../Debrief";
+import Deliverable from "../Deliverable";
 
 
 const Morning5 = () => {
@@ -69,6 +70,9 @@ const Morning5 = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
+  const {setHead} = useContext(MyContext);
+
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const navigate = useNavigate();
@@ -76,6 +80,7 @@ const Morning5 = () => {
   const handleChange = (value) => {
     setValue(value);
     setIsModalOpen(true);
+    Cookies.set("day5morning2",value);
   };
 
   const handleClick = () => {
@@ -125,6 +130,7 @@ const Morning5 = () => {
   const handleChange2 = (value1) => {
     setValue1(value1);
     setIsModalOpen1(true);
+    Cookies.set("day5morning1", value1);
   };
 
   const handleClick2 = () => {
@@ -242,6 +248,9 @@ const Morning5 = () => {
   }, [showBox2]);
 
   useEffect(() => {
+
+    setHead("Day 5 Morning");
+    
     const displayNextMessage = () => {
       if (!chatPaused && currentMessageIndex < dayFiveMorning.length) {
         const message = dayFiveMorning[currentMessageIndex];
@@ -326,21 +335,21 @@ const Morning5 = () => {
       
         {modalValue ===
         "Emphasizing teamwork, both internally and with external partners" ? (
-          <Debrief/>
+          <Deliverable/>
         ) : modalValue === "Making clear and swift decisions under pressure" ? (
-           <Debrief/>
+           <Deliverable/>
         ) : modalValue ===
           "Remaining calm and level-headed during challenges" ? (
-           <Debrief/>
+           <Deliverable/>
         ) : modalValue ===
           "Effectively conveying information, even in challenging circumstances" ? (
-           <Debrief/>
+           <Deliverable/>
         ) : modalValue ===
           "Quickly adjusting strategies based on new information or changing scenarios" ? (
-           <Debrief/>
+           <Deliverable/>
         ) : modalValue ===
           "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-           <Debrief/>
+           <Deliverable/>
         ) : (
           <Box
           fontFamily={"Fredoka"}
@@ -359,7 +368,7 @@ const Morning5 = () => {
               <Box bgColor="#948888" pt={3} borderBottom={"1px solid black"}>
                 {users.map((el) => {
                   return (
-                    <Box borderBottom={"1px solid black"} key={el}>
+                    <Box borderBottom={"1px solid black"} key={el.name}>
                       <Box
                         h={"6vh"}
                         w={"55px"}
@@ -453,6 +462,7 @@ const Morning5 = () => {
                       timeout={{ enter: 300, exit: 300 }}
                     >
                       <Box
+                      key={i}
                         border={"0px solid black"}
                         w={"100%"}
                         display="flex"

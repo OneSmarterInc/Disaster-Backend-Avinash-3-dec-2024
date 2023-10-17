@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -29,6 +29,7 @@ import pm from "../userImages/1PM.png";
 import room from "../userImages/theroom.png";
 import night from "../userImages/night.png";
 import liam from "../userImages/liam.jpeg"
+import MyContext from "../ContextApi/MyContext";
 
 
 const LateMorning = () => {
@@ -63,9 +64,13 @@ const LateMorning = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
+  const {setHead} = useContext(MyContext);
+
+
   const handleChange = (value) => {
     setValue(value);
     setIsModalOpen(true);
+    Cookies.set("day2latemorning2", value);
     //  console.log(value);
   };
 
@@ -116,7 +121,7 @@ const LateMorning = () => {
   const handleChange2 = (value1) => {
     setValue1(value1);
     setIsModalOpen1(true);
-
+    Cookies.set("day2latemorning1", value1);
     //  console.log(value);
   };
 
@@ -249,6 +254,9 @@ const LateMorning = () => {
   }, [showBox2]);
 
   useEffect(() => {
+
+    setHead("Day 2 Late Morning");
+    
     const displayNextMessage = () => {
       if (!chatPaused && currentMessageIndex < dayTwoLateMorning.length) {
         const message = dayTwoLateMorning[currentMessageIndex];
@@ -327,7 +335,7 @@ const LateMorning = () => {
               <Box bgColor="#948888" pt={3} borderBottom={"1px solid black"}>
                 {users.map((el) => {
                   return (
-                    <Box borderBottom={"1px solid black"} key={el}>
+                    <Box borderBottom={"1px solid black"} key={el.name}>
                       <Box
                       
                         h={"6vh"}
@@ -409,6 +417,7 @@ const LateMorning = () => {
                         timeout={{ enter: 300, exit: 300 }}
                       >
                         <Box
+                         key={i}
                           border={"0px solid black"}
                           w={"100%"}
                           display="flex"

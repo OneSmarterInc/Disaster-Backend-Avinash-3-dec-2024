@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -32,8 +32,13 @@ import alarms from "../userImages/alarms.png";
 import vendor from "../userImages/vendor.png";
 import ScrollDown from "../ScrollDown";
 import warroom from "../userImages/warroom.png";
+
 import liam from "../userImages/liam.jpeg";
 import tense from "../userImages/tense.jpeg";
+
+import liam from "../userImages/liam.jpeg"
+import MyContext from "../ContextApi/MyContext";
+
 
   
 const Morning = () => {
@@ -70,9 +75,13 @@ const Morning = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
+  const {setHead} = useContext(MyContext);
+
+
   const handleChange = (value) => {
     setValue(value);
     setIsModalOpen(true);
+    Cookies.set("day3morning2", value);
     //  console.log(value);
   };
 
@@ -123,7 +132,7 @@ const Morning = () => {
   const handleChange2 = (value1) => {
     setValue1(value1);
     setIsModalOpen1(true);
-
+    Cookies.set("day3morning1", value1);
     //  console.log(value);
   };
 
@@ -232,6 +241,9 @@ const Morning = () => {
   }, [showBox]);
 
   useEffect(() => {
+
+    setHead("Day 3 Morning");
+    
     const displayNextMessage = () => {
       if (!chatPaused && currentMessageIndex < dayThreeMorning.length) {
         const message = dayThreeMorning[currentMessageIndex];
@@ -350,7 +362,7 @@ const Morning = () => {
               <Box bgColor="#948888" pt={3} borderBottom={"1px solid black"}>
                 {users.map((el) => {
                   return (
-                    <Box borderBottom={"1px solid black"} key={el}>
+                    <Box borderBottom={"1px solid black"} key={el.name}>
                       <Box
                        
                         h={"6vh"}
@@ -434,6 +446,7 @@ const Morning = () => {
                           timeout={{ enter: 300, exit: 300 }}
                         >
                           <Box
+                          key={i}
                             border={"0px solid black"}
                             w={"100%"}
                             display="flex"

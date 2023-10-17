@@ -1,10 +1,12 @@
 import { Box, Flex, Heading, Image } from '@chakra-ui/react'
-import React from 'react'
+import React, { useContext } from 'react'
 import disasterLogo from "../Images/disasterLogo.png"
 import Sidebar from '../Components/Sidebar'
 import {AiOutlineMail} from "react-icons/ai"
+import MyContext from '../Components/ContextApi/MyContext'
 
 const Start = () => {
+  const {head}  = useContext(MyContext);
   return (
     <Box h={"88vh"}>
     <Flex
@@ -22,6 +24,9 @@ const Start = () => {
     >
       <Heading fontFamily={"Fredoka"} >
         Disaster Recovery Business Case
+      </Heading>
+      <Heading mr={80} size={"md"} fontFamily={"Fredoka"} >
+        {head}
       </Heading>
       <AiOutlineMail size={'30px'} cursor={'pointer'}/>
     </Flex>

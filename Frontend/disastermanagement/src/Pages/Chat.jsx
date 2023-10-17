@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -26,6 +26,7 @@ import bencarter from "../Images/org/bencarter.png";
 import { dayOneMorning } from "../mainData";
 import kate from "../Images/org/kate_sullivan.png";
 import ScrollDown from "../Components/ScrollDown";
+import MyContext from "../Components/ContextApi/MyContext";
 
 const Chat = () => {
   const [chatData, setChatData] = useState([]);
@@ -42,19 +43,21 @@ const Chat = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
-  const [ShowScroll,setShowScroll] = useState(false);
+  const [ShowScroll, setShowScroll] = useState(false);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
+  const {setHead} = useContext(MyContext);
+
   const handleChange = (value) => {
     setValue(value);
     setIsModalOpen(true);
+    Cookies.set("day1morning2", value);
     //  console.log(value);
   };
 
   const handleClick = () => {
-
     if (value === "Making clear and swift decisions under pressure") {
       Cookies.set("day1marks", "1");
       Cookies.set("day1explaination", explaination);
@@ -101,7 +104,8 @@ const Chat = () => {
   const handleChange2 = (value1) => {
     setValue1(value1);
     setIsModalOpen1(true);
-
+    // console.log(value1);
+    Cookies.set("day1morning1", value1);
     // setShowBox(false)
     //  console.log(value);
   };
@@ -110,7 +114,7 @@ const Chat = () => {
     setIsModalOpen1(false);
     //setShowBox(false);
 
-    setShowBox2(true)
+    setShowBox2(true);
     setShowScroll(true);
     //console.log(showBox);
     if (
@@ -163,10 +167,10 @@ const Chat = () => {
     //  console.log( cookieex);
   };
 
-  const handleModel = ()=>{
+  const handleModel = () => {
     setIsModalOpen2(false);
-    setShowBox2(true)
-  }
+    setShowBox2(true);
+  };
   const scrollToBottom = () => {
     const container = chatContainerRef.current;
     if (container) {
@@ -187,6 +191,7 @@ const Chat = () => {
 
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
+    setHead("Day 1 Morning")
 
     const messageDelay = 4000; // 4 seconds
 
@@ -199,8 +204,7 @@ const Chat = () => {
         setActiveUser(message.sender);
         timeoutIndex++;
         setTimeout(addMessageWithDelay, messageDelay);
-      }
-       else {
+      } else {
         setShowBox(true);
       }
     };
@@ -231,20 +235,20 @@ const Chat = () => {
     <>
       {modalValue ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <Morning5 />
+        <BringDown />
       ) : modalValue === "Making clear and swift decisions under pressure" ? (
-        <Morning5 />
+        <BringDown />
       ) : modalValue === "Remaining calm and level-headed during challenges" ? (
-        <Morning5 />
+        <BringDown />
       ) : modalValue ===
         "Effectively conveying information, even in challenging circumstances" ? (
-          <Morning5 />
+        <BringDown />
       ) : modalValue ===
         "Quickly adjusting strategies based on new information or changing scenarios" ? (
-          <Morning5 />
+        <BringDown />
       ) : modalValue ===
         "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-          <Morning5 />
+        <BringDown />
       ) : (
         <Box
           fontFamily={"Fredoka"}
@@ -264,7 +268,7 @@ const Chat = () => {
               <Box pt={3} borderBottom={"1px solid black"}>
                 {users.map((el) => {
                   return (
-                    <Box borderBottom={"1px solid black"} key={el}>
+                    <Box borderBottom={"1px solid black"} key={el.name}>
                       <Box
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
@@ -316,10 +320,9 @@ const Chat = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                The office of Ben Carter. He's wrapping up for the day,
-                shutting down his computer,gathering
-                his things, and exchanging a few words with his colleagues
-                before heading out.
+                  The office of Ben Carter. He's wrapping up for the day,
+                  shutting down his computer,gathering his things, and
+                  exchanging a few words with his colleagues before heading out.
                 </Text>
               </Box>
               <Text fontSize={20} fontWeight={"bold"} color={"white"}>
@@ -345,6 +348,7 @@ const Chat = () => {
                         timeout={{ enter: 300, exit: 300 }}
                       >
                         <Box
+                          key={i}
                           border={"0px solid black"}
                           w={"100%"}
                           display="flex"
@@ -396,7 +400,6 @@ const Chat = () => {
                         m={"auto"}
                         mt={"50px"}
                         borderRadius={10}
-                        
                       >
                         <Image
                           w={"50%"}
@@ -633,17 +636,20 @@ const Chat = () => {
                           </ModalContent>
                         </Modal>
 
-                       {ShowScroll && (
-                        <ScrollDown />
-                       )}
+                        {ShowScroll && <ScrollDown />}
                       </Box>
                     </>
                   )}
 
                   {showBox2 && (
                     <>
-
-                      <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"} borderRadius={10}>
+                      <Box
+                        bg={"white"}
+                        w={"60%"}
+                        m={"auto"}
+                        mt={"50px"}
+                        borderRadius={10}
+                      >
                         <Image
                           w={"50%"}
                           m={"auto"}

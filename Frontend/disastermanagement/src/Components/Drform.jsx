@@ -6,17 +6,37 @@ import {
   FormLabel,
   Input,
   Text,
+  Alert, AlertDescription, AlertIcon, AlertTitle,
+  CloseButton, useDisclosure
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
 import { Form } from "react-router-dom";
+import MyContext from "./ContextApi/MyContext";
+
 
 const Drform = () => {
+
+  const {enableBox} = useContext(MyContext);
+  const {
+    isOpen: isVisible,
+    onClose,
+    onOpen,
+  } = useDisclosure()
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Form submitted");
+    enableBox();
+    onOpen();
+  };
+
   return (
     <Box
       p={20}
       w={"60%"}
       m={"auto"}
-      mt={10}
+      mt={20}
       boxShadow={"#691212 0px 0px 0px 1px, #691212 0px 0px 0px 1px inset"}
       bgColor={"gray.300"}
     >
@@ -28,7 +48,7 @@ const Drform = () => {
       <Text mb={20} fontFamily={"Fredoka"} fontSize={25} fontWeight={"700"}>
         Please fill the form.
       </Text>
-      <FormControl>
+      <form onSubmit={handleSubmit}>
         <FormLabel fontWeight={"700"}>1. Executive Summary</FormLabel>
         <FormLabel>Purpose of the DR Plan:</FormLabel>
         <Input type="text" border={"1px solid black"} />
@@ -130,7 +150,24 @@ const Drform = () => {
           type="submit"
           value={"Submit"}
         />
-      </FormControl>
+      </form>
+      {isVisible && <Alert status='success'>
+        <AlertIcon />
+        <Box>
+          <AlertTitle>Success!</AlertTitle>
+          <AlertDescription>
+            Your feedback has been received. Now you can click on the Debrief Section if you want to see debrief..
+          </AlertDescription>
+        </Box>
+        <CloseButton
+          alignSelf='flex-start'
+          position='relative'
+          right={-1}
+          top={-1}
+          onClick={onClose}
+        />
+      </Alert>}
+      
     </Box>
   );
 };

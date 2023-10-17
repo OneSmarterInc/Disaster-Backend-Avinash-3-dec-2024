@@ -12,14 +12,15 @@ import MyContext from "./MyContext";
 
 const MyProvider = ({ children }) => {
 
-  const [globalState, setGlobalState] = useState(true);
+  const [globalState, setGlobalState] = useState(false);
+  const [head, setHead] = useState("");
 
   const enableBox = () => {
     setGlobalState(true);
   };
 
   return (
-    <MyContext.Provider value={{ globalState, setGlobalState, enableBox }}>
+    <MyContext.Provider value={{ globalState, setGlobalState, enableBox,head, setHead }}>
       {children}
     </MyContext.Provider>
 

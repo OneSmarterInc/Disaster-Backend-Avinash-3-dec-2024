@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import day2morning from "./day2morning.png";
 import loss from "./loss.png"
@@ -33,6 +33,7 @@ import oncall from "../userImages/oncall.png";
 import withtom from "../userImages/withtom.png";
 import warroom from "../userImages/warroom.png";
 import liam from "../userImages/liam.jpeg"
+import MyContext from "../ContextApi/MyContext";
 
 const EarlyMorning = () => {
   const [chatData, setChatData] = useState([]);
@@ -69,9 +70,13 @@ const EarlyMorning = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
+  const {setHead} = useContext(MyContext);
+
+
   const handleChange = (value) => {
     setValue(value);
     setIsModalOpen(true);
+    Cookies.set("day2earlymorning2", value);
     //  console.log(value);
   };
 
@@ -122,7 +127,7 @@ const EarlyMorning = () => {
   const handleChange2 = (value1) => {
     setValue1(value1);
     setIsModalOpen1(true);
-
+    Cookies.set("day2earlymorning1", value1);
     //  console.log(value);
   };
 
@@ -285,6 +290,8 @@ const EarlyMorning = () => {
   }, [showBox2]);
 
   useEffect(() => {
+
+    setHead("Day 2 Early Morning");
     const displayNextMessage = () => {
       if (!chatPaused && currentMessageIndex < dayTwoEarlyMorning.length) {
         const message = dayTwoEarlyMorning[currentMessageIndex];
@@ -373,7 +380,7 @@ const EarlyMorning = () => {
               <Box bgColor="#948888" pt={3} borderBottom={"1px solid black"}>
                 {users.map((el) => {
                   return (
-                    <Box borderBottom={"1px solid black"} key={el}>
+                    <Box borderBottom={"1px solid black"} key={el.name}>
                       <Box
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
@@ -461,6 +468,7 @@ const EarlyMorning = () => {
                           timeout={{ enter: 300, exit: 300 }}
                         >
                           <Box
+                          key={i}
                             border={"0px solid black"}
                             w={"100%"}
                             display="flex"

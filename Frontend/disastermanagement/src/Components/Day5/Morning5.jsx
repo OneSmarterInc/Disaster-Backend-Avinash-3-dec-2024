@@ -28,7 +28,7 @@ import recovery from "../userImages/recovery.png";
 import clock from "../userImages/clock.png";
 import clapping from "../userImages/clapping.png";
 import email from "../userImages/email.jpeg";
-import liam from "../userImages/liam.jpeg"
+import liam from "../userImages/liam.jpeg";
 
 
 import MyContext from "../ContextApi/MyContext";
@@ -298,7 +298,7 @@ const Morning5 = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 4000);
+    const messageInterval = setInterval(displayNextMessage, 2000);
 
     return () => {
       clearInterval(messageInterval);
@@ -436,19 +436,6 @@ const Morning5 = () => {
                 declaring that the crisis was over, and a collective sigh of
                 relief echoed throughout the office.{" "}
               </Text>
-            </Box>
-           
-            <br />
-
-            <Box
-              w={"90%"}
-              m={"auto"}
-              border={"1px solid gray"}
-              bg={"gray.200"}
-              color={"black"}
-            >
-              The office is buzzing with activity. Phones are ringing, and IT
-              professionals are working at their stations.
             </Box>
             <Box
               w={"90%"}

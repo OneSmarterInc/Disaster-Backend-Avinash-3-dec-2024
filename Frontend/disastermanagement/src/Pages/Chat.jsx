@@ -195,6 +195,7 @@ const Chat = () => {
 
     const messageDelay = 4000; // 4 seconds
 
+
     let timeoutIndex = 0;
 
     const addMessageWithDelay = () => {

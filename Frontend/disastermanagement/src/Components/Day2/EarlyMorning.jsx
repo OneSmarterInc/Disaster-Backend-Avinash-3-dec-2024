@@ -35,7 +35,6 @@ import warroom from "../userImages/warroom.png";
 
 import liam from "../userImages/liam.jpeg";
 
-import liam from "../userImages/liam.jpeg"
 import MyContext from "../ContextApi/MyContext";
 
 
@@ -341,7 +340,7 @@ const EarlyMorning = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 100);
+    const messageInterval = setInterval(displayNextMessage, 4000);
 
     return () => {
       clearInterval(messageInterval);

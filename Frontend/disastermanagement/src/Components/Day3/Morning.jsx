@@ -36,7 +36,6 @@ import warroom from "../userImages/warroom.png";
 import liam from "../userImages/liam.jpeg";
 import tense from "../userImages/tense.jpeg";
 
-import liam from "../userImages/liam.jpeg"
 import MyContext from "../ContextApi/MyContext";
 
 
@@ -285,7 +284,7 @@ const Morning = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 500);
+    const messageInterval = setInterval(displayNextMessage, 4000);
 
     return () => {
       clearInterval(messageInterval);

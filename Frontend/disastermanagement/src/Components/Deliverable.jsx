@@ -1,9 +1,15 @@
 import { Box, Divider, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Drform from "./Drform";
 import Cookies from "js-cookie";
+import MyContext from "./ContextApi/MyContext";
 
 const Deliverable = () => {
+
+  const {setHead,enableDeliverable, setSelectedSection} = useContext(MyContext);
+
+
+
   let day1morning1 = Cookies.get("day1morning1") || "No feedback provided";
   let day1morning2 = Cookies.get("day1morning2") || "No feedback provided";
 
@@ -26,6 +32,12 @@ const Deliverable = () => {
 
   let day5morning1 = Cookies.get("day5morning1") || "No feedback provided";
   let day5morning2 = Cookies.get("day5morning2") || "No feedback provided";
+
+  useEffect(()=>{
+    setHead("");
+    enableDeliverable();
+    setSelectedSection("deliverable");
+  },[])
 
   return (
     <>

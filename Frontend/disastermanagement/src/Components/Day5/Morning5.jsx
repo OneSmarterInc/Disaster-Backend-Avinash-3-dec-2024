@@ -38,7 +38,6 @@ import Deliverable from "../Deliverable";
 
 const Morning5 = () => {
 
-  const { enableBox, globalState } = useContext(MyContext);
   // const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
@@ -81,6 +80,7 @@ const Morning5 = () => {
     setValue(value);
     setIsModalOpen(true);
     Cookies.set("day5morning2",value);
+    
   };
 
   const handleClick = () => {
@@ -288,7 +288,7 @@ const Morning5 = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 500);
+    const messageInterval = setInterval(displayNextMessage, 4000);
 
     return () => {
       clearInterval(messageInterval);

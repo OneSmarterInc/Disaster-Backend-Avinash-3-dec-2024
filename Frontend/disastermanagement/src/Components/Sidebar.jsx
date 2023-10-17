@@ -8,8 +8,7 @@ import MyContext from "./ContextApi/MyContext";
 import Deliverable from "./Deliverable";
 
 const Sidebar = () => {
-  const { globalState } = useContext(MyContext);
-  const [selectedSection, setSelectedSection] = useState("Prepare");
+  const { globalState, deliverableState, selectedSection, setSelectedSection } = useContext(MyContext);
 
   const handleSectionClick = (section) => {
     setSelectedSection(section);
@@ -53,7 +52,8 @@ const Sidebar = () => {
           onClick={() => handleSectionClick("deliverable")}
           cursor="pointer"
           fontWeight={selectedSection === "deliverable" ? "bold" : "none"}
-          pointerEvents={"none"}
+          pointerEvents={deliverableState ? "auto" : "none"}
+          color={deliverableState ? "black" : "gray"}
         >
           Deliverable
         </Text>

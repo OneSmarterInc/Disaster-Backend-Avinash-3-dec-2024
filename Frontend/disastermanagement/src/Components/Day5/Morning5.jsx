@@ -249,14 +249,24 @@ const Morning5 = () => {
 
   useEffect(() => {
 
-    setHead("Day 5 Morning");
+    if(currentMessageIndex >1){
+      setHead("Day 5 Afternoon");
+
+    }
+    else if(currentMessageIndex >7){
+      setHead("Day 5 Evening")
+    }
+    else{
+
+      setHead("Day 5 Morning");
+    }
     
     const displayNextMessage = () => {
       if (!chatPaused && currentMessageIndex < dayFiveMorning.length) {
         const message = dayFiveMorning[currentMessageIndex];
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
         setActiveUser(message.sender);
-        if (message.sender === "Communications Lead") {
+        if (currentMessageIndex === 7) {
           setShowPopup(true);
           setChatPaused(true);
         } else if (currentMessageIndex === 0) {
@@ -274,7 +284,7 @@ const Morning5 = () => {
           setTimeout(() => {
             setShowPopup4(true);
           }, 2000);
-        } else if (currentMessageIndex === 7) {
+        } else if (currentMessageIndex === 8) {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup5(true);

@@ -193,7 +193,7 @@ const Chat = () => {
     // Simulate messages from 5 users with a 2-second delay between each message
     setHead("Day 1 Morning")
 
-    const messageDelay = 500; // 4 seconds
+    const messageDelay = 4000; // 4 seconds
 
     let timeoutIndex = 0;
 
@@ -235,11 +235,11 @@ const Chat = () => {
     <>
       {modalValue ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <Morning5 />
+        <BringDown />
       ) : modalValue === "Making clear and swift decisions under pressure" ? (
-        <Morning5 />
+        <BringDown />
       ) : modalValue === "Remaining calm and level-headed during challenges" ? (
-        <Morning5 />
+        <BringDown />
       ) : modalValue ===
         "Effectively conveying information, even in challenging circumstances" ? (
 

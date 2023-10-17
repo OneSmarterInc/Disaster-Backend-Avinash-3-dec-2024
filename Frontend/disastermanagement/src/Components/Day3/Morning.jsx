@@ -242,7 +242,14 @@ const Morning = () => {
 
   useEffect(() => {
 
-    setHead("Day 3 Morning");
+    if(currentMessageIndex >3){
+    setHead("Day 3 Night");
+
+    }
+    else{
+
+      setHead("Day 3 Morning");
+    }
     
     const displayNextMessage = () => {
       if (!chatPaused && currentMessageIndex < dayThreeMorning.length) {

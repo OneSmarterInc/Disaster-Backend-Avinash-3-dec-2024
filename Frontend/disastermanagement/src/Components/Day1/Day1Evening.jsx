@@ -27,6 +27,7 @@ import ScrollDown from "../ScrollDown";
 import figma from "../userImages/figma.png";
 import liam from "../userImages/liam.jpeg"
 import architecture from "../userImages/architecture.jpeg";
+import callwithjulia from "../userImages/callwithjulia.jpeg"
 
 import MyContext from "../ContextApi/MyContext";
 
@@ -444,22 +445,46 @@ const BringDown = () => {
                         <ModalBody fontSize={"18px"}>
                           
                             <Text>
-                          LATE NIGHT CONFERENCE CALL WITH APPLICATIONS VENDOR (APPROX. 40 PEOPLE ON THE CALL)
+                          
                           </Text>
                             
                         </ModalBody>
-                        <ModalFooter>
-                          <Button
+                        <ModalBody fontSize={"18px"}>
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                              Late night conference call with applications vendor (Approx. 40 people on the call)
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Button
                             colorScheme="teal"
                             onClick={closePopup}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            mr={"150px"}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
                           >
                             Close
                           </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
                         </ModalFooter>
                       </ModalContent>
                     </Modal>

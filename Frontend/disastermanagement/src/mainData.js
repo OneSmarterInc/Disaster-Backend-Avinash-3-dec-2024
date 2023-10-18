@@ -17,6 +17,11 @@ export const dayOneMorning = [
     {
       sender: "Kate Sullivan",
       message:
+      "Will do, Ben",
+    },
+    {
+      sender: "Kate Sullivan",
+      message:
         "Ben, it's getting worse. More applications are failing, and we've isolated the issue to data corruption errors. It's... it's not looking like a simple operational hiccup anymore.",
     },
     {
@@ -31,7 +36,7 @@ export const dayOneMorning = [
     {
       sender: "Ben Carter",
       message:
-        " We're in uncharted waters here. Before we make any decisions, we need to consider the ripple effects",
+        "We're in uncharted waters here. Before we make any decisions, we need to consider the ripple effects",
     },
     {
       sender: "Kate Sullivan",
@@ -80,7 +85,7 @@ export const dayOneMorning = [
     {
       sender: "Julia Harper",
       message:
-        "I understand the gravity, but the longer we wait, the harder recovery might be.",
+        "(On screen) I understand the gravity, but the longer we wait, the harder recovery might be.",
     },
     {
       sender: "Kate Sullivan",
@@ -96,6 +101,51 @@ export const dayOneMorning = [
       sender: "Sophia Kim",
       message:
         "One step at a time, Ben. First, let's stabilize the situation, then manage the fallout.",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "(on a call with Kate) Are any other systems affected on Site 1 and/or Site2?",
+    },
+    {
+      sender: "Kate Sullivan",
+      message:
+        "No, neither our Microsoft email system nor our TRESCO VoIP are affected",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "Let's shut down all applications immediately.",
+    },
+    {
+      sender: "Kate Sullivan",
+      message:
+        "But remember, that may cause data corruption erros which might be difficult to recover.",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "Yes, but I don't see a any other way.  There will be some data loss, but I think we can recover from that.",
+    },
+    {
+      sender: "Kate Sullivan",
+      message:
+        "How about I get the data center to send a quick email to the company distribution list that IT is experiencing a major data center incident, and we will keep all notified as we know more?",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "Yes, that is an excellent idea.",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "I have explained the situation to you.  We are now shutting down applications in a rolling manner and they are crashing.  We need your help with figuring out what’s going on and correcting it.",
+    },
+    {
+      sender: "Application Vendor",
+      message:
+        "Ben - our team is on it.  We have called in our senior engineers and will be in touch",
     },
   ];
 
@@ -142,7 +192,7 @@ export const dayOneMorning = [
     {
       sender: "Julia Harper",
       message:
-        "We're just as surprised, Ben. But we're committed to finding a solution. Our preliminary findings suggest the corruption is in the data headers",
+        "We're just as surprised, Ben. But we're committed to finding a solution. Our preliminary findings suggest the corruption is in the data headers.  Our team has been looking at this issue together with Tom's group. It looks like that one of the major disc controllers at the frame level (19 racks of discs) responsible for replicating the data has failed and has corrupted the data on ALL mirrored copies (three separate sets of storage across Site 1 and Site 2).",
     },
     {
       sender: "Sophia Kim",
@@ -160,6 +210,11 @@ export const dayOneMorning = [
         "We need to understand the root cause to ensure this doesn't happen again",
     },
     {
+      sender: "Julia Harper",
+      message:
+        "Absolutely, Mia. Our goal is not just recovery but also understanding and preventing any future occurrences",
+    },
+    {
       sender: "Ben Carter",
       message: "Thanks, Julia. We're counting on your team.",
     },
@@ -167,21 +222,51 @@ export const dayOneMorning = [
     {
       sender: "Ben Carter",
       message:
-        "Tom, we're considering your team's proposed solution. But I've got to be honest, the stakes are high.",
+        "(to his internal team) Bottomline, with all the built-in redundancy, we did not have a good/non-corrupt set of data.  Because the storage system spreads all applications across multiple frames there were no set of application that had a know set of viable data.  That is a bad situation for us.",
     },
     {
       sender: "Tom Mitchell",
       message:
-        "I completely understand, Ben. We've been partners for years, and we want to ensure we navigate this challenge together",
+        "It looks like the only solution is to replace the bad controller, reboot the storage systems at Site 1, which would clear the write buffers (data waiting to be written to disc) of data and disconnect from the remote (Site 2) storage systems to preserve that environment",
     },
+    {
+      sender: "Ben Carter",
+      message:
+        "But what happens to systems that had failed or failed in the start-up?",
+    },
+    {
+      sender: "Tom Mitchell",
+      message:
+        "Those would have to be restored from backup storage discs (previous generation of storage) or tape drives.  The systems were typically backed up at midnight; hence since the corruption started approximately six hours before the backup process started, the failed systems would lose 18 hours of data.",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "19 hours of data loss??!!  This is incredible.  BTW:  How long will this process take?",
+    },
+    {
+      sender: "Tom Mitchell",
+      message:
+        "As far as we can estimate, it will probably take a week or longer to recover all the applications.",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "Tom, we're considering your team's proposed solution. But I've got to be honest, the stakes are high.  We just have to do better - a 1 week data loss is unacceptable.",
+    },
+    {
+      sender: "Tom Mitchell",
+      message: "I completely understand, Ben. We've been partners for years, and we want to ensure we navigate this challenge together.",
+    },
+    
     {
       sender: "Kate Sullivan",
-      message: "We're in uncharted territory here, Tom. It's concerning.",
+      message:
+        "We're in uncharted territory here, Tom. It's concerning.",
     },
     {
       sender: "Tom Mitchell",
-      message:
-        "I share your concern, Kate. We're pooling all our resources into this. It's a tricky situation, but we believe the solution has merit.",
+      message: "I share your concern, Kate. We're pooling all our resources into this. It's a tricky situation, but we believe the solution has merit.",
     },
     {
       sender: "Ben Carter",
@@ -190,9 +275,8 @@ export const dayOneMorning = [
     },
     {
       sender: "Tom Mitchell",
-      message: "We're with you every step of the way, Ben.",
+      message: "We're with you every step of the way, Ben",
     },
-    
     {
       sender: "Ben Carter",
       message:
@@ -356,9 +440,24 @@ export const dayOneMorning = [
         "An outage update has just been sent to all of them. We're keeping everyone in the loop.",
     },
     {
+      sender: "Ben Carter",
+      message:
+        "What can we do if the vendor finds no solutions other than what they have offered us already?",
+    },
+    {
+      sender: "Kate Sullivan",
+      message:
+        "We need to develop a worst-case scenario.",
+    },
+    {
+      sender: "Jabari Nkosi",
+      message:
+        "We do have a contingency plan I have put into place.  In addition, we have a team loating the tape cassetts for the most critical applications, most which are the service dispatching and spare parts systems required to provide 24/7 support on a Global Basis.",
+    },
+    {
       sender: "Mia Rodriguez",
       message:
-        "The storage vendor's fix has been validated. We're making progress!Kate ",
+        "The storage vendor's has offered a fix. We are validating it.    The vendor discovered that when the storage units write from the buffer to a block/sector/chunk on the actually drive, there is a header and end of block that the surround the actual data. The data corruption is in the header information and not within the application data. They believe they can fix the problem by recalculating the header information and rewriting to disc the corrected information.  They have flushed (cleared) the buffers and have read all the blocks of the impacted storage frame to understand how many headers need to be fixed.",
     },
     {
       sender: "Kate Sullivan",
@@ -423,12 +522,12 @@ export const dayOneMorning = [
     {
       sender: "Ben Carter",
       message:
-        "(voice slightly strained) Good morning. We've made progress, but ERP remains a challenge",
+        "(Voice slightly strained) Good morning. We've made progress, but ERP remains a challenge",
     },
     {
       sender: "COO",
       message:
-        "(on call) Ben, we've invested heavily in these systems. How did we end up here?",
+        "(On call) Ben, we've invested heavily in these systems. How did we end up here?",
     },
     {
       sender: "Ben Carter",
@@ -439,12 +538,12 @@ export const dayOneMorning = [
     {
       sender: "Mia Rodriguez",
       message:
-        "(sounding exhausted) System One ERP is live again.",
+        "(Sounding exhausted) System One ERP is live again.",
     },
     {
       sender: "Kate Sullivan",
       message:
-        "(with a hint of frustration) This should have been resolved sooner. Why did it take this long?",
+        "(With a hint of frustration) This should have been resolved sooner. Why did it take this long?",
     },
     {
       sender: "Ben Carter",
@@ -457,7 +556,7 @@ export const dayOneMorning = [
       message:
         "The ERP system is down again. This is a nightmare!",
     },
-    { sender: "Sophia Kim", message: "(pointedly) Maybe if we'd received timely updates from the storage vendor, we could've anticipated this." },
+    { sender: "Sophia Kim", message: "(Pointedly) Maybe if we'd received timely updates from the storage vendor, we could've anticipated this." },
 
     {
       sender: "Ben Carter",
@@ -471,13 +570,13 @@ export const dayOneMorning = [
     {
       sender: "Kate Sullivan",
       message:
-        "(sarcastically) Oh, another surprise! Were there any other minor details we missed?",
+        "(Sarcastically) Oh, another surprise! Were there any other minor details we missed?",
     },
 
     {
       sender: "Ben Carter",
       message:
-        "(interjecting) Let's stay focused. We need to work together, not against each other",
+        "(Interjecting) Let's stay focused. We need to work together, not against each other",
     },
     
     {
@@ -489,12 +588,12 @@ export const dayOneMorning = [
     {
       sender: "Mia Rodriguez",
       message:
-        "(frustrated) This can't be right! Who validated these backup processes?",
+        "(Frustrated) This can't be right! Who validated these backup processes?",
     },
     {
       sender: "Liam Turner",
       message:
-        "(defensively) We've followed protocols to the letter. This isn't a standard issue!",
+        "(Defensively) We've followed protocols to the letter. This isn't a standard issue!",
     },
     {
         sender: "Ben Carter",
@@ -505,9 +604,39 @@ export const dayOneMorning = [
 
   export const dayFourMorning = [
     {
+      sender: "Kate Sullivan",
+      message:
+        "There has got to be a better way than to accept the 9-hour old backup",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "I am going to call in favor at the ERP Vendor leadership and contact Gajinder Singh “Gajji.”  We have worked together for a long time and he knows us well.",
+    },
+    {
+      sender: "Gajji",
+      message:
+        "(On a call with Ben Carter and Kate Sullivan) I understand where you are.  My team reviewed the issue.  We think the primary database is safe.  But there were two temporary files used to complete inventory transactions were corrupted",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "Gajji, is there anything you can do?",
+    },
+    {
+      sender: "Gajji",
+      message:
+        "We might be able to replace these two files from our development system which is housed in site 2 on a non-replicated storage frame.  But, Ben, this is not something we can do without senior leadership (ours and yours and Disk Vendor’s) and you assuming risk responsibility.  Your CEO to ours….",
+    },
+    {
+      sender: "Ben Carter",
+      message:
+        "I will arrange that call.",
+    },
+    {
       sender: "Sophia Kim",
       message:
-        "(whispering to Kate) Are we sure this is going to work? If it doesn't...",
+        "(Whispering to Kate) Are we sure this is going to work? If it doesn't...",
     },
     {
       sender: "Kate Sullivan",
@@ -573,7 +702,7 @@ export const dayOneMorning = [
   export const dayFiveMorning = [
     {
       sender: "Kate Sullivan",
-      message: "(looking at the systems dashboard) Everything seems stable. We're almost there.",
+      message: "(Looking at the systems dashboard) Everything seems stable. We're almost there.",
     },
     {
       sender: "Liam Turner",
@@ -591,7 +720,7 @@ export const dayOneMorning = [
     {
       sender: "Ben Carter",
       message:
-        "(voice filled with emotion) Team, as of now, the recovery process is complete. We've weathered the storm.",
+        "(Voice filled with emotion) Team, as of now, the recovery process is complete. We've weathered the storm.",
     },
    
     {
@@ -606,8 +735,8 @@ export const dayOneMorning = [
 
     {
       sender: "Ben Carter",
-      message:
-        "(to the Communications Lead) Make sure the announcement is clear and reassuring. We owe it to our users and stakeholders to communicate transparently about the crisis resolution.",
+      message: 
+        "(To the Communications Lead) Make sure the announcement is clear and reassuring. We owe it to our users and stakeholders to communicate transparently about the crisis resolution.",
     },
     {
       sender: "Communications Lead",
@@ -617,28 +746,99 @@ export const dayOneMorning = [
    
 
     {
-      sender: "Liam Turner",
-      message: "Validation complete. Everything looks good. ERP is back up!",
+      sender: "Kate Sullivan",
+      message: "(Joining him) We did it, Ben",
     },
     {
       sender: "Ben Carter",
-      message: "(sighing with profound relief) Gajji, you and your team are magicians.",
+      message: "We did, Kate. It was a test of our resilience, teamwork, and determination. I couldn't be prouder",
+    },
+    {
+      sender: "Kate Sullivan",
+      message: "Here's to hoping we never have to go through something like this again",
+    },
+    {
+      sender: "Ben Carter",
+      message: "(smiling) Fingers crossed.",
+    },
+    {
+      sender: "Ben Carter",
+      message: "(To himself) So, it was never about the actual data on the discs...",
+    },
+    {
+      sender: "Kate Sullivan",
+      message: "(walking in with a cup of coffee) Go through the report?",
+    },
+    {
+      sender: "Ben Carter",
+      message: "Yes. It's surprising. Site 2's mirrored copy was never corrupted. The issue was in the controller buffers, not the discs themselves",
+    },
+    {
+      sender: "Kate Sullivan",
+      message: "(Sighing) If only we'd known. We could've restored everything within a day",
+    },
+    {
+      sender: "Ben Carter",
+      message: "It's a learning experience for all of us. The vendor's oversight had a huge impact. But on the bright side, they're compensating with new hardware and software worth about three million dollars.",
+    },
+    {
+      sender: "Kate Sullivan",
+      message: "That's something, at least. But the real lesson here is the importance of thorough investigation. We can't just skim the surface, especially in critical situations",
+    },
+
+    {
+      sender: "Ben Carter",
+      message: "You're right. It's not just about fixing the immediate issue; it's about understanding the root cause. We need to be better prepared next time",
+    },
+    {
+      sender: "Kate Sullivan",
+      message: "Here's hoping there isn't a next time.",
+    },
+    {
+      sender: "Ben Carter",
+      message: "(Smiling wryly) Agreed",
     },
     {
       sender: "Gajji",
-      message: "(smiling) No magic, just determination and teamwork.",
-    },
-    {
-      sender: "Mia Rodriguez",
-      message: "(frustrated) This can't be right! Who validated these backup processes?",
-    },
-    {
-      sender: "Liam Turner",
-      message:
-        "(defensively) We've followed protocols to the letter. This isn't a standard issue!",
+      message: "Ben, I can't apologize enough for the oversight. But I'm grateful for how you and your team handled the situation",
     },
     {
       sender: "Ben Carter",
-      message: "Enough! We can't fracture now. We need unity and focus.",
+      message: "We're partners, Gajji. When one of us faces a challenge, we face it together. That's how we've always worked",
     },
+    {
+      sender: "Gajji",
+      message: "True. This incident has taught us a lot. It's made us realize the gaps in our processes and how crucial thorough investigations are.",
+    },
+    {
+      sender: "Ben Carter",
+      message: "And it's also shown us the strength of our partnership. When things went south, you didn't abandon us. Your team went above and beyond to find a solution",
+    },
+
+
+    {
+      sender: "Gajji",
+      message: "It was our responsibility. And I'm glad we could navigate through it together",
+    },
+    {
+      sender: "Ben Carter",
+      message: "This incident, surprisingly, has solidified our trust. We've seen each other's commitment during a crisis",
+    },
+    {
+      sender: "Gajji",
+      message: "It's often said that you get to know the true character of a person or an organization during challenging times. I'm proud of how both our teams responded",
+    },
+    {
+      sender: "Ben Carter",
+      message: "So am I. Let's take the lessons from this incident and ensure we're better prepared in the future.",
+    },
+    {
+      sender: "Gajji",
+      message: "(Raising his coffee mug) To a stronger partnership and a brighter future",
+    },
+    {
+      sender: "Ben Carter",
+      message: "(Clinking his mug with Gajji's) To resilience and collaboration",
+    },
+    
   ];

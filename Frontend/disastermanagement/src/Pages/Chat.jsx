@@ -86,7 +86,8 @@ const Chat = () => {
 
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
-    setHead("Day 1 Morning");
+
+    setHead("Day 1 - Morning")
 
     const messageDelay = speed; // 4 seconds
 

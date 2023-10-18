@@ -38,6 +38,7 @@ import scene2 from "../userImages/2ndscene.jpeg";
 import begin2 from "../userImages/begin2.png";
 import tapping from "../userImages/tapping.png";
 import starts from "../userImages/starts.png";
+import callwithjulia from "../userImages/callwithjulia.jpeg"
 
 import MyContext from "../ContextApi/MyContext";
 
@@ -58,6 +59,8 @@ const EarlyMorning4 = () => {
   const [day5Popup2, setDay5Popup2] = useState(true);
   const [day5Popup3, setDay5Popup3] = useState(true);
   const [day5Popup4, setDay5Popup4] = useState(true);
+  const [day5Popup5, setDay5Popup5] = useState(true);
+
 
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
@@ -67,6 +70,9 @@ const EarlyMorning4 = () => {
   const [showPopup3, setShowPopup3] = useState(false);
   const [showPopup4, setShowPopup4] = useState(false);
   const [ShowScroll, setShowScroll] = useState(false);
+
+  const [showPopup5, setShowPopup5] = useState(false);
+
 
   const [chatPaused, setChatPaused] = useState(false);
 
@@ -145,7 +151,9 @@ const EarlyMorning4 = () => {
   }, [showBox, showBoxContent2]);
 
   useEffect(() => {
-    setHead("Day 4 Evening");
+
+    setHead("Day 4 - Evening");
+    
 
     const displayNextMessage = () => {
       if (!chatPaused && currentMessageIndex < dayFourMorning.length) {
@@ -153,28 +161,40 @@ const EarlyMorning4 = () => {
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
         setActiveUser(message.sender);
 
-        if (currentMessageIndex === 1) {
+       
+        if (currentMessageIndex === 5) {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup(true);
           }, 2000);
-        } else if (currentMessageIndex === 3) {
+        }
+        else if (currentMessageIndex === 8) {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup2(true);
           }, 2000);
-        } else if (currentMessageIndex === 5) {
+        } 
+        else if (currentMessageIndex === 11) {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup3(true);
           }, 2000);
-        } else if (currentMessageIndex === 7) {
+        } 
+        else if (currentMessageIndex === 14) {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup4(true);
           }, 2000);
         }
-      } else {
+        else if (currentMessageIndex === 17) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup5(true)
+          }, 2000);
+        }
+      }
+      else {
+
         if (currentMessageIndex === dayFourMorning.length) {
           // The chat has ended completely, set showBox to true
           setShowBox(true);
@@ -183,6 +203,7 @@ const EarlyMorning4 = () => {
     };
 
     const messageInterval = setInterval(displayNextMessage, speed);
+
 
     return () => {
       clearInterval(messageInterval);
@@ -212,6 +233,13 @@ const EarlyMorning4 = () => {
   const closePopup4 = () => {
     // setShowPopup(false);
     setDay5Popup4(false);
+    // onClose();
+    setChatPaused(false);
+  };
+
+  const closePopup5 = () => {
+    // setShowPopup(false);
+    setDay5Popup5(false);
     // onClose();
     setChatPaused(false);
   };
@@ -367,15 +395,12 @@ const EarlyMorning4 = () => {
               ref={chatContainerRef}
               pb={2}
               bgImage={
-                currentMessageIndex > 8
-                  ? starts
-                  : currentMessageIndex > 6
-                  ? tapping
-                  : currentMessageIndex > 4
-                  ? begin
-                  : currentMessageIndex > 2
-                  ? scene2
-                  : begin2
+
+                currentMessageIndex > 18 ? starts :
+                currentMessageIndex > 15 ? tapping :
+                currentMessageIndex > 12 ? begin :
+                currentMessageIndex > 9 ? scene2 :
+                begin2
               }
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
@@ -393,9 +418,7 @@ const EarlyMorning4 = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                  Gajji's team begins their work, replacing the corrupted files.
-                  The room's screens display lines of code and logs. The
-                  atmosphere is thick with anticipation.{" "}
+                Ben Carter and Kate Sullivan meet for a strategy session.{" "}
                 </Text>
               </Box>
 
@@ -470,29 +493,51 @@ const EarlyMorning4 = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
+                        bgColor={'#E3E3E3   '}
+                        maxW={'600px'}
                       >
-                        <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
-                        ></ModalHeader>
+
+                        <ModalHeader fontWeight={"bold"} fontSize={"25px"}>
+                         
+                        </ModalHeader>
+                        
                         <ModalBody fontSize={"18px"}>
-                          <Text>
-                            A sudden error message pops up on the main screen.
-                            The room goes tense.
-                          </Text>
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                            Gajji's team begins their work, replacing the corrupted files. The room's screens display lines of code and logs. The atmosphere is thick with anticipation.
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Button
                             colorScheme="teal"
                             onClick={closePopup}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            mr={"150px"}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
                           >
                             Close
                           </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -504,29 +549,51 @@ const EarlyMorning4 = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
+                        bgColor={'#E3E3E3   '}
+                        maxW={'600px'}
                       >
-                        <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
-                        ></ModalHeader>
+
+                        <ModalHeader fontWeight={"bold"} fontSize={"25px"}>
+                         
+                        </ModalHeader>
+                       
                         <ModalBody fontSize={"18px"}>
-                          <Text>
-                            Everyone watches with bated breath. Minutes feel
-                            like hours.
-                          </Text>
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                            A sudden error message pops up on the main screen. The room goes tense.
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Button
                             colorScheme="teal"
                             onClick={closePopup2}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            mr={"150px"}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
                           >
                             Close
                           </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -538,29 +605,51 @@ const EarlyMorning4 = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
+                        bgColor={'#E3E3E3   '}
+                        maxW={'600px'}
                       >
-                        <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
-                        ></ModalHeader>
+
+                        <ModalHeader fontWeight={"bold"} fontSize={"25px"}>
+                         
+                        </ModalHeader>
+                        
                         <ModalBody fontSize={"18px"}>
-                          <Text>
-                            The developers scramble, making adjustments. The
-                            room is silent except for the tapping of keyboards.
-                          </Text>
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                            Everyone watches with bated breath. Minutes feel like hours.
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Button
                             colorScheme="teal"
                             onClick={closePopup3}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            mr={"150px"}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
                           >
                             Close
                           </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -572,29 +661,109 @@ const EarlyMorning4 = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
+                        bgColor={'#E3E3E3   '}
+                        maxW={'600px'}
                       >
-                        <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
-                        ></ModalHeader>
+
+                        
+
+                        <ModalHeader fontWeight={"bold"} fontSize={"25px"}>
+                         
+                        </ModalHeader>
+                        
                         <ModalBody fontSize={"18px"}>
-                          <Text>
-                            After what feels like an eternity, the screens show
-                            positive signs. Processes start running smoothly.
-                          </Text>
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                            The developers scramble, making adjustments. The room is silent except for the tapping of keyboards.
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Button
                             colorScheme="teal"
                             onClick={closePopup4}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            mr={"150px"}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
                           >
                             Close
                           </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                         
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+
+                  {showPopup5 && (
+                    <Modal isOpen={day5Popup5}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        bgColor={'#E3E3E3   '}
+                        maxW={'600px'}
+                      >
+                        <ModalHeader fontWeight={"bold"} fontSize={"25px"}>
+                         
+                        </ModalHeader>
+                        
+                        <ModalBody fontSize={"18px"}>
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                              After what feels like an eternity, the screens show positive signs. Processes start running smoothly
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Button
+                            colorScheme="teal"
+                            onClick={closePopup5}
+                            textAlign={"center"}
+                            fontFamily={"Croissant One"}
+                            bg={"black"}
+                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
+                          >
+                            Close
+                          </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>

@@ -191,9 +191,9 @@ const Chat = () => {
 
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
-    setHead("Day 1 Morning")
+    setHead("Day 1 - Morning")
 
-    const messageDelay = 4000; // 4 seconds
+    const messageDelay = 100; // 4 seconds
 
 
     let timeoutIndex = 0;
@@ -236,7 +236,7 @@ const Chat = () => {
     <>
       {modalValue ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <BringDown />
+        <Morning5 />
       ) : modalValue === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : modalValue === "Remaining calm and level-headed during challenges" ? (

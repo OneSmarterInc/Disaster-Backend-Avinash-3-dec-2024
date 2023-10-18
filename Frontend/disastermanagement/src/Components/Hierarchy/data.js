@@ -11,90 +11,82 @@ import tariq from "../userImages/Rarqalhashim.png";
 import lucas from "../userImages/lucasoliveria.jpg";
 import carlos from "../userImages/carlos.jpg";
 import liam from "../userImages/liam.jpeg";
+import raj from "../userImages/rajpatel.jpg";
 
 export const ORGDATA = {
-    name: "Carlos Mendoza",
-    role: "Chief Executive Officer",
-    img: carlos,
-    child: [
-      {
-        name: "Aisha Patel",
-        role: "Chief Operating Officer",
-        img: aisha,
-      },
-      {
-        name: "Ben Carter",
-        role: "Chief Information Officer",
-        img:
-          bencarter,
-        child: [
-          {
-            name: "Chloe Zhang",
-            role: "IT Director",
-            img:
-              chloe,
-            child: [
-              {
-                name: "Kate Sullivan",
-                role: "IT Manager",
-                img:
-                  kate,
-                child: [
-                  {
-                    name: "Liam Turner",
-                    role: "Senior Systems Analyst",
-                    img:
-liam                    // child: []
-                  },
-                  {
-                    name: "Mia Rodriguez",
-                    role: "Network Specialist",
-                    img:
-                      mia,
-                    // child: []
-                  },
-                  {
-                    name: "Sophia Kim",
-                    role: "Database Administrator",
-                    img:
-                      sophia,
-                    // child: []
-                  }
-                ]
-              },
-              {
-                name: "Jabari Nkosi ",
-                role: "IT Infrastructure Head",
-                img:
-                  jabari,
-                // child: []
-              },
-              {
-                name: "Tariq Al-Hashim",
-                role: "IT Security Head",
-                img:
-                  tariq,
-                // child: []
-              }
-            ]
-          }
-        ]
-      },
-      {
-        name: "Elena Ivanova",
-        role: "Chief Financial Officer",
-        img:elena
-                  },
-      {
-        name: "Lucas Oliveira",
-        role: "Chief Marketing Officer",
-        img: lucas
-      },
-      {
-        name: "Priya Narayanan",
-        role: "Chief Human Resources Officer",
-        img: priya
-                  }
-    ]
-  };
-  
+  name: "Carlos Mendoza",
+  role: "Chief Executive Officer",
+  img: carlos,
+  child: [
+    {
+      name: "Aisha Patel",
+      role: "Chief Operating Officer",
+      img: aisha,
+    },
+    {
+      name: "Ben Carter",
+      role: "Chief Information Officer",
+      img: bencarter,
+      child: [
+        {
+          name: "Kate Sullivan",
+          role: "IT Director",
+          img: kate,
+          child: [
+            {
+              name: "Chloe Zhang",
+              role: "IT Manager",
+              img: chloe,
+              child: [
+                {
+                  name: "Liam Turner",
+                  role: "Senior Systems Analyst",
+                  img: liam, // child: []
+                },
+                {
+                  name: "Mia Rodriguez",
+                  role: "Network Specialist",
+                  img: mia,
+                  // child: []
+                },
+                {
+                  name: "Sophia Kim",
+                  role: "Database Administrator",
+                  img: sophia,
+                  // child: []
+                },
+              ],
+            },
+            {
+              name: "Jabari Nkosi ",
+              role: "IT Infrastructure Head",
+              img: jabari,
+              // child: []
+            },
+            {
+              name: "Tariq Al-Hashim",
+              role: "IT Security Head",
+              img: tariq,
+              // child: []
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "Raj Patel",
+      role: "Chief Financial Officer",
+      img: raj,
+    },
+    {
+      name: "Lucas Oliveira",
+      role: "Chief Marketing Officer",
+      img: lucas,
+    },
+    {
+      name: "Priya Narayanan",
+      role: "Chief Human Resources Officer",
+      img: priya,
+    },
+  ],
+};

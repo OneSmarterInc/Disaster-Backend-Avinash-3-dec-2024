@@ -24,9 +24,10 @@ import kate from "../userImages/kate_sullivan.png";
 import mia from "../userImages/Mia Rodriguez.png";
 import julia from "../userImages/juliaharper.jpg";
 import ScrollDown from "../ScrollDown";
-
+import figma from "../userImages/figma.png";
 import liam from "../userImages/liam.jpeg"
 import architecture from "../userImages/architecture.jpeg";
+import callwithjulia from "../userImages/callwithjulia.jpeg"
 
 import MyContext from "../ContextApi/MyContext";
 
@@ -43,6 +44,11 @@ const BringDown = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  const [day5Popup, setDay5Popup] = useState(true);
+  const [chatPaused, setChatPaused] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
@@ -199,45 +205,53 @@ const BringDown = () => {
       name: "Julia Harper",
       url: julia,
     },
+    {
+      name: "Application Vendor",
+      url: "",
+    },
   ];
-
+  
   useEffect(() => {
-    // Simulate messages from 5 users with a 2-second delay between each message
-    setHead("Day 1 Evening")
 
-    const messageDelay = 2000; // 4 seconds
-
-    let timeoutIndex = 0;
-
-    const addMessageWithDelay = () => {
-      if (timeoutIndex < dayOneEvening.length) {
-        const message = dayOneEvening[timeoutIndex];
-        setChatData((prevChatData) => [...prevChatData, message]);
+    setHead("Day 1 - Evening")
+    const displayNextMessage = () => {
+      if (!chatPaused && currentMessageIndex < dayOneEvening.length) {
+        const message = dayOneEvening[currentMessageIndex];
+        setCurrentMessageIndex((prevIndex) => prevIndex + 1);
         setActiveUser(message.sender);
-        timeoutIndex++;
-        // if (message.sender === activeUser) {
-        //   console.log(message.sender);
-        //   setActiveUser(message.sender);
-        //   scrollToActiveUserItem();
-
-        // }
-        setTimeout(addMessageWithDelay, messageDelay);
+        
+        if (currentMessageIndex === 2) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup(true);
+          }, 2000);
+        }
       } else {
-        setShowBox(true);
+        if (currentMessageIndex === dayOneEvening.length) {
+          // The chat has ended completely, set showBox to true
+          setShowBox(true);
+        }
       }
     };
 
-    addMessageWithDelay();
-
-    // Call scrollToBottom when children change or initially
-    // scrollToBottom();
-    const cookiemarks = Cookies.get("dayvalue") || "";
-    console.log(cookiemarks);
+    const messageInterval = setInterval(displayNextMessage, 100);
 
     return () => {
-      clearTimeout(addMessageWithDelay);
+      clearInterval(messageInterval);
     };
-  }, []);
+  }, [currentMessageIndex, chatPaused]);
+
+  const closePopup = () => {
+    // setShowPopup(false);
+    setDay5Popup(false);
+    // onClose();
+    setChatPaused(false);
+  };
+
+  useLayoutEffect(() => {
+    // Scroll to the bottom after chatData changes
+    scrollToBottom();
+  }, [currentMessageIndex]);
 
   useLayoutEffect(() => {
     // Scroll to the bottom after chatData changes
@@ -328,7 +342,7 @@ const BringDown = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              bgImage={architecture}
+              bgImage={figma}
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
@@ -361,7 +375,8 @@ const BringDown = () => {
                 pr={5}
               >
                 <TransitionGroup>
-                  {chatData.map((el, i) => {
+                  {dayOneEvening
+                    .slice(0, currentMessageIndex).map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";
                     const messageClass = isCIO ? "KateSullivan" : "BenCarter";
                     const alignMessage = isCIO ? "flex-start" : "flex-end";
@@ -415,6 +430,66 @@ const BringDown = () => {
                       </CSSTransition>
                     );
                   })}
+                  {showPopup && (
+                    <Modal isOpen={day5Popup}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+                        <ModalBody fontSize={"18px"}>
+                          
+                            <Text>
+                          
+                          </Text>
+                            
+                        </ModalBody>
+                        <ModalBody fontSize={"18px"}>
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                              Late night conference call with applications vendor (Approx. 40 people on the call)
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Button
+                            colorScheme="teal"
+                            onClick={closePopup}
+                            textAlign={"center"}
+                            fontFamily={"Croissant One"}
+                            bg={"black"}
+                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
+                          >
+                            Close
+                          </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+
                   {showBox && (
                     <>
                       <Box bg={"white"} p={10} w={"60%"} m={"auto"} mt={"50px"}>

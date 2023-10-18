@@ -14,6 +14,7 @@ import liam from "../userImages/liam.jpeg";
 import raj from "../userImages/rajpatel.jpg";
 
 export const ORGDATA = {
+
   name: "Carlos Mendoza",
   role: "Chief Executive Officer",
   img: carlos,

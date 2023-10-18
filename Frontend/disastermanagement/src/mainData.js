@@ -283,7 +283,7 @@ export const dayOneMorning = [
         "I know we're all anxious and concerned. This crisis is unprecedented, but we've weathered storms before. Our partnership with the storage vendor has been solid for years. We need to trust that, together, we'll find a solution.",
     },
     {
-      sender: "Grace Patterson ",
+      sender: "Grace Patterson",
       message:
         "(Head of Legal) Our clients are getting restless. They need assurances.",
     },

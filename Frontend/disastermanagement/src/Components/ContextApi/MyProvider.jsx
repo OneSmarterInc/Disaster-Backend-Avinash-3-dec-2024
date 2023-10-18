@@ -15,6 +15,7 @@ const MyProvider = ({ children }) => {
   const [globalState, setGlobalState] = useState(false);
   const [deliverableState, setDeliverableState] = useState(false);
   const [selectedSection, setSelectedSection] = useState("Prepare");
+  const speed = 4000;
 
   const [head, setHead] = useState("");
 
@@ -27,7 +28,7 @@ const MyProvider = ({ children }) => {
   }
 
   return (
-    <MyContext.Provider value={{ selectedSection, setSelectedSection,globalState, setGlobalState, enableBox,head, setHead, enableDeliverable }}>
+    <MyContext.Provider value={{deliverableState, speed,selectedSection, setSelectedSection,globalState, setGlobalState, enableBox,head, setHead, enableDeliverable }}>
       {children}
     </MyContext.Provider>
 

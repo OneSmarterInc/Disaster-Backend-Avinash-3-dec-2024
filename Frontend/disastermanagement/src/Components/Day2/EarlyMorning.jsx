@@ -10,10 +10,16 @@ import {
 } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
-import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import Cookies from "js-cookie";
 import day2morning from "./day2morning.png";
-import loss from "./loss.png"
+import loss from "./loss.png";
 import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router";
@@ -32,10 +38,13 @@ import ScrollDown from "../ScrollDown";
 import oncall from "../userImages/oncall.png";
 import withtom from "../userImages/withtom.png";
 import warroom from "../userImages/warroom.png";
-import liam from "../userImages/liam.jpeg"
-
+import liam from "../userImages/liam.jpeg";
+import callwithjulia from "../userImages/callwithjulia.jpeg"
 import MyContext from "../ContextApi/MyContext";
-
+import beforewithtom from "../userImages/beforewithtom.jpeg";
+import backinwar from "../userImages/backinwar.jpeg";
+import videocall from "../userImages/videocall.jpeg";
+import gathers from "../userImages/gathers.jpeg"
 
 const EarlyMorning = () => {
   const [chatData, setChatData] = useState([]);
@@ -54,27 +63,26 @@ const EarlyMorning = () => {
   const [day5Popup3, setDay5Popup3] = useState(true);
   const [day5Popup4, setDay5Popup4] = useState(true);
   const [day5Popup5, setDay5Popup5] = useState(true);
-
+  const [day5Popup6, setDay5Popup6] = useState(true);
 
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
-  const [showPopup2,setShowPopup2] = useState(false);
+  const [showPopup2, setShowPopup2] = useState(false);
   const [showPopup3, setShowPopup3] = useState(false);
   const [showPopup4, setShowPopup4] = useState(false);
   const [showPopup5, setShowPopup5] = useState(false);
+  const [showPopup6, setShowPopup6] = useState(false);
 
   const [chatPaused, setChatPaused] = useState(false);
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
-  const [ShowScroll,setShowScroll] = useState(false);
-  const [img, showImg] = useState(false)
-
+  const [ShowScroll, setShowScroll] = useState(false);
+  const [img, showImg] = useState(false);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const {setHead} = useContext(MyContext);
-
+  const { setHead } = useContext(MyContext);
 
   const handleChange = (value) => {
     setValue(value);
@@ -253,6 +261,13 @@ const EarlyMorning = () => {
     setChatPaused(false);
   };
 
+  const closePopup6 = () => {
+    // setShowPopup(false);
+    setDay5Popup6(false);
+    // onClose();
+    setChatPaused(false);
+  };
+
   const closePopup3 = () => {
     // setShowPopup(false);
     setDay5Popup3(false);
@@ -293,42 +308,42 @@ const EarlyMorning = () => {
   }, [showBox2]);
 
   useEffect(() => {
-
-    setHead("Day 2 Early Morning");
+    setHead("Day 2 - Early Morning");
     const displayNextMessage = () => {
       if (!chatPaused && currentMessageIndex < dayTwoEarlyMorning.length) {
         const message = dayTwoEarlyMorning[currentMessageIndex];
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
         setActiveUser(message.sender);
-        
+
         if (currentMessageIndex === 6) {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup(true);
           }, 2000);
-        }
-        else if (currentMessageIndex === 13) {
+        } else if (currentMessageIndex === 13) {
           setChatPaused(true);
           setTimeout(() => {
-            setShowPopup2(true)
+            setShowPopup2(true);
           }, 2000);
-        }
-        else if (currentMessageIndex === 19) {
+        } else if (currentMessageIndex === 19) {
           setChatPaused(true);
           setTimeout(() => {
-            setShowPopup3(true)
+            setShowPopup6(true);
           }, 2000);
-        }
-        else if (currentMessageIndex === 24) {
+        } else if (currentMessageIndex === 30) {
           setChatPaused(true);
           setTimeout(() => {
-            setShowPopup4(true)
+            setShowPopup3(true);
           }, 2000);
-        }
-        else if (currentMessageIndex === 29) {
+        } else if (currentMessageIndex === 36) {
           setChatPaused(true);
           setTimeout(() => {
-            setShowPopup5(true)
+            setShowPopup4(true);
+          }, 2000);
+        } else if (currentMessageIndex === 41) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup5(true);
           }, 1000);
         }
       } else {
@@ -339,7 +354,7 @@ const EarlyMorning = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 2000);
+    const messageInterval = setInterval(displayNextMessage, 100);
 
     return () => {
       clearInterval(messageInterval);
@@ -385,7 +400,6 @@ const EarlyMorning = () => {
                   return (
                     <Box borderBottom={"1px solid black"} key={el.name}>
                       <Box
-                        
                         h={"6vh"}
                         w={"55px"}
                         m={"auto"}
@@ -416,11 +430,15 @@ const EarlyMorning = () => {
               ref={chatContainerRef}
               pb={2}
               bgImage={
-                currentMessageIndex > 30 ? loss :
-                currentMessageIndex > 25 ? warroom :
-                currentMessageIndex > 13 ? withtom :
-                currentMessageIndex > 7 ? oncall :
-                day2morning
+                currentMessageIndex > 42
+                  ? loss
+                  : currentMessageIndex > 37
+                  ? warroom
+                  : currentMessageIndex > 31
+                  ? withtom
+                  : currentMessageIndex > 7
+                  ? oncall
+                  : day2morning
               }
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
@@ -443,7 +461,7 @@ const EarlyMorning = () => {
                   lengthy conversation, discussing the technical intricacies.
                 </Text>
               </Box>
-             
+
               <Box
                 w={"90%"}
                 h={"68vh"}
@@ -466,7 +484,7 @@ const EarlyMorning = () => {
                           timeout={{ enter: 300, exit: 300 }}
                         >
                           <Box
-                          key={i}
+                            key={i}
                             border={"0px solid black"}
                             w={"100%"}
                             display="flex"
@@ -517,29 +535,51 @@ const EarlyMorning = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
+                        bgColor={'#E3E3E3   '}
+                        maxW={'600px'}
                       >
                         <ModalHeader
                           fontWeight={"bold"}
                           fontSize={"25px"}
                         ></ModalHeader>
                         <ModalBody fontSize={"18px"}>
-                          <Text>
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
                             After briefing the CEO, Ben Carter gets back on the
                             call with Julia Harper from the vendor's team.
-                          </Text>
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Button
                             colorScheme="teal"
                             onClick={closePopup}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            mr={"150px"}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
                           >
                             Close
                           </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -552,28 +592,52 @@ const EarlyMorning = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
+                        bgColor={'#E3E3E3   '}
+                        maxW={'600px'}
                       >
                         <ModalHeader
                           fontWeight={"bold"}
                           fontSize={"25px"}
                         ></ModalHeader>
                         <ModalBody fontSize={"18px"}>
-                          <Text>
-                          Before making the decision to proceed, Ben Carter has another call with Tom Mitchell
-                          </Text>
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                            Before making the decision to proceed, Ben Carter
+                            has another call with Tom Mitchell
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {beforewithtom} borderRadius={10}/>
+                              <Button
                             colorScheme="teal"
                             onClick={closePopup2}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            mr={"150px"}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
                           >
                             Close
                           </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                       
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -585,25 +649,108 @@ const EarlyMorning = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
+                        bgColor={'#E3E3E3   '}
+                        maxW={'600px'}
                       >
                         <ModalHeader
                           fontWeight={"bold"}
                           fontSize={"25px"}
                         ></ModalHeader>
+                        
                         <ModalBody fontSize={"18px"}>
-                          <Text>
-                          Ben Carter is on a video call with a key client, Mr. Williams.
-                          </Text>
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                            Ben Carter is on a video call with a key client, Mr.
+                            Williams.
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {videocall} borderRadius={10}/>
+                              <Button
                             colorScheme="teal"
                             onClick={closePopup3}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            mr={"150px"}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
+                          >
+                            Close
+                          </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup6 && (
+                    <Modal isOpen={day5Popup6}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        maxW="800px"
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+                        <ModalBody fontSize={"18px"}>
+                          <Heading>Note : </Heading>
+                          <Text>
+                            While the storage platform replicates themselves on
+                            a hardware basis, for applications with databases
+                            (almost all) it is necessary to back up the
+                            databases on some schedule; typically, on a
+                            twenty-four-hour basis. This company typically does
+                            this between 12:00 AM and 2:00 AM (note figure A in
+                            the Appendix. The database on Site 1 is halted and a
+                            quiet point (all transactions are halted) is taken
+                            insuring all buffers are written out and all
+                            transactions are completed. The data base on Site 2
+                            is stop and an incremental (and much shorter backup)
+                            is done to a separate storage frame not use for the
+                            replication process; it this case, it is the
+                            previous generation of storage devices. These
+                            incremental backups will be saved for one week on
+                            this separate storage frame. Once a week, on a
+                            week-end, a full database backup is taken then the
+                            full backup and well as the incremental backups will
+                            be taken to take tape cassettes. To recover a
+                            application database, it takes the full back up as
+                            well as any incremental backups that have occurred
+                            since the week-end. The success rate of recovering
+                            from tape is approximately 97.5%. As you might have
+                            determined, it may take days to recover the
+                            applications that have failed.
+                          </Text>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup6}
+                            textAlign={"center"}
+                            fontFamily={"Croissant One"}
+                            bg={"black"}
+                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                            mr={"350px"}
                           >
                             Close
                           </Button>
@@ -618,29 +765,51 @@ const EarlyMorning = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
+                        bgColor={'#E3E3E3   '}
+                        maxW={'600px'}
                       >
                         <ModalHeader
                           fontWeight={"bold"}
                           fontSize={"25px"}
                         ></ModalHeader>
+                       
                         <ModalBody fontSize={"18px"}>
-                          <Text>
-                          Back in the war room, Ben gathers the executive team for a quick huddle.
-                          </Text>
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                            Back in the war room, Ben gathers the executive team
+                            for a quick huddle.
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {backinwar} borderRadius={10}/>
+                              <Button
                             colorScheme="teal"
                             onClick={closePopup4}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            mr={"150px"}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
                           >
                             Close
                           </Button>
-                        </ModalFooter>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        
                       </ModalContent>
                     </Modal>
                   )}
@@ -651,28 +820,55 @@ const EarlyMorning = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
+                        bgColor={'#E3E3E3   '}
+                        maxW={'600px'}
                       >
                         <ModalHeader
                           fontWeight={"bold"}
                           fontSize={"25px"}
                         ></ModalHeader>
+                       
                         <ModalBody fontSize={"18px"}>
-                          <Text>
-                          The executive team gathers around the conference table. The room's atmosphere is tense, but there's a shared determination to address the situation head-on.
-                          </Text>
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                            The executive team gathers around the conference
+                            table. The room's atmosphere is tense, but there's a
+                            shared determination to address the situation
+                            head-on.
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {gathers} borderRadius={10}/>
+                              <Button
                             colorScheme="teal"
                             onClick={closePopup5}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            mr={"150px"}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
                           >
                             Close
                           </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -952,9 +1148,7 @@ const EarlyMorning = () => {
                             </ModalFooter>
                           </ModalContent>
                         </Modal>
-                        {ShowScroll && (
-                        <ScrollDown />
-                       )}
+                        {ShowScroll && <ScrollDown />}
                       </Box>
                     </>
                   )}

@@ -11,6 +11,7 @@
   transition: transform 0.2s;
   transform: scale(1.2);
 }
+
 .Tactive {
   font-weight: bold;
   background-color: #f0f0f0; 

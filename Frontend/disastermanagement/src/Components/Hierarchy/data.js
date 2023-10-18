@@ -11,6 +11,7 @@ import tariq from "../userImages/Rarqalhashim.png";
 import lucas from "../userImages/lucasoliveria.jpg";
 import carlos from "../userImages/carlos.jpg";
 import liam from "../userImages/liam.jpeg";
+import raj from "../userImages/rajpatel.jpg"
 
 export const ORGDATA = {
     name: "Carlos Mendoza",
@@ -81,9 +82,9 @@ liam                    // child: []
         ]
       },
       {
-        name: "Elena Ivanova",
+        name: "Raj Patel",
         role: "Chief Financial Officer",
-        img:elena
+        img:raj
                   },
       {
         name: "Lucas Oliveira",

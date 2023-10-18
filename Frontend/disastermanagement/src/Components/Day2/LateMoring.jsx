@@ -10,7 +10,13 @@ import {
 } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
-import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import Cookies from "js-cookie";
 import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -20,17 +26,18 @@ import EarlyMorning from "./EarlyMorning";
 import Morning from "../Day3/Morning";
 import { dayTwoLateMorning } from "../../mainData";
 import bencarter from "../userImages/bencarter.png";
-import sophia from "../userImages/sophia_kim.png"
-import kate from "../userImages/kate_sullivan.png"
-import mia from "../userImages/Mia Rodriguez.png"
+import sophia from "../userImages/sophia_kim.png";
+import kate from "../userImages/kate_sullivan.png";
+import mia from "../userImages/Mia Rodriguez.png";
 import ScrollDown from "../ScrollDown";
 import officebuzz from "../userImages/officebuzz.png";
 import pm from "../userImages/1PM.png";
 import room from "../userImages/theroom.png";
 import night from "../userImages/night.png";
-import liam from "../userImages/liam.jpeg"
+import liam from "../userImages/liam.jpeg";
 import MyContext from "../ContextApi/MyContext";
-
+import callwithjulia from "../userImages/callwithjulia.jpeg"
+import clock from "../userImages/clock.jpeg"
 
 const LateMorning = () => {
   const [chatData, setChatData] = useState([]);
@@ -47,25 +54,24 @@ const LateMorning = () => {
   const [day5Popup, setDay5Popup] = useState(true);
   const [day5Popup2, setDay5Popup2] = useState(true);
   const [day5Popup3, setDay5Popup3] = useState(true);
+  const [day5Popup4, setDay5Popup4] = useState(true);
 
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [chatPaused, setChatPaused] = useState(false);
 
   const [showPopup, setShowPopup] = useState(false);
-  const [showPopup2,setShowPopup2] = useState(false);
+  const [showPopup2, setShowPopup2] = useState(false);
   const [showPopup3, setShowPopup3] = useState(false);
+  const [showPopup4, setShowPopup4] = useState(false);
 
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
-  const [ShowScroll,setShowScroll] = useState(false);
-
-  
+  const [ShowScroll, setShowScroll] = useState(false);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const {setHead} = useContext(MyContext);
-
+  const { setHead } = useContext(MyContext);
 
   const handleChange = (value) => {
     setValue(value);
@@ -187,8 +193,6 @@ const LateMorning = () => {
     }
   };
 
- 
-
   const users = [
     {
       name: "Ben Carter",
@@ -209,12 +213,12 @@ const LateMorning = () => {
     {
       name: "Mia Rodriguez",
       url: mia,
-    }
+    },
   ];
 
   const closePopup = () => {
     // setShowPopup(false);
-    
+
     setDay5Popup(false);
     // onClose();
     setChatPaused(false);
@@ -234,6 +238,12 @@ const LateMorning = () => {
     setChatPaused(false);
   };
 
+  const closePopup4 = () => {
+    // setShowPopup(false);
+    setDay5Popup4(false);
+    // onClose();
+    setChatPaused(false);
+  };
 
   useLayoutEffect(() => {
     // Scroll to the bottom after chatData changes
@@ -255,20 +265,14 @@ const LateMorning = () => {
   }, [showBox2]);
 
   useEffect(() => {
-    if(currentMessageIndex >3 && currentMessageIndex <=11){
-    setHead("Day 2 Afternoon");
-
+    if (currentMessageIndex > 4 && currentMessageIndex <= 13) {
+      setHead("Day 2 - Afternoon");
+    } else if (currentMessageIndex > 13) {
+      setHead("Day 2 - Night");
+    } else {
+      setHead("Day 2 - Late Morning");
     }
-    else if(currentMessageIndex>11){
-    setHead("Day 2 Night");
 
-    }
-    else{
-
-      setHead("Day 2 Late Morning");
-    }
-   
-    
     const displayNextMessage = () => {
       if (!chatPaused && currentMessageIndex < dayTwoLateMorning.length) {
         const message = dayTwoLateMorning[currentMessageIndex];
@@ -280,17 +284,20 @@ const LateMorning = () => {
           setTimeout(() => {
             setShowPopup(true);
           }, 2000);
-        }
-        else if (currentMessageIndex === 7) {
+        } else if (currentMessageIndex === 4) {
           setChatPaused(true);
           setTimeout(() => {
-            setShowPopup2(true)
+            setShowPopup4(true);
           }, 2000);
-        }
-        else if (currentMessageIndex === 10) {
+        } else if (currentMessageIndex === 9) {
           setChatPaused(true);
           setTimeout(() => {
-            setShowPopup3(true)
+            setShowPopup2(true);
+          }, 2000);
+        } else if (currentMessageIndex === 12) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup3(true);
           }, 2000);
         }
       } else {
@@ -301,18 +308,16 @@ const LateMorning = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 2000);
+    const messageInterval = setInterval(displayNextMessage, 100);
 
     return () => {
       clearInterval(messageInterval);
     };
   }, [currentMessageIndex, chatPaused]);
 
-
-
   return (
     <>
-     {modalValue ===
+      {modalValue ===
       "Emphasizing teamwork, both internally and with external partners" ? (
         <Morning />
       ) : modalValue === "Making clear and swift decisions under pressure" ? (
@@ -349,7 +354,6 @@ const LateMorning = () => {
                   return (
                     <Box borderBottom={"1px solid black"} key={el.name}>
                       <Box
-                      
                         h={"6vh"}
                         w={"55px"}
                         m={"auto"}
@@ -380,10 +384,13 @@ const LateMorning = () => {
               ref={chatContainerRef}
               pb={2}
               bgImage={
-                currentMessageIndex > 11 ? night :
-                currentMessageIndex > 8 ? room :
-                currentMessageIndex > 3 ? pm :
-                officebuzz
+                currentMessageIndex > 13
+                  ? night
+                  : currentMessageIndex > 10
+                  ? room
+                  : currentMessageIndex > 5
+                  ? pm
+                  : officebuzz
               }
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
@@ -401,13 +408,12 @@ const LateMorning = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                The office is buzzing with activity. 
-                Phones are ringing incessantly, and IT 
-                professionals are working at their stations 
-                with a sense of urgency.
+                  The office is buzzing with activity. Phones are ringing
+                  incessantly, and IT professionals are working at their
+                  stations with a sense of urgency.
                 </Text>
               </Box>
-              
+
               <Box
                 w={"90%"}
                 h={"68vh"}
@@ -418,60 +424,61 @@ const LateMorning = () => {
               >
                 <TransitionGroup>
                   {dayTwoLateMorning
-                    .slice(0, currentMessageIndex).map((el, i) => {
-                    const isCIO = el.sender === "Ben Carter";
-                    const messageClass = isCIO ? "KateSullivan" : "BenCarter";
-                    const alignMessage = isCIO ? "flex-start" : "flex-end";
-                    return (
-                      <CSSTransition
-                        key={i}
-                        classNames="message"
-                        timeout={{ enter: 300, exit: 300 }}
-                      >
-                        <Box
-                         key={i}
-                          border={"0px solid black"}
-                          w={"100%"}
-                          display="flex"
-                          justifyContent={alignMessage}
-                          className={`message ${messageClass} ${
-                            el.sender === "Ben Carter"
-                              ? "BenCarter"
-                              : "KateSullivan"
-                          }`}
+                    .slice(0, currentMessageIndex)
+                    .map((el, i) => {
+                      const isCIO = el.sender === "Ben Carter";
+                      const messageClass = isCIO ? "KateSullivan" : "BenCarter";
+                      const alignMessage = isCIO ? "flex-start" : "flex-end";
+                      return (
+                        <CSSTransition
+                          key={i}
+                          classNames="message"
+                          timeout={{ enter: 300, exit: 300 }}
                         >
-                          <Box border={"0px solid red"} w={"50%"}>
-                            <Box
-                              boxShadow={
-                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                              }
-                              border={"0px solid black"}
-                              bgColor={
-                                el.sender === "Ben Carter"
-                                  ? "#f0f0f0"
-                                  : "#030405"
-                              }
-                              color={
-                                el.sender === "Ben Carter" ? "black" : "white"
-                              }
-                              w={"100%"}
-                              borderRadius={"10px"}
-                              textAlign={"justify"}
-                              p={4}
-                              pl={5}
-                              pr={5}
-                              mt={10}
-                            >
-                              <Text>
-                                <span id="sender">{el.sender}</span> :{" "}
-                                {el.message}
-                              </Text>
+                          <Box
+                            key={i}
+                            border={"0px solid black"}
+                            w={"100%"}
+                            display="flex"
+                            justifyContent={alignMessage}
+                            className={`message ${messageClass} ${
+                              el.sender === "Ben Carter"
+                                ? "BenCarter"
+                                : "KateSullivan"
+                            }`}
+                          >
+                            <Box border={"0px solid red"} w={"50%"}>
+                              <Box
+                                boxShadow={
+                                  "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                                }
+                                border={"0px solid black"}
+                                bgColor={
+                                  el.sender === "Ben Carter"
+                                    ? "#f0f0f0"
+                                    : "#030405"
+                                }
+                                color={
+                                  el.sender === "Ben Carter" ? "black" : "white"
+                                }
+                                w={"100%"}
+                                borderRadius={"10px"}
+                                textAlign={"justify"}
+                                p={4}
+                                pl={5}
+                                pr={5}
+                                mt={10}
+                              >
+                                <Text>
+                                  <span id="sender">{el.sender}</span> :{" "}
+                                  {el.message}
+                                </Text>
+                              </Box>
                             </Box>
                           </Box>
-                        </Box>
-                      </CSSTransition>
-                    );
-                  })}
+                        </CSSTransition>
+                      );
+                    })}
                   {showPopup && (
                     <Modal isOpen={day5Popup}>
                       <ModalOverlay />
@@ -479,28 +486,52 @@ const LateMorning = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
+                        bgColor={'#E3E3E3   '}
+                        maxW={'600px'}
                       >
                         <ModalHeader
                           fontWeight={"bold"}
                           fontSize={"25px"}
                         ></ModalHeader>
+                        
                         <ModalBody fontSize={"18px"}>
-                          <Text>
-                          The clock strikes 1:00 PM. The atmosphere in the room is cautiously optimistic.
-                          </Text>
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                            Ben Carter and his internal team are in a planning
+                            session
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Button
                             colorScheme="teal"
                             onClick={closePopup}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            mr={"150px"}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
                           >
                             Close
                           </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -513,28 +544,52 @@ const LateMorning = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
+                        bgColor={'#E3E3E3   '}
+                        maxW={'600px'}
                       >
                         <ModalHeader
                           fontWeight={"bold"}
                           fontSize={"25px"}
                         ></ModalHeader>
+                       
                         <ModalBody fontSize={"18px"}>
-                          <Text>
-                          The room is bathed in the golden light of late afternoon. The clock reads 4:00 PM.
-                          </Text>
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                            The room is bathed in the golden light of late
+                            afternoon. The clock reads 4:00 PM.
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Button
                             colorScheme="teal"
                             onClick={closePopup2}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            mr={"150px"}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
                           >
                             Close
                           </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -546,41 +601,117 @@ const LateMorning = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
+                        bgColor={'#E3E3E3   '}
+                        maxW={'600px'}
                       >
                         <ModalHeader
                           fontWeight={"bold"}
                           fontSize={"25px"}
                         ></ModalHeader>
+                        
                         <ModalBody fontSize={"18px"}>
-                          <Text>
-                          The night deepens, and the office is quieter, with only the IT team still working diligently. The clock is about to strike midnight.
-                          </Text>
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                            The night deepens, and the office is quieter, with
+                            only the IT team still working diligently. The clock
+                            is about to strike midnight.
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Button
                             colorScheme="teal"
                             onClick={closePopup3}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            mr={"150px"}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
                           >
                             Close
                           </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup4 && (
+                    <Modal isOpen={day5Popup4}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        bgColor={'#E3E3E3   '}
+                        maxW={'600px'}
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+                        
+                        <ModalBody fontSize={"18px"}>
+                          <Flex gap={2}>
+                            <Box bgColor={'white'} boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        borderRadius={10}
+                        pl={5}
+                        pt={5}
+                        pr={5}
+                        >
+                            <Text>
+                            The clock strikes 1:00 PM. The atmosphere in the
+                            room is cautiously optimistic.
+                            </Text>
+                            </Box>
+                            <Box>
+                              <Image src= {clock} borderRadius={10}/>
+                              <Button
+                            colorScheme="teal"
+                            onClick={closePopup4}
+                            textAlign={"center"}
+                            fontFamily={"Croissant One"}
+                            bg={"black"}
+                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                             ml={'60px'}
+                             mt={3}
+                             pl={10}
+                             pr={10}
+                             borderRadius={10}
+                          >
+                            Close
+                          </Button>
+                            </Box>
+
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
                   {showBox && (
                     <>
-                      <Box
-                        bg={"white"}
-                        p={10}
-                        w={"60%"}
-                        m={"auto"}
-                        mt={"50px"}
-                      >
+                      <Box bg={"white"} p={10} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
                           w={"50%"}
                           m={"auto"}
@@ -816,21 +947,14 @@ const LateMorning = () => {
                           </ModalContent>
                         </Modal>
 
-                        {ShowScroll && (
-                        <ScrollDown />
-                       )}
+                        {ShowScroll && <ScrollDown />}
                       </Box>
                     </>
                   )}
 
                   {showBox2 && (
                     <>
-                      <Box
-                        bg={"white"}
-                        w={"60%"}
-                        m={"auto"}
-                        mt={"50px"}
-                      >
+                      <Box bg={"white"} w={"60%"} m={"auto"} mt={"50px"}>
                         <Image
                           w={"50%"}
                           m={"auto"}

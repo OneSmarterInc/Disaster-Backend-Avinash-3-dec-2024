@@ -46,7 +46,7 @@ import tense from "../userImages/tense.jpeg";
 import MyContext from "../ContextApi/MyContext";
 import pressingdown from "../userImages/pressingdown.jpeg";
 import failure from "../userImages/failure.jpeg";
-import callwithjulia from "../userImages/callwithjulia.jpeg"
+import callwithjulia from "../userImages/callwithjulia.jpeg";
 
 const Morning = () => {
   const [chatData, setChatData] = useState([]);
@@ -97,7 +97,7 @@ const Morning = () => {
     setShowBox2(true);
     setShowBoxContent1(false);
     setshowBoxContent2(true);
-    }
+  };
 
   const scrollToBottom = () => {
     const container = chatContainerRef.current;
@@ -145,19 +145,16 @@ const Morning = () => {
   useEffect(() => {
     // Scroll to the bottom when showBox becomes true
     if (showBox) {
-
-      setTimeout(()=>{
-
+      setTimeout(() => {
         scrollToBottom();
-      },100)
+      }, 100);
     }
-  }, [showBox,showBoxContent2]);
+  }, [showBox, showBoxContent2]);
 
   useEffect(() => {
-   if(currentMessageIndex >3){
-    setHead("Day 3 - Night");
-   }
-    else{
+    if (currentMessageIndex > 3) {
+      setHead("Day 3 - Night");
+    } else {
       setHead("Day 3 - Morning");
     }
 
@@ -202,9 +199,7 @@ const Morning = () => {
       }
     };
 
-
     const messageInterval = setInterval(displayNextMessage, speed);
-
 
     return () => {
       clearInterval(messageInterval);
@@ -279,7 +274,7 @@ const Morning = () => {
               overflow={"auto"}
               bgColor={"#948888"}
             >
-             <Box
+              <Box
                 bgColor="#948888"
                 pt={3}
                 flex="1"
@@ -304,7 +299,8 @@ const Morning = () => {
                             "Network Specialist") ||
                           (el.name === "Tom Mitchell" && "") ||
                           (el.name === "Raj Patel" && "") ||
-                          (el.name === "Grace Patterson" && "") || (el.name === "Aisha Patel" && "COO")
+                          (el.name === "Grace Patterson" && "") ||
+                          (el.name === "Aisha Patel" && "COO")
                         }
                       >
                         <Box key={el.name} cursor={"pointer"}>
@@ -490,53 +486,52 @@ const Morning = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
-                        bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
+                        bgColor={"#E3E3E3   "}
+                        maxW={"600px"}
                       >
                         <ModalHeader
                           fontWeight={"bold"}
                           fontSize={"25px"}
                         ></ModalHeader>
-                        
+
                         <ModalBody fontSize={"18px"}>
                           <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            The office atmosphere is tense. People are visibly
-                            tired.
-                            </Text>
+                            <Box
+                              bgColor={"white"}
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              borderRadius={10}
+                              pl={5}
+                              pt={5}
+                              pr={5}
+                            >
+                              <Text>
+                                The office atmosphere is tense. People are
+                                visibly tired.
+                              </Text>
                             </Box>
                             <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Image src={callwithjulia} borderRadius={10} />
                               <Button
-                            colorScheme="teal"
-                            onClick={closePopup}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
-                          >
-                            Close
-                          </Button>
+                                colorScheme="teal"
+                                onClick={closePopup}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                ml={"60px"}
+                                mt={3}
+                                pl={10}
+                                pr={10}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
                             </Box>
-
                           </Flex>
                         </ModalBody>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
+                        <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -548,53 +543,52 @@ const Morning = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
-                        bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
+                        bgColor={"#E3E3E3   "}
+                        maxW={"600px"}
                       >
                         <ModalHeader
                           fontWeight={"bold"}
                           fontSize={"25px"}
                         ></ModalHeader>
-                        
+
                         <ModalBody fontSize={"18px"}>
                           <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            Alarms jolt everyone. There's an immediate sense of
-                            dread.
-                            </Text>
+                            <Box
+                              bgColor={"white"}
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              borderRadius={10}
+                              pl={5}
+                              pt={5}
+                              pr={5}
+                            >
+                              <Text>
+                                Alarms jolt everyone. There's an immediate sense
+                                of dread.
+                              </Text>
                             </Box>
                             <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Image src={callwithjulia} borderRadius={10} />
                               <Button
-                            colorScheme="teal"
-                            onClick={closePopup2}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
-                          >
-                            Close
-                          </Button>
+                                colorScheme="teal"
+                                onClick={closePopup2}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                ml={"60px"}
+                                mt={3}
+                                pl={10}
+                                pr={10}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
                             </Box>
-
                           </Flex>
                         </ModalBody>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
+                        <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -605,53 +599,52 @@ const Morning = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
-                        bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
+                        bgColor={"#E3E3E3   "}
+                        maxW={"600px"}
                       >
                         <ModalHeader
                           fontWeight={"bold"}
                           fontSize={"25px"}
                         ></ModalHeader>
-                        
+
                         <ModalBody fontSize={"18px"}>
                           <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            The room is thick with tension as the storage vendor
-                            team joins.
-                            </Text>
+                            <Box
+                              bgColor={"white"}
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              borderRadius={10}
+                              pl={5}
+                              pt={5}
+                              pr={5}
+                            >
+                              <Text>
+                                The room is thick with tension as the storage
+                                vendor team joins.
+                              </Text>
                             </Box>
                             <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Image src={callwithjulia} borderRadius={10} />
                               <Button
-                            colorScheme="teal"
-                            onClick={closePopup3}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
-                          >
-                            Close
-                          </Button>
+                                colorScheme="teal"
+                                onClick={closePopup3}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                ml={"60px"}
+                                mt={3}
+                                pl={10}
+                                pr={10}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
                             </Box>
-
                           </Flex>
                         </ModalBody>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
+                        <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -662,53 +655,52 @@ const Morning = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
-                        bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
+                        bgColor={"#E3E3E3   "}
+                        maxW={"600px"}
                       >
                         <ModalHeader
                           fontWeight={"bold"}
                           fontSize={"25px"}
                         ></ModalHeader>
-                        
+
                         <ModalBody fontSize={"18px"}>
                           <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            The weight of the situation is pressing down on
-                            everyone.
-                            </Text>
+                            <Box
+                              bgColor={"white"}
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              borderRadius={10}
+                              pl={5}
+                              pt={5}
+                              pr={5}
+                            >
+                              <Text>
+                                The weight of the situation is pressing down on
+                                everyone.
+                              </Text>
                             </Box>
                             <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Image src={callwithjulia} borderRadius={10} />
                               <Button
-                            colorScheme="teal"
-                            onClick={closePopup4}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
-                          >
-                            Close
-                          </Button>
+                                colorScheme="teal"
+                                onClick={closePopup4}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                ml={"60px"}
+                                mt={3}
+                                pl={10}
+                                pr={10}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
                             </Box>
-
                           </Flex>
                         </ModalBody>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
+                        <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -720,57 +712,54 @@ const Morning = () => {
                         boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
-                        bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
+                        bgColor={"#E3E3E3   "}
+                        maxW={"600px"}
                       >
                         <ModalHeader
                           fontWeight={"bold"}
                           fontSize={"25px"}
                         ></ModalHeader>
-                        
+
                         <ModalBody fontSize={"18px"}>
                           <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            After the first failure...
-                            </Text>
+                            <Box
+                              bgColor={"white"}
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              borderRadius={10}
+                              pl={5}
+                              pt={5}
+                              pr={5}
+                            >
+                              <Text>After the first failure...</Text>
                             </Box>
                             <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Image src={callwithjulia} borderRadius={10} />
                               <Button
-                            colorScheme="teal"
-                            onClick={closePopup5}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
-                          >
-                            Close
-                          </Button>
+                                colorScheme="teal"
+                                onClick={closePopup5}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                ml={"60px"}
+                                mt={3}
+                                pl={10}
+                                pr={10}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
                             </Box>
-
                           </Flex>
                         </ModalBody>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
+                        <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
 
-{showBox && (
+                  {showBox && (
                     <>
                       <Box
                         bg={"white"}

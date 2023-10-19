@@ -10,7 +10,13 @@ import {
 } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
-import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import Cookies from "js-cookie";
 import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -21,7 +27,7 @@ import sophia from "../userImages/sophia_kim.png";
 import kate from "../userImages/kate_sullivan.png";
 import mia from "../userImages/Mia Rodriguez.png";
 import gaji from "../userImages/gaji.jpg";
-import communicationlead from "../userImages/communicationlead.jpg"
+import communicationlead from "../userImages/communicationlead.jpg";
 import ScrollDown from "../ScrollDown";
 import { useNavigate } from "react-router-dom";
 
@@ -31,16 +37,12 @@ import clapping from "../userImages/clapping.png";
 import email from "../userImages/email.jpeg";
 import liam from "../userImages/liam.jpeg";
 
-
 import MyContext from "../ContextApi/MyContext";
 import Debrief from "../Debrief";
 import Deliverable from "../Deliverable";
 import callwithjulia from "../userImages/callwithjulia.jpeg";
 
-
-
 const Morning5 = () => {
-
   // const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
@@ -66,8 +68,6 @@ const Morning5 = () => {
   const [day5Popup8, setDay5Popup8] = useState(true);
   const [day5Popup9, setDay5Popup9] = useState(true);
 
-
-
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [showPopup2, setShowPopup2] = useState(false);
@@ -79,23 +79,20 @@ const Morning5 = () => {
   const [showPopup8, setShowPopup8] = useState(false);
   const [showPopup9, setShowPopup9] = useState(false);
 
-
   const [chatPaused, setChatPaused] = useState(false);
 
   const chatContainerRef = useRef(null);
   const usersContainerRef = useRef();
   const spacerRef = useRef(null);
 
-  const {setHead, speed,enableDeliverable  } = useContext(MyContext);
-
+  const { setHead, speed, enableDeliverable } = useContext(MyContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleChange = (value) => {
     enableDeliverable();
     setValue(value);
-    Cookies.set("day5morning2",value);
-    
+    Cookies.set("day5morning2", value);
   };
 
   const handleChange2 = (value1) => {
@@ -105,11 +102,10 @@ const Morning5 = () => {
     setShowBoxContent1(false);
     setshowBoxContent2(true);
   };
-  
-  
+
   const handleUserMessage = (userName) => {
     setActiveUser(userName);
-    
+
     scrollToActiveUser();
   };
 
@@ -117,13 +113,13 @@ const Morning5 = () => {
     if (activeUser) {
       const activeUserElement = document.getElementById(activeUser);
       if (activeUserElement) {
-        activeUserElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        activeUserElement.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
       }
     }
   };
-
-
- 
 
   const scrollToBottom = () => {
     const container = chatContainerRef.current;
@@ -173,28 +169,21 @@ const Morning5 = () => {
   useEffect(() => {
     // Scroll to the bottom when showBox becomes true
     if (showBox) {
-      setTimeout(()=>{
-
+      setTimeout(() => {
         scrollToBottom();
-      },100)    }
-  }, [showBox,showBoxContent2]);
-
-  
+      }, 100);
+    }
+  }, [showBox, showBoxContent2]);
 
   useEffect(() => {
-
-    if(currentMessageIndex >1){
+    if (currentMessageIndex > 1) {
       setHead("Day 5 - Afternoon");
-
-    }
-    else if(currentMessageIndex >7){
-      setHead("Day 5 - Evening")
-    }
-    else{
-
+    } else if (currentMessageIndex > 7) {
+      setHead("Day 5 - Evening");
+    } else {
       setHead("Day 5 - Morning");
     }
-    
+
     const displayNextMessage = () => {
       if (!chatPaused && currentMessageIndex < dayFiveMorning.length) {
         const message = dayFiveMorning[currentMessageIndex];
@@ -223,26 +212,22 @@ const Morning5 = () => {
           setTimeout(() => {
             setShowPopup5(true);
           }, 2000);
-        }
-        else if (currentMessageIndex === 11) {
+        } else if (currentMessageIndex === 11) {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup6(true);
           }, 2000);
-        }
-        else if (currentMessageIndex === 12) {
+        } else if (currentMessageIndex === 12) {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup7(true);
           }, 2000);
-        }
-        else if (currentMessageIndex === 20) {
+        } else if (currentMessageIndex === 20) {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup8(true);
           }, 2000);
-        }
-        else if (currentMessageIndex === 29) {
+        } else if (currentMessageIndex === 29) {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup9(true);
@@ -328,26 +313,24 @@ const Morning5 = () => {
 
   return (
     <>
-      
-        {value ===
-        "Emphasizing teamwork, both internally and with external partners" ? (
-          <Deliverable/>
-        ) : value === "Making clear and swift decisions under pressure" ? (
-           <Deliverable/>
-        ) : value ===
-          "Remaining calm and level-headed during challenges" ? (
-           <Deliverable/>
-        ) : value ===
-          "Effectively conveying information, even in challenging circumstances" ? (
-           <Deliverable/>
-        ) : value ===
-          "Quickly adjusting strategies based on new information or changing scenarios" ? (
-           <Deliverable/>
-        ) : value ===
-          "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-           <Deliverable/>
-        ) : (
-          <Box
+      {value ===
+      "Emphasizing teamwork, both internally and with external partners" ? (
+        <Deliverable />
+      ) : value === "Making clear and swift decisions under pressure" ? (
+        <Deliverable />
+      ) : value === "Remaining calm and level-headed during challenges" ? (
+        <Deliverable />
+      ) : value ===
+        "Effectively conveying information, even in challenging circumstances" ? (
+        <Deliverable />
+      ) : value ===
+        "Quickly adjusting strategies based on new information or changing scenarios" ? (
+        <Deliverable />
+      ) : value ===
+        "Keeping an eye on long-term impacts and future implications during the crisis" ? (
+        <Deliverable />
+      ) : (
+        <Box
           fontFamily={"Fredoka"}
           border={"0px solid red"}
           w={"100%"}
@@ -362,7 +345,7 @@ const Morning5 = () => {
               overflow={"auto"}
               bgColor={"#948888"}
             >
-             <Box
+              <Box
                 bgColor="#948888"
                 pt={3}
                 flex="1"
@@ -387,7 +370,11 @@ const Morning5 = () => {
                             "Network Specialist") ||
                           (el.name === "Tom Mitchell" && "") ||
                           (el.name === "Raj Patel" && "") ||
-                          (el.name === "Grace Patterson" && "")
+                          (el.name === "Grace Patterson" && "") ||
+                          (el.name === "Gajji" &&
+                            "Senior Vice President of Development (Storage Vendor)") ||
+                          (el.name === "Communications Lead" &&
+                            "Communications Lead")
                         }
                       >
                         <Box key={el.name} cursor={"pointer"}>
@@ -429,7 +416,9 @@ const Morning5 = () => {
                         (el.name === "Aisha Patel" &&
                           "Chief Operating Officer") ||
                         (el.name === "GAjji" &&
-                          "Senior Vice President of Development (Storage Vendor)")
+                          "Senior Vice President of Development (Storage Vendor)") ||
+                        (el.name === "Communications Lead" &&
+                          "Communications Lead")
                       }
                     >
                       <Box id={el.name} key={el.name} cursor={"pointer"}>
@@ -449,7 +438,9 @@ const Morning5 = () => {
                           mt={6}
                           cursor={"pointer"}
                         >
-                          {el.name === "Communications Lead" ? "CL" : el.name.split(" ")[0]}
+                          {el.name === "Communications Lead"
+                            ? "CL"
+                            : el.name.split(" ")[0]}
                         </Text>
                       </Box>
                     </Tooltip>
@@ -457,589 +448,606 @@ const Morning5 = () => {
                 </Box>
               </Box>
             </Box>
-          <Box
-            pt={5}
-            maxH={"88vh"}
-            w={"100%"}
-            border={"0px solid red"}
-            overflow={"auto"}
-            ref={chatContainerRef}
-            pb={2}
-            bgImage={
-              currentMessageIndex > 8 ? email :
-              currentMessageIndex > 4 ? clapping :
-              currentMessageIndex > 3 ? clock :
-              currentMessageIndex > 1 ? recovery :
-              recovery
-            }
-            bgRepeat={"no-repeat"}
-            bgSize={"cover"}
-          >
             <Box
-              border={"1px solid black"}
-              bgColor={"#030405"}
-              color={"white"}
-              borderRadius={"20px"}
-              m={"auto"}
-              textAlign={"left"}
-              w={"90%"}
-              pl={3}
-              pt={3}
-              pb={3}
+              pt={5}
+              maxH={"88vh"}
+              w={"100%"}
+              border={"0px solid red"}
+              overflow={"auto"}
+              ref={chatContainerRef}
+              pb={2}
+              bgImage={
+                currentMessageIndex > 8
+                  ? email
+                  : currentMessageIndex > 4
+                  ? clapping
+                  : currentMessageIndex > 3
+                  ? clock
+                  : currentMessageIndex > 1
+                  ? recovery
+                  : recovery
+              }
+              bgRepeat={"no-repeat"}
+              bgSize={"cover"}
             >
-              <Text fontSize={"20"}>
-              Morning light floods the office. There's a palpable sense of cautious optimism. Team members, though visibly exhausted, are in high spirits, closely monitoring systems and validating data{" "}
-              </Text>
-            </Box>
-            <Box
-              w={"90%"}
-              h={"68vh"}
-              border="0px solid red"
-              m={"auto"}
-              pl={5}
-              pr={5}
-            >
-              <TransitionGroup>
-                {dayFiveMorning.slice(0, currentMessageIndex).map((el, i) => {
-                  const isCIO = el.sender === "Ben Carter";
-                  const senderName = el.sender;
-                  const messageClass = isCIO ? "CIO" : "OtherSender";
-                  // const messageClass = isCIO ? "KateSullivan" : "BenCarter";
-                  const alignMessage = isCIO ? "flex-start" : "flex-end";
-                  return (
-                    <CSSTransition
-                      key={i}
-                      classNames="message"
-                      timeout={{ enter: 300, exit: 300 }}
-                    >
-                      <Box
-                      key={i}
-                        border={"0px solid black"}
-                        w={"100%"}
-                        display="flex"
-                        justifyContent={alignMessage}
-                        className={`message ${messageClass} ${
-                          el.sender === "Ben Carter"
-                            ? "BenCarter"
-                            : "KateSullivan"
-                        }`}
+              <Box
+                border={"1px solid black"}
+                bgColor={"#030405"}
+                color={"white"}
+                borderRadius={"20px"}
+                m={"auto"}
+                textAlign={"left"}
+                w={"90%"}
+                pl={3}
+                pt={3}
+                pb={3}
+              >
+                <Text fontSize={"20"}>
+                  Morning light floods the office. There's a palpable sense of
+                  cautious optimism. Team members, though visibly exhausted, are
+                  in high spirits, closely monitoring systems and validating
+                  data{" "}
+                </Text>
+              </Box>
+              <Box
+                w={"90%"}
+                h={"68vh"}
+                border="0px solid red"
+                m={"auto"}
+                pl={5}
+                pr={5}
+              >
+                <TransitionGroup>
+                  {dayFiveMorning.slice(0, currentMessageIndex).map((el, i) => {
+                    const isCIO = el.sender === "Ben Carter";
+                    const senderName = el.sender;
+                    const messageClass = isCIO ? "CIO" : "OtherSender";
+                    // const messageClass = isCIO ? "KateSullivan" : "BenCarter";
+                    const alignMessage = isCIO ? "flex-start" : "flex-end";
+                    return (
+                      <CSSTransition
+                        key={i}
+                        classNames="message"
+                        timeout={{ enter: 300, exit: 300 }}
                       >
-                        <Box border={"0px solid red"} w={"50%"}>
-                          <Box
-                            boxShadow={
-                              "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                            }
-                            border={"0px solid black"}
-                            bgColor={
-                              el.sender === "Ben Carter" ? "#f0f0f0" : "#030405"
-                            }
-                            color={
-                              el.sender === "Ben Carter" ? "black" : "white"
-                            }
-                            w={"100%"}
-                            borderRadius={"10px"}
-                            textAlign={"justify"}
-                            p={4}
-                            pl={5}
-                            pr={5}
-                            mt={10}
-                          >
-                            <Text>
-                              <span id="sender">{senderName}</span> :{" "}
-                              {el.message}
-                            </Text>
+                        <Box
+                          key={i}
+                          border={"0px solid black"}
+                          w={"100%"}
+                          display="flex"
+                          justifyContent={alignMessage}
+                          className={`message ${messageClass} ${
+                            el.sender === "Ben Carter"
+                              ? "BenCarter"
+                              : "KateSullivan"
+                          }`}
+                        >
+                          <Box border={"0px solid red"} w={"50%"}>
+                            <Box
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              border={"0px solid black"}
+                              bgColor={
+                                el.sender === "Ben Carter"
+                                  ? "#f0f0f0"
+                                  : "#030405"
+                              }
+                              color={
+                                el.sender === "Ben Carter" ? "black" : "white"
+                              }
+                              w={"100%"}
+                              borderRadius={"10px"}
+                              textAlign={"justify"}
+                              p={4}
+                              pl={5}
+                              pr={5}
+                              mt={10}
+                            >
+                              <Text>
+                                <span id="sender">{senderName}</span> :{" "}
+                                {el.message}
+                              </Text>
+                            </Box>
                           </Box>
                         </Box>
-                      </Box>
-                    </CSSTransition>
-                  );
-                })}
-                {showPopup && (
-                  <Modal isOpen={day5Popup}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow={
-                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                      }
-                     
-                    >
-                      <ModalHeader fontWeight={"bold"} fontSize={"25px"}>
-                      </ModalHeader>
-                      <ModalBody fontSize={"18px"}>
-                        <Heading>Announcement</Heading>
-                        <Text>
-                          "To all our valued team members and stakeholders, we
-                          are pleased to inform you that the recent IT crisis
-                          has been fully resolved. We appreciate your patience,
-                          support, and understanding during this challenging
-                          period. Thanks to the concerted efforts of our IT
-                          teams and partners, our systems are now fully
-                          operational. We remain committed to serving you with
-                          excellence and ensuring such disruptions are mitigated
-                          in the future."
-                        </Text>
-                      </ModalBody>
-                      <ModalFooter>
-                        <Button
-                          colorScheme="teal"
-                          onClick={closePopup}
-                          textAlign={"center"}
-                          fontFamily={"Croissant One"}
-                          bg={"black"}
-                          _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                          mr={"100px"}
-                        >
-                          Close Announcement
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                )}
-
-                {showPopup2 && (
-                  <Modal isOpen={day5Popup2}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow={
-                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                      }
-                      bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
-                    >
-                      <ModalHeader
-                        fontWeight={"bold"}
-                        fontSize={"25px"}
-                      ></ModalHeader>
-                      
-                      <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
+                      </CSSTransition>
+                    );
+                  })}
+                  {showPopup && (
+                    <Modal isOpen={day5Popup}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            At noon, that the recovery process was complete. At
-                          4:00PM, an announcement went out that the crisis was
-                          over.
-                            </Text>
-                            </Box>
-                            <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
-                              <Button
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+                        <ModalBody fontSize={"18px"}>
+                          <Heading>Announcement</Heading>
+                          <Text>
+                            "To all our valued team members and stakeholders, we
+                            are pleased to inform you that the recent IT crisis
+                            has been fully resolved. We appreciate your
+                            patience, support, and understanding during this
+                            challenging period. Thanks to the concerted efforts
+                            of our IT teams and partners, our systems are now
+                            fully operational. We remain committed to serving
+                            you with excellence and ensuring such disruptions
+                            are mitigated in the future."
+                          </Text>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button
                             colorScheme="teal"
-                            onClick={closePopup2}
+                            onClick={closePopup}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
+                            mr={"100px"}
                           >
-                            Close
+                            Close Announcement
                           </Button>
-                            </Box>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
 
-                          </Flex>
-                        </ModalBody>
-                      <ModalFooter>
-                        
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                )}
-                {showPopup3 && (
-                  <Modal isOpen={day5Popup3}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow={
-                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                      }
-                      bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
-                    >
-                      <ModalHeader
-                        fontWeight={"bold"}
-                        fontSize={"25px"}
-                      ></ModalHeader>
-                      
-                      <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
+                  {showPopup2 && (
+                    <Modal isOpen={day5Popup2}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            The clock strikes noon. Ben Carter stands at the head
-                          of the room, gathering everyone's attention.
-                            </Text>
+                        bgColor={"#E3E3E3   "}
+                        maxW={"600px"}
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+
+                        <ModalBody fontSize={"18px"}>
+                          <Flex gap={2}>
+                            <Box
+                              bgColor={"white"}
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              borderRadius={10}
+                              pl={5}
+                              pt={5}
+                              pr={5}
+                            >
+                              <Text>
+                                At noon, that the recovery process was complete.
+                                At 4:00PM, an announcement went out that the
+                                crisis was over.
+                              </Text>
                             </Box>
                             <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Image src={callwithjulia} borderRadius={10} />
                               <Button
-                            colorScheme="teal"
-                            onClick={closePopup3}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
-                          >
-                            Close
-                          </Button>
+                                colorScheme="teal"
+                                onClick={closePopup2}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                ml={"60px"}
+                                mt={3}
+                                pl={10}
+                                pr={10}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
                             </Box>
-
                           </Flex>
                         </ModalBody>
-                      <ModalFooter>
-                        
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                )}
-                {showPopup4 && (
-                  <Modal isOpen={day5Popup4}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow={
-                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                      }
-                      bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
-                    >
-                      <ModalHeader
-                        fontWeight={"bold"}
-                        fontSize={"25px"}
-                      ></ModalHeader>
-                      
-                      <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
+                        <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup3 && (
+                    <Modal isOpen={day5Popup3}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            A loud cheer erupts, with team members clapping and
-                          some even hugging each other
-                            </Text>
+                        bgColor={"#E3E3E3   "}
+                        maxW={"600px"}
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+
+                        <ModalBody fontSize={"18px"}>
+                          <Flex gap={2}>
+                            <Box
+                              bgColor={"white"}
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              borderRadius={10}
+                              pl={5}
+                              pt={5}
+                              pr={5}
+                            >
+                              <Text>
+                                The clock strikes noon. Ben Carter stands at the
+                                head of the room, gathering everyone's
+                                attention.
+                              </Text>
                             </Box>
                             <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Image src={callwithjulia} borderRadius={10} />
                               <Button
-                            colorScheme="teal"
-                            onClick={closePopup4}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
-                          >
-                            Close
-                          </Button>
+                                colorScheme="teal"
+                                onClick={closePopup3}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                ml={"60px"}
+                                mt={3}
+                                pl={10}
+                                pr={10}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
                             </Box>
-
                           </Flex>
                         </ModalBody>
-                      <ModalFooter>
-                        
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                )}
-
-                {showPopup5 && (
-                  <Modal isOpen={day5Popup5}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow={
-                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                      }
-                      bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
-                    >
-                      <ModalHeader
-                        fontWeight={"bold"}
-                        fontSize={"25px"}
-                      ></ModalHeader>
-                      
-                      <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
+                        <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup4 && (
+                    <Modal isOpen={day5Popup4}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            4:00 PM. Emails ping across the company, and an announcement is broadcasted on internal communication channels.
-                            </Text>
+                        bgColor={"#E3E3E3   "}
+                        maxW={"600px"}
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+
+                        <ModalBody fontSize={"18px"}>
+                          <Flex gap={2}>
+                            <Box
+                              bgColor={"white"}
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              borderRadius={10}
+                              pl={5}
+                              pt={5}
+                              pr={5}
+                            >
+                              <Text>
+                                A loud cheer erupts, with team members clapping
+                                and some even hugging each other
+                              </Text>
                             </Box>
                             <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Image src={callwithjulia} borderRadius={10} />
                               <Button
-                            colorScheme="teal"
-                            onClick={closePopup5}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
-                          >
-                            Close
-                          </Button>
+                                colorScheme="teal"
+                                onClick={closePopup4}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                ml={"60px"}
+                                mt={3}
+                                pl={10}
+                                pr={10}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
                             </Box>
-
                           </Flex>
                         </ModalBody>
-                      <ModalFooter>
-                        
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                )}
-                 {showPopup6 && (
-                  <Modal isOpen={day5Popup6}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow={
-                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                      }
-                      bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
-                    >
-                      <ModalHeader
-                        fontWeight={"bold"}
-                        fontSize={"25px"}
-                      >Next couple of weeks</ModalHeader>
-                      
-                      <ModalBody fontSize={"18px"}>
-                          
-                            <Text>
-                            Over the next few weeks, the CIO, Ben Carter, and the Senior Vice President of Worldwide Customer Service, embarked on a series of meetings with key customers to address concerns and rebuild trust.
-                        During these meetings, they discussed the recent IT crisis, the measures taken to resolve it, and the steps being implemented to prevent future disruptions. The transparent communication went a long way in reaffirming the company's commitment to its clients.
-                            </Text>
-                            
+                        <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+
+                  {showPopup5 && (
+                    <Modal isOpen={day5Popup5}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        bgColor={"#E3E3E3   "}
+                        maxW={"600px"}
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+
+                        <ModalBody fontSize={"18px"}>
+                          <Flex gap={2}>
+                            <Box
+                              bgColor={"white"}
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              borderRadius={10}
+                              pl={5}
+                              pt={5}
+                              pr={5}
+                            >
+                              <Text>
+                                4:00 PM. Emails ping across the company, and an
+                                announcement is broadcasted on internal
+                                communication channels.
+                              </Text>
+                            </Box>
+                            <Box>
+                              <Image src={callwithjulia} borderRadius={10} />
                               <Button
+                                colorScheme="teal"
+                                onClick={closePopup5}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                ml={"60px"}
+                                mt={3}
+                                pl={10}
+                                pr={10}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup6 && (
+                    <Modal isOpen={day5Popup6}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
+                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        }
+                        bgColor={"#E3E3E3   "}
+                        maxW={"600px"}
+                      >
+                        <ModalHeader fontWeight={"bold"} fontSize={"25px"}>
+                          Next couple of weeks
+                        </ModalHeader>
+
+                        <ModalBody fontSize={"18px"}>
+                          <Text>
+                            Over the next few weeks, the CIO, Ben Carter, and
+                            the Senior Vice President of Worldwide Customer
+                            Service, embarked on a series of meetings with key
+                            customers to address concerns and rebuild trust.
+                            During these meetings, they discussed the recent IT
+                            crisis, the measures taken to resolve it, and the
+                            steps being implemented to prevent future
+                            disruptions. The transparent communication went a
+                            long way in reaffirming the company's commitment to
+                            its clients.
+                          </Text>
+
+                          <Button
                             colorScheme="teal"
                             onClick={closePopup6}
                             textAlign={"center"}
                             fontFamily={"Croissant One"}
                             bg={"black"}
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'220px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
+                            ml={"220px"}
+                            mt={3}
+                            pl={10}
+                            pr={10}
+                            borderRadius={10}
                           >
                             Close
                           </Button>
-
                         </ModalBody>
-                      <ModalFooter>
-                        
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                )}
-                {showPopup7 && (
-                  <Modal isOpen={day5Popup7}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow={
-                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                      }
-                      bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
-                    >
-                      <ModalHeader
-                        fontWeight={"bold"}
-                        fontSize={"25px"}
-                      ></ModalHeader>
-                      
-                      <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
+                        <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup7 && (
+                    <Modal isOpen={day5Popup7}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            The office is calm, a stark contrast to the frenzied atmosphere of the crisis days. Ben Carter sits at his desk, reading through the final report from the storage vendor. He looks contemplative
-                            </Text>
+                        bgColor={"#E3E3E3   "}
+                        maxW={"600px"}
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+
+                        <ModalBody fontSize={"18px"}>
+                          <Flex gap={2}>
+                            <Box
+                              bgColor={"white"}
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              borderRadius={10}
+                              pl={5}
+                              pt={5}
+                              pr={5}
+                            >
+                              <Text>
+                                The office is calm, a stark contrast to the
+                                frenzied atmosphere of the crisis days. Ben
+                                Carter sits at his desk, reading through the
+                                final report from the storage vendor. He looks
+                                contemplative
+                              </Text>
                             </Box>
                             <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Image src={callwithjulia} borderRadius={10} />
                               <Button
-                            colorScheme="teal"
-                            onClick={closePopup7}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
-                          >
-                            Close
-                          </Button>
+                                colorScheme="teal"
+                                onClick={closePopup7}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                ml={"60px"}
+                                mt={3}
+                                pl={10}
+                                pr={10}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
                             </Box>
-
                           </Flex>
                         </ModalBody>
-                      <ModalFooter>
-                        
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                )}
-                {showPopup8 && (
-                  <Modal isOpen={day5Popup8}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow={
-                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                      }
-                      bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
-                    >
-                      <ModalHeader
-                        fontWeight={"bold"}
-                        fontSize={"25px"}
-                      ></ModalHeader>
-                      
-                      <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
+                        <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup8 && (
+                    <Modal isOpen={day5Popup8}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            Inside a conference room, Ben Carter and Gajji sit across from each other. There's a sense of mutual respect between them.
-                            </Text>
+                        bgColor={"#E3E3E3   "}
+                        maxW={"600px"}
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+
+                        <ModalBody fontSize={"18px"}>
+                          <Flex gap={2}>
+                            <Box
+                              bgColor={"white"}
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              borderRadius={10}
+                              pl={5}
+                              pt={5}
+                              pr={5}
+                            >
+                              <Text>
+                                Inside a conference room, Ben Carter and Gajji
+                                sit across from each other. There's a sense of
+                                mutual respect between them.
+                              </Text>
                             </Box>
                             <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Image src={callwithjulia} borderRadius={10} />
                               <Button
-                            colorScheme="teal"
-                            onClick={closePopup8}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
-                          >
-                            Close
-                          </Button>
+                                colorScheme="teal"
+                                onClick={closePopup8}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                ml={"60px"}
+                                mt={3}
+                                pl={10}
+                                pr={10}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
                             </Box>
-
                           </Flex>
                         </ModalBody>
-                      <ModalFooter>
-                        
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                )}
-                {showPopup9 && (
-                  <Modal isOpen={day5Popup9}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow={
-                        "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                      }
-                      bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
-                    >
-                      <ModalHeader
-                        fontWeight={"bold"}
-                        fontSize={"25px"}
-                      ></ModalHeader>
-                      
-                      <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
+                        <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup9 && (
+                    <Modal isOpen={day5Popup9}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow={
                           "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                         }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            The two leaders share a moment of mutual appreciation, aware that the trials they faced together have only deepened their bond.
-                            </Text>
+                        bgColor={"#E3E3E3   "}
+                        maxW={"600px"}
+                      >
+                        <ModalHeader
+                          fontWeight={"bold"}
+                          fontSize={"25px"}
+                        ></ModalHeader>
+
+                        <ModalBody fontSize={"18px"}>
+                          <Flex gap={2}>
+                            <Box
+                              bgColor={"white"}
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              borderRadius={10}
+                              pl={5}
+                              pt={5}
+                              pr={5}
+                            >
+                              <Text>
+                                The two leaders share a moment of mutual
+                                appreciation, aware that the trials they faced
+                                together have only deepened their bond.
+                              </Text>
                             </Box>
                             <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
+                              <Image src={callwithjulia} borderRadius={10} />
                               <Button
-                            colorScheme="teal"
-                            onClick={closePopup9}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
-                          >
-                            Close
-                          </Button>
+                                colorScheme="teal"
+                                onClick={closePopup9}
+                                textAlign={"center"}
+                                fontFamily={"Croissant One"}
+                                bg={"black"}
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                ml={"60px"}
+                                mt={3}
+                                pl={10}
+                                pr={10}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
                             </Box>
-
                           </Flex>
                         </ModalBody>
-                      <ModalFooter>
-                        
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                )}
+                        <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
 
-{showBox && (
+                  {showBox && (
                     <>
                       <Box
                         bg={"white"}
@@ -1478,14 +1486,13 @@ const Morning5 = () => {
                     </>
                   )}
 
-              
-                <div ref={spacerRef} style={{ height: "40px" }}></div>
-              </TransitionGroup>
+                  <div ref={spacerRef} style={{ height: "40px" }}></div>
+                </TransitionGroup>
+              </Box>
             </Box>
-          </Box>
           </Flex>
         </Box>
-        )}
+      )}
     </>
   );
 };

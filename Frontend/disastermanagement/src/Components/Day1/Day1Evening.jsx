@@ -172,13 +172,13 @@ const BringDown = () => {
     },
     {
       name: "Application Vendor",
-      url: "",
+      url: julia,
     },
   ];
   
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
-    setHead("Day 1 Evening");
+    setHead("Day 1 - Evening");
 
     const messageDelay = speed; // 4 seconds
 
@@ -206,7 +206,7 @@ const BringDown = () => {
       }
     };
 
-    const messageInterval = setInterval(displayNextMessage, 100);
+    const messageInterval = setInterval(displayNextMessage, messageDelay);
 
     return () => {
       clearInterval(messageInterval);
@@ -326,7 +326,7 @@ const BringDown = () => {
                             mt={6}
                             cursor={"pointer"}
                           >
-                            {el.name.split(" ")[0]}
+                            {el.name === "Application Vendor" ? "AV" :el.name.split(" ")[0]}
                           </Text>
                         </Box>
                       </Tooltip>
@@ -368,7 +368,7 @@ const BringDown = () => {
                           mt={6}
                           cursor={"pointer"}
                         >
-                          {el.name.split(" ")[0]}
+                          {el.name === "Application Vendor" ? "AV" : el.name.split(" ")[0]}
                         </Text>
                       </Box>
                     </Tooltip>

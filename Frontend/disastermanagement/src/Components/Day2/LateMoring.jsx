@@ -38,7 +38,10 @@ import night from "../userImages/night.png";
 import liam from "../userImages/liam.jpeg";
 import MyContext from "../ContextApi/MyContext";
 import callwithjulia from "../userImages/callwithjulia.jpeg"
-import clock from "../userImages/clock.jpeg"
+import clock from "../userImages/clock.jpeg";
+import planning from "../userImages/planning.jpeg";
+import goldenlight from "../userImages/goldenlight.jpeg";
+import atmosphere from "../userImages/atmosphere.jpeg";
 
 const LateMorning = () => {
   const [chatData, setChatData] = useState([]);
@@ -452,233 +455,188 @@ const LateMorning = () => {
                     })}
                   {showPopup && (
                     <Modal isOpen={day5Popup}>
-                      <ModalOverlay />
-                      <ModalContent
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
-                      >
-                        <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
-                        ></ModalHeader>
-                        
-                        <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            Ben Carter and his internal team are in a planning
-                            session
-                            </Text>
-                            </Box>
-                            <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
-                              <Button
-                            colorScheme="teal"
-                            onClick={closePopup}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
+                    <ModalOverlay />
+                    <ModalContent
+                      boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                      bgColor="#E3E3E3"
+                      maxW={{ base: "90%", sm: "600px" }} // Responsive width
+                    >
+                      <ModalHeader fontWeight="bold" fontSize="25px">
+                      </ModalHeader>
+                      <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                        <Flex flexDirection={{ base: "column", sm: "row" }} gap={{ base: 2, sm: 4 }}> {/* Responsive layout */}
+                          <Box
+                            bgColor="white"
+                            boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                            borderRadius={10}
+                            p={{ base: 4, sm: 5 }}
                           >
-                            Close
-                          </Button>
-                            </Box>
-
-                          </Flex>
-                        </ModalBody>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
+                            <Text>
+                              Ben Carter and his internal team are in a planning session.
+                            </Text>
+                          </Box>
+                          <Box textAlign="center">
+                            <Image src={planning} borderRadius={10} />
+                            <Button
+                              colorScheme="teal"
+                              onClick={closePopup}
+                              fontFamily="Croissant One"
+                              bg="black"
+                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                              mt={3}
+                              borderRadius={10}
+                              w={'100%'}
+                            >
+                              Close
+                            </Button>
+                          </Box>
+                        </Flex>
+                      </ModalBody>
+                      <ModalFooter>
+                        {/* Footer content, if needed */}
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                  
                   )}
 
                   {showPopup2 && (
                     <Modal isOpen={day5Popup2}>
-                      <ModalOverlay />
-                      <ModalContent
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
-                      >
-                        <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
-                        ></ModalHeader>
-                       
-                        <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            The room is bathed in the golden light of late
-                            afternoon. The clock reads 4:00 PM.
-                            </Text>
-                            </Box>
-                            <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
-                              <Button
-                            colorScheme="teal"
-                            onClick={closePopup2}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
+                    <ModalOverlay />
+                    <ModalContent
+                      boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                      bgColor="#E3E3E3"
+                      maxW={{ base: "90%", sm: "600px" }} // Responsive width
+                    >
+                      <ModalHeader fontWeight="bold" fontSize="25px">
+                      </ModalHeader>
+                      <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                        <Flex flexDirection={{ base: "column", sm: "row" }} gap={{ base: 2, sm: 4 }}> {/* Responsive layout */}
+                          <Box
+                            bgColor="white"
+                            boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                            borderRadius={10}
+                            p={{ base: 4, sm: 5 }}
                           >
-                            Close
-                          </Button>
-                            </Box>
-
-                          </Flex>
-                        </ModalBody>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
+                            <Text>
+                              The room is bathed in the golden light of late afternoon. The clock reads 4:00 PM.
+                            </Text>
+                          </Box>
+                          <Box textAlign="center">
+                            <Image src={goldenlight} borderRadius={10} />
+                            <Button
+                              colorScheme="teal"
+                              onClick={closePopup2}
+                              fontFamily="Croissant One"
+                              bg="black"
+                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                              mt={3}
+                              borderRadius={10}
+                              w={'100%'}
+                            >
+                              Close
+                            </Button>
+                          </Box>
+                        </Flex>
+                      </ModalBody>
+                      <ModalFooter>
+                        {/* Footer content, if needed */}
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                  
                   )}
                   {showPopup3 && (
                     <Modal isOpen={day5Popup3}>
-                      <ModalOverlay />
-                      <ModalContent
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
-                      >
-                        <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
-                        ></ModalHeader>
-                        
-                        <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            The night deepens, and the office is quieter, with
-                            only the IT team still working diligently. The clock
-                            is about to strike midnight.
-                            </Text>
-                            </Box>
-                            <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
-                              <Button
-                            colorScheme="teal"
-                            onClick={closePopup3}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
+                    <ModalOverlay />
+                    <ModalContent
+                      boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                      bgColor="#E3E3E3"
+                      maxW={{ base: "90%", sm: "600px" }} // Responsive width
+                    >
+                      <ModalHeader fontWeight="bold" fontSize="25px">
+                      </ModalHeader>
+                      <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                        <Flex flexDirection={{ base: "column", sm: "row" }} gap={{ base: 2, sm: 4 }}> {/* Responsive layout */}
+                          <Box
+                            bgColor="white"
+                            boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                            borderRadius={10}
+                            p={{ base: 4, sm: 5 }}
                           >
-                            Close
-                          </Button>
-                            </Box>
-
-                          </Flex>
-                        </ModalBody>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
+                            <Text>
+                              The night deepens, and the office is quieter, with only the IT team still working diligently. The clock is about to strike midnight.
+                            </Text>
+                          </Box>
+                          <Box textAlign="center">
+                            <Image src={callwithjulia} borderRadius={10} />
+                            <Button
+                              colorScheme="teal"
+                              onClick={closePopup3}
+                              fontFamily="Croissant One"
+                              bg="black"
+                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                              mt={3}
+                              borderRadius={10}
+                              w={'100%'}
+                            >
+                              Close
+                            </Button>
+                          </Box>
+                        </Flex>
+                      </ModalBody>
+                      <ModalFooter>
+                        {/* Footer content, if needed */}
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                  
                   )}
                   {showPopup4 && (
                     <Modal isOpen={day5Popup4}>
-                      <ModalOverlay />
-                      <ModalContent
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        bgColor={'#E3E3E3   '}
-                        maxW={'600px'}
-                      >
-                        <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
-                        ></ModalHeader>
-                        
-                        <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                            The clock strikes 1:00 PM. The atmosphere in the
-                            room is cautiously optimistic.
-                            </Text>
-                            </Box>
-                            <Box>
-                              <Image src= {clock} borderRadius={10}/>
-                              <Button
-                            colorScheme="teal"
-                            onClick={closePopup4}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
+                    <ModalOverlay />
+                    <ModalContent
+                      boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                      bgColor="#E3E3E3"
+                      maxW={{ base: "90%", sm: "600px" }} // Responsive width
+                    >
+                      <ModalHeader fontWeight="bold" fontSize="25px">
+                      </ModalHeader>
+                      <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                        <Flex flexDirection={{ base: "column", sm: "row" }} gap={{ base: 2, sm: 4 }}> {/* Responsive layout */}
+                          <Box
+                            bgColor="white"
+                            boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                            borderRadius={10}
+                            p={{ base: 4, sm: 5 }}
                           >
-                            Close
-                          </Button>
-                            </Box>
-
-                          </Flex>
-                        </ModalBody>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
+                            <Text>
+                              The clock strikes 1:00 PM. The atmosphere in the room is cautiously optimistic.
+                            </Text>
+                          </Box>
+                          <Box textAlign="center">
+                            <Image src={clock} borderRadius={10} />
+                            <Button
+                              colorScheme="teal"
+                              onClick={closePopup4}
+                              fontFamily="Croissant One"
+                              bg="black"
+                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                              mt={3}
+                              borderRadius={10}
+                              w={'100%'}
+                            >
+                              Close
+                            </Button>
+                          </Box>
+                        </Flex>
+                      </ModalBody>
+                      <ModalFooter>
+                        {/* Footer content, if needed */}
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                  
                   )}
                   {showBox && (
                     <>

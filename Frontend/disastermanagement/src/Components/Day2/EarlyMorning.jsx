@@ -1349,6 +1349,7 @@ import beforewithtom from "../userImages/beforewithtom.jpeg";
 import backinwar from "../userImages/backinwar.jpeg";
 import videocall from "../userImages/videocall.jpeg";
 import gathers from "../userImages/gathers.jpeg";
+import Morning5 from "../Day5/Morning5";
 
 const EarlyMorning = () => {
   const [chatData, setChatData] = useState([]);
@@ -1507,8 +1508,6 @@ const EarlyMorning = () => {
     }
   }, [showBox, showBoxContent2]);
 
-
-
   useEffect(() => {
     setHead("Day 2 - Early Morning");
     const displayNextMessage = () => {
@@ -1567,7 +1566,7 @@ const EarlyMorning = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <LateMorning />
+        <Morning5 />
       ) : value === "Making clear and swift decisions under pressure" ? (
         <LateMorning />
       ) : value === "Remaining calm and level-headed during challenges" ? (
@@ -1597,7 +1596,7 @@ const EarlyMorning = () => {
               overflow={"auto"}
               bgColor="#948888"
             >
-                <Box
+              <Box
                 bgColor="#948888"
                 pt={3}
                 flex="1"
@@ -1685,7 +1684,9 @@ const EarlyMorning = () => {
                           mt={6}
                           cursor={"pointer"}
                         >
-                          {el.name === "Mr. Williams" ? "Williams" :el.name.split(" ")[0]}
+                          {el.name === "Mr. Williams"
+                            ? "Williams"
+                            : el.name.split(" ")[0]}
                         </Text>
                       </Box>
                     </Tooltip>
@@ -1804,27 +1805,26 @@ const EarlyMorning = () => {
                     <Modal isOpen={day5Popup}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        bgColor={"#E3E3E3   "}
-                        maxW={"600px"}
+                        boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "600px" }} // Responsive width
                       >
                         <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
+                          fontWeight="bold"
+                          fontSize="25px"
                         ></ModalHeader>
-                        <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
+                        <ModalBody fontSize="18px">
+                          <Flex
+                            flexDirection={{ base: "column", sm: "row" }}
+                            gap={{ base: 2, sm: 4 }}
+                          >
+                            {" "}
+                            {/* Responsive layout */}
                             <Box
-                              bgColor={"white"}
-                              boxShadow={
-                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                              }
+                              bgColor="white"
+                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                               borderRadius={10}
-                              pl={5}
-                              pt={5}
-                              pr={5}
+                              p={{ base: 4, sm: 5 }}
                             >
                               <Text>
                                 After briefing the CEO, Ben Carter gets back on
@@ -1832,27 +1832,26 @@ const EarlyMorning = () => {
                                 team.
                               </Text>
                             </Box>
-                            <Box>
+                            <Box textAlign="center">
                               <Image src={callwithjulia} borderRadius={10} />
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup}
-                                textAlign={"center"}
-                                fontFamily={"Croissant One"}
-                                bg={"black"}
+                                fontFamily="Croissant One"
+                                bg="black"
                                 _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                ml={"60px"}
                                 mt={3}
-                                pl={10}
-                                pr={10}
                                 borderRadius={10}
+                                w={'100%'}
                               >
                                 Close
                               </Button>
                             </Box>
                           </Flex>
                         </ModalBody>
-                        <ModalFooter></ModalFooter>
+                        <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -1861,55 +1860,52 @@ const EarlyMorning = () => {
                     <Modal isOpen={day5Popup2}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        bgColor={"#E3E3E3   "}
-                        maxW={"600px"}
+                        boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "600px" }} // Responsive width
                       >
                         <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
+                          fontWeight="bold"
+                          fontSize="25px"
                         ></ModalHeader>
-                        <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
+                        <ModalBody fontSize="18px">
+                          <Flex
+                            flexDirection={{ base: "column", sm: "row" }}
+                            gap={{ base: 2, sm: 4 }}
+                          >
+                            {" "}
+                            {/* Responsive layout */}
                             <Box
-                              bgColor={"white"}
-                              boxShadow={
-                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                              }
+                              bgColor="white"
+                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                               borderRadius={10}
-                              pl={5}
-                              pt={5}
-                              pr={5}
+                              p={{ base: 4, sm: 5 }}
                             >
                               <Text>
                                 Before making the decision to proceed, Ben
                                 Carter has another call with Tom Mitchell
                               </Text>
                             </Box>
-                            <Box>
+                            <Box textAlign="center">
                               <Image src={beforewithtom} borderRadius={10} />
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup2}
-                                textAlign={"center"}
-                                fontFamily={"Croissant One"}
-                                bg={"black"}
+                                fontFamily="Croissant One"
+                                bg="black"
                                 _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                ml={"60px"}
                                 mt={3}
-                                pl={10}
-                                pr={10}
                                 borderRadius={10}
+                                w={'100%'}
                               >
                                 Close
                               </Button>
                             </Box>
                           </Flex>
                         </ModalBody>
-
-                        <ModalFooter></ModalFooter>
+                        <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -1917,55 +1913,52 @@ const EarlyMorning = () => {
                     <Modal isOpen={day5Popup3}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        bgColor={"#E3E3E3   "}
-                        maxW={"600px"}
+                        boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "600px" }} // Responsive width
                       >
                         <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
+                          fontWeight="bold"
+                          fontSize="25px"
                         ></ModalHeader>
-
-                        <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
+                        <ModalBody fontSize="18px">
+                          <Flex
+                            flexDirection={{ base: "column", sm: "row" }}
+                            gap={{ base: 2, sm: 4 }}
+                          >
+                            {" "}
+                            {/* Responsive layout */}
                             <Box
-                              bgColor={"white"}
-                              boxShadow={
-                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                              }
+                              bgColor="white"
+                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                               borderRadius={10}
-                              pl={5}
-                              pt={5}
-                              pr={5}
+                              p={{ base: 4, sm: 5 }}
                             >
                               <Text>
                                 Ben Carter is on a video call with a key client,
                                 Mr. Williams.
                               </Text>
                             </Box>
-                            <Box>
+                            <Box textAlign="center">
                               <Image src={videocall} borderRadius={10} />
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup3}
-                                textAlign={"center"}
-                                fontFamily={"Croissant One"}
-                                bg={"black"}
+                                fontFamily="Croissant One"
+                                bg="black"
                                 _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                ml={"60px"}
                                 mt={3}
-                                pl={10}
-                                pr={10}
                                 borderRadius={10}
+                                w={'100%'}
                               >
                                 Close
                               </Button>
                             </Box>
                           </Flex>
                         </ModalBody>
-                        <ModalFooter></ModalFooter>
+                        <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -1973,17 +1966,15 @@ const EarlyMorning = () => {
                     <Modal isOpen={day5Popup6}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        maxW="800px"
+                        boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                        maxW={{ base: "90%", sm: "800px" }} // Responsive width
                       >
                         <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
+                          fontWeight="bold"
+                          fontSize="25px"
                         ></ModalHeader>
-                        <ModalBody fontSize={"18px"}>
-                          <Heading>Note : </Heading>
+                        <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                          <Heading>Note:</Heading>
                           <Text>
                             While the storage platform replicates themselves on
                             a hardware basis, for applications with databases
@@ -1994,7 +1985,7 @@ const EarlyMorning = () => {
                             the Appendix. The database on Site 1 is halted and a
                             quiet point (all transactions are halted) is taken
                             insuring all buffers are written out and all
-                            transactions are completed. The data base on Site 2
+                            transactions are completed. The database on Site 2
                             is stop and an incremental (and much shorter backup)
                             is done to a separate storage frame not use for the
                             replication process; it this case, it is the
@@ -2003,7 +1994,7 @@ const EarlyMorning = () => {
                             this separate storage frame. Once a week, on a
                             week-end, a full database backup is taken then the
                             full backup and well as the incremental backups will
-                            be taken to take tape cassettes. To recover a
+                            be taken to take tape cassettes. To recover an
                             application database, it takes the full back up as
                             well as any incremental backups that have occurred
                             since the week-end. The success rate of recovering
@@ -2016,11 +2007,11 @@ const EarlyMorning = () => {
                           <Button
                             colorScheme="teal"
                             onClick={closePopup6}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
+                            fontFamily="Croissant One"
+                            bg="black"
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            mr={"350px"}
+                            ml="auto"
+                           
                           >
                             Close
                           </Button>
@@ -2029,118 +2020,96 @@ const EarlyMorning = () => {
                     </Modal>
                   )}
                   {showPopup4 && (
-                    <Modal isOpen={day5Popup4}>
-                      <ModalOverlay />
-                      <ModalContent
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        bgColor={"#E3E3E3   "}
-                        maxW={"600px"}
-                      >
-                        <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
-                        ></ModalHeader>
-
-                        <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
-                            <Box
-                              bgColor={"white"}
-                              boxShadow={
-                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                              }
-                              borderRadius={10}
-                              pl={5}
-                              pt={5}
-                              pr={5}
-                            >
-                              <Text>
-                                Back in the war room, Ben gathers the executive
-                                team for a quick huddle.
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Image src={backinwar} borderRadius={10} />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup4}
-                                textAlign={"center"}
-                                fontFamily={"Croissant One"}
-                                bg={"black"}
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                ml={"60px"}
-                                mt={3}
-                                pl={10}
-                                pr={10}
-                                borderRadius={10}
-                              >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
-                      </ModalContent>
-                    </Modal>
+                   <Modal isOpen={day5Popup4}>
+                   <ModalOverlay />
+                   <ModalContent
+                     boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                     bgColor="#E3E3E3"
+                     maxW={{ base: "90%", sm: "600px" }} // Responsive width
+                   >
+                     <ModalHeader fontWeight="bold" fontSize="25px">
+                     </ModalHeader>
+                     <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                       <Flex flexDirection={{ base: "column", sm: "row" }} gap={{ base: 2, sm: 4 }}> {/* Responsive layout */}
+                         <Box
+                           bgColor="white"
+                           boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                           borderRadius={10}
+                           p={{ base: 4, sm: 5 }}
+                         >
+                           <Text>
+                             Back in the war room, Ben gathers the executive team for a quick huddle.
+                           </Text>
+                         </Box>
+                         <Box textAlign="center">
+                           <Image src={backinwar} borderRadius={10} />
+                           <Button
+                             colorScheme="teal"
+                             onClick={closePopup4}
+                             fontFamily="Croissant One"
+                             bg="black"
+                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                             mt={3}
+                             borderRadius={10}
+                             w={'100%'}
+                           >
+                             Close
+                           </Button>
+                         </Box>
+                       </Flex>
+                     </ModalBody>
+                     <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
+                   </ModalContent>
+                 </Modal>
+                 
                   )}
                   {showPopup5 && (
                     <Modal isOpen={day5Popup5}>
-                      <ModalOverlay />
-                      <ModalContent
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        bgColor={"#E3E3E3   "}
-                        maxW={"600px"}
-                      >
-                        <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
-                        ></ModalHeader>
-
-                        <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
-                            <Box
-                              bgColor={"white"}
-                              boxShadow={
-                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                              }
+                    <ModalOverlay />
+                    <ModalContent
+                      boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                      bgColor="#E3E3E3"
+                      maxW={{ base: "90%", sm: "600px" }} // Responsive width
+                    >
+                      <ModalHeader fontWeight="bold" fontSize="25px">
+                      </ModalHeader>
+                      <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                        <Flex flexDirection={{ base: "column", sm: "row" }} gap={{ base: 2, sm: 4 }}> {/* Responsive layout */}
+                          <Box
+                            bgColor="white"
+                            boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                            borderRadius={10}
+                            p={{ base: 4, sm: 5 }}
+                          >
+                            <Text>
+                              The executive team gathers around the conference table. The room's atmosphere is tense, but there's a shared determination to address the situation head-on.
+                            </Text>
+                          </Box>
+                          <Box textAlign="center">
+                            <Image src={gathers} borderRadius={10} />
+                            <Button
+                              colorScheme="teal"
+                              onClick={closePopup5}
+                              fontFamily="Croissant One"
+                              bg="black"
+                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                              mt={3}
                               borderRadius={10}
-                              pl={5}
-                              pt={5}
-                              pr={5}
+                              w={'100%'}
                             >
-                              <Text>
-                                The executive team gathers around the conference
-                                table. The room's atmosphere is tense, but
-                                there's a shared determination to address the
-                                situation head-on.
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Image src={gathers} borderRadius={10} />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup5}
-                                textAlign={"center"}
-                                fontFamily={"Croissant One"}
-                                bg={"black"}
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                ml={"60px"}
-                                mt={3}
-                                pl={10}
-                                pr={10}
-                                borderRadius={10}
-                              >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
-
-                        <ModalFooter></ModalFooter>
-                      </ModalContent>
-                    </Modal>
+                              Close
+                            </Button>
+                          </Box>
+                        </Flex>
+                      </ModalBody>
+                      <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                  
                   )}
                   {showBox && (
                     <>

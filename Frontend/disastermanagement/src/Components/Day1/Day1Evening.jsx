@@ -35,9 +35,9 @@ import ScrollDown from "../ScrollDown";
 import liam from "../userImages/liam.jpeg";
 
 import figma from "../userImages/figma.png";
-
+import conference from "../userImages/conference.jpeg";
 import architecture from "../userImages/architecture.jpeg";
-import callwithjulia from "../userImages/callwithjulia.jpeg"
+import callwithjulia from "../userImages/callwithjulia.jpeg";
 
 import MyContext from "../ContextApi/MyContext";
 
@@ -175,7 +175,7 @@ const BringDown = () => {
       url: julia,
     },
   ];
-  
+
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
     setHead("Day 1 - Evening");
@@ -184,14 +184,12 @@ const BringDown = () => {
 
     let timeoutIndex = 0;
 
-
- 
     const displayNextMessage = () => {
       if (!chatPaused && currentMessageIndex < dayOneEvening.length) {
         const message = dayOneEvening[currentMessageIndex];
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
         setActiveUser(message.sender);
-        
+
         if (currentMessageIndex === 2) {
           setChatPaused(true);
           setTimeout(() => {
@@ -326,7 +324,9 @@ const BringDown = () => {
                             mt={6}
                             cursor={"pointer"}
                           >
-                            {el.name === "Application Vendor" ? "AV" :el.name.split(" ")[0]}
+                            {el.name === "Application Vendor"
+                              ? "AV"
+                              : el.name.split(" ")[0]}
                           </Text>
                         </Box>
                       </Tooltip>
@@ -368,7 +368,9 @@ const BringDown = () => {
                           mt={6}
                           cursor={"pointer"}
                         >
-                          {el.name === "Application Vendor" ? "AV" : el.name.split(" ")[0]}
+                          {el.name === "Application Vendor"
+                            ? "AV"
+                            : el.name.split(" ")[0]}
                         </Text>
                       </Box>
                     </Tooltip>
@@ -417,8 +419,7 @@ const BringDown = () => {
                 pr={5}
               >
                 <TransitionGroup>
-                  {dayOneEvening
-                    .slice(0, currentMessageIndex).map((el, i) => {
+                  {dayOneEvening.slice(0, currentMessageIndex).map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";
                     const messageClass = isCIO ? "KateSullivan" : "BenCarter";
                     const alignMessage = isCIO ? "flex-start" : "flex-end";
@@ -476,57 +477,51 @@ const BringDown = () => {
                     <Modal isOpen={day5Popup}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
+                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
+                        borderRadius={10}
+                        width={["90%", "70%", "50%"]} // Responsive width
+                        maxW="500px"
                       >
                         <ModalHeader
-                          fontWeight={"bold"}
-                          fontSize={"25px"}
+                          fontWeight="bold"
+                          fontSize="25px"
                         ></ModalHeader>
-                        <ModalBody fontSize={"18px"}>
-                          
-                            <Text>
-                          
-                          </Text>
-                            
-                        </ModalBody>
-                        <ModalBody fontSize={"18px"}>
-                          <Flex gap={2}>
-                            <Box bgColor={'white'} boxShadow={
-                          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                        }
-                        borderRadius={10}
-                        pl={5}
-                        pt={5}
-                        pr={5}
-                        >
-                            <Text>
-                              Late night conference call with applications vendor (Approx. 40 people on the call)
-                            </Text>
-                            </Box>
-                            <Box>
-                              <Image src= {callwithjulia} borderRadius={10}/>
-                              <Button
-                            colorScheme="teal"
-                            onClick={closePopup}
-                            textAlign={"center"}
-                            fontFamily={"Croissant One"}
-                            bg={"black"}
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                             ml={'60px'}
-                             mt={3}
-                             pl={10}
-                             pr={10}
-                             borderRadius={10}
-                          >
-                            Close
-                          </Button>
-                            </Box>
 
+                        <ModalBody fontSize="18px">
+                          <Flex flexDirection={["column", "row"]} gap={[4, 2]}>
+                            {" "}
+                            {/* Responsive layout */}
+                            <Box
+                              bgColor="white"
+                              boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
+                              borderRadius={10}
+                              p={4}
+                              flex="1"
+                            >
+                              <Text>
+                                Late night conference call with applications
+                                vendor (Approx. 40 people on the call)
+                              </Text>
+                            </Box>
+                            <Box textAlign="center" flex="1">
+                              <Image src={conference} borderRadius={10} />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup}
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                mt={3}
+                                borderRadius={10}
+                                w={'100%'}
+                              >
+                                Close
+                              </Button>
+                            </Box>
                           </Flex>
                         </ModalBody>
                         <ModalFooter>
+                          {/* Footer content, if needed */}
                         </ModalFooter>
                       </ModalContent>
                     </Modal>

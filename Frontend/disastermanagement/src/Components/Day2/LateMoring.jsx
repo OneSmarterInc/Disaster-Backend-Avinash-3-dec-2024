@@ -39,6 +39,8 @@ import liam from "../userImages/liam.jpeg";
 import MyContext from "../ContextApi/MyContext";
 import callwithjulia from "../userImages/callwithjulia.jpeg"
 import clock from "../userImages/clock.jpeg"
+import { MdNotStarted } from "react-icons/md";
+import { BsPauseCircleFill } from "react-icons/bs";
 
 const LateMorning = () => {
   const [chatData, setChatData] = useState([]);
@@ -73,7 +75,11 @@ const LateMorning = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const { setHead,speed } = useContext(MyContext);
+  const { setHead,speed, pauseBtn, setPauseBtn } = useContext(MyContext);
+  
+  const handlePause = () => {
+    setPauseBtn(!pauseBtn);
+  };
 
   const handleChange = (value) => {
     setValue(value);
@@ -175,6 +181,7 @@ const LateMorning = () => {
     }
 
     const displayNextMessage = () => {
+      if(!pauseBtn){
       if (!chatPaused && currentMessageIndex < dayTwoLateMorning.length) {
         const message = dayTwoLateMorning[currentMessageIndex];
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
@@ -207,6 +214,7 @@ const LateMorning = () => {
           setShowBox(true);
         }
       }
+    }
     };
 
     const messageInterval = setInterval(displayNextMessage, speed);
@@ -214,7 +222,7 @@ const LateMorning = () => {
     return () => {
       clearInterval(messageInterval);
     };
-  }, [currentMessageIndex, chatPaused]);
+  }, [currentMessageIndex, chatPaused, pauseBtn]);
 
   return (
     <>
@@ -393,6 +401,21 @@ const LateMorning = () => {
                 pl={5}
                 pr={5}
               >
+                 <Text
+                  position={"fixed"}
+                  color={"black"}
+                  top={"650px"}
+                  left={"1450px"}
+                  cursor={"pointer"}
+                  fontSize={45}
+                  onClick={handlePause}
+                >
+                  {pauseBtn ? (
+                    <MdNotStarted color="black" />
+                  ) : (
+                    <BsPauseCircleFill color="black" />
+                  )}
+                </Text>
                 <TransitionGroup>
                   {dayTwoLateMorning
                     .slice(0, currentMessageIndex)

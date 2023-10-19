@@ -41,6 +41,8 @@ import MyContext from "../ContextApi/MyContext";
 import Debrief from "../Debrief";
 import Deliverable from "../Deliverable";
 import callwithjulia from "../userImages/callwithjulia.jpeg";
+import { MdNotStarted } from "react-icons/md";
+import { BsPauseCircleFill } from "react-icons/bs";
 
 const Morning5 = () => {
   // const [chatData, setChatData] = useState([]);
@@ -85,9 +87,14 @@ const Morning5 = () => {
   const usersContainerRef = useRef();
   const spacerRef = useRef(null);
 
-  const { setHead, speed, enableDeliverable } = useContext(MyContext);
+  const { setHead, speed, enableDeliverable, pauseBtn, setPauseBtn } = useContext(MyContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handlePause = () => {
+    setPauseBtn(!pauseBtn);
+  };
+
 
   const handleChange = (value) => {
     enableDeliverable();
@@ -175,6 +182,8 @@ const Morning5 = () => {
     }
   }, [showBox, showBoxContent2]);
 
+
+
   useEffect(() => {
     if (currentMessageIndex > 1) {
       setHead("Day 5 - Afternoon");
@@ -185,6 +194,7 @@ const Morning5 = () => {
     }
 
     const displayNextMessage = () => {
+      if(!pauseBtn){
       if (!chatPaused && currentMessageIndex < dayFiveMorning.length) {
         const message = dayFiveMorning[currentMessageIndex];
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
@@ -239,6 +249,7 @@ const Morning5 = () => {
           setShowBox(true);
         }
       }
+    }
     };
 
     const messageInterval = setInterval(displayNextMessage, speed);
@@ -246,7 +257,7 @@ const Morning5 = () => {
     return () => {
       clearInterval(messageInterval);
     };
-  }, [currentMessageIndex, chatPaused]);
+  }, [currentMessageIndex, chatPaused, pauseBtn]);
 
   const closePopup = () => {
     // setShowPopup(false);
@@ -497,6 +508,21 @@ const Morning5 = () => {
                 pl={5}
                 pr={5}
               >
+                <Text
+                  position={"fixed"}
+                  color={"black"}
+                  top={"650px"}
+                  left={"1450px"}
+                  cursor={"pointer"}
+                  fontSize={45}
+                  onClick={handlePause}
+                >
+                  {pauseBtn ? (
+                    <MdNotStarted color="white" />
+                  ) : (
+                    <BsPauseCircleFill color="white" />
+                  )}
+                </Text>
                 <TransitionGroup>
                   {dayFiveMorning.slice(0, currentMessageIndex).map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";

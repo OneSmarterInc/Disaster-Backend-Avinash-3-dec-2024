@@ -47,6 +47,8 @@ import MyContext from "../ContextApi/MyContext";
 import pressingdown from "../userImages/pressingdown.jpeg";
 import failure from "../userImages/failure.jpeg";
 import callwithjulia from "../userImages/callwithjulia.jpeg";
+import { MdNotStarted } from "react-icons/md";
+import { BsPauseCircleFill } from "react-icons/bs";
 
 const Morning = () => {
   const [chatData, setChatData] = useState([]);
@@ -84,7 +86,12 @@ const Morning = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const { setHead, speed } = useContext(MyContext);
+  const { setHead, speed, pauseBtn, setPauseBtn } = useContext(MyContext);
+
+  const handlePause = () => {
+    setPauseBtn(!pauseBtn);
+  };
+
 
   const handleChange = (value) => {
     setValue(value);
@@ -159,6 +166,7 @@ const Morning = () => {
     }
 
     const displayNextMessage = () => {
+      if(!pauseBtn){
       if (!chatPaused && currentMessageIndex < dayThreeMorning.length) {
         const message = dayThreeMorning[currentMessageIndex];
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
@@ -197,6 +205,7 @@ const Morning = () => {
           setShowBox(true);
         }
       }
+    }
     };
 
     const messageInterval = setInterval(displayNextMessage, speed);
@@ -204,7 +213,7 @@ const Morning = () => {
     return () => {
       clearInterval(messageInterval);
     };
-  }, [currentMessageIndex, chatPaused]);
+  }, [currentMessageIndex, chatPaused, pauseBtn]);
 
   const closePopup = () => {
     // setShowPopup(false);
@@ -421,6 +430,21 @@ const Morning = () => {
                 pl={5}
                 pr={5}
               >
+                 <Text
+                  position={"fixed"}
+                  color={"black"}
+                  top={"650px"}
+                  left={"1450px"}
+                  cursor={"pointer"}
+                  fontSize={45}
+                  onClick={handlePause}
+                >
+                  {pauseBtn ? (
+                    <MdNotStarted color="black" />
+                  ) : (
+                    <BsPauseCircleFill color="black" />
+                  )}
+                </Text>
                 <TransitionGroup>
                   {dayThreeMorning
                     .slice(0, currentMessageIndex)

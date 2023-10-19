@@ -31,6 +31,8 @@ import kate from "../userImages/kate_sullivan.png";
 import mia from "../userImages/Mia Rodriguez.png";
 import julia from "../userImages/juliaharper.jpg";
 import ScrollDown from "../ScrollDown";
+import { MdNotStarted } from "react-icons/md";
+import { BsPauseCircleFill } from "react-icons/bs";
 
 import liam from "../userImages/liam.jpeg";
 
@@ -68,7 +70,12 @@ const BringDown = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const { setHead, speed } = useContext(MyContext);
+  const { setHead, speed, pauseBtn, setPauseBtn } = useContext(MyContext);
+
+  const handlePause = () => {
+    setPauseBtn(!pauseBtn);
+  };
+
 
   const handleChange = (value) => {
     setValue(value);
@@ -185,6 +192,7 @@ const BringDown = () => {
     let timeoutIndex = 0;
 
     const displayNextMessage = () => {
+      if(!pauseBtn){
       if (!chatPaused && currentMessageIndex < dayOneEvening.length) {
         const message = dayOneEvening[currentMessageIndex];
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
@@ -202,6 +210,7 @@ const BringDown = () => {
           setShowBox(true);
         }
       }
+    }
     };
 
     const messageInterval = setInterval(displayNextMessage, messageDelay);
@@ -209,7 +218,7 @@ const BringDown = () => {
     return () => {
       clearInterval(messageInterval);
     };
-  }, [currentMessageIndex, chatPaused]);
+  }, [currentMessageIndex, chatPaused, pauseBtn]);
 
   const closePopup = () => {
     // setShowPopup(false);
@@ -418,6 +427,21 @@ const BringDown = () => {
                 pl={5}
                 pr={5}
               >
+                    <Text
+                  position={"fixed"}
+                  color={"black"}
+                  top={"650px"}
+                  left={"1450px"}
+                  cursor={"pointer"}
+                  fontSize={45}
+                  onClick={handlePause}
+                >
+                  {pauseBtn ? (
+                    <MdNotStarted color="white" />
+                  ) : (
+                    <BsPauseCircleFill color="white" />
+                  )}
+                </Text>
                 <TransitionGroup>
                   {dayOneEvening.slice(0, currentMessageIndex).map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";

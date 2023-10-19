@@ -1,12 +1,19 @@
-import { Box, Flex, Heading, Image } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Image, Text } from '@chakra-ui/react'
 import React, { useContext } from 'react'
 import disasterLogo from "../Images/disasterLogo.png"
 import Sidebar from '../Components/Sidebar'
 import {AiOutlineMail} from "react-icons/ai"
 import MyContext from '../Components/ContextApi/MyContext'
+import { MdNotStarted } from 'react-icons/md';
+import { BsPauseCircleFill } from 'react-icons/bs';
 
 const Start = () => {
-  const {head}  = useContext(MyContext);
+  const {head, pauseBtn, setPauseBtn}  = useContext(MyContext);
+
+  
+  const handlePause = ()=>{
+    setPauseBtn(!pauseBtn);
+  }
   return (
     <Box h={"88vh"}>
     <Flex
@@ -28,6 +35,7 @@ const Start = () => {
       <Heading mr={80} size={"md"} fontFamily={"Fredoka"} >
         {head}
       </Heading>
+      {/* <Text cursor={"pointer"} fontSize={35} onClick={handlePause}>{pauseBtn ? <MdNotStarted /> : <BsPauseCircleFill />}</Text> */}
       <AiOutlineMail size={'30px'} cursor={'pointer'}/>
     </Flex>
     <Box

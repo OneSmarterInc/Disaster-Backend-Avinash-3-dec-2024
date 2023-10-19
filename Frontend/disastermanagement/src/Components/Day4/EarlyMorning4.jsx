@@ -41,6 +41,8 @@ import starts from "../userImages/starts.png";
 import callwithjulia from "../userImages/callwithjulia.jpeg"
 
 import MyContext from "../ContextApi/MyContext";
+import { MdNotStarted } from "react-icons/md";
+import { BsPauseCircleFill } from "react-icons/bs";
 
 const EarlyMorning4 = () => {
   const [chatData, setChatData] = useState([]);
@@ -79,7 +81,11 @@ const EarlyMorning4 = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const { setHead, speed } = useContext(MyContext);
+  const { setHead, speed, pauseBtn, setPauseBtn } = useContext(MyContext);
+
+  const handlePause = () => {
+    setPauseBtn(!pauseBtn);
+  };
 
   const handleChange = (value) => {
     setValue(value);
@@ -156,6 +162,7 @@ const EarlyMorning4 = () => {
     
 
     const displayNextMessage = () => {
+      if(!pauseBtn){
       if (!chatPaused && currentMessageIndex < dayFourMorning.length) {
         const message = dayFourMorning[currentMessageIndex];
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
@@ -200,6 +207,7 @@ const EarlyMorning4 = () => {
           setShowBox(true);
         }
       }
+    }
     };
 
     const messageInterval = setInterval(displayNextMessage, speed);
@@ -208,7 +216,7 @@ const EarlyMorning4 = () => {
     return () => {
       clearInterval(messageInterval);
     };
-  }, [currentMessageIndex, chatPaused]);
+  }, [currentMessageIndex, chatPaused, pauseBtn]);
 
   const closePopup = () => {
     // setShowPopup(false);
@@ -430,6 +438,21 @@ const EarlyMorning4 = () => {
                 pl={5}
                 pr={5}
               >
+                 <Text
+                  position={"fixed"}
+                  color={"black"}
+                  top={"650px"}
+                  left={"1450px"}
+                  cursor={"pointer"}
+                  fontSize={45}
+                  onClick={handlePause}
+                >
+                  {pauseBtn ? (
+                    <MdNotStarted color="black" />
+                  ) : (
+                    <BsPauseCircleFill color="black" />
+                  )}
+                </Text>
                 <TransitionGroup>
                   {dayFourMorning.slice(0, currentMessageIndex).map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";

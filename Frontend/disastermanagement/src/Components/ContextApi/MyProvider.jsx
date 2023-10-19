@@ -1,21 +1,15 @@
-import { useState } from "react"
+import { useState } from "react";
 import MyContext from "./MyContext";
-
 
 // const api_domain = "http://3.218.73.237/client/";
 // const api_domain = "http://127.0.0.1:8000/client/";
 
-
-
-
-
-
 const MyProvider = ({ children }) => {
-
   const [globalState, setGlobalState] = useState(false);
   const [deliverableState, setDeliverableState] = useState(false);
   const [selectedSection, setSelectedSection] = useState("Prepare");
-  const speed = 4000;
+  const [pauseBtn, setPauseBtn] = useState(false);
+  const speed = 1000;
 
   const [head, setHead] = useState("");
 
@@ -23,17 +17,30 @@ const MyProvider = ({ children }) => {
     setGlobalState(true);
   };
 
-  const enableDeliverable = ()=>{
+  const enableDeliverable = () => {
     setDeliverableState(true);
-  }
+  };
 
   return (
-    <MyContext.Provider value={{deliverableState, speed,selectedSection, setSelectedSection,globalState, setGlobalState, enableBox,head, setHead, enableDeliverable }}>
+    <MyContext.Provider
+      value={{
+        pauseBtn,
+        setPauseBtn,
+        deliverableState,
+        speed,
+        selectedSection,
+        setSelectedSection,
+        globalState,
+        setGlobalState,
+        enableBox,
+        head,
+        setHead,
+        enableDeliverable,
+      }}
+    >
       {children}
     </MyContext.Provider>
-
-  )
-}
-
+  );
+};
 
 export default MyProvider;

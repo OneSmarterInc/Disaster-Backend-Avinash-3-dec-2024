@@ -30,6 +30,8 @@ import kate from "../Images/org/kate_sullivan.png";
 import MyContext from "../Components/ContextApi/MyContext";
 import EarlyMorning from "../Components/Day2/EarlyMorning";
 import EarlyMorning4 from "../Components/Day4/EarlyMorning4";
+import { MdNotStarted } from "react-icons/md";
+import { BsPauseCircleFill } from "react-icons/bs";
 
 const Chat = () => {
   const [chatData, setChatData] = useState([]);
@@ -48,11 +50,18 @@ const Chat = () => {
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const [ShowScroll, setShowScroll] = useState(false);
+  const [chatPaused, setChatPaused] = useState(false)
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const { setHead, speed } = useContext(MyContext);
+  const { setHead, speed, pauseBtn, setPauseBtn } = useContext(MyContext);
+
+  const handlePause = () => {
+    setPauseBtn(!pauseBtn);
+  };
 
   const handleChange = (value) => {
     setValue(value);
@@ -84,49 +93,83 @@ const Chat = () => {
     },
   ];
 
+  // useEffect(() => {
+  //   // Simulate messages from 5 users with a 2-second delay between each message
+
+  //   setHead("Day 1 - Morning");
+
+  //   const messageDelay = speed; // 4 seconds
+
+  //   let timeoutIndex = 0;
+
+  //   const addMessageWithDelay = () => {
+  //     if (timeoutIndex < dayOneMorning.length) {
+  //       const message = dayOneMorning[timeoutIndex];
+  //       setChatData((prevChatData) => [...prevChatData, message]);
+  //       setActiveUser(message.sender);
+  //       timeoutIndex++;
+  //       setTimeout(addMessageWithDelay, messageDelay);
+  //     } else {
+  //       setShowBox(true);
+  //     }
+  //   };
+  
+
+  //   addMessageWithDelay();
+
+  //   // Call scrollToBottom when children change or initially
+  //   // scrollToBottom();
+
+  //   return () => {
+  //     clearTimeout(addMessageWithDelay);
+  //   };
+  // }, [pauseBtn]);
+
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
-
-    setHead("Day 1 - Morning")
+    setHead("Day 1 - Morning");
 
     const messageDelay = speed; // 4 seconds
 
     let timeoutIndex = 0;
 
-    const addMessageWithDelay = () => {
-      if (timeoutIndex < dayOneMorning.length) {
-        const message = dayOneMorning[timeoutIndex];
-        setChatData((prevChatData) => [...prevChatData, message]);
+
+ 
+    const displayNextMessage = () => {
+      if(!pauseBtn){
+      if (!chatPaused && currentMessageIndex < dayOneMorning.length) {
+        const message = dayOneMorning[currentMessageIndex];
+        setCurrentMessageIndex((prevIndex) => prevIndex + 1);
         setActiveUser(message.sender);
-        timeoutIndex++;
-        setTimeout(addMessageWithDelay, messageDelay);
+        
+      
       } else {
-        setShowBox(true);
+        if (currentMessageIndex === dayOneMorning.length) {
+          // The chat has ended completely, set showBox to true
+          setShowBox(true);
+        }
       }
+    }
     };
 
-    addMessageWithDelay();
-
-    // Call scrollToBottom when children change or initially
-    // scrollToBottom();
+    const messageInterval = setInterval(displayNextMessage, messageDelay);
 
     return () => {
-      clearTimeout(addMessageWithDelay);
+      clearInterval(messageInterval);
     };
-  }, []);
+  }, [currentMessageIndex, pauseBtn]);
 
   useEffect(() => {
     // Scroll to the bottom after chatData changes
     scrollToBottom();
-  }, [chatData]);
+  }, [currentMessageIndex]);
 
   useEffect(() => {
     // Scroll to the bottom when showBox becomes true
     if (showBox) {
-      setTimeout(()=>{
-
+      setTimeout(() => {
         scrollToBottom();
-      },100)
+      }, 100);
     }
   }, [showBox, showBoxContent2]);
 
@@ -134,11 +177,11 @@ const Chat = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <BringDown />
+        <Morning5 />
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : value === "Remaining calm and level-headed during challenges" ? (
-        <BringDown/>
+        <BringDown />
       ) : value ===
         "Effectively conveying information, even in challenging circumstances" ? (
         <BringDown />
@@ -247,8 +290,23 @@ const Chat = () => {
                 pl={5}
                 pr={5}
               >
+                <Text
+                  position={"fixed"}
+                  color={"black"}
+                  top={"650px"}
+                  left={"1450px"}
+                  cursor={"pointer"}
+                  fontSize={45}
+                  onClick={handlePause}
+                >
+                  {pauseBtn ? (
+                    <MdNotStarted color="black" />
+                  ) : (
+                    <BsPauseCircleFill color="black" />
+                  )}
+                </Text>
                 <TransitionGroup>
-                  {chatData.map((el, i) => {
+                  {dayOneMorning.slice(0, currentMessageIndex).map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";
                     const messageClass = isCIO ? "KateSullivan" : "BenCarter";
                     const alignMessage = isCIO ? "flex-start" : "flex-end";

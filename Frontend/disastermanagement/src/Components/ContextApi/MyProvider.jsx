@@ -9,7 +9,10 @@ const MyProvider = ({ children }) => {
   const [deliverableState, setDeliverableState] = useState(false);
   const [selectedSection, setSelectedSection] = useState("Prepare");
   const [pauseBtn, setPauseBtn] = useState(false);
-  const speed = 4000;
+
+  const [showSidebar, setShowSideBar] = useState(true);
+  const speed = 1000;
+
 
   const [head, setHead] = useState("");
 
@@ -36,6 +39,8 @@ const MyProvider = ({ children }) => {
         head,
         setHead,
         enableDeliverable,
+        showSidebar, 
+        setShowSideBar
       }}
     >
       {children}

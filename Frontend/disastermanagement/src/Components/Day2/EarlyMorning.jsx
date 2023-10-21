@@ -284,7 +284,7 @@ const EarlyMorning = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <Morning5 />
+        <LateMorning />
       ) : value === "Making clear and swift decisions under pressure" ? (
         <LateMorning />
       ) : value === "Remaining calm and level-headed during challenges" ? (

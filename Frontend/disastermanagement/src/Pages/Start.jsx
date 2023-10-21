@@ -1,60 +1,5 @@
-// import { Box, Button, Flex, Heading, Image, Text } from '@chakra-ui/react'
-// import React, { useContext } from 'react'
-// import disasterLogo from "../Images/disasterLogo.png"
-// import Sidebar from '../Components/Sidebar'
-// import {AiOutlineMail} from "react-icons/ai"
-// import MyContext from '../Components/ContextApi/MyContext'
-// import { MdNotStarted } from 'react-icons/md';
-// import { BsPauseCircleFill } from 'react-icons/bs';
 
-// const Start = () => {
-//   const {head, pauseBtn, setPauseBtn}  = useContext(MyContext);
 
-//   const handlePause = ()=>{
-//     setPauseBtn(!pauseBtn);
-//   }
-//   return (
-//     <Box h={"88vh"}>
-//     <Flex
-//       bgColor="#691212"
-//       fontFamily={"Croissant One"}
-//       justifyContent={"space-between"}
-//       alignItems={"center"}
-//       w={"100%"}
-//       m={"auto"}
-//       border={"1px solid black"}
-//       h={"20"}
-//       pl={5}
-//       pr={5}
-//       color={"white"}
-//     >
-//       <Heading fontFamily={"Fredoka"} >
-//         Disaster Recovery Business Case
-//       </Heading>
-//       <Heading mr={80} size={"md"} fontFamily={"Fredoka"} >
-//         {head}
-//       </Heading>
-//       {/* <Text cursor={"pointer"} fontSize={35} onClick={handlePause}>{pauseBtn ? <MdNotStarted /> : <BsPauseCircleFill />}</Text> */}
-//       <AiOutlineMail size={'30px'} cursor={'pointer'}/>
-//     </Flex>
-//     <Box
-//       fontFamily={"Fredoka"}
-//       border={"1px solid black"}
-//       w={"100%"}
-//       m={"auto"}
-//       h={"100%"}
-//     >
-
-//         <Sidebar />
-
-//     </Box>
-
-//   </Box>
-
-//   )
-// }
-
-// export default Start
 
 import React, { useContext, useState } from "react";
 import {
@@ -85,9 +30,22 @@ const Start = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedSection, setSelectedSection] = useState(null);
 
+import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import React, { useContext } from "react";
+import disasterLogo from "../Images/disasterLogo.png";
+import Sidebar from "../Components/Sidebar";
+import { AiOutlineMail } from "react-icons/ai";
+import MyContext from "../Components/ContextApi/MyContext";
+import { MdNotStarted } from "react-icons/md";
+import { BsPauseCircleFill } from "react-icons/bs";
+
+
+
+
   const handlePause = () => {
     setPauseBtn(!pauseBtn);
   };
+
 
   const {
     isOpen: isImagesModalOpen,
@@ -111,11 +69,13 @@ const Start = () => {
     }
   };
 
+
   return (
     <Box h={"88vh"}>
       <Flex
         bgColor="#691212"
-        // fontFamily={"Croissant One"}
+
+     
         justifyContent={"space-between"}
         alignItems={"center"}
         w={"100%"}
@@ -127,11 +87,14 @@ const Start = () => {
         color={"white"}
       >
         <Heading fontFamily={"Fredoka"}>
+
          Leading Through Disruption
+
         </Heading>
         <Heading mr={80} size={"md"} fontFamily={"Fredoka"}>
           {head}
         </Heading>
+
         {/* <Text cursor={"pointer"} fontSize={35} onClick={handlePause}>{pauseBtn ? <MdNotStarted /> : <BsPauseCircleFill />}</Text> */}
         <div
           onMouseEnter={() => setShowDropdown(true)}
@@ -184,6 +147,22 @@ const Start = () => {
         </div>
       </Flex>
       {/* ... Rest of your code ... */}
+
+        <Text
+          color={"black"}
+          cursor={"pointer"}
+          fontSize={45}
+          onClick={handlePause}
+        >
+          {pauseBtn ? (
+            <MdNotStarted color="black" />
+          ) : (
+            <BsPauseCircleFill color="black" />
+          )}
+        </Text>
+       
+     
+
       <Box
         fontFamily={"Fredoka"}
         border={"1px solid black"}
@@ -193,6 +172,7 @@ const Start = () => {
       >
         <Sidebar />
       </Box>
+
 
       {/* Chakra UI Modals for Images and Mails sections */}
       <Modal isOpen={isImagesModalOpen} onClose={onImagesModalClose} isCentered>
@@ -241,8 +221,11 @@ const Start = () => {
           </ModalBody>
         </ModalContent>
       </Modal>
+    
+
     </Box>
   );
 };
+
 
 export default Start;

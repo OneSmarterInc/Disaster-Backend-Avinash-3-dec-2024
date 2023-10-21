@@ -32,10 +32,29 @@ import EarlyMorning from "../Components/Day2/EarlyMorning";
 import EarlyMorning4 from "../Components/Day4/EarlyMorning4";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
+
 import bensphone from "../Images/bensphone.jpeg";
 import relaxing from "../Images/relaxing.jpeg";
 
+import { BsArrowRightSquareFill } from "react-icons/bs";
+
+import { useSpring, animated } from "react-spring";
+
+
 const Chat = () => {
+  const [flip, setFlip] = useState(false);
+  const props = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    reset: true,
+    reverse: flip,
+    delay: 200,
+    onRest: () => setFlip(!flip),
+  });
+  const chatAnimation = useSpring({
+    // opacity: showPopup ? 0 : 1,
+    // from: { opacity: showPopup ? 1 : 0 },
+  });
   const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
@@ -58,18 +77,22 @@ const Chat = () => {
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const [ShowScroll, setShowScroll] = useState(false);
-  const [chatPaused, setChatPaused] = useState(false)
+  const [chatPaused, setChatPaused] = useState(false);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [showPopup2, setShowPopup2] = useState(false);
   const [showPopup3, setShowPopup3] = useState(false);  
 
 
-
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const { setHead, speed, pauseBtn, setPauseBtn } = useContext(MyContext);
+  const { setHead, speed, pauseBtn, setPauseBtn, setShowSideBar, showSideBar } =
+    useContext(MyContext);
+
+    const handleopen = ()=>{
+      setShowSideBar(true)
+    }
 
   const handlePause = () => {
     setPauseBtn(!pauseBtn);
@@ -105,13 +128,13 @@ const Chat = () => {
     },
   ];
 
-  
 
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
     setHead("Day 1 - Evening");
 
-    const messageDelay = speed; // 4 seconds
+    const messageDelay = speed;
+
 
     let timeoutIndex = 0;
 
@@ -144,9 +167,9 @@ const Chat = () => {
         if (currentMessageIndex === dayOneMorning.length) {
           // The chat has ended completely, set showBox to true
           setShowBox(true);
+
         }
       }
-    }
     };
 
     const messageInterval = setInterval(displayNextMessage, messageDelay);
@@ -231,6 +254,9 @@ const Chat = () => {
               overflow={"auto"}
               bgColor="#948888"
             >
+              
+              {showSideBar ? <></> : <Box> < BsArrowRightSquareFill size={30} cursor={"pointer"} onClick={handleopen} /></Box>}
+              
               <Box pt={3} borderBottom={"0px solid black"}>
                 {users.map((el) => {
                   return (
@@ -269,6 +295,7 @@ const Chat = () => {
                 })}
               </Box>
             </Box>
+
             <Box
               pt={5}
               maxH={"88vh"}
@@ -323,8 +350,10 @@ const Chat = () => {
                 <Text
                   position={"fixed"}
                   color={"black"}
-                  top={"3%"}
-                  left={"1100px"}
+
+                  top={"85%"}
+                  left={"1450px"}
+
                   cursor={"pointer"}
                   fontSize={45}
                   onClick={handlePause}

@@ -50,8 +50,13 @@ import crisis from "../userImages/crisis.jpeg";
 import cheer from "../userImages/cheer.jpeg";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
+import { useSpring, animated} from "react-spring";
+
 
 const Morning5 = () => {
+  const [flip, setFlip] = useState(false);
+
+  
   // const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
@@ -100,6 +105,11 @@ const Morning5 = () => {
     useContext(MyContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const chatAnimation = useSpring({
+    opacity: day5Popup2 ? 0 : 1,
+    from: { opacity: day5Popup2 ? 0 : 1 },
+  });
 
   const handlePause = () => {
     setPauseBtn(!pauseBtn);
@@ -478,6 +488,7 @@ const Morning5 = () => {
                 </Box>
               </Box>
             </Box>
+           
             <Box
               pt={5}
               maxH={"88vh"}

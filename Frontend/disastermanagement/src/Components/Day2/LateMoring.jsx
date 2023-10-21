@@ -179,9 +179,9 @@ const LateMorning = () => {
 
 
   useEffect(() => {
-    if (currentMessageIndex > 4 && currentMessageIndex <= 13) {
+    if (currentMessageIndex > 4 && currentMessageIndex <= 14) {
       setHead("Day 2 - Afternoon");
-    } else if (currentMessageIndex > 13) {
+    } else if (currentMessageIndex > 14) {
       setHead("Day 2 - Night");
     } else {
       setHead("Day 2 - Late Morning");
@@ -199,17 +199,17 @@ const LateMorning = () => {
           setTimeout(() => {
             setShowPopup(true);
           }, 2000);
-        } else if (currentMessageIndex === 4) {
+        } else if (currentMessageIndex === 5) {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup4(true);
           }, 2000);
-        } else if (currentMessageIndex === 9) {
+        } else if (currentMessageIndex === 10) {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup2(true);
           }, 2000);
-        } else if (currentMessageIndex === 12) {
+        } else if (currentMessageIndex === 13) {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup3(true);
@@ -370,11 +370,11 @@ const LateMorning = () => {
               ref={chatContainerRef}
               pb={2}
               bgImage={
-                currentMessageIndex > 13
+                currentMessageIndex > 14
                   ? night
-                  : currentMessageIndex > 10
+                  : currentMessageIndex > 11
                   ? room
-                  : currentMessageIndex > 5
+                  : currentMessageIndex > 6
                   ? pm
                   : officebuzz
               }
@@ -596,7 +596,7 @@ const LateMorning = () => {
                             </Text>
                           </Box>
                           <Box textAlign="center">
-                            <Image src={callwithjulia} borderRadius={10} />
+                            <Image src={night} borderRadius={10} />
                             <Button
                               colorScheme="teal"
                               onClick={closePopup3}

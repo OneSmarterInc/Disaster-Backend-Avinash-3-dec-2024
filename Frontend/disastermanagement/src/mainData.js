@@ -1,4 +1,14 @@
 export const dayOneMorning = [
+  {
+    sender: "Ben Carter",
+    message:
+      "(Thinking to himself) Probably another routine hiccup.",
+  },
+  {
+    sender: "Ben Carter",
+    message:
+      "Hmm... I'll forward this to Kate. She'll handle it.",
+  },
     {
       sender: "Ben Carter",
       message:
@@ -68,7 +78,7 @@ export const dayOneMorning = [
         "We might need to prepare for potential lawsuits, especially if client data is compromised or lost. ",
     },
     {
-      sender: "Sophia Kim",
+      sender: "Chloe Zhang",
       message:
         "We need a clear communication strategy. Maybe involve PR and have them draft a statement, just in case.",
     },
@@ -83,7 +93,7 @@ export const dayOneMorning = [
         "We can't hide this. But let's be strategic about what we disclose and when.",
     },
     {
-      sender: "Julia Harper",
+      sender: "Chloe Zhang",
       message:
         "(On screen) I understand the gravity, but the longer we wait, the harder recovery might be.",
     },
@@ -137,20 +147,20 @@ export const dayOneMorning = [
       message:
         "Yes, that is an excellent idea.",
     },
+  ];
+
+
+  export const dayTwoEarlyMorning = [
     {
       sender: "Ben Carter",
       message:
         "I have explained the situation to you.  We are now shutting down applications in a rolling manner and they are crashing.  We need your help with figuring out what’s going on and correcting it.",
     },
     {
-      sender: "Application Vendor",
+      sender: "Tom Mitchell",
       message:
         "Ben - our team is on it.  We have called in our senior engineers and will be in touch",
     },
-  ];
-
-
-  export const dayTwoEarlyMorning = [
     {
       sender: "Ben Carter",
       message:
@@ -222,7 +232,7 @@ export const dayOneMorning = [
     {
       sender: "Ben Carter",
       message:
-        "(to his internal team) Bottomline, with all the built-in redundancy, we did not have a good/non-corrupt set of data.  Because the storage system spreads all applications across multiple frames there were no set of application that had a know set of viable data.  That is a bad situation for us.",
+        "(To his internal team) Bottomline, with all the built-in redundancy, we did not have a good/non-corrupt set of data.  Because the storage system spreads all applications across multiple frames there were no set of application that had a know set of viable data.  That is a bad situation for us.",
     },
     {
       sender: "Tom Mitchell",
@@ -491,11 +501,6 @@ export const dayOneMorning = [
         "We've come this far. Let's keep the momentum going. Keep me updated on the progress",
     },
     {
-      message:
-        "The night deepens, and the office is quieter, with only the IT team still working diligently. The clock is about to strike midnight.",
-    },
-
-    {
       sender: "Sophia Kim",
       message:
         "All Tier 3 and Tier 4 applications are in the process of being restored. We're on track",
@@ -663,7 +668,7 @@ export const dayOneMorning = [
     {
       sender: "Gajji",
       message:
-        "(firmly) Find a workaround. We can't afford a full stop here.",
+        "(Firmly) Find a workaround. We can't afford a full stop here.",
     },
     {
       sender: "Ben Carter",

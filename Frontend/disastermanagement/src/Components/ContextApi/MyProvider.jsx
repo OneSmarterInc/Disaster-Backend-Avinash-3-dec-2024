@@ -9,7 +9,7 @@ const MyProvider = ({ children }) => {
   const [deliverableState, setDeliverableState] = useState(false);
   const [selectedSection, setSelectedSection] = useState("Prepare");
   const [pauseBtn, setPauseBtn] = useState(false);
-  const speed = 1000;
+  const speed = 4000;
 
   const [head, setHead] = useState("");
 

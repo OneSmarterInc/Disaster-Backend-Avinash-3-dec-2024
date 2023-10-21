@@ -39,16 +39,17 @@ import alarms from "../userImages/alarms.png";
 import vendor from "../userImages/vendor.png";
 import ScrollDown from "../ScrollDown";
 import warroom from "../userImages/warroom.png";
-
+import tension from "../userImages/tension.jpeg";
 import liam from "../userImages/liam.jpeg";
 import tense from "../userImages/tense.jpeg";
-
+import immediate from "../userImages/immediate.jpeg";
 import MyContext from "../ContextApi/MyContext";
 import pressingdown from "../userImages/pressingdown.jpeg";
 import failure from "../userImages/failure.jpeg";
 import callwithjulia from "../userImages/callwithjulia.jpeg";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
+import weight from "../userImages/weight.jpeg";
 
 const Morning = () => {
   const [chatData, setChatData] = useState([]);
@@ -526,7 +527,7 @@ const Morning = () => {
                             </Text>
                           </Box>
                           <Box textAlign="center">
-                            <Image src={callwithjulia} borderRadius={10} />
+                            <Image src={failure} borderRadius={10} />
                             <Button
                               colorScheme="teal"
                               onClick={closePopup}
@@ -573,7 +574,7 @@ const Morning = () => {
                             </Text>
                           </Box>
                           <Box textAlign="center">
-                            <Image src={callwithjulia} borderRadius={10} />
+                            <Image src={immediate} borderRadius={10} />
                             <Button
                               colorScheme="teal"
                               onClick={closePopup2}
@@ -622,7 +623,7 @@ const Morning = () => {
                             </Text>
                           </Box>
                           <Box>
-                            <Image src={callwithjulia} borderRadius={10} maxW="100%" h="auto" />
+                            <Image src={tension} borderRadius={10} maxW="100%" h="auto" />
                             <Button
                               colorScheme="teal"
                               onClick={closePopup3}
@@ -670,7 +671,7 @@ const Morning = () => {
                             </Text>
                           </Box>
                           <Box>
-                            <Image src={callwithjulia} borderRadius={10} maxW="100%" h="auto" />
+                            <Image src={weight} borderRadius={10} maxW="100%" h="auto" />
                             <Button
                               colorScheme="teal"
                               onClick={closePopup4}
@@ -717,7 +718,7 @@ const Morning = () => {
                             <Text>After the first failure...</Text>
                           </Box>
                           <Box>
-                            <Image src={callwithjulia} borderRadius={10} maxW="100%" h="auto" />
+                            <Image src={pressingdown} borderRadius={10} maxW="100%" h="auto" />
                             <Button
                               colorScheme="teal"
                               onClick={closePopup5}

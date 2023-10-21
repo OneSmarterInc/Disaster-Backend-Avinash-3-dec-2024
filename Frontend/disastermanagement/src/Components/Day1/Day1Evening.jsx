@@ -35,12 +35,12 @@ import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
 
 import liam from "../userImages/liam.jpeg";
-
+import chloe from "../userImages/ChiocZang.png";
 import figma from "../userImages/figma.png";
 import conference from "../userImages/conference.jpeg";
 import architecture from "../userImages/architecture.jpeg";
 import callwithjulia from "../userImages/callwithjulia.jpeg";
-
+import tom from "../userImages/tom.jpg";
 import MyContext from "../ContextApi/MyContext";
 
 const BringDown = () => {
@@ -166,6 +166,10 @@ const BringDown = () => {
       url: liam,
     },
     {
+      name: "Chloe Zhang",
+      url: chloe,
+    },
+    {
       name: "Sophia Kim",
       url: sophia,
     },
@@ -173,19 +177,23 @@ const BringDown = () => {
       name: "Mia Rodriguez",
       url: mia,
     },
+    // {
+    //   name: "Julia Harper",
+    //   url: julia,
+    // },
     {
-      name: "Julia Harper",
-      url: julia,
-    },
-    {
-      name: "Application Vendor",
-      url: julia,
+      name: "Tom Mitchell",
+      url: tom,
     },
   ];
 
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
-    setHead("Day 1 - Evening");
+    
+   
+      setHead("Day 1 - Late night");
+
+    
 
     const messageDelay = speed; // 4 seconds
 
@@ -198,7 +206,7 @@ const BringDown = () => {
         setCurrentMessageIndex((prevIndex) => prevIndex + 1);
         setActiveUser(message.sender);
 
-        if (currentMessageIndex === 2) {
+        if (currentMessageIndex === 20) {
           setChatPaused(true);
           setTimeout(() => {
             setShowPopup(true);
@@ -333,8 +341,8 @@ const BringDown = () => {
                             mt={6}
                             cursor={"pointer"}
                           >
-                            {el.name === "Application Vendor"
-                              ? "AV"
+                            {el.name === "Tom Mitchell"
+                              ? "Tom"
                               : el.name.split(" ")[0]}
                           </Text>
                         </Box>
@@ -377,8 +385,8 @@ const BringDown = () => {
                           mt={6}
                           cursor={"pointer"}
                         >
-                          {el.name === "Application Vendor"
-                            ? "AV"
+                          {el.name === "Tom Mitchell"
+                            ? "Tom"
                             : el.name.split(" ")[0]}
                         </Text>
                       </Box>
@@ -412,11 +420,11 @@ const BringDown = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                  Ben Carter rubs his temples, trying to process the magnitude
+                  {/* Ben Carter rubs his temples, trying to process the magnitude
                   of the situation. He can feel the eight of responsibility
                   pressing down on him, knowing that critical decisions lie
-                  ahead.
-                </Text>
+                  ahead. */}
+                Ben's mind raced as he contemplated the intricacies of the current architectural design, his thoughts consumed by the nagging concern of an elusive vulnerability.</Text>
               </Box>
 
               <Box
@@ -497,7 +505,7 @@ const BringDown = () => {
                       </CSSTransition>
                     );
                   })}
-                  {showPopup && (
+                  {/* {showPopup && (
                     <Modal isOpen={day5Popup}>
                       <ModalOverlay />
                       <ModalContent
@@ -514,7 +522,7 @@ const BringDown = () => {
                         <ModalBody fontSize="18px">
                           <Flex flexDirection={["column", "row"]} gap={[4, 2]}>
                             {" "}
-                            {/* Responsive layout */}
+                            
                             <Box
                               bgColor="white"
                               boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
@@ -545,11 +553,11 @@ const BringDown = () => {
                           </Flex>
                         </ModalBody>
                         <ModalFooter>
-                          {/* Footer content, if needed */}
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
-                  )}
+                  )} */}
 
                   {showBox && (
                     <>

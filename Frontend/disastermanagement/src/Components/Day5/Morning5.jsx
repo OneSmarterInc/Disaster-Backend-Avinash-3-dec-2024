@@ -45,7 +45,9 @@ import twoleaders from "../userImages/twoleaders.jpeg";
 import respect from "../userImages/respect.jpeg";
 import calmoffice from "../userImages/calmoffice.jpeg";
 import fewweeks from "../userImages/fewweeks.jpeg";
-
+import strikes from "../userImages/strikes.jpeg";
+import crisis from "../userImages/crisis.jpeg";
+import cheer from "../userImages/cheer.jpeg";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
 
@@ -74,6 +76,7 @@ const Morning5 = () => {
   const [day5Popup7, setDay5Popup7] = useState(true);
   const [day5Popup8, setDay5Popup8] = useState(true);
   const [day5Popup9, setDay5Popup9] = useState(true);
+  const [day5Popup10, setDay5Popup10] = useState(true);
 
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
@@ -85,6 +88,7 @@ const Morning5 = () => {
   const [showPopup7, setShowPopup7] = useState(false);
   const [showPopup8, setShowPopup8] = useState(false);
   const [showPopup9, setShowPopup9] = useState(false);
+  const [showPopup10, setShowPopup10] = useState(false);
 
   const [chatPaused, setChatPaused] = useState(false);
 
@@ -92,14 +96,14 @@ const Morning5 = () => {
   const usersContainerRef = useRef();
   const spacerRef = useRef(null);
 
-  const { setHead, speed, enableDeliverable, pauseBtn, setPauseBtn } = useContext(MyContext);
+  const { setHead, speed, enableDeliverable, pauseBtn, setPauseBtn } =
+    useContext(MyContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handlePause = () => {
     setPauseBtn(!pauseBtn);
   };
-
 
   const handleChange = (value) => {
     enableDeliverable();
@@ -187,8 +191,6 @@ const Morning5 = () => {
     }
   }, [showBox, showBoxContent2]);
 
-
-
   useEffect(() => {
     if (currentMessageIndex > 1) {
       setHead("Day 5 - Afternoon");
@@ -199,62 +201,67 @@ const Morning5 = () => {
     }
 
     const displayNextMessage = () => {
-      if(!pauseBtn){
-      if (!chatPaused && currentMessageIndex < dayFiveMorning.length) {
-        const message = dayFiveMorning[currentMessageIndex];
-        setCurrentMessageIndex((prevIndex) => prevIndex + 1);
-        handleUserMessage(message.sender);
-        if (currentMessageIndex === 7) {
-          setShowPopup(true);
-          setChatPaused(true);
-        } else if (currentMessageIndex === 0) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup2(true);
-          }, 2000);
-        } else if (currentMessageIndex === 2) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup3(true);
-          }, 2000);
-        } else if (currentMessageIndex === 3) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup4(true);
-          }, 2000);
-        } else if (currentMessageIndex === 8) {
-          setChatPaused(true);
-          setTimeout(() => {
+      if (!pauseBtn) {
+        if (!chatPaused && currentMessageIndex < dayFiveMorning.length) {
+          const message = dayFiveMorning[currentMessageIndex];
+          setCurrentMessageIndex((prevIndex) => prevIndex + 1);
+          handleUserMessage(message.sender);
+          if (currentMessageIndex === 7) {
             setShowPopup5(true);
-          }, 2000);
-        } else if (currentMessageIndex === 11) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup6(true);
-          }, 2000);
-        } else if (currentMessageIndex === 12) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup7(true);
-          }, 2000);
-        } else if (currentMessageIndex === 20) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup8(true);
-          }, 2000);
-        } else if (currentMessageIndex === 29) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup9(true);
-          }, 2000);
-        }
-      } else {
-        if (currentMessageIndex === dayFiveMorning.length) {
-          // The chat has ended completely, set showBox to true
-          setShowBox(true);
+            setChatPaused(true);
+          } else if (currentMessageIndex === 0) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup2(true);
+            }, 2000);
+          } else if (currentMessageIndex === 2) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup3(true);
+            }, 2000);
+          } else if (currentMessageIndex === 3) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup4(true);
+            }, 2000);
+          } else if (currentMessageIndex === 5) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup10(true);
+            }, 2000);
+          } else if (currentMessageIndex === 8) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup(true);
+            }, 2000);
+          } else if (currentMessageIndex === 11) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup6(true);
+            }, 2000);
+          } else if (currentMessageIndex === 12) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup7(true);
+            }, 2000);
+          } else if (currentMessageIndex === 20) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup8(true);
+            }, 2000);
+          } else if (currentMessageIndex === 29) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup9(true);
+            }, 2000);
+          }
+        } else {
+          if (currentMessageIndex === dayFiveMorning.length) {
+            // The chat has ended completely, set showBox to true
+            setShowBox(true);
+          }
         }
       }
-    }
     };
 
     const messageInterval = setInterval(displayNextMessage, speed);
@@ -323,6 +330,13 @@ const Morning5 = () => {
   const closePopup9 = () => {
     // setShowPopup(false);
     setDay5Popup9(false);
+    // onClose();
+    setChatPaused(false);
+  };
+
+  const closePopup10 = () => {
+    // setShowPopup(false);
+    setDay5Popup10(false);
     // onClose();
     setChatPaused(false);
   };
@@ -473,20 +487,15 @@ const Morning5 = () => {
               ref={chatContainerRef}
               pb={2}
               bgImage={
-                
                 currentMessageIndex > 30
                   ? twoleaders
-                  :
-                  currentMessageIndex > 21
+                  : currentMessageIndex > 21
                   ? respect
-                  :
-                  currentMessageIndex > 13
+                  : currentMessageIndex > 13
                   ? calmoffice
-                  :
-                  currentMessageIndex > 13
+                  : currentMessageIndex > 13
                   ? fewweeks
-                  :
-                currentMessageIndex > 8
+                  : currentMessageIndex > 8
                   ? email
                   : currentMessageIndex > 4
                   ? clapping
@@ -600,326 +609,436 @@ const Morning5 = () => {
                   })}
                   {showPopup && (
                     <Modal isOpen={day5Popup}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                        {/* Add a header if needed */}
-                      </ModalHeader>
-                      <ModalBody fontSize="18px">
-                        <Heading as="h2" size="lg" mb={4}>
-                          Announcement
-                        </Heading>
-                        <Text>
-                          "To all our valued team members and stakeholders, we are pleased to inform you that the recent IT crisis has been fully resolved. We appreciate your patience, support, and understanding during this challenging period. Thanks to the concerted efforts of our IT teams and partners, our systems are now fully operational. We remain committed to serving you with excellence and ensuring such disruptions are mitigated in the future."
-                        </Text>
-                      </ModalBody>
-                      <ModalFooter>
-                        <Button
-                          colorScheme="teal"
-                          onClick={closePopup}
-                          textAlign="center"
-                          fontFamily="Croissant One"
-                          bg="black"
-                          _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                          w="100%"
-                        >
-                          Close Announcement
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                      <ModalOverlay />
+                      <ModalContent boxShadow="0 0 20px rgba(0, 0, 0, 0.2)">
+                        <ModalHeader fontWeight="bold" fontSize="25px">
+                          {/* Add a header if needed */}
+                        </ModalHeader>
+                        <ModalBody fontSize="18px">
+                          <Heading as="h2" size="lg" mb={4}>
+                            Announcement
+                          </Heading>
+                          <Text>
+                            "To all our valued team members and stakeholders, we
+                            are pleased to inform you that the recent IT crisis
+                            has been fully resolved. We appreciate your
+                            patience, support, and understanding during this
+                            challenging period. Thanks to the concerted efforts
+                            of our IT teams and partners, our systems are now
+                            fully operational. We remain committed to serving
+                            you with excellence and ensuring such disruptions
+                            are mitigated in the future."
+                          </Text>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup}
+                            textAlign="center"
+                            fontFamily="Croissant One"
+                            bg="black"
+                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                            w="100%"
+                          >
+                            Close Announcement
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
 
                   {showPopup2 && (
                     <Modal isOpen={day5Popup2}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                      maxW="600px"
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                        {/* Add a header if needed */}
-                      </ModalHeader>
-                      <ModalBody fontSize="18px">
-                        <Text>
-                          At noon, the recovery process was complete. At 4:00 PM, an announcement was made that the crisis was over.
-                        </Text>
-                      </ModalBody>
-                      <ModalFooter>
-                        <Button
-                          colorScheme="teal"
-                          onClick={closePopup2}
-                          textAlign="center"
-                          fontFamily="Croissant One"
-                          bg="black"
-                          _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                          w="100%"
-                        >
-                          Close
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                        maxW="600px"
+                      >
+                        <ModalHeader fontWeight="bold" fontSize="25px">
+                          {/* Add a header if needed */}
+                        </ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Flex
+                            direction={{ base: "column", sm: "row" }}
+                            gap={4}
+                          >
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                              borderRadius={10}
+                              p={5}
+                            >
+                              <Text>
+                                At noon, the recovery process was complete. At
+                                4:00 PM, an announcement was made that the
+                                crisis was over.
+                              </Text>
+                            </Box>
+                            <Box>
+                              <Image
+                                src={crisis}
+                                borderRadius={10}
+                                maxW="100%"
+                                h="auto"
+                              />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup2}
+                                textAlign="center"
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                w="100%"
+                                mt={3}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
                   {showPopup3 && (
                     <Modal isOpen={day5Popup3}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                      maxW="600px"
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                        {/* Add a header if needed */}
-                      </ModalHeader>
-                      <ModalBody fontSize="18px">
-                        <Text>
-                          The clock strikes noon. Ben Carter stands at the head of the room, gathering everyone's attention.
-                        </Text>
-                      </ModalBody>
-                      <ModalFooter>
-                        <Button
-                          colorScheme="teal"
-                          onClick={closePopup3}
-                          textAlign="center"
-                          fontFamily="Croissant One"
-                          bg="black"
-                          _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                          w="100%"
-                        >
-                          Close
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                        maxW="600px"
+                      >
+                        <ModalHeader fontWeight="bold" fontSize="25px">
+                          {/* Add a header if needed */}
+                        </ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Flex
+                            direction={{ base: "column", sm: "row" }}
+                            gap={4}
+                          >
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                              borderRadius={10}
+                              p={5}
+                            >
+                              <Text>
+                                The clock strikes noon. Ben Carter stands at the
+                                head of the room, gathering everyone's
+                                attention.{" "}
+                              </Text>
+                            </Box>
+                            <Box>
+                              <Image
+                                src={strikes}
+                                borderRadius={10}
+                                maxW="100%"
+                                h="auto"
+                              />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup3}
+                                textAlign="center"
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                w="100%"
+                                mt={3}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
                   {showPopup4 && (
                     <Modal isOpen={day5Popup4} isCentered>
-                    <ModalOverlay />
-                    <ModalContent
-                      bgColor={"#E3E3E3"}
-                      maxW={{ base: "90%", sm: "80%", md: "600px" }}
-                      borderRadius={10}
-                      boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                        Successful Recovery
-                      </ModalHeader>
-                  
-                      <ModalBody fontSize="18px">
-                        <Text>
-                          A loud cheer erupts as team members clap and some even hug each other.
-                          The crisis is over, and everyone can breathe a sigh of relief.
-                        </Text>
-                      </ModalBody>
-                  
-                      <ModalFooter>
-                        <Button
-                          colorScheme="teal"
-                          onClick={closePopup4}
-                          fontFamily="Croissant One"
-                          bg="teal.500"
-                          _hover={{ bgColor: "teal.600" }}
-                          borderRadius={10}
-                        >
-                          Close
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                      <ModalOverlay />
+                      <ModalContent
+                        bgColor={"#E3E3E3"}
+                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                        borderRadius={10}
+                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                      >
+                        <ModalHeader fontWeight="bold" fontSize="25px">
+                          Successful Recovery
+                        </ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Flex
+                            direction={{ base: "column", sm: "row" }}
+                            gap={4}
+                          >
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                              borderRadius={10}
+                              p={5}
+                            >
+                              <Text>
+                                A loud cheer erupts as team members clap and
+                                some even hug each other. The crisis is over,
+                                and everyone can breathe a sigh of relief.
+                              </Text>
+                            </Box>
+                            <Box>
+                              <Image
+                                src={cheer}
+                                borderRadius={10}
+                                maxW="100%"
+                                h="auto"
+                              />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup4}
+                                textAlign="center"
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                w="100%"
+                                mt={3}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup10 && (
+                    <Modal isOpen={day5Popup10} isCentered>
+                      <ModalOverlay />
+                      <ModalContent
+                        bgColor={"#E3E3E3"}
+                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                        borderRadius={10}
+                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                      >
+                        <ModalHeader fontWeight="bold" fontSize="25px">
+                          Successful Recovery
+                        </ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Text>
+                            The afternoon sun casts a warm glow. The
+                            Communications team is busy drafting an
+                            announcement.
+                          </Text>
+                        </ModalBody>
+
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup10}
+                            fontFamily="Croissant One"
+                            bg="teal.500"
+                            _hover={{ bgColor: "teal.600" }}
+                            borderRadius={10}
+                          >
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
 
                   {showPopup5 && (
                     <Modal isOpen={day5Popup5} isCentered>
-                    <ModalOverlay />
-                    <ModalContent
-                      bgColor={"#E3E3E3"}
-                      maxW={{ base: "90%", sm: "80%", md: "600px" }}
-                      borderRadius={10}
-                      boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                        Successful Recovery Announcement
-                      </ModalHeader>
-                  
-                      <ModalBody fontSize="18px">
-                        <Text>
-                          At 4:00 PM, emails ping across the company, and an announcement is
-                          broadcasted on internal communication channels. The crisis is officially
-                          over, and everyone can return to normal operations.
-                        </Text>
-                      </ModalBody>
-                  
-                      <ModalFooter>
-                        <Button
-                          colorScheme="teal"
-                          onClick={closePopup5}
-                          fontFamily="Croissant One"
-                          bg="teal.500"
-                          _hover={{ bgColor: "teal.600" }}
-                          borderRadius={10}
-                        >
-                          Close
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                      <ModalOverlay />
+                      <ModalContent
+                        bgColor={"#E3E3E3"}
+                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                        borderRadius={10}
+                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                      >
+                        <ModalHeader fontWeight="bold" fontSize="25px">
+                          Successful Recovery Announcement
+                        </ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Text>
+                            At 4:00 PM, emails ping across the company, and an
+                            announcement is broadcasted on internal
+                            communication channels. The crisis is officially
+                            over, and everyone can return to normal operations.
+                          </Text>
+                        </ModalBody>
+
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup5}
+                            fontFamily="Croissant One"
+                            bg="teal.500"
+                            _hover={{ bgColor: "teal.600" }}
+                            borderRadius={10}
+                          >
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
                   {showPopup6 && (
                     <Modal isOpen={day5Popup6} isCentered>
-                    <ModalOverlay />
-                    <ModalContent
-                      bgColor="#E3E3E3"
-                      maxW={{ base: "90%", sm: "80%", md: "600px" }}
-                      borderRadius={10}
-                      boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                        The Next Couple of Weeks
-                      </ModalHeader>
-                  
-                      <ModalBody fontSize="18px">
-                        <Text>
-                          Over the next few weeks, the CIO, Ben Carter, and the Senior Vice
-                          President of Worldwide Customer Service embarked on a series of
-                          meetings with key customers to address concerns and rebuild trust.
-                          During these meetings, they discussed the recent IT crisis, the measures
-                          taken to resolve it, and the steps being implemented to prevent future
-                          disruptions. The transparent communication went a long way in
-                          reaffirming the company's commitment to its clients.
-                        </Text>
-                      </ModalBody>
-                  
-                      <ModalFooter>
-                        <Button
-                          colorScheme="teal"
-                          onClick={closePopup6}
-                          fontFamily="Croissant One"
-                          bg="teal.500"
-                          _hover={{ bgColor: "teal.600" }}
-                          borderRadius={10}
-                        >
-                          Close
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                      <ModalOverlay />
+                      <ModalContent
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                        borderRadius={10}
+                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                      >
+                        <ModalHeader fontWeight="bold" fontSize="25px">
+                          The Next Couple of Weeks
+                        </ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Text>
+                            Over the next few weeks, the CIO, Ben Carter, and
+                            the Senior Vice President of Worldwide Customer
+                            Service embarked on a series of meetings with key
+                            customers to address concerns and rebuild trust.
+                            During these meetings, they discussed the recent IT
+                            crisis, the measures taken to resolve it, and the
+                            steps being implemented to prevent future
+                            disruptions. The transparent communication went a
+                            long way in reaffirming the company's commitment to
+                            its clients.
+                          </Text>
+                        </ModalBody>
+
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup6}
+                            fontFamily="Croissant One"
+                            bg="teal.500"
+                            _hover={{ bgColor: "teal.600" }}
+                            borderRadius={10}
+                          >
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
                   {showPopup7 && (
                     <Modal isOpen={day5Popup7} isCentered>
-                    <ModalOverlay />
-                    <ModalContent
-                      bgColor="#E3E3E3"
-                      maxW={{ base: "90%", sm: "80%", md: "600px" }}
-                      borderRadius={10}
-                      boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                        A Moment of Contemplation
-                      </ModalHeader>
-                  
-                      <ModalBody fontSize="18px">
-                        <Text>
-                          The office is calm, a stark contrast to the frenzied atmosphere of the
-                          crisis days. Ben Carter sits at his desk, reading through the final
-                          report from the storage vendor. He looks contemplative.
-                        </Text>
-                      </ModalBody>
-                  
-                      <ModalFooter>
-                        <Button
-                          colorScheme="teal"
-                          onClick={closePopup7}
-                          fontFamily="Croissant One"
-                          bg="teal.500"
-                          _hover={{ bgColor: "teal.600" }}
-                          borderRadius={10}
-                        >
-                          Close
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                      <ModalOverlay />
+                      <ModalContent
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                        borderRadius={10}
+                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                      >
+                        <ModalHeader fontWeight="bold" fontSize="25px">
+                          A Moment of Contemplation
+                        </ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Text>
+                            The office is calm, a stark contrast to the frenzied
+                            atmosphere of the crisis days. Ben Carter sits at
+                            his desk, reading through the final report from the
+                            storage vendor. He looks contemplative.
+                          </Text>
+                        </ModalBody>
+
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup7}
+                            fontFamily="Croissant One"
+                            bg="teal.500"
+                            _hover={{ bgColor: "teal.600" }}
+                            borderRadius={10}
+                          >
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
                   {showPopup8 && (
                     <Modal isOpen={day5Popup8} isCentered>
-                    <ModalOverlay />
-                    <ModalContent
-                      bgColor="#E3E3E3"
-                      maxW={{ base: "90%", sm: "80%", md: "600px" }}
-                      borderRadius={10}
-                      boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                        A Conversation of Respect
-                      </ModalHeader>
-                  
-                      <ModalBody fontSize="18px">
-                        <Text>
-                          Inside a conference room, Ben Carter and Gajji sit across from each
-                          other. There's a sense of mutual respect between them.
-                        </Text>
-                      </ModalBody>
-                  
-                      <ModalFooter>
-                        <Button
-                          colorScheme="teal"
-                          onClick={closePopup8}
-                          fontFamily="Croissant One"
-                          bg="teal.500"
-                          _hover={{ bgColor: "teal.600" }}
-                          borderRadius={10}
-                        >
-                          Close
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                      <ModalOverlay />
+                      <ModalContent
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                        borderRadius={10}
+                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                      >
+                        <ModalHeader fontWeight="bold" fontSize="25px">
+                          A Conversation of Respect
+                        </ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Text>
+                            Inside a conference room, Ben Carter and Gajji sit
+                            across from each other. There's a sense of mutual
+                            respect between them.
+                          </Text>
+                        </ModalBody>
+
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup8}
+                            fontFamily="Croissant One"
+                            bg="teal.500"
+                            _hover={{ bgColor: "teal.600" }}
+                            borderRadius={10}
+                          >
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
                   {showPopup9 && (
                     <Modal isOpen={day5Popup9} isCentered>
-                    <ModalOverlay />
-                    <ModalContent
-                      bgColor="#E3E3E3"
-                      maxW={{ base: "90%", sm: "80%", md: "600px" }}
-                      borderRadius={10}
-                      boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                        A Moment of Mutual Appreciation
-                      </ModalHeader>
-                  
-                      <ModalBody fontSize="18px">
-                        <Text>
-                          The two leaders share a moment of mutual appreciation, aware that the
-                          trials they faced together have only deepened their bond.
-                        </Text>
-                      </ModalBody>
-                  
-                      <ModalFooter>
-                        <Button
-                          colorScheme="teal"
-                          onClick={closePopup9}
-                          fontFamily="Croissant One"
-                          bg="teal.500"
-                          _hover={{ bgColor: "teal.600" }}
-                          borderRadius={10}
-                        >
-                          Close
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                      <ModalOverlay />
+                      <ModalContent
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                        borderRadius={10}
+                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                      >
+                        <ModalHeader fontWeight="bold" fontSize="25px">
+                          A Moment of Mutual Appreciation
+                        </ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Text>
+                            The two leaders share a moment of mutual
+                            appreciation, aware that the trials they faced
+                            together have only deepened their bond.
+                          </Text>
+                        </ModalBody>
+
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup9}
+                            fontFamily="Croissant One"
+                            bg="teal.500"
+                            _hover={{ bgColor: "teal.600" }}
+                            borderRadius={10}
+                          >
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
 
                   {showBox && (

@@ -177,7 +177,6 @@ const Chat = () => {
           }
         }
       }
-    }
     };
 
     const messageInterval = setInterval(displayNextMessage, messageDelay);
@@ -265,7 +264,7 @@ const Chat = () => {
               
               {/* {showSideBar ? < BsArrowLeftShort size={30} cursor={"pointer"} onClick={handleClose} /> :  < BsArrowRightShort size={30} cursor={"pointer"} onClick={handleopen} />} */}
               
-              {showSideBar ? (
+              {/* {showSideBar ? (
                 <></>
               ) : (
                 <Box>
@@ -276,7 +275,7 @@ const Chat = () => {
                     onClick={handleopen}
                   />
                 </Box>
-              )}
+              )} */}
 
               <Box pt={3} borderBottom={"0px solid black"}>
                 {users.map((el) => {

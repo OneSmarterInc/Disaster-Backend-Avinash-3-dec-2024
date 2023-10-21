@@ -12,7 +12,7 @@ const MyProvider = ({ children }) => {
   const [showCloseBtn, setShowCloseBtn] = useState(false);
  
   const [showSidebar, setShowSideBar] = useState(true);
-  const speed = 1000;
+  const speed = 4000;
 
 
   const [head, setHead] = useState("");

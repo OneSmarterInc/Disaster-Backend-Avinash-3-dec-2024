@@ -6,16 +6,33 @@ import StyledTreeExample from "./Hierarchy/StyledTreeExample";
 import Debrief from "./Debrief";
 import MyContext from "./ContextApi/MyContext";
 import Deliverable from "./Deliverable";
+import { AiOutlineClose } from 'react-icons/ai';
+import { BsArrowRightSquareFill } from 'react-icons/bs';
+
+
 
 const Sidebar = () => {
-  const { globalState, deliverableState, selectedSection, setSelectedSection } = useContext(MyContext);
+  const { globalState, deliverableState, selectedSection, setSelectedSection,showSidebar, setShowSideBar } = useContext(MyContext);
+
+  
 
   const handleSectionClick = (section) => {
     setSelectedSection(section);
   };
 
+  const handleclose = ()=>{
+    setShowSideBar(false)
+  }
+
+  const handleopen = ()=>{
+    setShowSideBar(true)
+  }
+
   return (
+    <>
     <Box display="flex" flexDirection="row" height={"88vh"}>
+     
+    {showSidebar ? 
       <VStack
         spacing={4}
         alignItems="flex-start" 
@@ -27,6 +44,10 @@ const Sidebar = () => {
         pr={5}
         pt={5}
       >
+        
+
+        < AiOutlineClose onClick={handleclose} cursor={"pointer"} fontWeight={"bold"}/>
+        
         <Text
           onClick={() => handleSectionClick("Prepare")}
           cursor="pointer"
@@ -67,6 +88,9 @@ const Sidebar = () => {
           Debrief
         </Text>
       </VStack>
+      :
+      <></>
+}
       <Box
         bg={"gray.100"}
         overflowX="auto"
@@ -84,6 +108,8 @@ const Sidebar = () => {
         {selectedSection === "debrief" && <Debrief />}
       </Box>
     </Box>
+    
+    </>
   );
 };
 

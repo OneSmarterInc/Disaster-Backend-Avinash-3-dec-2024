@@ -83,7 +83,7 @@ const Start = () => {
             <BsPauseCircleFill color="black" />
           )}
         </Text>
-        
+
 
         {/* <Text cursor={"pointer"} fontSize={35} onClick={handlePause}>{pauseBtn ? <MdNotStarted /> : <BsPauseCircleFill />}</Text> */}
         <div

@@ -19,7 +19,7 @@ const Prepare = () => {
       bg={"gray.100"}
     >
       <Text mt={10} mb={2} fontSize={30}>
-        Setting the Stage: Tech Tensions & Stakeholder Sensibilities in Columbus
+        Setting the Stage:
       </Text>
       <Divider border={"2px solid black"} />
       <ul>
@@ -33,7 +33,7 @@ const Prepare = () => {
           </Text>
         
           <Text mt={10} textAlign={"justify"} fontSize={20}>
-            OrionTech Corp, proudly standing tall in Columbus, Ohio, isn't just
+            OrionTech in Columbus, Ohio, isn't just
             recognized for its technological prowess; its strength lies in
             relationships. With stakeholders ranging from internal teams and
             shareholders to global partners and customers, OTC’s success hinges on

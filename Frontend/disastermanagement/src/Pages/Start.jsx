@@ -67,7 +67,7 @@ const Start = () => {
         pr={5}
         color={"white"}
       >
-        <Heading fontFamily={"Fredoka"}>Leading Through Disruption</Heading>
+        <Heading >Leading Through Disruption</Heading>
         <Heading mr={80} size={"md"} fontFamily={"Fredoka"}>
           {head}
         </Heading>

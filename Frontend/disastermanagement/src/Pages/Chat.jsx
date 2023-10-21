@@ -35,6 +35,11 @@ import { BsPauseCircleFill } from "react-icons/bs";
 import openemail from "../Images/openemail.jpeg";
 import bensphone from "../Images/bensphone.jpeg";
 import relaxing from "../Images/relaxing.jpeg";
+import bgcall from "../Images/bgcall.jpeg";
+
+import { BsArrowRightShort } from "react-icons/bs";
+import { BsArrowLeftShort } from "react-icons/bs";
+
 import bensleep from "../Images/bensleep.jpeg";
 import { BsArrowRightSquareFill } from "react-icons/bs";
 import bensleep2 from "../Images/bensleep2.jpeg";
@@ -82,12 +87,16 @@ const Chat = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const { setHead, speed, pauseBtn, setPauseBtn, setShowSideBar, showSideBar } =
+  const { setHead, speed, pauseBtn, setPauseBtn, setShowSideBar, showSideBar ,setShowCloseBtn } =
     useContext(MyContext);
 
   const handleopen = () => {
     setShowSideBar(true);
   };
+
+    const handleClose = ()=>{
+      setShowSideBar(false)
+    }
 
   const handlePause = () => {
     setPauseBtn(!pauseBtn);
@@ -125,6 +134,7 @@ const Chat = () => {
 
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
+    setShowCloseBtn(true);
     if(currentMessageIndex > 3 ){
     setHead("Day 1 - Night");
     }
@@ -209,7 +219,7 @@ const Chat = () => {
         scrollToBottom();
       }, 100);
     }
-  }, [showBox, showBoxContent2]);
+  }, [showBox, showBoxContent2,showSideBar]);
 
   return (
     <>
@@ -251,7 +261,10 @@ const Chat = () => {
               overflow={"auto"}
               bgColor="#948888"
             >
-              {showSideBar ? (
+              
+              {/* {showSideBar ? < BsArrowLeftShort size={30} cursor={"pointer"} onClick={handleClose} /> :  < BsArrowRightShort size={30} cursor={"pointer"} onClick={handleopen} />} */}
+              
+              {/* {showSideBar ? (
                 <></>
               ) : (
                 <Box>
@@ -262,7 +275,7 @@ const Chat = () => {
                     onClick={handleopen}
                   />
                 </Box>
-              )}
+              )} */}
 
               <Box pt={3} borderBottom={"0px solid black"}>
                 {users.map((el) => {
@@ -313,7 +326,7 @@ const Chat = () => {
               pb={2}
               bgImage={
                 currentMessageIndex > 6
-                  ? bensleep2
+                  ? bgcall
                   : currentMessageIndex > 3
                   ? relaxing
                   : bensphone
@@ -361,11 +374,16 @@ const Chat = () => {
                 pl={5}
                 pr={5}
               >
-                <Text
+                {/* <Text
                   position={"fixed"}
                   color={"black"}
+
+                  top={"90%"}
+                  right={"2%"}
+
                   top={"85%"}
                   left={"1450px"}
+
                   cursor={"pointer"}
                   fontSize={45}
                   onClick={handlePause}
@@ -375,7 +393,7 @@ const Chat = () => {
                   ) : (
                     <BsPauseCircleFill color="black" />
                   )}
-                </Text>
+                </Text> */}
                 <TransitionGroup>
                   {dayOneMorning.slice(0, currentMessageIndex).map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";

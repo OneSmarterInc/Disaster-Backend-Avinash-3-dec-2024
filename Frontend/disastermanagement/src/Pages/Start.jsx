@@ -13,7 +13,7 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { AiOutlineMail } from "react-icons/ai";
+import { GiHamburgerMenu } from "react-icons/gi";
 import Sidebar from "../Components/Sidebar";
 import MyContext from "../Components/ContextApi/MyContext";
 import { MdNotStarted } from "react-icons/md";
@@ -67,7 +67,7 @@ const Start = () => {
         pr={5}
         color={"white"}
       >
-        <Heading fontFamily={"Fredoka"}>Leading Through Disruption</Heading>
+        <Heading >Leading Through Disruption</Heading>
         <Heading mr={80} size={"md"} fontFamily={"Fredoka"}>
           {head}
         </Heading>
@@ -84,13 +84,14 @@ const Start = () => {
           )}
         </Text>
 
+
         {/* <Text cursor={"pointer"} fontSize={35} onClick={handlePause}>{pauseBtn ? <MdNotStarted /> : <BsPauseCircleFill />}</Text> */}
         <div
           onMouseEnter={() => setShowDropdown(true)}
           onMouseLeave={() => setShowDropdown(false)}
           style={{ position: "relative" }}
         >
-          <AiOutlineMail size={"30px"} cursor={"pointer"} />
+          <GiHamburgerMenu size={"30px"} cursor={"pointer"} />
           {showDropdown && (
             <div
               style={{

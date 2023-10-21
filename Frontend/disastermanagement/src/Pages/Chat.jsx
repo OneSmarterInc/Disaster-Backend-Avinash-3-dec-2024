@@ -179,7 +179,6 @@ const Chat = () => {
           }
         }
       }
-    }
     };
 
     const messageInterval = setInterval(displayNextMessage, messageDelay);
@@ -267,6 +266,7 @@ const Chat = () => {
               
               {/* {showSideBar ? < BsArrowLeftShort size={30} cursor={"pointer"} onClick={handleClose} /> :  < BsArrowRightShort size={30} cursor={"pointer"} onClick={handleopen} />} */}
               
+              {/* {showSideBar ? (
 
               {showSideBar ? (
 

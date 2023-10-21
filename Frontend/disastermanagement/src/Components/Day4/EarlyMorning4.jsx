@@ -455,7 +455,7 @@ const EarlyMorning4 = () => {
                 pl={5}
                 pr={5}
               >
-                 <Text
+                 {/* <Text
                   position={"fixed"}
                   color={"black"}
                   top={"650px"}
@@ -469,7 +469,7 @@ const EarlyMorning4 = () => {
                   ) : (
                     <BsPauseCircleFill color="black" />
                   )}
-                </Text>
+                </Text> */}
                 <TransitionGroup>
                   {dayFourMorning.slice(0, currentMessageIndex).map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";

@@ -9,7 +9,8 @@ const MyProvider = ({ children }) => {
   const [deliverableState, setDeliverableState] = useState(false);
   const [selectedSection, setSelectedSection] = useState("Prepare");
   const [pauseBtn, setPauseBtn] = useState(false);
-
+  const [showCloseBtn, setShowCloseBtn] = useState(false);
+ 
   const [showSidebar, setShowSideBar] = useState(true);
   const speed = 1000;
 
@@ -40,7 +41,9 @@ const MyProvider = ({ children }) => {
         setHead,
         enableDeliverable,
         showSidebar, 
-        setShowSideBar
+        setShowSideBar,
+        showCloseBtn,
+        setShowCloseBtn
       }}
     >
       {children}

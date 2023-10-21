@@ -435,7 +435,7 @@ const BringDown = () => {
                 pl={5}
                 pr={5}
               >
-                    <Text
+                    {/* <Text
                   position={"fixed"}
                   color={"black"}
                   top={"650px"}
@@ -449,7 +449,7 @@ const BringDown = () => {
                   ) : (
                     <BsPauseCircleFill color="white" />
                   )}
-                </Text>
+                </Text> */}
                 <TransitionGroup>
                   {dayOneEvening.slice(0, currentMessageIndex).map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";

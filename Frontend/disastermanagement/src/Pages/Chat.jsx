@@ -36,7 +36,8 @@ import { BsPauseCircleFill } from "react-icons/bs";
 import bensphone from "../Images/bensphone.jpeg";
 import relaxing from "../Images/relaxing.jpeg";
 
-import { BsArrowRightSquareFill } from "react-icons/bs";
+import { BsArrowRightShort } from "react-icons/bs";
+import { BsArrowLeftShort } from "react-icons/bs";
 
 import { useSpring, animated } from "react-spring";
 
@@ -87,11 +88,15 @@ const Chat = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const { setHead, speed, pauseBtn, setPauseBtn, setShowSideBar, showSideBar } =
+  const { setHead, speed, pauseBtn, setPauseBtn, setShowSideBar, showSideBar ,setShowCloseBtn } =
     useContext(MyContext);
 
     const handleopen = ()=>{
       setShowSideBar(true)
+    }
+
+    const handleClose = ()=>{
+      setShowSideBar(false)
     }
 
   const handlePause = () => {
@@ -132,6 +137,7 @@ const Chat = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
     setHead("Day 1 - Evening");
+    setShowCloseBtn(true);
 
     const messageDelay = speed;
 
@@ -170,6 +176,7 @@ const Chat = () => {
 
         }
       }
+    }
     };
 
     const messageInterval = setInterval(displayNextMessage, messageDelay);
@@ -212,7 +219,7 @@ const Chat = () => {
         scrollToBottom();
       }, 100);
     }
-  }, [showBox, showBoxContent2]);
+  }, [showBox, showBoxContent2,showSideBar]);
 
   return (
     <>
@@ -255,7 +262,7 @@ const Chat = () => {
               bgColor="#948888"
             >
               
-              {showSideBar ? <></> : <Box> < BsArrowRightSquareFill size={30} cursor={"pointer"} onClick={handleopen} /></Box>}
+              {/* {showSideBar ? < BsArrowLeftShort size={30} cursor={"pointer"} onClick={handleClose} /> :  < BsArrowRightShort size={30} cursor={"pointer"} onClick={handleopen} />} */}
               
               <Box pt={3} borderBottom={"0px solid black"}>
                 {users.map((el) => {
@@ -347,13 +354,12 @@ const Chat = () => {
                 pl={5}
                 pr={5}
               >
-                <Text
+                {/* <Text
                   position={"fixed"}
                   color={"black"}
 
-                  top={"85%"}
-                  left={"1450px"}
-
+                  top={"90%"}
+                  right={"2%"}
                   cursor={"pointer"}
                   fontSize={45}
                   onClick={handlePause}
@@ -363,7 +369,7 @@ const Chat = () => {
                   ) : (
                     <BsPauseCircleFill color="black" />
                   )}
-                </Text>
+                </Text> */}
                 <TransitionGroup>
                   {dayOneMorning.slice(0, currentMessageIndex).map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";

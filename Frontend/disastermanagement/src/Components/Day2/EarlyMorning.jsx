@@ -468,7 +468,7 @@ const EarlyMorning = () => {
                 pl={5}
                 pr={5}
               >
-                <Text
+                {/* <Text
                   position={"fixed"}
                   color={"black"}
                   top={"650px"}
@@ -482,7 +482,7 @@ const EarlyMorning = () => {
                   ) : (
                     <BsPauseCircleFill color="black" />
                   )}
-                </Text>
+                </Text> */}
                 <TransitionGroup>
                   {dayTwoEarlyMorning
                     .slice(0, currentMessageIndex)

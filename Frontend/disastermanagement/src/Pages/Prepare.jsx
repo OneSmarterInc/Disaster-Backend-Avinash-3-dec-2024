@@ -1,7 +1,14 @@
 import { Box, Divider, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import MyContext from '../Components/ContextApi/MyContext'
 
 const Prepare = () => {
+
+    const {setShowCloseBtn} = useContext(MyContext);
+
+    useEffect(()=>{
+        setShowCloseBtn(false);
+    })
     return (
         <Box textAlign={"left"} w={"80%"} m={"auto"} border={"0px solid red"} bg={"gray.100"}>
             <Text mt={10} mb={2} fontSize={30}>Prepare</Text>

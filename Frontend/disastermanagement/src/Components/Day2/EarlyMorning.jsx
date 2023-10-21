@@ -429,10 +429,9 @@ const EarlyMorning = () => {
                   ? withtom
                   : currentMessageIndex > 29
                   ? loss
-                  : 
-                  currentMessageIndex > 18
+                  : currentMessageIndex > 18
                   ? withtom
-                  :currentMessageIndex > 9
+                  : currentMessageIndex > 9
                   ? oncall
                   : day2morning
               }
@@ -456,8 +455,12 @@ const EarlyMorning = () => {
                   Customer Services from the applications vendor. They engage in
                   a lengthy conversation, discussing the technical intricacies.
                 </Text>
-                <Text mt={5}>Late night conference call with applications
-                                vendor (Approx. 40 people on the call)</Text>
+              </Box>
+              <Box mt={5}>
+              <Text mt={5} border={'1px solid grey'} bgColor={'grey'} color={'black'} w={'90%'} m={'auto'}>
+                Late night conference call with applications vendor (Approx. 40
+                people on the call)
+              </Text>
               </Box>
 
               <Box

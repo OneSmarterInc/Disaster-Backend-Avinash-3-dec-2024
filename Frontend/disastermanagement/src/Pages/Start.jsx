@@ -1,6 +1,3 @@
-
-
-
 import React, { useContext, useState } from "react";
 import {
   Box,
@@ -30,22 +27,9 @@ const Start = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedSection, setSelectedSection] = useState(null);
 
-import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import React, { useContext } from "react";
-import disasterLogo from "../Images/disasterLogo.png";
-import Sidebar from "../Components/Sidebar";
-import { AiOutlineMail } from "react-icons/ai";
-import MyContext from "../Components/ContextApi/MyContext";
-import { MdNotStarted } from "react-icons/md";
-import { BsPauseCircleFill } from "react-icons/bs";
-
-
-
-
   const handlePause = () => {
     setPauseBtn(!pauseBtn);
   };
-
 
   const {
     isOpen: isImagesModalOpen,
@@ -69,13 +53,10 @@ import { BsPauseCircleFill } from "react-icons/bs";
     }
   };
 
-
   return (
     <Box h={"88vh"}>
       <Flex
         bgColor="#691212"
-
-     
         justifyContent={"space-between"}
         alignItems={"center"}
         w={"100%"}
@@ -86,14 +67,22 @@ import { BsPauseCircleFill } from "react-icons/bs";
         pr={5}
         color={"white"}
       >
-        <Heading fontFamily={"Fredoka"}>
-
-         Leading Through Disruption
-
-        </Heading>
+        <Heading fontFamily={"Fredoka"}>Leading Through Disruption</Heading>
         <Heading mr={80} size={"md"} fontFamily={"Fredoka"}>
           {head}
         </Heading>
+        <Text
+          color={"black"}
+          cursor={"pointer"}
+          fontSize={45}
+          onClick={handlePause}
+        >
+          {pauseBtn ? (
+            <MdNotStarted color="black" />
+          ) : (
+            <BsPauseCircleFill color="black" />
+          )}
+        </Text>
 
         {/* <Text cursor={"pointer"} fontSize={35} onClick={handlePause}>{pauseBtn ? <MdNotStarted /> : <BsPauseCircleFill />}</Text> */}
         <div
@@ -148,21 +137,6 @@ import { BsPauseCircleFill } from "react-icons/bs";
       </Flex>
       {/* ... Rest of your code ... */}
 
-        <Text
-          color={"black"}
-          cursor={"pointer"}
-          fontSize={45}
-          onClick={handlePause}
-        >
-          {pauseBtn ? (
-            <MdNotStarted color="black" />
-          ) : (
-            <BsPauseCircleFill color="black" />
-          )}
-        </Text>
-       
-     
-
       <Box
         fontFamily={"Fredoka"}
         border={"1px solid black"}
@@ -173,16 +147,15 @@ import { BsPauseCircleFill } from "react-icons/bs";
         <Sidebar />
       </Box>
 
-
       {/* Chakra UI Modals for Images and Mails sections */}
       <Modal isOpen={isImagesModalOpen} onClose={onImagesModalClose} isCentered>
         <ModalOverlay />
-        <ModalContent maxW={'600px'}>
+        <ModalContent maxW={"600px"}>
           <ModalHeader>Images</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Image src={site1}/>
-            <Image src={site}/>
+            <Image src={site1} />
+            <Image src={site} />
             {/* You can add more content here */}
           </ModalBody>
         </ModalContent>
@@ -206,7 +179,7 @@ import { BsPauseCircleFill } from "react-icons/bs";
               </Text>
             </Box>
             <Box border={"1px solid grey"} mt={5} p={2}>
-              <Text fontWeight={'bold'}>Announcement</Text>
+              <Text fontWeight={"bold"}>Announcement</Text>
               <Text>
                 {" "}
                 To all our valued team members and stakeholders, we are pleased
@@ -221,11 +194,8 @@ import { BsPauseCircleFill } from "react-icons/bs";
           </ModalBody>
         </ModalContent>
       </Modal>
-    
-
     </Box>
   );
 };
-
 
 export default Start;

@@ -32,14 +32,13 @@ import EarlyMorning from "../Components/Day2/EarlyMorning";
 import EarlyMorning4 from "../Components/Day4/EarlyMorning4";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
-
+import openemail from "../Images/openemail.jpeg";
 import bensphone from "../Images/bensphone.jpeg";
 import relaxing from "../Images/relaxing.jpeg";
-
+import bensleep from "../Images/bensleep.jpeg";
 import { BsArrowRightSquareFill } from "react-icons/bs";
-
+import bensleep2 from "../Images/bensleep2.jpeg";
 import { useSpring, animated } from "react-spring";
-
 
 const Chat = () => {
   const [flip, setFlip] = useState(false);
@@ -66,9 +65,6 @@ const Chat = () => {
   const [day5Popup2, setDay5Popup2] = useState(true);
   const [day5Popup3, setDay5Popup3] = useState(true);
 
- 
-
-
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
 
@@ -81,8 +77,7 @@ const Chat = () => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [showPopup2, setShowPopup2] = useState(false);
-  const [showPopup3, setShowPopup3] = useState(false);  
-
+  const [showPopup3, setShowPopup3] = useState(false);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -90,9 +85,9 @@ const Chat = () => {
   const { setHead, speed, pauseBtn, setPauseBtn, setShowSideBar, showSideBar } =
     useContext(MyContext);
 
-    const handleopen = ()=>{
-      setShowSideBar(true)
-    }
+  const handleopen = () => {
+    setShowSideBar(true);
+  };
 
   const handlePause = () => {
     setPauseBtn(!pauseBtn);
@@ -128,46 +123,48 @@ const Chat = () => {
     },
   ];
 
-
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
-    setHead("Day 1 - Evening");
+    if(currentMessageIndex > 3 ){
+    setHead("Day 1 - Night");
+    }
+    else{
+      setHead("Day 1 - Evening");
+
+    }
 
     const messageDelay = speed;
-
 
     let timeoutIndex = 0;
 
     const displayNextMessage = () => {
-      if(!pauseBtn){
-      if (!chatPaused && currentMessageIndex < dayOneMorning.length) {
-        const message = dayOneMorning[currentMessageIndex];
-        setCurrentMessageIndex((prevIndex) => prevIndex + 1);
-        setActiveUser(message.sender);
+      if (!pauseBtn) {
+        if (!chatPaused && currentMessageIndex < dayOneMorning.length) {
+          const message = dayOneMorning[currentMessageIndex];
+          setCurrentMessageIndex((prevIndex) => prevIndex + 1);
+          setActiveUser(message.sender);
 
-        if (currentMessageIndex === 0) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup(true);
-          }, 2000);
-        }
-        else if (currentMessageIndex === 2) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup2(true);
-          }, 2000);
-        }
-        else if (currentMessageIndex === 5) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup3(true);
-          }, 2000);
-        }
-      } else {
-        if (currentMessageIndex === dayOneMorning.length) {
-          // The chat has ended completely, set showBox to true
-          setShowBox(true);
-
+          if (currentMessageIndex === 0) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup(true);
+            }, 2000);
+          } else if (currentMessageIndex === 2) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup2(true);
+            }, 2000);
+          } else if (currentMessageIndex === 5) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup3(true);
+            }, 2000);
+          }
+        } else {
+          if (currentMessageIndex === dayOneMorning.length) {
+            // The chat has ended completely, set showBox to true
+            setShowBox(true);
+          }
         }
       }
     };
@@ -218,7 +215,7 @@ const Chat = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <Morning5 />
+        <BringDown />
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : value === "Remaining calm and level-headed during challenges" ? (
@@ -254,9 +251,19 @@ const Chat = () => {
               overflow={"auto"}
               bgColor="#948888"
             >
-              
-              {showSideBar ? <></> : <Box> < BsArrowRightSquareFill size={30} cursor={"pointer"} onClick={handleopen} /></Box>}
-              
+              {showSideBar ? (
+                <></>
+              ) : (
+                <Box>
+                  {" "}
+                  <BsArrowRightSquareFill
+                    size={30}
+                    cursor={"pointer"}
+                    onClick={handleopen}
+                  />
+                </Box>
+              )}
+
               <Box pt={3} borderBottom={"0px solid black"}>
                 {users.map((el) => {
                   return (
@@ -304,7 +311,13 @@ const Chat = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              bgImage={ currentMessageIndex > 3 ? day1morning : bensphone}
+              bgImage={
+                currentMessageIndex > 6
+                  ? bensleep2
+                  : currentMessageIndex > 3
+                  ? relaxing
+                  : bensphone
+              }
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
@@ -319,41 +332,40 @@ const Chat = () => {
                 pl={3}
                 pt={3}
                 pb={3}
-                
               >
-                <Text fontSize={"20"}>
+                <Text fontSize={"18"}>
                   The office of Ben Carter. He's wrapping up for the day,
                   shutting down his computer,gathering his things, and
                   exchanging a few words with his colleagues before heading out.
                 </Text>
               </Box>
-              <Box border={'1px solid grey'} fontSize={"20"} w={'90%'} m={'auto'} color={'black'} bgColor={'grey'} mt={10}>
-                <Text>
-                  Ben's Phone: A soft chime. New email notification.
-                  
+              <Box
+                
+                
+                mt={2}
+              >
+                <Text bgColor={'grey'} color={'black'} w={'90%'} m={'auto'}>Ben's Phone: A soft chime. New email notification.</Text>
+                <Text  bgColor={'grey'} color={'black'} w={'90%'} m={'auto'}>
+                  Ben glances at the email subject: "Minor issues at the data
+                  center."
                 </Text>
               </Box>
-              <Box border={'1px solid grey'} fontSize={"20"} w={'90%'} m={'auto'} color={'black'} bgColor={'grey'}>
-                <Text>
-                  Ben glances at the email subject: "Minor issues at the data center."
-                </Text>
-              </Box>
+              
 
               <Box
                 w={"90%"}
                 h={"68vh"}
                 border="0px solid red"
                 m={"auto"}
+              
                 pl={5}
                 pr={5}
               >
                 <Text
                   position={"fixed"}
                   color={"black"}
-
                   top={"85%"}
                   left={"1450px"}
-
                   cursor={"pointer"}
                   fontSize={45}
                   onClick={handlePause}
@@ -445,11 +457,12 @@ const Chat = () => {
                               flex="1"
                             >
                               <Text>
-                              He opens the email. It's a brief report about some applications showing sporadic errors.
+                                He opens the email. It's a brief report about
+                                some applications showing sporadic errors.
                               </Text>
                             </Box>
                             <Box textAlign="center" flex="1">
-                              <Image src={bensphone} borderRadius={10} />
+                              <Image src={openemail} borderRadius={10} />
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup}
@@ -458,7 +471,7 @@ const Chat = () => {
                                 _hover={{ bgColor: "#a1e8f0", color: "black" }}
                                 mt={3}
                                 borderRadius={10}
-                                w={'100%'}
+                                w={"100%"}
                               >
                                 Close
                               </Button>
@@ -471,7 +484,7 @@ const Chat = () => {
                       </ModalContent>
                     </Modal>
                   )}
-                  
+
                   {showPopup2 && (
                     <Modal isOpen={day5Popup2}>
                       <ModalOverlay />
@@ -498,7 +511,8 @@ const Chat = () => {
                               flex="1"
                             >
                               <Text>
-                              An hour later. Ben is at home, relaxing. His phone buzzes with a call from Kate.
+                                An hour later. Ben is at home, relaxing. His
+                                phone buzzes with a call from Kate.
                               </Text>
                             </Box>
                             <Box textAlign="center" flex="1">
@@ -511,7 +525,7 @@ const Chat = () => {
                                 _hover={{ bgColor: "#a1e8f0", color: "black" }}
                                 mt={3}
                                 borderRadius={10}
-                                w={'100%'}
+                                w={"100%"}
                               >
                                 Close
                               </Button>
@@ -550,11 +564,13 @@ const Chat = () => {
                               flex="1"
                             >
                               <Text>
-                              Late at night. Ben is asleep. His phone rings persistently. Groggily, he picks it up. It's Kate
+                                Late at night. Ben is asleep. His phone rings
+                                persistently. Groggily, he picks it up. It's
+                                Kate
                               </Text>
                             </Box>
                             <Box textAlign="center" flex="1">
-                              <Image src={day1morning} borderRadius={10} />
+                              <Image src={bensleep} borderRadius={10} />
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup3}
@@ -563,7 +579,7 @@ const Chat = () => {
                                 _hover={{ bgColor: "#a1e8f0", color: "black" }}
                                 mt={3}
                                 borderRadius={10}
-                                w={'100%'}
+                                w={"100%"}
                               >
                                 Close
                               </Button>
@@ -576,7 +592,7 @@ const Chat = () => {
                       </ModalContent>
                     </Modal>
                   )}
-                  
+
                   {showBox && (
                     <>
                       <Box

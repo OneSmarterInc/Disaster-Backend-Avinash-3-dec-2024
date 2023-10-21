@@ -546,7 +546,7 @@ const Morning5 = () => {
                 pl={5}
                 pr={5}
               >
-                <Text
+                {/* <Text
                   position={"fixed"}
                   color={"black"}
                   top={"650px"}
@@ -560,7 +560,7 @@ const Morning5 = () => {
                   ) : (
                     <BsPauseCircleFill color="white" />
                   )}
-                </Text>
+                </Text> */}
                 <TransitionGroup>
                   {dayFiveMorning.slice(0, currentMessageIndex).map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";

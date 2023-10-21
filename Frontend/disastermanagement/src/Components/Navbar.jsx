@@ -21,6 +21,7 @@ import { MoonIcon, SunIcon, SearchIcon } from '@chakra-ui/icons';
 import usericon from '../Images/usericon.png';
 import logo from '../Images/disasterLogo.png';
 import { Link } from 'react-router-dom';
+import {GiHamburgerMenu} from "react-icons/gi"
 
 interface Props {
   children: React.ReactNode;

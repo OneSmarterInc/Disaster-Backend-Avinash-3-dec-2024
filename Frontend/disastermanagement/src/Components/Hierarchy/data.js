@@ -12,6 +12,7 @@ import lucas from "../userImages/lucasoliveria.jpg";
 import carlos from "../userImages/carlos.jpg";
 import liam from "../userImages/liam.jpeg";
 import raj from "../userImages/rajpatel.jpg";
+import gajji from "../userImages/gaji.jpg";
 
 export const ORGDATA = {
 
@@ -91,3 +92,22 @@ export const ORGDATA = {
     },
   ],
 };
+
+
+export const externalData = [
+  {
+    name: "Tom Mitchell",
+    designation: "Apllication Vendor",
+    url: gajji
+  },
+  {
+    name: "Julia Harper",
+    designation: "Disk Vendor",
+    url: gajji
+  },
+  {
+    name: "Tom",
+    designation: "ERP Vendor",
+    url: gajji
+  }
+]

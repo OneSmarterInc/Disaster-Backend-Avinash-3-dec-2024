@@ -36,6 +36,8 @@ import openemail from "../Images/openemail.jpeg";
 import bensphone from "../Images/bensphone.jpeg";
 import relaxing from "../Images/relaxing.jpeg";
 
+import bgcall from "../Images/bgcall.jpeg";
+
 
 import { BsArrowRightShort } from "react-icons/bs";
 import { BsArrowLeftShort } from "react-icons/bs";
@@ -265,7 +267,9 @@ const Chat = () => {
               
               {/* {showSideBar ? < BsArrowLeftShort size={30} cursor={"pointer"} onClick={handleClose} /> :  < BsArrowRightShort size={30} cursor={"pointer"} onClick={handleopen} />} */}
               
+
               {showSideBar ? (
+
                 <></>
               ) : (
                 <Box>
@@ -276,7 +280,7 @@ const Chat = () => {
                     onClick={handleopen}
                   />
                 </Box>
-              )}
+              )} */}
 
               <Box pt={3} borderBottom={"0px solid black"}>
                 {users.map((el) => {
@@ -327,7 +331,7 @@ const Chat = () => {
               pb={2}
               bgImage={
                 currentMessageIndex > 6
-                  ? bensleep2
+                  ? bgcall
                   : currentMessageIndex > 3
                   ? relaxing
                   : bensphone

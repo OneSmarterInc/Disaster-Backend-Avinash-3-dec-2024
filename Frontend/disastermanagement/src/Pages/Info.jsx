@@ -37,7 +37,7 @@ const Info = () => {
           mt={"10px"}
           p={8}
           textAlign="center"
-          bg="rgba(245, 255, 255, 0.6)" // Add a semi-transparent white background
+          bg="rgba(245, 255, 255, 0.8)" // Add a semi-transparent white background
           boxShadow="lg"
           borderRadius="lg"
         >
@@ -49,7 +49,7 @@ const Info = () => {
             color={useColorModeValue("black", "white")}
           >
             Leading Through Disruption: An Executive Simulation on Disaster
-            Preparedness
+            Managament
           </Text>
           {/* ... Rest of your text content ... */}
           <Text
@@ -273,13 +273,7 @@ const Info = () => {
               >
                 Drive a culture of continuous improvement, adapting and refining
                 disaster recovery strategies in line with emerging risks and
-                best practices. Incorporating this simulation into executive
-                education programs will empower senior leaders to approach
-                disaster recovery not as a technical afterthought but as a core
-                strategic component in their leadership toolkit. As they
-                navigate the challenges of the digital age, this understanding
-                will be pivotal in ensuring organizational resilience,
-                stakeholder trust, and sustained success.
+                best practices.
               </Text>
             </li>
           </ul>

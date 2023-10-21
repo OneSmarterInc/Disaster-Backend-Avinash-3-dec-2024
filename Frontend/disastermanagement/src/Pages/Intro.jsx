@@ -30,11 +30,11 @@ const Intro = () => {
           }
         >
           <Heading
-            fontFamily={"Croissant One"}
+           
             fontSize={38}
-            fontStyle={"italic"}
+            
           >
-            Introduction !
+            Introduction
           </Heading>
           <Text
             textAlign={"justify"}

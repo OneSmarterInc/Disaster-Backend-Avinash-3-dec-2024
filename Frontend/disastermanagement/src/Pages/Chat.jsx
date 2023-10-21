@@ -32,9 +32,14 @@ import EarlyMorning from "../Components/Day2/EarlyMorning";
 import EarlyMorning4 from "../Components/Day4/EarlyMorning4";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
+
+import bensphone from "../Images/bensphone.jpeg";
+import relaxing from "../Images/relaxing.jpeg";
+
 import { BsArrowRightSquareFill } from "react-icons/bs";
 
 import { useSpring, animated } from "react-spring";
+
 
 const Chat = () => {
   const [flip, setFlip] = useState(false);
@@ -57,6 +62,12 @@ const Chat = () => {
   const [showBoxContent2, setshowBoxContent2] = useState(false);
   const [value, setValue] = useState(null);
   const [value1, setValue1] = useState(null);
+  const [day5Popup, setDay5Popup] = useState(true);
+  const [day5Popup2, setDay5Popup2] = useState(true);
+  const [day5Popup3, setDay5Popup3] = useState(true);
+
+ 
+
 
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
@@ -68,6 +79,10 @@ const Chat = () => {
   const [ShowScroll, setShowScroll] = useState(false);
   const [chatPaused, setChatPaused] = useState(false);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup2, setShowPopup2] = useState(false);
+  const [showPopup3, setShowPopup3] = useState(false);  
+
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -113,23 +128,46 @@ const Chat = () => {
     },
   ];
 
+
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
-    setHead("Day 1 - Morning");
+    setHead("Day 1 - Evening");
 
     const messageDelay = speed;
 
+
+    let timeoutIndex = 0;
+
     const displayNextMessage = () => {
-      if (!pauseBtn) {
-        if (!chatPaused && currentMessageIndex < dayOneMorning.length) {
-          const message = dayOneMorning[currentMessageIndex];
-          setCurrentMessageIndex((prevIndex) => prevIndex + 1);
-          setActiveUser(message.sender);
-        } else {
-          if (currentMessageIndex === dayOneMorning.length) {
-            // The chat has ended completely, set showBox to true
-            setShowBox(true);
-          }
+      if(!pauseBtn){
+      if (!chatPaused && currentMessageIndex < dayOneMorning.length) {
+        const message = dayOneMorning[currentMessageIndex];
+        setCurrentMessageIndex((prevIndex) => prevIndex + 1);
+        setActiveUser(message.sender);
+
+        if (currentMessageIndex === 0) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup(true);
+          }, 2000);
+        }
+        else if (currentMessageIndex === 2) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup2(true);
+          }, 2000);
+        }
+        else if (currentMessageIndex === 5) {
+          setChatPaused(true);
+          setTimeout(() => {
+            setShowPopup3(true);
+          }, 2000);
+        }
+      } else {
+        if (currentMessageIndex === dayOneMorning.length) {
+          // The chat has ended completely, set showBox to true
+          setShowBox(true);
+
         }
       }
     };
@@ -139,7 +177,28 @@ const Chat = () => {
     return () => {
       clearInterval(messageInterval);
     };
-  }, [currentMessageIndex, pauseBtn]);
+  }, [currentMessageIndex, chatPaused, pauseBtn]);
+
+  const closePopup = () => {
+    // setShowPopup(false);
+    setDay5Popup(false);
+    // onClose();
+    setChatPaused(false);
+  };
+
+  const closePopup2 = () => {
+    // setShowPopup(false);
+    setDay5Popup2(false);
+    // onClose();
+    setChatPaused(false);
+  };
+
+  const closePopup3 = () => {
+    // setShowPopup(false);
+    setDay5Popup3(false);
+    // onClose();
+    setChatPaused(false);
+  };
 
   useEffect(() => {
     // Scroll to the bottom after chatData changes
@@ -245,7 +304,7 @@ const Chat = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              bgImage={day1morning}
+              bgImage={ currentMessageIndex > 3 ? day1morning : bensphone}
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
@@ -260,11 +319,23 @@ const Chat = () => {
                 pl={3}
                 pt={3}
                 pb={3}
+                
               >
                 <Text fontSize={"20"}>
                   The office of Ben Carter. He's wrapping up for the day,
                   shutting down his computer,gathering his things, and
                   exchanging a few words with his colleagues before heading out.
+                </Text>
+              </Box>
+              <Box border={'1px solid grey'} fontSize={"20"} w={'90%'} m={'auto'} color={'black'} bgColor={'grey'} mt={10}>
+                <Text>
+                  Ben's Phone: A soft chime. New email notification.
+                  
+                </Text>
+              </Box>
+              <Box border={'1px solid grey'} fontSize={"20"} w={'90%'} m={'auto'} color={'black'} bgColor={'grey'}>
+                <Text>
+                  Ben glances at the email subject: "Minor issues at the data center."
                 </Text>
               </Box>
 
@@ -279,8 +350,10 @@ const Chat = () => {
                 <Text
                   position={"fixed"}
                   color={"black"}
+
                   top={"85%"}
                   left={"1450px"}
+
                   cursor={"pointer"}
                   fontSize={45}
                   onClick={handlePause}
@@ -346,6 +419,164 @@ const Chat = () => {
                       </CSSTransition>
                     );
                   })}
+                  {showPopup && (
+                    <Modal isOpen={day5Popup}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
+                        borderRadius={10}
+                        width={["90%", "70%", "50%"]} // Responsive width
+                        maxW="500px"
+                      >
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Flex flexDirection={["column", "row"]} gap={[4, 2]}>
+                            {" "}
+                            {/* Responsive layout */}
+                            <Box
+                              bgColor="white"
+                              boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
+                              borderRadius={10}
+                              p={4}
+                              flex="1"
+                            >
+                              <Text>
+                              He opens the email. It's a brief report about some applications showing sporadic errors.
+                              </Text>
+                            </Box>
+                            <Box textAlign="center" flex="1">
+                              <Image src={bensphone} borderRadius={10} />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup}
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                mt={3}
+                                borderRadius={10}
+                                w={'100%'}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  
+                  {showPopup2 && (
+                    <Modal isOpen={day5Popup2}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
+                        borderRadius={10}
+                        width={["90%", "70%", "50%"]} // Responsive width
+                        maxW="500px"
+                      >
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Flex flexDirection={["column", "row"]} gap={[4, 2]}>
+                            {" "}
+                            {/* Responsive layout */}
+                            <Box
+                              bgColor="white"
+                              boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
+                              borderRadius={10}
+                              p={4}
+                              flex="1"
+                            >
+                              <Text>
+                              An hour later. Ben is at home, relaxing. His phone buzzes with a call from Kate.
+                              </Text>
+                            </Box>
+                            <Box textAlign="center" flex="1">
+                              <Image src={relaxing} borderRadius={10} />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup2}
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                mt={3}
+                                borderRadius={10}
+                                w={'100%'}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup3 && (
+                    <Modal isOpen={day5Popup3}>
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
+                        borderRadius={10}
+                        width={["90%", "70%", "50%"]} // Responsive width
+                        maxW="500px"
+                      >
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Flex flexDirection={["column", "row"]} gap={[4, 2]}>
+                            {" "}
+                            {/* Responsive layout */}
+                            <Box
+                              bgColor="white"
+                              boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
+                              borderRadius={10}
+                              p={4}
+                              flex="1"
+                            >
+                              <Text>
+                              Late at night. Ben is asleep. His phone rings persistently. Groggily, he picks it up. It's Kate
+                              </Text>
+                            </Box>
+                            <Box textAlign="center" flex="1">
+                              <Image src={day1morning} borderRadius={10} />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup3}
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                mt={3}
+                                borderRadius={10}
+                                w={'100%'}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  
                   {showBox && (
                     <>
                       <Box

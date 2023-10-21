@@ -30,7 +30,7 @@ const MainRoutes = () => {
             exit="exit"
             variants={pageVariants}
           >
-            <Home />
+            <Info />
           </motion.div>
         }
       />

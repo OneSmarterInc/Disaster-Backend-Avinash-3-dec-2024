@@ -22,7 +22,7 @@ const Home = () => {
   }
   return (
     <>
-    <Navbar />
+    {/* <Navbar /> */}
 
       <Box
         bgPosition={"center"}
@@ -40,7 +40,7 @@ const Home = () => {
        <br />
         <Flex m={"auto"} fontFamily={"Fredoka"} w={"80%"} gap={20}>
           <Text color={"white"} fontSize={"30px"}> 1. Disaster Recovery Business Case</Text>
-          <Button mt={"1px"}><Link to={"/info"}>Run Simulation</Link></Button>
+          <Button mt={"1px"}><Link to={""}>Run Simulation</Link></Button>
         </Flex>
         {/* <br />
         <Flex m={"auto"} fontFamily={"Fredoka"} w={"80%"} gap={20}>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import {
   Box,
@@ -11,47 +11,47 @@ import {
 } from "@chakra-ui/react";
 import dataware from "../Images/dataware.jpg";
 import { Link } from "react-router-dom";
+import homepage from "../Images/homepage.png";
 
 const Info = () => {
+  useEffect(() => {
+    // Scroll to the top of the page when the component mounts
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {/* <Navbar /> */}
-      <Box minH={"88vh"} p={4} mt={"30px"}>
-        <Text fontSize={28} fontWeight={"bold"} textAlign="center" mt={4}>
-          Leading Through Disruption: An Executive Simulation on Disaster
-          Preparedness
-        </Text>
-        {/* <Flex
-          flexWrap={{ base: "wrap", md: "nowrap" }}
-          direction={{ base: "column", md: "row" }}
-          mt={4}
-          justify="center"
-        > */}
-
-        {/* <Box
-            // w={{ base: "100%", md: "45%" }}
-            w={'70%'}
-            m={'auto'}
-            p={4}
-            textAlign="center"
-            bg="white"
-            boxShadow="lg"
-            borderRadius="lg"
-          >
-           
-          </Box> */}
+      <Box
+        minH={"88vh"}
+        p={4}
+        bgPosition={"center"}
+        bgSize={"cover"}
+        bgRepeat={"no-repeat"}
+        bgImage={homepage}
+        position="relative" // Add this line
+      >
         <Box
-          // w={{ base: "100%", md: "45%" }}
           w={"70%"}
           m={"auto"}
-          mt={'10px'}
-          p={4}
+          mt={"10px"}
+          p={8}
           textAlign="center"
-          bg="white"
+          bg="rgba(245, 255, 255, 0.6)" // Add a semi-transparent white background
           boxShadow="lg"
           borderRadius="lg"
         >
-          {/* <Image src={dataware} alt="Data Center" /> */}
+          <Text
+            fontSize={28}
+            fontWeight={"bold"}
+            textAlign="center"
+            mt={4}
+            color={useColorModeValue("black", "white")}
+          >
+            Leading Through Disruption: An Executive Simulation on Disaster
+            Preparedness
+          </Text>
+          {/* ... Rest of your text content ... */}
           <Text
             fontSize={16}
             textAlign="justify"
@@ -106,18 +106,21 @@ const Info = () => {
           >
             Strategic Perspective on Disaster Recovery:
           </Text>
+          <ul>
+            <li>
+              <Text
+                fontSize={16}
+                textAlign="justify"
+                color={useColorModeValue("black", "gray.800")}
+              >
+                Grasp the broader business, reputational, and financial
+                implications of disaster scenarios. Understand the strategic
+                importance of proactive disaster recovery planning in
+                safeguarding organizational value.
+              </Text>
+            </li>
+          </ul>
           <br />
-          <Text
-            fontSize={16}
-            textAlign="justify"
-            color={useColorModeValue("black", "gray.800")}
-          >
-            Grasp the broader business, reputational, and financial implications
-            of disaster scenarios. Understand the strategic importance of
-            proactive disaster recovery planning in safeguarding organizational
-            value.
-          </Text>
-          <br/>
           <Text
             fontSize={16}
             textAlign="justify"
@@ -126,24 +129,29 @@ const Info = () => {
           >
             Leadership during Crisis:
           </Text>
-          <br/>
-          <Text
-            fontSize={16}
-            textAlign="justify"
-            color={useColorModeValue("black", "gray.800")}
-          >
-            Cultivate the ability to lead with clarity, decisiveness, and vision
-            during disruptions.
-          </Text>
-          <Text
-            fontSize={16}
-            textAlign="justify"
-            color={useColorModeValue("black", "gray.800")}
-          >
-            Recognize the significance of transparent and timely communication
-            with stakeholders at all levels.
-          </Text>
-          <br/>
+          <ul>
+            <li>
+              <Text
+                fontSize={16}
+                textAlign="justify"
+                color={useColorModeValue("black", "gray.800")}
+              >
+                Cultivate the ability to lead with clarity, decisiveness, and
+                vision during disruptions.
+              </Text>
+            </li>
+            <li>
+              <Text
+                fontSize={16}
+                textAlign="justify"
+                color={useColorModeValue("black", "gray.800")}
+              >
+                Recognize the significance of transparent and timely
+                communication with stakeholders at all levels.
+              </Text>
+            </li>
+          </ul>
+          <br />
           <Text
             fontSize={16}
             textAlign="justify"
@@ -152,25 +160,30 @@ const Info = () => {
           >
             Anticipatory Strategy Formulation:
           </Text>
-          <br/>
-          <Text
-            fontSize={16}
-            textAlign="justify"
-            color={useColorModeValue("black", "gray.800")}
-          >
-            Analyze potential disaster scenarios, foreseeing their broader
-            business implications.
-          </Text>
-          <Text
-            fontSize={16}
-            textAlign="justify"
-            color={useColorModeValue("black", "gray.800")}
-          >
-            Develop strategies that ensure business continuity, safeguard
-            stakeholder trust, and position the organization advantageously in
-            post-disaster scenarios.
-          </Text>
-          <br/>
+          <ul>
+            <li>
+              <Text
+                fontSize={16}
+                textAlign="justify"
+                color={useColorModeValue("black", "gray.800")}
+              >
+                Analyze potential disaster scenarios, foreseeing their broader
+                business implications.
+              </Text>
+            </li>
+            <li>
+              <Text
+                fontSize={16}
+                textAlign="justify"
+                color={useColorModeValue("black", "gray.800")}
+              >
+                Develop strategies that ensure business continuity, safeguard
+                stakeholder trust, and position the organization advantageously
+                in post-disaster scenarios.
+              </Text>
+            </li>
+          </ul>
+          <br />
           <Text
             fontSize={16}
             textAlign="justify"
@@ -179,24 +192,29 @@ const Info = () => {
           >
             Stakeholder Management and Communication:{" "}
           </Text>
-          <br/>
-          <Text
-            fontSize={16}
-            textAlign="justify"
-            color={useColorModeValue("black", "gray.800")}
-          >
-            Home skills to manage stakeholder expectations during crises,
-            balancing transparency with reassurance.
-          </Text>
-          <Text
-            fontSize={16}
-            textAlign="justify"
-            color={useColorModeValue("black", "gray.800")}
-          >
-            Understand the nuances of effective crisis communication, both
-            internally and externally.
-          </Text>
-          <br/>
+          <ul>
+            <li>
+              <Text
+                fontSize={16}
+                textAlign="justify"
+                color={useColorModeValue("black", "gray.800")}
+              >
+                Home skills to manage stakeholder expectations during crises,
+                balancing transparency with reassurance.
+              </Text>
+            </li>
+            <li>
+              <Text
+                fontSize={16}
+                textAlign="justify"
+                color={useColorModeValue("black", "gray.800")}
+              >
+                Understand the nuances of effective crisis communication, both
+                internally and externally.
+              </Text>
+            </li>
+          </ul>
+          <br />
           <Text
             fontSize={16}
             textAlign="justify"
@@ -205,24 +223,29 @@ const Info = () => {
           >
             Collaborative Leadership:
           </Text>
-          <br/>
-          <Text
-            fontSize={16}
-            textAlign="justify"
-            color={useColorModeValue("black", "gray.800")}
-          >
-            Foster cross-functional collaboration, ensuring that technical and
-            strategic teams align in their disaster response efforts.
-          </Text>
-          <Text
-            fontSize={16}
-            textAlign="justify"
-            color={useColorModeValue("black", "gray.800")}
-          >
-            Appreciate the value of diverse perspectives in formulating robust
-            disaster recovery strategies.
-          </Text>
-          <br/>
+          <ul>
+            <li>
+              <Text
+                fontSize={16}
+                textAlign="justify"
+                color={useColorModeValue("black", "gray.800")}
+              >
+                Foster cross-functional collaboration, ensuring that technical
+                and strategic teams align in their disaster response efforts.
+              </Text>
+            </li>
+            <li>
+              <Text
+                fontSize={16}
+                textAlign="justify"
+                color={useColorModeValue("black", "gray.800")}
+              >
+                Appreciate the value of diverse perspectives in formulating
+                robust disaster recovery strategies.
+              </Text>
+            </li>
+          </ul>
+          <br />
           <Text
             fontSize={16}
             textAlign="justify"
@@ -231,32 +254,50 @@ const Info = () => {
           >
             Reflective Leadership and Continuous Improvement:
           </Text>
+          <ul>
+            <li>
+              <Text
+                fontSize={16}
+                textAlign="justify"
+                color={useColorModeValue("black", "gray.800")}
+              >
+                Use the insights from the simulation to reflect on potential
+                vulnerabilities in current organizational strategies.
+              </Text>
+            </li>
+            <li>
+              <Text
+                fontSize={16}
+                textAlign="justify"
+                color={useColorModeValue("black", "gray.800")}
+              >
+                Drive a culture of continuous improvement, adapting and refining
+                disaster recovery strategies in line with emerging risks and
+                best practices. Incorporating this simulation into executive
+                education programs will empower senior leaders to approach
+                disaster recovery not as a technical afterthought but as a core
+                strategic component in their leadership toolkit. As they
+                navigate the challenges of the digital age, this understanding
+                will be pivotal in ensuring organizational resilience,
+                stakeholder trust, and sustained success.
+              </Text>
+            </li>
+          </ul>
           <br/>
           <Text
             fontSize={16}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
           >
-            Use the insights from the simulation to reflect on potential
-            vulnerabilities in current organizational strategies.
-          </Text>
-          <Text
-            fontSize={16}
-            textAlign="justify"
-            color={useColorModeValue("black", "gray.800")}
-          >
-            Drive a culture of continuous improvement, adapting and refining
-            disaster recovery strategies in line with emerging risks and best
-            practices. Incorporating this simulation into executive education
-            programs will empower senior leaders to approach disaster recovery
-            not as a technical afterthought but as a core strategic component in
-            their leadership toolkit. As they navigate the challenges of the
-            digital age, this understanding will be pivotal in ensuring
-            organizational resilience, stakeholder trust, and sustained success.
+            Incorporating this simulation into executive education programs will
+            empower senior leaders to approach disaster recovery not as a
+            technical afterthought but as a core strategic component in their
+            leadership toolkit. As they navigate the challenges of the digital
+            age, this understanding will be pivotal in ensuring organizational
+            resilience, stakeholder trust, and sustained success.
           </Text>
         </Box>
 
-        {/* </Flex> */}
         <Center mt={4}>
           <Button bgColor="#35A6F5" px={6} py={3}>
             <Link to={"/DSRBC"}>Start</Link>

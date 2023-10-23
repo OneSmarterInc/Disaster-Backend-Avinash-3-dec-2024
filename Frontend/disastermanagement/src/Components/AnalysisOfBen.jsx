@@ -42,7 +42,7 @@ const AnalysisOfBen = () => {
           <ModalBody fontFamily={"Fredoka"}>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18}>
-                Decisive in Action:
+              1. Decisive in Action:
               </Text>
               <Text>
                 At the onset of challenges, Ben Carter doesn't waver. His
@@ -55,7 +55,7 @@ const AnalysisOfBen = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Master Communicator:
+              2. Master Communicator:
               </Text>
               <Text>
                 Whether it's with his internal team or external partners, Ben's
@@ -68,7 +68,7 @@ const AnalysisOfBen = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Unwavering Composure:
+               3. Unwavering Composure:
               </Text>
               <Text>
                 Despite the prolonged nature of the crisis, repeated setbacks,
@@ -79,7 +79,7 @@ const AnalysisOfBen = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Adaptive Thinker:
+               4. Adaptive Thinker:
               </Text>
               <Text>
                 Post-crisis reflection reveals a leader who values adaptability.
@@ -91,7 +91,7 @@ const AnalysisOfBen = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Collaborative Spirit:
+               5. Collaborative Spirit:
               </Text>
               <Text>
                 Throughout the narrative, Ben's emphasis on teamwork and
@@ -104,7 +104,7 @@ const AnalysisOfBen = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Visionary Outlook:
+               6. Visionary Outlook:
               </Text>
               <Text>
                 Beyond the immediate crisis, Ben's leadership reflects a

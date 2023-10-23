@@ -41,6 +41,7 @@ const Chat = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [showPopup2, setShowPopup2] = useState(false);
   const [showPopup3, setShowPopup3] = useState(false);
+  const [startIndex, setStartIndex] = useState(0);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -81,11 +82,15 @@ const Chat = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
     setShowCloseBtn(true);
-    console.log(currentMessageIndex);
     if (currentMessageIndex > 3) {
       setHead("Day 1 - Night");
     } else {
       setHead("Day 1 - Evening");
+    }
+    
+    console.log(startIndex ,currentMessageIndex, dayOneMorning[startIndex].message);
+    if(currentMessageIndex === 3){
+      setStartIndex(currentMessageIndex)
     }
 
     const messageDelay = speed;
@@ -129,6 +134,12 @@ const Chat = () => {
     };
   }, [currentMessageIndex, chatPaused, pauseBtn]);
 
+  useEffect(()=>{
+    if(currentMessageIndex === 5){
+      setStartIndex(currentMessageIndex)
+    }
+  },[currentMessageIndex])
+
   const closePopup = () => {
     // setShowPopup(false);
     setDay5Popup(false);
@@ -164,7 +175,8 @@ const Chat = () => {
     }
   }, [showBox, showBoxContent2, showSideBar]);
 
-  const visibleMessages = dayOneMorning.slice(0, currentMessageIndex);
+  
+  const visibleMessages = dayOneMorning.slice(startIndex, currentMessageIndex);
 
   return (
     <>

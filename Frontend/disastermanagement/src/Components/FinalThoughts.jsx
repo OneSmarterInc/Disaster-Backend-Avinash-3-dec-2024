@@ -45,6 +45,11 @@ const FinalThoughts = () => {
           <ModalCloseButton />
           <ModalBody fontFamily={"Fredoka"}>
             <Text fontWeight={"600"} fontSize={18}>
+              This framework provides a lens to view Ben Carter's shifting focus
+              and awareness throughout the simulation. It shows a leader who is
+              versatile and can tap into different domains of awareness as the
+              situation demands. This ability to shift focus and adapt is a
+              hallmark of effective leadership, especially in crisis situations.
               The simulation offers a rich narrative that can be analyzed
               through various lenses to gain deeper insights into leadership,
               crisis management, and organizational dynamics. Apart from the
@@ -56,154 +61,272 @@ const FinalThoughts = () => {
               <Text fontWeight={"600"} fontSize={18} mt={10}>
                 1. Organizational Culture and Dynamics:
               </Text>
-              <VStack>
-                <Text fontWeight={"600"} fontSize={18}>
-                  Trust and Autonomy:
-                </Text>
-                <UnorderedList>
-                  <ListItem>
-                    • Insight: Throughout the simulation, Ben Carter delegates
-                    tasks to team members like Kate Sullivan, indicating a level
-                    of trust in their capabilities.
-                  </ListItem>
-                </UnorderedList>
-              </VStack>
-              <Text>
-                Understanding the technical intricacies of the situation,
-                including systems, processes, and tools.
-              </Text>
-            </VStack>
-            <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Situational Awareness:
-              </Text>
-              <Text>
-                Grasping the immediate context, the severity of the situation,
-                and its implications.
-              </Text>
-            </VStack>
-            <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={18} mt={5}>
-                External Awareness:
-              </Text>
-              <Text>
-                Being aware of external stakeholders, market dynamics, and
-                broader industry implications.
-              </Text>
-            </VStack>
-            <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Team Awareness:
-              </Text>
-              <Text>
-                Recognizing the strengths, weaknesses, and emotional states of
-                team members.
-              </Text>
-            </VStack>
-            <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Strategic Awareness:
-              </Text>
-              <Text>
-                Keeping an eye on the long-term vision, goals, and implications
-                of the crisis on the organization's future.
-              </Text>
-            </VStack>
-            <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Self Awareness:
-              </Text>
-              <Text>
-                Understanding one's own emotions, strengths, weaknesses, and
-                biases during the crisis.
-              </Text>
-            </VStack>
-            <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18}>
-                Initial Crisis Onset:
+                Trust and Autonomy:
               </Text>
-              <Text>
-                <Text>
-                  <li>
-                    Dominant Awareness: Technical and Situational Awareness.
-                  </li>
-                </Text>
-                <Text>
-                  <li>
-                    Ben quickly grasps the technical issue at hand and
-                    understands its immediate implications.
-                  </li>
-                </Text>
+              <UnorderedList>
+                <ListItem>
+                  Insight: Throughout the simulation, Ben Carter delegates tasks
+                  to team members like Kate Sullivan, indicating a level of
+                  trust in their capabilities.
+                </ListItem>
+              </UnorderedList>
+              <UnorderedList>
+                <ListItem>
+                  Takeaway: A culture of trust and autonomy can empower team
+                  members to take initiative, leading to quicker responses in
+                  crisis situations.
+                </ListItem>
+              </UnorderedList>
+
+              <Text fontWeight={"600"} fontSize={18}>
+                Feedback and Learning Culture:
               </Text>
+              <UnorderedList>
+                <ListItem>
+                  Insight: After the crisis, there's a reflection on lessons
+                  learned, suggesting a culture that values feedback and
+                  continuous improvement.
+                </ListItem>
+              </UnorderedList>
+              <UnorderedList>
+                <ListItem>
+                  Takeaway: Embracing setbacks as learning opportunities can
+                  foster resilience and innovation.
+                </ListItem>
+              </UnorderedList>
             </VStack>
 
-            <ModalHeader fontFamily={"Fredoka"} fontSize={25} mt={10}>
-              Ben Carter's Awareness Strengths
-            </ModalHeader>
+            <VStack alignItems={"left"}>
+              <Text fontWeight={"600"} fontSize={18} mt={10}>
+                2. Decision-Making Process:
+              </Text>
+              <Text fontWeight={"600"} fontSize={18}>
+                Centralized vs. Decentralized:
+              </Text>
+              <UnorderedList>
+                <ListItem>
+                  Insight: While Ben Carter provides guidance and direction, he
+                  also involves his team in decision-making, suggesting a
+                  balance between centralized and decentralized decision-making.
+                </ListItem>
+              </UnorderedList>
+              <UnorderedList>
+                <ListItem>
+                  Takeaway: Flexibility in decision-making processes can enhance
+                  adaptability during crises
+                </ListItem>
+              </UnorderedList>
+
+              <Text fontWeight={"600"} fontSize={18}>
+                Data-Driven vs. Intuitive:
+              </Text>
+              <UnorderedList>
+                <ListItem>
+                  Insight: Decisions seem to be a mix of data (like the
+                  reports from the storage vendor) and intuition (Ben's early
+                  sense of the crisis's gravity).
+                </ListItem>
+              </UnorderedList>
+              <UnorderedList>
+                <ListItem>
+                  Takeaway: Combining data with intuition can provide a holistic
+                  approach to decision-making.
+                </ListItem>
+              </UnorderedList>
+            </VStack>
 
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={18} mt={2}>
-                Interactions with External Partners:
+              <Text fontWeight={"600"} fontSize={18} mt={10}>
+                3. Communication Dynamics:
               </Text>
-              <Text>
-                <li>Dominant Awareness: External and Situational Awareness.</li>
-                <li>
-                  Ben clearly communicates the situation with external partners,
-                  setting expectations and understanding the broader industry
-                  implications
-                </li>
+              <Text fontWeight={"600"} fontSize={18}>
+                Frequency:
               </Text>
+              <UnorderedList>
+                <ListItem>
+                  Insight: Regular updates and communications are evident
+                  throughout the crisis, both internally and with external
+                  partners.
+                </ListItem>
+              </UnorderedList>
+              <UnorderedList>
+                <ListItem>
+                  Takeaway: Frequent communication can ensure alignment and
+                  clarity during tumultuous times.
+                </ListItem>
+              </UnorderedList>
+
+              <Text fontWeight={"600"} fontSize={18}>
+                Transparency:
+              </Text>
+              <UnorderedList>
+                <ListItem>
+                  Insight: Ben Carter emphasizes transparent communication,
+                  especially with external stakeholders, suggesting a value on
+                  openness.
+                </ListItem>
+              </UnorderedList>
+              <UnorderedList>
+                <ListItem>
+                  Takeaway: Transparency can foster trust, especially during
+                  crises.
+                </ListItem>
+              </UnorderedList>
             </VStack>
+
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Guidance During Prolonged Crisis:
+              <Text fontWeight={"600"} fontSize={18} mt={10}>
+                4. Stakeholder Management:
               </Text>
-              <Text>
-                <li> Dominant Awareness: Team and Situational Awareness</li>
-                <li>
-                  Ben remains calm, guiding his team through challenges, and
-                  recognizing the emotional toll the crisis is taking on them
-                </li>
+              <Text fontWeight={"600"} fontSize={18}>
+                Internal Stakeholders:
               </Text>
+              <UnorderedList>
+                <ListItem>
+                  Insight: There's an emphasis on keeping senior management
+                  informed and involved, indicating effective internal
+                  stakeholder management.
+                </ListItem>
+              </UnorderedList>
+              <UnorderedList>
+                <ListItem>
+                  Takeaway: Engaging internal stakeholders can ensure
+                  organizational alignment.
+                </ListItem>
+              </UnorderedList>
+
+              <Text fontWeight={"600"} fontSize={18}>
+                External Stakeholders:
+              </Text>
+              <UnorderedList>
+                <ListItem>
+                  Insight: Ben's proactive outreach to key clients after the
+                  crisis demonstrates effective external stakeholder
+                  management..
+                </ListItem>
+              </UnorderedList>
+              <UnorderedList>
+                <ListItem>
+                  Takeaway: Managing external perceptions is crucial for
+                  maintaining trust and reputation.
+                </ListItem>
+              </UnorderedList>
             </VStack>
+
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Post-Crisis Reflection:
+              <Text fontWeight={"600"} fontSize={18} mt={10}>
+                5. Resource Management:
               </Text>
-              <Text>
-                <li> Dominant Awareness: Strategic and Technical Awareness</li>
-                <li>
-                  Ben reflects on the technical root causes and also looks at
-                  the long-term implications and lessons learned for the
-                  organization.
-                </li>
+              <Text fontWeight={"600"} fontSize={18}>
+                Allocation:
               </Text>
+              <UnorderedList>
+                <ListItem>
+                  Insight: Resources, both technical and human, are swiftly
+                  mobilized in response to the crisis.
+                </ListItem>
+              </UnorderedList>
+              <UnorderedList>
+                <ListItem>
+                  Takeaway: Effective resource allocation can be the difference
+                  between swift resolution and prolonged issues.{" "}
+                </ListItem>
+              </UnorderedList>
+
+              <Text fontWeight={"600"} fontSize={18}>
+                Backup and Redundancy:
+              </Text>
+              <UnorderedList>
+                <ListItem>
+                  Insight: The repeated system failures suggest potential gaps
+                  in backup and redundancy systems.
+                </ListItem>
+              </UnorderedList>
+              <UnorderedList>
+                <ListItem>
+                  Takeaway: Investing in robust backup systems can prevent
+                  prolonged outages.
+                </ListItem>
+              </UnorderedList>
             </VStack>
+
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Outreach to Key Stakeholders:
+              <Text fontWeight={"600"} fontSize={18} mt={10}>
+                6. Emotional and Psychological Dynamics:
               </Text>
-              <Text>
-                <li> Dominant Awareness: External and Strategic Awareness.</li>
-                <li>
-                  Ben proactively communicates with key clients, understanding
-                  the external implications and ensuring the company's strategic
-                  positioning remains intact.
-                </li>
+              <Text fontWeight={"600"} fontSize={18}>
+                Team Morale and Motivation:
               </Text>
+              <UnorderedList>
+                <ListItem>
+                  Insight: Despite the challenges, the team continues to work
+                  towards solutions, suggesting a level of resilience and
+                  motivation.
+                </ListItem>
+              </UnorderedList>
+              <UnorderedList>
+                <ListItem>
+                  Takeaway: Leadership support and recognition can bolster team
+                  morale during tough times.
+                </ListItem>
+              </UnorderedList>
+
+              <Text fontWeight={"600"} fontSize={18}>
+                Stress and Burnout:
+              </Text>
+              <UnorderedList>
+                <ListItem>
+                  Insight: The prolonged nature of the crisis likely led to
+                  increased stress levels, though specific measures to address
+                  burnout aren't explicitly mentioned.
+                </ListItem>
+              </UnorderedList>
+              <UnorderedList>
+                <ListItem>
+                  Takeaway: Proactive measures to address team well-being can
+                  prevent burnout and ensure sustained productivity.
+                </ListItem>
+              </UnorderedList>
             </VStack>
+
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Throughout the Simulation:
+              <Text fontWeight={"600"} fontSize={18} mt={10}>
+                7. Vendor and Partner Relationships:
               </Text>
-              <Text>
-                <li>Dominant Awareness: Self Awareness.</li>
-                <li>
-                  Ben remains composed, reflective, and adapts his leadership
-                  style based on the situation, indicating a strong sense of
-                  self-awareness.
-                </li>
+              <Text fontWeight={"600"} fontSize={18}>
+                Accountability:
               </Text>
+              <UnorderedList>
+                <ListItem>
+                  Insight: The storage vendor is held accountable, and
+                  compensation is provided, highlighting the importance of
+                  vendor accountability.
+                </ListItem>
+              </UnorderedList>
+              <UnorderedList>
+                <ListItem>
+                  Takeaway: Strong vendor agreements with accountability clauses
+                  can protect organizational interests.
+                </ListItem>
+              </UnorderedList>
+
+              <Text fontWeight={"600"} fontSize={18}>
+                Collaboration:
+              </Text>
+              <UnorderedList>
+                <ListItem>
+                  Insight: Despite challenges, there's collaboration between
+                  the internal team and the storage vendor, suggesting a
+                  partnership approach.
+                </ListItem>
+              </UnorderedList>
+              <UnorderedList>
+                <ListItem>
+                  Takeaway: Collaboration, even during challenging times, can
+                  foster better solutions and mutual growth.
+                </ListItem>
+              </UnorderedList>
             </VStack>
           </ModalBody>
 

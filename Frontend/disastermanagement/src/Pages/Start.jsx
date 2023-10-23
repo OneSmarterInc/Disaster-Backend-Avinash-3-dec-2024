@@ -21,6 +21,7 @@ import { BsPauseCircleFill } from "react-icons/bs";
 import site1 from "../Images/2.jpg";
 import site2 from "../Images/1.jpg";
 import site from "../Images/site.jpeg";
+import folder from "../Images/folder.png";
 
 const Start = () => {
   const { head, pauseBtn, setPauseBtn } = useContext(MyContext);
@@ -89,9 +90,9 @@ const Start = () => {
         <div
           onMouseEnter={() => setShowDropdown(true)}
           onMouseLeave={() => setShowDropdown(false)}
-          style={{ position: "relative" }}
+          style={{ position: "relative", display: "flex", alignItems: "center" }}
         >
-          <GiHamburgerMenu size={"30px"} cursor={"pointer"} />
+          <Image src={folder} w={10} sizes="30px" cursor={"pointer"}/>
           {showDropdown && (
             <div
               style={{

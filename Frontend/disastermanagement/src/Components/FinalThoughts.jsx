@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  ListItem,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -9,6 +10,7 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
+  UnorderedList,
   VStack,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -16,7 +18,7 @@ import React from "react";
 import "./Debrief.css";
 import { FcPlus } from "react-icons/fc";
 
-const LeadershipFramework = () => {
+const FinalThoughts = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -30,22 +32,42 @@ const LeadershipFramework = () => {
         className="containerChild"
         onClick={onOpen}
       >
-        Leadership Awareness Framework
+        Final Thoughts
         <FcPlus />
       </Box>
 
       <Modal isOpen={isOpen} onClose={onClose} size={"4xl"}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader ml={6} fontFamily={"Fredoka"} fontSize={25}>
-            Leadership Awareness Framework
+          <ModalHeader ml={3} fontFamily={"Fredoka"} fontSize={25}>
+            Final Thoughts
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody fontFamily={"Fredoka"}>
+            <Text fontWeight={"600"} fontSize={18}>
+              The simulation offers a rich narrative that can be analyzed
+              through various lenses to gain deeper insights into leadership,
+              crisis management, and organizational dynamics. Apart from the
+              leadership traits and awareness frameworks we've discussed, here
+              are some additional lenses to consider:
+            </Text>
+
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={18}>
-                Technical Awareness:
+              <Text fontWeight={"600"} fontSize={18} mt={10}>
+                1. Organizational Culture and Dynamics:
               </Text>
+              <VStack>
+                <Text fontWeight={"600"} fontSize={18}>
+                  Trust and Autonomy:
+                </Text>
+                <UnorderedList>
+                  <ListItem>
+                    • Insight: Throughout the simulation, Ben Carter delegates
+                    tasks to team members like Kate Sullivan, indicating a level
+                    of trust in their capabilities.
+                  </ListItem>
+                </UnorderedList>
+              </VStack>
               <Text>
                 Understanding the technical intricacies of the situation,
                 including systems, processes, and tools.
@@ -114,7 +136,7 @@ const LeadershipFramework = () => {
                 </Text>
               </Text>
             </VStack>
-            
+
             <ModalHeader fontFamily={"Fredoka"} fontSize={25} mt={10}>
               Ben Carter's Awareness Strengths
             </ModalHeader>
@@ -196,4 +218,4 @@ const LeadershipFramework = () => {
   );
 };
 
-export default LeadershipFramework;
+export default FinalThoughts;

@@ -38,7 +38,6 @@ import relaxing from "../Images/relaxing.jpeg";
 
 import bgcall from "../Images/bgcall.jpeg";
 
-
 import { BsArrowRightShort } from "react-icons/bs";
 import { BsArrowLeftShort } from "react-icons/bs";
 
@@ -89,16 +88,23 @@ const Chat = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const { setHead, speed, pauseBtn, setPauseBtn, setShowSideBar, showSideBar ,setShowCloseBtn } =
-    useContext(MyContext);
+  const {
+    setHead,
+    speed,
+    pauseBtn,
+    setPauseBtn,
+    setShowSideBar,
+    showSideBar,
+    setShowCloseBtn,
+  } = useContext(MyContext);
 
   const handleopen = () => {
     setShowSideBar(true);
   };
 
-    const handleClose = ()=>{
-      setShowSideBar(false)
-    }
+  const handleClose = () => {
+    setShowSideBar(false);
+  };
 
   const handlePause = () => {
     setPauseBtn(!pauseBtn);
@@ -137,12 +143,10 @@ const Chat = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
     setShowCloseBtn(true);
-    if(currentMessageIndex > 3 ){
-    setHead("Day 1 - Night");
-    }
-    else{
+    if (currentMessageIndex > 3) {
+      setHead("Day 1 - Night");
+    } else {
       setHead("Day 1 - Evening");
-
     }
 
     const messageDelay = speed;
@@ -187,6 +191,7 @@ const Chat = () => {
       clearInterval(messageInterval);
     };
   }, [currentMessageIndex, chatPaused, pauseBtn]);
+  
 
   const closePopup = () => {
     // setShowPopup(false);
@@ -221,7 +226,7 @@ const Chat = () => {
         scrollToBottom();
       }, 100);
     }
-  }, [showBox, showBoxContent2,showSideBar]);
+  }, [showBox, showBoxContent2, showSideBar]);
 
   return (
     <>
@@ -263,9 +268,8 @@ const Chat = () => {
               overflow={"auto"}
               bgColor="#948888"
             >
-              
               {/* {showSideBar ? < BsArrowLeftShort size={30} cursor={"pointer"} onClick={handleClose} /> :  < BsArrowRightShort size={30} cursor={"pointer"} onClick={handleopen} />} */}
-              
+
               {/* {showSideBar ? (
 
               {showSideBar ? (
@@ -288,7 +292,7 @@ const Chat = () => {
                     <Tooltip
                       label={
                         (el.name === "Ben Carter" && "CEO") ||
-                        (el.name === "Kate Sullivan" && "IT Manager")
+                        (el.name === "Kate Sullivan" && "IT Director") 
                       }
                     >
                       <Box
@@ -357,25 +361,21 @@ const Chat = () => {
                   exchanging a few words with his colleagues before heading out.
                 </Text>
               </Box>
-              <Box
-                
-                
-                mt={2}
-              >
-                <Text bgColor={'grey'} color={'black'} w={'90%'} m={'auto'}>Ben's Phone: A soft chime. New email notification.</Text>
-                <Text  bgColor={'grey'} color={'black'} w={'90%'} m={'auto'}>
+              <Box mt={2}>
+                <Text bgColor={"grey"} color={"black"} w={"90%"} m={"auto"}>
+                  Ben's Phone: A soft chime. New email notification.
+                </Text>
+                <Text bgColor={"grey"} color={"black"} w={"90%"} m={"auto"}>
                   Ben glances at the email subject: "Minor issues at the data
                   center."
                 </Text>
               </Box>
-              
 
               <Box
                 w={"90%"}
                 h={"68vh"}
                 border="0px solid red"
                 m={"auto"}
-              
                 pl={5}
                 pr={5}
               >
@@ -856,9 +856,8 @@ const Chat = () => {
                               fontWeight={"bold"}
                             >
                               <Text>
-                                Which trade of the customer representative do
-                                you feel has stood out during your latest
-                                interaction ?
+                                Which quality of Ben Carter do you feel stands
+                                out during the last conversation?
                               </Text>
                             </Flex>
                             <RadioGroup

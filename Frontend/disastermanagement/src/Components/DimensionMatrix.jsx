@@ -22,28 +22,42 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import "./Debrief.css";
-import { FcPlus } from 'react-icons/fc';
-
+import { FcPlus } from "react-icons/fc";
 
 const DimensionMatrix = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Box pl={5} pr={6} display={"flex"} justifyContent={"space-between"} alignItems={"center"} mt={10} className="containerChild" onClick={onOpen}>
-        Dimensions of our matrix
-        <FcPlus/>
+      <Box
+        pl={5}
+        pr={5}
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        mt={10}
+        className="containerChild"
+        onClick={onOpen}
+      >
+        The Technical Leader Framework
+        <FcPlus />
       </Box>
 
       <Modal isOpen={isOpen} onClose={onClose} size={"4xl"}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader fontFamily={"Fredoka"} fontSize={25}>
-            Dimensions of our matrix
+            The Technical Leader Framework
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody fontFamily={"Fredoka"}>
+            <Text fontWeight={"600"} fontSize={18}>
+              Leadership can be interpreted as an application of different
+              traits or qualities to different situational needs. In the context
+              of this simulation, it is useful to examine Ben Carter on two
+              dimentions:
+            </Text>
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={18}>
+              <Text fontWeight={"600"} fontSize={18} mt={10}>
                 Response to Change:
               </Text>
               <Text>

@@ -93,7 +93,6 @@ const Morning = () => {
     setPauseBtn(!pauseBtn);
   };
 
-
   const handleChange = (value) => {
     setValue(value);
     Cookies.set("day3morning2", value);
@@ -167,46 +166,46 @@ const Morning = () => {
     }
 
     const displayNextMessage = () => {
-      if(!pauseBtn){
-      if (!chatPaused && currentMessageIndex < dayThreeMorning.length) {
-        const message = dayThreeMorning[currentMessageIndex];
-        setCurrentMessageIndex((prevIndex) => prevIndex + 1);
-        setActiveUser(message.sender);
+      if (!pauseBtn) {
+        if (!chatPaused && currentMessageIndex < dayThreeMorning.length) {
+          const message = dayThreeMorning[currentMessageIndex];
+          setCurrentMessageIndex((prevIndex) => prevIndex + 1);
+          setActiveUser(message.sender);
 
-        if (currentMessageIndex === 2) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup(true);
-          }, 2000);
-        } else if (currentMessageIndex === 5) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup2(true);
-          }, 2000);
-        } else if (currentMessageIndex === 8) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup3(true);
-          }, 2000);
-        } else if (currentMessageIndex === 11) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup4(true);
-          }, 2000);
-        } else if (currentMessageIndex === 12) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup5(true);
-          }, 2000);
-        }
-      } else {
-        if (currentMessageIndex === dayThreeMorning.length) {
-          // The chat has ended completely, set showBox to true
+          if (currentMessageIndex === 2) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup(true);
+            }, 2000);
+          } else if (currentMessageIndex === 5) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup2(true);
+            }, 2000);
+          } else if (currentMessageIndex === 8) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup3(true);
+            }, 2000);
+          } else if (currentMessageIndex === 11) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup4(true);
+            }, 2000);
+          } else if (currentMessageIndex === 12) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup5(true);
+            }, 2000);
+          }
+        } else {
+          if (currentMessageIndex === dayThreeMorning.length) {
+            // The chat has ended completely, set showBox to true
 
-          setShowBox(true);
+            setShowBox(true);
+          }
         }
       }
-    }
     };
 
     const messageInterval = setInterval(displayNextMessage, speed);
@@ -300,14 +299,14 @@ const Morning = () => {
                       <Tooltip
                         label={
                           (el.name === "Ben Carter" && "CEO") ||
-                          (el.name === "Kate Sullivan" && "IT Manager") ||
+                          (el.name === "Kate Sullivan" && "IT Director") ||
                           (el.name === "Liam Turner" &&
                             "Senior Systems Analyst") ||
                           (el.name === "Sophia Kim" &&
                             "Database Administrator") ||
                           (el.name === "Mia Rodriguez" &&
                             "Network Specialist") ||
-                          (el.name === "Tom Mitchell" && "") ||
+                          (el.name === "Tom Mitchell" && "Application Vendor") ||
                           (el.name === "Raj Patel" && "") ||
                           (el.name === "Grace Patterson" && "") ||
                           (el.name === "Aisha Patel" && "COO")
@@ -342,13 +341,13 @@ const Morning = () => {
                     <Tooltip
                       label={
                         (el.name === "Ben Carter" && "CEO") ||
-                        (el.name === "Kate Sullivan" && "IT Manager") ||
+                        (el.name === "Kate Sullivan" && "IT Director") ||
                         (el.name === "Liam Turner" &&
                           "Senior Systems Analyst") ||
                         (el.name === "Sophia Kim" &&
                           "Database Administrator") ||
                         (el.name === "Mia Rodriguez" && "Network Specialist") ||
-                        (el.name === "Tom Mitchell" && "") ||
+                        (el.name === "Tom Mitchell" && "Application Vendor") ||
                         (el.name === "Aisha Patel" &&
                           "Chief Operating Officer") ||
                         (el.name === "GAjji" &&
@@ -431,7 +430,7 @@ const Morning = () => {
                 pl={5}
                 pr={5}
               >
-                 {/* <Text
+                {/* <Text
                   position={"fixed"}
                   color={"black"}
                   top={"650px"}
@@ -506,240 +505,276 @@ const Morning = () => {
 
                   {showPopup && (
                     <Modal isOpen={day5Popup}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                      bgColor="#E3E3E3"
-                      maxW={{ base: "90%", sm: "600px" }} // Responsive width
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                      </ModalHeader>
-                      <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
-                        <Flex flexDirection={{ base: "column", sm: "row" }} gap={{ base: 2, sm: 4 }}> {/* Responsive layout */}
-                          <Box
-                            bgColor="white"
-                            boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                            borderRadius={10}
-                            p={{ base: 4, sm: 5 }}
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "600px" }} // Responsive width
+                      >
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
+                        <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                          <Flex
+                            flexDirection={{ base: "column", sm: "row" }}
+                            gap={{ base: 2, sm: 4 }}
                           >
-                            <Text>
-                              The office atmosphere is tense. People are visibly tired.
-                            </Text>
-                          </Box>
-                          <Box textAlign="center">
-                            <Image src={failure} borderRadius={10} />
-                            <Button
-                              colorScheme="teal"
-                              onClick={closePopup}
-                              fontFamily="Croissant One"
-                              bg="black"
-                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                              mt={3}
+                            {" "}
+                            {/* Responsive layout */}
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                               borderRadius={10}
-                              w={'100%'}
+                              p={{ base: 4, sm: 5 }}
                             >
-                              Close
-                            </Button>
-                          </Box>
-                        </Flex>
-                      </ModalBody>
-                      <ModalFooter>
-                        {/* Footer content, if needed */}
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                              <Text>
+                                The office atmosphere is tense. People are
+                                visibly tired.
+                              </Text>
+                            </Box>
+                            <Box textAlign="center">
+                              <Image src={failure} borderRadius={10} />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup}
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                mt={3}
+                                borderRadius={10}
+                                w={"100%"}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
 
                   {showPopup2 && (
                     <Modal isOpen={day5Popup2}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                      bgColor="#E3E3E3"
-                      maxW={{ base: "90%", sm: "600px" }} // Responsive width
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                      </ModalHeader>
-                      <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
-                        <Flex flexDirection={{ base: "column", sm: "row" }} gap={{ base: 2, sm: 4 }}> {/* Responsive layout */}
-                          <Box
-                            bgColor="white"
-                            boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                            borderRadius={10}
-                            p={{ base: 4, sm: 5 }}
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "600px" }} // Responsive width
+                      >
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
+                        <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                          <Flex
+                            flexDirection={{ base: "column", sm: "row" }}
+                            gap={{ base: 2, sm: 4 }}
                           >
-                            <Text>
-                              Alarms jolt everyone. There's an immediate sense of dread.
-                            </Text>
-                          </Box>
-                          <Box textAlign="center">
-                            <Image src={immediate} borderRadius={10} />
-                            <Button
-                              colorScheme="teal"
-                              onClick={closePopup2}
-                              fontFamily="Croissant One"
-                              bg="black"
-                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                              mt={3}
+                            {" "}
+                            {/* Responsive layout */}
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                               borderRadius={10}
-                              w={'100%'}
+                              p={{ base: 4, sm: 5 }}
                             >
-                              Close
-                            </Button>
-                          </Box>
-                        </Flex>
-                      </ModalBody>
-                      <ModalFooter>
-                        {/* Footer content, if needed */}
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                              <Text>
+                                Alarms jolt everyone. There's an immediate sense
+                                of dread.
+                              </Text>
+                            </Box>
+                            <Box textAlign="center">
+                              <Image src={immediate} borderRadius={10} />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup2}
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                mt={3}
+                                borderRadius={10}
+                                w={"100%"}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
                   {showPopup3 && (
                     <Modal isOpen={day5Popup3}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                      bgColor="#E3E3E3"
-                      maxW={{ base: "90%", sm: "600px" }} // Adjusted for responsiveness
-                    >
-                      <ModalHeader
-                        fontWeight="bold"
-                        fontSize="25px"
-                      ></ModalHeader>
-                  
-                      <ModalBody fontSize="18px">
-                        <Flex direction={{ base: "column", sm: "row" }} gap={4}>
-                          <Box
-                            bgColor="white"
-                            boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                            borderRadius={10}
-                            p={5}
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "600px" }} // Adjusted for responsiveness
+                      >
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Flex
+                            direction={{ base: "column", sm: "row" }}
+                            gap={4}
                           >
-                            <Text>
-                              The room is thick with tension as the storage vendor team joins.
-                            </Text>
-                          </Box>
-                          <Box>
-                            <Image src={tension} borderRadius={10} maxW="100%" h="auto" />
-                            <Button
-                              colorScheme="teal"
-                              onClick={closePopup3}
-                              textAlign="center"
-                              fontFamily="Croissant One"
-                              bg="black"
-                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                              w="100%" // Adjusted to take full width
-                              mt={3}
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                               borderRadius={10}
+                              p={5}
                             >
-                              Close
-                            </Button>
-                          </Box>
-                        </Flex>
-                      </ModalBody>
-                      <ModalFooter></ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                              <Text>
+                                The room is thick with tension as the storage
+                                vendor team joins.
+                              </Text>
+                            </Box>
+                            <Box>
+                              <Image
+                                src={tension}
+                                borderRadius={10}
+                                maxW="100%"
+                                h="auto"
+                              />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup3}
+                                textAlign="center"
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                w="100%" // Adjusted to take full width
+                                mt={3}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
                   {showPopup4 && (
                     <Modal isOpen={day5Popup4}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                      bgColor="#E3E3E3"
-                      maxW={{ base: "90%", sm: "600px" }} // Adjusted for responsiveness
-                    >
-                      <ModalHeader
-                        fontWeight="bold"
-                        fontSize="25px"
-                      ></ModalHeader>
-                  
-                      <ModalBody fontSize="18px">
-                        <Flex direction={{ base: "column", sm: "row" }} gap={4}>
-                          <Box
-                            bgColor="white"
-                            boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                            borderRadius={10}
-                            p={5}
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "600px" }} // Adjusted for responsiveness
+                      >
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Flex
+                            direction={{ base: "column", sm: "row" }}
+                            gap={4}
                           >
-                            <Text>
-                              The weight of the situation is pressing down on everyone.
-                            </Text>
-                          </Box>
-                          <Box>
-                            <Image src={weight} borderRadius={10} maxW="100%" h="auto" />
-                            <Button
-                              colorScheme="teal"
-                              onClick={closePopup4}
-                              textAlign="center"
-                              fontFamily="Croissant One"
-                              bg="black"
-                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                              w="100%" // Adjusted to take full width
-                              mt={3}
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                               borderRadius={10}
+                              p={5}
                             >
-                              Close
-                            </Button>
-                          </Box>
-                        </Flex>
-                      </ModalBody>
-                      <ModalFooter></ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                              <Text>
+                                The weight of the situation is pressing down on
+                                everyone.
+                              </Text>
+                            </Box>
+                            <Box>
+                              <Image
+                                src={weight}
+                                borderRadius={10}
+                                maxW="100%"
+                                h="auto"
+                              />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup4}
+                                textAlign="center"
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                w="100%" // Adjusted to take full width
+                                mt={3}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
 
                   {showPopup5 && (
                     <Modal isOpen={day5Popup5}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                      bgColor="#E3E3E3"
-                      maxW={{ base: "90%", sm: "600px" }} // Adjusted for responsiveness
-                    >
-                      <ModalHeader
-                        fontWeight="bold"
-                        fontSize="25px"
-                      ></ModalHeader>
-                  
-                      <ModalBody fontSize="18px">
-                        <Flex direction={{ base: "column", sm: "row" }} gap={4}>
-                          <Box
-                            bgColor="white"
-                            boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                            borderRadius={10}
-                            p={5}
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "600px" }} // Adjusted for responsiveness
+                      >
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Flex
+                            direction={{ base: "column", sm: "row" }}
+                            gap={4}
                           >
-                            <Text>After the first failure...</Text>
-                          </Box>
-                          <Box>
-                            <Image src={pressingdown} borderRadius={10} maxW="100%" h="auto" />
-                            <Button
-                              colorScheme="teal"
-                              onClick={closePopup5}
-                              textAlign="center"
-                              fontFamily="Croissant One"
-                              bg="black"
-                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                              w="100%" // Adjusted to take full width
-                              mt={3}
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                               borderRadius={10}
-                              
+                              p={5}
                             >
-                              Close
-                            </Button>
-                          </Box>
-                        </Flex>
-                      </ModalBody>
-                      <ModalFooter></ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                              <Text>After the first failure...</Text>
+                            </Box>
+                            <Box>
+                              <Image
+                                src={pressingdown}
+                                borderRadius={10}
+                                maxW="100%"
+                                h="auto"
+                              />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup5}
+                                textAlign="center"
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                w="100%" // Adjusted to take full width
+                                mt={3}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
 
                   {showBox && (
@@ -982,9 +1017,8 @@ const Morning = () => {
                               fontWeight={"bold"}
                             >
                               <Text>
-                                Which trade of the customer representative do
-                                you feel has stood out during your latest
-                                interaction ?
+                                Which quality of Ben Carter do you feel stands
+                                out during the last conversation?
                               </Text>
                             </Flex>
                             <RadioGroup

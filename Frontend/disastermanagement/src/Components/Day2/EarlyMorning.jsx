@@ -330,17 +330,18 @@ const EarlyMorning = () => {
                       <Tooltip
                         label={
                           (el.name === "Ben Carter" && "CEO") ||
-                          (el.name === "Kate Sullivan" && "IT Manager") ||
+                          (el.name === "Kate Sullivan" && "IT Director") ||
                           (el.name === "Liam Turner" &&
                             "Senior Systems Analyst") ||
                           (el.name === "Sophia Kim" &&
                             "Database Administrator") ||
                           (el.name === "Mia Rodriguez" &&
                             "Network Specialist") ||
-                          (el.name === "Tom Mitchell" && "") ||
+                          (el.name === "Tom Mitchell" && "Application Vendor") ||
                           (el.name === "Raj Patel" && "") ||
                           (el.name === "Grace Patterson" && "") ||
-                          (el.name === "Aisha Patel" && "COO")
+                          (el.name === "Aisha Patel" && "COO") ||
+                          (el.name === "Julia Harper" && "Storage Vendor")
                         }
                       >
                         <Box key={el.name} cursor={"pointer"}>
@@ -372,17 +373,18 @@ const EarlyMorning = () => {
                     <Tooltip
                       label={
                         (el.name === "Ben Carter" && "CEO") ||
-                        (el.name === "Kate Sullivan" && "IT Manager") ||
+                        (el.name === "Kate Sullivan" && "IT Director") ||
                         (el.name === "Liam Turner" &&
                           "Senior Systems Analyst") ||
                         (el.name === "Sophia Kim" &&
                           "Database Administrator") ||
                         (el.name === "Mia Rodriguez" && "Network Specialist") ||
-                        (el.name === "Tom Mitchell" && "") ||
+                        (el.name === "Tom Mitchell" && "Application Vendor") ||
                         (el.name === "Aisha Patel" &&
                           "Chief Operating Officer") ||
                         (el.name === "GAjji" &&
-                          "Senior Vice President of Development (Storage Vendor)")
+                          "Senior Vice President of Development (ERP Vendor)") ||
+                          (el.name === "Julia Harper" && "Storage Vendor")
                       }
                     >
                       <Box id={el.name} key={el.name} cursor={"pointer"}>
@@ -456,12 +458,7 @@ const EarlyMorning = () => {
                   a lengthy conversation, discussing the technical intricacies.
                 </Text>
               </Box>
-              <Box mt={5}>
-              <Text mt={5} border={'1px solid grey'} bgColor={'grey'} color={'black'} w={'90%'} m={'auto'}>
-                Late night conference call with applications vendor (Approx. 40
-                people on the call)
-              </Text>
-              </Box>
+              
 
               <Box
                 w={"90%"}
@@ -1163,9 +1160,8 @@ const EarlyMorning = () => {
                               fontWeight={"bold"}
                             >
                               <Text>
-                                Which trade of the customer representative do
-                                you feel has stood out during your latest
-                                interaction ?
+                                Which quality of Ben Carter do you feel stands
+                                out during the last conversation?
                               </Text>
                             </Flex>
                             <RadioGroup

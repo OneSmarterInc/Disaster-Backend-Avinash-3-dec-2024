@@ -13,6 +13,8 @@ import carlos from "../userImages/carlos.jpg";
 import liam from "../userImages/liam.jpeg";
 import raj from "../userImages/rajpatel.jpg";
 import gajji from "../userImages/gaji.jpg";
+import tom from "../userImages/tom.jpg";
+import julia from "../userImages/juliaharper.jpg";
 
 export const ORGDATA = {
 
@@ -98,15 +100,15 @@ export const externalData = [
   {
     name: "Tom Mitchell",
     designation: "Apllication Vendor",
-    url: gajji
+    url: tom
   },
   {
     name: "Julia Harper",
-    designation: "Disk Vendor",
-    url: gajji
+    designation: "Storage Vendor",
+    url: julia
   },
   {
-    name: "Tom",
+    name: "Gajji",
     designation: "ERP Vendor",
     url: gajji
   }

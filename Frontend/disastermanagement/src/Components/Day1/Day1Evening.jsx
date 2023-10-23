@@ -76,7 +76,6 @@ const BringDown = () => {
     setPauseBtn(!pauseBtn);
   };
 
-
   const handleChange = (value) => {
     setValue(value);
     Cookies.set("day1evening2", value);
@@ -177,10 +176,6 @@ const BringDown = () => {
       name: "Mia Rodriguez",
       url: mia,
     },
-    // {
-    //   name: "Julia Harper",
-    //   url: julia,
-    // },
     {
       name: "Tom Mitchell",
       url: tom,
@@ -189,36 +184,33 @@ const BringDown = () => {
 
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
-    
-   
-      setHead("Day 1 - Late night");
 
-    
+    setHead("Day 1 - Late night");
 
     const messageDelay = speed; // 4 seconds
 
     let timeoutIndex = 0;
 
     const displayNextMessage = () => {
-      if(!pauseBtn){
-      if (!chatPaused && currentMessageIndex < dayOneEvening.length) {
-        const message = dayOneEvening[currentMessageIndex];
-        setCurrentMessageIndex((prevIndex) => prevIndex + 1);
-        setActiveUser(message.sender);
+      if (!pauseBtn) {
+        if (!chatPaused && currentMessageIndex < dayOneEvening.length) {
+          const message = dayOneEvening[currentMessageIndex];
+          setCurrentMessageIndex((prevIndex) => prevIndex + 1);
+          setActiveUser(message.sender);
 
-        if (currentMessageIndex === 20) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup(true);
-          }, 2000);
-        }
-      } else {
-        if (currentMessageIndex === dayOneEvening.length) {
-          // The chat has ended completely, set showBox to true
-          setShowBox(true);
+          if (currentMessageIndex === 20) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup(true);
+            }, 2000);
+          }
+        } else {
+          if (currentMessageIndex === dayOneEvening.length) {
+            // The chat has ended completely, set showBox to true
+            setShowBox(true);
+          }
         }
       }
-    }
     };
 
     const messageInterval = setInterval(displayNextMessage, messageDelay);
@@ -312,16 +304,17 @@ const BringDown = () => {
                       <Tooltip
                         label={
                           (el.name === "Ben Carter" && "CEO") ||
-                          (el.name === "Kate Sullivan" && "IT Manager") ||
+                          (el.name === "Kate Sullivan" && "IT Director") ||
                           (el.name === "Liam Turner" &&
                             "Senior Systems Analyst") ||
                           (el.name === "Sophia Kim" &&
                             "Database Administrator") ||
                           (el.name === "Mia Rodriguez" &&
                             "Network Specialist") ||
-                          (el.name === "Tom Mitchell" && "") ||
+                          (el.name === "Tom Mitchell" && "Application Vendor") ||
                           (el.name === "Raj Patel" && "") ||
-                          (el.name === "Grace Patterson" && "")
+                          (el.name === "Grace Patterson" && "") ||
+                          (el.name === "Chloe Zhang" && "IT Manager")
                         }
                       >
                         <Box key={el.name} cursor={"pointer"}>
@@ -355,17 +348,17 @@ const BringDown = () => {
                     <Tooltip
                       label={
                         (el.name === "Ben Carter" && "CEO") ||
-                        (el.name === "Kate Sullivan" && "IT Manager") ||
+                        (el.name === "Kate Sullivan" && "IT Director") ||
                         (el.name === "Liam Turner" &&
                           "Senior Systems Analyst") ||
                         (el.name === "Sophia Kim" &&
                           "Database Administrator") ||
                         (el.name === "Mia Rodriguez" && "Network Specialist") ||
-                        (el.name === "Tom Mitchell" && "") ||
+                        (el.name === "Tom Mitchell" && "Application Vendor") ||
                         (el.name === "Aisha Patel" &&
                           "Chief Operating Officer") ||
                         (el.name === "GAjji" &&
-                          "Senior Vice President of Development (Storage Vendor)")
+                          "Senior Vice President of Development (ERP Vendor)")
                       }
                     >
                       <Box id={el.name} key={el.name} cursor={"pointer"}>
@@ -424,7 +417,10 @@ const BringDown = () => {
                   of the situation. He can feel the eight of responsibility
                   pressing down on him, knowing that critical decisions lie
                   ahead. */}
-                Ben's mind raced as he contemplated the intricacies of the current architectural design, his thoughts consumed by the nagging concern of an elusive vulnerability.</Text>
+                  Ben's mind raced as he contemplated the intricacies of the
+                  current architectural design, his thoughts consumed by the
+                  nagging concern of an elusive vulnerability.
+                </Text>
               </Box>
 
               <Box
@@ -435,7 +431,7 @@ const BringDown = () => {
                 pl={5}
                 pr={5}
               >
-                    {/* <Text
+                {/* <Text
                   position={"fixed"}
                   color={"black"}
                   top={"650px"}
@@ -799,9 +795,8 @@ const BringDown = () => {
                               fontWeight={"bold"}
                             >
                               <Text>
-                                Which trade of the customer representative do
-                                you feel has stood out during your latest
-                                interaction ?
+                                Which quality of Ben Carter do you feel stands
+                                out during the last conversation?
                               </Text>
                             </Flex>
                             <RadioGroup

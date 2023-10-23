@@ -94,6 +94,7 @@ const Morning5 = () => {
   const [showPopup10, setShowPopup10] = useState(false);
 
   const [chatPaused, setChatPaused] = useState(false);
+  const [startIndex, setStartIndex] = useState(0);
 
   const chatContainerRef = useRef(null);
   const usersContainerRef = useRef();
@@ -199,6 +200,8 @@ const Morning5 = () => {
     }
   }, [showBox, showBoxContent2]);
 
+  const visibleMessages = dayFiveMorning.slice(startIndex, currentMessageIndex);
+
   useEffect(() => {
     if (currentMessageIndex > 1) {
       setHead("Day 5 - Afternoon");
@@ -246,18 +249,20 @@ const Morning5 = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup6(true);
+              setStartIndex(currentMessageIndex+1);
             }, 2000);
-          } else if (currentMessageIndex === 12) {
+          } else if (currentMessageIndex === 15) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup7(true);
             }, 2000);
-          } else if (currentMessageIndex === 20) {
+          } else if (currentMessageIndex === 23) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup8(true);
+              setStartIndex(currentMessageIndex+1);
             }, 2000);
-          } else if (currentMessageIndex === 29) {
+          } else if (currentMessageIndex === 32) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup9(true);
@@ -406,7 +411,8 @@ const Morning5 = () => {
                             "Database Administrator") ||
                           (el.name === "Mia Rodriguez" &&
                             "Network Specialist") ||
-                          (el.name === "Tom Mitchell" && "Application Vendor") ||
+                          (el.name === "Tom Mitchell" &&
+                            "Application Vendor") ||
                           (el.name === "Raj Patel" && "") ||
                           (el.name === "Grace Patterson" && "") ||
                           (el.name === "Gajji" &&
@@ -496,13 +502,13 @@ const Morning5 = () => {
               ref={chatContainerRef}
               pb={2}
               bgImage={
-                currentMessageIndex > 30
+                currentMessageIndex > 33
                   ? twoleaders
-                  : currentMessageIndex > 21
+                  : currentMessageIndex > 24
                   ? respect
-                  : currentMessageIndex > 13
+                  : currentMessageIndex > 16
                   ? calmoffice
-                  : currentMessageIndex > 13
+                  : currentMessageIndex > 12
                   ? fewweeks
                   : currentMessageIndex > 8
                   ? email
@@ -560,7 +566,7 @@ const Morning5 = () => {
                   )}
                 </Text> */}
                 <TransitionGroup>
-                  {dayFiveMorning.slice(0, currentMessageIndex).map((el, i) => {
+                  {visibleMessages.map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";
                     const senderName = el.sender;
                     const messageClass = isCIO ? "CIO" : "OtherSender";
@@ -916,6 +922,9 @@ const Morning5 = () => {
                             the Senior Vice President of Worldwide Customer
                             Service embarked on a series of meetings with key
                             customers to address concerns and rebuild trust.
+                          </Text>
+                          <br />
+                          <Text>
                             During these meetings, they discussed the recent IT
                             crisis, the measures taken to resolve it, and the
                             steps being implemented to prevent future

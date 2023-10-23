@@ -154,11 +154,6 @@ export const dayTwoEarlyMorning = [
   {
     sender: "Ben Carter",
     message:
-      "Tom, it's Ben. I never imagined we'd be in this situation, especially given how smoothly things have run over the years ",
-  },
-  {
-    sender: "Ben Carter",
-    message:
       "I have explained the situation to you.  We are now shutting down applications in a rolling manner and they are crashing.  We need your help with figuring out what’s going on and correcting it.",
   },
   {
@@ -263,29 +258,29 @@ export const dayTwoEarlyMorning = [
   {
     sender: "Ben Carter",
     message:
-      "Tom, we're considering your team's proposed solution. But I've got to be honest, the stakes are high.  We just have to do better - a 1 week data loss is unacceptable.",
+      "Julia, we're considering your team's proposed solution. But I've got to be honest, the stakes are high.  We just have to do better - a 1 week data loss is unacceptable.",
   },
   {
-    sender: "Tom Mitchell",
+    sender: "Julia Harper",
     message: "I completely understand, Ben. We've been partners for years, and we want to ensure we navigate this challenge together.",
   },
 
   {
     sender: "Kate Sullivan",
     message:
-      "We're in uncharted territory here, Tom. It's concerning.",
+      "We're in uncharted territory here, Julia. It's concerning.",
   },
   {
-    sender: "Tom Mitchell",
+    sender: "Julia Harper",
     message: "I share your concern, Kate. We're pooling all our resources into this. It's a tricky situation, but we believe the solution has merit.",
   },
   {
     sender: "Ben Carter",
     message:
-      "We've always trusted your expertise, Tom. Let's work together and find our way through this.",
+      "We've always trusted your expertise, Julia. Let's work together and find our way through this.",
   },
   {
-    sender: "Tom Mitchell",
+    sender: "Julia Harper",
     message: "We're with you every step of the way, Ben",
   },
   {
@@ -766,6 +761,18 @@ export const dayFiveMorning = [
   {
     sender: "Ben Carter",
     message: "(smiling) Fingers crossed.",
+  },
+  {
+    sender: "Ben Carter",
+    message: "I have provided a detailed briefing to you about what happened at OrionTech.  The crisis is not over.  Measures are in place to prevent future distruptions."
+  },
+  {
+    sender:"Client 1",
+    message: "Ben, thank you for your detailed communications.  We appreciate OrionTech’s commitment to all of us."
+  },
+  {
+    sender:"Client 2",
+    message: "I also think that the communications channel has been very open and I appreciate being in the know."
   },
   {
     sender: "Ben Carter",

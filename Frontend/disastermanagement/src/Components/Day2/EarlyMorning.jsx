@@ -85,6 +85,7 @@ const EarlyMorning = () => {
   const [modalValue1, setModalValue1] = useState(null);
   const [ShowScroll, setShowScroll] = useState(false);
   const [img, showImg] = useState(false);
+  const [startIndex, setStartIndex] = useState(0);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -219,6 +220,11 @@ const EarlyMorning = () => {
     }
   }, [showBox, showBoxContent2]);
 
+  const visibleMessages = dayTwoEarlyMorning.slice(
+    startIndex,
+    currentMessageIndex
+  );
+
   useEffect(() => {
     setHead("Day 2 - Early Morning");
     const displayNextMessage = () => {
@@ -228,37 +234,42 @@ const EarlyMorning = () => {
           setCurrentMessageIndex((prevIndex) => prevIndex + 1);
           setActiveUser(message.sender);
 
-          if (currentMessageIndex === 8) {
+          if (currentMessageIndex === 7) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup(true);
+              setStartIndex(currentMessageIndex + 1);
             }, 2000);
-          } else if (currentMessageIndex === 17) {
+          } else if (currentMessageIndex === 16) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup2(true);
+              setStartIndex(currentMessageIndex + 1);
             }, 2000);
-          } else if (currentMessageIndex === 22) {
+          } else if (currentMessageIndex === 21) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup6(true);
             }, 2000);
-          } else if (currentMessageIndex === 28) {
+          } else if (currentMessageIndex === 27) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup3(true);
+              setStartIndex(currentMessageIndex + 1);
             }, 2000);
-          } else if (currentMessageIndex === 33) {
+          } else if (currentMessageIndex === 32) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup4(true);
+              setStartIndex(currentMessageIndex + 1);
             }, 2000);
-          } else if (currentMessageIndex === 38) {
+          } else if (currentMessageIndex === 37) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup5(true);
+              setStartIndex(currentMessageIndex + 1);
             }, 1000);
-          } else if (currentMessageIndex === 42) {
+          } else if (currentMessageIndex === 41) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup7(true);
@@ -337,7 +348,8 @@ const EarlyMorning = () => {
                             "Database Administrator") ||
                           (el.name === "Mia Rodriguez" &&
                             "Network Specialist") ||
-                          (el.name === "Tom Mitchell" && "Application Vendor") ||
+                          (el.name === "Tom Mitchell" &&
+                            "Application Vendor") ||
                           (el.name === "Raj Patel" && "") ||
                           (el.name === "Grace Patterson" && "") ||
                           (el.name === "Aisha Patel" && "COO") ||
@@ -384,7 +396,7 @@ const EarlyMorning = () => {
                           "Chief Operating Officer") ||
                         (el.name === "GAjji" &&
                           "Senior Vice President of Development (ERP Vendor)") ||
-                          (el.name === "Julia Harper" && "Storage Vendor")
+                        (el.name === "Julia Harper" && "Storage Vendor")
                       }
                     >
                       <Box id={el.name} key={el.name} cursor={"pointer"}>
@@ -423,17 +435,17 @@ const EarlyMorning = () => {
               ref={chatContainerRef}
               pb={2}
               bgImage={
-                currentMessageIndex > 43
+                currentMessageIndex > 42
                   ? gathers
-                  : currentMessageIndex > 39
+                  : currentMessageIndex > 38
                   ? warroom
-                  : currentMessageIndex > 34
+                  : currentMessageIndex > 33
                   ? withtom
-                  : currentMessageIndex > 29
+                  : currentMessageIndex > 28
                   ? loss
-                  : currentMessageIndex > 18
+                  : currentMessageIndex > 17
                   ? withtom
-                  : currentMessageIndex > 9
+                  : currentMessageIndex > 8
                   ? oncall
                   : day2morning
               }
@@ -458,7 +470,6 @@ const EarlyMorning = () => {
                   a lengthy conversation, discussing the technical intricacies.
                 </Text>
               </Box>
-              
 
               <Box
                 w={"90%"}
@@ -484,62 +495,60 @@ const EarlyMorning = () => {
                   )}
                 </Text> */}
                 <TransitionGroup>
-                  {dayTwoEarlyMorning
-                    .slice(0, currentMessageIndex)
-                    .map((el, i) => {
-                      const isCIO = el.sender === "Ben Carter";
-                      const messageClass = isCIO ? "KateSullivan" : "BenCarter";
-                      const alignMessage = isCIO ? "flex-start" : "flex-end";
-                      return (
-                        <CSSTransition
+                  {visibleMessages.map((el, i) => {
+                    const isCIO = el.sender === "Ben Carter";
+                    const messageClass = isCIO ? "KateSullivan" : "BenCarter";
+                    const alignMessage = isCIO ? "flex-start" : "flex-end";
+                    return (
+                      <CSSTransition
+                        key={i}
+                        classNames="message"
+                        timeout={{ enter: 300, exit: 300 }}
+                      >
+                        <Box
                           key={i}
-                          classNames="message"
-                          timeout={{ enter: 300, exit: 300 }}
+                          border={"0px solid black"}
+                          w={"100%"}
+                          display="flex"
+                          justifyContent={alignMessage}
+                          className={`message ${messageClass} ${
+                            el.sender === "Ben Carter"
+                              ? "BenCarter"
+                              : "KateSullivan"
+                          }`}
                         >
-                          <Box
-                            key={i}
-                            border={"0px solid black"}
-                            w={"100%"}
-                            display="flex"
-                            justifyContent={alignMessage}
-                            className={`message ${messageClass} ${
-                              el.sender === "Ben Carter"
-                                ? "BenCarter"
-                                : "KateSullivan"
-                            }`}
-                          >
-                            <Box border={"0px solid red"} w={"50%"}>
-                              <Box
-                                boxShadow={
-                                  "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                                }
-                                border={"0px solid black"}
-                                bgColor={
-                                  el.sender === "Ben Carter"
-                                    ? "#f0f0f0"
-                                    : "#030405"
-                                }
-                                color={
-                                  el.sender === "Ben Carter" ? "black" : "white"
-                                }
-                                w={"100%"}
-                                borderRadius={"10px"}
-                                textAlign={"justify"}
-                                p={4}
-                                pl={5}
-                                pr={5}
-                                mt={10}
-                              >
-                                <Text>
-                                  <span id="sender">{el.sender}</span> :{" "}
-                                  {el.message}
-                                </Text>
-                              </Box>
+                          <Box border={"0px solid red"} w={"50%"}>
+                            <Box
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              border={"0px solid black"}
+                              bgColor={
+                                el.sender === "Ben Carter"
+                                  ? "#f0f0f0"
+                                  : "#030405"
+                              }
+                              color={
+                                el.sender === "Ben Carter" ? "black" : "white"
+                              }
+                              w={"100%"}
+                              borderRadius={"10px"}
+                              textAlign={"justify"}
+                              p={4}
+                              pl={5}
+                              pr={5}
+                              mt={10}
+                            >
+                              <Text>
+                                <span id="sender">{el.sender}</span> :{" "}
+                                {el.message}
+                              </Text>
                             </Box>
                           </Box>
-                        </CSSTransition>
-                      );
-                    })}
+                        </Box>
+                      </CSSTransition>
+                    );
+                  })}
 
                   {showPopup && (
                     <Modal isOpen={day5Popup}>

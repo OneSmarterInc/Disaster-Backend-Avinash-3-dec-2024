@@ -11,12 +11,9 @@ const MyProvider = ({ children }) => {
   const [pauseBtn, setPauseBtn] = useState(false);
   const [head, setHead] = useState("");
   const [showCloseBtn, setShowCloseBtn] = useState(false);
- 
+
   const [showSidebar, setShowSideBar] = useState(true);
   const speed = 4000;
-
-
-
 
   const enableBox = () => {
     setGlobalState(true);
@@ -41,10 +38,10 @@ const MyProvider = ({ children }) => {
         head,
         setHead,
         enableDeliverable,
-        showSidebar, 
+        showSidebar,
         setShowSideBar,
         showCloseBtn,
-        setShowCloseBtn
+        setShowCloseBtn,
       }}
     >
       {children}

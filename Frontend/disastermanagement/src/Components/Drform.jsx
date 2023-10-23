@@ -301,108 +301,95 @@ const Drform = () => {
       {isModalOpen ? (
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
           <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Form Data</ModalHeader>
+          <ModalContent maxW={'600px'}>
+            <ModalHeader><strong>DR Form Data</strong></ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               {/* Display form data here */}
               <div>
                 <form>
                   <FormLabel fontWeight={"700"}>1. Executive Summary</FormLabel>
-                  <FormLabel>Purpose of the DR Plan:</FormLabel>
-                  <Text>{executivePurpose}</Text>
+                  <FormLabel>
+                    <strong>Purpose of the DR Plan:</strong> {executivePurpose}{" "}
+                  </FormLabel>
 
                   <FormLabel mt={10} fontWeight={"700"}>
                     2. Risk Assessment & System Vulnerabilities
                   </FormLabel>
-                  <FormLabel>Potential Disasters:</FormLabel>
-                  <Text>{riskPotential}</Text>
-                  <FormLabel>Action:</FormLabel>
-                  <Text>{riskAction}</Text>
+                  <FormLabel>
+                    <strong>Potential Disasters:</strong> {riskPotential}
+                  </FormLabel>
+                  <FormLabel> <strong>Action:</strong> {riskAction} </FormLabel>
 
                   <FormLabel mt={10} fontWeight={"700"}>
                     3. Data Protection & Integrity
                   </FormLabel>
-                  <FormLabel>Protection Measures:</FormLabel>
-                  <Text>{dataProtection}</Text>
-                  <FormLabel>Action:</FormLabel>
-                  <Text>{dataAction}</Text>
+                  <FormLabel><strong>Protection Measures: {dataProtection}</strong></FormLabel>
+                  <FormLabel><strong>Action: {dataAction}</strong></FormLabel>
 
                   <FormLabel mt={10} fontWeight={"700"}>
                     4. Infrastructure & Failures
                   </FormLabel>
-                  <FormLabel>Monitoring Tools:</FormLabel>
-                  <Text>{infrastructureMonitoring}</Text>
-                  <FormLabel>Action:</FormLabel>
-                  <Text>{infrastructureAction}</Text>
+                  <FormLabel><strong>Monitoring Tools: {infrastructureMonitoring}</strong></FormLabel>
+                  <FormLabel><strong>Action: {infrastructureAction}</strong></FormLabel>
 
                   <FormLabel mt={10} fontWeight={"700"}>
                     5. Backup Strategy & Failures
                   </FormLabel>
-                  <FormLabel>Backup Methods:</FormLabel>
-                  <Text>{backupMethods}</Text>
-                  <FormLabel>Action:</FormLabel>
-                  <Text>{backupAction}</Text>
+                  <FormLabel><strong>Backup Methods: {backupMethods}</strong></FormLabel>
+                  <FormLabel><strong>Action: {backupAction}</strong></FormLabel>
 
                   <FormLabel mt={10} fontWeight={"700"}>
                     6. Communication Strategy & Breakdowns
                   </FormLabel>
-                  <FormLabel>Channels:</FormLabel>
-                  <Text>{communicationChannel}</Text>
-                  <FormLabel>Action:</FormLabel>
-                  <Text>{communicationAction}</Text>
+                  <FormLabel><strong>Channels: {communicationChannel}</strong></FormLabel>
+                  <FormLabel><strong>Action: {communicationAction}</strong></FormLabel>
 
                   <FormLabel mt={10} fontWeight={"700"}>
                     7. Redundancy Strategy
                   </FormLabel>
-                  <FormLabel>Failover Systems:</FormLabel>
-                  <Text>{redundancyFailover}</Text>
-                  <FormLabel>Action:</FormLabel>
-                  <Text>{redundencyAction}</Text>
+                  <FormLabel><strong>Failover Systems: {redundancyFailover}</strong></FormLabel>
+                  <FormLabel><strong>Action: {redundencyAction}</strong></FormLabel>
 
                   <FormLabel mt={10} fontWeight={"700"}>
                     8. Training and Awareness
                   </FormLabel>
-                  <FormLabel>Training Modules for the Team:</FormLabel>
-                  <Text>{trainingModules}</Text>
-                  <FormLabel>Action:</FormLabel>
-                  <Text>{trainingAction}</Text>
+                  <FormLabel><strong>Training Modules for the Team: {trainingModules}</strong></FormLabel>
+                  <FormLabel><strong>Action: {trainingAction}</strong></FormLabel>
 
                   <FormLabel mt={10} fontWeight={"700"}>
                     9. Testing and Drills
                   </FormLabel>
-                  <FormLabel>Frequency of DR Tests:</FormLabel>
-                  <Text>{testingFrequency}</Text>
-                  <FormLabel>Simulated Disaster Scenarios:</FormLabel>
-                  <Text>{testingSimulated}</Text>
+                  <FormLabel><strong>Frequency of DR Tests: {testingFrequency}</strong></FormLabel>
+                  <FormLabel><strong>Simulated Disaster Scenarios: {testingSimulated}</strong></FormLabel>
+                  
 
                   <FormLabel mt={10} fontWeight={"700"}>
                     10. Maintenance & Review
                   </FormLabel>
-                  <FormLabel>Review Schedule:</FormLabel>
-                  <Text>{maintenanceReview}</Text>
-                  <FormLabel>Action:</FormLabel>
-                  <Text>{maintenanceAction}</Text>
+                  <FormLabel><strong>Review Schedule: {maintenanceReview}</strong></FormLabel>
+                  <FormLabel><strong>Action: {maintenanceAction}</strong></FormLabel>
 
                   <FormLabel mt={10} fontWeight={"700"}>
                     11. Vendor Details & Dependencies
                   </FormLabel>
-                  <FormLabel>Third-party DR Solutions:</FormLabel>
-                  <Text>{vendorThirdParty}</Text>
-                  <FormLabel>Action:</FormLabel>
-                  <Text>{vendorAction}</Text>
+                  <FormLabel><strong>Third-party DR Solutions: {vendorThirdParty}</strong></FormLabel>
+                  <FormLabel><strong>Action: {vendorAction}</strong></FormLabel>
 
                   <FormLabel mt={10} fontWeight={"700"}>
                     12. Appendices
                   </FormLabel>
-                  <FormLabel>Additional Notes:</FormLabel>
-                  <Text>{appendices}</Text>
+                  <FormLabel><strong>Additional Notes: {appendices}</strong></FormLabel>
                 </form>
               </div>
             </ModalBody>
             <ModalFooter>
-              <Button colorScheme="blue" onClick={handleCloseModal} bg="#691212"
-          color={"white"}>
+              <Button
+                colorScheme="blue"
+                onClick={handleCloseModal}
+                bg="#691212"
+                color={"white"}
+              >
                 Confirm
               </Button>
             </ModalFooter>

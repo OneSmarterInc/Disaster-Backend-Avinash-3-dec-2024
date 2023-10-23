@@ -42,7 +42,7 @@ import Debrief from "../Debrief";
 import Deliverable from "../Deliverable";
 import callwithjulia from "../userImages/callwithjulia.jpeg";
 import twoleaders from "../userImages/twoleaders.jpeg";
-import respect from "../userImages/respect.jpeg";
+import respect from "../userImages/respect.jpg";
 import calmoffice from "../userImages/calmoffice.jpeg";
 import fewweeks from "../userImages/fewweeks.jpeg";
 import strikes from "../userImages/strikes.jpeg";

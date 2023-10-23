@@ -9,13 +9,13 @@ const MyProvider = ({ children }) => {
   const [deliverableState, setDeliverableState] = useState(false);
   const [selectedSection, setSelectedSection] = useState("Prepare");
   const [pauseBtn, setPauseBtn] = useState(false);
+  const [head, setHead] = useState("");
   const [showCloseBtn, setShowCloseBtn] = useState(false);
  
   const [showSidebar, setShowSideBar] = useState(true);
-  const speed = 100;
+  const speed = 2000;
 
 
-  const [head, setHead] = useState("");
 
   const enableBox = () => {
     setGlobalState(true);

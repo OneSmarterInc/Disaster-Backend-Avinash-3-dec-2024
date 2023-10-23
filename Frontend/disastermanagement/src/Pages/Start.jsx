@@ -29,6 +29,7 @@ const Start = () => {
 
   const handlePause = () => {
     setPauseBtn(!pauseBtn);
+    // console.log(head);
   };
 
   const {

@@ -11,56 +11,22 @@ import {
 } from "@chakra-ui/react";
 
 import { Box, Button, Flex, Text, Image } from "@chakra-ui/react";
-import React, {
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import "./Chat.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import BringDown from "../Components/Day1/Day1Evening";
-import day1morning from "../Images/chatbg/day1morning.png";
-import Morning5 from "../Components/Day5/Morning5";
 import bencarter from "../Images/org/bencarter.png";
 import { dayOneMorning } from "../mainData";
 import kate from "../Images/org/kate_sullivan.png";
 import MyContext from "../Components/ContextApi/MyContext";
-import EarlyMorning from "../Components/Day2/EarlyMorning";
-import EarlyMorning4 from "../Components/Day4/EarlyMorning4";
-import { MdNotStarted } from "react-icons/md";
-import { BsPauseCircleFill } from "react-icons/bs";
 import openemail from "../Images/openemail.jpeg";
 import bensphone from "../Images/bensphone.jpeg";
 import relaxing from "../Images/relaxing.jpeg";
-
 import bgcall from "../Images/bgcall.jpeg";
-
-import { BsArrowRightShort } from "react-icons/bs";
-import { BsArrowLeftShort } from "react-icons/bs";
-
 import bensleep from "../Images/bensleep.jpeg";
-import { BsArrowRightSquareFill } from "react-icons/bs";
-import bensleep2 from "../Images/bensleep2.jpeg";
-import { useSpring, animated } from "react-spring";
 
 const Chat = () => {
-  const [flip, setFlip] = useState(false);
-  const props = useSpring({
-    to: { opacity: 1 },
-    from: { opacity: 0 },
-    reset: true,
-    reverse: flip,
-    delay: 200,
-    onRest: () => setFlip(!flip),
-  });
-  const chatAnimation = useSpring({
-    // opacity: showPopup ? 0 : 1,
-    // from: { opacity: showPopup ? 1 : 0 },
-  });
-  const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
   const [showBoxContent1, setShowBoxContent1] = useState(true);
@@ -70,15 +36,6 @@ const Chat = () => {
   const [day5Popup, setDay5Popup] = useState(true);
   const [day5Popup2, setDay5Popup2] = useState(true);
   const [day5Popup3, setDay5Popup3] = useState(true);
-
-  const [modalValue, setModalValue] = useState(null);
-  const [modalValue1, setModalValue1] = useState(null);
-
-  const [explaination, setExplanation] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalOpen1, setIsModalOpen1] = useState(false);
-  const [isModalOpen2, setIsModalOpen2] = useState(false);
-  const [ShowScroll, setShowScroll] = useState(false);
   const [chatPaused, setChatPaused] = useState(false);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
@@ -88,27 +45,8 @@ const Chat = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const {
-    setHead,
-    speed,
-    pauseBtn,
-    setPauseBtn,
-    setShowSideBar,
-    showSideBar,
-    setShowCloseBtn,
-  } = useContext(MyContext);
-
-  const handleopen = () => {
-    setShowSideBar(true);
-  };
-
-  const handleClose = () => {
-    setShowSideBar(false);
-  };
-
-  const handlePause = () => {
-    setPauseBtn(!pauseBtn);
-  };
+  const { setHead, speed, pauseBtn, showSideBar, setShowCloseBtn } =
+    useContext(MyContext);
 
   const handleChange = (value) => {
     setValue(value);
@@ -143,6 +81,7 @@ const Chat = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
     setShowCloseBtn(true);
+    console.log(currentMessageIndex);
     if (currentMessageIndex > 3) {
       setHead("Day 1 - Night");
     } else {
@@ -150,8 +89,6 @@ const Chat = () => {
     }
 
     const messageDelay = speed;
-
-    let timeoutIndex = 0;
 
     const displayNextMessage = () => {
       if (!pauseBtn) {
@@ -191,7 +128,6 @@ const Chat = () => {
       clearInterval(messageInterval);
     };
   }, [currentMessageIndex, chatPaused, pauseBtn]);
-  
 
   const closePopup = () => {
     // setShowPopup(false);
@@ -227,6 +163,8 @@ const Chat = () => {
       }, 100);
     }
   }, [showBox, showBoxContent2, showSideBar]);
+
+  const visibleMessages = dayOneMorning.slice(0, currentMessageIndex);
 
   return (
     <>
@@ -268,31 +206,13 @@ const Chat = () => {
               overflow={"auto"}
               bgColor="#948888"
             >
-              {/* {showSideBar ? < BsArrowLeftShort size={30} cursor={"pointer"} onClick={handleClose} /> :  < BsArrowRightShort size={30} cursor={"pointer"} onClick={handleopen} />} */}
-
-              {/* {showSideBar ? (
-
-              {showSideBar ? (
-
-                <></>
-              ) : (
-                <Box>
-                  {" "}
-                  <BsArrowRightSquareFill
-                    size={30}
-                    cursor={"pointer"}
-                    onClick={handleopen}
-                  />
-                </Box>
-              )} */}
-
               <Box pt={3} borderBottom={"0px solid black"}>
                 {users.map((el) => {
                   return (
                     <Tooltip
                       label={
                         (el.name === "Ben Carter" && "CEO") ||
-                        (el.name === "Kate Sullivan" && "IT Director") 
+                        (el.name === "Kate Sullivan" && "IT Director")
                       }
                     >
                       <Box
@@ -379,28 +299,8 @@ const Chat = () => {
                 pl={5}
                 pr={5}
               >
-                {/* <Text
-                  position={"fixed"}
-                  color={"black"}
-
-                  top={"90%"}
-                  right={"2%"}
-
-                  top={"85%"}
-                  left={"1450px"}
-
-                  cursor={"pointer"}
-                  fontSize={45}
-                  onClick={handlePause}
-                >
-                  {pauseBtn ? (
-                    <MdNotStarted color="black" />
-                  ) : (
-                    <BsPauseCircleFill color="black" />
-                  )}
-                </Text> */}
                 <TransitionGroup>
-                  {dayOneMorning.slice(0, currentMessageIndex).map((el, i) => {
+                  {visibleMessages.map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";
                     const messageClass = isCIO ? "KateSullivan" : "BenCarter";
                     const alignMessage = isCIO ? "flex-start" : "flex-end";

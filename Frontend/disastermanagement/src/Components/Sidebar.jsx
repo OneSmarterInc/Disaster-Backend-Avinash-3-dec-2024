@@ -82,7 +82,7 @@ const Sidebar = () => {
               onClick={() => handleSectionClick("deliverable")}
               cursor="pointer"
               fontWeight={selectedSection === "deliverable" ? "bold" : "none"}
-              // pointerEvents={deliverableState ? "auto" : "none"}
+              pointerEvents={deliverableState ? "auto" : "none"}
               color={deliverableState ? "black" : "gray"}
             >
               Deliverable

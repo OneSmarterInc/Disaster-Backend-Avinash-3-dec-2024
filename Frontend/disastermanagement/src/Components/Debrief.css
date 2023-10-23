@@ -1,12 +1,15 @@
 #container {
-  width: 45%;
+  width: 55%;
   margin: auto;
   margin-top: 50px;
   padding: 50px 0px 80px 0px;
   font-family: Fredoka;
   font-size: 25px;
   font-weight: 500;
-  box-shadow: #691212 0px 0px 0px 1px, #691212 0px 0px 0px 1px inset;
+  background-color: #c7afaf;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .containerChild {
@@ -15,20 +18,19 @@
   margin: auto;
   padding: 5px;
   position: relative;
-  transition: .4s ease-in;
+  transition: 0.4s ease-in;
   z-index: 1;
 }
 
-.containerChild ::before, .containerChild ::after{
-position: absolute;
-content: "";
-z-index: 1;
+.containerChild ::before,
+.containerChild ::after {
+  position: absolute;
+  content: "";
+  z-index: 1;
 }
 
-.containerChild:hover{
-    cursor: pointer;
-    color: white;
-    background-color: #17181c;
+.containerChild:hover {
+  cursor: pointer;
+  color: white;
+  background-color: #17181c;
 }
-
-

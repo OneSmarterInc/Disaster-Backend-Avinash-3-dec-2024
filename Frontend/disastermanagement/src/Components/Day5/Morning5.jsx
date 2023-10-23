@@ -50,13 +50,11 @@ import crisis from "../userImages/crisis.jpeg";
 import cheer from "../userImages/cheer.jpeg";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
-import { useSpring, animated} from "react-spring";
-
+import { useSpring, animated } from "react-spring";
 
 const Morning5 = () => {
   const [flip, setFlip] = useState(false);
 
-  
   // const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
@@ -401,18 +399,18 @@ const Morning5 = () => {
                       <Tooltip
                         label={
                           (el.name === "Ben Carter" && "CEO") ||
-                          (el.name === "Kate Sullivan" && "IT Manager") ||
+                          (el.name === "Kate Sullivan" && "IT Director") ||
                           (el.name === "Liam Turner" &&
                             "Senior Systems Analyst") ||
                           (el.name === "Sophia Kim" &&
                             "Database Administrator") ||
                           (el.name === "Mia Rodriguez" &&
                             "Network Specialist") ||
-                          (el.name === "Tom Mitchell" && "") ||
+                          (el.name === "Tom Mitchell" && "Application Vendor") ||
                           (el.name === "Raj Patel" && "") ||
                           (el.name === "Grace Patterson" && "") ||
                           (el.name === "Gajji" &&
-                            "Senior Vice President of Development (Storage Vendor)") ||
+                            "Senior Vice President of Development (ERP Vendor)") ||
                           (el.name === "Communications Lead" &&
                             "Communications Lead")
                         }
@@ -446,17 +444,17 @@ const Morning5 = () => {
                     <Tooltip
                       label={
                         (el.name === "Ben Carter" && "CEO") ||
-                        (el.name === "Kate Sullivan" && "IT Manager") ||
+                        (el.name === "Kate Sullivan" && "IT Director") ||
                         (el.name === "Liam Turner" &&
                           "Senior Systems Analyst") ||
                         (el.name === "Sophia Kim" &&
                           "Database Administrator") ||
                         (el.name === "Mia Rodriguez" && "Network Specialist") ||
-                        (el.name === "Tom Mitchell" && "") ||
+                        (el.name === "Tom Mitchell" && "Application Vendor") ||
                         (el.name === "Aisha Patel" &&
                           "Chief Operating Officer") ||
                         (el.name === "GAjji" &&
-                          "Senior Vice President of Development (Storage Vendor)") ||
+                          "Senior Vice President of Development (ERP Vendor)") ||
                         (el.name === "Communications Lead" &&
                           "Communications Lead")
                       }
@@ -488,7 +486,7 @@ const Morning5 = () => {
                 </Box>
               </Box>
             </Box>
-           
+
             <Box
               pt={5}
               maxH={"88vh"}
@@ -1292,9 +1290,8 @@ const Morning5 = () => {
                               fontWeight={"bold"}
                             >
                               <Text>
-                                Which trade of the customer representative do
-                                you feel has stood out during your latest
-                                interaction ?
+                                Which quality of Ben Carter do you feel stands
+                                out during the last conversation?
                               </Text>
                             </Flex>
                             <RadioGroup

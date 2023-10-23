@@ -37,17 +37,15 @@ import room from "../userImages/theroom.png";
 import night from "../userImages/night.png";
 import liam from "../userImages/liam.jpeg";
 import MyContext from "../ContextApi/MyContext";
-import callwithjulia from "../userImages/callwithjulia.jpeg"
+import callwithjulia from "../userImages/callwithjulia.jpeg";
 
 import clock from "../userImages/clock.jpeg";
 import planning from "../userImages/planning.jpeg";
 import goldenlight from "../userImages/goldenlight.jpeg";
 import atmosphere from "../userImages/atmosphere.jpeg";
 
-
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
-
 
 const LateMorning = () => {
   const [chatData, setChatData] = useState([]);
@@ -82,8 +80,8 @@ const LateMorning = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const { setHead,speed, pauseBtn, setPauseBtn } = useContext(MyContext);
-  
+  const { setHead, speed, pauseBtn, setPauseBtn } = useContext(MyContext);
+
   const handlePause = () => {
     setPauseBtn(!pauseBtn);
   };
@@ -93,7 +91,6 @@ const LateMorning = () => {
     Cookies.set("day2latemorning2", value);
   };
 
-
   const handleChange2 = (value1) => {
     setValue1(value1);
     Cookies.set("day2latemorning1", value1);
@@ -102,7 +99,6 @@ const LateMorning = () => {
     setshowBoxContent2(true);
   };
 
-  
   const scrollToBottom = () => {
     const container = chatContainerRef.current;
     if (container) {
@@ -174,9 +170,7 @@ const LateMorning = () => {
         scrollToBottom();
       }, 100);
     }
-  }, [showBox,showBoxContent2]);
-
-
+  }, [showBox, showBoxContent2]);
 
   useEffect(() => {
     if (currentMessageIndex > 4 && currentMessageIndex <= 14) {
@@ -188,40 +182,40 @@ const LateMorning = () => {
     }
 
     const displayNextMessage = () => {
-      if(!pauseBtn){
-      if (!chatPaused && currentMessageIndex < dayTwoLateMorning.length) {
-        const message = dayTwoLateMorning[currentMessageIndex];
-        setCurrentMessageIndex((prevIndex) => prevIndex + 1);
-        setActiveUser(message.sender);
+      if (!pauseBtn) {
+        if (!chatPaused && currentMessageIndex < dayTwoLateMorning.length) {
+          const message = dayTwoLateMorning[currentMessageIndex];
+          setCurrentMessageIndex((prevIndex) => prevIndex + 1);
+          setActiveUser(message.sender);
 
-        if (currentMessageIndex === 2) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup(true);
-          }, 2000);
-        } else if (currentMessageIndex === 5) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup4(true);
-          }, 2000);
-        } else if (currentMessageIndex === 10) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup2(true);
-          }, 2000);
-        } else if (currentMessageIndex === 13) {
-          setChatPaused(true);
-          setTimeout(() => {
-            setShowPopup3(true);
-          }, 2000);
-        }
-      } else {
-        if (currentMessageIndex === dayTwoLateMorning.length) {
-          // The chat has ended completely, set showBox to true
-          setShowBox(true);
+          if (currentMessageIndex === 2) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup(true);
+            }, 2000);
+          } else if (currentMessageIndex === 5) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup4(true);
+            }, 2000);
+          } else if (currentMessageIndex === 10) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup2(true);
+            }, 2000);
+          } else if (currentMessageIndex === 13) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup3(true);
+            }, 2000);
+          }
+        } else {
+          if (currentMessageIndex === dayTwoLateMorning.length) {
+            // The chat has ended completely, set showBox to true
+            setShowBox(true);
+          }
         }
       }
-    }
     };
 
     const messageInterval = setInterval(displayNextMessage, speed);
@@ -265,7 +259,7 @@ const LateMorning = () => {
               overflow={"auto"}
               bgColor="#948888"
             >
-               <Box
+              <Box
                 bgColor="#948888"
                 pt={3}
                 flex="1"
@@ -281,14 +275,14 @@ const LateMorning = () => {
                       <Tooltip
                         label={
                           (el.name === "Ben Carter" && "CEO") ||
-                          (el.name === "Kate Sullivan" && "IT Manager") ||
+                          (el.name === "Kate Sullivan" && "IT Director") ||
                           (el.name === "Liam Turner" &&
                             "Senior Systems Analyst") ||
                           (el.name === "Sophia Kim" &&
                             "Database Administrator") ||
                           (el.name === "Mia Rodriguez" &&
                             "Network Specialist") ||
-                          (el.name === "Tom Mitchell" && "") ||
+                          (el.name === "Tom Mitchell" && "Application Vendor") ||
                           (el.name === "Raj Patel" && "") ||
                           (el.name === "Grace Patterson" && "") ||
                           (el.name === "Aisha Patel" && "COO")
@@ -323,17 +317,17 @@ const LateMorning = () => {
                     <Tooltip
                       label={
                         (el.name === "Ben Carter" && "CEO") ||
-                        (el.name === "Kate Sullivan" && "IT Manager") ||
+                        (el.name === "Kate Sullivan" && "IT Director") ||
                         (el.name === "Liam Turner" &&
                           "Senior Systems Analyst") ||
                         (el.name === "Sophia Kim" &&
                           "Database Administrator") ||
                         (el.name === "Mia Rodriguez" && "Network Specialist") ||
-                        (el.name === "Tom Mitchell" && "") ||
+                        (el.name === "Tom Mitchell" && "Application Vendor") ||
                         (el.name === "Aisha Patel" &&
                           "Chief Operating Officer") ||
                         (el.name === "GAjji" &&
-                          "Senior Vice President of Development (Storage Vendor)")
+                          "Senior Vice President of Development (ERP Vendor)")
                       }
                     >
                       <Box id={el.name} key={el.name} cursor={"pointer"}>
@@ -408,7 +402,7 @@ const LateMorning = () => {
                 pl={5}
                 pr={5}
               >
-                 {/* <Text
+                {/* <Text
                   position={"fixed"}
                   color={"black"}
                   top={"650px"}
@@ -482,188 +476,217 @@ const LateMorning = () => {
                     })}
                   {showPopup && (
                     <Modal isOpen={day5Popup}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                      bgColor="#E3E3E3"
-                      maxW={{ base: "90%", sm: "600px" }} // Responsive width
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                      </ModalHeader>
-                      <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
-                        <Flex flexDirection={{ base: "column", sm: "row" }} gap={{ base: 2, sm: 4 }}> {/* Responsive layout */}
-                          <Box
-                            bgColor="white"
-                            boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                            borderRadius={10}
-                            p={{ base: 4, sm: 5 }}
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "600px" }} // Responsive width
+                      >
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
+                        <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                          <Flex
+                            flexDirection={{ base: "column", sm: "row" }}
+                            gap={{ base: 2, sm: 4 }}
                           >
-                            <Text>
-                              Ben Carter and his internal team are in a planning session.
-                            </Text>
-                          </Box>
-                          <Box textAlign="center">
-                            <Image src={planning} borderRadius={10} />
-                            <Button
-                              colorScheme="teal"
-                              onClick={closePopup}
-                              fontFamily="Croissant One"
-                              bg="black"
-                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                              mt={3}
+                            {" "}
+                            {/* Responsive layout */}
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                               borderRadius={10}
-                              w={'100%'}
+                              p={{ base: 4, sm: 5 }}
                             >
-                              Close
-                            </Button>
-                          </Box>
-                        </Flex>
-                      </ModalBody>
-                      <ModalFooter>
-                        {/* Footer content, if needed */}
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                              <Text>
+                                Ben Carter and his internal team are in a
+                                planning session.
+                              </Text>
+                            </Box>
+                            <Box textAlign="center">
+                              <Image src={planning} borderRadius={10} />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup}
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                mt={3}
+                                borderRadius={10}
+                                w={"100%"}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
 
                   {showPopup2 && (
                     <Modal isOpen={day5Popup2}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                      bgColor="#E3E3E3"
-                      maxW={{ base: "90%", sm: "600px" }} // Responsive width
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                      </ModalHeader>
-                      <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
-                        <Flex flexDirection={{ base: "column", sm: "row" }} gap={{ base: 2, sm: 4 }}> {/* Responsive layout */}
-                          <Box
-                            bgColor="white"
-                            boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                            borderRadius={10}
-                            p={{ base: 4, sm: 5 }}
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "600px" }} // Responsive width
+                      >
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
+                        <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                          <Flex
+                            flexDirection={{ base: "column", sm: "row" }}
+                            gap={{ base: 2, sm: 4 }}
                           >
-                            <Text>
-                              The room is bathed in the golden light of late afternoon. The clock reads 4:00 PM.
-                            </Text>
-                          </Box>
-                          <Box textAlign="center">
-                            <Image src={goldenlight} borderRadius={10} />
-                            <Button
-                              colorScheme="teal"
-                              onClick={closePopup2}
-                              fontFamily="Croissant One"
-                              bg="black"
-                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                              mt={3}
+                            {" "}
+                            {/* Responsive layout */}
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                               borderRadius={10}
-                              w={'100%'}
+                              p={{ base: 4, sm: 5 }}
                             >
-                              Close
-                            </Button>
-                          </Box>
-                        </Flex>
-                      </ModalBody>
-                      <ModalFooter>
-                        {/* Footer content, if needed */}
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                              <Text>
+                                The room is bathed in the golden light of late
+                                afternoon. The clock reads 4:00 PM.
+                              </Text>
+                            </Box>
+                            <Box textAlign="center">
+                              <Image src={goldenlight} borderRadius={10} />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup2}
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                mt={3}
+                                borderRadius={10}
+                                w={"100%"}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
                   {showPopup3 && (
                     <Modal isOpen={day5Popup3}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                      bgColor="#E3E3E3"
-                      maxW={{ base: "90%", sm: "600px" }} // Responsive width
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                      </ModalHeader>
-                      <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
-                        <Flex flexDirection={{ base: "column", sm: "row" }} gap={{ base: 2, sm: 4 }}> {/* Responsive layout */}
-                          <Box
-                            bgColor="white"
-                            boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                            borderRadius={10}
-                            p={{ base: 4, sm: 5 }}
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "600px" }} // Responsive width
+                      >
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
+                        <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                          <Flex
+                            flexDirection={{ base: "column", sm: "row" }}
+                            gap={{ base: 2, sm: 4 }}
                           >
-                            <Text>
-                              The night deepens, and the office is quieter, with only the IT team still working diligently. The clock is about to strike midnight.
-                            </Text>
-                          </Box>
-                          <Box textAlign="center">
-                            <Image src={night} borderRadius={10} />
-                            <Button
-                              colorScheme="teal"
-                              onClick={closePopup3}
-                              fontFamily="Croissant One"
-                              bg="black"
-                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                              mt={3}
+                            {" "}
+                            {/* Responsive layout */}
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                               borderRadius={10}
-                              w={'100%'}
+                              p={{ base: 4, sm: 5 }}
                             >
-                              Close
-                            </Button>
-                          </Box>
-                        </Flex>
-                      </ModalBody>
-                      <ModalFooter>
-                        {/* Footer content, if needed */}
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                              <Text>
+                                The night deepens, and the office is quieter,
+                                with only the IT team still working diligently.
+                                The clock is about to strike midnight.
+                              </Text>
+                            </Box>
+                            <Box textAlign="center">
+                              <Image src={night} borderRadius={10} />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup3}
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                mt={3}
+                                borderRadius={10}
+                                w={"100%"}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
                   {showPopup4 && (
                     <Modal isOpen={day5Popup4}>
-                    <ModalOverlay />
-                    <ModalContent
-                      boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                      bgColor="#E3E3E3"
-                      maxW={{ base: "90%", sm: "600px" }} // Responsive width
-                    >
-                      <ModalHeader fontWeight="bold" fontSize="25px">
-                      </ModalHeader>
-                      <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
-                        <Flex flexDirection={{ base: "column", sm: "row" }} gap={{ base: 2, sm: 4 }}> {/* Responsive layout */}
-                          <Box
-                            bgColor="white"
-                            boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                            borderRadius={10}
-                            p={{ base: 4, sm: 5 }}
+                      <ModalOverlay />
+                      <ModalContent
+                        boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "600px" }} // Responsive width
+                      >
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
+                        <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                          <Flex
+                            flexDirection={{ base: "column", sm: "row" }}
+                            gap={{ base: 2, sm: 4 }}
                           >
-                            <Text>
-                              The clock strikes 1:00 PM. The atmosphere in the room is cautiously optimistic.
-                            </Text>
-                          </Box>
-                          <Box textAlign="center">
-                            <Image src={clock} borderRadius={10} />
-                            <Button
-                              colorScheme="teal"
-                              onClick={closePopup4}
-                              fontFamily="Croissant One"
-                              bg="black"
-                              _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                              mt={3}
+                            {" "}
+                            {/* Responsive layout */}
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                               borderRadius={10}
-                              w={'100%'}
+                              p={{ base: 4, sm: 5 }}
                             >
-                              Close
-                            </Button>
-                          </Box>
-                        </Flex>
-                      </ModalBody>
-                      <ModalFooter>
-                        {/* Footer content, if needed */}
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                  
+                              <Text>
+                                The clock strikes 1:00 PM. The atmosphere in the
+                                room is cautiously optimistic.
+                              </Text>
+                            </Box>
+                            <Box textAlign="center">
+                              <Image src={clock} borderRadius={10} />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup4}
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                mt={3}
+                                borderRadius={10}
+                                w={"100%"}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                        <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
                   {showBox && (
                     <>
@@ -905,9 +928,8 @@ const LateMorning = () => {
                               fontWeight={"bold"}
                             >
                               <Text>
-                                Which trade of the customer representative do
-                                you feel has stood out during your latest
-                                interaction ?
+                                Which quality of Ben Carter do you feel stands
+                                out during the last conversation?
                               </Text>
                             </Flex>
                             <RadioGroup
@@ -1103,8 +1125,6 @@ const LateMorning = () => {
                       </Box>
                     </>
                   )}
-
-                  
 
                   <div ref={spacerRef} style={{ height: "40px" }}></div>
                 </TransitionGroup>

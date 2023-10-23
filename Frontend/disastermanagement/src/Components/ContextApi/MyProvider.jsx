@@ -17,6 +17,7 @@ const MyProvider = ({ children }) => {
 
 
 
+
   const enableBox = () => {
     setGlobalState(true);
   };

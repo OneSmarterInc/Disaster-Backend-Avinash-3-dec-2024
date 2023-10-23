@@ -25,6 +25,7 @@ import bensphone from "../Images/bensphone.jpeg";
 import relaxing from "../Images/relaxing.jpeg";
 import bgcall from "../Images/bgcall.jpeg";
 import bensleep from "../Images/bensleep.jpeg";
+import Morning5 from "../Components/Day5/Morning5";
 
 const Chat = () => {
   const [activeUser, setActiveUser] = useState(null);
@@ -89,9 +90,7 @@ const Chat = () => {
     }
     
     console.log(startIndex ,currentMessageIndex, dayOneMorning[startIndex].message);
-    if(currentMessageIndex === 3){
-      setStartIndex(currentMessageIndex)
-    }
+   
 
     const messageDelay = speed;
 
@@ -111,6 +110,9 @@ const Chat = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup2(true);
+              
+                setStartIndex(currentMessageIndex+1)
+              
             }, 2000);
           } else if (currentMessageIndex === 5) {
             setChatPaused(true);
@@ -134,11 +136,7 @@ const Chat = () => {
     };
   }, [currentMessageIndex, chatPaused, pauseBtn]);
 
-  useEffect(()=>{
-    if(currentMessageIndex === 5){
-      setStartIndex(currentMessageIndex)
-    }
-  },[currentMessageIndex])
+  
 
   const closePopup = () => {
     // setShowPopup(false);

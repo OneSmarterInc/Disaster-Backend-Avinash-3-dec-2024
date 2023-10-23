@@ -79,6 +79,7 @@ const EarlyMorning4 = () => {
   const [showPopup6, setShowPopup6] = useState(false);
 
   const [chatPaused, setChatPaused] = useState(false);
+  const [startIndex, setStartIndex] = useState(0);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -172,6 +173,7 @@ const EarlyMorning4 = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup(true);
+              setStartIndex(currentMessageIndex+1);
             }, 2000);
           } else if (currentMessageIndex === 7) {
             setChatPaused(true);
@@ -255,6 +257,9 @@ const EarlyMorning4 = () => {
     // onClose();
     setChatPaused(false);
   };
+
+  const visibleMessages = dayFourMorning.slice(startIndex, currentMessageIndex);
+
 
   return (
     <>
@@ -466,7 +471,7 @@ const EarlyMorning4 = () => {
                   )}
                 </Text> */}
                 <TransitionGroup>
-                  {dayFourMorning.slice(0, currentMessageIndex).map((el, i) => {
+                  {visibleMessages.map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";
                     const messageClass = isCIO ? "KateSullivan" : "BenCarter";
                     const alignMessage = isCIO ? "flex-start" : "flex-end";

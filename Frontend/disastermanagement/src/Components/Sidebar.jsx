@@ -43,7 +43,7 @@ const Sidebar = () => {
             spacing={4}
             alignItems="flex-start"
             border={"0px solid red"}
-            bgColor={" #856262 "}
+            style={{backgroundImage: "linear-gradient(252deg, #ffe5e5 0%, #ebfffd 61.46%, #dffffd 100%)"}}
             fontFamily={"Fredoka"}
             fontSize={20}
             pl={5}
@@ -82,7 +82,7 @@ const Sidebar = () => {
               onClick={() => handleSectionClick("deliverable")}
               cursor="pointer"
               fontWeight={selectedSection === "deliverable" ? "bold" : "none"}
-              // pointerEvents={deliverableState ? "auto" : "none"}
+              pointerEvents={deliverableState ? "auto" : "none"}
               color={deliverableState ? "black" : "gray"}
             >
               Deliverable
@@ -91,7 +91,7 @@ const Sidebar = () => {
               onClick={() => handleSectionClick("debrief")}
               cursor="pointer"
               fontWeight={selectedSection === "debrief" ? "bold" : "none"}
-              // pointerEvents={globalState ? "auto" : "none"}
+              pointerEvents={globalState ? "auto" : "none"}
               color={globalState ? "black" : "gray"}
             >
               Debrief

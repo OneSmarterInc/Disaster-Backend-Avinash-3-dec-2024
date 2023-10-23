@@ -44,7 +44,7 @@ const LeadershipFramework = () => {
           <ModalBody fontFamily={"Fredoka"}>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18}>
-                Technical Awareness:
+                1. Technical Awareness:
               </Text>
               <Text>
                 Understanding the technical intricacies of the situation,
@@ -53,7 +53,7 @@ const LeadershipFramework = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Situational Awareness:
+                2. Situational Awareness:
               </Text>
               <Text>
                 Grasping the immediate context, the severity of the situation,
@@ -62,7 +62,7 @@ const LeadershipFramework = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                External Awareness:
+                3. External Awareness:
               </Text>
               <Text>
                 Being aware of external stakeholders, market dynamics, and
@@ -71,7 +71,7 @@ const LeadershipFramework = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Team Awareness:
+                4. Team Awareness:
               </Text>
               <Text>
                 Recognizing the strengths, weaknesses, and emotional states of
@@ -80,7 +80,7 @@ const LeadershipFramework = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Strategic Awareness:
+                5. Strategic Awareness:
               </Text>
               <Text>
                 Keeping an eye on the long-term vision, goals, and implications
@@ -89,7 +89,7 @@ const LeadershipFramework = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Self Awareness:
+                6. Self Awareness:
               </Text>
               <Text>
                 Understanding one's own emotions, strengths, weaknesses, and
@@ -97,8 +97,8 @@ const LeadershipFramework = () => {
               </Text>
             </VStack>
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={18}>
-                Initial Crisis Onset:
+              <Text fontWeight={"600"} fontSize={18} mt={5}>
+                7. Initial Crisis Onset:
               </Text>
               <Text>
                 <Text>
@@ -121,7 +121,7 @@ const LeadershipFramework = () => {
 
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={2}>
-                Interactions with External Partners:
+                1. Interactions with External Partners:
               </Text>
               <Text>
                 <li>Dominant Awareness: External and Situational Awareness.</li>
@@ -134,7 +134,7 @@ const LeadershipFramework = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Guidance During Prolonged Crisis:
+                2. Guidance During Prolonged Crisis:
               </Text>
               <Text>
                 <li> Dominant Awareness: Team and Situational Awareness</li>
@@ -146,7 +146,7 @@ const LeadershipFramework = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Post-Crisis Reflection:
+               3. Post-Crisis Reflection:
               </Text>
               <Text>
                 <li> Dominant Awareness: Strategic and Technical Awareness</li>
@@ -159,7 +159,7 @@ const LeadershipFramework = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Outreach to Key Stakeholders:
+                4. Outreach to Key Stakeholders:
               </Text>
               <Text>
                 <li> Dominant Awareness: External and Strategic Awareness.</li>
@@ -172,7 +172,7 @@ const LeadershipFramework = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                Throughout the Simulation:
+                5. Throughout the Simulation:
               </Text>
               <Text>
                 <li>Dominant Awareness: Self Awareness.</li>

@@ -299,7 +299,7 @@ const Drform = () => {
       </form>
       {/* Modal to display form data */}
       {isModalOpen ? (
-        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+        <Modal isOpen={isModalOpen} onClose={handleCloseModal} >
           <ModalOverlay />
           <ModalContent maxW={'600px'}>
             <ModalHeader><strong>DR Form Data</strong></ModalHeader>

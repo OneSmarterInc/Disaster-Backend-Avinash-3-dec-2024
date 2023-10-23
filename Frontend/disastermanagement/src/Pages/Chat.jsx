@@ -88,10 +88,10 @@ const Chat = () => {
       setHead("Day 1 - Evening");
     }
     
-    console.log(startIndex ,currentMessageIndex, dayOneMorning[startIndex].message);
-    if(currentMessageIndex === 3){
-      setStartIndex(currentMessageIndex)
-    }
+    // console.log(startIndex ,currentMessageIndex, dayOneMorning[startIndex].message);
+    // if(currentMessageIndex === 3){
+    //   setStartIndex(currentMessageIndex)
+    // }
 
     const messageDelay = speed;
 
@@ -176,7 +176,7 @@ const Chat = () => {
   }, [showBox, showBoxContent2, showSideBar]);
 
   
-  const visibleMessages = dayOneMorning.slice(startIndex, currentMessageIndex);
+  const visibleMessages = dayOneMorning.slice(0, currentMessageIndex);
 
   return (
     <>

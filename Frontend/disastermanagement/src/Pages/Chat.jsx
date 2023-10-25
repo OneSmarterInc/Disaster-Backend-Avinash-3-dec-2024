@@ -50,6 +50,32 @@ const Chat = () => {
   const { setHead, speed, pauseBtn, showSideBar, setShowCloseBtn } =
     useContext(MyContext);
 
+    const [isDragging, setIsDragging] = useState(false);
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+  
+    const handleMouseDown = (e) => {
+      if (e.button === 0) {
+        setIsDragging(true);
+        const startX = e.clientX - position.x;
+        const startY = e.clientY - position.y;
+  
+        const handleMouseMove = (e) => {
+          if (isDragging) {
+            setPosition({ x: e.clientX - startX, y: e.clientY - startY });
+          }
+        };
+  
+        const handleMouseUp = () => {
+          setIsDragging(false);
+          document.removeEventListener("mousemove", handleMouseMove);
+          document.removeEventListener("mouseup", handleMouseUp);
+        };
+  
+        document.addEventListener("mousemove", handleMouseMove);
+        document.addEventListener("mouseup", handleMouseUp);
+      }
+    };
+
   const handleChange = (value) => {
     setValue(value);
     Cookies.set("day1morning2", value);
@@ -84,13 +110,16 @@ const Chat = () => {
     // Simulate messages from 5 users with a 2-second delay between each message
     setShowCloseBtn(true);
     if (currentMessageIndex > 3) {
-      setHead("Day 1 - Night");
+      setHead("Day 1 - Late Evening: Sporadic Issues Continue");
     } else {
-      setHead("Day 1 - Evening");
+      setHead("Day 1 - Evening : How it all begins");
     }
-    
-    console.log(startIndex ,currentMessageIndex, dayOneMorning[startIndex].message);
-   
+
+    console.log(
+      startIndex,
+      currentMessageIndex,
+      dayOneMorning[startIndex].message
+    );
 
     const messageDelay = speed;
 
@@ -110,9 +139,8 @@ const Chat = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup2(true);
-              
-                setStartIndex(currentMessageIndex+1)
-              
+
+              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 5) {
             setChatPaused(true);
@@ -135,8 +163,6 @@ const Chat = () => {
       clearInterval(messageInterval);
     };
   }, [currentMessageIndex, chatPaused, pauseBtn]);
-
-  
 
   const closePopup = () => {
     // setShowPopup(false);
@@ -173,7 +199,6 @@ const Chat = () => {
     }
   }, [showBox, showBoxContent2, showSideBar]);
 
-  
   const visibleMessages = dayOneMorning.slice(startIndex, currentMessageIndex);
 
   return (
@@ -214,7 +239,11 @@ const Chat = () => {
               w={"13%"}
               borderRight={"1px solid black"}
               overflow={"auto"}
-              bgColor="#948888"
+              // bgColor="#948888"
+              style={{
+                backgroundImage:
+                  "linear-gradient(252deg,#dea2a2 0%, #ebfffd 99.46%, #dea2a2 100%)",
+              }}
             >
               <Box pt={3} borderBottom={"0px solid black"}>
                 {users.map((el) => {
@@ -273,34 +302,57 @@ const Chat = () => {
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-              <Box
-                border={"1px solid black"}
-                bgColor={"#030405"}
-                color={"white"}
-                borderRadius={"20px"}
-                m={"auto"}
-                textAlign={"left"}
-                w={"90%"}
-                pl={3}
-                pt={3}
-                pb={3}
-              >
-                <Text fontSize={"18"}>
-                  The office of Ben Carter. He's wrapping up for the day,
-                  shutting down his computer,gathering his things, and
-                  exchanging a few words with his colleagues before heading out.
-                </Text>
-              </Box>
-              <Box mt={2}>
-                <Text bgColor={"grey"} color={"black"} w={"90%"} m={"auto"}>
-                  Ben's Phone: A soft chime. New email notification.
-                </Text>
-                <Text bgColor={"grey"} color={"black"} w={"90%"} m={"auto"}>
-                  Ben glances at the email subject: "Minor issues at the data
-                  center."
-                </Text>
-              </Box>
-
+              {currentMessageIndex < 4 ? (
+                <>
+                  <Box
+                    border={"1px solid black"}
+                    bgColor={"#030405"}
+                    color={"white"}
+                    borderRadius={"20px"}
+                    m={"auto"}
+                    textAlign={"left"}
+                    w={"90%"}
+                    pl={3}
+                    pt={3}
+                    pb={3}
+                  >
+                    <Text fontSize={"18"}>
+                      The office of Ben Carter. He's wrapping up for the day,
+                      shutting down his computer,gathering his things, and
+                      exchanging a few words with his colleagues before heading
+                      out.
+                    </Text>
+                  </Box>
+                  <Box mt={2}>
+                    <Text bgColor={"grey"} color={"black"} w={"90%"} m={"auto"}>
+                      Ben's Phone: A soft chime. New email notification.
+                    </Text>
+                    <Text bgColor={"grey"} color={"black"} w={"90%"} m={"auto"}>
+                      Ben glances at the email subject: "Minor issues at the
+                      data center."
+                    </Text>
+                  </Box>
+                </>
+              ) : (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"18"}>
+                    Despite efforts to enhance OTC's applications, they still
+                    encounter frequent failures, causing frustration among users
+                    and creating operational challenges.
+                  </Text>
+                </Box>
+              )}
               <Box
                 w={"90%"}
                 h={"68vh"}
@@ -372,6 +424,14 @@ const Chat = () => {
                         borderRadius={10}
                         width={["90%", "70%", "50%"]} // Responsive width
                         maxW="500px"
+                        
+                        style={{
+                          position: "absolute",
+                          top: position.y,
+                          left: position.x,
+                          cursor: isDragging ? "grabbing" : "grab",
+                        }}
+                        onMouseDown={handleMouseDown}
                       >
                         <ModalHeader
                           fontWeight="bold"

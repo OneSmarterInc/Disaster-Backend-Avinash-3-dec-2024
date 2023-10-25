@@ -231,7 +231,7 @@ export const dayTwoEarlyMorning = [
       "(To his internal team) Bottomline, with all the built-in redundancy, we did not have a good/non-corrupt set of data.  Because the storage system spreads all applications across multiple frames there were no set of application that had a know set of viable data.  That is a bad situation for us.",
   },
   {
-    sender: "Tom Mitchell",
+    sender: "Julia Harper",
     message:
       "It looks like the only solution is to replace the bad controller, reboot the storage systems at Site 1, which would clear the write buffers (data waiting to be written to disc) of data and disconnect from the remote (Site 2) storage systems to preserve that environment",
   },
@@ -241,7 +241,7 @@ export const dayTwoEarlyMorning = [
       "But what happens to systems that had failed or failed in the start-up?",
   },
   {
-    sender: "Tom Mitchell",
+    sender: "Julia Harper",
     message:
       "Those would have to be restored from backup storage discs (previous generation of storage) or tape drives.  The systems were typically backed up at midnight; hence since the corruption started approximately six hours before the backup process started, the failed systems would lose 18 hours of data.",
   },

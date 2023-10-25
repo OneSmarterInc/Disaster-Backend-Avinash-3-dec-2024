@@ -430,24 +430,46 @@ const EarlyMorning4 = () => {
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-              <Box
-                border={"1px solid black"}
-                bgColor={"#030405"}
-                color={"white"}
-                borderRadius={"20px"}
-                m={"auto"}
-                textAlign={"left"}
-                w={"90%"}
-                pl={3}
-                pt={3}
-                pb={3}
-              >
-                <Text fontSize={"20"}>
-                  Ben Carter and Kate Sullivan have come together to engage in a
-                  strategic meeting. This is a frank conversation where they
-                  discuss and plan various strategies..{" "}
-                </Text>
-              </Box>
+              {currentMessageIndex < 7 ? (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Ben Carter and Kate Sullivan have come together to engage in
+                    a strategic meeting. This is a frank conversation where they
+                    discuss and plan various strategies..{" "}
+                  </Text>
+                </Box>
+              ) : (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    The ERP vendor team is now driving a solution, working
+                    diligently and ensuring a successful implementation. Their
+                    commitment and expertise are instrumental in guiding towards
+                    a positive outcome.
+                  </Text>
+                </Box>
+              )}
 
               <Box
                 w={"90%"}

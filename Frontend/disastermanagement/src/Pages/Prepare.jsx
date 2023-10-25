@@ -1,6 +1,8 @@
-import { Box, Divider, Text } from '@chakra-ui/react'
+import { Box, Divider, Image, Text } from '@chakra-ui/react'
 import React, { useContext, useEffect } from 'react'
 import MyContext from '../Components/ContextApi/MyContext'
+import map from "../Images/map.jpeg";
+import map2 from "../Images/map2.jpeg";
 
 const Prepare = () => {
 
@@ -42,6 +44,7 @@ const Prepare = () => {
           <Text mt={4} textAlign={"justify"} fontSize={20}>
           "OTC is a global technological leader with clients, development centers and a presence the world over.  
           </Text>
+          <Image src={map2} />
         
         
           <Text mt={10} textAlign={"justify"} fontSize={20}>

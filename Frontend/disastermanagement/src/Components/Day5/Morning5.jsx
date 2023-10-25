@@ -36,7 +36,7 @@ import clock from "../userImages/clock.png";
 import clapping from "../userImages/clapping.png";
 import email from "../userImages/email.jpeg";
 import liam from "../userImages/liam.jpeg";
-
+import site from "../userImages/2.jpg"
 import MyContext from "../ContextApi/MyContext";
 import Debrief from "../Debrief";
 import Deliverable from "../Deliverable";
@@ -210,8 +210,6 @@ const Morning5 = () => {
       setHead("Day 5 - Afternoon");
     } else if (currentMessageIndex > 7) {
       setHead("Day 5 - Evening");
-    } else if (currentMessageIndex > 13) {
-      setHead("Epilog 1:  Reassuring Clients");
     } else {
       setHead("Day 5 - Morning");
     }
@@ -522,6 +520,9 @@ const Morning5 = () => {
               pb={2}
               bgImage={
                 currentMessageIndex > 33
+                  ? site
+                  :
+                currentMessageIndex > 32
                   ? gajjistand
                   : currentMessageIndex > 24
                   ? respect
@@ -1002,7 +1003,7 @@ const Morning5 = () => {
                         boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
-                          Epilog - 1
+                        Epilog 1:  Reassuring Clients
                         </ModalHeader>
 
                         <ModalBody fontSize="18px">
@@ -1136,6 +1137,17 @@ const Morning5 = () => {
                             restitution for the event. See the Appendix, Figure
                             #2. faced together have only deepened their bond.
                           </Text>
+
+                          <br/>
+                          <Text>The storage vendor
+                            provided approximately three million dollars of new
+                            hardware and software to provide two additional
+                            copies of the data as restitution for the event. See
+                            the Appendix, Figure #2. faced together have only
+                            deepened their bond.</Text>
+                            <br/>
+                            {/* <Image src={site}/> */}
+
                         </ModalBody>
 
                         <ModalFooter>

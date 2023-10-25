@@ -194,6 +194,7 @@ const DimensionMatrix = () => {
                 responsibility.
               </Text>
             </VStack>
+            <br/>
             <Text>
               Therefore, if we were to place Ben Carter on the 2x2 matrix, he
               would be positioned towards the Proactive + Collaborative

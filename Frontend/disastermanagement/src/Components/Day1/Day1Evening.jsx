@@ -185,7 +185,7 @@ const BringDown = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
 
-    setHead("Day 1 - Late night");
+    setHead("Day 1 - Late night: Back at the office with internal staff");
 
     const messageDelay = speed; // 4 seconds
 
@@ -311,7 +311,8 @@ const BringDown = () => {
                             "Database Administrator") ||
                           (el.name === "Mia Rodriguez" &&
                             "Network Specialist") ||
-                          (el.name === "Tom Mitchell" && "Application Vendor") ||
+                          (el.name === "Tom Mitchell" &&
+                            "Application Vendor") ||
                           (el.name === "Raj Patel" && "") ||
                           (el.name === "Grace Patterson" && "") ||
                           (el.name === "Chloe Zhang" && "IT Manager")

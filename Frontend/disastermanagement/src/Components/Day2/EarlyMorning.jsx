@@ -227,7 +227,7 @@ const EarlyMorning = () => {
   );
 
   useEffect(() => {
-    setHead("Day 2 - Early Morning");
+    setHead("Day 2 - Morning:  Call with Applications Vendor");
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayTwoEarlyMorning.length) {
@@ -453,24 +453,48 @@ const EarlyMorning = () => {
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-              <Box
-                border={"1px solid black"}
-                bgColor={"#030405"}
-                color={"white"}
-                borderRadius={"20px"}
-                m={"auto"}
-                textAlign={"left"}
-                w={"90%"}
-                pl={3}
-                pt={3}
-                pb={3}
-              >
-                <Text fontSize={"20"}>
-                  Ben Carter is on the phone with Julia Harper, the VP of
-                  Customer Services from the Disc Vendor. Ben's explains the
-                  situation and connects Julia with Tom for shared information.
-                </Text>
-              </Box>
+
+              {currentMessageIndex < 8 ? (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Ben Carter is on the phone with Tom Mitchell, the VP of
+                    Customer Services from the applications vendor. They engage
+                    in a lengthy conversation, discussing the technical
+                    intricacies.
+                  </Text>
+                </Box>
+              ) : (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Ben Carter is on the phone with Julia Harper, the VP of
+                    Customer Services from the Disc Vendor. Ben's explains the
+                    situation and connects Julia with Tom for shared information
+                  </Text>
+                </Box>
+              )}
+
 
               <Box
                 w={"90%"}
@@ -578,8 +602,8 @@ const EarlyMorning = () => {
                             >
                               <Text>
                                 After briefing the CEO, Ben Carter gets back on
-                                the call with Julia Harper from the vendor's
-                                team.
+                                the call with Julia Harper from the storage
+                                vendor's team.
                               </Text>
                             </Box>
                             <Box textAlign="center">

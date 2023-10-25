@@ -542,26 +542,49 @@ const Morning5 = () => {
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-              <Box
-                border={"1px solid black"}
-                bgColor={"#030405"}
-                color={"white"}
-                borderRadius={"20px"}
-                m={"auto"}
-                textAlign={"left"}
-                w={"90%"}
-                pl={3}
-                pt={3}
-                pb={3}
-              >
-                <Text fontSize={"20"}>
-                  Morning light floods the office. There's a palpable sense of
-                  cautious optimism. Team members, though visibly exhausted, are
-                  in high spirits, closely monitoring systems and validating
-                  data --> Ben Carter and the OTC executive team reassured
-                  clients after the crisis was over.{" "}
-                </Text>
-              </Box>
+              {currentMessageIndex < 24 ? (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Morning light floods the office. There's a palpable sense of
+                    cautious optimism. Team members, though visibly exhausted,
+                    are in high spirits, closely monitoring systems and
+                    validating data --> Ben Carter and the OTC executive team
+                    reassured clients after the crisis was over.{" "}
+                  </Text>
+                </Box>
+              ) : (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Ben Carter and Gaji meet in person to debrief, discussing
+                    the project's progress, sharing insights, and strategizing
+                    for the next steps.Their face-to-face interaction fosters a
+                    deeper understanding of the situation and paves the way for
+                    effective collaboration.
+                  </Text>
+                </Box>
+              )}
               <Box
                 w={"90%"}
                 h={"68vh"}
@@ -1104,14 +1127,15 @@ const Morning5 = () => {
                             discs on the frames at site 2 were corrupted. If
                             this information had been convened at the time of
                             the incident, all applications could have safely
-                            been restored within 24 hours. 
+                            been restored within 24 hours.
                           </Text>
-                          <Text>The storage vendor
-                            provided approximately three million dollars of new
-                            hardware and software to provide two additional
-                            copies of the data as restitution for the event. See
-                            the Appendix, Figure #2. faced together have only
-                            deepened their bond.</Text>
+                          <Text>
+                            The storage vendor provided approximately three
+                            million dollars of new hardware and software to
+                            provide two additional copies of the data as
+                            restitution for the event. See the Appendix, Figure
+                            #2. faced together have only deepened their bond.
+                          </Text>
                         </ModalBody>
 
                         <ModalFooter>

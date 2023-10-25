@@ -26,6 +26,8 @@ import relaxing from "../Images/relaxing.jpeg";
 import bgcall from "../Images/bgcall.jpeg";
 import bensleep from "../Images/bensleep.jpeg";
 import Morning5 from "../Components/Day5/Morning5";
+import EarlyMorning from "../Components/Day2/EarlyMorning";
+import EarlyMorning4 from "../Components/Day4/EarlyMorning4";
 
 const Chat = () => {
   const [activeUser, setActiveUser] = useState(null);
@@ -206,7 +208,7 @@ const Chat = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <Morning5 />
+        <EarlyMorning4 />
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : value === "Remaining calm and level-headed during challenges" ? (
@@ -238,7 +240,7 @@ const Chat = () => {
             <Box
               h={"88vh"}
               w={"13%"}
-              borderRight={"1px solid black"}
+              borderRight={"0px solid black"}
               overflow={"auto"}
               // bgColor="#948888"
               style={{

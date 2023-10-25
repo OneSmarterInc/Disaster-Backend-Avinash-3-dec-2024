@@ -251,7 +251,7 @@ export const dayTwoEarlyMorning = [
       "19 hours of data loss??!!  This is incredible.  BTW:  How long will this process take?",
   },
   {
-    sender: "Tom Mitchell",
+    sender: "Julia Harper",
     message:
       "As far as we can estimate, it will probably take a week or longer to recover all the applications.",
   },
@@ -565,7 +565,7 @@ export const dayThreeMorning = [
   },
 
   {
-    sender: "Tom Mitchell",
+    sender: "Kate Sullivan",
     message: "The corruption seems to be in the end of block record.Kate ",
   },
   {

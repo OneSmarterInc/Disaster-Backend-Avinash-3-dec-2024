@@ -227,7 +227,21 @@ const EarlyMorning = () => {
   );
 
   useEffect(() => {
-    setHead("Day 2 - Morning:  Call with Applications Vendor");
+    if (currentMessageIndex > 8 && currentMessageIndex <= 17) {
+      setHead("Day 2 - Morning:  Call with Storage Vendor");
+    } else if (currentMessageIndex > 17 && currentMessageIndex <= 28) {
+      setHead(
+        "Day 2 -  Morning:  Call with Applications and Storage Vendors"
+      );
+    } else if (currentMessageIndex > 28 && currentMessageIndex <= 33) {
+      setHead("Day 2 -  Morning: Ben Carter Addresses Executive Team");
+    } else if (currentMessageIndex > 33 && currentMessageIndex <= 38) {
+      setHead("Day 2 - Noon:  Ben Carter speaks to key clients");
+    } else if(currentMessageIndex > 38){
+      setHead("Day 2 -  Later Afternoon - War Room");
+    } else {
+      setHead("Day 2 - Morning:  Call with Applications Vendor");
+    }
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayTwoEarlyMorning.length) {
@@ -269,12 +283,12 @@ const EarlyMorning = () => {
             setTimeout(() => {
               setShowPopup5(true);
               setStartIndex(currentMessageIndex + 1);
-            }, 1000);
+            }, 2000);
           } else if (currentMessageIndex === 41) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup7(true);
-            }, 1000);
+            }, 2000);
           }
         } else {
           if (currentMessageIndex === dayTwoEarlyMorning.length) {
@@ -453,8 +467,7 @@ const EarlyMorning = () => {
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-
-              {currentMessageIndex < 8 ? (
+              {currentMessageIndex <= 8 && (
                 <Box
                   border={"1px solid black"}
                   bgColor={"#030405"}
@@ -474,7 +487,8 @@ const EarlyMorning = () => {
                     intricacies.
                   </Text>
                 </Box>
-              ) : (
+              )}
+              {currentMessageIndex > 8 && currentMessageIndex <= 17 && (
                 <Box
                   border={"1px solid black"}
                   bgColor={"#030405"}
@@ -495,6 +509,89 @@ const EarlyMorning = () => {
                 </Box>
               )}
 
+              {currentMessageIndex > 17 && currentMessageIndex <= 28 && (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Ben Carter is on a conference call with Tom Mitchell and
+                    Julia Harper. They discuss the situation and share
+                    information as needed. Julia with Tom for shared informa.
+                  </Text>
+                </Box>
+              )}
+
+              {currentMessageIndex > 28 && currentMessageIndex <= 33 && (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Ben Carter seeks to address concerns of the Executive
+                    Team at OrionTech. They discuss the situation and share
+                    information as needed. Julia with Tom for shared informa.
+                  </Text>
+                </Box>
+              )}
+
+              {currentMessageIndex > 33 && currentMessageIndex <= 38 && (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Ben Carter reaches out to key clients. Team at OrionTech.
+                    They discuss the situation and share information as needed.
+                    Julia with Tom for shared informa.information as needed.
+                  </Text>
+                </Box>
+              )}
+
+              {currentMessageIndex > 38 && (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Ben Carter meets with his internal team. Team at OrionTech.
+                    They discuss the situation and share information as needed.
+                    Julia with Tom for shared informa.information as needed.
+                  </Text>
+                </Box>
+              )}
 
               <Box
                 w={"90%"}
@@ -657,7 +754,7 @@ const EarlyMorning = () => {
                             >
                               <Text>
                                 Ben Carter has another call with Tom Mitchell
-                                and adds Julia Harper to the conference
+                                and adds Julia Harper to the conference.
                               </Text>
                             </Box>
                             <Box textAlign="center">
@@ -710,7 +807,7 @@ const EarlyMorning = () => {
                             >
                               <Text>
                                 Ben Carter stands at the head of the conference
-                                table, addressing the executive team
+                                table, addressing the executive team.
                               </Text>
                             </Box>
                             <Box textAlign="center">

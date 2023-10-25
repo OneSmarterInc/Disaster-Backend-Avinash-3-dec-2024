@@ -63,7 +63,7 @@ const Start = () => {
         alignItems={"center"}
         w={"100%"}
         m={"auto"}
-        border={"1px solid black"}
+        // border={"1px solid black"}
         h={"20"}
         pl={5}
         pr={5}

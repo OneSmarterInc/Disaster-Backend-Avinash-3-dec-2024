@@ -69,7 +69,7 @@ const Start = () => {
         pr={5}
         color={"white"}
       >
-        <Heading >Leading Through Disruption</Heading>
+        <Heading>Leading Through Disruption</Heading>
         <Heading mr={80} size={"md"} fontFamily={"Fredoka"}>
           {head}
         </Heading>
@@ -86,14 +86,17 @@ const Start = () => {
           )}
         </Text>
 
-
         {/* <Text cursor={"pointer"} fontSize={35} onClick={handlePause}>{pauseBtn ? <MdNotStarted /> : <BsPauseCircleFill />}</Text> */}
         <div
           onMouseEnter={() => setShowDropdown(true)}
           onMouseLeave={() => setShowDropdown(false)}
-          style={{ position: "relative", display: "flex", alignItems: "center" }}
+          style={{
+            position: "relative",
+            display: "flex",
+            alignItems: "center",
+          }}
         >
-          <Image src={folder} w={10} sizes="30px" cursor={"pointer"}/>
+          <Image src={folder} w={10} sizes="30px" cursor={"pointer"} />
           {showDropdown && (
             <div
               style={{
@@ -154,11 +157,13 @@ const Start = () => {
       <Modal isOpen={isImagesModalOpen} onClose={onImagesModalClose} isCentered>
         <ModalOverlay />
         <ModalContent maxW={"600px"}>
-          <ModalHeader>Images</ModalHeader>
+          <ModalHeader>Figure #1</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Image src={site1} />
             <Image src={site} />
+            <ModalHeader>Figure #2</ModalHeader>
+            <Image src={site1} />
+
             {/* You can add more content here */}
           </ModalBody>
         </ModalContent>

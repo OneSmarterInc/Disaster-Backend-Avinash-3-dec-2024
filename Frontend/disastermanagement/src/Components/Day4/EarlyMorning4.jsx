@@ -45,6 +45,7 @@ import scramble from "../userImages/scramble.jpeg";
 import MyContext from "../ContextApi/MyContext";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
+import gajjiteam2 from "../userImages/gajjiteam2.png"
 
 const EarlyMorning4 = () => {
   const [chatData, setChatData] = useState([]);
@@ -422,7 +423,9 @@ const EarlyMorning4 = () => {
                   ? begin
                   : currentMessageIndex > 8
                   ? scene2
-                  : begin2
+                  : currentMessageIndex > 6
+                  ? gajjiteam2
+                  :begin2
               }
               bgRepeat={"no-repeat"}
               bgSize={"cover"}

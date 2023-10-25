@@ -48,7 +48,16 @@ const Info = () => {
             mt={4}
             color={useColorModeValue("black", "white")}
           >
-            Leading Through Disruption: An Executive Simulation on Disaster
+            Leading Through Disruption 
+          </Text>
+          <Text
+            fontSize={28}
+            fontWeight={"bold"}
+            textAlign="center"
+            mb={4}
+            color={useColorModeValue("black", "white")}
+          >
+           An Executive Simulation on Disaster
             Managament
           </Text>
           {/* ... Rest of your text content ... */}

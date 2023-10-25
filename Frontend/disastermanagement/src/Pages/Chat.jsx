@@ -20,7 +20,7 @@ import bencarter from "../Images/org/bencarter.png";
 import { dayOneMorning } from "../mainData";
 import kate from "../Images/org/kate_sullivan.png";
 import MyContext from "../Components/ContextApi/MyContext";
-import openemail from "../Images/openemail.jpeg";
+import openmail1 from "../Images/openmail1.jpeg";
 import bensphone from "../Images/bensphone.jpeg";
 import relaxing from "../Images/relaxing.jpeg";
 import bgcall from "../Images/bgcall.jpeg";
@@ -88,9 +88,12 @@ const Chat = () => {
     } else {
       setHead("Day 1 - Evening");
     }
-    
-    console.log(startIndex ,currentMessageIndex, dayOneMorning[startIndex].message);
-   
+
+    console.log(
+      startIndex,
+      currentMessageIndex,
+      dayOneMorning[startIndex].message
+    );
 
     const messageDelay = speed;
 
@@ -110,9 +113,8 @@ const Chat = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup2(true);
-              
-                setStartIndex(currentMessageIndex+1)
-              
+
+              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 5) {
             setChatPaused(true);
@@ -135,8 +137,6 @@ const Chat = () => {
       clearInterval(messageInterval);
     };
   }, [currentMessageIndex, chatPaused, pauseBtn]);
-
-  
 
   const closePopup = () => {
     // setShowPopup(false);
@@ -173,9 +173,9 @@ const Chat = () => {
     }
   }, [showBox, showBoxContent2, showSideBar]);
 
-  
   const visibleMessages = dayOneMorning.slice(startIndex, currentMessageIndex);
 
+  
   return (
     <>
       {value ===
@@ -368,20 +368,21 @@ const Chat = () => {
                     <Modal isOpen={day5Popup}>
                       <ModalOverlay />
                       <ModalContent
+                        
                         boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
                         borderRadius={10}
-                        width={["90%", "70%", "50%"]} // Responsive width
+                        width={["90%", "70%", "50%"]}
                         maxW="500px"
                       >
                         <ModalHeader
                           fontWeight="bold"
                           fontSize="25px"
-                        ></ModalHeader>
+                        >
+                          
+                        </ModalHeader>
 
                         <ModalBody fontSize="18px">
                           <Flex flexDirection={["column", "row"]} gap={[4, 2]}>
-                            {" "}
-                            {/* Responsive layout */}
                             <Box
                               bgColor="white"
                               boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
@@ -389,13 +390,10 @@ const Chat = () => {
                               p={4}
                               flex="1"
                             >
-                              <Text>
-                                He opens the email. It's a brief report about
-                                some applications showing sporadic errors.
-                              </Text>
+                              <Text>He opens the email.It's a brief report about some applications showing sporadic errors.</Text>
                             </Box>
                             <Box textAlign="center" flex="1">
-                              <Image src={openemail} borderRadius={10} />
+                              <Image src={openmail1} borderRadius={10} />
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup}

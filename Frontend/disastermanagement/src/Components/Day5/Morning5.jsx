@@ -51,6 +51,7 @@ import cheer from "../userImages/cheer.jpeg";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
 import { useSpring, animated } from "react-spring";
+import gajjistand from "../userImages/gajjistand.jpeg";
 
 const Morning5 = () => {
   const [flip, setFlip] = useState(false);
@@ -80,6 +81,7 @@ const Morning5 = () => {
   const [day5Popup8, setDay5Popup8] = useState(true);
   const [day5Popup9, setDay5Popup9] = useState(true);
   const [day5Popup10, setDay5Popup10] = useState(true);
+  const [day5Popup11, setDay5Popup11] = useState(true);
 
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
@@ -92,6 +94,7 @@ const Morning5 = () => {
   const [showPopup8, setShowPopup8] = useState(false);
   const [showPopup9, setShowPopup9] = useState(false);
   const [showPopup10, setShowPopup10] = useState(false);
+  const [showPopup11, setShowPopup11] = useState(false);
 
   const [chatPaused, setChatPaused] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
@@ -207,6 +210,8 @@ const Morning5 = () => {
       setHead("Day 5 - Afternoon");
     } else if (currentMessageIndex > 7) {
       setHead("Day 5 - Evening");
+    } else if (currentMessageIndex > 13) {
+      setHead("Epilog 1:  Reassuring Clients");
     } else {
       setHead("Day 5 - Morning");
     }
@@ -267,6 +272,12 @@ const Morning5 = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup9(true);
+            }, 2000);
+          } else if (currentMessageIndex === 33) {
+            setChatPaused(true);
+            setTimeout(() => {
+              setShowPopup11(true);
+              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           }
         } else {
@@ -351,6 +362,13 @@ const Morning5 = () => {
   const closePopup10 = () => {
     // setShowPopup(false);
     setDay5Popup10(false);
+    // onClose();
+    setChatPaused(false);
+  };
+
+  const closePopup11 = () => {
+    // setShowPopup(false);
+    setDay5Popup11(false);
     // onClose();
     setChatPaused(false);
   };
@@ -504,7 +522,7 @@ const Morning5 = () => {
               pb={2}
               bgImage={
                 currentMessageIndex > 33
-                  ? twoleaders
+                  ? gajjistand
                   : currentMessageIndex > 24
                   ? respect
                   : currentMessageIndex > 15
@@ -540,7 +558,8 @@ const Morning5 = () => {
                   Morning light floods the office. There's a palpable sense of
                   cautious optimism. Team members, though visibly exhausted, are
                   in high spirits, closely monitoring systems and validating
-                  data{" "}
+                  data --> Ben Carter and the OTC executive team reassured
+                  clients after the crisis was over.{" "}
                 </Text>
               </Box>
               <Box
@@ -960,7 +979,7 @@ const Morning5 = () => {
                         boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
-                          A Moment of Contemplation
+                          Epilog - 1
                         </ModalHeader>
 
                         <ModalBody fontSize="18px">
@@ -1048,6 +1067,57 @@ const Morning5 = () => {
                           <Button
                             colorScheme="teal"
                             onClick={closePopup9}
+                            fontFamily="Croissant One"
+                            bg="teal.500"
+                            _hover={{ bgColor: "teal.600" }}
+                            borderRadius={10}
+                          >
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+                  {showPopup11 && (
+                    <Modal isOpen={day5Popup11} isCentered>
+                      <ModalOverlay />
+                      <ModalContent
+                        bgColor="#E3E3E3"
+                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                        borderRadius={10}
+                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                      >
+                        <ModalHeader fontWeight="bold" fontSize="25px">
+                          Epilog - 2
+                        </ModalHeader>
+
+                        <ModalBody fontSize="18px">
+                          <Text>
+                            After months of analysis, the storage vendor’s final
+                            report indicated the site 2 (R2) mirrored copy was
+                            never corrupted. While the data in the controller
+                            buffers were corrupted, the controller had
+                            implemented defensive processes that prevented the
+                            controller from writing the corrupted data to the
+                            actual discs. The support team had viewed the
+                            buffers but never investigated whether the actually
+                            discs on the frames at site 2 were corrupted. If
+                            this information had been convened at the time of
+                            the incident, all applications could have safely
+                            been restored within 24 hours. 
+                          </Text>
+                          <Text>The storage vendor
+                            provided approximately three million dollars of new
+                            hardware and software to provide two additional
+                            copies of the data as restitution for the event. See
+                            the Appendix, Figure #2. faced together have only
+                            deepened their bond.</Text>
+                        </ModalBody>
+
+                        <ModalFooter>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup11}
                             fontFamily="Croissant One"
                             bg="teal.500"
                             _hover={{ bgColor: "teal.600" }}

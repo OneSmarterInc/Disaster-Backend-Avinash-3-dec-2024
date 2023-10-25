@@ -37,7 +37,8 @@ import grace from "../userImages/gracepatterson.jpg";
 import williams from "../userImages/williams.jpg";
 import ScrollDown from "../ScrollDown";
 import oncall from "../userImages/oncall.png";
-import withtom from "../userImages/withtom.png";
+import withtom from "../userImages/withtom.jpeg";
+import witht from "../userImages/withtom.png";
 import warroom from "../userImages/warroom.png";
 import liam from "../userImages/liam.jpeg";
 import callwithjulia from "../userImages/callwithjulia.jpeg";
@@ -440,7 +441,7 @@ const EarlyMorning = () => {
                   : currentMessageIndex > 38
                   ? warroom
                   : currentMessageIndex > 33
-                  ? withtom
+                  ? witht
                   : currentMessageIndex > 28
                   ? loss
                   : currentMessageIndex > 17
@@ -465,9 +466,9 @@ const EarlyMorning = () => {
                 pb={3}
               >
                 <Text fontSize={"20"}>
-                  Ben Carter is on the phone with Tom Mitchell, the VP of
-                  Customer Services from the applications vendor. They engage in
-                  a lengthy conversation, discussing the technical intricacies.
+                  Ben Carter is on the phone with Julia Harper, the VP of
+                  Customer Services from the Disc Vendor. Ben's explains the
+                  situation and connects Julia with Tom for shared information.
                 </Text>
               </Box>
 

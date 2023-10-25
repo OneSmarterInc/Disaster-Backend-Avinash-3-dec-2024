@@ -38,7 +38,7 @@ import scene2 from "../userImages/2ndscene.jpeg";
 import begin2 from "../userImages/begin2.png";
 import tapping from "../userImages/tapping.png";
 import starts from "../userImages/starts.png";
-import callwithjulia from "../userImages/callwithjulia.jpeg";
+import callwith from "../userImages/callwith.jpeg";
 import error from "../userImages/error.jpeg";
 import feelhour from "../userImages/feelhour.jpeg";
 import scramble from "../userImages/scramble.jpeg";
@@ -173,7 +173,7 @@ const EarlyMorning4 = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup(true);
-              setStartIndex(currentMessageIndex+1);
+              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 7) {
             setChatPaused(true);
@@ -260,7 +260,6 @@ const EarlyMorning4 = () => {
 
   const visibleMessages = dayFourMorning.slice(startIndex, currentMessageIndex);
 
-
   return (
     <>
       {value ===
@@ -318,7 +317,8 @@ const EarlyMorning4 = () => {
                             "Database Administrator") ||
                           (el.name === "Mia Rodriguez" &&
                             "Network Specialist") ||
-                          (el.name === "Tom Mitchell" && "Application Vendor") ||
+                          (el.name === "Tom Mitchell" &&
+                            "Application Vendor") ||
                           (el.name === "Raj Patel" && "") ||
                           (el.name === "Grace Patterson" && "") ||
                           (el.name === "Gajji" &&
@@ -441,9 +441,8 @@ const EarlyMorning4 = () => {
               >
                 <Text fontSize={"20"}>
                   Ben Carter and Kate Sullivan have come together to engage in a
-                  strategic meeting or discussion. This session likely involves
-                  a focused conversation where they discuss and plan various
-                  strategies.{" "}
+                  strategic meeting. This is a frank conversation where they
+                  discuss and plan various strategies..{" "}
                 </Text>
               </Box>
 
@@ -846,7 +845,7 @@ const EarlyMorning4 = () => {
                             </Box>
                             <Box>
                               <Image
-                                src={callwithjulia}
+                                src={callwith}
                                 borderRadius={10}
                                 maxW="100%"
                                 h="auto"

@@ -37,7 +37,8 @@ import grace from "../userImages/gracepatterson.jpg";
 import williams from "../userImages/williams.jpg";
 import ScrollDown from "../ScrollDown";
 import oncall from "../userImages/oncall.png";
-import withtom from "../userImages/withtom.png";
+import withtom from "../userImages/withtom.jpeg";
+import witht from "../userImages/withtom.png";
 import warroom from "../userImages/warroom.png";
 import liam from "../userImages/liam.jpeg";
 import callwithjulia from "../userImages/callwithjulia.jpeg";
@@ -440,7 +441,7 @@ const EarlyMorning = () => {
                   : currentMessageIndex > 38
                   ? warroom
                   : currentMessageIndex > 33
-                  ? withtom
+                  ? witht
                   : currentMessageIndex > 28
                   ? loss
                   : currentMessageIndex > 17
@@ -452,6 +453,7 @@ const EarlyMorning = () => {
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
+
               {currentMessageIndex < 8 ? (
                 <Box
                   border={"1px solid black"}
@@ -492,6 +494,7 @@ const EarlyMorning = () => {
                   </Text>
                 </Box>
               )}
+
 
               <Box
                 w={"90%"}

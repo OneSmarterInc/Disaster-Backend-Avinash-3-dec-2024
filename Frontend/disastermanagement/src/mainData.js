@@ -317,7 +317,7 @@ export const dayTwoEarlyMorning = [
   {
     sender: "Ben Carter",
     message:
-      "Mr. Williams, I completely understand. It's an unfortunate situation, but I assure you, we're working round the clock with our vendor. They've been our partners for years and have never let us down.",
+      "Mr. Williams, I completely understand. It's an unfortunate situation, but I assure you, we're working round the clock with our vendor and all technical teams. They've been our partners for years and have never let us down.",
   },
   {
     sender: "Mr. Williams",
@@ -504,7 +504,7 @@ export const dayTwoLateMorning = [
   {
     sender: "Ben Carter",
     message:
-      "looking visibly tired but satisfied) Great job, team. It's been a long day, but we're getting there. Let's keep pushing",
+      "(Looking visibly tired but satisfied) Great job, team. It's been a long day, but we're getting there. Let's keep pushing",
   },
   {
     sender: "Liam Turner",
@@ -659,7 +659,7 @@ export const dayFourMorning = [
   {
     sender: "System One Developer #2",
     message:
-      "(murmuring to Gajji) There's a minor glitch. The file from Site 2 isn't syncing as expected.",
+      "(Murmuring to Gajji) There's a minor glitch. The file from Site 2 isn't syncing as expected.",
   },
   {
     sender: "Gajji",
@@ -669,7 +669,7 @@ export const dayFourMorning = [
   {
     sender: "Ben Carter",
     message:
-      "(to Gajji) Time's ticking, Gajji. How are we looking?",
+      "(To Gajji) Time's ticking, Gajji. How are we looking?",
   },
   { sender: "Gajji", message: "(calmly) Challenges are expected, Ben. We'll get through this." },
   {
@@ -690,12 +690,12 @@ export const dayFourMorning = [
   {
     sender: "Ben Carter",
     message:
-      "(sighing with profound relief) Gajji, you and your team are magicians.",
+      "(Sighing with profound relief) Gajji, you and your team are magicians.",
   },
   {
     sender: "Gajji",
     message:
-      "(smiling) No magic, just determination and teamwork.",
+      "(Smiling) No magic, just determination and teamwork.",
   },
 ];
 
@@ -760,7 +760,7 @@ export const dayFiveMorning = [
   },
   {
     sender: "Ben Carter",
-    message: "(smiling) Fingers crossed.",
+    message: "(Smiling) Fingers crossed.",
   },
   {
     sender: "Ben Carter",
@@ -780,7 +780,7 @@ export const dayFiveMorning = [
   },
   {
     sender: "Kate Sullivan",
-    message: "(walking in with a cup of coffee) Go through the report?",
+    message: "(Walking in with a cup of coffee) Go through the report?",
   },
   {
     sender: "Ben Carter",

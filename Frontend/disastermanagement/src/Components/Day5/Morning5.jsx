@@ -249,18 +249,19 @@ const Morning5 = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup6(true);
-              setStartIndex(currentMessageIndex+1);
+              setStartIndex(currentMessageIndex + 1);
             }, 2000);
-          } else if (currentMessageIndex === 15) {
+          } else if (currentMessageIndex === 14) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup7(true);
+              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 23) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup8(true);
-              setStartIndex(currentMessageIndex+1);
+              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 32) {
             setChatPaused(true);
@@ -506,7 +507,7 @@ const Morning5 = () => {
                   ? twoleaders
                   : currentMessageIndex > 24
                   ? respect
-                  : currentMessageIndex > 16
+                  : currentMessageIndex > 15
                   ? calmoffice
                   : currentMessageIndex > 12
                   ? fewweeks

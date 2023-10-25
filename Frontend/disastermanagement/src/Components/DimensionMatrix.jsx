@@ -117,7 +117,7 @@ const DimensionMatrix = () => {
 
             <VStack alignItems={"left"} mt={10}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                3. Decisive (Reactive + Individual):
+                 Decisive (Reactive + Individual):
               </Text>
               <Text>
                 When faced with immediate challenges, Ben quickly makes
@@ -127,7 +127,7 @@ const DimensionMatrix = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                4. Visionary (Proactive + Individual):
+                 Visionary (Proactive + Individual):
               </Text>
               <Text>
                 Ben's outreach to stakeholders after the crisis and his focus on
@@ -137,7 +137,7 @@ const DimensionMatrix = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                5. Communicative (Reactive + Collaborative):
+                 Communicative (Reactive + Collaborative):
               </Text>
               <Text>
                 In the face of challenges, Ben's immediate emphasis on clear
@@ -147,7 +147,7 @@ const DimensionMatrix = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                6. Adaptive + Collaborative (Proactive + Collaborative):
+                 Adaptive + Collaborative (Proactive + Collaborative):
               </Text>
               <Text>
                 Post-crisis, Ben values adaptability, learning from the
@@ -172,7 +172,7 @@ const DimensionMatrix = () => {
 
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                7. Proactive Approach:
+                1. Proactive Approach:
               </Text>
               <Text>
                 Even though Ben reacts decisively to immediate challenges, his
@@ -184,7 +184,7 @@ const DimensionMatrix = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-               8. Collaborative Nature:
+               2. Collaborative Nature:
               </Text>
               <Text>
                 Ben consistently emphasizes teamwork and collaboration. Whether

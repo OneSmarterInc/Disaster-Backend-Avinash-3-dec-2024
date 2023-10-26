@@ -33,6 +33,7 @@ import dev1 from "../userImages/systemdev1.jpg";
 import dev2 from "../userImages/systemdev2.jpg";
 import begin from "../userImages/begingajji.png";
 import liam from "../userImages/liam.jpeg";
+import tension from "../userImages/tension.jpeg";
 
 import scene2 from "../userImages/2ndscene.jpeg";
 import begin2 from "../userImages/begin2.png";
@@ -45,10 +46,10 @@ import scramble from "../userImages/scramble.jpeg";
 import MyContext from "../ContextApi/MyContext";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
-
+import dashboard from "../userImages/dashboard.jpeg"
 import gajjiteam2 from "../userImages/gajjiteam2.png"
 import Draggable from "react-draggable";
-
+import benkate from "../userImages/benkate.jpeg";
 
 const EarlyMorning4 = () => {
   const [chatData, setChatData] = useState([]);
@@ -428,7 +429,7 @@ const EarlyMorning4 = () => {
                   ? scene2
                   : currentMessageIndex > 6
                   ? gajjiteam2
-                  : begin2
+                  : benkate
               }
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
@@ -583,7 +584,7 @@ const EarlyMorning4 = () => {
                             </Box>
                             <Box>
                               <Image
-                                src={scene2}
+                                src={tension}
                                 borderRadius={10}
                                 maxW="100%"
                                 h="auto"

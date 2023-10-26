@@ -50,6 +50,7 @@ import callwithjulia from "../userImages/callwithjulia.jpeg";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
 import weight from "../userImages/weight.jpeg";
+import Draggable from "react-draggable";
 
 const Morning = () => {
   const [chatData, setChatData] = useState([]);
@@ -507,15 +508,15 @@ const Morning = () => {
                     <Modal isOpen={day5Popup}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                        bgColor="#E3E3E3"
+                        bg={'transparent'}
                         maxW={{ base: "90%", sm: "600px" }} // Responsive width
                       >
                         <ModalHeader
                           fontWeight="bold"
                           fontSize="25px"
                         ></ModalHeader>
-                        <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                        <Draggable>
+                        <ModalBody fontSize={{ base: "16px", sm: "18px" }} className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Flex
                             flexDirection={{ base: "column", sm: "row" }}
                             gap={{ base: 2, sm: 4 }}
@@ -550,6 +551,7 @@ const Morning = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter>
                           {/* Footer content, if needed */}
                         </ModalFooter>
@@ -561,15 +563,15 @@ const Morning = () => {
                     <Modal isOpen={day5Popup2}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                        bgColor="#E3E3E3"
+                        bg={'transparent'}
                         maxW={{ base: "90%", sm: "600px" }} // Responsive width
                       >
                         <ModalHeader
                           fontWeight="bold"
                           fontSize="25px"
                         ></ModalHeader>
-                        <ModalBody fontSize={{ base: "16px", sm: "18px" }}>
+                        <Draggable>
+                        <ModalBody fontSize={{ base: "16px", sm: "18px" }} className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Flex
                             flexDirection={{ base: "column", sm: "row" }}
                             gap={{ base: 2, sm: 4 }}
@@ -604,6 +606,7 @@ const Morning = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter>
                           {/* Footer content, if needed */}
                         </ModalFooter>
@@ -614,16 +617,15 @@ const Morning = () => {
                     <Modal isOpen={day5Popup3}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                        bgColor="#E3E3E3"
+                       bg={'transparent'}
                         maxW={{ base: "90%", sm: "600px" }} // Adjusted for responsiveness
                       >
                         <ModalHeader
                           fontWeight="bold"
                           fontSize="25px"
                         ></ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Flex
                             direction={{ base: "column", sm: "row" }}
                             gap={4}
@@ -662,6 +664,7 @@ const Morning = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -670,16 +673,15 @@ const Morning = () => {
                     <Modal isOpen={day5Popup4}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                        bgColor="#E3E3E3"
+                        bg={'transparent'}
                         maxW={{ base: "90%", sm: "600px" }} // Adjusted for responsiveness
                       >
                         <ModalHeader
                           fontWeight="bold"
                           fontSize="25px"
                         ></ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Flex
                             direction={{ base: "column", sm: "row" }}
                             gap={4}
@@ -718,6 +720,7 @@ const Morning = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -727,16 +730,15 @@ const Morning = () => {
                     <Modal isOpen={day5Popup5}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                        bgColor="#E3E3E3"
+                        bg={'transparent'}
                         maxW={{ base: "90%", sm: "600px" }} // Adjusted for responsiveness
                       >
                         <ModalHeader
                           fontWeight="bold"
                           fontSize="25px"
                         ></ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Flex
                             direction={{ base: "column", sm: "row" }}
                             gap={4}
@@ -772,6 +774,7 @@ const Morning = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>

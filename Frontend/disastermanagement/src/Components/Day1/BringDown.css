@@ -65,4 +65,12 @@
   }
   
 
+  .draggable-modal {
+    cursor: grab;
+  }
+  
+  .draggable-modal:active {
+    cursor: grabbing;
+  }
+
   

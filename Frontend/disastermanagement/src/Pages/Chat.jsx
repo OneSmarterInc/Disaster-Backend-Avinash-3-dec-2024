@@ -28,6 +28,7 @@ import bensleep from "../Images/bensleep.jpeg";
 import Morning5 from "../Components/Day5/Morning5";
 import Draggable from "react-draggable";
 
+
 const Chat = () => {
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
@@ -50,6 +51,7 @@ const Chat = () => {
 
   const { setHead, speed, pauseBtn, showSideBar, setShowCloseBtn } =
     useContext(MyContext);
+
 
   const handleChange = (value) => {
     setValue(value);
@@ -392,6 +394,7 @@ const Chat = () => {
                     );
                   })}
                   {showPopup && (
+
                     <div>
                       <Modal isOpen={day5Popup}>
                         <ModalOverlay />
@@ -408,9 +411,11 @@ const Chat = () => {
                               fontSize="18px"
                               bgColor={"white"}
                               p={10}
+
                               borderRadius={10}
                               bg="rgba(245, 255, 255, 0.8)"
                             >
+
                               <Flex
                                 flexDirection={["column", "row"]}
                                 gap={[4, 2]}
@@ -454,6 +459,7 @@ const Chat = () => {
                         </ModalContent>
                       </Modal>
                     </div>
+
                   )}
 
                   {showPopup2 && (

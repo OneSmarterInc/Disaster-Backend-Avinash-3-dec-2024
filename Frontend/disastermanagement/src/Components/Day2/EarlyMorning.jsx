@@ -231,14 +231,12 @@ const EarlyMorning = () => {
     if (currentMessageIndex > 8 && currentMessageIndex <= 17) {
       setHead("Day 2 - Morning:  Call with Storage Vendor");
     } else if (currentMessageIndex > 17 && currentMessageIndex <= 28) {
-      setHead(
-        "Day 2 -  Morning:  Call with Applications and Storage Vendors"
-      );
+      setHead("Day 2 -  Morning:  Call with Applications and Storage Vendors");
     } else if (currentMessageIndex > 28 && currentMessageIndex <= 33) {
       setHead("Day 2 -  Morning: Ben Carter Addresses Executive Team");
     } else if (currentMessageIndex > 33 && currentMessageIndex <= 38) {
       setHead("Day 2 - Noon:  Ben Carter speaks to key clients");
-    } else if(currentMessageIndex > 38){
+    } else if (currentMessageIndex > 38) {
       setHead("Day 2 -  Later Afternoon - War Room");
     } else {
       setHead("Day 2 - Morning:  Call with Applications Vendor");
@@ -505,7 +503,8 @@ const EarlyMorning = () => {
                   <Text fontSize={"20"}>
                     Ben Carter is on the phone with Julia Harper, the VP of
                     Customer Services from the Disc Vendor. Ben's explains the
-                    situation and connects Julia with Tom for shared information
+                    situation and connects Julia with Tom for shared
+                    information.
                   </Text>
                 </Box>
               )}
@@ -525,8 +524,8 @@ const EarlyMorning = () => {
                 >
                   <Text fontSize={"20"}>
                     Ben Carter is on a conference call with Tom Mitchell and
-                    Julia Harper. They discuss the situation and share
-                    information as needed. Julia with Tom for shared informa.
+                    Julia Harper. Both vendors are engaged deeply in the
+                    technical issues of the OTC problem.
                   </Text>
                 </Box>
               )}
@@ -545,9 +544,9 @@ const EarlyMorning = () => {
                   pb={3}
                 >
                   <Text fontSize={"20"}>
-                    Ben Carter seeks to address concerns of the Executive
-                    Team at OrionTech. They discuss the situation and share
-                    information as needed. Julia with Tom for shared informa.
+                    Ben Carter seeks to address concerns of the Executive Team
+                    at OrionTech. The executive team expresses concerns and
+                    their own respective viewpoints.
                   </Text>
                 </Box>
               )}
@@ -566,9 +565,9 @@ const EarlyMorning = () => {
                   pb={3}
                 >
                   <Text fontSize={"20"}>
-                    Ben Carter reaches out to key clients. Team at OrionTech.
-                    They discuss the situation and share information as needed.
-                    Julia with Tom for shared informa.information as needed.
+                    Ben Carter reaches out to key clients to update them about
+                    the current situation OTC is facing so that they have all
+                    the necessary updates.
                   </Text>
                 </Box>
               )}
@@ -587,9 +586,9 @@ const EarlyMorning = () => {
                   pb={3}
                 >
                   <Text fontSize={"20"}>
-                    Ben Carter meets with his internal team. Team at OrionTech.
-                    They discuss the situation and share information as needed.
-                    Julia with Tom for shared informa.information as needed.
+                    Ben Carter meets with his internal team to assess the
+                    current situation and discuss any new options for improving
+                    their project's trajectory and overall performance.
                   </Text>
                 </Box>
               )}

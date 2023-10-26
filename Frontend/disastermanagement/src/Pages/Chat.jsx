@@ -27,7 +27,7 @@ import bgcall from "../Images/bgcall.jpeg";
 import bensleep from "../Images/bensleep.jpeg";
 import Morning5 from "../Components/Day5/Morning5";
 import Draggable from "react-draggable";
-import EarlyMorning4 from "../Components/Day4/EarlyMorning4";
+
 
 const Chat = () => {
   const [activeUser, setActiveUser] = useState(null);
@@ -52,16 +52,6 @@ const Chat = () => {
   const { setHead, speed, pauseBtn, showSideBar, setShowCloseBtn } =
     useContext(MyContext);
 
-    const [isDragging, setIsDragging] = useState(false);
-    const modalRef = useRef(null);
-  
-    const handleStart = () => {
-      setIsDragging(true);
-    };
-  
-    const handleStop = () => {
-      setIsDragging(false);
-    };
 
   const handleChange = (value) => {
     setValue(value);
@@ -404,84 +394,91 @@ const Chat = () => {
                     );
                   })}
                   {showPopup && (
-                    <Modal isOpen={day5Popup}>
-                      <ModalOverlay />
-                      <Draggable
-        handle=".modal-drag-handle"
-        onStart={handleStart}
-        onStop={handleStop}
-      >
-                      <ModalContent
-                        bgColor={"red"}
-                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
-                        borderRadius={10}
-                        width={["90%", "70%", "50%"]}
-                        maxW="500px"
-                        ref={modalRef}
-                        
-                      >
-                        <ModalHeader
-                          fontWeight="bold"
-                          fontSize="25px"
-                         
-                        >
-                          etgrtgr
-                        </ModalHeader>
 
-                        <ModalBody fontSize="18px">
-                          <Flex flexDirection={["column", "row"]} gap={[4, 2]}>
-                            <Box
-                              bgColor="white"
-                              boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
+                    <div>
+                      <Modal isOpen={day5Popup}>
+                        <ModalOverlay />
+
+                        <ModalContent
+                          borderRadius={10}
+                          width={["90%", "70%", "50%"]}
+                          maxW="500px"
+                          bg="transparent"
+                        >
+                          <Draggable>
+                            <ModalBody
+                            className="draggable-modal"
+                              fontSize="18px"
+                              bgColor={"white"}
+                              p={10}
+
                               borderRadius={10}
-                              p={4}
-                              flex="1"
+                              bg="rgba(245, 255, 255, 0.8)"
                             >
-                              <Text>
-                                He opens the email.It's a brief report about
-                                some applications showing sporadic errors.
-                              </Text>
-                            </Box>
-                            <Box textAlign="center" flex="1">
-                              <Image src={openmail1} borderRadius={10} />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup}
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mt={3}
-                                borderRadius={10}
-                                w={"100%"}
+
+                              <Flex
+                                flexDirection={["column", "row"]}
+                                gap={[4, 2]}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
-                        <ModalFooter>
-                          {/* Footer content, if needed */}
-                        </ModalFooter>
-                      </ModalContent>
-                      </Draggable>
-                    </Modal>
+                                <Box
+                                  bgColor="white"
+                                  boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
+                                  borderRadius={10}
+                                  p={4}
+                                  flex="1"
+                                >
+                                  <Text>
+                                    He opens the email.It's a brief report about
+                                    some applications showing sporadic errors.
+                                  </Text>
+                                </Box>
+                                <Box textAlign="center" flex="1">
+                                  <Image src={openmail1} borderRadius={10} />
+                                  <Button
+                                    colorScheme="teal"
+                                    onClick={closePopup}
+                                    fontFamily="Croissant One"
+                                    bg="black"
+                                    _hover={{
+                                      bgColor: "#a1e8f0",
+                                      color: "black",
+                                    }}
+                                    mt={3}
+                                    borderRadius={10}
+                                    w={"100%"}
+                                  >
+                                    Close
+                                  </Button>
+                                </Box>
+                              </Flex>
+                            </ModalBody>
+                          </Draggable>
+                          <ModalFooter>
+                            {/* Footer content, if needed */}
+                          </ModalFooter>
+                        </ModalContent>
+                      </Modal>
+                    </div>
+
                   )}
 
                   {showPopup2 && (
                     <Modal isOpen={day5Popup2}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
+                        
                         borderRadius={10}
                         width={["90%", "70%", "50%"]} // Responsive width
                         maxW="500px"
+                        bg={'transparent'}
                       >
                         <ModalHeader
                           fontWeight="bold"
                           fontSize="25px"
                         ></ModalHeader>
 
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" borderRadius={10} p={10} bg="rgba(245, 255, 255, 0.8)"  className="draggable-modal">
                           <Flex flexDirection={["column", "row"]} gap={[4, 2]}>
                             {" "}
                             {/* Responsive layout */}
@@ -514,6 +511,7 @@ const Chat = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter>
                           {/* Footer content, if needed */}
                         </ModalFooter>
@@ -524,7 +522,7 @@ const Chat = () => {
                     <Modal isOpen={day5Popup3}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
+                        bg={'transparent'}
                         borderRadius={10}
                         width={["90%", "70%", "50%"]} // Responsive width
                         maxW="500px"
@@ -534,7 +532,8 @@ const Chat = () => {
                           fontSize="25px"
                         ></ModalHeader>
 
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px"  className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Flex flexDirection={["column", "row"]} gap={[4, 2]}>
                             {" "}
                             {/* Responsive layout */}
@@ -568,6 +567,7 @@ const Chat = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter>
                           {/* Footer content, if needed */}
                         </ModalFooter>

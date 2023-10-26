@@ -45,7 +45,10 @@ import scramble from "../userImages/scramble.jpeg";
 import MyContext from "../ContextApi/MyContext";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
-import gajjiteam2 from "../userImages/gajjiteam2.png";
+
+import gajjiteam2 from "../userImages/gajjiteam2.png"
+import Draggable from "react-draggable";
+
 
 const EarlyMorning4 = () => {
   const [chatData, setChatData] = useState([]);
@@ -553,15 +556,14 @@ const EarlyMorning4 = () => {
                     <Modal isOpen={day5Popup}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                        bgColor="#E3E3E3"
+                       bg={'transparent'}
                         maxW={{ base: "90%", sm: "600px" }}
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Flex
                             direction={{ base: "column", sm: "row" }}
                             gap={4}
@@ -602,6 +604,7 @@ const EarlyMorning4 = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter>
                           {/* Add a footer if needed */}
                         </ModalFooter>
@@ -612,15 +615,14 @@ const EarlyMorning4 = () => {
                     <Modal isOpen={day5Popup2}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                        bgColor="#E3E3E3"
+                        bg={'transparent'}
                         maxW={{ base: "90%", sm: "600px" }}
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Flex
                             direction={{ base: "column", sm: "row" }}
                             gap={4}
@@ -659,6 +661,7 @@ const EarlyMorning4 = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter>
                           {/* Add a footer if needed */}
                         </ModalFooter>
@@ -669,15 +672,14 @@ const EarlyMorning4 = () => {
                     <Modal isOpen={day5Popup3}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                        bgColor="#E3E3E3"
+                        bg={'transparent'}
                         maxW={{ base: "90%", sm: "600px" }}
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Flex
                             direction={{ base: "column", sm: "row" }}
                             gap={4}
@@ -716,6 +718,7 @@ const EarlyMorning4 = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter>
                           {/* Add a footer if needed */}
                         </ModalFooter>
@@ -726,15 +729,14 @@ const EarlyMorning4 = () => {
                     <Modal isOpen={day5Popup4}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                        bgColor="#E3E3E3"
+                        bg={'transparent'}
                         maxW={{ base: "90%", sm: "600px" }}
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Flex
                             direction={{ base: "column", sm: "row" }}
                             gap={4}
@@ -774,6 +776,7 @@ const EarlyMorning4 = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter>
                           {/* Add a footer if needed */}
                         </ModalFooter>
@@ -785,15 +788,14 @@ const EarlyMorning4 = () => {
                     <Modal isOpen={day5Popup5}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                        bgColor="#E3E3E3"
+                        bg={'transparent'}
                         maxW={{ base: "90%", sm: "600px" }}
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Flex
                             direction={{ base: "column", sm: "row" }}
                             gap={4}
@@ -833,6 +835,7 @@ const EarlyMorning4 = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter>
                           {/* Add a footer if needed */}
                         </ModalFooter>
@@ -843,15 +846,14 @@ const EarlyMorning4 = () => {
                     <Modal isOpen={day5Popup6}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                        bgColor="#E3E3E3"
+                        bg={'transparent'}
                         maxW={{ base: "90%", sm: "600px" }}
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Flex
                             direction={{ base: "column", sm: "row" }}
                             gap={4}
@@ -890,6 +892,7 @@ const EarlyMorning4 = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter>
                           {/* Add a footer if needed */}
                         </ModalFooter>

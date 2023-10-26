@@ -52,6 +52,7 @@ import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
 import { useSpring, animated } from "react-spring";
 import gajjistand from "../userImages/gajjistand.jpeg";
+import Draggable from "react-draggable";
 
 const Morning5 = () => {
   const [flip, setFlip] = useState(false);
@@ -669,11 +670,11 @@ const Morning5 = () => {
                   {showPopup && (
                     <Modal isOpen={day5Popup}>
                       <ModalOverlay />
-                      <ModalContent boxShadow="0 0 20px rgba(0, 0, 0, 0.2)">
+                      <ModalContent bg={'transparent'}>
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
-                        <ModalBody fontSize="18px">
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Heading as="h2" size="lg" mb={4}>
                             Announcement
                           </Heading>
@@ -688,8 +689,6 @@ const Morning5 = () => {
                             you with excellence and ensuring such disruptions
                             are mitigated in the future."
                           </Text>
-                        </ModalBody>
-                        <ModalFooter>
                           <Button
                             colorScheme="teal"
                             onClick={closePopup}
@@ -698,9 +697,13 @@ const Morning5 = () => {
                             bg="black"
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}
                             w="100%"
+                            mt={3}
                           >
                             Close Announcement
                           </Button>
+                        </ModalBody>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -710,14 +713,14 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup2}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                        bg={'transparent'}
                         maxW="600px"
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Flex
                             direction={{ base: "column", sm: "row" }}
                             gap={4}
@@ -757,6 +760,7 @@ const Morning5 = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -765,14 +769,14 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup3}>
                       <ModalOverlay />
                       <ModalContent
-                        boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                        bg={'transparent'}
                         maxW="600px"
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
                           <Flex
                             direction={{ base: "column", sm: "row" }}
                             gap={4}
@@ -812,6 +816,7 @@ const Morning5 = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -820,16 +825,17 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup4} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        bgColor={"#E3E3E3"}
+                        
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                        bg={'transparent'}
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
-                          Successful Recovery
+                          
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
+                          <Heading fontWeight="bold" fontSize="25px" mb={4}>Successful Recovery</Heading>
                           <Flex
                             direction={{ base: "column", sm: "row" }}
                             gap={4}
@@ -869,6 +875,7 @@ const Morning5 = () => {
                             </Box>
                           </Flex>
                         </ModalBody>
+                        </Draggable>
                         <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -877,24 +884,23 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup10} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        bgColor={"#E3E3E3"}
+                        
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                        bg={'transparent'}
                       >
-                        <ModalHeader fontWeight="bold" fontSize="25px">
-                          Successful Recovery
+                        <ModalHeader >
+                          
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
+                          <Heading fontWeight="bold" fontSize="25px" mb={4}>Successful Recovery</Heading>
                           <Text>
                             The afternoon sun casts a warm glow. The
                             Communications team is busy drafting an
                             announcement.
                           </Text>
-                        </ModalBody>
-
-                        <ModalFooter>
+                          <Flex alignItems={'flex-end'}>
                           <Button
                             colorScheme="teal"
                             onClick={closePopup10}
@@ -902,9 +908,17 @@ const Morning5 = () => {
                             bg="teal.500"
                             _hover={{ bgColor: "teal.600" }}
                             borderRadius={10}
+                            mt={2}
+                            ml={450}
                           >
                             Close
                           </Button>
+                          </Flex>
+                        </ModalBody>
+                        </Draggable>
+                        <ModalFooter>
+                          
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -914,25 +928,24 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup5} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        bgColor={"#E3E3E3"}
+                       
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                        bg={'transparent'}
                       >
-                        <ModalHeader fontWeight="bold" fontSize="25px">
-                          Successful Recovery Announcement
+                        <ModalHeader f>
+                          
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
+                          <Heading ontWeight="bold" fontSize="25px" mb={4}>Successful Recovery Announcement</Heading>
                           <Text>
                             At 4:00 PM, emails ping across the company, and an
                             announcement is broadcasted on internal
                             communication channels. The crisis is officially
                             over, and everyone can return to normal operations.
                           </Text>
-                        </ModalBody>
-
-                        <ModalFooter>
+                          <Flex>
                           <Button
                             colorScheme="teal"
                             onClick={closePopup5}
@@ -940,9 +953,16 @@ const Morning5 = () => {
                             bg="teal.500"
                             _hover={{ bgColor: "teal.600" }}
                             borderRadius={10}
+                            mt={5}
+                            ml={450}
                           >
                             Close
                           </Button>
+                          </Flex>
+                        </ModalBody>
+                        </Draggable>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -951,16 +971,17 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup6} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        bgColor="#E3E3E3"
+                        
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                        bg={'transparent'}
                       >
-                        <ModalHeader fontWeight="bold" fontSize="25px">
-                          The Next Couple of Weeks
+                        <ModalHeader >
+                          
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
+                          <Heading fontWeight="bold" fontSize="25px" mb={5}>The Next Couple of Weeks</Heading>
                           <Text>
                             Over the next few weeks, the CIO, Ben Carter, and
                             the Senior Vice President of Worldwide Customer
@@ -976,9 +997,6 @@ const Morning5 = () => {
                             long way in reaffirming the company's commitment to
                             its clients.
                           </Text>
-                        </ModalBody>
-
-                        <ModalFooter>
                           <Button
                             colorScheme="teal"
                             onClick={closePopup6}
@@ -986,9 +1004,15 @@ const Morning5 = () => {
                             bg="teal.500"
                             _hover={{ bgColor: "teal.600" }}
                             borderRadius={10}
+                            mt={4}
+                            ml={450}
                           >
                             Close
                           </Button>
+                        </ModalBody>
+                        </Draggable>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -997,25 +1021,23 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup7} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        bgColor="#E3E3E3"
+                        
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                        bg={'transparent'}
                       >
-                        <ModalHeader fontWeight="bold" fontSize="25px">
-                        Epilog 1:  Reassuring Clients
+                        <ModalHeader >
+                        
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
+                          <Heading fontWeight="bold" fontSize="25px" mb={5}>Epilog 1:  Reassuring Clients</Heading>
                           <Text>
                             The office is calm, a stark contrast to the frenzied
                             atmosphere of the crisis days. Ben Carter sits at
                             his desk, reading through the final report from the
                             storage vendor. He looks contemplative.
                           </Text>
-                        </ModalBody>
-
-                        <ModalFooter>
                           <Button
                             colorScheme="teal"
                             onClick={closePopup7}
@@ -1023,9 +1045,15 @@ const Morning5 = () => {
                             bg="teal.500"
                             _hover={{ bgColor: "teal.600" }}
                             borderRadius={10}
+                            mt={4}
+                            ml={450}
                           >
                             Close
                           </Button>
+                        </ModalBody>
+                        </Draggable>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -1034,24 +1062,22 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup8} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        bgColor="#E3E3E3"
+                        
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                        bg={'transparent'}
                       >
-                        <ModalHeader fontWeight="bold" fontSize="25px">
-                          A Conversation of Respect
+                        <ModalHeader >
+                          
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
+                          <Heading fontWeight="bold" fontSize="25px" mb={5}>A Conversation of Respect</Heading>
                           <Text>
                             Inside a conference room, Ben Carter and Gajji sit
                             across from each other. There's a sense of mutual
                             respect between them.
                           </Text>
-                        </ModalBody>
-
-                        <ModalFooter>
                           <Button
                             colorScheme="teal"
                             onClick={closePopup8}
@@ -1059,9 +1085,15 @@ const Morning5 = () => {
                             bg="teal.500"
                             _hover={{ bgColor: "teal.600" }}
                             borderRadius={10}
+                            mt={4}
+                            ml={450}
                           >
                             Close
                           </Button>
+                        </ModalBody>
+                        </Draggable>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -1070,24 +1102,22 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup9} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        bgColor="#E3E3E3"
+                        
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                        bg={'transparent'}
                       >
-                        <ModalHeader fontWeight="bold" fontSize="25px">
-                          A Moment of Mutual Appreciation
+                        <ModalHeader >
+                         
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
+                          <Heading fontWeight="bold" fontSize="25px" mb={5}> A Moment of Mutual Appreciation</Heading>
                           <Text>
                             The two leaders share a moment of mutual
                             appreciation, aware that the trials they faced
                             together have only deepened their bond.
                           </Text>
-                        </ModalBody>
-
-                        <ModalFooter>
                           <Button
                             colorScheme="teal"
                             onClick={closePopup9}
@@ -1095,9 +1125,15 @@ const Morning5 = () => {
                             bg="teal.500"
                             _hover={{ bgColor: "teal.600" }}
                             borderRadius={10}
+                            mt={4}
+                            ml={450}
                           >
                             Close
                           </Button>
+                        </ModalBody>
+                        </Draggable>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>
@@ -1106,16 +1142,17 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup11} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        bgColor="#E3E3E3"
+                        
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.1)"
+                        bg={'transparent'}
                       >
-                        <ModalHeader fontWeight="bold" fontSize="25px">
-                          Epilog - 2
+                        <ModalHeader >
+                          
                         </ModalHeader>
-
-                        <ModalBody fontSize="18px">
+                        <Draggable>
+                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
+                          <Heading fontWeight="bold" fontSize="25px" mb={5}>Epilog - 2</Heading>
                           <Text>
                             After months of analysis, the storage vendor’s final
                             report indicated the site 2 (R2) mirrored copy was
@@ -1146,21 +1183,23 @@ const Morning5 = () => {
                             the Appendix, Figure #2. faced together have only
                             deepened their bond.</Text>
                             <br/>
-                            {/* <Image src={site}/> */}
-
-                        </ModalBody>
-
-                        <ModalFooter>
-                          <Button
+                            <Button
                             colorScheme="teal"
                             onClick={closePopup11}
                             fontFamily="Croissant One"
                             bg="teal.500"
                             _hover={{ bgColor: "teal.600" }}
                             borderRadius={10}
+                            ml={450}
                           >
                             Close
                           </Button>
+                            {/* <Image src={site}/> */}
+
+                        </ModalBody>
+                        </Draggable>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>

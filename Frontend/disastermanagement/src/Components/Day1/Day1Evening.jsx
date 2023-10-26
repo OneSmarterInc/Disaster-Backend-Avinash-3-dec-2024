@@ -502,59 +502,7 @@ const BringDown = () => {
                       </CSSTransition>
                     );
                   })}
-                  {/* {showPopup && (
-                    <Modal isOpen={day5Popup}>
-                      <ModalOverlay />
-                      <ModalContent
-                        boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
-                        borderRadius={10}
-                        width={["90%", "70%", "50%"]} // Responsive width
-                        maxW="500px"
-                      >
-                        <ModalHeader
-                          fontWeight="bold"
-                          fontSize="25px"
-                        ></ModalHeader>
-
-                        <ModalBody fontSize="18px">
-                          <Flex flexDirection={["column", "row"]} gap={[4, 2]}>
-                            {" "}
-                            
-                            <Box
-                              bgColor="white"
-                              boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={4}
-                              flex="1"
-                            >
-                              <Text>
-                                Late night conference call with applications
-                                vendor (Approx. 40 people on the call)
-                              </Text>
-                            </Box>
-                            <Box textAlign="center" flex="1">
-                              <Image src={conference} borderRadius={10} />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup}
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mt={3}
-                                borderRadius={10}
-                                w={'100%'}
-                              >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
-                  )} */}
+                  
 
                   {showBox && (
                     <>

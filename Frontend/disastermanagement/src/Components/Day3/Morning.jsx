@@ -39,7 +39,6 @@ import alarms from "../userImages/alarms.png";
 import vendor from "../userImages/vendor.png";
 import ScrollDown from "../ScrollDown";
 import warroom from "../userImages/warroom.png";
-import tension from "../userImages/tension.jpeg";
 import liam from "../userImages/liam.jpeg";
 import tense from "../userImages/tense.jpeg";
 import immediate from "../userImages/immediate.jpeg";
@@ -49,8 +48,10 @@ import failure from "../userImages/failure.jpeg";
 import callwithjulia from "../userImages/callwithjulia.jpeg";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
-import weight from "../userImages/weight.jpeg";
+import weight2 from "../userImages/weight2.jpeg";
 import Draggable from "react-draggable";
+import tension2 from "../userImages/tension2.jpeg";
+import jolt from "../userImages/jolt.jpeg"
 
 const Morning = () => {
   const [chatData, setChatData] = useState([]);
@@ -590,7 +591,7 @@ const Morning = () => {
                               </Text>
                             </Box>
                             <Box textAlign="center">
-                              <Image src={immediate} borderRadius={10} />
+                              <Image src={jolt} borderRadius={10} />
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup2}
@@ -643,7 +644,7 @@ const Morning = () => {
                             </Box>
                             <Box>
                               <Image
-                                src={tension}
+                                src={tension2}
                                 borderRadius={10}
                                 maxW="100%"
                                 h="auto"
@@ -699,7 +700,7 @@ const Morning = () => {
                             </Box>
                             <Box>
                               <Image
-                                src={weight}
+                                src={weight2}
                                 borderRadius={10}
                                 maxW="100%"
                                 h="auto"

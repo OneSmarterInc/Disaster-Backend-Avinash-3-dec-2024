@@ -27,6 +27,8 @@ import bgcall from "../Images/bgcall.jpeg";
 import bensleep from "../Images/bensleep.jpeg";
 import Morning5 from "../Components/Day5/Morning5";
 import Draggable from "react-draggable";
+import EarlyMorning4 from "../Components/Day4/EarlyMorning4";
+import LateMorning from "../Components/Day2/LateMoring";
 
 
 const Chat = () => {
@@ -182,7 +184,7 @@ const Chat = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <BringDown />
+        <EarlyMorning4 />
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : value === "Remaining calm and level-headed during challenges" ? (

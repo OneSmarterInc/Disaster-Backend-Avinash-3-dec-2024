@@ -45,7 +45,7 @@ import scramble from "../userImages/scramble.jpeg";
 import MyContext from "../ContextApi/MyContext";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
-import gajjiteam2 from "../userImages/gajjiteam2.png"
+import gajjiteam2 from "../userImages/gajjiteam2.png";
 
 const EarlyMorning4 = () => {
   const [chatData, setChatData] = useState([]);
@@ -425,7 +425,7 @@ const EarlyMorning4 = () => {
                   ? scene2
                   : currentMessageIndex > 6
                   ? gajjiteam2
-                  :begin2
+                  : begin2
               }
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
@@ -464,9 +464,8 @@ const EarlyMorning4 = () => {
                 >
                   <Text fontSize={"20"}>
                     The ERP vendor team is now driving a solution, working
-                    diligently and ensuring a successful implementation. Their
-                    commitment and expertise are instrumental in guiding towards
-                    a positive outcome.
+                    diligently and ensuring a successful implementation. Skilled
+                    development leads for the ERP vendor are heavily engaged.
                   </Text>
                 </Box>
               )}

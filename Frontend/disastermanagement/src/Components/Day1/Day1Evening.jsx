@@ -145,6 +145,7 @@ const BringDown = () => {
   };
 
   const scrollToBottom = () => {
+    setHead("Day 1 - Late night: Back at the office with internal staff");
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
@@ -185,7 +186,7 @@ const BringDown = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
 
-    setHead("Day 1 - Late night: Back at the office with internal staff");
+    
 
     const messageDelay = speed; // 4 seconds
 

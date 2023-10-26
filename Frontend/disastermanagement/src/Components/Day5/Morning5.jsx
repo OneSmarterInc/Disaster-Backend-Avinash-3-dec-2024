@@ -36,7 +36,7 @@ import clock from "../userImages/clock.png";
 import clapping from "../userImages/clapping.png";
 import email from "../userImages/email.jpeg";
 import liam from "../userImages/liam.jpeg";
-import site from "../userImages/2.jpg"
+import site from "../userImages/2.jpg";
 import MyContext from "../ContextApi/MyContext";
 import Debrief from "../Debrief";
 import Deliverable from "../Deliverable";
@@ -151,6 +151,14 @@ const Morning5 = () => {
   };
 
   const scrollToBottom = () => {
+    if (currentMessageIndex > 1 &&  currentMessageIndex <=8) {
+      setHead("Day 5 - Afternoon");
+    } else if (currentMessageIndex > 8) {
+      setHead("Day 5 - Late Afternoon");
+    } else {
+      setHead("Day 5 - Morning");
+    }
+
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
@@ -207,13 +215,7 @@ const Morning5 = () => {
   const visibleMessages = dayFiveMorning.slice(startIndex, currentMessageIndex);
 
   useEffect(() => {
-    if (currentMessageIndex > 1) {
-      setHead("Day 5 - Afternoon");
-    } else if (currentMessageIndex > 7) {
-      setHead("Day 5 - Evening");
-    } else {
-      setHead("Day 5 - Morning");
-    }
+   
 
     const displayNextMessage = () => {
       if (!pauseBtn) {
@@ -253,19 +255,16 @@ const Morning5 = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup6(true);
-              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 14) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup7(true);
-              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 23) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup8(true);
-              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 32) {
             setChatPaused(true);
@@ -276,15 +275,9 @@ const Morning5 = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup11(true);
-              setStartIndex(currentMessageIndex + 1);
-            }, 2000);
+            }, 4000);
           }
-        } else {
-          if (currentMessageIndex === dayFiveMorning.length) {
-            // The chat has ended completely, set showBox to true
-            setShowBox(true);
-          }
-        }
+        } 
       }
     };
 
@@ -332,6 +325,8 @@ const Morning5 = () => {
 
   const closePopup6 = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+
     setDay5Popup6(false);
     // onClose();
     setChatPaused(false);
@@ -339,6 +334,8 @@ const Morning5 = () => {
 
   const closePopup7 = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+
     setDay5Popup7(false);
     // onClose();
     setChatPaused(false);
@@ -346,6 +343,8 @@ const Morning5 = () => {
 
   const closePopup8 = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+
     setDay5Popup8(false);
     // onClose();
     setChatPaused(false);
@@ -367,9 +366,15 @@ const Morning5 = () => {
 
   const closePopup11 = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+
     setDay5Popup11(false);
     // onClose();
     setChatPaused(false);
+    setTimeout(()=>{
+
+      setShowBox(true);
+    },4000)
   };
 
   return (
@@ -522,8 +527,7 @@ const Morning5 = () => {
               bgImage={
                 currentMessageIndex > 33
                   ? site
-                  :
-                currentMessageIndex > 32
+                  : currentMessageIndex > 32
                   ? gajjistand
                   : currentMessageIndex > 24
                   ? respect
@@ -544,7 +548,118 @@ const Morning5 = () => {
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-              {currentMessageIndex < 24 ? (
+              {currentMessageIndex <= 1 && (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Morning light floods the office. There's a palpable sense of
+                    cautious optimism. Team members, though visibly exhausted,
+                    are in high spirits, closely monitoring systems and
+                    validating data --> Ben Carter and the OTC executive team
+                    reassured clients after the crisis was over.{" "}
+                  </Text>
+                </Box>
+              )}
+
+              {currentMessageIndex > 1 && currentMessageIndex <= 11 && (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Kate confirms system stability, close to completion. Liam
+                    anticipates final checks. Sophia reflects on the long
+                    journey with a hint of relief as the end nears.
+                  </Text>
+                </Box>
+              )}
+              {currentMessageIndex > 11 && currentMessageIndex <= 15 && (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Ben Carter informs clients about the ongoing crisis at
+                    OrionTech, ensuring open communication and commitment to
+                    preventing future disruptions. Clients express appreciation
+                    for the transparency and dedication.
+                  </Text>
+                </Box>
+              )}
+
+              {currentMessageIndex > 15 && currentMessageIndex <= 23 && (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Ben Carter realizes the data issue wasn't about the discs.
+                    Kate laments the time lost. They discuss the vendor's
+                    oversight and the importance of thorough investigation for
+                    the future.
+                  </Text>
+                </Box>
+              )}
+
+              {currentMessageIndex > 23 && (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                  visibility={currentMessageIndex >=33 ? "hidden" : "auto"}
+                >
+                  <Text fontSize={"20"}>
+                    Ben Carter and Gajji meet in person to debrief, discussing
+                    the project's progress, sharing insights, and strategizing
+                    for the next steps.Their face-to-face interaction fosters a
+                    deeper understanding of the situation and paves the way for
+                    effective collaboration.
+                  </Text>
+                </Box>
+              )}
+
+              {/* {currentMessageIndex < 24 ? (
                 <Box
                   border={"1px solid black"}
                   bgColor={"#030405"}
@@ -586,7 +701,7 @@ const Morning5 = () => {
                     effective collaboration.
                   </Text>
                 </Box>
-              )}
+              )} */}
               <Box
                 w={"90%"}
                 h={"68vh"}
@@ -670,11 +785,17 @@ const Morning5 = () => {
                   {showPopup && (
                     <Modal isOpen={day5Popup}>
                       <ModalOverlay />
-                      <ModalContent bg={'transparent'}>
+                      <ModalContent bg={"transparent"}>
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
+                        <ModalBody
+                          fontSize="18px"
+                          className="draggable-modal"
+                          borderRadius={10}
+                          bg="rgba(245, 255, 255, 0.8)"
+                          p={10}
+                        >
                           <Heading as="h2" size="lg" mb={4}>
                             Announcement
                           </Heading>
@@ -702,9 +823,7 @@ const Morning5 = () => {
                             Close Announcement
                           </Button>
                         </ModalBody>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
+                        <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -712,54 +831,60 @@ const Morning5 = () => {
                   {showPopup2 && (
                     <Modal isOpen={day5Popup2}>
                       <ModalOverlay />
-                      <ModalContent
-                        bg={'transparent'}
-                        maxW="600px"
-                      >
+                      <ModalContent bg={"transparent"} maxW="600px">
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            direction={{ base: "column", sm: "row" }}
-                            gap={4}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={5}
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
                             >
-                              <Text>
-                                At noon, the recovery process was complete. At
-                                4:00 PM, an announcement was made that the
-                                crisis was over.
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Image
-                                src={crisis}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                maxW="100%"
-                                h="auto"
-                              />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup2}
-                                textAlign="center"
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                w="100%"
-                                mt={3}
-                                borderRadius={10}
+                                p={5}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  At noon, the recovery process was complete. At
+                                  4:00 PM, an announcement was made that the
+                                  crisis was over.
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={crisis}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup2}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%"
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter></ModalFooter>
                       </ModalContent>
@@ -768,54 +893,60 @@ const Morning5 = () => {
                   {showPopup3 && (
                     <Modal isOpen={day5Popup3}>
                       <ModalOverlay />
-                      <ModalContent
-                        bg={'transparent'}
-                        maxW="600px"
-                      >
+                      <ModalContent bg={"transparent"} maxW="600px">
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            direction={{ base: "column", sm: "row" }}
-                            gap={4}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={5}
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
                             >
-                              <Text>
-                                The clock strikes noon. Ben Carter stands at the
-                                head of the room, gathering everyone's
-                                attention.{" "}
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Image
-                                src={strikes}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                maxW="100%"
-                                h="auto"
-                              />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup3}
-                                textAlign="center"
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                w="100%"
-                                mt={3}
-                                borderRadius={10}
+                                p={5}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  The clock strikes noon. Ben Carter stands at
+                                  the head of the room, gathering everyone's
+                                  attention.{" "}
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={strikes}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup3}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%"
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter></ModalFooter>
                       </ModalContent>
@@ -825,56 +956,67 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup4} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        bg={'transparent'}
+                        bg={"transparent"}
                       >
-                        <ModalHeader fontWeight="bold" fontSize="25px">
-                          
-                        </ModalHeader>
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Heading fontWeight="bold" fontSize="25px" mb={4}>Successful Recovery</Heading>
-                          <Flex
-                            direction={{ base: "column", sm: "row" }}
-                            gap={4}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={5}
+                            <Heading fontWeight="bold" fontSize="25px" mb={4}>
+                              Successful Recovery
+                            </Heading>
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
                             >
-                              <Text>
-                                A loud cheer erupts as team members clap and
-                                some even hug each other. The crisis is over,
-                                and everyone can breathe a sigh of relief.
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Image
-                                src={cheer}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                maxW="100%"
-                                h="auto"
-                              />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup4}
-                                textAlign="center"
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                w="100%"
-                                mt={3}
-                                borderRadius={10}
+                                p={5}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  A loud cheer erupts as team members clap and
+                                  some even hug each other. The crisis is over,
+                                  and everyone can breathe a sigh of relief.
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={cheer}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup4}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%"
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter></ModalFooter>
                       </ModalContent>
@@ -884,42 +1026,44 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup10} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        bg={'transparent'}
+                        bg={"transparent"}
                       >
-                        <ModalHeader >
-                          
-                        </ModalHeader>
+                        <ModalHeader></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Heading fontWeight="bold" fontSize="25px" mb={4}>Successful Recovery</Heading>
-                          <Text>
-                            The afternoon sun casts a warm glow. The
-                            Communications team is busy drafting an
-                            announcement.
-                          </Text>
-                          <Flex alignItems={'flex-end'}>
-                          <Button
-                            colorScheme="teal"
-                            onClick={closePopup10}
-                            fontFamily="Croissant One"
-                            bg="teal.500"
-                            _hover={{ bgColor: "teal.600" }}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
                             borderRadius={10}
-                            mt={2}
-                            ml={450}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            Close
-                          </Button>
-                          </Flex>
-                        </ModalBody>
+                            <Heading fontWeight="bold" fontSize="25px" mb={4}>
+                              Successful Recovery
+                            </Heading>
+                            <Text>
+                              The afternoon sun casts a warm glow. The
+                              Communications team is busy drafting an
+                              announcement.
+                            </Text>
+                            <Flex alignItems={"flex-end"}>
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup10}
+                                fontFamily="Croissant One"
+                                bg="teal.500"
+                                _hover={{ bgColor: "teal.600" }}
+                                borderRadius={10}
+                                mt={2}
+                                ml={450}
+                              >
+                                Close
+                              </Button>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
-                        <ModalFooter>
-                          
-                          
-                        </ModalFooter>
+                        <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -928,42 +1072,46 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup5} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                       
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        bg={'transparent'}
+                        bg={"transparent"}
                       >
-                        <ModalHeader f>
-                          
-                        </ModalHeader>
+                        <ModalHeader f></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Heading ontWeight="bold" fontSize="25px" mb={4}>Successful Recovery Announcement</Heading>
-                          <Text>
-                            At 4:00 PM, emails ping across the company, and an
-                            announcement is broadcasted on internal
-                            communication channels. The crisis is officially
-                            over, and everyone can return to normal operations.
-                          </Text>
-                          <Flex>
-                          <Button
-                            colorScheme="teal"
-                            onClick={closePopup5}
-                            fontFamily="Croissant One"
-                            bg="teal.500"
-                            _hover={{ bgColor: "teal.600" }}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
                             borderRadius={10}
-                            mt={5}
-                            ml={450}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            Close
-                          </Button>
-                          </Flex>
-                        </ModalBody>
+                            <Heading ontWeight="bold" fontSize="25px" mb={4}>
+                              Successful Recovery Announcement
+                            </Heading>
+                            <Text>
+                              At 4:00 PM, emails ping across the company, and an
+                              announcement is broadcasted on internal
+                              communication channels. The crisis is officially
+                              over, and everyone can return to normal
+                              operations.
+                            </Text>
+                            <Flex>
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup5}
+                                fontFamily="Croissant One"
+                                bg="teal.500"
+                                _hover={{ bgColor: "teal.600" }}
+                                borderRadius={10}
+                                mt={5}
+                                ml={450}
+                              >
+                                Close
+                              </Button>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
+                        <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -971,49 +1119,52 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup6} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        bg={'transparent'}
+                        bg={"transparent"}
                       >
-                        <ModalHeader >
-                          
-                        </ModalHeader>
+                        <ModalHeader></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Heading fontWeight="bold" fontSize="25px" mb={5}>The Next Couple of Weeks</Heading>
-                          <Text>
-                            Over the next few weeks, the CIO, Ben Carter, and
-                            the Senior Vice President of Worldwide Customer
-                            Service embarked on a series of meetings with key
-                            customers to address concerns and rebuild trust.
-                          </Text>
-                          <br />
-                          <Text>
-                            During these meetings, they discussed the recent IT
-                            crisis, the measures taken to resolve it, and the
-                            steps being implemented to prevent future
-                            disruptions. The transparent communication went a
-                            long way in reaffirming the company's commitment to
-                            its clients.
-                          </Text>
-                          <Button
-                            colorScheme="teal"
-                            onClick={closePopup6}
-                            fontFamily="Croissant One"
-                            bg="teal.500"
-                            _hover={{ bgColor: "teal.600" }}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
                             borderRadius={10}
-                            mt={4}
-                            ml={450}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            Close
-                          </Button>
-                        </ModalBody>
+                            <Heading fontWeight="bold" fontSize="25px" mb={5}>
+                              The Next Couple of Weeks
+                            </Heading>
+                            <Text>
+                              Over the next few weeks, the CIO, Ben Carter, and
+                              the Senior Vice President of Worldwide Customer
+                              Service embarked on a series of meetings with key
+                              customers to address concerns and rebuild trust.
+                            </Text>
+                            <br />
+                            <Text>
+                              During these meetings, they discussed the recent
+                              IT crisis, the measures taken to resolve it, and
+                              the steps being implemented to prevent future
+                              disruptions. The transparent communication went a
+                              long way in reaffirming the company's commitment
+                              to its clients.
+                            </Text>
+                            <Button
+                              colorScheme="teal"
+                              onClick={closePopup6}
+                              fontFamily="Croissant One"
+                              bg="teal.500"
+                              _hover={{ bgColor: "teal.600" }}
+                              borderRadius={10}
+                              mt={4}
+                              ml={450}
+                            >
+                              Close
+                            </Button>
+                          </ModalBody>
                         </Draggable>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
+                        <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -1021,40 +1172,43 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup7} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        bg={'transparent'}
+                        bg={"transparent"}
                       >
-                        <ModalHeader >
-                        
-                        </ModalHeader>
+                        <ModalHeader></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Heading fontWeight="bold" fontSize="25px" mb={5}>Epilog 1:  Reassuring Clients</Heading>
-                          <Text>
-                            The office is calm, a stark contrast to the frenzied
-                            atmosphere of the crisis days. Ben Carter sits at
-                            his desk, reading through the final report from the
-                            storage vendor. He looks contemplative.
-                          </Text>
-                          <Button
-                            colorScheme="teal"
-                            onClick={closePopup7}
-                            fontFamily="Croissant One"
-                            bg="teal.500"
-                            _hover={{ bgColor: "teal.600" }}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
                             borderRadius={10}
-                            mt={4}
-                            ml={450}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            Close
-                          </Button>
-                        </ModalBody>
+                            <Heading fontWeight="bold" fontSize="25px" mb={5}>
+                              Epilog 1: Reassuring Clients
+                            </Heading>
+                            <Text>
+                              The office is calm, a stark contrast to the
+                              frenzied atmosphere of the crisis days. Ben Carter
+                              sits at his desk, reading through the final report
+                              from the storage vendor. He looks contemplative.
+                            </Text>
+                            <Button
+                              colorScheme="teal"
+                              onClick={closePopup7}
+                              fontFamily="Croissant One"
+                              bg="teal.500"
+                              _hover={{ bgColor: "teal.600" }}
+                              borderRadius={10}
+                              mt={4}
+                              ml={450}
+                            >
+                              Close
+                            </Button>
+                          </ModalBody>
                         </Draggable>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
+                        <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -1062,39 +1216,42 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup8} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        bg={'transparent'}
+                        bg={"transparent"}
                       >
-                        <ModalHeader >
-                          
-                        </ModalHeader>
+                        <ModalHeader></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Heading fontWeight="bold" fontSize="25px" mb={5}>A Conversation of Respect</Heading>
-                          <Text>
-                            Inside a conference room, Ben Carter and Gajji sit
-                            across from each other. There's a sense of mutual
-                            respect between them.
-                          </Text>
-                          <Button
-                            colorScheme="teal"
-                            onClick={closePopup8}
-                            fontFamily="Croissant One"
-                            bg="teal.500"
-                            _hover={{ bgColor: "teal.600" }}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
                             borderRadius={10}
-                            mt={4}
-                            ml={450}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            Close
-                          </Button>
-                        </ModalBody>
+                            <Heading fontWeight="bold" fontSize="25px" mb={5}>
+                              A Conversation of Respect
+                            </Heading>
+                            <Text>
+                              Inside a conference room, Ben Carter and Gajji sit
+                              across from each other. There's a sense of mutual
+                              respect between them.
+                            </Text>
+                            <Button
+                              colorScheme="teal"
+                              onClick={closePopup8}
+                              fontFamily="Croissant One"
+                              bg="teal.500"
+                              _hover={{ bgColor: "teal.600" }}
+                              borderRadius={10}
+                              mt={4}
+                              ml={450}
+                            >
+                              Close
+                            </Button>
+                          </ModalBody>
                         </Draggable>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
+                        <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -1102,39 +1259,43 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup9} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        bg={'transparent'}
+                        bg={"transparent"}
                       >
-                        <ModalHeader >
-                         
-                        </ModalHeader>
+                        <ModalHeader></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Heading fontWeight="bold" fontSize="25px" mb={5}> A Moment of Mutual Appreciation</Heading>
-                          <Text>
-                            The two leaders share a moment of mutual
-                            appreciation, aware that the trials they faced
-                            together have only deepened their bond.
-                          </Text>
-                          <Button
-                            colorScheme="teal"
-                            onClick={closePopup9}
-                            fontFamily="Croissant One"
-                            bg="teal.500"
-                            _hover={{ bgColor: "teal.600" }}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
                             borderRadius={10}
-                            mt={4}
-                            ml={450}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            Close
-                          </Button>
-                        </ModalBody>
+                            <Heading fontWeight="bold" fontSize="25px" mb={5}>
+                              {" "}
+                              A Moment of Mutual Appreciation
+                            </Heading>
+                            <Text>
+                              The two leaders share a moment of mutual
+                              appreciation, aware that the trials they faced
+                              together have only deepened their bond.
+                            </Text>
+                            <Button
+                              colorScheme="teal"
+                              onClick={closePopup9}
+                              fontFamily="Croissant One"
+                              bg="teal.500"
+                              _hover={{ bgColor: "teal.600" }}
+                              borderRadius={10}
+                              mt={4}
+                              ml={450}
+                            >
+                              Close
+                            </Button>
+                          </ModalBody>
                         </Draggable>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
+                        <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -1142,65 +1303,70 @@ const Morning5 = () => {
                     <Modal isOpen={day5Popup11} isCentered>
                       <ModalOverlay />
                       <ModalContent
-                        
                         maxW={{ base: "90%", sm: "80%", md: "600px" }}
                         borderRadius={10}
-                        bg={'transparent'}
+                        bg={"transparent"}
                       >
-                        <ModalHeader >
-                          
-                        </ModalHeader>
+                        <ModalHeader></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Heading fontWeight="bold" fontSize="25px" mb={5}>Epilog - 2</Heading>
-                          <Text>
-                            After months of analysis, the storage vendor’s final
-                            report indicated the site 2 (R2) mirrored copy was
-                            never corrupted. While the data in the controller
-                            buffers were corrupted, the controller had
-                            implemented defensive processes that prevented the
-                            controller from writing the corrupted data to the
-                            actual discs. The support team had viewed the
-                            buffers but never investigated whether the actually
-                            discs on the frames at site 2 were corrupted. If
-                            this information had been convened at the time of
-                            the incident, all applications could have safely
-                            been restored within 24 hours.
-                          </Text>
-                          <Text>
-                            The storage vendor provided approximately three
-                            million dollars of new hardware and software to
-                            provide two additional copies of the data as
-                            restitution for the event. See the Appendix, Figure
-                            #2. faced together have only deepened their bond.
-                          </Text>
-
-                          <br/>
-                          <Text>The storage vendor
-                            provided approximately three million dollars of new
-                            hardware and software to provide two additional
-                            copies of the data as restitution for the event. See
-                            the Appendix, Figure #2. faced together have only
-                            deepened their bond.</Text>
-                            <br/>
-                            <Button
-                            colorScheme="teal"
-                            onClick={closePopup11}
-                            fontFamily="Croissant One"
-                            bg="teal.500"
-                            _hover={{ bgColor: "teal.600" }}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
                             borderRadius={10}
-                            ml={450}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            Close
-                          </Button>
-                            {/* <Image src={site}/> */}
+                            <Heading fontWeight="bold" fontSize="25px" mb={5}>
+                              Epilog - 2
+                            </Heading>
+                            <Text>
+                              After months of analysis, the storage vendor’s
+                              final report indicated the site 2 (R2) mirrored
+                              copy was never corrupted. While the data in the
+                              controller buffers were corrupted, the controller
+                              had implemented defensive processes that prevented
+                              the controller from writing the corrupted data to
+                              the actual discs. The support team had viewed the
+                              buffers but never investigated whether the
+                              actually discs on the frames at site 2 were
+                              corrupted. If this information had been convened
+                              at the time of the incident, all applications
+                              could have safely been restored within 24 hours.
+                            </Text>
+                            <Text>
+                              The storage vendor provided approximately three
+                              million dollars of new hardware and software to
+                              provide two additional copies of the data as
+                              restitution for the event. See the Appendix,
+                              Figure #2. faced together have only deepened their
+                              bond.
+                            </Text>
 
-                        </ModalBody>
+                            <br />
+                            <Text>
+                              The storage vendor provided approximately three
+                              million dollars of new hardware and software to
+                              provide two additional copies of the data as
+                              restitution for the event. See the Appendix,
+                              Figure #2. faced together have only deepened their
+                              bond.
+                            </Text>
+                            <br />
+                            <Button
+                              colorScheme="teal"
+                              onClick={closePopup11}
+                              fontFamily="Croissant One"
+                              bg="teal.500"
+                              _hover={{ bgColor: "teal.600" }}
+                              borderRadius={10}
+                              ml={450}
+                            >
+                              Close
+                            </Button>
+                            {/* <Image src={site}/> */}
+                          </ModalBody>
                         </Draggable>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
+                        <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}

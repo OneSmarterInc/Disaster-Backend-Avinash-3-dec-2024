@@ -27,6 +27,9 @@ import bgcall from "../Images/bgcall.jpeg";
 import bensleep from "../Images/bensleep.jpeg";
 import Morning5 from "../Components/Day5/Morning5";
 import Draggable from "react-draggable";
+import LateMorning from "../Components/Day2/LateMoring";
+import Morning from "../Components/Day3/Morning";
+import EarlyMorning4 from "../Components/Day4/EarlyMorning4";
 
 
 const Chat = () => {
@@ -66,6 +69,13 @@ const Chat = () => {
   };
 
   const scrollToBottom = () => {
+
+    if (currentMessageIndex > 3) {
+      setHead("Day 1 - Late Evening: Sporadic Issues Continue");
+    } else {
+      setHead("Day 1 - Evening : How it all begins");
+    }
+
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
@@ -86,17 +96,9 @@ const Chat = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
     setShowCloseBtn(true);
-    if (currentMessageIndex > 3) {
-      setHead("Day 1 - Late Evening: Sporadic Issues Continue");
-    } else {
-      setHead("Day 1 - Evening : How it all begins");
-    }
+   
 
-    console.log(
-      startIndex,
-      currentMessageIndex,
-      dayOneMorning[startIndex].message
-    );
+    
 
     const messageDelay = speed;
 
@@ -117,7 +119,6 @@ const Chat = () => {
             setTimeout(() => {
               setShowPopup2(true);
 
-              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 5) {
             setChatPaused(true);
@@ -150,6 +151,8 @@ const Chat = () => {
 
   const closePopup2 = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+
     setDay5Popup2(false);
     // onClose();
     setChatPaused(false);
@@ -182,7 +185,7 @@ const Chat = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <BringDown />
+        <EarlyMorning4 />
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : value === "Remaining calm and level-headed during challenges" ? (

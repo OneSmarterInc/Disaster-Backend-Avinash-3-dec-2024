@@ -60,6 +60,7 @@ import benc from "../userImages/ben&c.jpeg";
 import across from "../userImages/across.jpeg";
 import tvscreen from "../userImages/tvscreen.jpeg";
 import figure2 from "../userImages/figure2.jpg";
+
 import butterfly from "../userImages/butterfly.jpeg";
 const Morning5 = () => {
   const [flip, setFlip] = useState(false);
@@ -108,6 +109,10 @@ const Morning5 = () => {
   const [selectedValue, setSelectedValue] = useState(null);
   const [chatPaused, setChatPaused] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
+  const [textBox, setTextBox] = useState(
+    " Morning light floods the office. There's a palpable sense of cautious optimism. Team members, though visibly exhausted, are in high spirits, closely monitoring systems and validating data."
+  );
+  const [imgSrc, setImgSrc] = useState(dashboard);
 
   const chatContainerRef = useRef(null);
   const usersContainerRef = useRef();
@@ -157,19 +162,24 @@ const Morning5 = () => {
   };
 
   const scrollToBottom = () => {
-    if (currentMessageIndex > 1 && currentMessageIndex <= 8) {
-      setHead("Day 5 - Afternoon");
-    } else if (currentMessageIndex > 8) {
-      setHead("Day 5 - Late Afternoon");
-    } else {
-      setHead("Day 5 - Morning");
-    }
+    // if (currentMessageIndex > 1 && currentMessageIndex <= 8) {
+    //   setHead("Day 5 - Afternoon");
+    // } else if (currentMessageIndex > 8) {
+    //   setHead("Day 5 - Late Afternoon");
+    // } else {
+    //   setHead("Day 5 - Morning");
+    // }
+
 
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
     }
   };
+
+  useEffect(() => {
+    setHead("Day 5 - Morning");
+  }, []);
 
   const users = [
     {
@@ -295,6 +305,7 @@ const Morning5 = () => {
   const closePopup = () => {
     // setShowPopup(false);
     setDay5Popup(false);
+    setImgSrc(email);
     // onClose();
     setChatPaused(false);
   };
@@ -302,6 +313,12 @@ const Morning5 = () => {
   const closePopup2 = () => {
     // setShowPopup(false);
     setDay5Popup2(false);
+    setTextBox(
+      "Kate confirms system stability, close to completion. Liam anticipates final checks. Sophia reflects on the long journey with a hint of relief as the end nears."
+    );
+    setImgSrc(recovery);
+    setHead("Day 5 - Afternoon");
+
     // onClose();
     setChatPaused(false);
   };
@@ -309,6 +326,7 @@ const Morning5 = () => {
   const closePopup3 = () => {
     // setShowPopup(false);
     setDay5Popup3(false);
+    setImgSrc(clock);
     // onClose();
     setChatPaused(false);
   };
@@ -316,6 +334,7 @@ const Morning5 = () => {
   const closePopup4 = () => {
     // setShowPopup(false);
     setDay5Popup4(false);
+    setImgSrc(clapping);
     // onClose();
     setChatPaused(false);
   };
@@ -323,6 +342,9 @@ const Morning5 = () => {
   const closePopup5 = () => {
     // setShowPopup(false);
     setDay5Popup5(false);
+    setImgSrc(benc);
+    setHead("Day 5 - Late Afternoon");
+
     // onClose();
     setChatPaused(false);
   };
@@ -330,6 +352,10 @@ const Morning5 = () => {
   const closePopup6 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
+    setImgSrc(fewweeks);
+    setTextBox(
+      " Ben Carter informs clients about the ongoing crisis at OrionTech, ensuring open communication and commitment to preventing future disruptions. Clients express appreciation for the transparency and dedication."
+    );
 
     setDay5Popup6(false);
     // onClose();
@@ -339,6 +365,11 @@ const Morning5 = () => {
   const closePopup7 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
+    setImgSrc(calmoffice);
+    setTextBox(
+      " Ben Carter realizes the data issue wasn't about the discs. Kate laments the time lost. They discuss the vendor's oversight and the importance of thorough investigation for the future."
+    );
+
 
     setDay5Popup7(false);
     // onClose();
@@ -348,6 +379,11 @@ const Morning5 = () => {
   const closePopup8 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
+    setTextBox(
+      "Ben Carter and Gajji meet in person to debrief, discussing the project's progress, sharing insights, and strategizing for the next steps.Their face-to-face interaction fosters a deeper understanding of the situation and paves the way for effective collaboration."
+    );
+    setImgSrc(respect);
+
 
     setDay5Popup8(false);
     // onClose();
@@ -357,6 +393,7 @@ const Morning5 = () => {
   const closePopup9 = () => {
     // setShowPopup(false);
     setDay5Popup9(false);
+    setImgSrc(gajjistand);
     // onClose();
     setChatPaused(false);
   };
@@ -364,6 +401,7 @@ const Morning5 = () => {
   const closePopup10 = () => {
     // setShowPopup(false);
     setDay5Popup10(false);
+    setImgSrc(benc);
     // onClose();
     setChatPaused(false);
   };
@@ -378,6 +416,7 @@ const Morning5 = () => {
     setTimeout(() => {
       setShowBox(true);
     }, 4000);
+
   };
 
   const closePopup12 = () => {
@@ -534,35 +573,54 @@ const Morning5 = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              bgImage={
-                currentMessageIndex > 33
-                  ? figure2
-                  : currentMessageIndex > 32
-                  ? gajjistand
-                  : currentMessageIndex > 24
-                  ? respect
-                  : currentMessageIndex > 15
-                  ? calmoffice
-                  : currentMessageIndex > 12
-                  ? fewweeks
-                  : currentMessageIndex > 9
-                  ? email
-                  : currentMessageIndex > 8
-                  ? benc
-                  : currentMessageIndex > 6
-                  ? benc
-                  : currentMessageIndex > 4
-                  ? clapping
-                  : currentMessageIndex > 3
-                  ? clock
-                  : currentMessageIndex > 1
-                  ? recovery
-                  : dashboard
-              }
+              // bgImage={
+              //   currentMessageIndex > 33
+              //     ? figure2
+              //     : currentMessageIndex > 32
+              //     ? gajjistand
+              //     : currentMessageIndex > 24
+              //     ? respect
+              //     : currentMessageIndex > 15
+              //     ? calmoffice
+              //     : currentMessageIndex > 12
+              //     ? fewweeks
+              //     : currentMessageIndex > 9
+              //     ? email
+              //     : currentMessageIndex > 8
+              //     ? benc
+              //     : currentMessageIndex > 6
+              //     ? benc
+              //     : currentMessageIndex > 4
+              //     ? clapping
+              //     : currentMessageIndex > 3
+              //     ? clock
+              //     : currentMessageIndex > 1
+              //     ? recovery
+              //     : dashboard
+              // }
+              bgImage={currentMessageIndex > 33 ? figure2 : imgSrc}
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-              {currentMessageIndex <= 1 && (
+              <Box
+                border={"1px solid black"}
+                bgColor={"#030405"}
+                color={"white"}
+                borderRadius={"20px"}
+                m={"auto"}
+                textAlign={"left"}
+                w={"90%"}
+                pl={3}
+                pt={3}
+                pb={3}
+                visibility={currentMessageIndex>33 ? "hidden" : "auto"}
+              >
+                <Text fontSize={"20"}>
+                 {textBox}
+                </Text>
+              </Box>
+              {/* {currentMessageIndex <= 1 && (
+
                 <Box
                   border={"1px solid black"}
                   bgColor={"#030405"}
@@ -660,7 +718,8 @@ const Morning5 = () => {
                   pl={3}
                   pt={3}
                   pb={3}
-                  visibility={currentMessageIndex >= 33 ? "hidden" : "auto"}
+                  visibility={currentMessageIndex >=33 ? "hidden" : "auto"}
+
                 >
                   <Text fontSize={"20"}>
                     Ben Carter and Gajji meet in person to debrief, discussing
@@ -670,7 +729,9 @@ const Morning5 = () => {
                     effective collaboration.
                   </Text>
                 </Box>
-              )}
+
+              )} */}
+
 
               {/* {currentMessageIndex < 24 ? (
                 <Box
@@ -723,21 +784,6 @@ const Morning5 = () => {
                 pl={5}
                 pr={5}
               >
-                {/* <Text
-                  position={"fixed"}
-                  color={"black"}
-                  top={"650px"}
-                  left={"1450px"}
-                  cursor={"pointer"}
-                  fontSize={45}
-                  onClick={handlePause}
-                >
-                  {pauseBtn ? (
-                    <MdNotStarted color="white" />
-                  ) : (
-                    <BsPauseCircleFill color="white" />
-                  )}
-                </Text> */}
                 <TransitionGroup>
                   {visibleMessages.map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";
@@ -813,7 +859,7 @@ const Morning5 = () => {
                             Announcement
                           </Heading>
                           <Text>
-                            "To all our valued team members and stakeholders, we
+                            To all our valued team members and stakeholders, we
                             are pleased to inform you that the recent IT crisis
                             has been fully resolved. We appreciate your
                             patience, support, and understanding during this
@@ -821,7 +867,7 @@ const Morning5 = () => {
                             of our IT teams and partners, our systems are now
                             fully operational. We remain committed to serving
                             you with excellence and ensuring such disruptions
-                            are mitigated in the future."
+                            are mitigated in the future.
                           </Text>
                           <Button
                             colorScheme="teal"

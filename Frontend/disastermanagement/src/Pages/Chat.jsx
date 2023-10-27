@@ -49,6 +49,8 @@ const Chat = () => {
   const [showPopup2, setShowPopup2] = useState(false);
   const [showPopup3, setShowPopup3] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
+  const [imgsrc, setImgSrc] = useState(bensphone);
+  const [textBox, setTextBox] = useState(" The office of Ben Carter. He's wrapping up for the day, shutting down his computer,gathering his things, and exchanging a few words with his colleagues before heading out.");
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -69,13 +71,19 @@ const Chat = () => {
     setshowBoxContent2(true);
   };
 
+  useEffect(()=>{
+    setHead("Day 1 - Evening : How it all begins");
+
+  },[]);
+
   const scrollToBottom = () => {
 
-    if (currentMessageIndex > 3) {
-      setHead("Day 1 - Late Evening: Sporadic Issues Continue");
-    } else {
-      setHead("Day 1 - Evening : How it all begins");
-    }
+    // if (currentMessageIndex > 3) {
+    //   setHead("Day 1 - Late Evening: Sporadic Issues Continue");
+    // } else {
+    //   setHead("Day 1 - Evening : How it all begins");
+    // }
+
 
     const container = chatContainerRef.current;
     if (container) {
@@ -153,6 +161,9 @@ const Chat = () => {
   const closePopup2 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
+    setImgSrc(relaxing);
+    setTextBox("Despite efforts to enhance OTC's applications, they still encounter frequent failures, causing frustration among users and creating operational challenges.")
+    setHead("Day 1 - Late Evening: Sporadic Issues Continue");
 
     setDay5Popup2(false);
     // onClose();
@@ -162,6 +173,7 @@ const Chat = () => {
   const closePopup3 = () => {
     // setShowPopup(false);
     setDay5Popup3(false);
+    setImgSrc(bgcall)
     // onClose();
     setChatPaused(false);
   };
@@ -186,7 +198,8 @@ const Chat = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <Morning5 />
+        <Morning />
+
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : value === "Remaining calm and level-headed during challenges" ? (
@@ -273,17 +286,18 @@ const Chat = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              bgImage={
-                currentMessageIndex > 6
-                  ? bgcall
-                  : currentMessageIndex > 3
-                  ? relaxing
-                  : bensphone
-              }
+              // bgImage={
+              //   currentMessageIndex > 6
+              //     ? bgcall
+              //     : currentMessageIndex > 3
+              //     ? relaxing
+              //     : bensphone
+              // }
+              bgImage={imgsrc}
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-              {currentMessageIndex < 4 ? (
+              {/* {currentMessageIndex < 4 ? (
                 <>
                   <Box
                     border={"1px solid black"}
@@ -333,7 +347,24 @@ const Chat = () => {
                     and creating operational challenges.
                   </Text>
                 </Box>
-              )}
+              )} */}
+
+<Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"18"}>
+                   {textBox}
+                  </Text>
+                </Box>
               <Box
                 w={"90%"}
                 h={"68vh"}

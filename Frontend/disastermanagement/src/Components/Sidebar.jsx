@@ -18,7 +18,7 @@ const Sidebar = () => {
     setSelectedSection,
     showSidebar,
     setShowSideBar,
-    showCloseBtn,
+    setHead,
   } = useContext(MyContext);
 
   const handleSectionClick = (section) => {
@@ -33,6 +33,11 @@ const Sidebar = () => {
     setShowSideBar(true);
   };
 
+  useEffect(()=>{
+    if(selectedSection === "Prepare"  || selectedSection === "Hierarchy"){
+        setHead("");
+    }
+  },[selectedSection])
  
 
   return (

@@ -112,6 +112,21 @@ const EarlyMorning = () => {
   };
 
   const scrollToBottom = () => {
+
+    if (currentMessageIndex > 8 && currentMessageIndex <= 17) {
+      setHead("Day 2 - Morning:  Call with Storage Vendor");
+    } else if (currentMessageIndex > 17 && currentMessageIndex <= 28) {
+      setHead("Day 2 -  Morning:  Call with Applications and Storage Vendors");
+    } else if (currentMessageIndex > 28 && currentMessageIndex <= 33) {
+      setHead("Day 2 -  Morning: Ben Carter Addresses Executive Team");
+    } else if (currentMessageIndex > 33 && currentMessageIndex <= 38) {
+      setHead("Day 2 - Noon:  Ben Carter speaks to key clients");
+    } else if (currentMessageIndex > 38) {
+      setHead("Day 2 -  Early Afternoon - War Room");
+    } else {
+      setHead("Day 2 - Morning:  Call with Applications Vendor");
+    }
+
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
@@ -163,6 +178,9 @@ const EarlyMorning = () => {
 
   const closePopup = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+    setHead("Day 2 - Morning:  Call with Storage Vendor");
+
     setDay5Popup(false);
     // onClose();
     setChatPaused(false);
@@ -170,6 +188,8 @@ const EarlyMorning = () => {
 
   const closePopup2 = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+
     setDay5Popup2(false);
     // onClose();
     setChatPaused(false);
@@ -177,6 +197,8 @@ const EarlyMorning = () => {
 
   const closePopup3 = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+
     setDay5Popup3(false);
     // onClose();
     setChatPaused(false);
@@ -184,12 +206,16 @@ const EarlyMorning = () => {
 
   const closePopup4 = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+
     setDay5Popup4(false);
     // onClose();
     setChatPaused(false);
   };
   const closePopup5 = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+
     setDay5Popup5(false);
     // onClose();
     setChatPaused(false);
@@ -228,19 +254,7 @@ const EarlyMorning = () => {
   );
 
   useEffect(() => {
-    if (currentMessageIndex > 8 && currentMessageIndex <= 17) {
-      setHead("Day 2 - Morning:  Call with Storage Vendor");
-    } else if (currentMessageIndex > 17 && currentMessageIndex <= 28) {
-      setHead("Day 2 -  Morning:  Call with Applications and Storage Vendors");
-    } else if (currentMessageIndex > 28 && currentMessageIndex <= 33) {
-      setHead("Day 2 -  Morning: Ben Carter Addresses Executive Team");
-    } else if (currentMessageIndex > 33 && currentMessageIndex <= 38) {
-      setHead("Day 2 - Noon:  Ben Carter speaks to key clients");
-    } else if (currentMessageIndex > 38) {
-      setHead("Day 2 -  Later Afternoon - War Room");
-    } else {
-      setHead("Day 2 - Morning:  Call with Applications Vendor");
-    }
+   
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayTwoEarlyMorning.length) {
@@ -252,13 +266,11 @@ const EarlyMorning = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup(true);
-              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 16) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup2(true);
-              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 21) {
             setChatPaused(true);
@@ -269,19 +281,16 @@ const EarlyMorning = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup3(true);
-              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 32) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup4(true);
-              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 37) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup5(true);
-              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 41) {
             setChatPaused(true);
@@ -466,7 +475,7 @@ const EarlyMorning = () => {
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-              {currentMessageIndex <= 8 && (
+              {currentMessageIndex <= 7 && (
                 <Box
                   border={"1px solid black"}
                   bgColor={"#030405"}
@@ -487,7 +496,7 @@ const EarlyMorning = () => {
                   </Text>
                 </Box>
               )}
-              {currentMessageIndex > 8 && currentMessageIndex <= 17 && (
+              {currentMessageIndex > 7 && currentMessageIndex <= 16 && (
                 <Box
                   border={"1px solid black"}
                   bgColor={"#030405"}
@@ -509,7 +518,7 @@ const EarlyMorning = () => {
                 </Box>
               )}
 
-              {currentMessageIndex > 17 && currentMessageIndex <= 28 && (
+              {currentMessageIndex > 16 && currentMessageIndex <= 27 && (
                 <Box
                   border={"1px solid black"}
                   bgColor={"#030405"}
@@ -530,7 +539,7 @@ const EarlyMorning = () => {
                 </Box>
               )}
 
-              {currentMessageIndex > 28 && currentMessageIndex <= 33 && (
+              {currentMessageIndex > 27 && currentMessageIndex <= 32 && (
                 <Box
                   border={"1px solid black"}
                   bgColor={"#030405"}
@@ -551,7 +560,7 @@ const EarlyMorning = () => {
                 </Box>
               )}
 
-              {currentMessageIndex > 33 && currentMessageIndex <= 38 && (
+              {currentMessageIndex > 32 && currentMessageIndex <= 37 && (
                 <Box
                   border={"1px solid black"}
                   bgColor={"#030405"}
@@ -572,7 +581,7 @@ const EarlyMorning = () => {
                 </Box>
               )}
 
-              {currentMessageIndex > 38 && (
+              {currentMessageIndex > 37 && (
                 <Box
                   border={"1px solid black"}
                   bgColor={"#030405"}

@@ -7,6 +7,7 @@ import {
   ModalFooter,
   useDisclosure,
   Tooltip,
+  ModalCloseButton,
 } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
@@ -58,7 +59,8 @@ import suncast from "../userImages/suncast.jpeg";
 import benc from "../userImages/ben&c.jpeg";
 import across from "../userImages/across.jpeg";
 import tvscreen from "../userImages/tvscreen.jpeg";
-
+import figure2 from "../userImages/figure2.jpg";
+import butterfly from "../userImages/butterfly.jpeg";
 const Morning5 = () => {
   const [flip, setFlip] = useState(false);
 
@@ -88,6 +90,7 @@ const Morning5 = () => {
   const [day5Popup9, setDay5Popup9] = useState(true);
   const [day5Popup10, setDay5Popup10] = useState(true);
   const [day5Popup11, setDay5Popup11] = useState(true);
+  const [day5Popup12, setDay5Popup12] = useState(true);
 
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
@@ -101,7 +104,8 @@ const Morning5 = () => {
   const [showPopup9, setShowPopup9] = useState(false);
   const [showPopup10, setShowPopup10] = useState(false);
   const [showPopup11, setShowPopup11] = useState(false);
-
+  const [showPopup12, setShowPopup12] = useState(false);
+  const [selectedValue, setSelectedValue] = useState(null);
   const [chatPaused, setChatPaused] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
 
@@ -119,13 +123,10 @@ const Morning5 = () => {
     from: { opacity: day5Popup2 ? 0 : 1 },
   });
 
-  const handlePause = () => {
-    setPauseBtn(!pauseBtn);
-  };
-
   const handleChange = (value) => {
+    setShowPopup12(true);
     enableDeliverable();
-    setValue(value);
+    setValue(value); // Store the selected value in the state
     Cookies.set("day5morning2", value);
   };
 
@@ -156,6 +157,14 @@ const Morning5 = () => {
   };
 
   const scrollToBottom = () => {
+    if (currentMessageIndex > 1 && currentMessageIndex <= 8) {
+      setHead("Day 5 - Afternoon");
+    } else if (currentMessageIndex > 8) {
+      setHead("Day 5 - Late Afternoon");
+    } else {
+      setHead("Day 5 - Morning");
+    }
+
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
@@ -212,14 +221,6 @@ const Morning5 = () => {
   const visibleMessages = dayFiveMorning.slice(startIndex, currentMessageIndex);
 
   useEffect(() => {
-    if (currentMessageIndex > 1) {
-      setHead("Day 5 - Afternoon");
-    } else if (currentMessageIndex > 7) {
-      setHead("Day 5 - Evening");
-    } else {
-      setHead("Day 5 - Morning");
-    }
-
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayFiveMorning.length) {
@@ -258,19 +259,16 @@ const Morning5 = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup6(true);
-              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 14) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup7(true);
-              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 23) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup8(true);
-              setStartIndex(currentMessageIndex + 1);
             }, 2000);
           } else if (currentMessageIndex === 32) {
             setChatPaused(true);
@@ -281,13 +279,7 @@ const Morning5 = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup11(true);
-              setStartIndex(currentMessageIndex + 1);
-            }, 2000);
-          }
-        } else {
-          if (currentMessageIndex === dayFiveMorning.length) {
-            // The chat has ended completely, set showBox to true
-            setShowBox(true);
+            }, 4000);
           }
         }
       }
@@ -337,6 +329,8 @@ const Morning5 = () => {
 
   const closePopup6 = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+
     setDay5Popup6(false);
     // onClose();
     setChatPaused(false);
@@ -344,6 +338,8 @@ const Morning5 = () => {
 
   const closePopup7 = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+
     setDay5Popup7(false);
     // onClose();
     setChatPaused(false);
@@ -351,6 +347,8 @@ const Morning5 = () => {
 
   const closePopup8 = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+
     setDay5Popup8(false);
     // onClose();
     setChatPaused(false);
@@ -372,27 +370,39 @@ const Morning5 = () => {
 
   const closePopup11 = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+
     setDay5Popup11(false);
     // onClose();
     setChatPaused(false);
+    setTimeout(() => {
+      setShowBox(true);
+    }, 4000);
+  };
+
+  const closePopup12 = () => {
+    setDay5Popup12(false);
+    setSelectedValue(value);
   };
 
   return (
     <>
-      {value ===
+      {selectedValue ===
       "Emphasizing teamwork, both internally and with external partners" ? (
         <Deliverable />
-      ) : value === "Making clear and swift decisions under pressure" ? (
+      ) : selectedValue ===
+        "Making clear and swift decisions under pressure" ? (
         <Deliverable />
-      ) : value === "Remaining calm and level-headed during challenges" ? (
+      ) : selectedValue ===
+        "Remaining calm and level-headed during challenges" ? (
         <Deliverable />
-      ) : value ===
+      ) : selectedValue ===
         "Effectively conveying information, even in challenging circumstances" ? (
         <Deliverable />
-      ) : value ===
+      ) : selectedValue ===
         "Quickly adjusting strategies based on new information or changing scenarios" ? (
         <Deliverable />
-      ) : value ===
+      ) : selectedValue ===
         "Keeping an eye on long-term impacts and future implications during the crisis" ? (
         <Deliverable />
       ) : (
@@ -526,7 +536,7 @@ const Morning5 = () => {
               pb={2}
               bgImage={
                 currentMessageIndex > 33
-                  ? site
+                  ? figure2
                   : currentMessageIndex > 32
                   ? gajjistand
                   : currentMessageIndex > 24
@@ -552,7 +562,117 @@ const Morning5 = () => {
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-              {currentMessageIndex < 24 ? (
+              {currentMessageIndex <= 1 && (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Morning light floods the office. There's a palpable sense of
+                    cautious optimism. Team members, though visibly exhausted,
+                    are in high spirits, closely monitoring systems and
+                    validating data.{" "}
+                  </Text>
+                </Box>
+              )}
+
+              {currentMessageIndex > 1 && currentMessageIndex <= 11 && (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Kate confirms system stability, close to completion. Liam
+                    anticipates final checks. Sophia reflects on the long
+                    journey with a hint of relief as the end nears.
+                  </Text>
+                </Box>
+              )}
+              {currentMessageIndex > 11 && currentMessageIndex <= 15 && (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Ben Carter informs clients about the ongoing crisis at
+                    OrionTech, ensuring open communication and commitment to
+                    preventing future disruptions. Clients express appreciation
+                    for the transparency and dedication.
+                  </Text>
+                </Box>
+              )}
+
+              {currentMessageIndex > 15 && currentMessageIndex <= 23 && (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                    Ben Carter realizes the data issue wasn't about the discs.
+                    Kate laments the time lost. They discuss the vendor's
+                    oversight and the importance of thorough investigation for
+                    the future.
+                  </Text>
+                </Box>
+              )}
+
+              {currentMessageIndex > 23 && (
+                <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                  visibility={currentMessageIndex >= 33 ? "hidden" : "auto"}
+                >
+                  <Text fontSize={"20"}>
+                    Ben Carter and Gajji meet in person to debrief, discussing
+                    the project's progress, sharing insights, and strategizing
+                    for the next steps.Their face-to-face interaction fosters a
+                    deeper understanding of the situation and paves the way for
+                    effective collaboration.
+                  </Text>
+                </Box>
+              )}
+
+              {/* {currentMessageIndex < 24 ? (
                 <Box
                   border={"1px solid black"}
                   bgColor={"#030405"}
@@ -594,7 +714,7 @@ const Morning5 = () => {
                     effective collaboration.
                   </Text>
                 </Box>
-              )}
+              )} */}
               <Box
                 w={"90%"}
                 h={"68vh"}
@@ -1299,14 +1419,6 @@ const Morning5 = () => {
                               at the time of the incident, all applications
                               could have safely been restored within 24 hours.
                             </Text>
-                            <Text>
-                              The storage vendor provided approximately three
-                              million dollars of new hardware and software to
-                              provide two additional copies of the data as
-                              restitution for the event. See the Appendix,
-                              Figure #2. faced together have only deepened their
-                              bond.
-                            </Text>
 
                             <br />
                             <Text>
@@ -1318,6 +1430,10 @@ const Morning5 = () => {
                               bond.
                             </Text>
                             <br />
+                            <Text>
+                              <strong>Note:</strong> You can see more details of
+                              all diagrams in document section
+                            </Text>
                             <Button
                               colorScheme="teal"
                               onClick={closePopup11}
@@ -1333,6 +1449,35 @@ const Morning5 = () => {
                           </ModalBody>
                         </Draggable>
                         <ModalFooter></ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  )}
+
+                  {showPopup12 && (
+                    <Modal
+                      isOpen={day5Popup12}
+                      onClose={closePopup12}
+                      size="md"
+                    >
+                      <ModalOverlay />
+                      <ModalContent>
+                        <ModalHeader>End of Simulation</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                          {/* Place your moving thumb GIF here */}
+                          <Box>
+                            <img src={butterfly} alt="Moving Thumb" />
+                          </Box>
+
+                          <Text textAlign={"center"} fontWeight={"bold"}>
+                            We appreciate your feedback, and you are now ready
+                            to move on to the next step by accessing the
+                            deliverable section.
+                          </Text>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button onClick={closePopup12} bgColor={'#A81B1B'} color={'white'} _hover={{ color: "black" }}>Close</Button>
+                        </ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}

@@ -117,7 +117,7 @@ const DimensionMatrix = () => {
 
             <VStack alignItems={"left"} mt={10}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                 Decisive (Reactive + Individual):
+                1. Decisive (Reactive + Individual):
               </Text>
               <Text>
                 When faced with immediate challenges, Ben quickly makes
@@ -127,7 +127,7 @@ const DimensionMatrix = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                 Visionary (Proactive + Individual):
+                2. Visionary (Proactive + Individual):
               </Text>
               <Text>
                 Ben's outreach to stakeholders after the crisis and his focus on
@@ -137,7 +137,7 @@ const DimensionMatrix = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                 Communicative (Reactive + Collaborative):
+                3. Communicative (Reactive + Collaborative):
               </Text>
               <Text>
                 In the face of challenges, Ben's immediate emphasis on clear
@@ -147,7 +147,7 @@ const DimensionMatrix = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
-                 Adaptive + Collaborative (Proactive + Collaborative):
+                4. Adaptive + Collaborative (Proactive + Collaborative):
               </Text>
               <Text>
                 Post-crisis, Ben values adaptability, learning from the

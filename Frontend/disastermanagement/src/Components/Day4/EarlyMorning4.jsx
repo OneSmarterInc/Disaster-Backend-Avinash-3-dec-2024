@@ -49,7 +49,8 @@ import { BsPauseCircleFill } from "react-icons/bs";
 import dashboard from "../userImages/dashboard.jpeg"
 import gajjiteam2 from "../userImages/gajjiteam2.png"
 import Draggable from "react-draggable";
-import benkate from "../userImages/benkate.jpeg";
+import kateben from "../userImages/kateben.jpeg";
+import twoLeaders from "../userImages/twoleaders.jpeg";
 
 const EarlyMorning4 = () => {
   const [chatData, setChatData] = useState([]);
@@ -85,6 +86,9 @@ const EarlyMorning4 = () => {
 
   const [chatPaused, setChatPaused] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
+  const [content, setContent] = useState(
+    "The two CEO's have a frank conversation.  The risk to both organizations is immense.  But both agree to work together. However, they wholeheartedly commit to a collaborative partnership."
+  );
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -109,6 +113,12 @@ const EarlyMorning4 = () => {
   };
 
   const scrollToBottom = () => {
+    if (currentMessageIndex > 6) {
+      setHead("Day 4 - Afternoon");
+    } else {
+      setHead("Day 4 - Early Morning");
+    }
+    
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
@@ -165,7 +175,7 @@ const EarlyMorning4 = () => {
   }, [showBox, showBoxContent2]);
 
   useEffect(() => {
-    setHead("Day 4 - Evening");
+   
 
     const displayNextMessage = () => {
       if (!pauseBtn) {
@@ -173,13 +183,16 @@ const EarlyMorning4 = () => {
           const message = dayFourMorning[currentMessageIndex];
           setCurrentMessageIndex((prevIndex) => prevIndex + 1);
           setActiveUser(message.sender);
-
+          
           if (currentMessageIndex === 5) {
             setChatPaused(true);
+            setTimeout(()=>{
+
+              setStartIndex(currentMessageIndex+1);
+            },2000)
             setTimeout(() => {
               setShowPopup(true);
-              setStartIndex(currentMessageIndex + 1);
-            }, 2000);
+            }, 8000);
           } else if (currentMessageIndex === 7) {
             setChatPaused(true);
             setTimeout(() => {
@@ -224,6 +237,10 @@ const EarlyMorning4 = () => {
 
   const closePopup = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex);
+    setContent(
+      "The ERP vendor team is now driving a solution, working diligently and ensuring a successful implementation. Skilled development leads for the ERP vendor are heavily engaged."
+    );
     setDay5Popup(false);
     // onClose();
     setChatPaused(false);
@@ -429,12 +446,15 @@ const EarlyMorning4 = () => {
                   ? scene2
                   : currentMessageIndex > 6
                   ? gajjiteam2
-                  : benkate
+                  :
+                  currentMessageIndex > 5
+                  ? twoLeaders
+                  : kateben
               }
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-              {currentMessageIndex < 7 ? (
+              {currentMessageIndex < 5 ? (
                 <Box
                   border={"1px solid black"}
                   bgColor={"#030405"}
@@ -466,11 +486,7 @@ const EarlyMorning4 = () => {
                   pt={3}
                   pb={3}
                 >
-                  <Text fontSize={"20"}>
-                    The ERP vendor team is now driving a solution, working
-                    diligently and ensuring a successful implementation. Skilled
-                    development leads for the ERP vendor are heavily engaged.
-                  </Text>
+                  <Text fontSize={"20"}>{content}</Text>
                 </Box>
               )}
 
@@ -557,24 +573,28 @@ const EarlyMorning4 = () => {
                     <Modal isOpen={day5Popup}>
                       <ModalOverlay />
                       <ModalContent
-                       bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }}
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            direction={{ base: "column", sm: "row" }}
-                            gap={4}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            <Box
-                              bgColor="white"
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
+                            >
+                              <Box bgColor="white"
                               boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                               borderRadius={10}
-                              p={5}
-                            >
+                              p={5}>
                               <Text>
                                 Gajji's team begins their work, replacing the
                                 corrupted files. The room's screens display
@@ -589,22 +609,27 @@ const EarlyMorning4 = () => {
                                 maxW="100%"
                                 h="auto"
                               />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup}
-                                textAlign="center"
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                w="100%"
-                                mt={3}
-                                borderRadius={10}
-                              >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                              
+                                
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%"
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Add a footer if needed */}
@@ -616,52 +641,61 @@ const EarlyMorning4 = () => {
                     <Modal isOpen={day5Popup2}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }}
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            direction={{ base: "column", sm: "row" }}
-                            gap={4}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={5}
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
                             >
-                              <Text>
-                                A sudden error message pops up on the main
-                                screen. The room goes tense.
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Image
-                                src={error}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                maxW="100%"
-                                h="auto"
-                              />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup2}
-                                textAlign="center"
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                w="100%"
-                                mt={3}
-                                borderRadius={10}
+                                p={5}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  A sudden error message pops up on the main
+                                  screen. The room goes tense.
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={error}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup2}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%"
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Add a footer if needed */}
@@ -673,52 +707,61 @@ const EarlyMorning4 = () => {
                     <Modal isOpen={day5Popup3}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }}
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            direction={{ base: "column", sm: "row" }}
-                            gap={4}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={5}
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
                             >
-                              <Text>
-                                Everyone watches with bated breath. Minutes feel
-                                like hours.
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Image
-                                src={feelhour}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                maxW="100%"
-                                h="auto"
-                              />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup3}
-                                textAlign="center"
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                w="100%"
-                                mt={3}
-                                borderRadius={10}
+                                p={5}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  Everyone watches with bated breath. Minutes
+                                  feel like hours.
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={feelhour}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup3}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%"
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Add a footer if needed */}
@@ -730,53 +773,62 @@ const EarlyMorning4 = () => {
                     <Modal isOpen={day5Popup4}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }}
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            direction={{ base: "column", sm: "row" }}
-                            gap={4}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={5}
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
                             >
-                              <Text>
-                                The developers scramble, making adjustments. The
-                                room is silent except for the tapping of
-                                keyboards.
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Image
-                                src={scramble}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                maxW="100%"
-                                h="auto"
-                              />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup4}
-                                textAlign="center"
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                w="100%"
-                                mt={3}
-                                borderRadius={10}
+                                p={5}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  The developers scramble, making adjustments.
+                                  The room is silent except for the tapping of
+                                  keyboards.
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={scramble}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup4}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%"
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Add a footer if needed */}
@@ -789,53 +841,62 @@ const EarlyMorning4 = () => {
                     <Modal isOpen={day5Popup5}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }}
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            direction={{ base: "column", sm: "row" }}
-                            gap={4}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={5}
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
                             >
-                              <Text>
-                                After what feels like an eternity, the screens
-                                show positive signs. Processes start running
-                                smoothly.
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Image
-                                src={starts}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                maxW="100%"
-                                h="auto"
-                              />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup5}
-                                textAlign="center"
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                w="100%"
-                                mt={3}
-                                borderRadius={10}
+                                p={5}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  After what feels like an eternity, the screens
+                                  show positive signs. Processes start running
+                                  smoothly.
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={starts}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup5}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%"
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Add a footer if needed */}
@@ -847,52 +908,61 @@ const EarlyMorning4 = () => {
                     <Modal isOpen={day5Popup6}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }}
                       >
                         <ModalHeader fontWeight="bold" fontSize="25px">
                           {/* Add a header if needed */}
                         </ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            direction={{ base: "column", sm: "row" }}
-                            gap={4}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={5}
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
                             >
-                              <Text>
-                                A couple of hours pass. The super users are busy
-                                checking the system.
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Image
-                                src={callwith}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                maxW="100%"
-                                h="auto"
-                              />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup6}
-                                textAlign="center"
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                w="100%"
-                                mt={3}
-                                borderRadius={10}
+                                p={5}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  A couple of hours pass. The super users are
+                                  busy checking the system.
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={callwith}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup6}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%"
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Add a footer if needed */}

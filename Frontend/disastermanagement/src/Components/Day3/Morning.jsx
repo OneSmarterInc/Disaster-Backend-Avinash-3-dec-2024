@@ -81,6 +81,7 @@ const Morning = () => {
   const [showPopup5, setShowPopup5] = useState(false);
 
   const [chatPaused, setChatPaused] = useState(false);
+  const [startIndex, setStartIndex] = useState(0);
 
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
@@ -109,6 +110,12 @@ const Morning = () => {
   };
 
   const scrollToBottom = () => {
+    if (currentMessageIndex > 3) {
+      setHead("Day 3 - Night");
+    } else {
+      setHead("Day 3 - Morning");
+    }
+    
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
@@ -161,11 +168,7 @@ const Morning = () => {
   }, [showBox, showBoxContent2]);
 
   useEffect(() => {
-    if (currentMessageIndex > 3) {
-      setHead("Day 3 - Night");
-    } else {
-      setHead("Day 3 - Morning");
-    }
+    
 
     const displayNextMessage = () => {
       if (!pauseBtn) {
@@ -219,6 +222,7 @@ const Morning = () => {
 
   const closePopup = () => {
     // setShowPopup(false);
+    setStartIndex(currentMessageIndex );
     setDay5Popup(false);
     // onClose();
     setChatPaused(false);
@@ -250,6 +254,11 @@ const Morning = () => {
     // onClose();
     setChatPaused(false);
   };
+
+  const visibleMessages = dayThreeMorning.slice(
+    startIndex,
+    currentMessageIndex
+  );
 
   return (
     <>
@@ -308,7 +317,8 @@ const Morning = () => {
                             "Database Administrator") ||
                           (el.name === "Mia Rodriguez" &&
                             "Network Specialist") ||
-                          (el.name === "Tom Mitchell" && "Application Vendor") ||
+                          (el.name === "Tom Mitchell" &&
+                            "Application Vendor") ||
                           (el.name === "Raj Patel" && "") ||
                           (el.name === "Grace Patterson" && "") ||
                           (el.name === "Aisha Patel" && "COO")
@@ -405,6 +415,7 @@ const Morning = () => {
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
+              {currentMessageIndex <4 ? 
               <Box
                 border={"1px solid black"}
                 bgColor={"#030405"}
@@ -423,7 +434,26 @@ const Morning = () => {
                   the company's Leadership Team.{" "}
                 </Text>
               </Box>
-
+                :
+              <Box
+                border={"1px solid black"}
+                bgColor={"#030405"}
+                color={"white"}
+                borderRadius={"20px"}
+                m={"auto"}
+                textAlign={"left"}
+                w={"90%"}
+                pl={3}
+                pt={3}
+                pb={3}
+              >
+                <Text fontSize={"20"}>
+                  The atmosphere in the office is charged with tension, and it's
+                  evident that the long hours and demanding work have taken a
+                  toll on everyone.
+                </Text>
+              </Box>
+}
               <Box
                 w={"90%"}
                 h={"68vh"}
@@ -448,68 +478,66 @@ const Morning = () => {
                   )}
                 </Text> */}
                 <TransitionGroup>
-                  {dayThreeMorning
-                    .slice(0, currentMessageIndex)
-                    .map((el, i) => {
-                      const isCIO = el.sender === "Ben Carter";
-                      const messageClass = isCIO ? "KateSullivan" : "BenCarter";
-                      const alignMessage = isCIO ? "flex-start" : "flex-end";
-                      return (
-                        <CSSTransition
+                  {visibleMessages.map((el, i) => {
+                    const isCIO = el.sender === "Ben Carter";
+                    const messageClass = isCIO ? "KateSullivan" : "BenCarter";
+                    const alignMessage = isCIO ? "flex-start" : "flex-end";
+                    return (
+                      <CSSTransition
+                        key={i}
+                        classNames="message"
+                        timeout={{ enter: 300, exit: 300 }}
+                      >
+                        <Box
                           key={i}
-                          classNames="message"
-                          timeout={{ enter: 300, exit: 300 }}
+                          border={"0px solid black"}
+                          w={"100%"}
+                          display="flex"
+                          justifyContent={alignMessage}
+                          className={`message ${messageClass} ${
+                            el.sender === "Ben Carter"
+                              ? "BenCarter"
+                              : "KateSullivan"
+                          }`}
                         >
-                          <Box
-                            key={i}
-                            border={"0px solid black"}
-                            w={"100%"}
-                            display="flex"
-                            justifyContent={alignMessage}
-                            className={`message ${messageClass} ${
-                              el.sender === "Ben Carter"
-                                ? "BenCarter"
-                                : "KateSullivan"
-                            }`}
-                          >
-                            <Box border={"0px solid red"} w={"50%"}>
-                              <Box
-                                boxShadow={
-                                  "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                                }
-                                border={"0px solid black"}
-                                bgColor={
-                                  el.sender === "Ben Carter"
-                                    ? "#f0f0f0"
-                                    : "#030405"
-                                }
-                                color={
-                                  el.sender === "Ben Carter" ? "black" : "white"
-                                }
-                                w={"100%"}
-                                borderRadius={"10px"}
-                                textAlign={"justify"}
-                                p={4}
-                                pl={5}
-                                pr={5}
-                                mt={10}
-                              >
-                                <Text>
-                                  <span id="sender">{el.sender}</span> :{" "}
-                                  {el.message}
-                                </Text>
-                              </Box>
+                          <Box border={"0px solid red"} w={"50%"}>
+                            <Box
+                              boxShadow={
+                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              }
+                              border={"0px solid black"}
+                              bgColor={
+                                el.sender === "Ben Carter"
+                                  ? "#f0f0f0"
+                                  : "#030405"
+                              }
+                              color={
+                                el.sender === "Ben Carter" ? "black" : "white"
+                              }
+                              w={"100%"}
+                              borderRadius={"10px"}
+                              textAlign={"justify"}
+                              p={4}
+                              pl={5}
+                              pr={5}
+                              mt={10}
+                            >
+                              <Text>
+                                <span id="sender">{el.sender}</span> :{" "}
+                                {el.message}
+                              </Text>
                             </Box>
                           </Box>
-                        </CSSTransition>
-                      );
-                    })}
+                        </Box>
+                      </CSSTransition>
+                    );
+                  })}
 
                   {showPopup && (
                     <Modal isOpen={day5Popup}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }} // Responsive width
                       >
                         <ModalHeader
@@ -517,41 +545,50 @@ const Morning = () => {
                           fontSize="25px"
                         ></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize={{ base: "16px", sm: "18px" }} className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            flexDirection={{ base: "column", sm: "row" }}
-                            gap={{ base: 2, sm: 4 }}
+                          <ModalBody
+                            fontSize={{ base: "16px", sm: "18px" }}
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            {" "}
-                            {/* Responsive layout */}
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={{ base: 4, sm: 5 }}
+                            <Flex
+                              flexDirection={{ base: "column", sm: "row" }}
+                              gap={{ base: 2, sm: 4 }}
                             >
-                              <Text>
-                                The office atmosphere is tense. People are
-                                visibly tired.
-                              </Text>
-                            </Box>
-                            <Box textAlign="center">
-                              <Image src={failure} borderRadius={10} />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup}
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mt={3}
+                              {" "}
+                              {/* Responsive layout */}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                w={"100%"}
+                                p={{ base: 4, sm: 5 }}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  The office atmosphere is tense. People are
+                                  visibly tired.
+                                </Text>
+                              </Box>
+                              <Box textAlign="center">
+                                <Image src={failure} borderRadius={10} />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup}
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  mt={3}
+                                  borderRadius={10}
+                                  w={"100%"}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Footer content, if needed */}
@@ -564,7 +601,7 @@ const Morning = () => {
                     <Modal isOpen={day5Popup2}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }} // Responsive width
                       >
                         <ModalHeader
@@ -572,41 +609,50 @@ const Morning = () => {
                           fontSize="25px"
                         ></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize={{ base: "16px", sm: "18px" }} className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            flexDirection={{ base: "column", sm: "row" }}
-                            gap={{ base: 2, sm: 4 }}
+                          <ModalBody
+                            fontSize={{ base: "16px", sm: "18px" }}
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            {" "}
-                            {/* Responsive layout */}
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={{ base: 4, sm: 5 }}
+                            <Flex
+                              flexDirection={{ base: "column", sm: "row" }}
+                              gap={{ base: 2, sm: 4 }}
                             >
-                              <Text>
-                                Alarms jolt everyone. There's an immediate sense
-                                of dread.
-                              </Text>
-                            </Box>
-                            <Box textAlign="center">
-                              <Image src={jolt} borderRadius={10} />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup2}
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mt={3}
-                                borderRadius={10}
-                                w={"100%"}
+                              {" "}
+                              {/* Responsive layout */}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
+                               borderRadius={10}
+                                p={{ base: 4, sm: 5 }}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  Alarms jolt everyone. There's an immediate
+                                  sense of dread.
+                                </Text>
+                              </Box>
+                              <Box textAlign="center">
+                                <Image src={jolt} borderRadius={10} />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup2}
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  mt={3}
+                                  borderRadius={10}
+                                  w={"100%"}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Footer content, if needed */}
@@ -618,7 +664,7 @@ const Morning = () => {
                     <Modal isOpen={day5Popup3}>
                       <ModalOverlay />
                       <ModalContent
-                       bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }} // Adjusted for responsiveness
                       >
                         <ModalHeader
@@ -626,45 +672,55 @@ const Morning = () => {
                           fontSize="25px"
                         ></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            direction={{ base: "column", sm: "row" }}
-                            gap={4}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={5}
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
                             >
-                              <Text>
-                                The room is thick with tension as the storage
-                                vendor team joins.
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Image
-                                src={tension2}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                              
                                 borderRadius={10}
-                                maxW="100%"
-                                h="auto"
-                              />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup3}
-                                textAlign="center"
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                w="100%" // Adjusted to take full width
-                                mt={3}
-                                borderRadius={10}
+                                p={5}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  The room is thick with tension as the storage
+                                  vendor team joins.
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={tension2}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup3}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%" // Adjusted to take full width
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter></ModalFooter>
                       </ModalContent>
@@ -674,7 +730,7 @@ const Morning = () => {
                     <Modal isOpen={day5Popup4}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }} // Adjusted for responsiveness
                       >
                         <ModalHeader
@@ -682,45 +738,55 @@ const Morning = () => {
                           fontSize="25px"
                         ></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            direction={{ base: "column", sm: "row" }}
-                            gap={4}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={5}
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
                             >
-                              <Text>
-                                The weight of the situation is pressing down on
-                                everyone.
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Image
-                                src={weight2}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                             
                                 borderRadius={10}
-                                maxW="100%"
-                                h="auto"
-                              />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup4}
-                                textAlign="center"
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                w="100%" // Adjusted to take full width
-                                mt={3}
-                                borderRadius={10}
+                                p={5}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  The weight of the situation is pressing down
+                                  on everyone.
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={weight2}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup4}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%" // Adjusted to take full width
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter></ModalFooter>
                       </ModalContent>
@@ -731,7 +797,7 @@ const Morning = () => {
                     <Modal isOpen={day5Popup5}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }} // Adjusted for responsiveness
                       >
                         <ModalHeader
@@ -739,42 +805,51 @@ const Morning = () => {
                           fontSize="25px"
                         ></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            direction={{ base: "column", sm: "row" }}
-                            gap={4}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={5}
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
                             >
-                              <Text>After the first failure...</Text>
-                            </Box>
-                            <Box>
-                              <Image
-                                src={pressingdown}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                maxW="100%"
-                                h="auto"
-                              />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup5}
-                                textAlign="center"
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                w="100%" // Adjusted to take full width
-                                mt={3}
-                                borderRadius={10}
+                                p={5}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>After the first failure...</Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={pressingdown}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup5}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%" // Adjusted to take full width
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter></ModalFooter>
                       </ModalContent>

@@ -22,6 +22,8 @@ import site1 from "../Images/2.jpg";
 import site2 from "../Images/1.jpg";
 import site from "../Images/site.jpeg";
 import folder from "../Images/folder.png";
+import figure from "../Images/figure2.jpg";
+import figma from "../Images/figmabasic.png";
 
 const Start = () => {
   const { head, pauseBtn, setPauseBtn } = useContext(MyContext);
@@ -63,16 +65,18 @@ const Start = () => {
         alignItems={"center"}
         w={"100%"}
         m={"auto"}
-        // border={"1px solid black"}
         h={"20"}
         pl={5}
         pr={5}
         color={"white"}
       >
-        <Heading>Leading Through Disruption</Heading>
-        <Heading mr={80} size={"md"} fontFamily={"Fredoka"}>
+        <Heading  >Leading Through Disruption</Heading>
+        <Box width={"35%"}>
+        <Heading  size={"md"} fontFamily={"Fredoka"}>
           {head}
         </Heading>
+
+        </Box>
         <Text
           color={"black"}
           cursor={"pointer"}
@@ -160,9 +164,9 @@ const Start = () => {
           <ModalHeader>Figure #1</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Image src={site} />
+            <Image src={figma} />
             <ModalHeader>Figure #2</ModalHeader>
-            <Image src={site1} />
+            <Image src={figure} />
 
             {/* You can add more content here */}
           </ModalBody>

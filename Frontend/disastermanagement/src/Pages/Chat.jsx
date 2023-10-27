@@ -84,6 +84,7 @@ const Chat = () => {
     //   setHead("Day 1 - Evening : How it all begins");
     // }
 
+
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
@@ -163,7 +164,7 @@ const Chat = () => {
     setImgSrc(relaxing);
     setTextBox("Despite efforts to enhance OTC's applications, they still encounter frequent failures, causing frustration among users and creating operational challenges.")
     setHead("Day 1 - Late Evening: Sporadic Issues Continue");
-    
+
     setDay5Popup2(false);
     // onClose();
     setChatPaused(false);
@@ -198,6 +199,7 @@ const Chat = () => {
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
         <Morning />
+
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : value === "Remaining calm and level-headed during challenges" ? (

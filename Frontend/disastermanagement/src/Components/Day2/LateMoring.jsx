@@ -111,6 +111,7 @@ const LateMorning = () => {
     // } else {
     //   setHead("Day 2 -  Afternoon");
     // }
+
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
@@ -195,6 +196,7 @@ const LateMorning = () => {
   }, [showBox, showBoxContent2]);
 
   useEffect(() => {
+
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayTwoLateMorning.length) {
@@ -408,6 +410,7 @@ const LateMorning = () => {
                   incessantly, and IT professionals are working at their
                   stations with a sense of urgency ,trying to resolve the issue
                   swiftly.
+
                 </Text>
               </Box>
 

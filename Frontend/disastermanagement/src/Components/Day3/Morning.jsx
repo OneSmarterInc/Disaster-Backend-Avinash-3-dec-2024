@@ -176,6 +176,7 @@ const Morning = () => {
   }, [showBox, showBoxContent2]);
 
   useEffect(() => {
+
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayThreeMorning.length) {
@@ -229,6 +230,7 @@ const Morning = () => {
   const closePopup = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
+
     setDay5Popup(false);
     setTextBox(
       "The atmosphere in the office is charged with tension, and it's evident that the long hours and all day long demanding work have taken a toll on everyone."
@@ -433,6 +435,7 @@ const Morning = () => {
               bgSize={"cover"}
             >
               {/* {currentMessageIndex <4 ? 
+
               <Box
                 border={"1px solid black"}
                 bgColor={"#030405"}
@@ -660,6 +663,7 @@ const Morning = () => {
                                 bgColor="white"
                                 boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
+
                                 p={{ base: 4, sm: 5 }}
                               >
                                 <Text>
@@ -720,6 +724,7 @@ const Morning = () => {
                               <Box
                                 bgColor="white"
                                 boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+
                                 borderRadius={10}
                                 p={5}
                               >
@@ -785,6 +790,7 @@ const Morning = () => {
                               <Box
                                 bgColor="white"
                                 boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+
                                 borderRadius={10}
                                 p={5}
                               >

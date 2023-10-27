@@ -129,6 +129,7 @@ const EarlyMorning = () => {
     //   setHead("Day 2 - Morning:  Call with Applications Vendor");
     // }
 
+
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
@@ -189,6 +190,7 @@ const EarlyMorning = () => {
     setHead("Day 2 - Morning:  Call with Storage Vendor");
     setTextBox("Ben Carter is on the phone with Julia Harper, the VP of Customer Services from the Disc Vendor. Ben's explains the situation and connects Julia with Tom for shared information.")
     setImgSrc(oncall);
+
     setDay5Popup(false);
     // onClose();
     setChatPaused(false);
@@ -200,6 +202,7 @@ const EarlyMorning = () => {
     setHead("Day 2 -  Morning:  Call with Applications and Storage Vendors");
     setTextBox("Ben Carter is on a conference call with Tom Mitchell and Julia Harper. Both vendors are engaged deeply in the technical issues of the OTC problem.")
     setImgSrc(withtom);
+
     setDay5Popup2(false);
     // onClose();
     setChatPaused(false);
@@ -211,6 +214,7 @@ const EarlyMorning = () => {
     setHead("Day 2 -  Morning: Ben Carter Addresses Executive Team");
     setTextBox("Ben Carter seeks to address concerns of the Executive Team at OrionTech. The executive team expresses concerns and their own respective viewpoints.")
     setImgSrc(loss);
+
     setDay5Popup3(false);
     // onClose();
     setChatPaused(false);
@@ -222,6 +226,7 @@ const EarlyMorning = () => {
     setHead("Day 2 - Noon:  Ben Carter speaks to key clients");
     setTextBox("Ben Carter reaches out to key clients to update them about the current situation OTC is facing so that they have all the necessary updates.")
     setImgSrc(witht);
+
     setDay5Popup4(false);
     // onClose();
     setChatPaused(false);
@@ -232,6 +237,7 @@ const EarlyMorning = () => {
     setHead("Day 2 -  Early Afternoon - War Room");
     setTextBox(" Ben Carter meets with his internal team to assess the current situation and discuss any new options for improving their project's trajectory and overall performance.")
     setImgSrc(warroom);
+
     setDay5Popup5(false);
     // onClose();
     setChatPaused(false);
@@ -494,6 +500,7 @@ const EarlyMorning = () => {
               bgSize={"cover"}
             >
               {/* {currentMessageIndex <= 7 && (
+
                 <Box
                   border={"1px solid black"}
                   bgColor={"#030405"}

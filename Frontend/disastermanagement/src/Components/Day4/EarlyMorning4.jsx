@@ -49,7 +49,8 @@ import { BsPauseCircleFill } from "react-icons/bs";
 import dashboard from "../userImages/dashboard.jpeg";
 import gajjiteam2 from "../userImages/gajjiteam2.png";
 import Draggable from "react-draggable";
-import benkate from "../userImages/benkate.jpeg";
+
+import kateben from "../userImages/kateben.jpeg";
 import twoLeaders from "../userImages/twoleaders.jpeg";
 
 const EarlyMorning4 = () => {
@@ -91,6 +92,7 @@ const EarlyMorning4 = () => {
   );
   const [imgSrc, setImgSrc] = useState(benkate);
 
+
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
@@ -119,6 +121,7 @@ const EarlyMorning4 = () => {
     // } else {
     //   setHead("Day 4 - Early Morning");
     // }
+
 
     const container = chatContainerRef.current;
     if (container) {
@@ -180,19 +183,23 @@ const EarlyMorning4 = () => {
   }, [showBox, showBoxContent2]);
 
   useEffect(() => {
+
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayFourMorning.length) {
           const message = dayFourMorning[currentMessageIndex];
           setCurrentMessageIndex((prevIndex) => prevIndex + 1);
           setActiveUser(message.sender);
-
+          
           if (currentMessageIndex === 5) {
             setChatPaused(true);
+            setTimeout(()=>{
+
+              setStartIndex(currentMessageIndex+1);
+            },2000)
+           
             setTimeout(() => {
-              setStartIndex(currentMessageIndex + 1);
-            }, 2000);
-            setTimeout(() => {
+
               setShowPopup(true);
             }, 8000);
           } else if (currentMessageIndex === 7) {
@@ -460,6 +467,7 @@ const EarlyMorning4 = () => {
               //     : benkate
               // }
               bgImage={ currentMessageIndex===6 ? twoLeaders : imgSrc}
+
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
@@ -621,6 +629,7 @@ const EarlyMorning4 = () => {
                                   h="auto"
                                 />
 
+       
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup}

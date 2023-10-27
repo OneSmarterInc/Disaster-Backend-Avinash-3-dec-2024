@@ -42,7 +42,7 @@ const Prepare = () => {
             effective communication and mutual trust.
           </Text>
           <Text mt={4} textAlign={"justify"} fontSize={20}>
-          "OTC is a global technological leader with clients, development centers and a presence the world over.  
+          OTC is a global technological leader with clients, development centers and a presence the world over.  
           </Text>
           <Image margin={"auto"}  src={map3} />
         

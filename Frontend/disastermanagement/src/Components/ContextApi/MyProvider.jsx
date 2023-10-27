@@ -16,6 +16,7 @@ const MyProvider = ({ children }) => {
 
   const speed = 3000;
 
+
   const enableBox = () => {
     setGlobalState(true);
   };

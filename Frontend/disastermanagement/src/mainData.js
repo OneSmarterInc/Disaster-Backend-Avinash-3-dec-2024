@@ -566,7 +566,7 @@ export const dayThreeMorning = [
 
   {
     sender: "Kate Sullivan",
-    message: "The corruption seems to be in the end of block record.Kate ",
+    message: "The corruption seems to be in the end of block record. ",
   },
   {
     sender: "Kate Sullivan",
@@ -764,7 +764,7 @@ export const dayFiveMorning = [
   },
   {
     sender: "Ben Carter",
-    message: "I have provided a detailed briefing to you about what happened at OrionTech.  The crisis is not over.  Measures are in place to prevent future distruptions."
+    message: "I have provided a detailed briefing to you about what happened at OrionTech. The crisis is over.  Measures are in place to prevent future distruptions."
   },
   {
     sender:"Client 1",

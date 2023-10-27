@@ -101,6 +101,17 @@ const LateMorning = () => {
   };
 
   const scrollToBottom = () => {
+    if (currentMessageIndex > 6 && currentMessageIndex <= 11) {
+      setHead("Day 2 - Afternoon");
+    }
+    else if(currentMessageIndex >11 && currentMessageIndex <=14){
+      setHead("Day 2 - Late Afternoon");
+
+    } else if (currentMessageIndex > 14) {
+      setHead("Day 2 - Night");
+    } else {
+      setHead("Day 2 -  Afternoon");
+    }
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
@@ -174,13 +185,7 @@ const LateMorning = () => {
   }, [showBox, showBoxContent2]);
 
   useEffect(() => {
-    if (currentMessageIndex > 4 && currentMessageIndex <= 14) {
-      setHead("Day 2 - Afternoon");
-    } else if (currentMessageIndex > 14) {
-      setHead("Day 2 - Night");
-    } else {
-      setHead("Day 2 - Late Morning");
-    }
+   
 
     const displayNextMessage = () => {
       if (!pauseBtn) {
@@ -391,7 +396,7 @@ const LateMorning = () => {
                 <Text fontSize={"20"}>
                   The office is buzzing with activity. Phones are ringing
                   incessantly, and IT professionals are working at their
-                  stations with a sense of urgency.
+                  stations with a sense of urgency ,trying to resolve the issue swiftly.
                 </Text>
               </Box>
 

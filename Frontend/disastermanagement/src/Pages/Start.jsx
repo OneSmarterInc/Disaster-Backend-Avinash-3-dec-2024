@@ -63,16 +63,18 @@ const Start = () => {
         alignItems={"center"}
         w={"100%"}
         m={"auto"}
-        // border={"1px solid black"}
         h={"20"}
         pl={5}
         pr={5}
         color={"white"}
       >
-        <Heading>Leading Through Disruption</Heading>
-        <Heading mr={80} size={"md"} fontFamily={"Fredoka"}>
+        <Heading  >Leading Through Disruption</Heading>
+        <Box width={"35%"}>
+        <Heading  size={"md"} fontFamily={"Fredoka"}>
           {head}
         </Heading>
+
+        </Box>
         <Text
           color={"black"}
           cursor={"pointer"}

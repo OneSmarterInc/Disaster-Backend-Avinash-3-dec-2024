@@ -45,7 +45,6 @@ import twoleaders from "../userImages/twoleaders.jpeg";
 import respect from "../userImages/respect.jpg";
 import calmoffice from "../userImages/calmoffice.jpeg";
 import fewweeks from "../userImages/fewweeks.jpeg";
-import strikes from "../userImages/strikes.jpeg";
 import crisis from "../userImages/crisis.jpeg";
 import cheer from "../userImages/cheer.jpeg";
 import { MdNotStarted } from "react-icons/md";
@@ -53,6 +52,13 @@ import { BsPauseCircleFill } from "react-icons/bs";
 import { useSpring, animated } from "react-spring";
 import gajjistand from "../userImages/gajjistand.jpeg";
 import Draggable from "react-draggable";
+import dashboard from "../userImages/dashboard.jpeg";
+import strikes2 from "../userImages/strikes2.png";
+import suncast from "../userImages/suncast.jpeg";
+import benc from "../userImages/ben&c.jpeg";
+import across from "../userImages/across.jpeg";
+import tvscreen from "../userImages/tvscreen.jpeg";
+import figure2 from "../userImages/figure2.jpg";
 
 const Morning5 = () => {
   const [flip, setFlip] = useState(false);
@@ -114,9 +120,7 @@ const Morning5 = () => {
     from: { opacity: day5Popup2 ? 0 : 1 },
   });
 
-  const handlePause = () => {
-    setPauseBtn(!pauseBtn);
-  };
+ 
 
   const handleChange = (value) => {
     enableDeliverable();
@@ -526,7 +530,7 @@ const Morning5 = () => {
               pb={2}
               bgImage={
                 currentMessageIndex > 33
-                  ? site
+                  ? figure2
                   : currentMessageIndex > 32
                   ? gajjistand
                   : currentMessageIndex > 24
@@ -535,15 +539,19 @@ const Morning5 = () => {
                   ? calmoffice
                   : currentMessageIndex > 12
                   ? fewweeks
-                  : currentMessageIndex > 8
+                  : currentMessageIndex > 9
                   ? email
+                  : currentMessageIndex > 8
+                  ? benc
+                  : currentMessageIndex > 6
+                  ? benc
                   : currentMessageIndex > 4
                   ? clapping
                   : currentMessageIndex > 3
                   ? clock
                   : currentMessageIndex > 1
                   ? recovery
-                  : recovery
+                  : dashboard
               }
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
@@ -565,8 +573,7 @@ const Morning5 = () => {
                     Morning light floods the office. There's a palpable sense of
                     cautious optimism. Team members, though visibly exhausted,
                     are in high spirits, closely monitoring systems and
-                    validating data --> Ben Carter and the OTC executive team
-                    reassured clients after the crisis was over.{" "}
+                    validating data.{" "}
                   </Text>
                 </Box>
               )}
@@ -854,9 +861,7 @@ const Morning5 = () => {
                                 p={5}
                               >
                                 <Text>
-                                  At noon, the recovery process was complete. At
-                                  4:00 PM, an announcement was made that the
-                                  crisis was over.
+                                  At noon, the recovery process was complete.
                                 </Text>
                               </Box>
                               <Box>
@@ -916,14 +921,13 @@ const Morning5 = () => {
                                 p={5}
                               >
                                 <Text>
-                                  The clock strikes noon. Ben Carter stands at
-                                  the head of the room, gathering everyone's
-                                  attention.{" "}
+                                  Ben Carter stands at the head of the room,
+                                  gathering everyone's attention.{" "}
                                 </Text>
                               </Box>
                               <Box>
                                 <Image
-                                  src={strikes}
+                                  src={strikes2}
                                   borderRadius={10}
                                   maxW="100%"
                                   h="auto"
@@ -1030,7 +1034,10 @@ const Morning5 = () => {
                         borderRadius={10}
                         bg={"transparent"}
                       >
-                        <ModalHeader></ModalHeader>
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
                         <Draggable>
                           <ModalBody
                             fontSize="18px"
@@ -1039,27 +1046,46 @@ const Morning5 = () => {
                             bg="rgba(245, 255, 255, 0.8)"
                             p={10}
                           >
-                            <Heading fontWeight="bold" fontSize="25px" mb={4}>
-                              Successful Recovery
-                            </Heading>
-                            <Text>
-                              The afternoon sun casts a warm glow. The
-                              Communications team is busy drafting an
-                              announcement.
-                            </Text>
-                            <Flex alignItems={"flex-end"}>
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup10}
-                                fontFamily="Croissant One"
-                                bg="teal.500"
-                                _hover={{ bgColor: "teal.600" }}
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
+                            >
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                mt={2}
-                                ml={450}
+                                p={5}
                               >
-                                Close
-                              </Button>
+                                <Text>
+                                  The afternoon sun casts a warm glow. The
+                                  Communications team is busy drafting an
+                                  announcement.
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={suncast}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup10}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%"
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
                             </Flex>
                           </ModalBody>
                         </Draggable>
@@ -1076,7 +1102,10 @@ const Morning5 = () => {
                         borderRadius={10}
                         bg={"transparent"}
                       >
-                        <ModalHeader f></ModalHeader>
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
                         <Draggable>
                           <ModalBody
                             fontSize="18px"
@@ -1088,26 +1117,49 @@ const Morning5 = () => {
                             <Heading ontWeight="bold" fontSize="25px" mb={4}>
                               Successful Recovery Announcement
                             </Heading>
-                            <Text>
-                              At 4:00 PM, emails ping across the company, and an
-                              announcement is broadcasted on internal
-                              communication channels. The crisis is officially
-                              over, and everyone can return to normal
-                              operations.
-                            </Text>
-                            <Flex>
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup5}
-                                fontFamily="Croissant One"
-                                bg="teal.500"
-                                _hover={{ bgColor: "teal.600" }}
+
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
+                            >
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                mt={5}
-                                ml={450}
+                                p={5}
                               >
-                                Close
-                              </Button>
+                                <Text>
+                                  At 4:00 PM, emails ping across the company,
+                                  and an announcement is broadcasted on internal
+                                  communication channels. The crisis is
+                                  officially over, and everyone can return to
+                                  normal operations.
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={tvscreen}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup5}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%"
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
                             </Flex>
                           </ModalBody>
                         </Draggable>
@@ -1220,7 +1272,10 @@ const Morning5 = () => {
                         borderRadius={10}
                         bg={"transparent"}
                       >
-                        <ModalHeader></ModalHeader>
+                        <ModalHeader
+                          fontWeight="bold"
+                          fontSize="25px"
+                        ></ModalHeader>
                         <Draggable>
                           <ModalBody
                             fontSize="18px"
@@ -1232,23 +1287,48 @@ const Morning5 = () => {
                             <Heading fontWeight="bold" fontSize="25px" mb={5}>
                               A Conversation of Respect
                             </Heading>
-                            <Text>
-                              Inside a conference room, Ben Carter and Gajji sit
-                              across from each other. There's a sense of mutual
-                              respect between them.
-                            </Text>
-                            <Button
-                              colorScheme="teal"
-                              onClick={closePopup8}
-                              fontFamily="Croissant One"
-                              bg="teal.500"
-                              _hover={{ bgColor: "teal.600" }}
-                              borderRadius={10}
-                              mt={4}
-                              ml={450}
+
+                            <Flex
+                              direction={{ base: "column", sm: "row" }}
+                              gap={4}
                             >
-                              Close
-                            </Button>
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                                borderRadius={10}
+                                p={5}
+                              >
+                                <Text>
+                                  Inside a conference room, Ben Carter and Gajji
+                                  sit across from each other. There's a sense of
+                                  mutual respect between them.
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={across}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup8}
+                                  textAlign="center"
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  w="100%"
+                                  mt={3}
+                                  borderRadius={10}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
                           </ModalBody>
                         </Draggable>
                         <ModalFooter></ModalFooter>

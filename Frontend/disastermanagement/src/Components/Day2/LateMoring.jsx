@@ -104,13 +104,13 @@ const LateMorning = () => {
     if (currentMessageIndex > 6 && currentMessageIndex <= 11) {
       setHead("Day 2 - Afternoon");
     }
-    else if(currentMessageIndex >11 && currentMessageIndex <=16){
+    else if(currentMessageIndex >11 && currentMessageIndex <=14){
       setHead("Day 2 - Late Afternoon");
 
-    } else if (currentMessageIndex > 16) {
+    } else if (currentMessageIndex > 14) {
       setHead("Day 2 - Night");
     } else {
-      setHead("Day 2 - Early Afternoon");
+      setHead("Day 2 -  Afternoon");
     }
     const container = chatContainerRef.current;
     if (container) {

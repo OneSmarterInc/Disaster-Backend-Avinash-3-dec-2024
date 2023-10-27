@@ -145,7 +145,7 @@ const BringDown = () => {
   };
 
   const scrollToBottom = () => {
-    setHead("Day 1 - Late night: Back at the office with internal staff");
+    setHead("Day 1 - Late night: Back at the office with internal team");
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;

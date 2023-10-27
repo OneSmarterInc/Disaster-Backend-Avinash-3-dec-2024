@@ -33,6 +33,7 @@ import dev1 from "../userImages/systemdev1.jpg";
 import dev2 from "../userImages/systemdev2.jpg";
 import begin from "../userImages/begingajji.png";
 import liam from "../userImages/liam.jpeg";
+import tension from "../userImages/tension.jpeg";
 
 import scene2 from "../userImages/2ndscene.jpeg";
 import begin2 from "../userImages/begin2.png";
@@ -45,10 +46,11 @@ import scramble from "../userImages/scramble.jpeg";
 import MyContext from "../ContextApi/MyContext";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
-import twoLeaders from "../userImages/twoleaders.jpeg";
-
-import gajjiteam2 from "../userImages/gajjiteam2.png";
+import dashboard from "../userImages/dashboard.jpeg"
+import gajjiteam2 from "../userImages/gajjiteam2.png"
 import Draggable from "react-draggable";
+import benkate from "../userImages/benkate.jpeg";
+import twoLeaders from "../userImages/twoleaders.jpeg";
 
 const EarlyMorning4 = () => {
   const [chatData, setChatData] = useState([]);
@@ -444,11 +446,10 @@ const EarlyMorning4 = () => {
                   ? scene2
                   : currentMessageIndex > 6
                   ? gajjiteam2
-                  : currentMessageIndex > 5
-                  ? twoLeaders
                   :
-                  begin2
-
+                  currentMessageIndex > 5
+                  ? twoLeaders
+                  : benkate
               }
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
@@ -590,26 +591,26 @@ const EarlyMorning4 = () => {
                               direction={{ base: "column", sm: "row" }}
                               gap={4}
                             >
-                              <Box
-                                bgColor="white"
-                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                              <Box bgColor="white"
+                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                              borderRadius={10}
+                              p={5}>
+                              <Text>
+                                Gajji's team begins their work, replacing the
+                                corrupted files. The room's screens display
+                                lines of code and logs. The atmosphere is thick
+                                with anticipation.
+                              </Text>
+                            </Box>
+                            <Box>
+                              <Image
+                                src={tension}
                                 borderRadius={10}
-                                p={5}
-                              >
-                                <Text>
-                                  Gajji's team begins their work, replacing the
-                                  corrupted files. The room's screens display
-                                  lines of code and logs. The atmosphere is
-                                  thick with anticipation.
-                                </Text>
-                              </Box>
-                              <Box>
-                                <Image
-                                  src={scene2}
-                                  borderRadius={10}
-                                  maxW="100%"
-                                  h="auto"
-                                />
+                                maxW="100%"
+                                h="auto"
+                              />
+                              
+                                
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup}

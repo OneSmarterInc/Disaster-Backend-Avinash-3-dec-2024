@@ -27,9 +27,10 @@ import bgcall from "../Images/bgcall.jpeg";
 import bensleep from "../Images/bensleep.jpeg";
 import Morning5 from "../Components/Day5/Morning5";
 import Draggable from "react-draggable";
-import LateMorning from "../Components/Day2/LateMoring";
-import Morning from "../Components/Day3/Morning";
 import EarlyMorning4 from "../Components/Day4/EarlyMorning4";
+import LateMorning from "../Components/Day2/LateMoring";
+import EarlyMorning from "../Components/Day2/EarlyMorning";
+import Morning from "../Components/Day3/Morning";
 
 
 const Chat = () => {
@@ -71,7 +72,7 @@ const Chat = () => {
   const scrollToBottom = () => {
 
     if (currentMessageIndex > 3) {
-      setHead("Day 1 - Late Evening: Sporadic Issues Continue");
+      setHead("Day 1 - Late Evening: Sporadic Issues Continue");
     } else {
       setHead("Day 1 - Evening : How it all begins");
     }
@@ -185,7 +186,7 @@ const Chat = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <EarlyMorning4 />
+        <Morning5 />
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : value === "Remaining calm and level-headed during challenges" ? (

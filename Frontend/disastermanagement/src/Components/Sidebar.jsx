@@ -18,7 +18,7 @@ const Sidebar = () => {
     setSelectedSection,
     showSidebar,
     setShowSideBar,
-    showCloseBtn,
+    setHead,
   } = useContext(MyContext);
 
   const handleSectionClick = (section) => {
@@ -33,6 +33,11 @@ const Sidebar = () => {
     setShowSideBar(true);
   };
 
+  useEffect(()=>{
+    if(selectedSection === "Prepare"  || selectedSection === "Hierarchy"){
+        setHead("");
+    }
+  },[selectedSection])
  
 
   return (
@@ -91,7 +96,7 @@ const Sidebar = () => {
               onClick={() => handleSectionClick("debrief")}
               cursor="pointer"
               fontWeight={selectedSection === "debrief" ? "bold" : "none"}
-              pointerEvents={globalState ? "auto" : "none"}
+              // pointerEvents={globalState ? "auto" : "none"}
               color={globalState ? "black" : "gray"}
             >
               Debrief

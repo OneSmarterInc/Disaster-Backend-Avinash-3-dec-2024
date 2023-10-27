@@ -565,7 +565,7 @@ export const dayThreeMorning = [
   },
 
   {
-    sender: "Kate Sullivan",
+    sender: "Julia Harper",
     message: "The corruption seems to be in the end of block record. ",
   },
   {
@@ -581,7 +581,7 @@ export const dayThreeMorning = [
   },
 
   {
-    sender: "Sophia Kim",
+    sender: "Julia Harper",
     message:
       "Let's try the backup again.",
   },

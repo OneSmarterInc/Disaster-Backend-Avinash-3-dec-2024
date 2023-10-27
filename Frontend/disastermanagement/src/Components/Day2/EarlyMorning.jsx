@@ -88,6 +88,8 @@ const EarlyMorning = () => {
   const [ShowScroll, setShowScroll] = useState(false);
   const [img, showImg] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
+  const [imgSrc, setImgSrc] = useState(day2morning);
+  const [textBox, setTextBox] = useState("Ben Carter is on the phone with Tom Mitchell, the VP of Customer Services from the applications vendor. They engage in a lengthy conversation, discussing the technical intricacies.");
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -113,19 +115,19 @@ const EarlyMorning = () => {
 
   const scrollToBottom = () => {
 
-    if (currentMessageIndex > 8 && currentMessageIndex <= 17) {
-      setHead("Day 2 - Morning:  Call with Storage Vendor");
-    } else if (currentMessageIndex > 17 && currentMessageIndex <= 28) {
-      setHead("Day 2 -  Morning:  Call with Applications and Storage Vendors");
-    } else if (currentMessageIndex > 28 && currentMessageIndex <= 33) {
-      setHead("Day 2 -  Morning: Ben Carter Addresses Executive Team");
-    } else if (currentMessageIndex > 33 && currentMessageIndex <= 38) {
-      setHead("Day 2 - Noon:  Ben Carter speaks to key clients");
-    } else if (currentMessageIndex > 38) {
-      setHead("Day 2 -  Early Afternoon - War Room");
-    } else {
-      setHead("Day 2 - Morning:  Call with Applications Vendor");
-    }
+    // if (currentMessageIndex > 8 && currentMessageIndex <= 17) {
+    //   setHead("Day 2 - Morning:  Call with Storage Vendor");
+    // } else if (currentMessageIndex > 17 && currentMessageIndex <= 28) {
+    //   setHead("Day 2 -  Morning:  Call with Applications and Storage Vendors");
+    // } else if (currentMessageIndex > 28 && currentMessageIndex <= 33) {
+    //   setHead("Day 2 -  Morning: Ben Carter Addresses Executive Team");
+    // } else if (currentMessageIndex > 33 && currentMessageIndex <= 38) {
+    //   setHead("Day 2 - Noon:  Ben Carter speaks to key clients");
+    // } else if (currentMessageIndex > 38) {
+    //   setHead("Day 2 -  Early Afternoon - War Room");
+    // } else {
+    //   setHead("Day 2 - Morning:  Call with Applications Vendor");
+    // }
 
     const container = chatContainerRef.current;
     if (container) {
@@ -176,11 +178,17 @@ const EarlyMorning = () => {
     },
   ];
 
+  useEffect(()=>{
+    setHead("Day 2 - Morning:  Call with Applications Vendor");
+
+  },[])
+
   const closePopup = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
     setHead("Day 2 - Morning:  Call with Storage Vendor");
-
+    setTextBox("Ben Carter is on the phone with Julia Harper, the VP of Customer Services from the Disc Vendor. Ben's explains the situation and connects Julia with Tom for shared information.")
+    setImgSrc(oncall);
     setDay5Popup(false);
     // onClose();
     setChatPaused(false);
@@ -189,7 +197,9 @@ const EarlyMorning = () => {
   const closePopup2 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-
+    setHead("Day 2 -  Morning:  Call with Applications and Storage Vendors");
+    setTextBox("Ben Carter is on a conference call with Tom Mitchell and Julia Harper. Both vendors are engaged deeply in the technical issues of the OTC problem.")
+    setImgSrc(withtom);
     setDay5Popup2(false);
     // onClose();
     setChatPaused(false);
@@ -198,7 +208,9 @@ const EarlyMorning = () => {
   const closePopup3 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-
+    setHead("Day 2 -  Morning: Ben Carter Addresses Executive Team");
+    setTextBox("Ben Carter seeks to address concerns of the Executive Team at OrionTech. The executive team expresses concerns and their own respective viewpoints.")
+    setImgSrc(loss);
     setDay5Popup3(false);
     // onClose();
     setChatPaused(false);
@@ -207,7 +219,9 @@ const EarlyMorning = () => {
   const closePopup4 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-
+    setHead("Day 2 - Noon:  Ben Carter speaks to key clients");
+    setTextBox("Ben Carter reaches out to key clients to update them about the current situation OTC is facing so that they have all the necessary updates.")
+    setImgSrc(witht);
     setDay5Popup4(false);
     // onClose();
     setChatPaused(false);
@@ -215,7 +229,9 @@ const EarlyMorning = () => {
   const closePopup5 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-
+    setHead("Day 2 -  Early Afternoon - War Room");
+    setTextBox(" Ben Carter meets with his internal team to assess the current situation and discuss any new options for improving their project's trajectory and overall performance.")
+    setImgSrc(warroom);
     setDay5Popup5(false);
     // onClose();
     setChatPaused(false);
@@ -231,6 +247,7 @@ const EarlyMorning = () => {
   const closePopup7 = () => {
     // setShowPopup(false);
     setDay5Popup7(false);
+    setImgSrc(gathers)
     // onClose();
     setChatPaused(false);
   };
@@ -457,25 +474,26 @@ const EarlyMorning = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              bgImage={
-                currentMessageIndex > 42
-                  ? gathers
-                  : currentMessageIndex > 38
-                  ? warroom
-                  : currentMessageIndex > 33
-                  ? witht
-                  : currentMessageIndex > 28
-                  ? loss
-                  : currentMessageIndex > 17
-                  ? withtom
-                  : currentMessageIndex > 8
-                  ? oncall
-                  : day2morning
-              }
+              // bgImage={
+              //   currentMessageIndex > 42
+              //     ? gathers
+              //     : currentMessageIndex > 38
+              //     ? warroom
+              //     : currentMessageIndex > 33
+              //     ? witht
+              //     : currentMessageIndex > 28
+              //     ? loss
+              //     : currentMessageIndex > 17
+              //     ? withtom
+              //     : currentMessageIndex > 8
+              //     ? oncall
+              //     : day2morning
+              // }
+              bgImage={imgSrc}
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-              {currentMessageIndex <= 7 && (
+              {/* {currentMessageIndex <= 7 && (
                 <Box
                   border={"1px solid black"}
                   bgColor={"#030405"}
@@ -600,7 +618,23 @@ const EarlyMorning = () => {
                     their project's trajectory and overall performance.
                   </Text>
                 </Box>
-              )}
+              )} */}
+               <Box
+                  border={"1px solid black"}
+                  bgColor={"#030405"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  m={"auto"}
+                  textAlign={"left"}
+                  w={"90%"}
+                  pl={3}
+                  pt={3}
+                  pb={3}
+                >
+                  <Text fontSize={"20"}>
+                   {textBox}
+                  </Text>
+                </Box>
 
               <Box
                 w={"90%"}

@@ -70,7 +70,7 @@ const Start = () => {
       >
         <Heading  >Leading Through Disruption</Heading>
         <Box width={"35%"}>
-        <Heading  size={"md"} fontFamily={"Fredoka"}>
+        <Heading  size={"md"} fontWeight={"500"} fontFamily={"Fredoka"}>
           {head}
         </Heading>
 

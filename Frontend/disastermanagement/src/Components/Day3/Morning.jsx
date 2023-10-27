@@ -51,7 +51,7 @@ import { BsPauseCircleFill } from "react-icons/bs";
 import weight2 from "../userImages/weight2.jpeg";
 import Draggable from "react-draggable";
 import tension2 from "../userImages/tension2.jpeg";
-import jolt from "../userImages/jolt.jpeg"
+import jolt from "../userImages/jolt.jpeg";
 
 const Morning = () => {
   const [chatData, setChatData] = useState([]);
@@ -86,6 +86,10 @@ const Morning = () => {
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
   const [ShowScroll, setShowScroll] = useState(false);
+  const [textBox, setTextBox] = useState(
+    "Morning light filters into the office, casting a soft glow on the tired face of Ben Carter. He's on a teleconference with the company's Leadership Team."
+  );
+  const [imgSrc, setImgSrc] = useState(morninglight);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -115,12 +119,16 @@ const Morning = () => {
     } else {
       setHead("Day 3 - Morning");
     }
-    
+
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
     }
   };
+
+  useEffect(() => {
+    setHead("Day 3 - Morning");
+  }, []);
 
   const users = [
     {
@@ -168,8 +176,6 @@ const Morning = () => {
   }, [showBox, showBoxContent2]);
 
   useEffect(() => {
-    
-
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayThreeMorning.length) {
@@ -222,14 +228,21 @@ const Morning = () => {
 
   const closePopup = () => {
     // setShowPopup(false);
-    setStartIndex(currentMessageIndex );
+    setStartIndex(currentMessageIndex);
     setDay5Popup(false);
+    setTextBox(
+      "The atmosphere in the office is charged with tension, and it's evident that the long hours and all day long demanding work have taken a toll on everyone."
+    );
+    setImgSrc(tense);
+    setHead("Day 3 - Night");
+
     // onClose();
     setChatPaused(false);
   };
   const closePopup2 = () => {
     // setShowPopup(false);
     setDay5Popup2(false);
+    setImgSrc(alarms);
     // onClose();
     setChatPaused(false);
   };
@@ -237,6 +250,7 @@ const Morning = () => {
   const closePopup3 = () => {
     // setShowPopup(false);
     setDay5Popup3(false);
+    setImgSrc(vendor);
     // onClose();
     setChatPaused(false);
   };
@@ -244,6 +258,7 @@ const Morning = () => {
   const closePopup4 = () => {
     // setShowPopup(false);
     setDay5Popup4(false);
+    setImgSrc(pressingdown);
     // onClose();
     setChatPaused(false);
   };
@@ -251,6 +266,7 @@ const Morning = () => {
   const closePopup5 = () => {
     // setShowPopup(false);
     setDay5Popup5(false);
+    setImgSrc(failure);
     // onClose();
     setChatPaused(false);
   };
@@ -399,23 +415,24 @@ const Morning = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              bgImage={
-                currentMessageIndex > 13
-                  ? failure
-                  : currentMessageIndex > 12
-                  ? pressingdown
-                  : currentMessageIndex > 9
-                  ? vendor
-                  : currentMessageIndex > 6
-                  ? alarms
-                  : currentMessageIndex > 3
-                  ? tense
-                  : morninglight
-              }
+              // bgImage={
+              //   currentMessageIndex > 13
+              //     ? failure
+              //     : currentMessageIndex > 12
+              //     ? pressingdown
+              //     : currentMessageIndex > 9
+              //     ? vendor
+              //     : currentMessageIndex > 6
+              //     ? alarms
+              //     : currentMessageIndex > 3
+              //     ? tense
+              //     : morninglight
+              // }
+              bgImage={imgSrc}
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-              {currentMessageIndex <4 ? 
+              {/* {currentMessageIndex <4 ? 
               <Box
                 border={"1px solid black"}
                 bgColor={"#030405"}
@@ -453,7 +470,24 @@ const Morning = () => {
                   toll on everyone.
                 </Text>
               </Box>
-}
+} */}
+
+              <Box
+                border={"1px solid black"}
+                bgColor={"#030405"}
+                color={"white"}
+                borderRadius={"20px"}
+                m={"auto"}
+                textAlign={"left"}
+                w={"90%"}
+                pl={3}
+                pt={3}
+                pb={3}
+              >
+                <Text fontSize={"20"}>
+                  {textBox}
+                </Text>
+              </Box>
               <Box
                 w={"90%"}
                 h={"68vh"}
@@ -625,7 +659,7 @@ const Morning = () => {
                               <Box
                                 bgColor="white"
                                 boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                               borderRadius={10}
+                                borderRadius={10}
                                 p={{ base: 4, sm: 5 }}
                               >
                                 <Text>
@@ -686,7 +720,6 @@ const Morning = () => {
                               <Box
                                 bgColor="white"
                                 boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                              
                                 borderRadius={10}
                                 p={5}
                               >
@@ -752,7 +785,6 @@ const Morning = () => {
                               <Box
                                 bgColor="white"
                                 boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                             
                                 borderRadius={10}
                                 p={5}
                               >

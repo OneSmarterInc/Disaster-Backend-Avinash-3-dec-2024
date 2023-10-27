@@ -46,8 +46,8 @@ import scramble from "../userImages/scramble.jpeg";
 import MyContext from "../ContextApi/MyContext";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
-import dashboard from "../userImages/dashboard.jpeg"
-import gajjiteam2 from "../userImages/gajjiteam2.png"
+import dashboard from "../userImages/dashboard.jpeg";
+import gajjiteam2 from "../userImages/gajjiteam2.png";
 import Draggable from "react-draggable";
 import benkate from "../userImages/benkate.jpeg";
 import twoLeaders from "../userImages/twoleaders.jpeg";
@@ -89,6 +89,7 @@ const EarlyMorning4 = () => {
   const [content, setContent] = useState(
     "The two CEO's have a frank conversation.  The risk to both organizations is immense.  But both agree to work together. However, they wholeheartedly commit to a collaborative partnership."
   );
+  const [imgSrc, setImgSrc] = useState(benkate);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -113,17 +114,21 @@ const EarlyMorning4 = () => {
   };
 
   const scrollToBottom = () => {
-    if (currentMessageIndex > 6) {
-      setHead("Day 4 - Afternoon");
-    } else {
-      setHead("Day 4 - Early Morning");
-    }
-    
+    // if (currentMessageIndex > 6) {
+    //   setHead("Day 4 - Afternoon");
+    // } else {
+    //   setHead("Day 4 - Early Morning");
+    // }
+
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
     }
   };
+
+  useState(() => {
+    setHead("Day 4 - Early Morning");
+  }, []);
 
   const users = [
     {
@@ -175,21 +180,18 @@ const EarlyMorning4 = () => {
   }, [showBox, showBoxContent2]);
 
   useEffect(() => {
-   
-
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayFourMorning.length) {
           const message = dayFourMorning[currentMessageIndex];
           setCurrentMessageIndex((prevIndex) => prevIndex + 1);
           setActiveUser(message.sender);
-          
+
           if (currentMessageIndex === 5) {
             setChatPaused(true);
-            setTimeout(()=>{
-
-              setStartIndex(currentMessageIndex+1);
-            },2000)
+            setTimeout(() => {
+              setStartIndex(currentMessageIndex + 1);
+            }, 2000);
             setTimeout(() => {
               setShowPopup(true);
             }, 8000);
@@ -241,6 +243,9 @@ const EarlyMorning4 = () => {
     setContent(
       "The ERP vendor team is now driving a solution, working diligently and ensuring a successful implementation. Skilled development leads for the ERP vendor are heavily engaged."
     );
+    setImgSrc(gajjiteam2);
+    setHead("Day 4 - Afternoon");
+
     setDay5Popup(false);
     // onClose();
     setChatPaused(false);
@@ -248,6 +253,7 @@ const EarlyMorning4 = () => {
   const closePopup2 = () => {
     // setShowPopup(false);
     setDay5Popup2(false);
+    setImgSrc(scene2)
     // onClose();
     setChatPaused(false);
   };
@@ -255,6 +261,7 @@ const EarlyMorning4 = () => {
   const closePopup3 = () => {
     // setShowPopup(false);
     setDay5Popup3(false);
+    setImgSrc(begin);
     // onClose();
     setChatPaused(false);
   };
@@ -262,6 +269,7 @@ const EarlyMorning4 = () => {
   const closePopup4 = () => {
     // setShowPopup(false);
     setDay5Popup4(false);
+    setImgSrc(tapping)
     // onClose();
     setChatPaused(false);
   };
@@ -269,6 +277,7 @@ const EarlyMorning4 = () => {
   const closePopup5 = () => {
     // setShowPopup(false);
     setDay5Popup5(false);
+    setImgSrc(starts)
     // onClose();
     setChatPaused(false);
   };
@@ -433,24 +442,24 @@ const EarlyMorning4 = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              bgImage={
-                currentMessageIndex > 16
-                  ? starts
-                  : currentMessageIndex > 14
-                  ? starts
-                  : currentMessageIndex > 12
-                  ? tapping
-                  : currentMessageIndex > 10
-                  ? begin
-                  : currentMessageIndex > 8
-                  ? scene2
-                  : currentMessageIndex > 6
-                  ? gajjiteam2
-                  :
-                  currentMessageIndex > 5
-                  ? twoLeaders
-                  : benkate
-              }
+              // bgImage={
+              //   currentMessageIndex > 16
+              //     ? starts
+              //     : currentMessageIndex > 14
+              //     ? starts
+              //     : currentMessageIndex > 12
+              //     ? tapping
+              //     : currentMessageIndex > 10
+              //     ? begin
+              //     : currentMessageIndex > 8
+              //     ? scene2
+              //     : currentMessageIndex > 6
+              //     ? gajjiteam2
+              //     : currentMessageIndex > 5
+              //     ? twoLeaders
+              //     : benkate
+              // }
+              bgImage={ currentMessageIndex===6 ? twoLeaders : imgSrc}
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
@@ -591,26 +600,27 @@ const EarlyMorning4 = () => {
                               direction={{ base: "column", sm: "row" }}
                               gap={4}
                             >
-                              <Box bgColor="white"
-                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={5}>
-                              <Text>
-                                Gajji's team begins their work, replacing the
-                                corrupted files. The room's screens display
-                                lines of code and logs. The atmosphere is thick
-                                with anticipation.
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Image
-                                src={tension}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                maxW="100%"
-                                h="auto"
-                              />
-                              
-                                
+                                p={5}
+                              >
+                                <Text>
+                                  Gajji's team begins their work, replacing the
+                                  corrupted files. The room's screens display
+                                  lines of code and logs. The atmosphere is
+                                  thick with anticipation.
+                                </Text>
+                              </Box>
+                              <Box>
+                                <Image
+                                  src={tension}
+                                  borderRadius={10}
+                                  maxW="100%"
+                                  h="auto"
+                                />
+
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup}

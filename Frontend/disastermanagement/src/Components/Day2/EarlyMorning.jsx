@@ -37,7 +37,7 @@ import grace from "../userImages/gracepatterson.jpg";
 import williams from "../userImages/williams.jpg";
 import ScrollDown from "../ScrollDown";
 import oncall from "../userImages/oncall.jpg";
-import withtom from "../userImages/withtom.jpeg";
+import withtom from "../userImages/withtom2.jpeg";
 import witht from "../userImages/withtom.1.jpg";
 import warroom from "../userImages/warroom.jpg";
 import liam from "../userImages/liam.jpg";

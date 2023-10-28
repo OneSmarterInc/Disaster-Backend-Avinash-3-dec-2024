@@ -26,26 +26,26 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router";
 import LateMorning from "./LateMoring";
 import { dayTwoEarlyMorning } from "../../mainData";
-import bencarter from "../userImages/bencarter.png";
-import sophia from "../userImages/sophia_kim.png";
-import kate from "../userImages/kate_sullivan.png";
-import mia from "../userImages/Mia Rodriguez.png";
+import bencarter from "../userImages/bencarter.jpg";
+import sophia from "../userImages/sophia_kim.jpg";
+import kate from "../userImages/kate_sullivan.jpg";
+import mia from "../userImages/Mia Rodriguez.jpg";
 import julia from "../userImages/juliaharper.jpg";
 import tom from "../userImages/tom.jpg";
 import raj from "../userImages/rajpatel.jpg";
 import grace from "../userImages/gracepatterson.jpg";
 import williams from "../userImages/williams.jpg";
 import ScrollDown from "../ScrollDown";
-import oncall from "../userImages/oncall.png";
+import oncall from "../userImages/oncall.jpg";
 import withtom from "../userImages/withtom.jpeg";
-import witht from "../userImages/withtom.png";
-import warroom from "../userImages/warroom.png";
-import liam from "../userImages/liam.jpeg";
-import callwithjulia from "../userImages/callwithjulia.jpeg";
+import witht from "../userImages/withtom.1.jpg";
+import warroom from "../userImages/warroom.jpg";
+import liam from "../userImages/liam.jpg";
+import callwithjulia from "../userImages/callwithjulia.jpg";
 import MyContext from "../ContextApi/MyContext";
-import beforewithtom from "../userImages/beforewithtom.jpeg";
-import backinwar from "../userImages/backinwar.jpeg";
-import videocall from "../userImages/videocall.jpeg";
+import beforewithtom from "../userImages/beforewithtom.jpg";
+import backinwar from "../userImages/backinwar.jpg";
+import videocall from "../userImages/videocall.jpg";
 import gathers from "../userImages/gathers.jpeg";
 import Morning5 from "../Day5/Morning5";
 import { MdNotStarted } from "react-icons/md";
@@ -180,14 +180,14 @@ const EarlyMorning = () => {
   ];
 
   useEffect(()=>{
-    setHead("Day 2 - Morning:  Call with Applications Vendor");
+    setHead("Day 2 - Morning:  Call with applications vendor");
 
   },[])
 
   const closePopup = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-    setHead("Day 2 - Morning:  Call with Storage Vendor");
+    setHead("Day 2 - Morning:  Call with storage vendor");
     setTextBox("Ben Carter is on the phone with Julia Harper, the VP of Customer Services from the Disc Vendor. Ben's explains the situation and connects Julia with Tom for shared information.")
     setImgSrc(oncall);
 
@@ -199,7 +199,7 @@ const EarlyMorning = () => {
   const closePopup2 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-    setHead("Day 2 -  Morning:  Call with Applications and Storage Vendors");
+    setHead("Day 2 -  Morning:  Call with applications and storage sendors");
     setTextBox("Ben Carter is on a conference call with Tom Mitchell and Julia Harper. Both vendors are engaged deeply in the technical issues of the OTC problem.")
     setImgSrc(withtom);
 
@@ -211,7 +211,7 @@ const EarlyMorning = () => {
   const closePopup3 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-    setHead("Day 2 -  Morning: Ben Carter Addresses Executive Team");
+    setHead("Day 2 -  Morning: Ben carter addresses txecutive team");
     setTextBox("Ben Carter seeks to address concerns of the Executive Team at OrionTech. The executive team expresses concerns and their own respective viewpoints.")
     setImgSrc(loss);
 
@@ -223,7 +223,7 @@ const EarlyMorning = () => {
   const closePopup4 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-    setHead("Day 2 - Noon:  Ben Carter speaks to key clients");
+    setHead("Day 2 - Noon:  Ben carter speaks to key clients");
     setTextBox("Ben Carter reaches out to key clients to update them about the current situation OTC is facing so that they have all the necessary updates.")
     setImgSrc(witht);
 
@@ -234,7 +234,7 @@ const EarlyMorning = () => {
   const closePopup5 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-    setHead("Day 2 -  Early Afternoon - War Room");
+    setHead("Day 2 -  Early Afternoon - War room");
     setTextBox(" Ben Carter meets with his internal team to assess the current situation and discuss any new options for improving their project's trajectory and overall performance.")
     setImgSrc(warroom);
 
@@ -367,12 +367,15 @@ const EarlyMorning = () => {
             <Box
               h={"88vh"}
               w={"13%"}
-              borderRight={"1px solid black"}
               overflow={"auto"}
-              bgColor="#948888"
+              // bgColor="#948888"
+              style={{
+                backgroundImage:
+                  "linear-gradient(32deg,grey 0%, white 100%)",
+              }}
             >
               <Box
-                bgColor="#948888"
+                //bgColor="#948888"
                 pt={3}
                 flex="1"
                 display="flex"

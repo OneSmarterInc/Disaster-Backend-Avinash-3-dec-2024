@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Box, Divider, Flex, Text, VStack } from "@chakra-ui/react";
 import Prepare from "../Pages/Prepare";
 import Chat from "../Pages/Chat";
@@ -19,7 +19,15 @@ const Sidebar = () => {
     showSidebar,
     setShowSideBar,
     setHead,
+    showCloseBtn
   } = useContext(MyContext);
+
+  const [isHovered, setIsHovered] = useState(false);
+  const sidebarRef = useRef(null);
+  const menuButtonRef = useRef(null);
+
+  const handleMouseOver = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
 
   const handleSectionClick = (section) => {
     setSelectedSection(section);
@@ -42,26 +50,33 @@ const Sidebar = () => {
 
   return (
     <>
-      <Box display="flex" flexDirection="row" height={"88vh"}>
-        {showSidebar ? (
+      <Box display="flex" flexDirection="row" height={"88vh"} bg={'white'} >
+        {(showSidebar || isHovered) ? (
           <VStack
             spacing={4}
             alignItems="flex-start"
-            border={"0px solid red"}
-            style={{backgroundImage: "linear-gradient(252deg, #ffe5e5 0%, #ebfffd 61.46%, #dffffd 100%)"}}
+            style={{
+              transform: showSidebar || isHovered ? 'translateX(0)' : 'translateX(-100%)',
+              transition: 'transform 0.3s ease-in-out',
+              willChange: 'transform' // hint to browsers for performance
+            }}
             fontFamily={"Fredoka"}
             fontSize={20}
             pl={5}
             pr={5}
             pt={5}
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+            ref={sidebarRef}
+          
           >
-            {/* {showCloseBtn && (
+             {showCloseBtn && (
               <AiOutlineClose
                 onClick={handleclose}
                 cursor={"pointer"}
                 fontWeight={"bold"}
               />
-            )} */}
+            )} 
             <Text
               onClick={() => handleSectionClick("Prepare")}
               cursor="pointer"
@@ -104,6 +119,16 @@ const Sidebar = () => {
           </VStack>
         ) : (
           <></>
+        )}
+         {!showSidebar && (
+          <BsArrowRightSquareFill
+            ref={menuButtonRef}
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+            onClick={handleopen}
+            cursor={"pointer"}
+            size={"25px"}
+          />
         )}
         <Box
           bg={"gray.100"}

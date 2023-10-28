@@ -1,7 +1,7 @@
 import { Box, Divider, Image, Text } from '@chakra-ui/react'
 import React, { useContext, useEffect } from 'react'
 import MyContext from '../Components/ContextApi/MyContext'
-import map3 from "../Images/map3.png"
+import map3 from "../Images/map3.png";
 
 const Prepare = () => {
 

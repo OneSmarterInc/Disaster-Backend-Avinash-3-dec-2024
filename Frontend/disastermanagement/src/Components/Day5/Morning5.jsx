@@ -23,45 +23,45 @@ import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import EarlyMorning from "../Day2/EarlyMorning";
 import { dayFiveMorning } from "../../mainData";
-import bencarter from "../userImages/bencarter.png";
-import sophia from "../userImages/sophia_kim.png";
-import kate from "../userImages/kate_sullivan.png";
-import mia from "../userImages/Mia Rodriguez.png";
+import bencarter from "../userImages/bencarter.jpg";
+import sophia from "../userImages/sophia_kim.jpg";
+import kate from "../userImages/kate_sullivan.jpg";
+import mia from "../userImages/Mia Rodriguez.jpg";
 import gaji from "../userImages/gaji.jpg";
 import communicationlead from "../userImages/communicationlead.jpg";
 import ScrollDown from "../ScrollDown";
 import { useNavigate } from "react-router-dom";
 
-import recovery from "../userImages/recovery.png";
-import clock from "../userImages/clock.png";
-import clapping from "../userImages/clapping.png";
-import email from "../userImages/email.jpeg";
-import liam from "../userImages/liam.jpeg";
+import recovery from "../userImages/recovery.jpg";
+import clock from "../userImages/clock.1.jpg";
+import clapping from "../userImages/clapping.jpg";
+import email from "../userImages/email.jpg";
+import liam from "../userImages/liam.jpg";
 import site from "../userImages/2.jpg";
 import MyContext from "../ContextApi/MyContext";
 import Debrief from "../Debrief";
 import Deliverable from "../Deliverable";
-import callwithjulia from "../userImages/callwithjulia.jpeg";
-import twoleaders from "../userImages/twoleaders.jpeg";
+import callwithjulia from "../userImages/callwithjulia.jpg";
 import respect from "../userImages/respect.jpg";
-import calmoffice from "../userImages/calmoffice.jpeg";
+import calmoffice from "../userImages/calmoffice.jpg";
 import fewweeks from "../userImages/fewweeks.jpeg";
-import crisis from "../userImages/crisis.jpeg";
-import cheer from "../userImages/cheer.jpeg";
+import crisis from "../userImages/crisis.jpg";
+import cheer from "../userImages/cheer.jpg";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
 import { useSpring, animated } from "react-spring";
-import gajjistand from "../userImages/gajjistand.jpeg";
+import gajjistand from "../userImages/gajjistand.jpg";
 import Draggable from "react-draggable";
-import dashboard from "../userImages/dashboard.jpeg";
-import strikes2 from "../userImages/strikes2.png";
-import suncast from "../userImages/suncast.jpeg";
-import benc from "../userImages/ben&c.jpeg";
-import across from "../userImages/across.jpeg";
-import tvscreen from "../userImages/tvscreen.jpeg";
-import figure2 from "../userImages/figure2.jpg";
+import dashboard from "../userImages/dashboard.jpg";
+import strikes2 from "../userImages/strikes2.jpg";
+import suncast from "../userImages/suncast.jpg";
+import benc from "../userImages/ben&c.jpg";
+import across from "../userImages/across.jpg";
+import tvscreen from "../userImages/tvscreen.jpg";
+import figure2 from "../userImages/figmabasics2.png";
 
-import butterfly from "../userImages/butterfly.jpeg";
+
+import butterfly from "../userImages/butterfly.jpg";
 const Morning5 = () => {
   const [flip, setFlip] = useState(false);
 
@@ -162,13 +162,9 @@ const Morning5 = () => {
   };
 
   const scrollToBottom = () => {
-    // if (currentMessageIndex > 1 && currentMessageIndex <= 8) {
-    //   setHead("Day 5 - Afternoon");
-    // } else if (currentMessageIndex > 8) {
-    //   setHead("Day 5 - Late Afternoon");
-    // } else {
-    //   setHead("Day 5 - Morning");
-    // }
+    if (currentMessageIndex > 32) {
+      setHead("Epilog-2");
+    } 
 
 
     const container = chatContainerRef.current;
@@ -178,7 +174,7 @@ const Morning5 = () => {
   };
 
   useEffect(() => {
-    setHead("Day 5 - Morning");
+    setHead("Day 5 - Morning: The day after...");
   }, []);
 
   const users = [
@@ -317,7 +313,7 @@ const Morning5 = () => {
       "Kate confirms system stability, close to completion. Liam anticipates final checks. Sophia reflects on the long journey with a hint of relief as the end nears."
     );
     setImgSrc(recovery);
-    setHead("Day 5 - Afternoon");
+    setHead("Day 5 - Afternoon: The day after...");
 
     // onClose();
     setChatPaused(false);
@@ -343,7 +339,7 @@ const Morning5 = () => {
     // setShowPopup(false);
     setDay5Popup5(false);
     setImgSrc(benc);
-    setHead("Day 5 - Late Afternoon");
+    setHead("Day 5 - Late Afternoon: The day after...");
 
     // onClose();
     setChatPaused(false);
@@ -366,6 +362,7 @@ const Morning5 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
     setImgSrc(calmoffice);
+    setHead("Day 5 - Late Afternoon: Epilog-1 debrief");
     setTextBox(
       " Ben Carter realizes the data issue wasn't about the discs. Kate laments the time lost. They discuss the vendor's oversight and the importance of thorough investigation for the future."
     );
@@ -383,6 +380,7 @@ const Morning5 = () => {
       "Ben Carter and Gajji meet in person to debrief, discussing the project's progress, sharing insights, and strategizing for the next steps.Their face-to-face interaction fosters a deeper understanding of the situation and paves the way for effective collaboration."
     );
     setImgSrc(respect);
+    setHead("Conversation of respect");
 
 
     setDay5Popup8(false);
@@ -409,7 +407,7 @@ const Morning5 = () => {
   const closePopup11 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-
+    
     setDay5Popup11(false);
     // onClose();
     setChatPaused(false);
@@ -456,12 +454,15 @@ const Morning5 = () => {
             <Box
               h={"88vh"}
               w={"13%"}
-              borderRight={"1px solid black"}
               overflow={"auto"}
-              bgColor={"#948888"}
+              // bgColor="#948888"
+              style={{
+                backgroundImage:
+                  "linear-gradient(32deg,grey 0%, white 100%)",
+              }}
             >
               <Box
-                bgColor="#948888"
+                //bgColor="#948888"
                 pt={3}
                 flex="1"
                 display="flex"

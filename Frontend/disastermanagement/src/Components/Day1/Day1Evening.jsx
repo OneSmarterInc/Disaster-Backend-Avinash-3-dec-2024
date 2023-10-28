@@ -25,21 +25,21 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router";
 import EarlyMorning from "../Day2/EarlyMorning";
 import { dayOneEvening } from "../../mainData";
-import bencarter from "../userImages/bencarter.png";
-import sophia from "../userImages/sophia_kim.png";
-import kate from "../userImages/kate_sullivan.png";
-import mia from "../userImages/Mia Rodriguez.png";
+import bencarter from "../userImages/bencarter.jpg";
+import sophia from "../userImages/sophia_kim.jpg";
+import kate from "../userImages/kate_sullivan.jpg";
+import mia from "../userImages/Mia Rodriguez.jpg";
 import julia from "../userImages/juliaharper.jpg";
 import ScrollDown from "../ScrollDown";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
 
-import liam from "../userImages/liam.jpeg";
-import chloe from "../userImages/ChiocZang.png";
-import figma from "../userImages/figma.png";
-import conference from "../userImages/conference.jpeg";
-import architecture from "../userImages/architecture.jpeg";
-import callwithjulia from "../userImages/callwithjulia.jpeg";
+import liam from "../userImages/liam.jpg";
+import chloe from "../userImages/ChiocZang.jpg";
+import figma from "../userImages/figma.jpg";
+import conference from "../userImages/conference.jpg";
+import architecture from "../userImages/architecture.jpg";
+import callwithjulia from "../userImages/callwithjulia.jpg";
 import tom from "../userImages/tom.jpg";
 import MyContext from "../ContextApi/MyContext";
 
@@ -145,7 +145,7 @@ const BringDown = () => {
   };
 
   const scrollToBottom = () => {
-    setHead("Day 1 - Late night: Back at the office with internal team");
+    setHead("Day 1 - Late night: Back in the office with internal team");
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
@@ -285,12 +285,15 @@ const BringDown = () => {
             <Box
               h={"88vh"}
               w={"13%"}
-              borderRight={"1px solid black"}
               overflow={"auto"}
-              bgColor="#948888"
+              // bgColor="#948888"
+              style={{
+                backgroundImage:
+                  "linear-gradient(32deg,grey 0%, white 100%)",
+              }}
             >
               <Box
-                bgColor="#948888"
+                //bgColor="#948888"
                 pt={3}
                 flex="1"
                 display="flex"

@@ -26,32 +26,32 @@ import BringDown from "../Day1/Day1Evening";
 import EarlyMorning from "../Day2/EarlyMorning";
 import EarlyMorning4 from "../Day4/EarlyMorning4";
 import { dayThreeMorning } from "../../mainData";
-import bencarter from "../userImages/bencarter.png";
+import bencarter from "../userImages/bencarter.jpg";
 
-import sophia from "../userImages/sophia_kim.png";
-import kate from "../userImages/kate_sullivan.png";
-import mia from "../userImages/Mia Rodriguez.png";
-import aisha from "../userImages/Aishapatel.png";
+import sophia from "../userImages/sophia_kim.jpg";
+import kate from "../userImages/kate_sullivan.jpg";
+import mia from "../userImages/Mia Rodriguez.jpg";
+import aisha from "../userImages/Aishapatel.jpg";
 import tom from "../userImages/tom.jpg";
-import morninglight from "../userImages/morninglight.png";
-import room from "../userImages/theroom.png";
-import alarms from "../userImages/alarms.png";
-import vendor from "../userImages/vendor.png";
+import morninglight from "../userImages/morninglight.jpg";
+import room from "../userImages/theroom.jpg";
+import alarms from "../userImages/alarms.jpg";
+import vendor from "../userImages/vendor.jpg";
 import ScrollDown from "../ScrollDown";
-import warroom from "../userImages/warroom.png";
-import liam from "../userImages/liam.jpeg";
-import tense from "../userImages/tense.jpeg";
-import immediate from "../userImages/immediate.jpeg";
+import warroom from "../userImages/warroom.jpg";
+import liam from "../userImages/liam.jpg";
+import tense from "../userImages/tense.jpg";
+import immediate from "../userImages/immediate.jpg";
 import MyContext from "../ContextApi/MyContext";
-import pressingdown from "../userImages/pressingdown.jpeg";
-import failure from "../userImages/failure.jpeg";
-import callwithjulia from "../userImages/callwithjulia.jpeg";
+import pressingdown from "../userImages/pressingdown.jpg";
+import failure from "../userImages/failure.jpg";
+import callwithjulia from "../userImages/callwithjulia.jpg";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
-import weight2 from "../userImages/weight2.jpeg";
+import weight2 from "../userImages/weight2.jpg";
 import Draggable from "react-draggable";
-import tension2 from "../userImages/tension2.jpeg";
-import jolt from "../userImages/jolt.jpeg";
+import tension2 from "../userImages/tension2.jpg";
+import jolt from "../userImages/jolt.jpg";
 
 const Morning = () => {
   const [chatData, setChatData] = useState([]);
@@ -115,9 +115,9 @@ const Morning = () => {
 
   const scrollToBottom = () => {
     if (currentMessageIndex > 3) {
-      setHead("Day 3 - Night");
+      setHead("Day 3 - Night: No end in sight");
     } else {
-      setHead("Day 3 - Morning");
+      setHead("Day 3 - Morning: Chasing solutions");
     }
 
     const container = chatContainerRef.current;
@@ -127,7 +127,7 @@ const Morning = () => {
   };
 
   useEffect(() => {
-    setHead("Day 3 - Morning");
+    setHead("Day 3 - Morning: Chasing solutions");
   }, []);
 
   const users = [
@@ -308,12 +308,15 @@ const Morning = () => {
             <Box
               h={"88vh"}
               w={"13%"}
-              borderRight={"1px solid black"}
               overflow={"auto"}
-              bgColor={"#948888"}
+              // bgColor="#948888"
+              style={{
+                backgroundImage:
+                  "linear-gradient(32deg,grey 0%, white 100%)",
+              }}
             >
               <Box
-                bgColor="#948888"
+                //bgColor="#948888"
                 pt={3}
                 flex="1"
                 display="flex"

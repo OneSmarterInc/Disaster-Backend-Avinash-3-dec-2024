@@ -236,7 +236,7 @@ const Morning = () => {
       "The atmosphere in the office is charged with tension, and it's evident that the long hours and all day long demanding work have taken a toll on everyone."
     );
     setImgSrc(tense);
-    setHead("Day 3 - Night");
+    setHead("Day 3 - Night: No end in sight");
 
     // onClose();
     setChatPaused(false);

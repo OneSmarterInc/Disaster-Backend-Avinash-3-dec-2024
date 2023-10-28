@@ -814,11 +814,11 @@ export const dayFiveMorning = [
   },
   {
     sender: "Gajji",
-    message: "Ben, I can't apologize enough for the oversight. But I'm grateful for how you and your team handled the situation",
+    message: "Ben, I am glad it all worked out after a roller coaster start.",
   },
   {
     sender: "Ben Carter",
-    message: "We're partners, Gajji. When one of us faces a challenge, we face it together. That's how we've always worked",
+    message: " We appreciate your partnership, Gajji.  You did more than what we expected.  And that's how we've always worked.",
   },
   {
     sender: "Gajji",

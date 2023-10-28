@@ -199,7 +199,7 @@ const EarlyMorning = () => {
   const closePopup2 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-    setHead("Day 2 -  Morning:  Call with applications and storage sendors");
+    setHead("Day 2 -  Morning:  Call with applications and storage vendors");
     setTextBox("Ben Carter is on a conference call with Tom Mitchell and Julia Harper. Both vendors are engaged deeply in the technical issues of the OTC problem.")
     setImgSrc(withtom);
 
@@ -211,7 +211,7 @@ const EarlyMorning = () => {
   const closePopup3 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-    setHead("Day 2 -  Morning: Ben carter addresses txecutive team");
+    setHead("Day 2 -  Morning: Ben carter addresses executive team");
     setTextBox("Ben Carter seeks to address concerns of the Executive Team at OrionTech. The executive team expresses concerns and their own respective viewpoints.")
     setImgSrc(loss);
 
@@ -234,8 +234,8 @@ const EarlyMorning = () => {
   const closePopup5 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-    setHead("Day 2 -  Early Afternoon - War room");
-    setTextBox(" Ben Carter meets with his internal team to assess the current situation and discuss any new options for improving their project's trajectory and overall performance.")
+    setHead("Day 2 -  Early Afternoon : War room");
+    setTextBox(" Ben Carter meets with his internal team to assess the current situation and creatively explore any new options which may have been missed for moving forward. ")
     setImgSrc(warroom);
 
     setDay5Popup5(false);

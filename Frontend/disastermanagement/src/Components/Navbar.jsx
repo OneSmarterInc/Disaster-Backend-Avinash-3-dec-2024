@@ -18,8 +18,8 @@ import {
   Input,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon, SearchIcon } from '@chakra-ui/icons';
-import usericon from '../Images/usericon.png';
-import logo from '../Images/disasterLogo.png';
+import usericon from '../Images/usericon.jpg';
+import logo from '../Images/disasterLogo.jpg';
 import { Link } from 'react-router-dom';
 import {GiHamburgerMenu} from "react-icons/gi"
 

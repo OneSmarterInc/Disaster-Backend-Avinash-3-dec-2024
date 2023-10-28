@@ -20,11 +20,11 @@ import bencarter from "../Images/org/bencarter.png";
 import { dayOneMorning } from "../mainData";
 import kate from "../Images/org/kate_sullivan.png";
 import MyContext from "../Components/ContextApi/MyContext";
-import openmail1 from "../Images/openmail1.jpeg";
-import bensphone from "../Images/bensphone.jpeg";
-import relaxing from "../Images/relaxing.jpeg";
+import openmail1 from "../Images/openmail1.jpg";
+import bensphone from "../Images/bensphone.jpg";
+import relaxing from "../Images/relaxing.jpg";
 import bgcall from "../Images/bgcall.jpeg";
-import bensleep from "../Images/bensleep.jpeg";
+import bensleep from "../Images/bensleep.jpg";
 import Morning5 from "../Components/Day5/Morning5";
 import Draggable from "react-draggable";
 import EarlyMorning4 from "../Components/Day4/EarlyMorning4";
@@ -72,7 +72,7 @@ const Chat = () => {
   };
 
   useEffect(()=>{
-    setHead("Day 1 - Evening : How it all begins");
+    setHead("Day 1 - Evening : How it all began");
 
   },[]);
 
@@ -163,7 +163,7 @@ const Chat = () => {
     setStartIndex(currentMessageIndex);
     setImgSrc(relaxing);
     setTextBox("Despite efforts to enhance OTC's applications, they still encounter frequent failures, causing frustration among users and creating operational challenges.")
-    setHead("Day 1 - Late Evening: Sporadic Issues Continue");
+    setHead("Day 1 - Late Evening: Sporadic issues continue");
 
     setDay5Popup2(false);
     // onClose();
@@ -198,7 +198,7 @@ const Chat = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <Morning />
+        <BringDown />
 
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
@@ -231,12 +231,11 @@ const Chat = () => {
             <Box
               h={"88vh"}
               w={"13%"}
-              borderRight={"0px solid black"}
               overflow={"auto"}
               // bgColor="#948888"
               style={{
                 backgroundImage:
-                  "linear-gradient(252deg,#dea2a2 0%, #ebfffd 99.46%, #dea2a2 100%)",
+                  "linear-gradient(32deg,grey 0%, white 100%)",
               }}
             >
               <Box pt={3} borderBottom={"0px solid black"}>

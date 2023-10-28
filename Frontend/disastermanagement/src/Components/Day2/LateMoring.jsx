@@ -26,23 +26,23 @@ import BringDown from "../Day1/Day1Evening";
 import EarlyMorning from "./EarlyMorning";
 import Morning from "../Day3/Morning";
 import { dayTwoLateMorning } from "../../mainData";
-import bencarter from "../userImages/bencarter.png";
-import sophia from "../userImages/sophia_kim.png";
-import kate from "../userImages/kate_sullivan.png";
-import mia from "../userImages/Mia Rodriguez.png";
+import bencarter from "../userImages/bencarter.jpg";
+import sophia from "../userImages/sophia_kim.jpg";
+import kate from "../userImages/kate_sullivan.jpg";
+import mia from "../userImages/Mia Rodriguez.jpg";
 import ScrollDown from "../ScrollDown";
-import officebuzz from "../userImages/officebuzz.png";
-import pm from "../userImages/1PM.png";
-import room from "../userImages/theroom.png";
-import night from "../userImages/night.png";
-import liam from "../userImages/liam.jpeg";
+import officebuzz from "../userImages/officebuzz.jpg";
+import pm from "../userImages/1PM.jpg";
+import room from "../userImages/theroom.jpg";
+import night from "../userImages/night.jpg";
+import liam from "../userImages/liam.jpg";
 import MyContext from "../ContextApi/MyContext";
-import callwithjulia from "../userImages/callwithjulia.jpeg";
+import callwithjulia from "../userImages/callwithjulia.jpg";
 
-import clock from "../userImages/clock.jpeg";
-import planning from "../userImages/planning.jpeg";
-import goldenlight from "../userImages/goldenlight.jpeg";
-import atmosphere from "../userImages/atmosphere.jpeg";
+import clock from "../userImages/clock.jpg";
+import planning from "../userImages/planning.jpg";
+import goldenlight from "../userImages/goldenlight.jpg";
+import atmosphere from "../userImages/atmosphere.jpg";
 
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
@@ -119,7 +119,7 @@ const LateMorning = () => {
   };
   
   useEffect(() => {
-    setHead("Day 2 -  Afternoon");
+    setHead("Day 2 -  Afternoon: Will a solution emerge?");
   }, []);
 
   const users = [
@@ -157,7 +157,7 @@ const LateMorning = () => {
     // setShowPopup(false);
     setDay5Popup2(false);
     setImgSrc(room);
-    setHead("Day 2 - Late Afternoon");
+    setHead("Day 2 - Late Afternoon: It's not looking good");
     
     // onClose();
     setChatPaused(false);
@@ -167,7 +167,7 @@ const LateMorning = () => {
     // setShowPopup(false);
     setDay5Popup3(false);
     setImgSrc(night);
-    setHead("Day 2 - Night");
+    setHead("Day 2 - Night: More failures");
 
     // onClose();
     setChatPaused(false);
@@ -271,12 +271,15 @@ const LateMorning = () => {
             <Box
               h={"88vh"}
               w={"13%"}
-              borderRight={"1px solid black"}
               overflow={"auto"}
-              bgColor="#948888"
+              // bgColor="#948888"
+              style={{
+                backgroundImage:
+                  "linear-gradient(32deg,grey 0%, white 100%)",
+              }}
             >
               <Box
-                bgColor="#948888"
+                //bgColor="#948888"
                 pt={3}
                 flex="1"
                 display="flex"
@@ -408,7 +411,7 @@ const LateMorning = () => {
                 <Text fontSize={"20"}>
                   The office is buzzing with activity. Phones are ringing
                   incessantly, and IT professionals are working at their
-                  stations with a sense of urgency ,trying to resolve the issue
+                  stations with a sense of urgency, trying to resolve the issue
                   swiftly.
 
                 </Text>

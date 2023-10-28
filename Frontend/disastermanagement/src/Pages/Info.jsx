@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import dataware from "../Images/dataware.jpg";
 import { Link } from "react-router-dom";
-import homepage from "../Images/homepage.png";
+import homepage from "../Images/homepage.jpg";
 
 const Info = () => {
   useEffect(() => {

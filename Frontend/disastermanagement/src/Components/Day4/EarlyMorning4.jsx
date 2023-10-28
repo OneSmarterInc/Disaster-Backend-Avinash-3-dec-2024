@@ -23,34 +23,34 @@ import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Morning5 from "../Day5/Morning5";
 import { dayFourMorning } from "../../mainData";
-import bencarter from "../userImages/bencarter.png";
+import bencarter from "../userImages/bencarter.jpg";
 import ScrollDown from "../ScrollDown";
-import sophia from "../userImages/sophia_kim.png";
-import kate from "../userImages/kate_sullivan.png";
-import mia from "../userImages/Mia Rodriguez.png";
+import sophia from "../userImages/sophia_kim.jpg";
+import kate from "../userImages/kate_sullivan.jpg";
+import mia from "../userImages/Mia Rodriguez.jpg";
 import gaji from "../userImages/gaji.jpg";
 import dev1 from "../userImages/systemdev1.jpg";
 import dev2 from "../userImages/systemdev2.jpg";
-import begin from "../userImages/begingajji.png";
-import liam from "../userImages/liam.jpeg";
-import tension from "../userImages/tension.jpeg";
+import begin from "../userImages/begingajji.jpg";
+import liam from "../userImages/liam.jpg";
+import tension from "../userImages/tension.jpg";
 
-import scene2 from "../userImages/2ndscene.jpeg";
-import begin2 from "../userImages/begin2.png";
-import tapping from "../userImages/tapping.png";
-import starts from "../userImages/starts.png";
-import callwith from "../userImages/callwith.jpeg";
-import error from "../userImages/error.jpeg";
-import feelhour from "../userImages/feelhour.jpeg";
-import scramble from "../userImages/scramble.jpeg";
+import scene2 from "../userImages/2ndscene.jpg";
+import begin2 from "../userImages/begin2.jpg";
+import tapping from "../userImages/tapping.jpg";
+import starts from "../userImages/starts1.jpeg";
+import callwith from "../userImages/callwith.jpg";
+import error from "../userImages/error.jpg";
+import feelhour from "../userImages/feelhour.jpg";
+import scramble from "../userImages/scramble.jpg";
 import MyContext from "../ContextApi/MyContext";
 import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
-import dashboard from "../userImages/dashboard.jpeg";
-import gajjiteam2 from "../userImages/gajjiteam2.png";
+import dashboard from "../userImages/dashboard.jpg";
+import gajjiteam2 from "../userImages/gajjiteam2.jpg";
 import Draggable from "react-draggable";
 
-import kateben from "../userImages/kateben.jpeg";
+import kateben from "../userImages/kateben.jpg";
 import twoLeaders from "../userImages/twoleaders.jpeg";
 
 const EarlyMorning4 = () => {
@@ -90,7 +90,7 @@ const EarlyMorning4 = () => {
   const [content, setContent] = useState(
     "The two CEO's have a frank conversation.  The risk to both organizations is immense.  But both agree to work together. However, they wholeheartedly commit to a collaborative partnership."
   );
-  const [imgSrc, setImgSrc] = useState(benkate);
+  const [imgSrc, setImgSrc] = useState(kateben);
 
 
   const chatContainerRef = useRef(null);
@@ -116,11 +116,10 @@ const EarlyMorning4 = () => {
   };
 
   const scrollToBottom = () => {
-    // if (currentMessageIndex > 6) {
-    //   setHead("Day 4 - Afternoon");
-    // } else {
-    //   setHead("Day 4 - Early Morning");
-    // }
+    if (currentMessageIndex > 5 && currentMessageIndex <6) {
+      setHead("Day 4 - Afternoon: Both CEO's agree to a risk sharing plan");
+    } 
+       
 
 
     const container = chatContainerRef.current;
@@ -130,7 +129,7 @@ const EarlyMorning4 = () => {
   };
 
   useState(() => {
-    setHead("Day 4 - Early Morning");
+    setHead("Day 4 - Early Morning: Where will help come from?");
   }, []);
 
   const users = [
@@ -251,7 +250,7 @@ const EarlyMorning4 = () => {
       "The ERP vendor team is now driving a solution, working diligently and ensuring a successful implementation. Skilled development leads for the ERP vendor are heavily engaged."
     );
     setImgSrc(gajjiteam2);
-    setHead("Day 4 - Afternoon");
+    setHead("Day 4 - Afternoon: ERP team takes over");
 
     setDay5Popup(false);
     // onClose();
@@ -328,12 +327,15 @@ const EarlyMorning4 = () => {
             <Box
               h={"88vh"}
               w={"13%"}
-              borderRight={"1px solid black"}
               overflow={"auto"}
-              bgColor={"#948888"}
+              // bgColor="#948888"
+              style={{
+                backgroundImage:
+                  "linear-gradient(32deg,grey 0%, white 100%)",
+              }}
             >
               <Box
-                bgColor="#948888"
+                //bgColor="#948888"
                 pt={3}
                 flex="1"
                 display="flex"

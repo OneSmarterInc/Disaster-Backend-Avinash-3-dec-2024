@@ -14,7 +14,7 @@ const Debrief = () => {
   },[])
   return (
     <>
-      <Box id="container">
+      <Box id="container" >
         <AnalysisOfBen />
         <DimensionMatrix />
         <LeadershipFramework />

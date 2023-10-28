@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import {
   Box,
+  Divider,
   Flex,
   Heading,
   Image,
@@ -163,13 +164,14 @@ const Start = () => {
       {/* Chakra UI Modals for Images and Mails sections */}
       <Modal isOpen={isImagesModalOpen} onClose={onImagesModalClose} isCentered>
         <ModalOverlay />
-        <ModalContent maxW={"600px"}>
+        <ModalContent maxW={"5xl"}>
           <ModalHeader>Figure #1</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Image src={figma} />
-            <ModalHeader>Figure #2</ModalHeader>
-            <Image src={figure} />
+            <Image src={figma} w={"100%"}/>
+            <Divider borderBottomWidth="4px" mt={20} borderColor={"black"} />
+            <ModalHeader mt={10}>Figure #2</ModalHeader>
+            <Image src={figure} w={"100%"} />
 
             {/* You can add more content here */}
           </ModalBody>

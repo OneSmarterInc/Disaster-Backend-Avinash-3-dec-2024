@@ -162,9 +162,7 @@ const Morning5 = () => {
   };
 
   const scrollToBottom = () => {
-    if (currentMessageIndex > 32) {
-      setHead("Epilog-2");
-    } 
+    
 
 
     const container = chatContainerRef.current;
@@ -349,6 +347,7 @@ const Morning5 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
     setImgSrc(fewweeks);
+    setHead("Next few weeks: Assuring clients and calming fears");
     setTextBox(
       " Ben Carter informs clients about the ongoing crisis at OrionTech, ensuring open communication and commitment to preventing future disruptions. Clients express appreciation for the transparency and dedication."
     );
@@ -362,7 +361,7 @@ const Morning5 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
     setImgSrc(calmoffice);
-    setHead("Day 5 - Late Afternoon: Epilog-1 debrief");
+    setHead("Next few weeks: Epilog-1 Debrief");
     setTextBox(
       " Ben Carter realizes the data issue wasn't about the discs. Kate laments the time lost. They discuss the vendor's oversight and the importance of thorough investigation for the future."
     );
@@ -407,7 +406,9 @@ const Morning5 = () => {
   const closePopup11 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-    
+    setImgSrc(figure2);
+    setHead("Epilog-2");
+
     setDay5Popup11(false);
     // onClose();
     setChatPaused(false);
@@ -599,7 +600,7 @@ const Morning5 = () => {
               //     ? recovery
               //     : dashboard
               // }
-              bgImage={currentMessageIndex > 33 ? figure2 : imgSrc}
+              bgImage={ imgSrc}
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
@@ -1291,7 +1292,7 @@ const Morning5 = () => {
                             p={10}
                           >
                             <Heading fontWeight="bold" fontSize="25px" mb={5}>
-                              Epilog 1: Reassuring Clients
+                              Epilog 1: The Debrief
                             </Heading>
                             <Text>
                               The office is calm, a stark contrast to the
@@ -1472,14 +1473,12 @@ const Morning5 = () => {
                               The storage vendor provided approximately three
                               million dollars of new hardware and software to
                               provide two additional copies of the data as
-                              restitution for the event. See the Appendix,
-                              Figure #2. faced together have only deepened their
-                              bond.
+                              restitution for the event. 
                             </Text>
                             <br />
                             <Text>
                               <strong>Note:</strong> You can see more details of
-                              all diagrams in document section
+                              all diagrams in document section.
                             </Text>
                             <Button
                               colorScheme="teal"

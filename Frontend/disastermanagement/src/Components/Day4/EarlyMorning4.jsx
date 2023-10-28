@@ -116,8 +116,11 @@ const EarlyMorning4 = () => {
   };
 
   const scrollToBottom = () => {
-    if (currentMessageIndex > 5 && currentMessageIndex <6) {
-      setHead("Day 4 - Afternoon: Both CEO's agree to a risk sharing plan");
+    if (currentMessageIndex ===6) {
+      setTimeout(()=>{
+
+        setHead("Day 4 - Afternoon: Both CEO's agree to a risk sharing plan");
+      },2000)
     } 
        
 

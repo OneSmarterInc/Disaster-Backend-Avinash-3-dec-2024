@@ -198,7 +198,7 @@ const Chat = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <BringDown />
+        <EarlyMorning4 />
 
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />

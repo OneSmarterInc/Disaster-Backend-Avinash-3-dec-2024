@@ -170,6 +170,12 @@ const EarlyMorning4 = () => {
   useEffect(() => {
     // Scroll to the bottom after chatData changes
     scrollToBottom();
+    if(currentMessageIndex ===6){
+      setTimeout(()=>{
+
+        setImgSrc(twoLeaders);
+      },2000)
+    }
   }, [currentMessageIndex]);
 
   useEffect(() => {
@@ -468,7 +474,7 @@ const EarlyMorning4 = () => {
               //     ? twoLeaders
               //     : benkate
               // }
-              bgImage={ currentMessageIndex===6 ? twoLeaders : imgSrc}
+              bgImage={imgSrc}
 
               bgRepeat={"no-repeat"}
               bgSize={"cover"}

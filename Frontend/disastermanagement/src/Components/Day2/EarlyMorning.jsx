@@ -762,6 +762,7 @@ const EarlyMorning = () => {
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup}
+                                onTouchEnd={closePopup}
                                 fontFamily="Croissant One"
                                 bg="black"
                                 _hover={{ bgColor: "#a1e8f0", color: "black" }}
@@ -818,6 +819,7 @@ const EarlyMorning = () => {
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup2}
+                                onTouchEnd={closePopup2}
                                 fontFamily="Croissant One"
                                 bg="black"
                                 _hover={{ bgColor: "#a1e8f0", color: "black" }}
@@ -872,6 +874,7 @@ const EarlyMorning = () => {
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup3}
+                                onTouchEnd={closePopup3}
                                 fontFamily="Croissant One"
                                 bg="black"
                                 _hover={{ bgColor: "#a1e8f0", color: "black" }}
@@ -927,6 +930,7 @@ const EarlyMorning = () => {
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup4}
+                                onTouchEnd={closePopup4}
                                 fontFamily="Croissant One"
                                 bg="black"
                                 _hover={{ bgColor: "#a1e8f0", color: "black" }}
@@ -981,6 +985,7 @@ const EarlyMorning = () => {
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup5}
+                                onTouchEnd={closePopup5}
                                 fontFamily="Croissant One"
                                 bg="black"
                                 _hover={{ bgColor: "#a1e8f0", color: "black" }}
@@ -1037,6 +1042,7 @@ const EarlyMorning = () => {
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup7}
+                                onTouchEnd={closePopup7}
                                 fontFamily="Croissant One"
                                 bg="black"
                                 _hover={{ bgColor: "#a1e8f0", color: "black" }}
@@ -1101,6 +1107,7 @@ const EarlyMorning = () => {
                           <Button
                             colorScheme="teal"
                             onClick={closePopup6}
+                            onTouchEnd={closePopup7}
                             fontFamily="Croissant One"
                             bg="black"
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}

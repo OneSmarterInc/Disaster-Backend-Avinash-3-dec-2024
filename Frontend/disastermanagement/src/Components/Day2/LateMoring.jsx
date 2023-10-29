@@ -538,6 +538,7 @@ const LateMorning = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup}
+                                  onTouchEnd={closePopup}
                                   fontFamily="Croissant One"
                                   bg="black"
                                   _hover={{
@@ -602,6 +603,7 @@ const LateMorning = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup2}
+                                  onTouchEnd={closePopup2}
                                   fontFamily="Croissant One"
                                   bg="black"
                                   _hover={{
@@ -667,6 +669,7 @@ const LateMorning = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup3}
+                                  onTouchEnd={closePopup3}
                                   fontFamily="Croissant One"
                                   bg="black"
                                   _hover={{
@@ -730,6 +733,7 @@ const LateMorning = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup4}
+                                  onTouchEnd={closePopup4}
                                   fontFamily="Croissant One"
                                   bg="black"
                                   _hover={{

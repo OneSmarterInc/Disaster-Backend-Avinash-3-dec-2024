@@ -60,7 +60,6 @@ import across from "../userImages/across.jpg";
 import tvscreen from "../userImages/tvscreen.jpg";
 import figure2 from "../userImages/figmabasics2.png";
 
-
 import butterfly from "../userImages/butterfly.jpg";
 const Morning5 = () => {
   const [flip, setFlip] = useState(false);
@@ -162,9 +161,6 @@ const Morning5 = () => {
   };
 
   const scrollToBottom = () => {
-    
-
-
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
@@ -366,7 +362,6 @@ const Morning5 = () => {
       " Ben Carter realizes the data issue wasn't about the discs. Kate laments the time lost. They discuss the vendor's oversight and the importance of thorough investigation for the future."
     );
 
-
     setDay5Popup7(false);
     // onClose();
     setChatPaused(false);
@@ -376,11 +371,10 @@ const Morning5 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
     setTextBox(
-      "Ben Carter and Gajji meet in person to debrief, discussing the project's progress, sharing insights, and strategizing for the next steps.Their face-to-face interaction fosters a deeper understanding of the situation and paves the way for effective collaboration."
+      "Ben Carter and Gajji meet in person to debrief, discussing the project's progress, sharing insights, and strategizing for the next steps.  Their face-to-face interaction fosters a deeper understanding of the situation and paves the way for effective collaboration."
     );
     setImgSrc(respect);
     setHead("Conversation of respect");
-
 
     setDay5Popup8(false);
     // onClose();
@@ -415,7 +409,6 @@ const Morning5 = () => {
     setTimeout(() => {
       setShowBox(true);
     }, 4000);
-
   };
 
   const closePopup12 = () => {
@@ -458,8 +451,7 @@ const Morning5 = () => {
               overflow={"auto"}
               // bgColor="#948888"
               style={{
-                backgroundImage:
-                  "linear-gradient(32deg,grey 0%, white 100%)",
+                backgroundImage: "linear-gradient(32deg,grey 0%, white 100%)",
               }}
             >
               <Box
@@ -600,7 +592,7 @@ const Morning5 = () => {
               //     ? recovery
               //     : dashboard
               // }
-              bgImage={ imgSrc}
+              bgImage={imgSrc}
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
@@ -615,11 +607,9 @@ const Morning5 = () => {
                 pl={3}
                 pt={3}
                 pb={3}
-                visibility={currentMessageIndex>33 ? "hidden" : "auto"}
+                visibility={currentMessageIndex > 33 ? "hidden" : "auto"}
               >
-                <Text fontSize={"20"}>
-                 {textBox}
-                </Text>
+                <Text fontSize={"20"}>{textBox}</Text>
               </Box>
               {/* {currentMessageIndex <= 1 && (
 
@@ -733,7 +723,6 @@ const Morning5 = () => {
                 </Box>
 
               )} */}
-
 
               {/* {currentMessageIndex < 24 ? (
                 <Box
@@ -874,6 +863,7 @@ const Morning5 = () => {
                           <Button
                             colorScheme="teal"
                             onClick={closePopup}
+                            onTouchEnd={closePopup}
                             textAlign="center"
                             fontFamily="Croissant One"
                             bg="black"
@@ -928,6 +918,7 @@ const Morning5 = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup2}
+                                  onTouchEnd={closePopup2}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"
@@ -989,6 +980,7 @@ const Morning5 = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup3}
+                                  onTouchEnd={closePopup3}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"
@@ -1059,6 +1051,7 @@ const Morning5 = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup4}
+                                  onTouchEnd={closePopup4}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"
@@ -1126,6 +1119,7 @@ const Morning5 = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup10}
+                                  onTouchEnd={closePopup10}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"
@@ -1200,6 +1194,7 @@ const Morning5 = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup5}
+                                  onTouchEnd={closePopup5}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"
@@ -1259,6 +1254,7 @@ const Morning5 = () => {
                             <Button
                               colorScheme="teal"
                               onClick={closePopup6}
+                              onTouchEnd={closePopup6}
                               fontFamily="Croissant One"
                               bg="teal.500"
                               _hover={{ bgColor: "teal.600" }}
@@ -1303,6 +1299,7 @@ const Morning5 = () => {
                             <Button
                               colorScheme="teal"
                               onClick={closePopup7}
+                              onTouchEnd={closePopup7}
                               fontFamily="Croissant One"
                               bg="teal.500"
                               _hover={{ bgColor: "teal.600" }}
@@ -1368,6 +1365,7 @@ const Morning5 = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup8}
+                                  onTouchEnd={closePopup8}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"
@@ -1418,6 +1416,7 @@ const Morning5 = () => {
                             <Button
                               colorScheme="teal"
                               onClick={closePopup9}
+                              onTouchEnd={closePopup9}
                               fontFamily="Croissant One"
                               bg="teal.500"
                               _hover={{ bgColor: "teal.600" }}
@@ -1473,7 +1472,7 @@ const Morning5 = () => {
                               The storage vendor provided approximately three
                               million dollars of new hardware and software to
                               provide two additional copies of the data as
-                              restitution for the event. 
+                              restitution for the event.
                             </Text>
                             <br />
                             <Text>
@@ -1483,6 +1482,7 @@ const Morning5 = () => {
                             <Button
                               colorScheme="teal"
                               onClick={closePopup11}
+                              onTouchEnd={closePopup11}
                               fontFamily="Croissant One"
                               bg="teal.500"
                               _hover={{ bgColor: "teal.600" }}
@@ -1522,7 +1522,15 @@ const Morning5 = () => {
                           </Text>
                         </ModalBody>
                         <ModalFooter>
-                          <Button onClick={closePopup12} bgColor={'#A81B1B'} color={'white'} _hover={{ color: "black" }}>Close</Button>
+                          <Button
+                            onClick={closePopup12}
+                            onTouchEnd={closePopup12}
+                            bgColor={"#A81B1B"}
+                            color={"white"}
+                            _hover={{ color: "black" }}
+                          >
+                            Close
+                          </Button>
                         </ModalFooter>
                       </ModalContent>
                     </Modal>

@@ -429,7 +429,7 @@ const Chat = () => {
                   })}
                   {showPopup && (
 
-                    <div>
+                    
                       <Modal isOpen={day5Popup}>
                         <ModalOverlay />
 
@@ -471,6 +471,7 @@ const Chat = () => {
                                   <Button
                                     colorScheme="teal"
                                     onClick={closePopup}
+                                    onTouchEnd={closePopup}
                                     fontFamily="Croissant One"
                                     bg="black"
                                     _hover={{
@@ -492,7 +493,7 @@ const Chat = () => {
                           </ModalFooter>
                         </ModalContent>
                       </Modal>
-                    </div>
+                    
 
                   )}
 
@@ -533,6 +534,7 @@ const Chat = () => {
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup2}
+                                onTouchEnd={closePopup2}
                                 fontFamily="Croissant One"
                                 bg="black"
                                 _hover={{ bgColor: "#a1e8f0", color: "black" }}
@@ -589,6 +591,7 @@ const Chat = () => {
                               <Button
                                 colorScheme="teal"
                                 onClick={closePopup3}
+                                onTouchEnd={closePopup3}
                                 fontFamily="Croissant One"
                                 bg="black"
                                 _hover={{ bgColor: "#a1e8f0", color: "black" }}

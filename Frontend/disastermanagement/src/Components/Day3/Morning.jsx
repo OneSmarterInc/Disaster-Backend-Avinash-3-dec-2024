@@ -115,7 +115,7 @@ const Morning = () => {
 
   const scrollToBottom = () => {
     if (currentMessageIndex > 3) {
-      setHead("Day 3 - Night: No end in sight");
+      setHead("Day 3 - It was a very long day with no end in sight");
     } else {
       setHead("Day 3 - Morning: Chasing solutions");
     }
@@ -236,7 +236,7 @@ const Morning = () => {
       "The atmosphere in the office is charged with tension, and it's evident that the long hours and all day long demanding work have taken a toll on everyone."
     );
     setImgSrc(tense);
-    setHead("Day 3 - Night: No end in sight");
+    setHead("Day 3 - Night: It was a very long day with no end in sight");
 
     // onClose();
     setChatPaused(false);
@@ -614,6 +614,7 @@ const Morning = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup}
+                                  onTouchEnd={closePopup}
                                   fontFamily="Croissant One"
                                   bg="black"
                                   _hover={{
@@ -679,6 +680,7 @@ const Morning = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup2}
+                                  onTouchEnd={closePopup2}
                                   fontFamily="Croissant One"
                                   bg="black"
                                   _hover={{
@@ -746,6 +748,7 @@ const Morning = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup3}
+                                  onTouchEnd={closePopup3}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"
@@ -812,6 +815,7 @@ const Morning = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup4}
+                                  onTouchEnd={closePopup4}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"
@@ -875,6 +879,7 @@ const Morning = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup5}
+                                  onTouchEnd={closePopup5}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"

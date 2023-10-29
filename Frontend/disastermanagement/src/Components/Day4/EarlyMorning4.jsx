@@ -92,7 +92,6 @@ const EarlyMorning4 = () => {
   );
   const [imgSrc, setImgSrc] = useState(kateben);
 
-
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
@@ -116,14 +115,11 @@ const EarlyMorning4 = () => {
   };
 
   const scrollToBottom = () => {
-    if (currentMessageIndex ===6) {
-      setTimeout(()=>{
-
+    if (currentMessageIndex === 6) {
+      setTimeout(() => {
         setHead("Day 4 - Afternoon: Both CEO's agree to a risk sharing plan");
-      },2000)
-    } 
-       
-
+      }, 2000);
+    }
 
     const container = chatContainerRef.current;
     if (container) {
@@ -173,11 +169,10 @@ const EarlyMorning4 = () => {
   useEffect(() => {
     // Scroll to the bottom after chatData changes
     scrollToBottom();
-    if(currentMessageIndex ===6){
-      setTimeout(()=>{
-
+    if (currentMessageIndex === 6) {
+      setTimeout(() => {
         setImgSrc(twoLeaders);
-      },2000)
+      }, 2000);
     }
   }, [currentMessageIndex]);
 
@@ -191,23 +186,20 @@ const EarlyMorning4 = () => {
   }, [showBox, showBoxContent2]);
 
   useEffect(() => {
-
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayFourMorning.length) {
           const message = dayFourMorning[currentMessageIndex];
           setCurrentMessageIndex((prevIndex) => prevIndex + 1);
           setActiveUser(message.sender);
-          
+
           if (currentMessageIndex === 5) {
             setChatPaused(true);
-            setTimeout(()=>{
-
-              setStartIndex(currentMessageIndex+1);
-            },2000)
-           
             setTimeout(() => {
+              setStartIndex(currentMessageIndex + 1);
+            }, 2000);
 
+            setTimeout(() => {
               setShowPopup(true);
             }, 8000);
           } else if (currentMessageIndex === 7) {
@@ -268,7 +260,7 @@ const EarlyMorning4 = () => {
   const closePopup2 = () => {
     // setShowPopup(false);
     setDay5Popup2(false);
-    setImgSrc(scene2)
+    setImgSrc(scene2);
     // onClose();
     setChatPaused(false);
   };
@@ -284,7 +276,7 @@ const EarlyMorning4 = () => {
   const closePopup4 = () => {
     // setShowPopup(false);
     setDay5Popup4(false);
-    setImgSrc(tapping)
+    setImgSrc(tapping);
     // onClose();
     setChatPaused(false);
   };
@@ -292,7 +284,7 @@ const EarlyMorning4 = () => {
   const closePopup5 = () => {
     // setShowPopup(false);
     setDay5Popup5(false);
-    setImgSrc(starts)
+    setImgSrc(starts);
     // onClose();
     setChatPaused(false);
   };
@@ -339,8 +331,7 @@ const EarlyMorning4 = () => {
               overflow={"auto"}
               // bgColor="#948888"
               style={{
-                backgroundImage:
-                  "linear-gradient(32deg,grey 0%, white 100%)",
+                backgroundImage: "linear-gradient(32deg,grey 0%, white 100%)",
               }}
             >
               <Box
@@ -478,7 +469,6 @@ const EarlyMorning4 = () => {
               //     : benkate
               // }
               bgImage={imgSrc}
-
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
@@ -498,7 +488,8 @@ const EarlyMorning4 = () => {
                   <Text fontSize={"20"}>
                     Ben Carter and Kate Sullivan have come together to engage in
                     a strategic meeting. This is a frank conversation where they
-                    discuss and plan various strategies..{" "}
+                    discuss plans and risks to their careers because of the
+                    situation they are in.{" "}
                   </Text>
                 </Box>
               ) : (
@@ -640,10 +631,10 @@ const EarlyMorning4 = () => {
                                   h="auto"
                                 />
 
-       
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup}
+                                  onTouchEnd={closePopup}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"
@@ -710,6 +701,7 @@ const EarlyMorning4 = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup2}
+                                  onTouchEnd={closePopup2}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"
@@ -776,6 +768,7 @@ const EarlyMorning4 = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup3}
+                                  onTouchEnd={closePopup3}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"
@@ -843,6 +836,7 @@ const EarlyMorning4 = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup4}
+                                  onTouchEnd={closePopup4}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"
@@ -911,6 +905,7 @@ const EarlyMorning4 = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup5}
+                                  onTouchEnd={closePopup5}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"
@@ -977,6 +972,7 @@ const EarlyMorning4 = () => {
                                 <Button
                                   colorScheme="teal"
                                   onClick={closePopup6}
+                                  onTouchEnd={closePopup6}
                                   textAlign="center"
                                   fontFamily="Croissant One"
                                   bg="black"

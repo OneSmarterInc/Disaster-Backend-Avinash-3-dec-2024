@@ -27,7 +27,7 @@ export const dayOneMorning = [
   {
     sender: "Kate Sullivan",
     message:
-      "Will do, Ben",
+      "Will do, Ben.",
   },
   {
     sender: "Kate Sullivan",
@@ -46,12 +46,12 @@ export const dayOneEvening = [
   {
     sender: "Ben Carter",
     message:
-      "We're in uncharted waters here. Before we make any decisions, we need to consider the ripple effects",
+      "We're in uncharted waters here. Before we make any decisions, we need to consider the ripple effects.",
   },
   {
     sender: "Kate Sullivan",
     message:
-      "Agreed. We've yet to inform senior leadership. They'll want answers, and we don't have many right now",
+      "Agreed. We've yet to inform senior leadership. They'll want answers, and we don't have many right now.",
   },
   {
     sender: "Liam Turner",
@@ -120,7 +120,7 @@ export const dayOneEvening = [
   {
     sender: "Kate Sullivan",
     message:
-      "No, neither our Microsoft email system nor our TRESCO VoIP are affected",
+      "No, neither our Microsoft email system nor our TRESCO VoIP are affected.",
   },
   {
     sender: "Ben Carter",
@@ -159,7 +159,7 @@ export const dayTwoEarlyMorning = [
   {
     sender: "Tom Mitchell",
     message:
-      "Ben - our team is on it.  We have called in our senior engineers and will be in touch",
+      "Ben - our team is on it.  We have called in our senior engineers and will be in touch.",
   },
 
   {
@@ -184,11 +184,11 @@ export const dayTwoEarlyMorning = [
   {
     sender: "Ben Carter",
     message:
-      "I appreciate that, Tom. Let's work together and find a way out of this.            ",
+      "I appreciate that, Tom. Let's work together and find a way out of this.",
   },
   {
     sender: "Tom Mitchell",
-    message: "We're on it, Ben. We'll navigate this together",
+    message: "We're on it, Ben. We'll navigate this together.",
   },
   {
     sender: "Ben Carter",
@@ -213,12 +213,12 @@ export const dayTwoEarlyMorning = [
   {
     sender: "Mia Rodriguez",
     message:
-      "We need to understand the root cause to ensure this doesn't happen again",
+      "We need to understand the root cause to ensure this doesn't happen again.",
   },
   {
     sender: "Julia Harper",
     message:
-      "Absolutely, Mia. Our goal is not just recovery but also understanding and preventing any future occurrences",
+      "Absolutely, Mia. Our goal is not just recovery but also understanding and preventing any future occurrences.",
   },
   {
     sender: "Ben Carter",
@@ -233,7 +233,7 @@ export const dayTwoEarlyMorning = [
   {
     sender: "Julia Harper",
     message:
-      "It looks like the only solution is to replace the bad controller, reboot the storage systems at Site 1, which would clear the write buffers (data waiting to be written to disc) of data and disconnect from the remote (Site 2) storage systems to preserve that environment",
+      "It looks like the only solution is to replace the bad controller, reboot the storage systems at Site 1, which would clear the write buffers (data waiting to be written to disc) of data and disconnect from the remote (Site 2) storage systems to preserve that environment.",
   },
   {
     sender: "Ben Carter",
@@ -281,7 +281,7 @@ export const dayTwoEarlyMorning = [
   },
   {
     sender: "Julia Harper",
-    message: "We're with you every step of the way, Ben",
+    message: "We're with you every step of the way, Ben.",
   },
   {
     sender: "Ben Carter",
@@ -306,7 +306,7 @@ export const dayTwoEarlyMorning = [
   {
     sender: "Ben Carter",
     message:
-      "Agreed. I'm coordinating with both our internal teams and the vendor to get a clear timeline. But I need everyone here to support the message and keep our teams calm",
+      "Agreed. I'm coordinating with both our internal teams and the vendor to get a clear timeline. But I need everyone here to support the message and keep our teams calm.",
   },
 
   {
@@ -468,53 +468,53 @@ export const dayTwoLateMorning = [
   {
     sender: "Kate Sullivan",
     message:
-      "Fantastic! Let's prioritize the restoration. Our U.S.-based Worldwide Customer Service applications should be first",
+      "Fantastic! Let's prioritize the restoration. Our U.S.-based Worldwide Customer Service applications should be first.",
   },
   {
     sender: "Ben Carter",
     message:
-      "Agreed. I've got the prioritization list right here. Let's get WCS up and running. We'll also send out an internal message about the planned restorations",
+      "Agreed. I've got the prioritization list right here. Let's get WCS up and running. We'll also send out an internal message about the planned restorations.",
   },
   {
     sender: "Sophia Kim",
     message:
-      "In parallel, I suggest we start with all Tier 1 and Tier 2 applications. The WCS apps in Europe and the Middle East, the Global Product Database, Web Services, and Professional Services applications should be next",
+      "In parallel, I suggest we start with all Tier 1 and Tier 2 applications. The WCS apps in Europe and the Middle East, the Global Product Database, Web Services, and Professional Services applications should be next.",
   },
   { sender: "Ben Carter", message: "Sounds like a plan. Let's execute" },
 
 
   {
     sender: "Kate Sullivan",
-    message: "It's time to begin the ERP system restoration",
+    message: "It's time to begin the ERP system restoration.",
   },
   {
     sender: "Mia Rodriguez",
-    message: "It's going to be a significant task. The ERP system is vast",
+    message: "It's going to be a significant task. The ERP system is vast.",
   },
   {
     sender: "Ben Carter",
     message:
-      "We've come this far. Let's keep the momentum going. Keep me updated on the progress",
+      "We've come this far. Let's keep the momentum going. Keep me updated on the progress.",
   },
   {
     sender: "Sophia Kim",
     message:
-      "All Tier 3 and Tier 4 applications are in the process of being restored. We're on track",
+      "All Tier 3 and Tier 4 applications are in the process of being restored. We're on track.",
   },
   {
     sender: "Ben Carter",
     message:
-      "(Looking visibly tired but satisfied) Great job, team. It's been a long day, but we're getting there. Let's keep pushing",
+      "(Looking visibly tired but satisfied) Great job, team. It's been a long day, but we're getting there. Let's keep pushing.",
   },
   {
     sender: "Liam Turner",
     message:
-      "The feedback from internal users has been positive. They appreciate the timely updates and transparency",
+      "The feedback from internal users has been positive. They appreciate the timely updates and transparency.",
   },
   {
     sender: "Ben Carter",
     message:
-      "Communication has been our strength through this. Let's ensure we maintain it as we work towards full restoration",
+      "Communication has been our strength through this. Let's ensure we maintain it as we work towards full restoration.",
   },
 ];
 
@@ -523,7 +523,7 @@ export const dayThreeMorning = [
   {
     sender: "Ben Carter",
     message:
-      "(Voice slightly strained) Good morning. We've made progress, but ERP remains a challenge",
+      "(Voice slightly strained) Good morning. We've made progress, but ERP remains a challenge.",
   },
   {
     sender: "COO",
@@ -533,7 +533,7 @@ export const dayThreeMorning = [
   {
     sender: "Ben Carter",
     message:
-      "We're still investigating, but right now, our focus is on restoring operations",
+      "We're still investigating, but right now, our focus is on restoring operations.",
   },
 
   {
@@ -549,7 +549,7 @@ export const dayThreeMorning = [
   {
     sender: "Ben Carter",
     message:
-      "We're doing our best, Kate. It's an unprecedented situation",
+      "We're doing our best, Kate. It's an unprecedented situation.",
   },
 
   {
@@ -578,7 +578,7 @@ export const dayThreeMorning = [
   {
     sender: "Ben Carter",
     message:
-      "(Interjecting) Let's stay focused. We need to work together, not against each other",
+      "(Interjecting) Let's stay focused. We need to work together, not against each other.",
   },
 
   {
@@ -608,7 +608,7 @@ export const dayFourMorning = [
   {
     sender: "Kate Sullivan",
     message:
-      "There has got to be a better way than to accept the 9-hour old backup",
+      "There has got to be a better way than to accept the 9-hour old backup.",
   },
   {
     sender: "Ben Carter",
@@ -618,7 +618,7 @@ export const dayFourMorning = [
   {
     sender: "Gajji",
     message:
-      "(On a call with Ben Carter and Kate Sullivan) I understand where you are.  My team reviewed the issue.  We think the primary database is safe.  But there were two temporary files used to complete inventory transactions were corrupted",
+      "(On a call with Ben Carter and Kate Sullivan) I understand where you are.  My team reviewed the issue.  We think the primary database is safe.  But there were two temporary files used to complete inventory transactions were corrupted.",
   },
   {
     sender: "Ben Carter",
@@ -753,11 +753,11 @@ export const dayFiveMorning = [
   },
   {
     sender: "Ben Carter",
-    message: "We did, Kate. It was a test of our resilience, teamwork, and determination. I couldn't be prouder",
+    message: "We did, Kate. It was a test of our resilience, teamwork, and determination. I couldn't be prouder.",
   },
   {
     sender: "Kate Sullivan",
-    message: "Here's to hoping we never have to go through something like this again",
+    message: "Here's to hoping we never have to go through something like this again.",
   },
   {
     sender: "Ben Carter",
@@ -785,11 +785,11 @@ export const dayFiveMorning = [
   },
   {
     sender: "Ben Carter",
-    message: "Yes. It's surprising. Site 2's mirrored copy was never corrupted. The issue was in the controller buffers, not the discs themselves",
+    message: "Yes. It's surprising. Site 2's mirrored copy was never corrupted. The issue was in the controller buffers, not the discs themselves.",
   },
   {
     sender: "Kate Sullivan",
-    message: "(Sighing) If only we'd known. We could've restored everything within a day",
+    message: "(Sighing) If only we'd known. We could've restored everything within a day.",
   },
   {
     sender: "Ben Carter",
@@ -797,12 +797,12 @@ export const dayFiveMorning = [
   },
   {
     sender: "Kate Sullivan",
-    message: "That's something, at least. But the real lesson here is the importance of thorough investigation. We can't just skim the surface, especially in critical situations",
+    message: "That's something, at least. But the real lesson here is the importance of thorough investigation. We can't just skim the surface, especially in critical situations.",
   },
 
   {
     sender: "Ben Carter",
-    message: "You're right. It's not just about fixing the immediate issue; it's about understanding the root cause. We need to be better prepared next time",
+    message: "You're right. It's not just about fixing the immediate issue; it's about understanding the root cause. We need to be better prepared next time.",
   },
   {
     sender: "Kate Sullivan",
@@ -810,7 +810,7 @@ export const dayFiveMorning = [
   },
   {
     sender: "Ben Carter",
-    message: "(Smiling wryly) Agreed",
+    message: "(Smiling wryly) Agreed.",
   },
   {
     sender: "Gajji",
@@ -826,21 +826,21 @@ export const dayFiveMorning = [
   },
   {
     sender: "Ben Carter",
-    message: "And it's also shown us the strength of our partnership. When things went south, you didn't abandon us. Your team went above and beyond to find a solution",
+    message: "And it's also shown us the strength of our partnership. When things went south, you didn't abandon us. Your team went above and beyond to find a solution.",
   },
 
 
   {
     sender: "Gajji",
-    message: "It was our responsibility. And I'm glad we could navigate through it together",
+    message: "It was our responsibility. And I'm glad we could navigate through it together.",
   },
   {
     sender: "Ben Carter",
-    message: "This incident, surprisingly, has solidified our trust. We've seen each other's commitment during a crisis",
+    message: "This incident, surprisingly, has solidified our trust. We've seen each other's commitment during a crisis.",
   },
   {
     sender: "Gajji",
-    message: "It's often said that you get to know the true character of a person or an organization during challenging times. I'm proud of how both our teams responded",
+    message: "It's often said that you get to know the true character of a person or an organization during challenging times. I'm proud of how both our teams responded.",
   },
   {
     sender: "Ben Carter",
@@ -848,11 +848,11 @@ export const dayFiveMorning = [
   },
   {
     sender: "Gajji",
-    message: "(Raising his coffee mug) To a stronger partnership and a brighter future",
+    message: "(Raising his coffee mug) To a stronger partnership and a brighter future.",
   },
   {
     sender: "Ben Carter",
-    message: "(Clinking his mug with Gajji's) To resilience and collaboration",
+    message: "(Clinking his mug with Gajji's) To resilience and collaboration.",
   },
 
 ];

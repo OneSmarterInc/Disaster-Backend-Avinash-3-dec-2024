@@ -21,10 +21,11 @@ import { MdNotStarted } from "react-icons/md";
 import { BsPauseCircleFill } from "react-icons/bs";
 import site1 from "../Images/2.jpg";
 import site2 from "../Images/1.jpg";
-import site from "../Images/site.jpeg";
-import folder from "../Images/folder.png";
-import figure from "../Images/figure2.jpg";
+import site from "../Images/site.jpg";
+import folder from "../Images/folder.jpg";
+import figure from "../Images/figmabasics.png";
 import figma from "../Images/figmabasic.png";
+import figure3 from "../Images/figmabasics3.png";
 
 const Start = () => {
   const { head, pauseBtn, setPauseBtn } = useContext(MyContext);
@@ -61,7 +62,7 @@ const Start = () => {
   return (
     <Box h={"88vh"}>
       <Flex
-        bgColor="#691212"
+        bgColor="#343541"
         justifyContent={"space-between"}
         alignItems={"center"}
         w={"100%"}
@@ -70,8 +71,10 @@ const Start = () => {
         pl={5}
         pr={5}
         color={"white"}
-      >
-        <Heading  >Leading Through Disruption</Heading>
+        
+
+>
+        <Heading fontFamily={"caliber"} size={"lg"}>Leading Through Disruption</Heading>
         <Box width={"35%"}>
         <Heading  size={"md"} fontWeight={"500"} fontFamily={"Fredoka"}>
 
@@ -86,9 +89,9 @@ const Start = () => {
           onClick={handlePause}
         >
           {pauseBtn ? (
-            <MdNotStarted color="black" />
+            <MdNotStarted color="green" />
           ) : (
-            <BsPauseCircleFill color="black" />
+            <BsPauseCircleFill color="#db1c50" />
           )}
         </Text>
 
@@ -150,8 +153,8 @@ const Start = () => {
       {/* ... Rest of your code ... */}
 
       <Box
+      
         fontFamily={"Fredoka"}
-        border={"1px solid black"}
         w={"100%"}
         m={"auto"}
         h={"100%"}
@@ -163,13 +166,20 @@ const Start = () => {
       <Modal isOpen={isImagesModalOpen} onClose={onImagesModalClose} isCentered>
         <ModalOverlay />
         <ModalContent maxW={"5xl"}>
-          <ModalHeader>Figure #1</ModalHeader>
+          <ModalHeader textAlign={'center'}>Detailed Architecture</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
+          <ModalHeader>Data Processing Setup:</ModalHeader>
             <Image src={figma} w={"100%"}/>
             <Divider borderBottomWidth="4px" mt={20} borderColor={"black"} />
-            <ModalHeader mt={10}>Figure #2</ModalHeader>
+
+            <ModalHeader mt={10}>Storage Vendor's Restitution</ModalHeader>
+            <Image src={figure3} w={"100%"} />
+            <Divider borderBottomWidth="4px" mt={20} borderColor={"black"} />
+            <ModalHeader mt={10}>Configuration</ModalHeader>
             <Image src={figure} w={"100%"} />
+
+            
 
             {/* You can add more content here */}
           </ModalBody>

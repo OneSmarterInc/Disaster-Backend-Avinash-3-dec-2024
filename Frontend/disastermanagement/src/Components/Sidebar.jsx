@@ -19,7 +19,7 @@ const Sidebar = () => {
     showSidebar,
     setShowSideBar,
     setHead,
-    showCloseBtn
+    showCloseBtn,
   } = useContext(MyContext);
 
   const [isHovered, setIsHovered] = useState(false);
@@ -41,24 +41,26 @@ const Sidebar = () => {
     setShowSideBar(true);
   };
 
-  useEffect(()=>{
-    if(selectedSection === "Prepare"  || selectedSection === "Hierarchy"){
-        setHead("");
+  useEffect(() => {
+    if (selectedSection === "Prepare" || selectedSection === "Hierarchy") {
+      setHead("");
     }
-  },[selectedSection])
- 
+  }, [selectedSection]);
 
   return (
     <>
-      <Box display="flex" flexDirection="row" height={"88vh"} bg={'white'} >
-        {(showSidebar || isHovered) ? (
+      <Box display="flex" flexDirection="row" height={"88vh"} bg={"white"}>
+        {showSidebar || isHovered ? (
           <VStack
             spacing={4}
             alignItems="flex-start"
             style={{
-              transform: showSidebar || isHovered ? 'translateX(0)' : 'translateX(-100%)',
-              transition: 'transform 0.3s ease-in-out',
-              willChange: 'transform' // hint to browsers for performance
+              transform:
+                showSidebar || isHovered
+                  ? "translateX(0)"
+                  : "translateX(-100%)",
+              transition: "transform 0.3s ease-in-out",
+              willChange: "transform", // hint to browsers for performance
             }}
             fontFamily={"Fredoka"}
             fontSize={20}
@@ -68,15 +70,14 @@ const Sidebar = () => {
             onMouseOver={handleMouseOver}
             onMouseLeave={handleMouseLeave}
             ref={sidebarRef}
-          
           >
-             {showCloseBtn && (
+            {showCloseBtn && (
               <AiOutlineClose
                 onClick={handleclose}
                 cursor={"pointer"}
                 fontWeight={"bold"}
               />
-            )} 
+            )}
             <Text
               onClick={() => handleSectionClick("Prepare")}
               cursor="pointer"
@@ -102,7 +103,7 @@ const Sidebar = () => {
               onClick={() => handleSectionClick("deliverable")}
               cursor="pointer"
               fontWeight={selectedSection === "deliverable" ? "bold" : "none"}
-              // pointerEvents={deliverableState ? "auto" : "none"}
+              pointerEvents={deliverableState ? "auto" : "none"}
               color={deliverableState ? "black" : "gray"}
             >
               Deliverable
@@ -112,7 +113,7 @@ const Sidebar = () => {
               cursor="pointer"
               fontWeight={selectedSection === "debrief" ? "bold" : "none"}
               // pointerEvents={globalState ? "auto" : "none"}
-              // color={globalState ? "black" : "gray"}
+              color={globalState ? "black" : "gray"}
             >
               Debrief
             </Text>
@@ -120,7 +121,7 @@ const Sidebar = () => {
         ) : (
           <></>
         )}
-         {!showSidebar && (
+        {!showSidebar && (
           <BsArrowRightSquareFill
             ref={menuButtonRef}
             onMouseOver={handleMouseOver}
@@ -155,7 +156,9 @@ const Sidebar = () => {
               <External />
             </Flex>
           )}
-
+          <Text color={'gray.100'}>
+            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+          </Text>
           {selectedSection === "Chat" && <Chat />}
           {selectedSection === "deliverable" && <Deliverable />}
           {selectedSection === "debrief" && <Debrief />}

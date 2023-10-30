@@ -189,11 +189,18 @@ const Chat = () => {
 
   const visibleMessages = dayOneMorning.slice(startIndex, currentMessageIndex);
 
+  const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
+
+  const userAvatarSize = isMobile ? "30px" : "55px";
+  const messageFontSize = isMobile ? "16px" : "18px";
+
   return (
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
+
         <EarlyMorning />
+
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : value === "Remaining calm and level-headed during challenges" ? (
@@ -219,16 +226,21 @@ const Chat = () => {
           border={"0px solid red"}
           w={"100%"}
           m={"auto"}
-          h={"88vh"}
+          h={isMobile ? "90vh" : "88vh"}
+          display="flex"
+          flexWrap="wrap"
         >
           <Flex h={"88vh"}>
             <Box
-              h={"88vh"}
-              w={"13%"}
-              overflow={"auto"}
-              // bgColor="#948888"
+              h={isMobile ? "90vh" : "88vh"}
+              w={isMobile ? "10%" : "13%"}
+              overflow="auto"
               style={{
-                backgroundImage: "linear-gradient(32deg,grey 0%, white 100%)",
+
+                backgroundImage: isMobile
+                  ? "none"
+                  : "linear-gradient(32deg,grey 0%, white 100%)",
+
               }}
             >
               <Box pt={3} borderBottom={"0px solid black"}>
@@ -241,27 +253,30 @@ const Chat = () => {
                       }
                     >
                       <Box
-                        borderBottom={"0px solid black"}
+                        borderBottom="0px solid black"
                         key={el.name}
-                        cursor={"pointer"}
+                        cursor="pointer"
+                        display="flex"
+                        flexDirection={isMobile ? "column" : "column"}
+                        alignItems="center"
                       >
                         <Box
-                          h={"6vh"}
-                          w={"55px"}
-                          m={"auto"}
-                          mt={"17%"}
-                          borderRadius={"50%"}
+                          h={userAvatarSize}
+                          w={userAvatarSize}
+                          m="auto"
+                          mt={isMobile ? "17%" : 0}
+                          borderRadius="50%"
                           className={el.name === activeUser ? "active" : ""}
                         >
                           <Image borderRadius={"50%"} src={el.url} alt="" />
                         </Box>
                         <Text
                           className={el.name === activeUser ? "Tactive" : ""}
-                          fontSize={20}
-                          mt={6}
-                          cursor={"pointer"}
+                          fontSize={isMobile ? "14px" : "20px"}
+                          mt={isMobile ? 0 : 6}
+                          cursor="pointer"
                         >
-                          {el.name}
+                          {el.name.split(" ")[0]}
                         </Text>
                       </Box>
                     </Tooltip>
@@ -271,17 +286,23 @@ const Chat = () => {
             </Box>
 
             <Box
-              pt={5}
-              maxH={"88vh"}
-              w={"90%"}
-              border={"0px solid red"}
-              overflow={"auto"}
+              maxH={isMobile ? "100vh" : "88vh"}
+              w={isMobile ? "100%" : "90%"}
+              border="0px solid red"
+              overflow="auto"
               ref={chatContainerRef}
-              pb={2}
+
+              pb={5}
+
               bgImage={imgsrc}
-              bgRepeat={"no-repeat"}
-              bgSize={"cover"}
+              bgRepeat="no-repeat"
+              bgSize={isMobile ? "cover" : "cover"}
+              bgPosition={"center"}
+              display="flex"
+              flexDirection="column"
+              alignItems={isMobile ? "center" : "flex-start"}
             >
+
               <Box
                 border={"1px solid black"}
                 bgColor={"#030405"}
@@ -294,21 +315,19 @@ const Chat = () => {
                 pt={3}
                 pb={3}
               >
-                <Text fontSize={"18"}>{textBox}</Text>
+                <Text fontSize={isMobile ? "15" : "18"}>{textBox}</Text>
               </Box>
               <Box
-                w={"90%"}
-                h={"68vh"}
-                border="0px solid red"
+                w={isMobile ? "100%" : "90%"}
+                pl={isMobile ? 2 : 5}
+                pr={isMobile ? 2 : 5}
                 m={"auto"}
-                pl={5}
-                pr={5}
+                h={"68vh"}
               >
                 <TransitionGroup>
                   {visibleMessages.map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";
                     const messageClass = isCIO ? "KateSullivan" : "BenCarter";
-                    const alignMessage = isCIO ? "flex-start" : "flex-end";
                     return (
                       <CSSTransition
                         key={i}
@@ -317,43 +336,39 @@ const Chat = () => {
                       >
                         <Box
                           key={i}
-                          border={"0px solid black"}
+                          border="0px solid white"
                           w={"100%"}
                           display="flex"
-                          justifyContent={alignMessage}
+                          flexDirection="column"
+                          alignItems={isCIO ? "flex-start" : "flex-end"}
                           className={`message ${messageClass} ${
                             el.sender === "Ben Carter"
                               ? "BenCarter"
                               : "KateSullivan"
                           }`}
+                          mb={4}
                         >
-                          <Box border={"0px solid red"} w={"50%"}>
-                            <Box
-                              boxShadow={
-                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                              }
-                              border={"0px solid black"}
-                              bgColor={
-                                el.sender === "Ben Carter"
-                                  ? "#f0f0f0"
-                                  : "#030405"
-                              }
-                              color={
-                                el.sender === "Ben Carter" ? "black" : "white"
-                              }
-                              w={"100%"}
-                              borderRadius={"10px"}
-                              textAlign={"justify"}
-                              p={4}
-                              pl={5}
-                              pr={5}
-                              mt={10}
-                            >
-                              <Text>
-                                <span id="sender">{el.sender}</span> :{" "}
-                                {el.message}
-                              </Text>
-                            </Box>
+                          <Box
+                            boxShadow="rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                            border="0px solid red"
+                            bgColor={
+                              el.sender === "Ben Carter" ? "#f0f0f0" : "#030405"
+                            }
+                            color={
+                              el.sender === "Ben Carter" ? "black" : "white"
+                            }
+                            w={isMobile ? "70%" : "50%"}
+                            borderRadius="10px"
+                            textAlign={isMobile ? "left" : "justify"}
+                            p={isMobile ? 2 : 4}
+                            pl={isMobile ? 3 : 5}
+                            pr={isMobile ? 3 : 5}
+                            mt={2}
+                            fontSize={isMobile ? "13px" : "18px"}
+                          >
+                            <Text>
+                              <span id="sender">{el.sender}</span>: {el.message}
+                            </Text>
                           </Box>
                         </Box>
                       </CSSTransition>
@@ -565,27 +580,27 @@ const Chat = () => {
                     <>
                       <Box
                         bg={"white"}
-                        pb={10}
-                        w={"60%"}
+                        p={2}
+                        w={isMobile ? "100%" : "60%"} // Adjust the width for mobile view
                         m={"auto"}
-                        mt={"50px"}
+                        mt={isMobile ? "20px" : "50px"} // Adjust the top margin for mobile view
                         borderRadius={10}
                       >
                         {showBoxContent1 && (
                           <>
                             <Image
-                              w={"50%"}
+                              w={isMobile ? "80%" : "50%"} // Adjust the image width for mobile view
                               m={"auto"}
                               src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
                             />
                             <Flex
                               className="box"
-                              mb={"5"}
-                              mt={"10"}
+                              mb={5}
+                              mt={isMobile ? "5" : "5"} // Adjust the top margin for mobile view
                               boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                               alignItems={"center"}
                               justifyContent={"center"}
-                              h={"50px"}
+                              h={isMobile ? "auto" : "50px"}
                               bg={"#c8cfca"}
                               color={"black"}
                               fontWeight={"bold"}
@@ -602,22 +617,36 @@ const Chat = () => {
                               onChange={handleChange2}
                               value={value}
                             >
-                              <Box className="flex2" w={"80%"} m={"auto"}>
+                              <Box
+                                className="flex2"
+                                w={isMobile ? "90%" : "80%"}
+                                m={'auto'}
+                                pb={3}
+                              >
                                 <Box
-                                  border={"1px solid black"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                  borderRadius={"50px"}
+                                   // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Weaknesses in the system that can be exploited, leading to potential disasters">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex: 1, // Take up the available space for the label
                                       }}
                                     >
                                       <Radio
                                         fontFamily={"Fredoka"}
-                                        size={"lg"}
+                                        size={isMobile ? "sm" : "lg"}
                                         colorScheme="orange"
                                         value="Weaknesses in the system that can be exploited, leading to potential disasters"
                                         style={{
@@ -632,16 +661,24 @@ const Chat = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  w={"80%"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex: 1, // Take up the available space for the label
                                       }}
                                     >
                                       <Radio
@@ -662,15 +699,24 @@ const Chat = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Hardware or network breakdowns that can disrupt normal operations">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex:1
                                       }}
                                     >
                                       <Radio
@@ -691,15 +737,24 @@ const Chat = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Inadequate or failed backups that prevent or delay recovery efforts">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex:1
                                       }}
                                     >
                                       <Radio
@@ -720,15 +775,24 @@ const Chat = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Failures in internal and external communication systems during critical times">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex:1
                                       }}
                                     >
                                       <Radio
@@ -749,15 +813,24 @@ const Chat = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Absence of failover systems or processes that can act as a backup during primary system failures">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex:1
                                       }}
                                     >
                                       <Radio
@@ -784,14 +857,14 @@ const Chat = () => {
                         {showBoxContent2 && (
                           <>
                             <Image
-                              w={"50%"}
+                              w={isMobile ? "70%" : "50%"} // Adjust the image width for mobile view
                               m={"auto"}
                               src="https://img.freepik.com/free-vector/business-decisions-concept-illustration_114360-4096.jpg?w=740&t=st=1696672316~exp=1696672916~hmac=0b5a3d793d15d5eccf6f03a04e907baee2f1e59dc4292775fe4e025c871152be"
                             />
                             <Flex
                               className="box"
                               mb={"5"}
-                              mt={"10"}
+                              mt={isMobile ? "5" : "5"} // Adjust the top margin for mobile view
                               boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                               alignItems={"center"}
                               justifyContent={"center"}
@@ -799,6 +872,7 @@ const Chat = () => {
                               bg={"#c8cfca"}
                               color={"black"}
                               fontWeight={"bold"}
+                              
                             >
                               <Text>
                                 Which quality of Ben Carter do you feel stands
@@ -812,22 +886,29 @@ const Chat = () => {
                             >
                               <Box
                                 className="flex"
-                                w={"80%"}
-                                m={"auto"}
-                                pb={"40px"}
-                                mt={"50px"}
+                                w={isMobile ? "90%" : "80%"}
+                                m={'auto'}
+                                pb={4}
                               >
-                                <Box
-                                  border={"1px solid black"}
-                                  w={"70%"}
-                                  borderRadius={"50px"}
+                               <Box
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Making clear and swift decisions under pressure">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex:1
                                       }}
                                     >
                                       <Radio
@@ -847,16 +928,24 @@ const Chat = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  w={"80%"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Remaining calm and level-headed during challenges">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex:1
                                       }}
                                     >
                                       <Radio
@@ -877,15 +966,24 @@ const Chat = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Emphasizing teamwork, both internally and with external partners">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex:1
                                       }}
                                     >
                                       <Radio
@@ -906,15 +1004,24 @@ const Chat = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Effectively conveying information, even in challenging circumstances">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex:1
                                       }}
                                     >
                                       <Radio
@@ -935,15 +1042,24 @@ const Chat = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Quickly adjusting strategies based on new information or changing scenarios">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex:1
                                       }}
                                     >
                                       <Radio
@@ -964,15 +1080,24 @@ const Chat = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Keeping an eye on long-term impacts and future implications during the crisis">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex:1
                                       }}
                                     >
                                       <Radio

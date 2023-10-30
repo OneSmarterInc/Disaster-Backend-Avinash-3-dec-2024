@@ -81,17 +81,18 @@ const Start = () => {
   };
 
   return (
-    <Box h={"88vh"}>
+    <Box>
       <Flex
         bgColor="#343541"
         justifyContent={"space-between"}
         alignItems={"center"}
         w={"100%"}
         m={"auto"}
-        h={"20"}
-        pl={5}
-        pr={5}
+        h={["80px", "20"]} // Adjust the height for mobile view
+        pl={4}
+        pr={4}
         color={"white"}
+
         // border={"10px solid white"}
       >
         <Show above="md">
@@ -116,6 +117,7 @@ const Start = () => {
           </Heading>
         </Box>
         <Text cursor={"pointer"} fontSize={ isMobile ? 35 :45} onClick={handlePause}>
+
           {pauseBtn ? (
             <MdNotStarted color="green" />
           ) : (

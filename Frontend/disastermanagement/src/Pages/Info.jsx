@@ -32,7 +32,7 @@ const Info = () => {
         position="relative" // Add this line
       >
         <Box
-          w={"70%"}
+          w={"90%"}
           m={"auto"}
           mt={"10px"}
           p={8}
@@ -42,7 +42,7 @@ const Info = () => {
           borderRadius="lg"
         >
           <Text
-            fontSize={28}
+            fontSize={24}
             fontWeight={"bold"}
             textAlign="center"
             mt={4}
@@ -51,7 +51,7 @@ const Info = () => {
             Leading Through Disruption 
           </Text>
           <Text
-            fontSize={28}
+            fontSize={24}
             fontWeight={"bold"}
             textAlign="center"
             mb={4}
@@ -62,7 +62,7 @@ const Info = () => {
           </Text>
           {/* ... Rest of your text content ... */}
           <Text
-            fontSize={16}
+            fontSize={14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
           >
@@ -75,7 +75,7 @@ const Info = () => {
           </Text>
           <br />
           <Text
-            fontSize={16}
+            fontSize={14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
           >
@@ -88,7 +88,7 @@ const Info = () => {
           </Text>
           <br />
           <Text
-            fontSize={16}
+            fontSize={14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
           >
@@ -99,7 +99,7 @@ const Info = () => {
           </Text>
           <br />
           <Text
-            fontSize={16}
+            fontSize={14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
             fontWeight={"bold"}
@@ -108,7 +108,7 @@ const Info = () => {
           </Text>
           <br />
           <Text
-            fontSize={16}
+            fontSize={14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
             fontWeight={"bold"}
@@ -118,7 +118,7 @@ const Info = () => {
           <ul>
             <li>
               <Text
-                fontSize={16}
+                fontSize={14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -131,7 +131,7 @@ const Info = () => {
           </ul>
           <br />
           <Text
-            fontSize={16}
+            fontSize={14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
             fontWeight={"bold"}
@@ -141,7 +141,7 @@ const Info = () => {
           <ul>
             <li>
               <Text
-                fontSize={16}
+                fontSize={14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -151,7 +151,7 @@ const Info = () => {
             </li>
             <li>
               <Text
-                fontSize={16}
+                fontSize={14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -162,7 +162,7 @@ const Info = () => {
           </ul>
           <br />
           <Text
-            fontSize={16}
+            fontSize={14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
             fontWeight={"bold"}
@@ -172,7 +172,7 @@ const Info = () => {
           <ul>
             <li>
               <Text
-                fontSize={16}
+                fontSize={14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -182,7 +182,7 @@ const Info = () => {
             </li>
             <li>
               <Text
-                fontSize={16}
+                fontSize={14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -194,7 +194,7 @@ const Info = () => {
           </ul>
           <br />
           <Text
-            fontSize={16}
+            fontSize={14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
             fontWeight={"bold"}
@@ -204,7 +204,7 @@ const Info = () => {
           <ul>
             <li>
               <Text
-                fontSize={16}
+                fontSize={14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -214,7 +214,7 @@ const Info = () => {
             </li>
             <li>
               <Text
-                fontSize={16}
+                fontSize={14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -225,7 +225,7 @@ const Info = () => {
           </ul>
           <br />
           <Text
-            fontSize={16}
+            fontSize={14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
             fontWeight={"bold"}
@@ -235,7 +235,7 @@ const Info = () => {
           <ul>
             <li>
               <Text
-                fontSize={16}
+                fontSize={14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -245,7 +245,7 @@ const Info = () => {
             </li>
             <li>
               <Text
-                fontSize={16}
+                fontSize={14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -256,7 +256,7 @@ const Info = () => {
           </ul>
           <br />
           <Text
-            fontSize={16}
+            fontSize={14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
             fontWeight={"bold"}
@@ -266,7 +266,7 @@ const Info = () => {
           <ul>
             <li>
               <Text
-                fontSize={16}
+                fontSize={14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -276,7 +276,7 @@ const Info = () => {
             </li>
             <li>
               <Text
-                fontSize={16}
+                fontSize={14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -288,7 +288,7 @@ const Info = () => {
           </ul>
           <br/>
           <Text
-            fontSize={16}
+            fontSize={14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
           >

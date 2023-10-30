@@ -13,28 +13,27 @@ const Intro = () => {
   return (
     <Box>
       <Box w={"100%"}>
-        <Box
-          w={"70%"}
+      <Box
+          w={["90%", "70%"]} // Use responsive width based on screen size
           border={"1px solid black"}
           margin={"auto"}
           pb={10}
-          mt={"2%"}
+          mt={["5%", "2%"]}
+          mb={["5%", "2%"]}  // Adjust margin based on screen size
           borderRadius={"50px"}
-          pr={10}
-          pl={10}
-          pt={10}
+          pr={8} // Adjust padding based on screen size
+          pl={8}
+          pt={8}
           className="intro"
           style={{
             backgroundImage:
               "linear-gradient(252deg,#dea2a2 0%, #ebfffd 99.46%, #dea2a2 100%)",
           }}
-          boxShadow={
-            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-          }
+          boxShadow="lg"
         >
           <Heading
            
-            fontSize={38}
+           fontSize={["2xl", "3xl"]}
             
           >
             Introduction
@@ -43,7 +42,7 @@ const Intro = () => {
             textAlign={"justify"}
             fontFamily={"Fredoka"}
             mt={"20px"}
-            fontSize={"1rem"}
+            fontSize={["sm", "md"]} 
           >
             Welcome to "Leading Through Disruption: An Executive Simulation on
             Disaster Preparedness," an immersive simulation tailored for
@@ -58,7 +57,7 @@ const Intro = () => {
             textAlign={"justify"}
             fontFamily={"Fredoka"}
             mt={"20px"}
-            fontSize={"1rem"}
+            fontSize={["sm", "md"]} 
           >
             Meet Ben Carter
           </Text>
@@ -66,7 +65,7 @@ const Intro = () => {
             textAlign={"justify"}
             fontFamily={"Fredoka"}
             mt={"20px"}
-            fontSize={"1rem"}
+            fontSize={["sm", "md"]} 
           >
             Ben Carter is the seasoned Chief Information Officer (CIO) of
             OrionTech, a leading global tech firm renowned for its innovations
@@ -83,7 +82,7 @@ const Intro = () => {
             textAlign={"justify"}
             fontFamily={"Fredoka"}
             mt={"20px"}
-            fontSize={"1rem"}
+            fontSize={["sm", "md"]} 
           >
             Simulation Setup
           </Text>
@@ -93,7 +92,7 @@ const Intro = () => {
                 textAlign={"justify"}
                 fontFamily={"Fredoka"}
                 mt={"10px"}
-                fontSize={"1rem"}
+                fontSize={["sm", "md"]} 
               >
                 Throughout this simulation, participants will be presented with a
                 series of events that challenge OrionTech's operational resilience
@@ -108,7 +107,7 @@ const Intro = () => {
                 textAlign={"justify"}
                 fontFamily={"Fredoka"}
                 mt={"10px"}
-                fontSize={"1rem"}
+                fontSize={["sm", "md"]} 
               >
                 As the CIO, Ben, in collaboration with his tech team and other
                 executive members, will be tasked with navigating these challenges.
@@ -123,7 +122,7 @@ const Intro = () => {
                 textAlign={"justify"}
                 fontFamily={"Fredoka"}
                 mt={"10px"}
-                fontSize={"1rem"}
+                fontSize={["sm", "md"]} 
               >
                 Participants will step into Ben's shoes, grappling with the
                 immediate technical challenges while also strategizing on
@@ -135,7 +134,7 @@ const Intro = () => {
                 textAlign={"justify"}
                 fontFamily={"Fredoka"}
                 mt={"10px"}
-                fontSize={"1rem"}
+                fontSize={["sm", "md"]} 
               >
                 Through this simulation, you will be exposed to the complexities of
                 disaster recovery as Ben Carter facing them. Think about how you
@@ -148,7 +147,7 @@ const Intro = () => {
                 textAlign={"justify"}
                 fontFamily={"Fredoka"}
                 mt={"10px"}
-                fontSize={"1rem"}
+                fontSize={["sm", "md"]} 
               >
                 As you journey through the challenges presented in the simulation,
                 remember: your decisions as a CIO significantly influence your own
@@ -160,8 +159,8 @@ const Intro = () => {
           </ul>
 
           <Link to="/start">
-            <Button
-              w={"28%"}
+          <Button
+              w={["100%", "28%"]} // Adjust button width based on screen size
               pt={8}
               pb={8}
               fontFamily={"Fredoka"}
@@ -169,8 +168,8 @@ const Intro = () => {
               bgColor={"black"}
               color={"white"}
               border={"1px solid black"}
-              fontSize={30}
-              mt={"45px"}
+              fontSize={["md", "2xl"]} // Adjust font size based on screen size
+              mt={["20px", "45px"]} // Adjust margin top based on screen size
             >
               Begin
             </Button>

@@ -967,12 +967,14 @@ console.log(dayTwoEarlyMorning.length,"daylength");
                           fontSize="25px"
                         ></ModalHeader>
                         <Draggable>
+
                           <ModalBody
                             fontSize={{ base: "16px", sm: "18px" }}
                             className="draggable-modal"
                             borderRadius={10}
                             bg="rgba(245, 255, 255, 0.8)"
                             p={10}
+
                           >
                             <Heading>Note:</Heading>
                             <Text>

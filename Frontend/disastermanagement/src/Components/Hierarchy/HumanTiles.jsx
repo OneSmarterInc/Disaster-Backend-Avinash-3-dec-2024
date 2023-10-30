@@ -6,17 +6,19 @@ const HumanTiles = ({ data }) => {
       borderRadius="8px"
       bg="#948888"
       display="inline-block"
-      border={"0px solid red"}
       p={2}
+      // width="100%" // Make the tile 100% width on smaller screens
+      textAlign="center" // Center-align the content
+      minH={'auto'}
     >
-      <Box textAlign="center" spacing={2}>
-        <Avatar src={data.url} boxSize={20} borderRadius="50%" />
-        <Box textAlign="center">
-          <Text fontWeight="600">{data.name}</Text>
-          <Text color="black" fontSize="12px">
-            {data.designation}
-          </Text>
-        </Box>
+      <Avatar src={data.url} boxSize={12} borderRadius="50%" /> {/* Decrease the size of the Avatar */}
+      <Box textAlign="center">
+        <Text fontWeight="600" fontSize="14px"> {/* Increase the font size for better readability */}
+          {data.name}
+        </Text>
+        <Text color="black" fontSize="12px">
+          {data.designation}
+        </Text>
       </Box>
     </Box>
   );

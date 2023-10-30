@@ -14,7 +14,7 @@ const MyProvider = ({ children }) => {
 
   const [showSidebar, setShowSideBar] = useState(true);
 
-  const speed = 4000;
+  const speed = 2000;
 
   const enableBox = () => {
     setGlobalState(true);

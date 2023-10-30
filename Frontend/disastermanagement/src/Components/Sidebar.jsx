@@ -112,7 +112,7 @@ const Sidebar = () => {
               onClick={() => handleSectionClick("debrief")}
               cursor="pointer"
               fontWeight={selectedSection === "debrief" ? "bold" : "none"}
-              // pointerEvents={globalState ? "auto" : "none"}
+              pointerEvents={globalState ? "auto" : "none"}
               color={globalState ? "black" : "gray"}
             >
               Debrief
@@ -156,9 +156,12 @@ const Sidebar = () => {
               <External />
             </Flex>
           )}
-          <Text color={'gray.100'}>
-            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-          </Text>
+          {selectedSection === "debrief" && (
+            <Text color={"gray.100"}>
+              -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </Text>
+          )}
+
           {selectedSection === "Chat" && <Chat />}
           {selectedSection === "deliverable" && <Deliverable />}
           {selectedSection === "debrief" && <Debrief />}

@@ -32,7 +32,6 @@ import LateMorning from "../Components/Day2/LateMoring";
 import EarlyMorning from "../Components/Day2/EarlyMorning";
 import Morning from "../Components/Day3/Morning";
 
-
 const Chat = () => {
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
@@ -50,14 +49,15 @@ const Chat = () => {
   const [showPopup3, setShowPopup3] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
   const [imgsrc, setImgSrc] = useState(bensphone);
-  const [textBox, setTextBox] = useState(" The office of Ben Carter. He's wrapping up for the day, shutting down his computer,gathering his things, and exchanging a few words with his colleagues before heading out.");
+  const [textBox, setTextBox] = useState(
+    " The office of Ben Carter. He's wrapping up for the day, shutting down his computer,gathering his things, and exchanging a few words with his colleagues before heading out."
+  );
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
   const { setHead, speed, pauseBtn, showSideBar, setShowCloseBtn } =
     useContext(MyContext);
-
 
   const handleChange = (value) => {
     setValue(value);
@@ -71,19 +71,16 @@ const Chat = () => {
     setshowBoxContent2(true);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     setHead("Day 1 - Evening : How it all began");
-
-  },[]);
+  }, []);
 
   const scrollToBottom = () => {
-
     // if (currentMessageIndex > 3) {
     //   setHead("Day 1 - Late Evening: Sporadic Issues Continue");
     // } else {
     //   setHead("Day 1 - Evening : How it all begins");
     // }
-
 
     const container = chatContainerRef.current;
     if (container) {
@@ -105,9 +102,6 @@ const Chat = () => {
   useEffect(() => {
     // Simulate messages from 5 users with a 2-second delay between each message
     setShowCloseBtn(true);
-   
-
-    
 
     const messageDelay = speed;
 
@@ -127,7 +121,6 @@ const Chat = () => {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup2(true);
-
             }, 2000);
           } else if (currentMessageIndex === 5) {
             setChatPaused(true);
@@ -162,7 +155,9 @@ const Chat = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
     setImgSrc(relaxing);
-    setTextBox("Despite efforts to enhance OTC's applications, they still encounter frequent failures, causing frustration among users and creating operational challenges.")
+    setTextBox(
+      "Despite efforts to enhance OTC's applications, they still encounter frequent failures, causing frustration among users and creating operational challenges."
+    );
     setHead("Day 1 - Late Evening: Sporadic issues continue");
 
     setDay5Popup2(false);
@@ -173,7 +168,7 @@ const Chat = () => {
   const closePopup3 = () => {
     // setShowPopup(false);
     setDay5Popup3(false);
-    setImgSrc(bgcall)
+    setImgSrc(bgcall);
     // onClose();
     setChatPaused(false);
   };
@@ -198,8 +193,7 @@ const Chat = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <BringDown />
-
+        <EarlyMorning />
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : value === "Remaining calm and level-headed during challenges" ? (
@@ -234,8 +228,7 @@ const Chat = () => {
               overflow={"auto"}
               // bgColor="#948888"
               style={{
-                backgroundImage:
-                  "linear-gradient(32deg,grey 0%, white 100%)",
+                backgroundImage: "linear-gradient(32deg,grey 0%, white 100%)",
               }}
             >
               <Box pt={3} borderBottom={"0px solid black"}>
@@ -285,85 +278,24 @@ const Chat = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              // bgImage={
-              //   currentMessageIndex > 6
-              //     ? bgcall
-              //     : currentMessageIndex > 3
-              //     ? relaxing
-              //     : bensphone
-              // }
               bgImage={imgsrc}
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-              {/* {currentMessageIndex < 4 ? (
-                <>
-                  <Box
-                    border={"1px solid black"}
-                    bgColor={"#030405"}
-                    color={"white"}
-                    borderRadius={"20px"}
-                    m={"auto"}
-                    textAlign={"left"}
-                    w={"90%"}
-                    pl={3}
-                    pt={3}
-                    pb={3}
-                  >
-                    <Text fontSize={"18"}>
-                      The office of Ben Carter. He's wrapping up for the day,
-                      shutting down his computer,gathering his things, and
-                      exchanging a few words with his colleagues before heading
-                      out.
-                    </Text>
-                  </Box>
-                  <Box mt={2}>
-                    <Text bgColor={"grey"} color={"black"} w={"90%"} m={"auto"}>
-                      Ben's Phone: A soft chime. New email notification.
-                    </Text>
-                    <Text bgColor={"grey"} color={"black"} w={"90%"} m={"auto"}>
-                      Ben glances at the email subject: "Minor issues at the
-                      data center."
-                    </Text>
-                  </Box>
-                </>
-              ) : (
-                <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"18"}>
-                    Despite efforts to enhance OTC's applications, they still
-                    encounter frequent failures, causing frustration among users
-                    and creating operational challenges.
-                  </Text>
-                </Box>
-              )} */}
-
-<Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"18"}>
-                   {textBox}
-                  </Text>
-                </Box>
+              <Box
+                border={"1px solid black"}
+                bgColor={"#030405"}
+                color={"white"}
+                borderRadius={"20px"}
+                m={"auto"}
+                textAlign={"left"}
+                w={"90%"}
+                pl={3}
+                pt={3}
+                pb={3}
+              >
+                <Text fontSize={"18"}>{textBox}</Text>
+              </Box>
               <Box
                 w={"90%"}
                 h={"68vh"}
@@ -428,84 +360,77 @@ const Chat = () => {
                     );
                   })}
                   {showPopup && (
+                    <Modal isOpen={day5Popup}>
+                      <ModalOverlay />
 
-                    
-                      <Modal isOpen={day5Popup}>
-                        <ModalOverlay />
-
-                        <ModalContent
-                          borderRadius={10}
-                          width={["90%", "70%", "50%"]}
-                          maxW="500px"
-                          bg="transparent"
-                        >
-                          <Draggable>
-                            <ModalBody
+                      <ModalContent
+                        borderRadius={10}
+                        width={["90%", "70%", "50%"]}
+                        maxW="500px"
+                        bg="transparent"
+                      >
+                        <Draggable>
+                          <ModalBody
                             className="draggable-modal"
-                              fontSize="18px"
-                              bgColor={"white"}
-                              p={10}
-
-                              borderRadius={10}
-                              bg="rgba(245, 255, 255, 0.8)"
+                            fontSize="18px"
+                            bgColor={"white"}
+                            p={10}
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                          >
+                            <Flex
+                              flexDirection={["column", "row"]}
+                              gap={[4, 2]}
                             >
-
-                              <Flex
-                                flexDirection={["column", "row"]}
-                                gap={[4, 2]}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
+                                borderRadius={10}
+                                p={4}
+                                flex="1"
                               >
-                                <Box
-                                  bgColor="white"
-                                  boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
+                                <Text>
+                                  He opens the email.It's a brief report about
+                                  some applications showing sporadic errors.
+                                </Text>
+                              </Box>
+                              <Box textAlign="center" flex="1">
+                                <Image src={openmail1} borderRadius={10} />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup}
+                                  onTouchEnd={closePopup}
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  mt={3}
                                   borderRadius={10}
-                                  p={4}
-                                  flex="1"
+                                  w={"100%"}
                                 >
-                                  <Text>
-                                    He opens the email.It's a brief report about
-                                    some applications showing sporadic errors.
-                                  </Text>
-                                </Box>
-                                <Box textAlign="center" flex="1">
-                                  <Image src={openmail1} borderRadius={10} />
-                                  <Button
-                                    colorScheme="teal"
-                                    onClick={closePopup}
-                                    onTouchEnd={closePopup}
-                                    fontFamily="Croissant One"
-                                    bg="black"
-                                    _hover={{
-                                      bgColor: "#a1e8f0",
-                                      color: "black",
-                                    }}
-                                    mt={3}
-                                    borderRadius={10}
-                                    w={"100%"}
-                                  >
-                                    Close
-                                  </Button>
-                                </Box>
-                              </Flex>
-                            </ModalBody>
-                          </Draggable>
-                          <ModalFooter>
-                            {/* Footer content, if needed */}
-                          </ModalFooter>
-                        </ModalContent>
-                      </Modal>
-                    
-
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
+                        </Draggable>
+                        <ModalFooter>
+                          {/* Footer content, if needed */}
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
                   )}
 
                   {showPopup2 && (
                     <Modal isOpen={day5Popup2}>
                       <ModalOverlay />
                       <ModalContent
-                        
                         borderRadius={10}
                         width={["90%", "70%", "50%"]} // Responsive width
                         maxW="500px"
-                        bg={'transparent'}
+                        bg={"transparent"}
                       >
                         <ModalHeader
                           fontWeight="bold"
@@ -513,40 +438,52 @@ const Chat = () => {
                         ></ModalHeader>
 
                         <Draggable>
-                        <ModalBody fontSize="18px" borderRadius={10} p={10} bg="rgba(245, 255, 255, 0.8)"  className="draggable-modal">
-                          <Flex flexDirection={["column", "row"]} gap={[4, 2]}>
-                            {" "}
-                            {/* Responsive layout */}
-                            <Box
-                              bgColor="white"
-                              boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={4}
-                              flex="1"
+                          <ModalBody
+                            fontSize="18px"
+                            borderRadius={10}
+                            p={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            className="draggable-modal"
+                          >
+                            <Flex
+                              flexDirection={["column", "row"]}
+                              gap={[4, 2]}
                             >
-                              <Text>
-                                An hour later. Ben is at home, relaxing. His
-                                phone buzzes with a call from Kate.
-                              </Text>
-                            </Box>
-                            <Box textAlign="center" flex="1">
-                              <Image src={relaxing} borderRadius={10} />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup2}
-                                onTouchEnd={closePopup2}
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mt={3}
+                              {" "}
+                              {/* Responsive layout */}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                w={"100%"}
+                                p={4}
+                                flex="1"
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  An hour later. Ben is at home, relaxing. His
+                                  phone buzzes with a call from Kate.
+                                </Text>
+                              </Box>
+                              <Box textAlign="center" flex="1">
+                                <Image src={relaxing} borderRadius={10} />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup2}
+                                  onTouchEnd={closePopup2}
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  mt={3}
+                                  borderRadius={10}
+                                  w={"100%"}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Footer content, if needed */}
@@ -558,7 +495,7 @@ const Chat = () => {
                     <Modal isOpen={day5Popup3}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
+                        bg={"transparent"}
                         borderRadius={10}
                         width={["90%", "70%", "50%"]} // Responsive width
                         maxW="500px"
@@ -569,41 +506,53 @@ const Chat = () => {
                         ></ModalHeader>
 
                         <Draggable>
-                        <ModalBody fontSize="18px"  className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex flexDirection={["column", "row"]} gap={[4, 2]}>
-                            {" "}
-                            {/* Responsive layout */}
-                            <Box
-                              bgColor="white"
-                              boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={4}
-                              flex="1"
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
+                          >
+                            <Flex
+                              flexDirection={["column", "row"]}
+                              gap={[4, 2]}
                             >
-                              <Text>
-                                Late at night. Ben is asleep. His phone rings
-                                persistently. Groggily, he picks it up. It's
-                                Kate
-                              </Text>
-                            </Box>
-                            <Box textAlign="center" flex="1">
-                              <Image src={bensleep} borderRadius={10} />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup3}
-                                onTouchEnd={closePopup3}
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mt={3}
+                              {" "}
+                              {/* Responsive layout */}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0px 10px 20px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                w={"100%"}
+                                p={4}
+                                flex="1"
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  Late at night. Ben is asleep. His phone rings
+                                  persistently. Groggily, he picks it up. It's
+                                  Kate
+                                </Text>
+                              </Box>
+                              <Box textAlign="center" flex="1">
+                                <Image src={bensleep} borderRadius={10} />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup3}
+                                  onTouchEnd={closePopup3}
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  mt={3}
+                                  borderRadius={10}
+                                  w={"100%"}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Footer content, if needed */}

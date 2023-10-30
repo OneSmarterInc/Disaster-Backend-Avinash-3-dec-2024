@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Box, Divider, Flex, Text, VStack } from "@chakra-ui/react";
+import { Box, Divider, Flex, Show, Text, VStack } from "@chakra-ui/react";
 import Prepare from "../Pages/Prepare";
 import Chat from "../Pages/Chat";
 import StyledTreeExample from "./Hierarchy/StyledTreeExample";
@@ -21,6 +21,9 @@ const Sidebar = () => {
     setHead,
     showCloseBtn,
   } = useContext(MyContext);
+
+  const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
+
 
   const [isHovered, setIsHovered] = useState(false);
   const sidebarRef = useRef(null);
@@ -71,6 +74,7 @@ const Sidebar = () => {
             onMouseLeave={handleMouseLeave}
             ref={sidebarRef}
           >
+            <Show above="md">
             {showCloseBtn && (
               <AiOutlineClose
                 onClick={handleclose}
@@ -78,6 +82,8 @@ const Sidebar = () => {
                 fontWeight={"bold"}
               />
             )}
+            </Show>
+           
             <Text
               onClick={() => handleSectionClick("Prepare")}
               cursor="pointer"
@@ -121,6 +127,7 @@ const Sidebar = () => {
         ) : (
           <></>
         )}
+        <Show above="md">
         {!showSidebar && (
           <BsArrowRightSquareFill
             ref={menuButtonRef}
@@ -131,6 +138,8 @@ const Sidebar = () => {
             size={"25px"}
           />
         )}
+
+        </Show>
         <Box
           bg={"gray.100"}
           overflowX="auto"

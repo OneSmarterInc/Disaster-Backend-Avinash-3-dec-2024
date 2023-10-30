@@ -1,6 +1,4 @@
 import {
-  ChakraProvider,
-  extendTheme,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -11,19 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
-import React, {
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import day2morning from "./day2morning.png";
 import loss from "./loss.png";
 import "../Day1/BringDown.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { useNavigate } from "react-router";
 import LateMorning from "./LateMoring";
 import { dayTwoEarlyMorning } from "../../mainData";
 import bencarter from "../userImages/bencarter.jpg";
@@ -35,7 +26,6 @@ import tom from "../userImages/tom.jpg";
 import raj from "../userImages/rajpatel.jpg";
 import grace from "../userImages/gracepatterson.jpg";
 import williams from "../userImages/williams.jpg";
-import ScrollDown from "../ScrollDown";
 import oncall from "../userImages/oncall.jpg";
 import withtom from "../userImages/withtom2.jpeg";
 import witht from "../userImages/withtom.1.jpg";
@@ -47,24 +37,16 @@ import beforewithtom from "../userImages/beforewithtom.jpg";
 import backinwar from "../userImages/backinwar.jpg";
 import videocall from "../userImages/videocall.jpg";
 import gathers from "../userImages/gathers.jpeg";
-import Morning5 from "../Day5/Morning5";
-import { MdNotStarted } from "react-icons/md";
-import { BsPauseCircleFill } from "react-icons/bs";
 import Draggable from "react-draggable";
 
 const EarlyMorning = () => {
-  const [chatData, setChatData] = useState([]);
   const [activeUser, setActiveUser] = useState(null);
   const [showBox, setShowBox] = useState(false);
   const [showBox2, setShowBox2] = useState(false);
   const [showBoxContent1, setShowBoxContent1] = useState(true);
   const [showBoxContent2, setshowBoxContent2] = useState(false);
-  const [explaination, setExplanation] = useState("");
   const [value, setValue] = useState(null);
   const [value1, setValue1] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalOpen1, setIsModalOpen1] = useState(false);
-  const [isModalOpen2, setIsModalOpen2] = useState(false);
   const [day5Popup, setDay5Popup] = useState(true);
   const [day5Popup2, setDay5Popup2] = useState(true);
   const [day5Popup3, setDay5Popup3] = useState(true);
@@ -72,7 +54,6 @@ const EarlyMorning = () => {
   const [day5Popup5, setDay5Popup5] = useState(true);
   const [day5Popup6, setDay5Popup6] = useState(true);
   const [day5Popup7, setDay5Popup7] = useState(true);
-
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [showPopup2, setShowPopup2] = useState(false);
@@ -81,24 +62,18 @@ const EarlyMorning = () => {
   const [showPopup5, setShowPopup5] = useState(false);
   const [showPopup6, setShowPopup6] = useState(false);
   const [showPopup7, setShowPopup7] = useState(false);
-
   const [chatPaused, setChatPaused] = useState(false);
-  const [modalValue, setModalValue] = useState(null);
-  const [modalValue1, setModalValue1] = useState(null);
-  const [ShowScroll, setShowScroll] = useState(false);
-  const [img, showImg] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
   const [imgSrc, setImgSrc] = useState(day2morning);
-  const [textBox, setTextBox] = useState("Ben Carter is on the phone with Tom Mitchell, the VP of Customer Services from the applications vendor. They engage in a lengthy conversation, discussing the technical intricacies.");
+  const [textBox, setTextBox] = useState(
+    "Ben Carter is on the phone with Tom Mitchell, the VP of Customer Services from the applications vendor. They engage in a lengthy conversation, discussing the technical intricacies."
+  );
+  const [ptr, setPtr] = useState(0);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
   const { setHead, speed, pauseBtn, setPauseBtn } = useContext(MyContext);
-
-  const handlePause = () => {
-    setPauseBtn(!pauseBtn);
-  };
 
   const handleChange = (value) => {
     setValue(value);
@@ -114,29 +89,13 @@ const EarlyMorning = () => {
   };
 
   const scrollToBottom = () => {
-
-    // if (currentMessageIndex > 8 && currentMessageIndex <= 17) {
-    //   setHead("Day 2 - Morning:  Call with Storage Vendor");
-    // } else if (currentMessageIndex > 17 && currentMessageIndex <= 28) {
-    //   setHead("Day 2 -  Morning:  Call with Applications and Storage Vendors");
-    // } else if (currentMessageIndex > 28 && currentMessageIndex <= 33) {
-    //   setHead("Day 2 -  Morning: Ben Carter Addresses Executive Team");
-    // } else if (currentMessageIndex > 33 && currentMessageIndex <= 38) {
-    //   setHead("Day 2 - Noon:  Ben Carter speaks to key clients");
-    // } else if (currentMessageIndex > 38) {
-    //   setHead("Day 2 -  Early Afternoon - War Room");
-    // } else {
-    //   setHead("Day 2 - Morning:  Call with Applications Vendor");
-    // }
-
-
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
     }
   };
 
-  const users = [
+  const user = [
     {
       name: "Ben Carter",
       url: bencarter,
@@ -179,16 +138,17 @@ const EarlyMorning = () => {
     },
   ];
 
-  useEffect(()=>{
+  useEffect(() => {
     setHead("Day 2 - Morning:  Call with applications vendor");
-
-  },[])
+  }, []);
 
   const closePopup = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
     setHead("Day 2 - Morning:  Call with storage vendor");
-    setTextBox("Ben Carter is on the phone with Julia Harper, the VP of Customer Services from the Disc Vendor. Ben's explains the situation and connects Julia with Tom for shared information.")
+    setTextBox(
+      "Ben Carter is on the phone with Julia Harper, the VP of Customer Services from the Disc Vendor. Ben's explains the situation and connects Julia with Tom for shared information."
+    );
     setImgSrc(oncall);
 
     setDay5Popup(false);
@@ -200,7 +160,9 @@ const EarlyMorning = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
     setHead("Day 2 -  Morning:  Call with applications and storage vendors");
-    setTextBox("Ben Carter is on a conference call with Tom Mitchell and Julia Harper. Both vendors are engaged deeply in the technical issues of the OTC problem.")
+    setTextBox(
+      "Ben Carter is on a conference call with Tom Mitchell and Julia Harper. Both vendors are engaged deeply in the technical issues of the OTC problem."
+    );
     setImgSrc(withtom);
 
     setDay5Popup2(false);
@@ -212,7 +174,9 @@ const EarlyMorning = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
     setHead("Day 2 -  Morning: Ben carter addresses executive team");
-    setTextBox("Ben Carter seeks to address concerns of the Executive Team at OrionTech. The executive team expresses concerns and their own respective viewpoints.")
+    setTextBox(
+      "Ben Carter seeks to address concerns of the Executive Team at OrionTech. The executive team expresses concerns and their own respective viewpoints."
+    );
     setImgSrc(loss);
 
     setDay5Popup3(false);
@@ -224,7 +188,9 @@ const EarlyMorning = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
     setHead("Day 2 - Noon:  Ben carter speaks to key clients");
-    setTextBox("Ben Carter reaches out to key clients to update them about the current situation OTC is facing so that they have all the necessary updates.")
+    setTextBox(
+      "Ben Carter reaches out to key clients to update them about the current situation OTC is facing so that they have all the necessary updates."
+    );
     setImgSrc(witht);
 
     setDay5Popup4(false);
@@ -235,7 +201,9 @@ const EarlyMorning = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
     setHead("Day 2 -  Early Afternoon : War room");
-    setTextBox(" Ben Carter meets with his internal team to assess the current situation and creatively explore any new options which may have been missed for moving forward. ")
+    setTextBox(
+      " Ben Carter meets with his internal team to assess the current situation and creatively explore any new options which may have been missed for moving forward. "
+    );
     setImgSrc(warroom);
 
     setDay5Popup5(false);
@@ -253,7 +221,7 @@ const EarlyMorning = () => {
   const closePopup7 = () => {
     // setShowPopup(false);
     setDay5Popup7(false);
-    setImgSrc(gathers)
+    setImgSrc(gathers);
     // onClose();
     setChatPaused(false);
   };
@@ -276,8 +244,34 @@ const EarlyMorning = () => {
     currentMessageIndex
   );
 
+  const scene = [7,16,21,27,32,37,41,56];
+  const visibleMessagess = dayTwoEarlyMorning.slice(startIndex, scene[ptr]);
+  let temp = [];
+  let final = [];
+  let users = [];
+
+  for(let i = 0;i<visibleMessagess.length;i++){
+    temp.push(visibleMessagess[i]["sender"]);
+  }
+  const uniqueTemp = [...new Set(temp)];
+  console.log(uniqueTemp)
+ 
+  for(let i =  0; i<uniqueTemp.length;i++){
+    for(let j = 0;j< user.length;j++){
+      if (user[j].name == uniqueTemp[i]){
+        final.push({"url":user[j].url,"name":user[j].name})
+
+  }
+  //setUsers(final)
+  users = final
+}
+}
+console.log(visibleMessages, visibleMessagess);
+console.log("ptr",ptr,"start",startIndex);
+console.log(dayTwoEarlyMorning.length,"daylength");
+  console.log(final,"-------------------------------")
+
   useEffect(() => {
-   
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayTwoEarlyMorning.length) {
@@ -290,31 +284,37 @@ const EarlyMorning = () => {
             setTimeout(() => {
               setShowPopup(true);
             }, 2000);
+            setPtr(1)
           } else if (currentMessageIndex === 16) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup2(true);
             }, 2000);
+            setPtr(2)
           } else if (currentMessageIndex === 21) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup6(true);
             }, 2000);
+            setPtr(3)
           } else if (currentMessageIndex === 27) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup3(true);
             }, 2000);
+            setPtr(4)
           } else if (currentMessageIndex === 32) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup4(true);
             }, 2000);
+            setPtr(5)
           } else if (currentMessageIndex === 37) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup5(true);
             }, 2000);
+            setPtr(7)
           } else if (currentMessageIndex === 41) {
             setChatPaused(true);
             setTimeout(() => {
@@ -370,8 +370,7 @@ const EarlyMorning = () => {
               overflow={"auto"}
               // bgColor="#948888"
               style={{
-                backgroundImage:
-                  "linear-gradient(32deg,grey 0%, white 100%)",
+                backgroundImage: "linear-gradient(32deg,grey 0%, white 100%)",
               }}
             >
               <Box
@@ -483,168 +482,24 @@ const EarlyMorning = () => {
               overflow={"auto"}
               ref={chatContainerRef}
               pb={2}
-              // bgImage={
-              //   currentMessageIndex > 42
-              //     ? gathers
-              //     : currentMessageIndex > 38
-              //     ? warroom
-              //     : currentMessageIndex > 33
-              //     ? witht
-              //     : currentMessageIndex > 28
-              //     ? loss
-              //     : currentMessageIndex > 17
-              //     ? withtom
-              //     : currentMessageIndex > 8
-              //     ? oncall
-              //     : day2morning
-              // }
               bgImage={imgSrc}
               bgRepeat={"no-repeat"}
               bgSize={"cover"}
             >
-              {/* {currentMessageIndex <= 7 && (
-
-                <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"20"}>
-                    Ben Carter is on the phone with Tom Mitchell, the VP of
-                    Customer Services from the applications vendor. They engage
-                    in a lengthy conversation, discussing the technical
-                    intricacies.
-                  </Text>
-                </Box>
-              )}
-              {currentMessageIndex > 7 && currentMessageIndex <= 16 && (
-                <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"20"}>
-                    Ben Carter is on the phone with Julia Harper, the VP of
-                    Customer Services from the Disc Vendor. Ben's explains the
-                    situation and connects Julia with Tom for shared
-                    information.
-                  </Text>
-                </Box>
-              )}
-
-              {currentMessageIndex > 16 && currentMessageIndex <= 27 && (
-                <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"20"}>
-                    Ben Carter is on a conference call with Tom Mitchell and
-                    Julia Harper. Both vendors are engaged deeply in the
-                    technical issues of the OTC problem.
-                  </Text>
-                </Box>
-              )}
-
-              {currentMessageIndex > 27 && currentMessageIndex <= 32 && (
-                <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"20"}>
-                    Ben Carter seeks to address concerns of the Executive Team
-                    at OrionTech. The executive team expresses concerns and
-                    their own respective viewpoints.
-                  </Text>
-                </Box>
-              )}
-
-              {currentMessageIndex > 32 && currentMessageIndex <= 37 && (
-                <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"20"}>
-                    Ben Carter reaches out to key clients to update them about
-                    the current situation OTC is facing so that they have all
-                    the necessary updates.
-                  </Text>
-                </Box>
-              )}
-
-              {currentMessageIndex > 37 && (
-                <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"20"}>
-                    Ben Carter meets with his internal team to assess the
-                    current situation and discuss any new options for improving
-                    their project's trajectory and overall performance.
-                  </Text>
-                </Box>
-              )} */}
-               <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"20"}>
-                   {textBox}
-                  </Text>
-                </Box>
+              <Box
+                border={"1px solid black"}
+                bgColor={"#030405"}
+                color={"white"}
+                borderRadius={"20px"}
+                m={"auto"}
+                textAlign={"left"}
+                w={"90%"}
+                pl={3}
+                pt={3}
+                pb={3}
+              >
+                <Text fontSize={"20"}>{textBox}</Text>
+              </Box>
 
               <Box
                 w={"90%"}
@@ -654,21 +509,6 @@ const EarlyMorning = () => {
                 pl={5}
                 pr={5}
               >
-                {/* <Text
-                  position={"fixed"}
-                  color={"black"}
-                  top={"650px"}
-                  left={"1450px"}
-                  cursor={"pointer"}
-                  fontSize={45}
-                  onClick={handlePause}
-                >
-                  {pauseBtn ? (
-                    <MdNotStarted color="black" />
-                  ) : (
-                    <BsPauseCircleFill color="black" />
-                  )}
-                </Text> */}
                 <TransitionGroup>
                   {visibleMessages.map((el, i) => {
                     const isCIO = el.sender === "Ben Carter";
@@ -729,8 +569,7 @@ const EarlyMorning = () => {
                     <Modal isOpen={day5Popup}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
-                        
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }} // Responsive width
                       >
                         <ModalHeader
@@ -738,43 +577,52 @@ const EarlyMorning = () => {
                           fontSize="25px"
                         ></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            flexDirection={{ base: "column", sm: "row" }}
-                            gap={{ base: 2, sm: 4 }}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            {" "}
-                            {/* Responsive layout */}
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={{ base: 4, sm: 5 }}
+                            <Flex
+                              flexDirection={{ base: "column", sm: "row" }}
+                              gap={{ base: 2, sm: 4 }}
                             >
-                              <Text>
-                                After briefing the CEO, Ben Carter gets back on
-                                the call with Julia Harper from the storage
-                                vendor's team.
-                              </Text>
-                            </Box>
-                            <Box textAlign="center">
-                              <Image src={callwithjulia} borderRadius={10} />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup}
-                                onTouchEnd={closePopup}
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mt={3}
+                              {" "}
+                              {/* Responsive layout */}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                w={"100%"}
+                                p={{ base: 4, sm: 5 }}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  After briefing the CEO, Ben Carter gets back
+                                  on the call with Julia Harper from the storage
+                                  vendor's team.
+                                </Text>
+                              </Box>
+                              <Box textAlign="center">
+                                <Image src={callwithjulia} borderRadius={10} />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup}
+                                  onTouchEnd={closePopup}
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  mt={3}
+                                  borderRadius={10}
+                                  w={"100%"}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Footer content, if needed */}
@@ -787,8 +635,7 @@ const EarlyMorning = () => {
                     <Modal isOpen={day5Popup2}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
-                        
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }} // Responsive width
                       >
                         <ModalHeader
@@ -796,42 +643,51 @@ const EarlyMorning = () => {
                           fontSize="25px"
                         ></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            flexDirection={{ base: "column", sm: "row" }}
-                            gap={{ base: 2, sm: 4 }}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            {" "}
-                            {/* Responsive layout */}
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={{ base: 4, sm: 5 }}
+                            <Flex
+                              flexDirection={{ base: "column", sm: "row" }}
+                              gap={{ base: 2, sm: 4 }}
                             >
-                              <Text>
-                                Ben Carter has another call with Tom Mitchell
-                                and adds Julia Harper to the conference.
-                              </Text>
-                            </Box>
-                            <Box textAlign="center">
-                              <Image src={videocall} borderRadius={10} />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup2}
-                                onTouchEnd={closePopup2}
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mt={3}
+                              {" "}
+                              {/* Responsive layout */}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                w={"100%"}
+                                p={{ base: 4, sm: 5 }}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  Ben Carter has another call with Tom Mitchell
+                                  and adds Julia Harper to the conference.
+                                </Text>
+                              </Box>
+                              <Box textAlign="center">
+                                <Image src={videocall} borderRadius={10} />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup2}
+                                  onTouchEnd={closePopup2}
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  mt={3}
+                                  borderRadius={10}
+                                  w={"100%"}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Footer content, if needed */}
@@ -843,7 +699,7 @@ const EarlyMorning = () => {
                     <Modal isOpen={day5Popup3}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }} // Responsive width
                       >
                         <ModalHeader
@@ -851,42 +707,52 @@ const EarlyMorning = () => {
                           fontSize="25px"
                         ></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize="18px" className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            flexDirection={{ base: "column", sm: "row" }}
-                            gap={{ base: 2, sm: 4 }}
+                          <ModalBody
+                            fontSize="18px"
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            {" "}
-                            {/* Responsive layout */}
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={{ base: 4, sm: 5 }}
+                            <Flex
+                              flexDirection={{ base: "column", sm: "row" }}
+                              gap={{ base: 2, sm: 4 }}
                             >
-                              <Text>
-                                Ben Carter stands at the head of the conference
-                                table, addressing the executive team.
-                              </Text>
-                            </Box>
-                            <Box textAlign="center">
-                              <Image src={beforewithtom} borderRadius={10} />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup3}
-                                onTouchEnd={closePopup3}
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mt={3}
+                              {" "}
+                              {/* Responsive layout */}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                w={"100%"}
+                                p={{ base: 4, sm: 5 }}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  Ben Carter stands at the head of the
+                                  conference table, addressing the executive
+                                  team.
+                                </Text>
+                              </Box>
+                              <Box textAlign="center">
+                                <Image src={beforewithtom} borderRadius={10} />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup3}
+                                  onTouchEnd={closePopup3}
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  mt={3}
+                                  borderRadius={10}
+                                  w={"100%"}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Footer content, if needed */}
@@ -899,7 +765,7 @@ const EarlyMorning = () => {
                     <Modal isOpen={day5Popup4}>
                       <ModalOverlay />
                       <ModalContent
-                      bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }} // Responsive width
                       >
                         <ModalHeader
@@ -907,42 +773,51 @@ const EarlyMorning = () => {
                           fontSize="25px"
                         ></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize={{ base: "16px", sm: "18px" }}  className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            flexDirection={{ base: "column", sm: "row" }}
-                            gap={{ base: 2, sm: 4 }}
+                          <ModalBody
+                            fontSize={{ base: "16px", sm: "18px" }}
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            {" "}
-                            {/* Responsive layout */}
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={{ base: 4, sm: 5 }}
+                            <Flex
+                              flexDirection={{ base: "column", sm: "row" }}
+                              gap={{ base: 2, sm: 4 }}
                             >
-                              <Text>
-                                Ben Carter is on a video call with a key client,
-                                Mr. Williams.
-                              </Text>
-                            </Box>
-                            <Box textAlign="center">
-                              <Image src={videocall} borderRadius={10} />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup4}
-                                onTouchEnd={closePopup4}
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mt={3}
+                              {" "}
+                              {/* Responsive layout */}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                w={"100%"}
+                                p={{ base: 4, sm: 5 }}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  Ben Carter is on a video call with a key
+                                  client, Mr. Williams.
+                                </Text>
+                              </Box>
+                              <Box textAlign="center">
+                                <Image src={videocall} borderRadius={10} />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup4}
+                                  onTouchEnd={closePopup4}
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  mt={3}
+                                  borderRadius={10}
+                                  w={"100%"}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Footer content, if needed */}
@@ -954,7 +829,7 @@ const EarlyMorning = () => {
                     <Modal isOpen={day5Popup5}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }} // Responsive width
                       >
                         <ModalHeader
@@ -962,42 +837,51 @@ const EarlyMorning = () => {
                           fontSize="25px"
                         ></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize={{ base: "16px", sm: "18px" }} className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            flexDirection={{ base: "column", sm: "row" }}
-                            gap={{ base: 2, sm: 4 }}
+                          <ModalBody
+                            fontSize={{ base: "16px", sm: "18px" }}
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            {" "}
-                            {/* Responsive layout */}
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={{ base: 4, sm: 5 }}
+                            <Flex
+                              flexDirection={{ base: "column", sm: "row" }}
+                              gap={{ base: 2, sm: 4 }}
                             >
-                              <Text>
-                                Back in the war room, Ben gathers the executive
-                                team for a quick huddle.
-                              </Text>
-                            </Box>
-                            <Box textAlign="center">
-                              <Image src={backinwar} borderRadius={10} />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup5}
-                                onTouchEnd={closePopup5}
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mt={3}
+                              {" "}
+                              {/* Responsive layout */}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                w={"100%"}
+                                p={{ base: 4, sm: 5 }}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  Back in the war room, Ben gathers the
+                                  executive team for a quick huddle.
+                                </Text>
+                              </Box>
+                              <Box textAlign="center">
+                                <Image src={backinwar} borderRadius={10} />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup5}
+                                  onTouchEnd={closePopup5}
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  mt={3}
+                                  borderRadius={10}
+                                  w={"100%"}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Footer content, if needed */}
@@ -1009,7 +893,7 @@ const EarlyMorning = () => {
                     <Modal isOpen={day5Popup7}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "600px" }} // Responsive width
                       >
                         <ModalHeader
@@ -1017,44 +901,53 @@ const EarlyMorning = () => {
                           fontSize="25px"
                         ></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize={{ base: "16px", sm: "18px" }} className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Flex
-                            flexDirection={{ base: "column", sm: "row" }}
-                            gap={{ base: 2, sm: 4 }}
+                          <ModalBody
+                            fontSize={{ base: "16px", sm: "18px" }}
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            {" "}
-                            {/* Responsive layout */}
-                            <Box
-                              bgColor="white"
-                              boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
-                              borderRadius={10}
-                              p={{ base: 4, sm: 5 }}
+                            <Flex
+                              flexDirection={{ base: "column", sm: "row" }}
+                              gap={{ base: 2, sm: 4 }}
                             >
-                              <Text>
-                                The executive team gathers around the conference
-                                table. The room's atmosphere is tense, but
-                                there's a shared determination to address the
-                                situation head-on
-                              </Text>
-                            </Box>
-                            <Box textAlign="center">
-                              <Image src={gathers} borderRadius={10} />
-                              <Button
-                                colorScheme="teal"
-                                onClick={closePopup7}
-                                onTouchEnd={closePopup7}
-                                fontFamily="Croissant One"
-                                bg="black"
-                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                                mt={3}
+                              {" "}
+                              {/* Responsive layout */}
+                              <Box
+                                bgColor="white"
+                                boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)"
                                 borderRadius={10}
-                                w={"100%"}
+                                p={{ base: 4, sm: 5 }}
                               >
-                                Close
-                              </Button>
-                            </Box>
-                          </Flex>
-                        </ModalBody>
+                                <Text>
+                                  The executive team gathers around the
+                                  conference table. The room's atmosphere is
+                                  tense, but there's a shared determination to
+                                  address the situation head-on
+                                </Text>
+                              </Box>
+                              <Box textAlign="center">
+                                <Image src={gathers} borderRadius={10} />
+                                <Button
+                                  colorScheme="teal"
+                                  onClick={closePopup7}
+                                  onTouchEnd={closePopup7}
+                                  fontFamily="Croissant One"
+                                  bg="black"
+                                  _hover={{
+                                    bgColor: "#a1e8f0",
+                                    color: "black",
+                                  }}
+                                  mt={3}
+                                  borderRadius={10}
+                                  w={"100%"}
+                                >
+                                  Close
+                                </Button>
+                              </Box>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
                         <ModalFooter>
                           {/* Footer content, if needed */}
@@ -1066,7 +959,7 @@ const EarlyMorning = () => {
                     <Modal isOpen={day5Popup6}>
                       <ModalOverlay />
                       <ModalContent
-                        bg={'transparent'}
+                        bg={"transparent"}
                         maxW={{ base: "90%", sm: "800px" }} // Responsive width
                       >
                         <ModalHeader
@@ -1074,53 +967,58 @@ const EarlyMorning = () => {
                           fontSize="25px"
                         ></ModalHeader>
                         <Draggable>
-                        <ModalBody fontSize={{ base: "16px", sm: "18px" }} className="draggable-modal" borderRadius={10} bg="rgba(245, 255, 255, 0.8)" p={10}>
-                          <Heading>Note:</Heading>
-                          <Text>
-                            While the storage platform replicates themselves on
-                            a hardware basis, for applications with databases
-                            (almost all) it is necessary to back up the
-                            databases on some schedule; typically, on a
-                            twenty-four-hour basis. This company typically does
-                            this between 12:00 AM and 2:00 AM (note figure A in
-                            the Appendix. The database on Site 1 is halted and a
-                            quiet point (all transactions are halted) is taken
-                            insuring all buffers are written out and all
-                            transactions are completed. The database on Site 2
-                            is stop and an incremental (and much shorter backup)
-                            is done to a separate storage frame not use for the
-                            replication process; it this case, it is the
-                            previous generation of storage devices. These
-                            incremental backups will be saved for one week on
-                            this separate storage frame. Once a week, on a
-                            week-end, a full database backup is taken then the
-                            full backup and well as the incremental backups will
-                            be taken to take tape cassettes. To recover an
-                            application database, it takes the full back up as
-                            well as any incremental backups that have occurred
-                            since the week-end. The success rate of recovering
-                            from tape is approximately 97.5%. As you might have
-                            determined, it may take days to recover the
-                            applications that have failed.
-                          </Text>
-                          <Flex>
-                          <Button
-                            colorScheme="teal"
-                            onClick={closePopup6}
-                            onTouchEnd={closePopup7}
-                            fontFamily="Croissant One"
-                            bg="black"
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            ml="auto"
+                          <ModalBody
+                            fontSize={{ base: "16px", sm: "18px" }}
+                            className="draggable-modal"
+                            borderRadius={10}
+                            bg="rgba(245, 255, 255, 0.8)"
+                            p={10}
                           >
-                            Close
-                          </Button>
-                          </Flex>
-                        </ModalBody>
+                            <Heading>Note:</Heading>
+                            <Text>
+                              While the storage platform replicates themselves
+                              on a hardware basis, for applications with
+                              databases (almost all) it is necessary to back up
+                              the databases on some schedule; typically, on a
+                              twenty-four-hour basis. This company typically
+                              does this between 12:00 AM and 2:00 AM (note
+                              figure A in the Appendix. The database on Site 1
+                              is halted and a quiet point (all transactions are
+                              halted) is taken insuring all buffers are written
+                              out and all transactions are completed. The
+                              database on Site 2 is stop and an incremental (and
+                              much shorter backup) is done to a separate storage
+                              frame not use for the replication process; it this
+                              case, it is the previous generation of storage
+                              devices. These incremental backups will be saved
+                              for one week on this separate storage frame. Once
+                              a week, on a week-end, a full database backup is
+                              taken then the full backup and well as the
+                              incremental backups will be taken to take tape
+                              cassettes. To recover an application database, it
+                              takes the full back up as well as any incremental
+                              backups that have occurred since the week-end. The
+                              success rate of recovering from tape is
+                              approximately 97.5%. As you might have determined,
+                              it may take days to recover the applications that
+                              have failed.
+                            </Text>
+                            <Flex>
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup6}
+                                onTouchEnd={closePopup7}
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                                ml="auto"
+                              >
+                                Close
+                              </Button>
+                            </Flex>
+                          </ModalBody>
                         </Draggable>
-                        <ModalFooter>
-                          
-                        </ModalFooter>
+                        <ModalFooter></ModalFooter>
                       </ModalContent>
                     </Modal>
                   )}
@@ -1573,4 +1471,4 @@ const EarlyMorning = () => {
   );
 };
 
-export default EarlyMorning;
+export default EarlyMorning;       

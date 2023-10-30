@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Box,
   Divider,
@@ -11,6 +11,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Show,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -26,11 +27,31 @@ import folder from "../Images/folder.jpg";
 import figure from "../Images/figmabasics.png";
 import figma from "../Images/figmabasic.png";
 import figure3 from "../Images/figmabasics3.png";
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Start = () => {
-  const { head, pauseBtn, setPauseBtn } = useContext(MyContext);
+  const {
+    head,
+    pauseBtn,
+    setPauseBtn,
+    showSidebar,
+    setShowSideBar,
+    showCloseBtn,
+  } = useContext(MyContext);
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedSection, setSelectedSection] = useState(null);
+
+  const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
+
+
+  const handleclose = () => {
+    setShowSideBar(false);
+  };
+
+  const handleopen = () => {
+    setShowSideBar(true);
+  };
 
   const handlePause = () => {
     setPauseBtn(!pauseBtn);
@@ -71,21 +92,30 @@ const Start = () => {
         pl={5}
         pr={5}
         color={"white"}
+        // border={"10px solid white"}
       >
-        <Heading fontFamily={"caliber"} size={"lg"}>
-          Leading Through Disruption <Text fontSize={25} display={"inline"} textAlign={"end"}>&#169;</Text>
-        </Heading>
-        <Box width={"35%"}>
-          <Heading size={"md"} fontWeight={"500"} fontFamily={"Fredoka"}>
+        <Show above="md">
+          <Heading fontFamily={"caliber"} size={"lg"}>
+            Leading Through Disruption{" "}
+            <Text fontSize={17} display={"inline"} textAlign={"end"}>
+              &#169;
+            </Text>
+          </Heading>
+        </Show>
+
+        <Show breakpoint="(max-width : 900px)">
+        {showSidebar ? (
+          <AiOutlineClose onClick={handleclose} fontWeight={"bold"} fontSize={30} />
+        ) : (
+            <HamburgerIcon onClick={handleopen} fontSize={30} />
+            )}
+            </Show>
+        <Box width={isMobile ? "40%" : "35%"} border={"0px solid white"}>
+          <Heading size={isMobile ? "sm" : "md"} fontWeight={"500"} fontFamily={"Fredoka"}>
             {head}
           </Heading>
         </Box>
-        <Text
-          color={"black"}
-          cursor={"pointer"}
-          fontSize={45}
-          onClick={handlePause}
-        >
+        <Text cursor={"pointer"} fontSize={ isMobile ? 35 :45} onClick={handlePause}>
           {pauseBtn ? (
             <MdNotStarted color="green" />
           ) : (
@@ -103,7 +133,7 @@ const Start = () => {
             alignItems: "center",
           }}
         >
-          <Image src={folder} w={10} sizes="30px" cursor={"pointer"} />
+          <Image src={folder} w={isMobile? 7:10} sizes="30px" cursor={"pointer"} />
           {showDropdown && (
             <div
               style={{

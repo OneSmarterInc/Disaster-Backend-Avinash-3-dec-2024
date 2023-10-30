@@ -60,23 +60,21 @@ const Start = () => {
   };
 
   return (
-    <Box h={"88vh"}>
+    <Box>
       <Flex
         bgColor="#343541"
         justifyContent={"space-between"}
         alignItems={"center"}
         w={"100%"}
         m={"auto"}
-        h={"20"}
-        pl={5}
-        pr={5}
+        h={["80px", "20"]} // Adjust the height for mobile view
+        pl={4}
+        pr={4}
         color={"white"}
-        
-
->
-        <Heading fontFamily={"caliber"} size={"lg"}>Leading Through Disruption</Heading>
-        <Box width={"35%"}>
-        <Heading  size={"md"} fontWeight={"500"} fontFamily={"Fredoka"}>
+      >
+        <Heading fontFamily={"caliber"} size={["md", "lg"]}>Leading Through Disruption</Heading>
+        <Box display={["none", "block"]} width={"35%"}>
+        <Heading  size={["xs", "md"]} fontWeight={"500"} fontFamily={"Fredoka"}>
 
           {head}
         </Heading>
@@ -85,7 +83,7 @@ const Start = () => {
         <Text
           color={"black"}
           cursor={"pointer"}
-          fontSize={45}
+          fontSize={25}
           onClick={handlePause}
         >
           {pauseBtn ? (

@@ -1107,7 +1107,7 @@ const EarlyMorning = () => {
                           <Button
                             colorScheme="teal"
                             onClick={closePopup6}
-                            onTouchEnd={closePopup7}
+                            onTouchEnd={closePopup6}
                             fontFamily="Croissant One"
                             bg="black"
                             _hover={{ bgColor: "#a1e8f0", color: "black" }}

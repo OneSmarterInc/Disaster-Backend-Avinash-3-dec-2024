@@ -45,20 +45,27 @@ function traverse(obj, firstRecursion = false) {
 }
 
 const StyledTreeExample = () => (
-
-  <Tree
-    lineWidth={"3px"}
-    lineColor={"#0070D2"}
-    lineBorderRadius={"10px"}
-    label={
-      <HumanTiles
-        data={{ name: data.name, designation: data.role, url: data.img }}
-      />
-    }
+  <Box
+    display="flex"
+    justifyContent="center"
+    alignItems="center"
+    width="100%"
+    overflowX="auto"
+    padding="20px"
   >
-    {traverse(data, true)}
-    
-  </Tree>
+    <Tree
+      lineWidth={"2px"}
+      lineColor={"#0070D2"}
+      lineBorderRadius={"10px"}
+      label={
+        <HumanTiles
+          data={{ name: data.name, designation: data.role, url: data.img }}
+        />
+      }
+    >
+      {traverse(data, true)}
+    </Tree>
+  </Box>
 );
 
 export default StyledTreeExample;

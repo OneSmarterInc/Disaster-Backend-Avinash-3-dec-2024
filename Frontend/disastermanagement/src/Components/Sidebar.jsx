@@ -156,9 +156,9 @@ const Sidebar = () => {
               <External />
             </Flex>
           )}
-          <Text color={'gray.100'}>
+          {/* <Text color={'gray.100'}>
             --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-          </Text>
+          </Text> */}
           {selectedSection === "Chat" && <Chat />}
           {selectedSection === "deliverable" && <Deliverable />}
           {selectedSection === "debrief" && <Debrief />}

@@ -58,7 +58,7 @@ import suncast from "../userImages/suncast.jpg";
 import benc from "../userImages/ben&c.jpg";
 import across from "../userImages/across.jpg";
 import tvscreen from "../userImages/tvscreen.jpg";
-import figure2 from "../userImages/figmabasics2.png";
+import figure2 from "../userImages/figmabasics2.jpg";
 
 import butterfly from "../userImages/butterfly.jpg";
 const Morning5 = () => {
@@ -400,15 +400,14 @@ const Morning5 = () => {
   const closePopup11 = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-    setImgSrc(figure2);
+    // setImgSrc(figure2);
     setHead("Epilog-2");
 
     setDay5Popup11(false);
     // onClose();
     setChatPaused(false);
-    setTimeout(() => {
-      setShowBox(true);
-    }, 4000);
+
+    setShowBox(true);
   };
 
   const closePopup12 = () => {
@@ -1433,10 +1432,10 @@ const Morning5 = () => {
                     </Modal>
                   )}
                   {showPopup11 && (
-                    <Modal isOpen={day5Popup11} isCentered>
+                    <Modal isOpen={day5Popup11} isCentered >
                       <ModalOverlay />
                       <ModalContent
-                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                        maxW={{ base: "90%", sm: "80%", md: "60%" }}
                         borderRadius={10}
                         bg={"transparent"}
                       >
@@ -1475,7 +1474,8 @@ const Morning5 = () => {
                               restitution for the event.
                             </Text>
                             <br />
-                            <Text>
+                            <Image src={figure2} />
+                            <Text mt={2}>
                               <strong>Note:</strong> You can see more details of
                               all diagrams in document section.
                             </Text>
@@ -1487,7 +1487,7 @@ const Morning5 = () => {
                               bg="teal.500"
                               _hover={{ bgColor: "teal.600" }}
                               borderRadius={10}
-                              ml={450}
+                              ml={"750px"}
                             >
                               Close
                             </Button>

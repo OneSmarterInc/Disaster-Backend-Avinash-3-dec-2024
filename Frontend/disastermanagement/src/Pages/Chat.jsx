@@ -198,7 +198,9 @@ const Chat = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <EarlyMorning4 />
+
+        <EarlyMorning />
+
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : value === "Remaining calm and level-headed during challenges" ? (
@@ -234,9 +236,11 @@ const Chat = () => {
               w={isMobile ? "10%" : "13%"}
               overflow="auto"
               style={{
+
                 backgroundImage: isMobile
                   ? "none"
                   : "linear-gradient(32deg,grey 0%, white 100%)",
+
               }}
             >
               <Box pt={3} borderBottom={"0px solid black"}>
@@ -287,7 +291,9 @@ const Chat = () => {
               border="0px solid red"
               overflow="auto"
               ref={chatContainerRef}
+
               pb={5}
+
               bgImage={imgsrc}
               bgRepeat="no-repeat"
               bgSize={isMobile ? "cover" : "cover"}
@@ -296,6 +302,7 @@ const Chat = () => {
               flexDirection="column"
               alignItems={isMobile ? "center" : "flex-start"}
             >
+
               <Box
                 border={"1px solid black"}
                 bgColor={"#030405"}

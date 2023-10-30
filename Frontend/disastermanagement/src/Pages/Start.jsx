@@ -71,16 +71,14 @@ const Start = () => {
         pl={5}
         pr={5}
         color={"white"}
-        
-
->
-        <Heading fontFamily={"caliber"} size={"lg"}>Leading Through Disruption</Heading>
-        <Box width={"35%"}>
-        <Heading  size={"md"} fontWeight={"500"} fontFamily={"Fredoka"}>
-
-          {head}
+      >
+        <Heading fontFamily={"caliber"} size={"lg"}>
+          Leading Through Disruption <Text fontSize={25} display={"inline"} textAlign={"end"}>&#169;</Text>
         </Heading>
-
+        <Box width={"35%"}>
+          <Heading size={"md"} fontWeight={"500"} fontFamily={"Fredoka"}>
+            {head}
+          </Heading>
         </Box>
         <Text
           color={"black"}
@@ -152,13 +150,7 @@ const Start = () => {
       </Flex>
       {/* ... Rest of your code ... */}
 
-      <Box
-      
-        fontFamily={"Fredoka"}
-        w={"100%"}
-        m={"auto"}
-        h={"100%"}
-      >
+      <Box fontFamily={"Fredoka"} w={"100%"} m={"auto"} h={"100%"}>
         <Sidebar />
       </Box>
 
@@ -166,11 +158,11 @@ const Start = () => {
       <Modal isOpen={isImagesModalOpen} onClose={onImagesModalClose} isCentered>
         <ModalOverlay />
         <ModalContent maxW={"5xl"}>
-          <ModalHeader textAlign={'center'}>Detailed Architecture</ModalHeader>
+          <ModalHeader textAlign={"center"}>Detailed Architecture</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-          <ModalHeader>Data Processing Setup:</ModalHeader>
-            <Image src={figma} w={"100%"}/>
+            <ModalHeader>Data Processing Setup:</ModalHeader>
+            <Image src={figma} w={"100%"} />
             <Divider borderBottomWidth="4px" mt={20} borderColor={"black"} />
 
             <ModalHeader mt={10}>Storage Vendor's Restitution</ModalHeader>
@@ -178,8 +170,6 @@ const Start = () => {
             <Divider borderBottomWidth="4px" mt={20} borderColor={"black"} />
             <ModalHeader mt={10}>Configuration</ModalHeader>
             <Image src={figure} w={"100%"} />
-
-            
 
             {/* You can add more content here */}
           </ModalBody>

@@ -62,7 +62,7 @@ const Info = () => {
             color={useColorModeValue("black", "white")}
           >
            An Executive Simulation on Disaster
-            Managament <Text fontSize={isMobile ? 10 : 17} display={"inline"} textAlign={"end"}>&#169;</Text>
+            Managament <Text fontSize={isMobile ? 10 : 17} display={"inline"} ><sup>&#169;</sup></Text>
           </Text>
           {/* ... Rest of your text content ... */}
           <Text

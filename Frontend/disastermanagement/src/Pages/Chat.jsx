@@ -246,7 +246,7 @@ const Chat = () => {
           border={"0px solid red"}
           w={"100%"}
           m={"auto"}
-          h={isMobile ? "90vh" : "88vh"}
+          h={isMobile ? "100vh" : "88vh"}
           display="flex"
           flexWrap="wrap"
         >

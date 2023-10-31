@@ -14,6 +14,8 @@ import { Link } from "react-router-dom";
 import homepage from "../Images/homepage.jpg";
 
 const Info = () => {
+  const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
+
   useEffect(() => {
     // Scroll to the top of the page when the component mounts
     window.scrollTo(0, 0);
@@ -30,9 +32,11 @@ const Info = () => {
         bgRepeat={"no-repeat"}
         bgImage={homepage}
         position="relative" // Add this line
+        border={"1px solid red"}
+        w={isMobile && "100%"}
       >
         <Box
-          w={"90%"}
+          w={isMobile ? "100%" : "90%"}
           m={"auto"}
           mt={"10px"}
           p={8}
@@ -42,7 +46,7 @@ const Info = () => {
           borderRadius="lg"
         >
           <Text
-            fontSize={24}
+            fontSize={isMobile ? 12 : 24}
             fontWeight={"bold"}
             textAlign="center"
             mt={4}
@@ -51,18 +55,18 @@ const Info = () => {
             Leading Through Disruption 
           </Text>
           <Text
-            fontSize={24}
+            fontSize={isMobile ? 12 : 24}
             fontWeight={"bold"}
             textAlign="center"
             mb={4}
             color={useColorModeValue("black", "white")}
           >
            An Executive Simulation on Disaster
-            Managament <Text fontSize={17} display={"inline"} textAlign={"end"}>&#169;</Text>
+            Managament <Text fontSize={isMobile ? 10 : 17} display={"inline"} textAlign={"end"}>&#169;</Text>
           </Text>
           {/* ... Rest of your text content ... */}
           <Text
-            fontSize={14}
+            fontSize={isMobile ? 10 : 14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
           >
@@ -75,7 +79,7 @@ const Info = () => {
           </Text>
           <br />
           <Text
-            fontSize={14}
+            fontSize={isMobile ? 10 : 14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
           >
@@ -88,7 +92,7 @@ const Info = () => {
           </Text>
           <br />
           <Text
-            fontSize={14}
+            fontSize={isMobile ? 10 : 14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
           >
@@ -99,7 +103,7 @@ const Info = () => {
           </Text>
           <br />
           <Text
-            fontSize={14}
+            fontSize={isMobile ? 10 : 14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
             fontWeight={"bold"}
@@ -108,7 +112,7 @@ const Info = () => {
           </Text>
           <br />
           <Text
-            fontSize={14}
+            fontSize={isMobile ? 10 : 14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
             fontWeight={"bold"}
@@ -118,7 +122,7 @@ const Info = () => {
           <ul>
             <li>
               <Text
-                fontSize={14}
+                fontSize={isMobile ? 10 : 14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -131,7 +135,7 @@ const Info = () => {
           </ul>
           <br />
           <Text
-            fontSize={14}
+            fontSize={isMobile ? 10 : 14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
             fontWeight={"bold"}
@@ -141,7 +145,7 @@ const Info = () => {
           <ul>
             <li>
               <Text
-                fontSize={14}
+                fontSize={isMobile ? 10 : 14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -151,7 +155,7 @@ const Info = () => {
             </li>
             <li>
               <Text
-                fontSize={14}
+                fontSize={isMobile ? 10 : 14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -162,7 +166,7 @@ const Info = () => {
           </ul>
           <br />
           <Text
-            fontSize={14}
+            fontSize={isMobile ? 10 : 14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
             fontWeight={"bold"}
@@ -172,7 +176,7 @@ const Info = () => {
           <ul>
             <li>
               <Text
-                fontSize={14}
+                fontSize={isMobile ? 10 : 14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -182,7 +186,7 @@ const Info = () => {
             </li>
             <li>
               <Text
-                fontSize={14}
+                fontSize={isMobile ? 10 : 14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -194,7 +198,7 @@ const Info = () => {
           </ul>
           <br />
           <Text
-            fontSize={14}
+            fontSize={isMobile ? 10 : 14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
             fontWeight={"bold"}
@@ -204,7 +208,7 @@ const Info = () => {
           <ul>
             <li>
               <Text
-                fontSize={14}
+                fontSize={isMobile ? 10 : 14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -214,7 +218,7 @@ const Info = () => {
             </li>
             <li>
               <Text
-                fontSize={14}
+                fontSize={isMobile ? 10 : 14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -225,7 +229,7 @@ const Info = () => {
           </ul>
           <br />
           <Text
-            fontSize={14}
+            fontSize={isMobile ? 10 : 14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
             fontWeight={"bold"}
@@ -245,7 +249,7 @@ const Info = () => {
             </li>
             <li>
               <Text
-                fontSize={14}
+                fontSize={isMobile ? 10 : 14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -256,7 +260,7 @@ const Info = () => {
           </ul>
           <br />
           <Text
-            fontSize={14}
+            fontSize={isMobile ? 10 : 14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
             fontWeight={"bold"}
@@ -266,7 +270,7 @@ const Info = () => {
           <ul>
             <li>
               <Text
-                fontSize={14}
+                fontSize={isMobile ? 10 : 14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -276,7 +280,7 @@ const Info = () => {
             </li>
             <li>
               <Text
-                fontSize={14}
+                fontSize={isMobile ? 10 : 14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >
@@ -288,7 +292,7 @@ const Info = () => {
           </ul>
           <br/>
           <Text
-            fontSize={14}
+            fontSize={isMobile ? 10 : 14}
             textAlign="justify"
             color={useColorModeValue("black", "gray.800")}
           >
@@ -301,8 +305,8 @@ const Info = () => {
           </Text>
         </Box>
 
-        <Center mt={4}>
-          <Button bgColor="#35A6F5" px={6} py={3}>
+        <Center mt={isMobile ? 2 : 4}>
+          <Button bgColor="#35A6F5" px={6} py={3} size={isMobile && "sm"} fontSize={isMobile && 10} mr={isMobile ? 0 : 3}>
             <Link to={"/DSRBC"}>Start</Link>
           </Button>
         </Center>

@@ -4,6 +4,7 @@ import "./intro.css";
 import { Link } from "react-router-dom";
 
 const Intro = () => {
+  const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
   useEffect(() => {
     // Scroll to the top of the page when the component mounts
@@ -33,7 +34,7 @@ const Intro = () => {
         >
           <Heading
            
-           fontSize={["2xl", "3xl"]}
+           fontSize={["md", "3xl"]}
             
           >
             Introduction
@@ -161,14 +162,14 @@ const Intro = () => {
           <Link to="/start">
           <Button
               w={["100%", "28%"]} // Adjust button width based on screen size
-              pt={8}
-              pb={8}
+              pt={isMobile ? 1 : 8}
+              pb={isMobile ? 1 : 8}
               fontFamily={"Fredoka"}
               id="begin"
               bgColor={"black"}
               color={"white"}
               border={"1px solid black"}
-              fontSize={["md", "2xl"]} // Adjust font size based on screen size
+              fontSize={["sm", "2xl"]} // Adjust font size based on screen size
               mt={["20px", "45px"]} // Adjust margin top based on screen size
             >
               Begin

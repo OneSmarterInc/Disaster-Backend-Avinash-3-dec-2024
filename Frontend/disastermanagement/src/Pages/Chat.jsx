@@ -52,6 +52,7 @@ const Chat = () => {
   const [textBox, setTextBox] = useState(
     " The office of Ben Carter. He's wrapping up for the day, shutting down his computer,gathering his things, and exchanging a few words with his colleagues before heading out."
   );
+  const [ptr, setPtr] = useState(0);
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -76,11 +77,7 @@ const Chat = () => {
   }, []);
 
   const scrollToBottom = () => {
-    // if (currentMessageIndex > 3) {
-    //   setHead("Day 1 - Late Evening: Sporadic Issues Continue");
-    // } else {
-    //   setHead("Day 1 - Evening : How it all begins");
-    // }
+   
 
     const container = chatContainerRef.current;
     if (container) {
@@ -88,7 +85,7 @@ const Chat = () => {
     }
   };
 
-  const users = [
+  const user = [
     {
       name: "Ben Carter",
       url: bencarter,
@@ -117,11 +114,13 @@ const Chat = () => {
             setTimeout(() => {
               setShowPopup(true);
             }, 2000);
+            setPtr(1)
           } else if (currentMessageIndex === 2) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup2(true);
             }, 2000);
+            setPtr(2)
           } else if (currentMessageIndex === 5) {
             setChatPaused(true);
             setTimeout(() => {
@@ -189,6 +188,29 @@ const Chat = () => {
 
   const visibleMessages = dayOneMorning.slice(startIndex, currentMessageIndex);
 
+  const scene = [0,2,5];
+  const visibleMessagess = dayOneMorning.slice(startIndex, scene[ptr]);
+  let temp = [];
+  let final = [];
+  let users = [];
+
+  for(let i = 0;i<visibleMessagess.length;i++){
+    temp.push(visibleMessagess[i]["sender"]);
+  }
+  const uniqueTemp = [...new Set(temp)];
+  console.log(uniqueTemp)
+ 
+  for(let i =  0; i<uniqueTemp.length;i++){
+    for(let j = 0;j< user.length;j++){
+      if (user[j].name == uniqueTemp[i]){
+        final.push({"url":user[j].url,"name":user[j].name})
+
+  }
+  //setUsers(final)
+  users = final
+}
+}
+
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
   const userAvatarSize = isMobile ? "30px" : "55px";
@@ -199,7 +221,7 @@ const Chat = () => {
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
 
-        <EarlyMorning />
+        <BringDown />
 
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />

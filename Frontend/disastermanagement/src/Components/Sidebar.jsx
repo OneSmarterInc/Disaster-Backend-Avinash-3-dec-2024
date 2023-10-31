@@ -23,7 +23,7 @@ const Sidebar = () => {
   } = useContext(MyContext);
 
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
-
+  const isDesktop = window.innerWidth > 600; // Define your mobile breakpoint
 
   const [isHovered, setIsHovered] = useState(false);
   const sidebarRef = useRef(null);
@@ -52,7 +52,14 @@ const Sidebar = () => {
 
   return (
     <>
-      <Box display="flex" flexDirection="row" height={"88vh"} bg={"white"}>
+      <Box
+        display="flex"
+        flexDirection="row"
+        height={"88vh"}
+        bg={"white"}
+        border={"0px solid red"}
+        w={"100%"}
+      >
         {showSidebar || isHovered ? (
           <VStack
             spacing={4}
@@ -66,24 +73,24 @@ const Sidebar = () => {
               willChange: "transform", // hint to browsers for performance
             }}
             fontFamily={"Fredoka"}
-            fontSize={20}
-            pl={5}
-            pr={5}
-            pt={5}
+            fontSize={isMobile ? 8 : 20}
+            pl={isMobile ? 1 : 5}
+            pr={isMobile ? 1 : 5}
+            pt={isMobile ? 1 : 5}
             onMouseOver={handleMouseOver}
             onMouseLeave={handleMouseLeave}
             ref={sidebarRef}
           >
             <Show above="md">
-            {showCloseBtn && (
-              <AiOutlineClose
-                onClick={handleclose}
-                cursor={"pointer"}
-                fontWeight={"bold"}
-              />
-            )}
+              {showCloseBtn && (
+                <AiOutlineClose
+                  onClick={handleclose}
+                  cursor={"pointer"}
+                  fontWeight={"bold"}
+                />
+              )}
             </Show>
-           
+
             <Text
               onClick={() => handleSectionClick("Prepare")}
               cursor="pointer"
@@ -109,7 +116,7 @@ const Sidebar = () => {
               onClick={() => handleSectionClick("deliverable")}
               cursor="pointer"
               fontWeight={selectedSection === "deliverable" ? "bold" : "none"}
-              pointerEvents={deliverableState ? "auto" : "none"}
+              // pointerEvents={deliverableState ? "auto" : "none"}
               color={deliverableState ? "black" : "gray"}
             >
               Deliverable
@@ -118,7 +125,7 @@ const Sidebar = () => {
               onClick={() => handleSectionClick("debrief")}
               cursor="pointer"
               fontWeight={selectedSection === "debrief" ? "bold" : "none"}
-              pointerEvents={globalState ? "auto" : "none"}
+              // pointerEvents={globalState ? "auto" : "none"}
               color={globalState ? "black" : "gray"}
             >
               Debrief
@@ -128,22 +135,22 @@ const Sidebar = () => {
           <></>
         )}
         <Show above="md">
-        {!showSidebar && (
-          <BsArrowRightSquareFill
-            ref={menuButtonRef}
-            onMouseOver={handleMouseOver}
-            onMouseLeave={handleMouseLeave}
-            onClick={handleopen}
-            cursor={"pointer"}
-            size={"25px"}
-          />
-        )}
-
+          {!showSidebar && (
+            <BsArrowRightSquareFill
+              ref={menuButtonRef}
+              onMouseOver={handleMouseOver}
+              onMouseLeave={handleMouseLeave}
+              onClick={handleopen}
+              cursor={"pointer"}
+              size={"25px"}
+            />
+          )}
         </Show>
         <Box
           bg={"gray.100"}
           overflowX="auto"
           padding={selectedSection === "Hierarchy" ? "10" : "0"}
+          border={"0px solid black"}
           w={
             selectedSection === "debrief" || selectedSection === "deliverable"
               ? "100%"
@@ -166,12 +173,17 @@ const Sidebar = () => {
             </Flex>
           )}
 
-          {selectedSection === "debrief" && (
+          {isDesktop && selectedSection === "debrief" && (
             <Text color={"gray.100"}>
               -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             </Text>
           )}
 
+          {isMobile && selectedSection === "debrief" && (
+            <Text color={"gray.100"}>
+             --------------------------------------
+            </Text>
+          )}
 
           {selectedSection === "Chat" && <Chat />}
           {selectedSection === "deliverable" && <Deliverable />}

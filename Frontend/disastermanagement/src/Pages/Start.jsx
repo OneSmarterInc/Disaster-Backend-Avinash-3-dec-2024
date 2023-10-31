@@ -97,9 +97,9 @@ const Start = () => {
       >
         <Show above="md">
           <Heading fontFamily={"caliber"} size={"lg"}>
-            Leading Through Disruption{" "}
-            <Text fontSize={17} display={"inline"} textAlign={"end"}>
-              &#169;
+            Leading Through Disruption
+            <Text fontSize={17} display={"inline"}  >
+             <sup>&#169;</sup> 
             </Text>
           </Heading>
         </Show>

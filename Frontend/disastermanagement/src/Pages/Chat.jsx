@@ -244,7 +244,7 @@ const Chat = () => {
                   return (
                     <Tooltip
                       label={
-                        (el.name === "Ben Carter" && "CEO") ||
+                        (el.name === "Ben Carter" && "CIO") ||
                         (el.name === "Kate Sullivan" && "IT Director")
                       }
                     >

@@ -117,7 +117,7 @@ const Sidebar = () => {
               onClick={() => handleSectionClick("deliverable")}
               cursor="pointer"
               fontWeight={selectedSection === "deliverable" ? "bold" : "none"}
-              // pointerEvents={deliverableState ? "auto" : "none"}
+              pointerEvents={deliverableState ? "auto" : "none"}
               color={deliverableState ? "black" : "gray"}
             >
               Deliverable
@@ -126,7 +126,7 @@ const Sidebar = () => {
               onClick={() => handleSectionClick("debrief")}
               cursor="pointer"
               fontWeight={selectedSection === "debrief" ? "bold" : "none"}
-              // pointerEvents={globalState ? "auto" : "none"}
+              pointerEvents={globalState ? "auto" : "none"}
               color={globalState ? "black" : "gray"}
             >
               Debrief

@@ -197,10 +197,10 @@ const Start = () => {
             <Image src={figma} w={"100%"} />
             <Divider borderBottomWidth="4px" mt={20} borderColor={"black"} />
 
-            <ModalHeader mt={10}>Storage Vendor's Restitution</ModalHeader>
+            <ModalHeader mt={10}>Original Architecture</ModalHeader>
             <Image src={figure3} w={"100%"} />
             <Divider borderBottomWidth="4px" mt={20} borderColor={"black"} />
-            <ModalHeader mt={10}>Configuration</ModalHeader>
+            <ModalHeader mt={10}>Storage Vendor's Restitution</ModalHeader>
             <Image src={figure} w={"100%"} />
 
             {/* You can add more content here */}

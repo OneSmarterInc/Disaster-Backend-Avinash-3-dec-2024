@@ -415,6 +415,11 @@ const Morning5 = () => {
     setSelectedValue(value);
   };
 
+  const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
+
+  const userAvatarSize = isMobile ? "30px" : "55px";
+  const messageFontSize = isMobile ? "16px" : "18px";
+
   return (
     <>
       {selectedValue ===
@@ -441,16 +446,19 @@ const Morning5 = () => {
           border={"0px solid red"}
           w={"100%"}
           m={"auto"}
-          h={"88vh"}
+          h={isMobile ? "90vh" : "88vh"}
+          display="flex"
+          flexWrap="wrap"
         >
           <Flex h={"88vh"}>
             <Box
-              h={"88vh"}
-              w={"13%"}
-              overflow={"auto"}
-              // bgColor="#948888"
+              h={isMobile ? "90vh" : "88vh"}
+              w={isMobile ? "27%" : "13%"}
+              overflow="auto"
               style={{
-                backgroundImage: "linear-gradient(32deg,grey 0%, white 100%)",
+                backgroundImage: isMobile
+                  ? "none"
+                  : "linear-gradient(32deg,grey 0%, white 100%)",
               }}
             >
               <Box
@@ -486,22 +494,29 @@ const Morning5 = () => {
                             "Communications Lead")
                         }
                       >
-                        <Box key={el.name} cursor={"pointer"}>
+                        <Box
+                          borderBottom="0px solid black"
+                          key={el.name}
+                          cursor="pointer"
+                          display="flex"
+                          flexDirection={isMobile ? "column" : "column"}
+                          alignItems="center"
+                        >
                           <Box
-                            h={"6vh"}
-                            w={"55px"}
-                            m={"auto"}
-                            mt={5}
-                            borderRadius={"50%"}
+                            h={userAvatarSize}
+                            w={userAvatarSize}
+                            m="auto"
+                            mt={isMobile ? "17%" : 0}
+                            borderRadius="50%"
                             className={el.name === activeUser ? "active" : ""}
                           >
                             <Image borderRadius={"50%"} src={el.url} alt="" />
                           </Box>
                           <Text
                             className={el.name === activeUser ? "Tactive" : ""}
-                            fontSize={20}
-                            mt={6}
-                            cursor={"pointer"}
+                            fontSize={isMobile ? "14px" : "20px"}
+                            mb={isMobile ? 0 : 4}
+                            cursor="pointer"
                           >
                             {el.name.split(" ")[0]}
                           </Text>
@@ -530,22 +545,29 @@ const Morning5 = () => {
                           "Communications Lead")
                       }
                     >
-                      <Box id={el.name} key={el.name} cursor={"pointer"}>
+                      <Box
+                        borderBottom="0px solid black"
+                        key={el.name}
+                        cursor="pointer"
+                        display="flex"
+                        flexDirection={isMobile ? "column" : "column"}
+                        alignItems="center"
+                      >
                         <Box
-                          h={"6vh"}
-                          w={"55px"}
-                          m={"auto"}
-                          mt={5}
-                          borderRadius={"50%"}
+                          h={userAvatarSize}
+                          w={userAvatarSize}
+                          m="auto"
+                          mt={isMobile ? "17%" : 0}
+                          borderRadius="50%"
                           className={el.name === activeUser ? "active" : ""}
                         >
                           <Image borderRadius={"50%"} src={el.url} alt="" />
                         </Box>
                         <Text
                           className={el.name === activeUser ? "Tactive" : ""}
-                          fontSize={20}
-                          mt={6}
-                          cursor={"pointer"}
+                          fontSize={isMobile ? "14px" : "20px"}
+                          mb={isMobile ? 0 : 4}
+                          cursor="pointer"
                         >
                           {el.name === "Communications Lead"
                             ? "CL"
@@ -559,41 +581,19 @@ const Morning5 = () => {
             </Box>
 
             <Box
-              pt={5}
-              maxH={"88vh"}
-              w={"100%"}
-              border={"0px solid red"}
-              overflow={"auto"}
+              maxH={isMobile ? "100vh" : "88vh"}
+              w={isMobile ? "100%" : "90%"}
+              border="0px solid red"
+              overflow="auto"
               ref={chatContainerRef}
-              pb={2}
-              // bgImage={
-              //   currentMessageIndex > 33
-              //     ? figure2
-              //     : currentMessageIndex > 32
-              //     ? gajjistand
-              //     : currentMessageIndex > 24
-              //     ? respect
-              //     : currentMessageIndex > 15
-              //     ? calmoffice
-              //     : currentMessageIndex > 12
-              //     ? fewweeks
-              //     : currentMessageIndex > 9
-              //     ? email
-              //     : currentMessageIndex > 8
-              //     ? benc
-              //     : currentMessageIndex > 6
-              //     ? benc
-              //     : currentMessageIndex > 4
-              //     ? clapping
-              //     : currentMessageIndex > 3
-              //     ? clock
-              //     : currentMessageIndex > 1
-              //     ? recovery
-              //     : dashboard
-              // }
+              pb={5}
               bgImage={imgSrc}
-              bgRepeat={"no-repeat"}
-              bgSize={"cover"}
+              bgRepeat="no-repeat"
+              bgSize={isMobile ? "cover" : "cover"}
+              bgPosition={isMobile ? "center" : "none"}
+              display="flex"
+              flexDirection="column"
+              alignItems={isMobile ? "center" : "flex-start"}
             >
               <Box
                 border={"1px solid black"}
@@ -608,171 +608,15 @@ const Morning5 = () => {
                 pb={3}
                 visibility={currentMessageIndex > 33 ? "hidden" : "auto"}
               >
-                <Text fontSize={"20"}>{textBox}</Text>
+                <Text fontSize={isMobile ? "15" : "18"}>{textBox}</Text>
               </Box>
-              {/* {currentMessageIndex <= 1 && (
 
-                <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"20"}>
-                    Morning light floods the office. There's a palpable sense of
-                    cautious optimism. Team members, though visibly exhausted,
-                    are in high spirits, closely monitoring systems and
-                    validating data.{" "}
-                  </Text>
-                </Box>
-              )}
-
-              {currentMessageIndex > 1 && currentMessageIndex <= 11 && (
-                <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"20"}>
-                    Kate confirms system stability, close to completion. Liam
-                    anticipates final checks. Sophia reflects on the long
-                    journey with a hint of relief as the end nears.
-                  </Text>
-                </Box>
-              )}
-              {currentMessageIndex > 11 && currentMessageIndex <= 15 && (
-                <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"20"}>
-                    Ben Carter informs clients about the ongoing crisis at
-                    OrionTech, ensuring open communication and commitment to
-                    preventing future disruptions. Clients express appreciation
-                    for the transparency and dedication.
-                  </Text>
-                </Box>
-              )}
-
-              {currentMessageIndex > 15 && currentMessageIndex <= 23 && (
-                <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"20"}>
-                    Ben Carter realizes the data issue wasn't about the discs.
-                    Kate laments the time lost. They discuss the vendor's
-                    oversight and the importance of thorough investigation for
-                    the future.
-                  </Text>
-                </Box>
-              )}
-
-              {currentMessageIndex > 23 && (
-                <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                  visibility={currentMessageIndex >=33 ? "hidden" : "auto"}
-
-                >
-                  <Text fontSize={"20"}>
-                    Ben Carter and Gajji meet in person to debrief, discussing
-                    the project's progress, sharing insights, and strategizing
-                    for the next steps.Their face-to-face interaction fosters a
-                    deeper understanding of the situation and paves the way for
-                    effective collaboration.
-                  </Text>
-                </Box>
-
-              )} */}
-
-              {/* {currentMessageIndex < 24 ? (
-                <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"20"}>
-                    Morning light floods the office. There's a palpable sense of
-                    cautious optimism. Team members, though visibly exhausted,
-                    are in high spirits, closely monitoring systems and
-                    validating data --> Ben Carter and the OTC executive team
-                    reassured clients after the crisis was over.{" "}
-                  </Text>
-                </Box>
-              ) : (
-                <Box
-                  border={"1px solid black"}
-                  bgColor={"#030405"}
-                  color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
-                  textAlign={"left"}
-                  w={"90%"}
-                  pl={3}
-                  pt={3}
-                  pb={3}
-                >
-                  <Text fontSize={"20"}>
-                    Ben Carter and Gaji meet in person to debrief, discussing
-                    the project's progress, sharing insights, and strategizing
-                    for the next steps.Their face-to-face interaction fosters a
-                    deeper understanding of the situation and paves the way for
-                    effective collaboration.
-                  </Text>
-                </Box>
-              )} */}
               <Box
-                w={"90%"}
-                h={"68vh"}
-                border="0px solid red"
+                w={isMobile ? "100%" : "90%"}
+                pl={isMobile ? 2 : 5}
+                pr={isMobile ? 2 : 5}
                 m={"auto"}
-                pl={5}
-                pr={5}
+                h={"68vh"}
               >
                 <TransitionGroup>
                   {visibleMessages.map((el, i) => {
@@ -798,34 +642,30 @@ const Morning5 = () => {
                               ? "BenCarter"
                               : "KateSullivan"
                           }`}
+                          mb={4}
                         >
-                          <Box border={"0px solid red"} w={"50%"}>
-                            <Box
-                              boxShadow={
-                                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                              }
-                              border={"0px solid black"}
-                              bgColor={
-                                el.sender === "Ben Carter"
-                                  ? "#f0f0f0"
-                                  : "#030405"
-                              }
-                              color={
-                                el.sender === "Ben Carter" ? "black" : "white"
-                              }
-                              w={"100%"}
-                              borderRadius={"10px"}
-                              textAlign={"justify"}
-                              p={4}
-                              pl={5}
-                              pr={5}
-                              mt={10}
-                            >
-                              <Text>
-                                <span id="sender">{senderName}</span> :{" "}
-                                {el.message}
-                              </Text>
-                            </Box>
+                          <Box
+                            boxShadow="rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                            border="0px solid red"
+                            bgColor={
+                              el.sender === "Ben Carter" ? "#f0f0f0" : "#030405"
+                            }
+                            color={
+                              el.sender === "Ben Carter" ? "black" : "white"
+                            }
+                            w={isMobile ? "70%" : "50%"}
+                            borderRadius="10px"
+                            textAlign={isMobile ? "left" : "justify"}
+                            p={isMobile ? 2 : 4}
+                            pl={isMobile ? 3 : 5}
+                            pr={isMobile ? 3 : 5}
+                            mt={2}
+                            fontSize={isMobile ? "12px" : "15px"}
+                          >
+                            <Text>
+                              <span id="sender">{senderName}</span> :{" "}
+                              {el.message}
+                            </Text>
                           </Box>
                         </Box>
                       </CSSTransition>
@@ -1259,7 +1099,7 @@ const Morning5 = () => {
                               _hover={{ bgColor: "teal.600" }}
                               borderRadius={10}
                               mt={4}
-                              ml={450}
+                              ml={isMobile ? "200px" : "450px"}
                             >
                               Close
                             </Button>
@@ -1304,7 +1144,7 @@ const Morning5 = () => {
                               _hover={{ bgColor: "teal.600" }}
                               borderRadius={10}
                               mt={4}
-                              ml={450}
+                              ml={isMobile ? "200px" : "450px"}
                             >
                               Close
                             </Button>
@@ -1421,7 +1261,7 @@ const Morning5 = () => {
                               _hover={{ bgColor: "teal.600" }}
                               borderRadius={10}
                               mt={4}
-                              ml={450}
+                              ml={isMobile ? "200px" : "450px"}
                             >
                               Close
                             </Button>
@@ -1432,7 +1272,7 @@ const Morning5 = () => {
                     </Modal>
                   )}
                   {showPopup11 && (
-                    <Modal isOpen={day5Popup11} isCentered >
+                    <Modal isOpen={day5Popup11} isCentered>
                       <ModalOverlay />
                       <ModalContent
                         maxW={{ base: "90%", sm: "80%", md: "60%" }}
@@ -1487,7 +1327,8 @@ const Morning5 = () => {
                               bg="teal.500"
                               _hover={{ bgColor: "teal.600" }}
                               borderRadius={10}
-                              ml={"750px"}
+                              mt={3}
+                              ml={isMobile ? "200px" : "700px"}
                             >
                               Close
                             </Button>
@@ -1506,7 +1347,7 @@ const Morning5 = () => {
                       size="md"
                     >
                       <ModalOverlay />
-                      <ModalContent>
+                      <ModalContent mt={isMobile ? "50px" : "0px"}>
                         <ModalHeader>End of Simulation</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
@@ -1540,27 +1381,27 @@ const Morning5 = () => {
                     <>
                       <Box
                         bg={"white"}
-                        pb={10}
-                        w={"60%"}
+                        p={2}
+                        w={isMobile ? "100%" : "60%"} // Adjust the width for mobile view
                         m={"auto"}
-                        mt={"50px"}
+                        mt={isMobile ? "20px" : "50px"} // Adjust the top margin for mobile view
                         borderRadius={10}
                       >
                         {showBoxContent1 && (
                           <>
                             <Image
-                              w={"50%"}
+                              w={isMobile ? "80%" : "50%"} // Adjust the image width for mobile view
                               m={"auto"}
                               src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
                             />
                             <Flex
                               className="box"
-                              mb={"5"}
-                              mt={"10"}
+                              mb={5}
+                              mt={isMobile ? "5" : "5"} // Adjust the top margin for mobile view
                               boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                               alignItems={"center"}
                               justifyContent={"center"}
-                              h={"50px"}
+                              h={isMobile ? "auto" : "50px"}
                               bg={"#c8cfca"}
                               color={"black"}
                               fontWeight={"bold"}
@@ -1577,22 +1418,36 @@ const Morning5 = () => {
                               onChange={handleChange2}
                               value={value}
                             >
-                              <Box className="flex2" w={"80%"} m={"auto"}>
+                              <Box
+                                className="flex2"
+                                w={isMobile ? "90%" : "80%"}
+                                m={"auto"}
+                                pb={3}
+                              >
                                 <Box
-                                  border={"1px solid black"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                  borderRadius={"50px"}
+                                  // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Weaknesses in the system that can be exploited, leading to potential disasters">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex: 1, // Take up the available space for the label
                                       }}
                                     >
                                       <Radio
                                         fontFamily={"Fredoka"}
-                                        size={"lg"}
+                                        size={isMobile ? "sm" : "lg"}
                                         colorScheme="orange"
                                         value="Weaknesses in the system that can be exploited, leading to potential disasters"
                                         style={{
@@ -1607,16 +1462,24 @@ const Morning5 = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  w={"80%"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex: 1, // Take up the available space for the label
                                       }}
                                     >
                                       <Radio
@@ -1637,15 +1500,24 @@ const Morning5 = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Hardware or network breakdowns that can disrupt normal operations">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -1666,15 +1538,24 @@ const Morning5 = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Inadequate or failed backups that prevent or delay recovery efforts">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -1695,15 +1576,24 @@ const Morning5 = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Failures in internal and external communication systems during critical times">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -1724,15 +1614,24 @@ const Morning5 = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Absence of failover systems or processes that can act as a backup during primary system failures">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -1759,18 +1658,18 @@ const Morning5 = () => {
                         {showBoxContent2 && (
                           <>
                             <Image
-                              w={"50%"}
+                              w={isMobile ? "70%" : "50%"} // Adjust the image width for mobile view
                               m={"auto"}
                               src="https://img.freepik.com/free-vector/business-decisions-concept-illustration_114360-4096.jpg?w=740&t=st=1696672316~exp=1696672916~hmac=0b5a3d793d15d5eccf6f03a04e907baee2f1e59dc4292775fe4e025c871152be"
                             />
                             <Flex
                               className="box"
                               mb={"5"}
-                              mt={"10"}
+                              mt={isMobile ? "5" : "5"} // Adjust the top margin for mobile view
                               boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                               alignItems={"center"}
                               justifyContent={"center"}
-                              h={"50px"}
+                              h={"auto"}
                               bg={"#c8cfca"}
                               color={"black"}
                               fontWeight={"bold"}
@@ -1787,27 +1686,34 @@ const Morning5 = () => {
                             >
                               <Box
                                 className="flex"
-                                w={"80%"}
+                                w={isMobile ? "100%" : "80%"}
                                 m={"auto"}
-                                pb={"40px"}
-                                mt={"50px"}
+                                pb={4}
                               >
                                 <Box
-                                  border={"1px solid black"}
-                                  w={"70%"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "0" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Making clear and swift decisions under pressure">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
                                         fontFamily={"Fredoka"}
-                                        size={"lg"}
+                                        size={"10px"}
                                         colorScheme="orange"
                                         value="Making clear and swift decisions under pressure"
                                         style={{
@@ -1822,22 +1728,30 @@ const Morning5 = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  w={"80%"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "0" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Remaining calm and level-headed during challenges">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
                                         border="1px solid black"
                                         fontFamily={"Fredoka"}
-                                        size={"lg"}
+                                        size={"10px"}
                                         colorScheme="orange"
                                         value="Remaining calm and level-headed during challenges"
                                         style={{
@@ -1852,21 +1766,30 @@ const Morning5 = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "0" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Emphasizing teamwork, both internally and with external partners">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
                                         border="1px solid black"
                                         fontFamily={"Fredoka"}
-                                        size={"lg"}
+                                        size={"10px"}
                                         colorScheme="orange"
                                         value="Emphasizing teamwork, both internally and with external partners"
                                         style={{
@@ -1881,21 +1804,30 @@ const Morning5 = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "0" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Effectively conveying information, even in challenging circumstances">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
                                         border="1px solid black"
                                         fontFamily={"Fredoka"}
-                                        size={"lg"}
+                                        size={"10px"}
                                         colorScheme="orange"
                                         value="Effectively conveying information, even in challenging circumstances"
                                         style={{
@@ -1910,21 +1842,30 @@ const Morning5 = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "0" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Quickly adjusting strategies based on new information or changing scenarios">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
                                         border="1px solid black"
                                         fontFamily={"Fredoka"}
-                                        size={"lg"}
+                                        size={"10px"}
                                         colorScheme="orange"
                                         value="Quickly adjusting strategies based on new information or changing scenarios"
                                         style={{
@@ -1939,21 +1880,30 @@ const Morning5 = () => {
                                 </Box>
 
                                 <Box
-                                  border={"1px solid black"}
-                                  borderRadius={"50px"}
+                                  border="1px solid black"
+                                  borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
+                                  p={isMobile ? "0" : "1"} // Add padding to the box
+                                  bgColor={
+                                    isMobile ? "lightgray" : "transparent"
+                                  } // Set background color
+                                  display="flex" // Center radio button and label horizontally
+                                  alignItems="center"
+                                  justifyContent="space-between"
+                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                                 >
                                   <Tooltip label="Keeping an eye on long-term impacts and future implications during the crisis">
                                     <label
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
                                         border="1px solid black"
                                         fontFamily={"Fredoka"}
-                                        size={"lg"}
+                                        size={"10px"}
                                         colorScheme="orange"
                                         value="Keeping an eye on long-term impacts and future implications during the crisis"
                                         style={{
@@ -1971,9 +1921,9 @@ const Morning5 = () => {
                           </>
                         )}
                       </Box>
+                      <div ref={spacerRef} style={{ height: "40px" }}></div>
                     </>
                   )}
-
                   <div ref={spacerRef} style={{ height: "40px" }}></div>
                 </TransitionGroup>
               </Box>

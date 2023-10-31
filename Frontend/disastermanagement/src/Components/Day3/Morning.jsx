@@ -460,7 +460,7 @@ const Morning = () => {
               </Box>
             </Box>
             <Box
-              h={isMobile ? "100vh" : "88vh"}
+              h={isMobile ? "100%" : "88vh"}
               w={isMobile ? "100%" : "90%"}
               border="0px solid red"
               overflow="auto"
@@ -576,7 +576,7 @@ const Morning = () => {
                                 borderRadius={10}
                                 p={{ base: 4, sm: 5 }}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   The office atmosphere is tense. People are
                                   visibly tired.
                                 </Text>
@@ -641,7 +641,7 @@ const Morning = () => {
                                 borderRadius={10}
                                 p={{ base: 4, sm: 5 }}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   Alarms jolt everyone. There's an immediate
                                   sense of dread.
                                 </Text>
@@ -703,7 +703,7 @@ const Morning = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   The room is thick with tension as the storage
                                   vendor team joins.
                                 </Text>
@@ -769,7 +769,7 @@ const Morning = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   The weight of the situation is pressing down
                                   on everyone.
                                 </Text>
@@ -836,7 +836,7 @@ const Morning = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>After the first failure...</Text>
+                                <Text fontFamily={"Fredoka"}>After the first failure...</Text>
                               </Box>
                               <Box>
                                 <Image

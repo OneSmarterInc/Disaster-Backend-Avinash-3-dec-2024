@@ -55,11 +55,11 @@ const Sidebar = () => {
       <Box
         display="flex"
         flexDirection="row"
-        height={"88vh"}
+        // height={"88vh"}
         bg={"white"}
         border={"0px solid red"}
         w={"100%"}
-        h={isMobile ? "100vh" : "88vh"}
+        h={isMobile ? "100%" : "88vh"}
       >
         {showSidebar || isHovered ? (
           <VStack
@@ -159,6 +159,7 @@ const Sidebar = () => {
               ? "100%"
               : undefined
           }
+          h={isMobile && selectedSection === "Hierarchy" ? "100vh" : undefined}
         >
           {selectedSection === "Prepare" && <Prepare />}
           {selectedSection === "Hierarchy" && (

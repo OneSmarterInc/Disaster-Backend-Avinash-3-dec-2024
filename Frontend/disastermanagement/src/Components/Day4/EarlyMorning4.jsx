@@ -72,7 +72,7 @@ const EarlyMorning4 = () => {
   const [day5Popup4, setDay5Popup4] = useState(true);
   const [day5Popup5, setDay5Popup5] = useState(true);
   const [day5Popup6, setDay5Popup6] = useState(true);
-
+  const [ptr, setPtr] = useState(0);
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
@@ -131,7 +131,7 @@ const EarlyMorning4 = () => {
     setHead("Day 4 - Early Morning: Where will help come from?");
   }, []);
 
-  const users = [
+  const user = [
     {
       name: "Ben Carter",
       url: bencarter,
@@ -202,26 +202,31 @@ const EarlyMorning4 = () => {
             setTimeout(() => {
               setShowPopup(true);
             }, 8000);
+            setPtr(1);
           } else if (currentMessageIndex === 7) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup2(true);
             }, 2000);
+            setPtr(2);
           } else if (currentMessageIndex === 9) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup3(true);
             }, 2000);
+            setPtr(3);
           } else if (currentMessageIndex === 11) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup4(true);
             }, 2000);
+            setPtr(4);
           } else if (currentMessageIndex === 13) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup5(true);
             }, 2000);
+            setPtr(5);
           } else if (currentMessageIndex === 15) {
             setChatPaused(true);
             setTimeout(() => {
@@ -256,6 +261,7 @@ const EarlyMorning4 = () => {
     setDay5Popup(false);
     // onClose();
     setChatPaused(false);
+    
   };
   const closePopup2 = () => {
     // setShowPopup(false);
@@ -298,10 +304,35 @@ const EarlyMorning4 = () => {
 
   const visibleMessages = dayFourMorning.slice(startIndex, currentMessageIndex);
 
+
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
   const userAvatarSize = isMobile ? "30px" : "55px";
   const messageFontSize = isMobile ? "16px" : "18px";
+
+  const scene = [5,7,9,11,13,15];
+  const visibleMessagess = dayFourMorning.slice(startIndex, scene[ptr]);
+  let temp = [];
+  let final = [];
+  let users = [];
+
+  for(let i = 0;i<visibleMessagess.length;i++){
+    temp.push(visibleMessagess[i]["sender"]);
+  }
+  const uniqueTemp = [...new Set(temp)];
+  console.log(uniqueTemp)
+ 
+  for(let i =  0; i<uniqueTemp.length;i++){
+    for(let j = 0;j< user.length;j++){
+      if (user[j].name == uniqueTemp[i]){
+        final.push({"url":user[j].url,"name":user[j].name})
+
+  }
+  //setUsers(final)
+  users = final
+}
+}
+
 
   return (
     <>

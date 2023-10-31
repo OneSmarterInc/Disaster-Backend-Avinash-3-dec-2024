@@ -8,13 +8,15 @@ import FinalThoughts from "./FinalThoughts";
 import MyContext from "./ContextApi/MyContext";
 
 const Debrief = () => {
+  const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
+
   const {setHead} = useContext(MyContext);
   useEffect(()=>{
       setHead("")
   },[])
   return (
     <>
-      <Box id="container" >
+      <Box id="container"   >
         <AnalysisOfBen />
         <DimensionMatrix />
         <LeadershipFramework />

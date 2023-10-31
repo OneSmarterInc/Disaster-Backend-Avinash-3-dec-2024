@@ -91,7 +91,7 @@ const Morning5 = () => {
   const [day5Popup10, setDay5Popup10] = useState(true);
   const [day5Popup11, setDay5Popup11] = useState(true);
   const [day5Popup12, setDay5Popup12] = useState(true);
-
+  const [ptr, setPtr] = useState(0);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [showPopup2, setShowPopup2] = useState(false);
@@ -171,7 +171,7 @@ const Morning5 = () => {
     setHead("Day 5 - Morning: The day after...");
   }, []);
 
-  const users = [
+  const user = [
     {
       name: "Ben Carter",
       url: bencarter,
@@ -220,6 +220,29 @@ const Morning5 = () => {
 
   const visibleMessages = dayFiveMorning.slice(startIndex, currentMessageIndex);
 
+  const scene = [0,2,3,5,7,8,11,14,23,32,33];
+  const visibleMessagess = dayFiveMorning.slice(startIndex, scene[ptr]);
+  let temp = [];
+  let final = [];
+  let users = [];
+
+  for(let i = 0;i<visibleMessagess.length;i++){
+    temp.push(visibleMessagess[i]["sender"]);
+  }
+  const uniqueTemp = [...new Set(temp)];
+  console.log(uniqueTemp)
+ 
+  for(let i =  0; i<uniqueTemp.length;i++){
+    for(let j = 0;j< user.length;j++){
+      if (user[j].name == uniqueTemp[i]){
+        final.push({"url":user[j].url,"name":user[j].name})
+
+  }
+  //setUsers(final)
+  users = final
+}
+}
+
   useEffect(() => {
     const displayNextMessage = () => {
       if (!pauseBtn) {
@@ -230,51 +253,61 @@ const Morning5 = () => {
           if (currentMessageIndex === 7) {
             setShowPopup5(true);
             setChatPaused(true);
+            setPtr(5);
           } else if (currentMessageIndex === 0) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup2(true);
             }, 2000);
+            setPtr(1);
           } else if (currentMessageIndex === 2) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup3(true);
             }, 2000);
+            setPtr(2);
           } else if (currentMessageIndex === 3) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup4(true);
             }, 2000);
+            setPtr(3);
           } else if (currentMessageIndex === 5) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup10(true);
             }, 2000);
+            setPtr(4);
           } else if (currentMessageIndex === 8) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup(true);
             }, 2000);
+            setPtr(6);
           } else if (currentMessageIndex === 11) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup6(true);
             }, 2000);
+            setPtr(7);
           } else if (currentMessageIndex === 14) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup7(true);
             }, 2000);
+            setPtr(8);
           } else if (currentMessageIndex === 23) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup8(true);
             }, 2000);
+            setPtr(9);
           } else if (currentMessageIndex === 32) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup9(true);
             }, 2000);
+            setPtr(10);
           } else if (currentMessageIndex === 33) {
             setChatPaused(true);
             setTimeout(() => {

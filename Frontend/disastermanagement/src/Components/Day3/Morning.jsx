@@ -66,6 +66,7 @@ const Morning = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [ptr, setPtr] = useState(0);
 
   const [day5Popup, setDay5Popup] = useState(true);
   const [day5Popup2, setDay5Popup2] = useState(true);
@@ -130,7 +131,7 @@ const Morning = () => {
     setHead("Day 3 - Morning: Chasing solutions");
   }, []);
 
-  const users = [
+  const user = [
     {
       name: "Ben Carter",
       url: bencarter,
@@ -188,21 +189,25 @@ const Morning = () => {
             setTimeout(() => {
               setShowPopup(true);
             }, 2000);
+            setPtr(1);
           } else if (currentMessageIndex === 5) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup2(true);
             }, 2000);
+            setPtr(2);
           } else if (currentMessageIndex === 8) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup3(true);
             }, 2000);
+            setPtr(3);
           } else if (currentMessageIndex === 11) {
             setChatPaused(true);
             setTimeout(() => {
               setShowPopup4(true);
             }, 2000);
+            setPtr(4);
           } else if (currentMessageIndex === 12) {
             setChatPaused(true);
             setTimeout(() => {
@@ -229,7 +234,6 @@ const Morning = () => {
   const closePopup = () => {
     // setShowPopup(false);
     setStartIndex(currentMessageIndex);
-
     setDay5Popup(false);
     setTextBox(
       "The atmosphere in the office is charged with tension, and it's evident that the long hours and all day long demanding work have taken a toll on everyone."
@@ -277,10 +281,34 @@ const Morning = () => {
     currentMessageIndex
   );
 
+
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
   const userAvatarSize = isMobile ? "30px" : "55px";
   const messageFontSize = isMobile ? "16px" : "18px";
+
+  const scene = [2, 5, 8, 11, 12];
+  const visibleMessagess = dayThreeMorning.slice(startIndex, scene[ptr]);
+  let temp = [];
+  let final = [];
+  let users = [];
+
+  for (let i = 0; i < visibleMessagess.length; i++) {
+    temp.push(visibleMessagess[i]["sender"]);
+  }
+  const uniqueTemp = [...new Set(temp)];
+  console.log(uniqueTemp);
+
+  for (let i = 0; i < uniqueTemp.length; i++) {
+    for (let j = 0; j < user.length; j++) {
+      if (user[j].name == uniqueTemp[i]) {
+        final.push({ url: user[j].url, name: user[j].name });
+      }
+      //setUsers(final)
+      users = final;
+    }
+  }
+
 
   return (
     <>
@@ -316,9 +344,11 @@ const Morning = () => {
               w={isMobile ? "27%" : "13%"}
               overflow="auto"
               style={{
+
                 backgroundImage: isMobile
                   ? "none"
                   : "linear-gradient(32deg,grey 0%, white 100%)",
+
               }}
             >
               <Box

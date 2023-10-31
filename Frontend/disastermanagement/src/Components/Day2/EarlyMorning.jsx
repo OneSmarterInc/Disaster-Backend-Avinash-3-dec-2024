@@ -265,10 +265,7 @@ const EarlyMorning = () => {
       users = final;
     }
   }
-  console.log(visibleMessages, visibleMessagess);
-  console.log("ptr", ptr, "start", startIndex);
-  console.log(dayTwoEarlyMorning.length, "daylength");
-  console.log(final, "-------------------------------");
+
 
   useEffect(() => {
     const displayNextMessage = () => {

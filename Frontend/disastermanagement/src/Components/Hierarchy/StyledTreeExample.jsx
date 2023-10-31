@@ -2,9 +2,12 @@ import React from "react";
 import { Tree, TreeNode } from "react-organizational-chart";
 import HumanTiles from "./HumanTiles";
 import { ORGDATA } from "./data";
-import { Box } from "@chakra-ui/react";
+import { Box,Text } from "@chakra-ui/react";
+import hierarchy from "../userImages/hierarchy2.png"
 
 const data = ORGDATA;
+
+const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
 function traverse(obj, firstRecursion = false) {
   if (obj?.child?.length === 0) {
@@ -51,9 +54,17 @@ const StyledTreeExample = () => (
     alignItems="center"
     width="100%"
     overflowX="auto"
-    padding="20px"
+    // padding="20px"
+    mt={isMobile ? '-15rem' : "0px"}
+    bgImage={hierarchy}
+    bgSize={'contain'}
+    bgRepeat={'no-repeat'}
+    bgPosition={'center'}
+    minH={'100vh'}
+    pb={20}
   >
-    <Tree
+    <Text color={'white'} visibility={'hidden'}>----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</Text>
+    {/* <Tree
       lineWidth={"2px"}
       lineColor={"#0070D2"}
       lineBorderRadius={"10px"}
@@ -64,7 +75,8 @@ const StyledTreeExample = () => (
       }
     >
       {traverse(data, true)}
-    </Tree>
+    </Tree> */}
+    
   </Box>
 );
 

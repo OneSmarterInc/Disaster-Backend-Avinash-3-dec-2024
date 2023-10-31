@@ -117,7 +117,7 @@ const LateMorning = () => {
       container.scrollTop = container.scrollHeight;
     }
   };
-  
+
   useEffect(() => {
     setHead("Day 2 -  Afternoon: Will a solution emerge?");
   }, []);
@@ -158,7 +158,7 @@ const LateMorning = () => {
     setDay5Popup2(false);
     setImgSrc(room);
     setHead("Day 2 - Late Afternoon: It's not looking good");
-    
+
     // onClose();
     setChatPaused(false);
   };
@@ -196,7 +196,6 @@ const LateMorning = () => {
   }, [showBox, showBoxContent2]);
 
   useEffect(() => {
-
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayTwoLateMorning.length) {
@@ -266,7 +265,7 @@ const LateMorning = () => {
         <Morning />
       ) : (
         <Box
-          fontFamily={"Fredoka"}
+          // fontFamily={"Fredoka"}
           border={"0px solid red"}
           w={"100%"}
           m={"auto"}
@@ -275,16 +274,14 @@ const LateMorning = () => {
           flexWrap="wrap"
         >
           <Flex h={"88vh"}>
-          <Box
+            <Box
               h={isMobile ? "90vh" : "88vh"}
               w={isMobile ? "27%" : "13%"}
               overflow="auto"
               style={{
-
                 backgroundImage: isMobile
                   ? "none"
                   : "linear-gradient(32deg,grey 0%, white 100%)",
-
               }}
             >
               <Box
@@ -318,29 +315,29 @@ const LateMorning = () => {
                         }
                       >
                         <Box
-                        borderBottom="0px solid black"
-                        key={el.name}
-                        cursor="pointer"
-                        display="flex"
-                        flexDirection={isMobile ? "column" : "column"}
-                        alignItems="center"
-                      >
-                          <Box
-                          h={userAvatarSize}
-                          w={userAvatarSize}
-                          m="auto"
-                          mt={isMobile ? "17%" : 0}
-                          borderRadius="50%"
-                          className={el.name === activeUser ? "active" : ""}
+                          borderBottom="0px solid black"
+                          key={el.name}
+                          cursor="pointer"
+                          display="flex"
+                          flexDirection={isMobile ? "column" : "column"}
+                          alignItems="center"
                         >
+                          <Box
+                            h={userAvatarSize}
+                            w={userAvatarSize}
+                            m="auto"
+                            mt={isMobile ? "17%" : 0}
+                            borderRadius="50%"
+                            className={el.name === activeUser ? "active" : ""}
+                          >
                             <Image borderRadius={"50%"} src={el.url} alt="" />
                           </Box>
                           <Text
-                          className={el.name === activeUser ? "Tactive" : ""}
-                          fontSize={isMobile ? "14px" : "20px"}
-                          mb={isMobile ? 0 : 4}
-                          cursor="pointer"
-                        >
+                            className={el.name === activeUser ? "Tactive" : ""}
+                            fontSize={isMobile ? "14px" : "20px"}
+                            mb={isMobile ? 0 : 4}
+                            cursor="pointer"
+                          >
                             {el.name.split(" ")[0]}
                           </Text>
                         </Box>
@@ -404,9 +401,7 @@ const LateMorning = () => {
               border="0px solid red"
               overflow="auto"
               ref={chatContainerRef}
-
               pb={5}
-
               bgImage={imgSrc}
               bgRepeat="no-repeat"
               bgSize={isMobile ? "cover" : "cover"}
@@ -416,23 +411,19 @@ const LateMorning = () => {
               alignItems={isMobile ? "center" : "flex-start"}
             >
               <Box
-                border={"1px solid black"}
                 bgColor={"#030405"}
                 color={"white"}
-                borderRadius={"20px"}
-                m={"auto"}
                 textAlign={"left"}
-                w={"90%"}
+                w={"100%"}
                 pl={3}
                 pt={3}
                 pb={3}
               >
-                <Text fontSize={isMobile ? "15" : "18"}>
+                <Text fontSize={isMobile ? "15" : "20"}>
                   The office is buzzing with activity. Phones are ringing
                   incessantly, and IT professionals are working at their
                   stations with a sense of urgency, trying to resolve the issue
                   swiftly.
-
                 </Text>
               </Box>
 
@@ -440,10 +431,10 @@ const LateMorning = () => {
                 w={isMobile ? "100%" : "90%"}
                 pl={isMobile ? 2 : 5}
                 pr={isMobile ? 2 : 5}
-                m={"auto"}
+                m={ "0 auto"}
+                mt={3}
                 h={"68vh"}
               >
-                
                 <TransitionGroup>
                   {dayTwoLateMorning
                     .slice(0, currentMessageIndex)
@@ -470,31 +461,31 @@ const LateMorning = () => {
                             }`}
                             mb={4}
                           >
-                            
                             <Box
-                            boxShadow="rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                            border="0px solid red"
-                            bgColor={
-                              el.sender === "Ben Carter" ? "#f0f0f0" : "#030405"
-                            }
-                            color={
-                              el.sender === "Ben Carter" ? "black" : "white"
-                            }
-                            w={isMobile ? "70%" : "50%"}
-                            borderRadius="10px"
-                            textAlign={isMobile ? "left" : "justify"}
-                            p={isMobile ? 2 : 4}
-                            pl={isMobile ? 3 : 5}
-                            pr={isMobile ? 3 : 5}
-                            mt={2}
-                            fontSize={isMobile ? "12px" : "15px"}
-                          >
-                                <Text>
-                                  <span id="sender">{el.sender}</span> :{" "}
-                                  {el.message}
-                                </Text>
-                              </Box>
-                           
+                              boxShadow="rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                              border="0px solid red"
+                              bgColor={
+                                el.sender === "Ben Carter"
+                                  ? "#f0f0f0"
+                                  : "#030405"
+                              }
+                              color={
+                                el.sender === "Ben Carter" ? "black" : "white"
+                              }
+                              w={isMobile ? "70%" : "50%"}
+                              borderRadius="10px"
+                              textAlign={isMobile ? "left" : "justify"}
+                              p={isMobile ? 2 : 4}
+                              pl={isMobile ? 3 : 5}
+                              pr={isMobile ? 3 : 5}
+                              mt={2}
+                              fontSize={isMobile ? "12px" : "15px"}
+                            >
+                              <Text>
+                                <span id="sender">{el.sender}</span> :{" "}
+                                {el.message}
+                              </Text>
+                            </Box>
                           </Box>
                         </CSSTransition>
                       );
@@ -763,7 +754,6 @@ const LateMorning = () => {
                       <Box
                         bg={"white"}
                         p={2}
-                        
                         w={isMobile ? "100%" : "60%"} // Adjust the width for mobile view
                         m={"auto"}
                         mt={isMobile ? "20px" : "50px"} // Adjust the top margin for mobile view
@@ -803,14 +793,14 @@ const LateMorning = () => {
                               <Box
                                 className="flex2"
                                 w={isMobile ? "90%" : "80%"}
-                                m={'auto'}
+                                m={"auto"}
                                 pb={3}
                               >
                                 <Box
                                   border="1px solid black"
                                   borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                   // Add padding to the box
+                                  // Add padding to the box
                                   bgColor={
                                     isMobile ? "lightgray" : "transparent"
                                   } // Set background color
@@ -899,7 +889,7 @@ const LateMorning = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -937,7 +927,7 @@ const LateMorning = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -975,7 +965,7 @@ const LateMorning = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -1013,7 +1003,7 @@ const LateMorning = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -1055,7 +1045,6 @@ const LateMorning = () => {
                               bg={"#c8cfca"}
                               color={"black"}
                               fontWeight={"bold"}
-                              
                             >
                               <Text>
                                 Which quality of Ben Carter do you feel stands
@@ -1070,10 +1059,10 @@ const LateMorning = () => {
                               <Box
                                 className="flex"
                                 w={isMobile ? "100%" : "80%"}
-                                m={'auto'}
+                                m={"auto"}
                                 pb={4}
                               >
-                               <Box
+                                <Box
                                   border="1px solid black"
                                   borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
@@ -1091,7 +1080,7 @@ const LateMorning = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -1128,7 +1117,7 @@ const LateMorning = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -1166,7 +1155,7 @@ const LateMorning = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -1204,7 +1193,7 @@ const LateMorning = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -1242,7 +1231,7 @@ const LateMorning = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -1280,7 +1269,7 @@ const LateMorning = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio

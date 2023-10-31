@@ -73,7 +73,8 @@ const Drform = () => {
       p={4} // Padding adjusted for mobile
       w={["90%", "80%", "60%"]} // Responsive width
       m="auto"
-      mt={4} // Margin-top adjusted for mobile
+      mt={4}
+      mb={6} // Margin-top adjusted for mobile
       boxShadow={"#691212 0px 0px 0px 1px, #691212 0px 0px 0px 1px inset"}
       bgColor="gray.300" // Background color
     >

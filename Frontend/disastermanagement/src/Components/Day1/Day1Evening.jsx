@@ -278,7 +278,7 @@ const BringDown = () => {
         <EarlyMorning />
       ) : (
         <Box
-          fontFamily={"Fredoka"}
+          // fontFamily={"Fredoka"}
           border={"0px solid red"}
           w={"100%"}
           m={"auto"}
@@ -348,7 +348,7 @@ const BringDown = () => {
                           <Text
                             className={el.name === activeUser ? "Tactive" : ""}
                             fontSize={isMobile ? "14px" : "20px"}
-                            mt={isMobile ? 0 : 6}
+                            mb={isMobile ? 0 : 4}
                             cursor="pointer"
                           >
                             {el.name === "Tom Mitchell"
@@ -428,18 +428,15 @@ const BringDown = () => {
               alignItems={isMobile ? "center" : "flex-start"}
             >
               <Box
-                border={"1px solid black"}
                 bgColor={"#030405"}
                 color={"white"}
-                borderRadius={"20px"}
-                m={"auto"}
                 textAlign={"left"}
-                w={"90%"}
+                w={"100%"}
                 pl={3}
                 pt={3}
                 pb={3}
               >
-                <Text fontSize={isMobile ? "15" : "18"}>
+                <Text fontSize={isMobile ? "15" : "20"}>
                   {/* Ben Carter rubs his temples, trying to process the magnitude
                   of the situation. He can feel the eight of responsibility
                   pressing down on him, knowing that critical decisions lie
@@ -454,7 +451,8 @@ const BringDown = () => {
                 w={isMobile ? "100%" : "90%"}
                 pl={isMobile ? 2 : 5}
                 pr={isMobile ? 2 : 5}
-                m={"auto"}
+                m={ "0 auto"}
+                mt={3}
                 h={"68vh"}
               >
                 <TransitionGroup>

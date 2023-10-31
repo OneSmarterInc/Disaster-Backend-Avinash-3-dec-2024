@@ -127,7 +127,7 @@ const AnalysisOfBen = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" size={isMobile && "sm"} fontSize={isMobile && 10} mr={isMobile ? 0 : 3} onClick={onClose}>
+            <Button colorScheme="blue" size={isMobile && "sm"} fontSize={isMobile && 10} mr={isMobile ? 0 : 3} onClick={onClose} p={2}>
               Close
             </Button>
           </ModalFooter>

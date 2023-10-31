@@ -198,7 +198,7 @@ const Chat = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <BringDown />
+        <EarlyMorning />
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : value === "Remaining calm and level-headed during challenges" ? (
@@ -220,7 +220,7 @@ const Chat = () => {
         <BringDown />
       ) : (
         <Box
-          fontFamily={"Fredoka"}
+          // fontFamily={"crossiant-one"}
           border={"0px solid red"}
           w={"100%"}
           m={"auto"}
@@ -230,7 +230,7 @@ const Chat = () => {
         >
           <Flex h={"88vh"}>
             <Box
-              h={isMobile ? "90vh" : "88vh"}
+              h={isMobile ? "100vh" : "88vh"}
               w={isMobile ? "10%" : "13%"}
               overflow="auto"
               style={{
@@ -268,7 +268,7 @@ const Chat = () => {
                         </Box>
                         <Text
                           className={el.name === activeUser ? "Tactive" : ""}
-                          fontSize={isMobile ? "14px" : "20px"}
+                          fontSize={isMobile ? "10px" : "20px"}
                           mb={isMobile ? 0 : 4}
                           cursor="pointer"
                         >
@@ -282,7 +282,7 @@ const Chat = () => {
             </Box>
 
             <Box
-              maxH={isMobile ? "100vh" : "88vh"}
+              h={isMobile ? "100vh" : "88vh"}
               w={isMobile ? "100%" : "90%"}
               border="0px solid red"
               overflow="auto"
@@ -297,24 +297,22 @@ const Chat = () => {
               alignItems={isMobile ? "center" : "flex-start"}
             >
               <Box
-                border={"1px solid black"}
                 bgColor={"#030405"}
                 color={"white"}
-                borderRadius={"20px"}
-                m={"auto"}
                 textAlign={"left"}
-                w={"90%"}
+                w={"100%"}
                 pl={3}
                 pt={3}
                 pb={3}
               >
-                <Text fontSize={isMobile ? "15" : "18"}>{textBox}</Text>
+                <Text fontSize={isMobile ? "15" : "20"}>{textBox}</Text>
               </Box>
               <Box
                 w={isMobile ? "100%" : "90%"}
                 pl={isMobile ? 2 : 5}
                 pr={isMobile ? 2 : 5}
-                m={"auto"}
+                m={ "0 auto"}
+                mt={3}
                 h={"68vh"}
               >
                 <TransitionGroup>
@@ -356,7 +354,7 @@ const Chat = () => {
                             p={isMobile ? 2 : 4}
                             pl={isMobile ? 3 : 5}
                             pr={isMobile ? 3 : 5}
-                            mt={2}
+                            // mt={2}
                             fontSize={isMobile ? "12px" : "15px"}
                           >
                             <Text>

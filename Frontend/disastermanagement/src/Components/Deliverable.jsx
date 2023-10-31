@@ -52,6 +52,7 @@ const Deliverable = () => {
         m={"auto"}
         border={"0px solid black"}
         mt={isMobile ? 3 : 10}
+        mb={isMobile ? 3 : 10}
       >
         <Box>
           <Text bgColor={"#dae3f2"} pl={2} fontSize={isMobile ? 12 :25} fontWeight={"700"}>
@@ -85,13 +86,13 @@ const Deliverable = () => {
             Question no.1 : Which of the following technical challenges do you
             see as dominant in the scripts which you just saw ?
           </Text>
-          <Text fontSize={isMobile && 12 } fontSize={isMobile && 12 }>Your Answer : {day1evening1}</Text>
+          <Text fontSize={isMobile && 12 } >Your Answer : {day1evening1}</Text>
 
           <Text mt={3} fontSize={isMobile ? 12 : 20} fontWeight={"500"}>
             Question no.2 : Which quality of Ben Carter do you feel stands out
             during the last conversation?
           </Text>
-          <Text fontSize={isMobile && 12 } fontSize={isMobile && 12 }>Your Answer : {day1evening2}</Text>
+          <Text fontSize={isMobile && 12 }>Your Answer : {day1evening2}</Text>
           <Divider borderBottomWidth="4px" mt={2} borderColor={"black"} />
 
           {/* Day 1 Evening  */}

@@ -175,7 +175,7 @@ const EarlyMorning = () => {
     setStartIndex(currentMessageIndex);
     setHead("Day 2 -  Morning: Ben carter addresses executive team");
     setTextBox(
-      "Ben Carter seeks to address concerns of the Executive Team at OrionTech. The executive team expresses concerns and their own respective viewpoints."
+      "Ben Carter addresses the Executive Team at OrionTech. The executive team expresses concerns and their own respective viewpoints."
     );
     setImgSrc(loss);
 
@@ -265,7 +265,6 @@ const EarlyMorning = () => {
       users = final;
     }
   }
-
 
   useEffect(() => {
     const displayNextMessage = () => {
@@ -358,7 +357,7 @@ const EarlyMorning = () => {
         <LateMorning />
       ) : (
         <Box
-          fontFamily={"Fredoka"}
+          // fontFamily={"Fredoka"}
           border={"0px solid red"}
           w={"100%"}
           m={"auto"}
@@ -432,7 +431,9 @@ const EarlyMorning = () => {
                             mb={isMobile ? 0 : 4}
                             cursor="pointer"
                           >
-                            {el.name.split(" ")[0]}
+                            {el.name === "Mr. Williams"
+                              ? "Williams"
+                              : el.name.split(" ")[0]}
                           </Text>
                         </Box>
                       </Tooltip>
@@ -508,25 +509,23 @@ const EarlyMorning = () => {
               alignItems={isMobile ? "center" : "flex-start"}
             >
               <Box
-                border={"1px solid black"}
                 bgColor={"#030405"}
                 color={"white"}
-                borderRadius={"20px"}
-                m={"auto"}
                 textAlign={"left"}
-                w={"90%"}
+                w={"100%"}
                 pl={3}
                 pt={3}
                 pb={3}
               >
-                <Text fontSize={isMobile ? "15" : "18"}>{textBox}</Text>
+                <Text fontSize={isMobile ? "15" : "20"}>{textBox}</Text>
               </Box>
 
               <Box
                 w={isMobile ? "100%" : "90%"}
                 pl={isMobile ? 2 : 5}
                 pr={isMobile ? 2 : 5}
-                m={"auto"}
+                m={ "0 auto"}
+                mt={3}
                 h={"68vh"}
               >
                 <TransitionGroup>
@@ -984,7 +983,7 @@ const EarlyMorning = () => {
                         ></ModalHeader>
                         <Draggable>
                           <ModalBody
-                            fontSize={{ base: "16px", sm: "18px" }}
+                            fontSize={isMobile ? "12px" : "16px"}
                             className="draggable-modal"
                             borderRadius={10}
                             bg="rgba(245, 255, 255, 0.8)"

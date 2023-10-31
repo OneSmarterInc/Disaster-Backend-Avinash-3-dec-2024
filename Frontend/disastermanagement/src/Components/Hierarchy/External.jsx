@@ -6,11 +6,11 @@ import { Flex } from "@chakra-ui/react";
 const External = () => {
   return (
     <>
-      <Flex direction={"column"} gap={10}>
+      {/* <Flex direction={"column"} gap={10}>
         {externalData.map((el, i) => {
           return <HumanTiles key={i} data={el} />;
         })}
-      </Flex>
+      </Flex> */}
     </>
   );
 };

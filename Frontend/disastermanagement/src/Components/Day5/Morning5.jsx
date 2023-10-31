@@ -220,28 +220,27 @@ const Morning5 = () => {
 
   const visibleMessages = dayFiveMorning.slice(startIndex, currentMessageIndex);
 
-  const scene = [0,2,3,5,7,8,11,14,23,32,33];
+  const scene = [0, 2, 3, 5, 7, 8, 11, 14, 23, 32, 33];
   const visibleMessagess = dayFiveMorning.slice(startIndex, scene[ptr]);
   let temp = [];
   let final = [];
   let users = [];
 
-  for(let i = 0;i<visibleMessagess.length;i++){
+  for (let i = 0; i < visibleMessagess.length; i++) {
     temp.push(visibleMessagess[i]["sender"]);
   }
   const uniqueTemp = [...new Set(temp)];
-  console.log(uniqueTemp)
- 
-  for(let i =  0; i<uniqueTemp.length;i++){
-    for(let j = 0;j< user.length;j++){
-      if (user[j].name == uniqueTemp[i]){
-        final.push({"url":user[j].url,"name":user[j].name})
+  console.log(uniqueTemp);
 
+  for (let i = 0; i < uniqueTemp.length; i++) {
+    for (let j = 0; j < user.length; j++) {
+      if (user[j].name == uniqueTemp[i]) {
+        final.push({ url: user[j].url, name: user[j].name });
+      }
+      //setUsers(final)
+      users = final;
+    }
   }
-  //setUsers(final)
-  users = final
-}
-}
 
   useEffect(() => {
     const displayNextMessage = () => {
@@ -475,7 +474,7 @@ const Morning5 = () => {
         <Deliverable />
       ) : (
         <Box
-          fontFamily={"Fredoka"}
+          // fontFamily={"Fredoka"}
           border={"0px solid red"}
           w={"100%"}
           m={"auto"}
@@ -551,7 +550,9 @@ const Morning5 = () => {
                             mb={isMobile ? 0 : 4}
                             cursor="pointer"
                           >
-                            {el.name.split(" ")[0]}
+                            {el.name === "Communications Lead"
+                              ? "CL"
+                              : el.name.split(" ")[0]}
                           </Text>
                         </Box>
                       </Tooltip>
@@ -629,26 +630,24 @@ const Morning5 = () => {
               alignItems={isMobile ? "center" : "flex-start"}
             >
               <Box
-                border={"1px solid black"}
                 bgColor={"#030405"}
                 color={"white"}
-                borderRadius={"20px"}
-                m={"auto"}
                 textAlign={"left"}
-                w={"90%"}
+                w={"100%"}
                 pl={3}
                 pt={3}
                 pb={3}
                 visibility={currentMessageIndex > 33 ? "hidden" : "auto"}
               >
-                <Text fontSize={isMobile ? "15" : "18"}>{textBox}</Text>
+                <Text fontSize={isMobile ? "15" : "20"}>{textBox}</Text>
               </Box>
 
               <Box
                 w={isMobile ? "100%" : "90%"}
                 pl={isMobile ? 2 : 5}
                 pr={isMobile ? 2 : 5}
-                m={"auto"}
+                m={ "0 auto"}
+                mt={3}
                 h={"68vh"}
               >
                 <TransitionGroup>

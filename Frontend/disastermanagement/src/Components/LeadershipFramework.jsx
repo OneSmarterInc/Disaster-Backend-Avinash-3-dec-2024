@@ -48,64 +48,64 @@ const LeadershipFramework = () => {
           <ModalCloseButton />
           <ModalBody fontFamily={"Fredoka"}>
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 25}>
+              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18}>
                 1. Technical Awareness:
               </Text>
-              <Text fontSize={isMobile ? 10 : 25}>
+              <Text fontSize={isMobile ? 10 : 18}>
                 Understanding the technical intricacies of the situation,
                 including systems, processes, and tools.
               </Text>
             </VStack>
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 25} mt={5}>
+              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
                 2. Situational Awareness:
               </Text>
-              <Text fontSize={isMobile ? 10 : 25}>
+              <Text fontSize={isMobile ? 10 : 18}>
                 Grasping the immediate context, the severity of the situation,
                 and its implications.
               </Text>
             </VStack>
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 25} mt={5}>
+              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
                 3. External Awareness:
               </Text>
-              <Text fontSize={isMobile ? 10 : 25}>
+              <Text fontSize={isMobile ? 10 : 18}>
                 Being aware of external stakeholders, market dynamics, and
                 broader industry implications.
               </Text>
             </VStack>
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 25} mt={5}>
+              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
                 4. Team Awareness:
               </Text>
-              <Text fontSize={isMobile ? 10 : 25}>
+              <Text fontSize={isMobile ? 10 : 18}>
                 Recognizing the strengths, weaknesses, and emotional states of
                 team members.
               </Text>
             </VStack>
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 25} mt={5}>
+              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
                 5. Strategic Awareness:
               </Text>
-              <Text fontSize={isMobile ? 10 : 25}>
+              <Text fontSize={isMobile ? 10 : 18}>
                 Keeping an eye on the long-term vision, goals, and implications
                 of the crisis on the organization's future.
               </Text>
             </VStack>
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 25} mt={5}>
+              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
                 6. Self Awareness:
               </Text>
-              <Text fontSize={isMobile ? 10 : 25}>
+              <Text fontSize={isMobile ? 10 : 18}>
                 Understanding one's own emotions, strengths, weaknesses, and
                 biases during the crisis.
               </Text>
             </VStack>
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 25} mt={5}>
+              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
                 7. Initial Crisis Onset:
               </Text>
-              <Text fontSize={isMobile ? 10 : 25}>
+              <Text fontSize={isMobile ? 10 : 18}>
                 <Text>
                   <li>
                     Dominant Awareness: Technical and Situational Awareness.
@@ -120,15 +120,15 @@ const LeadershipFramework = () => {
               </Text>
             </VStack>
             
-            <Heading fontFamily={"Fredoka"} fontSize={isMobile ? 12 : 25} mt={10}>
+            <Heading fontFamily={"Fredoka"} fontSize={isMobile ? 12 : 18} mt={10}>
               Ben Carter's Awareness Strengths
             </Heading>
 
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 25} mt={2}>
+              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={2}>
                 1. Interactions with External Partners:
               </Text>
-              <Text fontSize={isMobile ? 10 : 25}>
+              <Text fontSize={isMobile ? 10 : 18}>
                 <li>Dominant Awareness: External and Situational Awareness.</li>
                 <li>
                   Ben clearly communicates the situation with external partners,
@@ -138,10 +138,10 @@ const LeadershipFramework = () => {
               </Text>
             </VStack>
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 25} mt={5}>
+              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
                 2. Guidance During Prolonged Crisis:
               </Text>
-              <Text fontSize={isMobile ? 10 : 25}>
+              <Text fontSize={isMobile ? 10 : 18}>
                 <li> Dominant Awareness: Team and Situational Awareness</li>
                 <li>
                   Ben remains calm, guiding his team through challenges, and
@@ -150,10 +150,10 @@ const LeadershipFramework = () => {
               </Text>
             </VStack>
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 25} mt={5}>
+              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
                3. Post-Crisis Reflection:
               </Text>
-              <Text fontSize={isMobile ? 10 : 25}>
+              <Text fontSize={isMobile ? 10 : 18}>
                 <li> Dominant Awareness: Strategic and Technical Awareness</li>
                 <li>
                   Ben reflects on the technical root causes and also looks at
@@ -163,10 +163,10 @@ const LeadershipFramework = () => {
               </Text>
             </VStack>
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 25} mt={5}>
+              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
                 4. Outreach to Key Stakeholders:
               </Text>
-              <Text fontSize={isMobile ? 10 : 25}>
+              <Text fontSize={isMobile ? 10 : 18}>
                 <li> Dominant Awareness: External and Strategic Awareness.</li>
                 <li>
                   Ben proactively communicates with key clients, understanding
@@ -176,10 +176,10 @@ const LeadershipFramework = () => {
               </Text>
             </VStack>
             <VStack alignItems={"left"}>
-              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 25} mt={5}>
+              <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
                 5. Throughout the Simulation:
               </Text>
-              <Text fontSize={isMobile ? 10 : 25} >
+              <Text fontSize={isMobile ? 10 : 18} >
                 <li>Dominant Awareness: Self Awareness.</li>
                 <li>
                   Ben remains composed, reflective, and adapts his leadership
@@ -191,7 +191,7 @@ const LeadershipFramework = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" size={isMobile && "sm"} fontSize={isMobile && 10} mr={isMobile ? 0 : 3} onClick={onClose}>
+            <Button colorScheme="blue" size={isMobile && "sm"} fontSize={isMobile && 10} mr={isMobile ? 0 : 3} onClick={onClose} p={2}>
               Close
             </Button>
           </ModalFooter>

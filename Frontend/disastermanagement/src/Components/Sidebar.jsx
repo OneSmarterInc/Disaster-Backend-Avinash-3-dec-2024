@@ -59,7 +59,7 @@ const Sidebar = () => {
         bg={"white"}
         border={"0px solid red"}
         w={"100%"}
-        h={isMobile && "100vh"}
+        h={isMobile ? "100vh" : "88vh"}
       >
         {showSidebar || isHovered ? (
           <VStack
@@ -164,12 +164,12 @@ const Sidebar = () => {
           {selectedSection === "Hierarchy" && (
             <Flex gap={10}>
               <StyledTreeExample />
-              <Divider
+              {/* <Divider
                 borderColor={"black"}
                 orientation="vertical"
                 borderWidth={"2px"}
                 h={"100vh"}
-              />
+              /> */}
               <External />
             </Flex>
           )}

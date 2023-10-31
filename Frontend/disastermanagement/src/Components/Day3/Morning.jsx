@@ -281,7 +281,6 @@ const Morning = () => {
     currentMessageIndex
   );
 
-
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
   const userAvatarSize = isMobile ? "20px" : "55px";
@@ -309,7 +308,6 @@ const Morning = () => {
     }
   }
 
-
   return (
     <>
       {value ===
@@ -330,7 +328,7 @@ const Morning = () => {
         <EarlyMorning4 />
       ) : (
         <Box
-          fontFamily={"Fredoka"}
+          // fontFamily={"Fredoka"}
           border={"0px solid red"}
           w={"100%"}
           m={"auto"}
@@ -344,11 +342,9 @@ const Morning = () => {
               w={isMobile ? "10%" : "13%"}
               overflow="auto"
               style={{
-
                 backgroundImage: isMobile
                   ? "none"
                   : "linear-gradient(32deg,grey 0%, white 100%)",
-
               }}
             >
               <Box
@@ -479,24 +475,22 @@ const Morning = () => {
               alignItems={isMobile ? "center" : "flex-start"}
             >
               <Box
-                border={"1px solid black"}
                 bgColor={"#030405"}
                 color={"white"}
-                borderRadius={"20px"}
-                m={"auto"}
                 textAlign={"left"}
-                w={"90%"}
+                w={"100%"}
                 pl={3}
                 pt={3}
                 pb={3}
               >
-                <Text fontSize={isMobile ? "15" : "18"}>{textBox}</Text>
+                <Text fontSize={isMobile ? "15" : "20"}>{textBox}</Text>
               </Box>
               <Box
                 w={isMobile ? "100%" : "90%"}
                 pl={isMobile ? 2 : 5}
                 pr={isMobile ? 2 : 5}
-                m={"auto"}
+                m={ "0 auto"}
+                mt={3}
                 h={"68vh"}
               >
                 <TransitionGroup>

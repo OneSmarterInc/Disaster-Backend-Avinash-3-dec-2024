@@ -261,7 +261,6 @@ const EarlyMorning4 = () => {
     setDay5Popup(false);
     // onClose();
     setChatPaused(false);
-    
   };
   const closePopup2 = () => {
     // setShowPopup(false);
@@ -304,35 +303,32 @@ const EarlyMorning4 = () => {
 
   const visibleMessages = dayFourMorning.slice(startIndex, currentMessageIndex);
 
-
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
   const userAvatarSize = isMobile ? "20px" : "55px";
   const messageFontSize = isMobile ? "16px" : "18px";
 
-  const scene = [5,7,9,11,13,15];
+  const scene = [5, 7, 9, 11, 13, 15];
   const visibleMessagess = dayFourMorning.slice(startIndex, scene[ptr]);
   let temp = [];
   let final = [];
   let users = [];
 
-  for(let i = 0;i<visibleMessagess.length;i++){
+  for (let i = 0; i < visibleMessagess.length; i++) {
     temp.push(visibleMessagess[i]["sender"]);
   }
   const uniqueTemp = [...new Set(temp)];
-  console.log(uniqueTemp)
- 
-  for(let i =  0; i<uniqueTemp.length;i++){
-    for(let j = 0;j< user.length;j++){
-      if (user[j].name == uniqueTemp[i]){
-        final.push({"url":user[j].url,"name":user[j].name})
+  console.log(uniqueTemp);
 
+  for (let i = 0; i < uniqueTemp.length; i++) {
+    for (let j = 0; j < user.length; j++) {
+      if (user[j].name == uniqueTemp[i]) {
+        final.push({ url: user[j].url, name: user[j].name });
+      }
+      //setUsers(final)
+      users = final;
+    }
   }
-  //setUsers(final)
-  users = final
-}
-}
-
 
   return (
     <>
@@ -354,7 +350,7 @@ const EarlyMorning4 = () => {
         <Morning5 />
       ) : (
         <Box
-          fontFamily={"Fredoka"}
+          // fontFamily={"Fredoka"}
           border={"0px solid red"}
           w={"100%"}
           m={"auto"}
@@ -585,18 +581,15 @@ const EarlyMorning4 = () => {
             >
               {currentMessageIndex < 5 ? (
                 <Box
-                  border={"1px solid black"}
                   bgColor={"#030405"}
                   color={"white"}
-                  borderRadius={"20px"}
-                  m={"auto"}
                   textAlign={"left"}
-                  w={"90%"}
+                  w={"100%"}
                   pl={3}
                   pt={3}
                   pb={3}
                 >
-                  <Text fontSize={isMobile ? "15" : "18"}>
+                  <Text fontSize={isMobile ? "15" : "20"}>
                     Ben Carter and Kate Sullivan have come together to engage in
                     a strategic meeting. This is a frank conversation where they
                     discuss plans and risks to their careers because of the
@@ -605,13 +598,11 @@ const EarlyMorning4 = () => {
                 </Box>
               ) : (
                 <Box
-                  border={"1px solid black"}
                   bgColor={"#030405"}
                   color={"white"}
                   borderRadius={"20px"}
-                  m={"auto"}
                   textAlign={"left"}
-                  w={"90%"}
+                  w={"100%"}
                   pl={3}
                   pt={3}
                   pb={3}
@@ -624,7 +615,8 @@ const EarlyMorning4 = () => {
                 w={isMobile ? "100%" : "90%"}
                 pl={isMobile ? 2 : 5}
                 pr={isMobile ? 2 : 5}
-                m={"auto"}
+                m={ "0 auto"}
+                mt={3}
                 h={"68vh"}
               >
                 <TransitionGroup>

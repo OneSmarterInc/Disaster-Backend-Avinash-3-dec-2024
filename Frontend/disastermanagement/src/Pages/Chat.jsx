@@ -198,7 +198,7 @@ const Chat = () => {
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-        <EarlyMorning />
+        <BringDown />
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : value === "Remaining calm and level-headed during challenges" ? (
@@ -224,13 +224,13 @@ const Chat = () => {
           border={"0px solid red"}
           w={"100%"}
           m={"auto"}
-          h={isMobile ? "100vh" : "88vh"}
+          h={isMobile ? "100%" : "88vh"}
           display="flex"
           flexWrap="wrap"
         >
           <Flex h={"88vh"}>
             <Box
-              h={isMobile ? "100vh" : "88vh"}
+              h={isMobile ? "100%" : "88vh"}
               w={isMobile ? "10%" : "13%"}
               overflow="auto"
               style={{
@@ -282,7 +282,7 @@ const Chat = () => {
             </Box>
 
             <Box
-              h={isMobile ? "100vh" : "88vh"}
+              h={isMobile ? "100%" : "88vh"}
               w={isMobile ? "100%" : "90%"}
               border="0px solid red"
               overflow="auto"
@@ -395,7 +395,7 @@ const Chat = () => {
                                 p={4}
                                 flex="1"
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   He opens the email. It's a brief report about
                                   some applications showing sporadic errors.
                                 </Text>
@@ -464,7 +464,7 @@ const Chat = () => {
                                 p={4}
                                 flex="1"
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   An hour later. Ben is at home, relaxing. His
                                   phone buzzes with a call from Kate.
                                 </Text>
@@ -532,7 +532,7 @@ const Chat = () => {
                                 p={4}
                                 flex="1"
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   Late at night. Ben is asleep. His phone rings
                                   persistently. Groggily, he picks it up. It's
                                   Kate

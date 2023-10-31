@@ -279,13 +279,13 @@ const BringDown = () => {
           border={"0px solid red"}
           w={"100%"}
           m={"auto"}
-          h={isMobile ? "90vh" : "88vh"}
+          h={isMobile ? "100%" : "88vh"}
           display="flex"
           flexWrap="wrap"
         >
           <Flex h={"88vh"}>
             <Box
-              h={isMobile ? "90vh" : "88vh"}
+              h={isMobile ? "100%" : "88vh"}
               w={isMobile ? "10%" : "13%"}
               overflow="auto"
               style={{
@@ -477,7 +477,7 @@ const BringDown = () => {
 }
             </Box>
             <Box
-              h={isMobile ? "100vh" : "88vh"}
+              h={isMobile ? "100%" : "88vh"}
               w={isMobile ? "100%" : "90%"}
               border="0px solid red"
               overflow="auto"

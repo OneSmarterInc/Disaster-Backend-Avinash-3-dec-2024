@@ -618,7 +618,7 @@ const Morning5 = () => {
             </Box>
 
             <Box
-              h={isMobile ? "100vh" : "88vh"}
+              h={isMobile ? "100%" : "88vh"}
               w={isMobile ? "100%" : "90%"}
               border="0px solid red"
               overflow="auto"
@@ -720,10 +720,10 @@ const Morning5 = () => {
                           bg="rgba(245, 255, 255, 0.8)"
                           p={10}
                         >
-                          <Heading as="h2" size="lg" mb={4}>
+                          <Heading as="h2" size="lg" mb={4} fontFamily={"Fredoka"}>
                             Announcement
                           </Heading>
-                          <Text>
+                          <Text fontFamily={"Fredoka"}>
                             To all our valued team members and stakeholders, we
                             are pleased to inform you that the recent IT crisis
                             has been fully resolved. We appreciate your
@@ -778,7 +778,7 @@ const Morning5 = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   At noon, the recovery process was complete.
                                 </Text>
                               </Box>
@@ -839,7 +839,7 @@ const Morning5 = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   Ben Carter stands at the head of the room,
                                   gathering everyone's attention.{" "}
                                 </Text>
@@ -896,7 +896,7 @@ const Morning5 = () => {
                             bg="rgba(245, 255, 255, 0.8)"
                             p={10}
                           >
-                            <Heading fontWeight="bold" fontSize="25px" mb={4}>
+                            <Heading fontWeight="bold" fontSize="25px" mb={4} fontFamily={"Fredoka"}>
                               Successful Recovery
                             </Heading>
                             <Flex
@@ -909,7 +909,7 @@ const Morning5 = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   A loud cheer erupts as team members clap and
                                   some even hug each other. The crisis is over,
                                   and everyone can breathe a sigh of relief.
@@ -977,7 +977,7 @@ const Morning5 = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   The afternoon sun casts a warm glow. The
                                   Communications team is busy drafting an
                                   announcement.
@@ -1036,7 +1036,7 @@ const Morning5 = () => {
                             bg="rgba(245, 255, 255, 0.8)"
                             p={10}
                           >
-                            <Heading ontWeight="bold" fontSize="25px" mb={4}>
+                            <Heading ontWeight="bold" fontSize="25px" mb={4} fontFamily={"Fredoka"}>
                               Successful Recovery Announcement
                             </Heading>
 
@@ -1050,7 +1050,7 @@ const Morning5 = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   At 4:00 PM, emails ping across the company,
                                   and an announcement is broadcasted on internal
                                   communication channels. The crisis is
@@ -1107,17 +1107,17 @@ const Morning5 = () => {
                             bg="rgba(245, 255, 255, 0.8)"
                             p={10}
                           >
-                            <Heading fontWeight="bold" fontSize="25px" mb={5}>
+                            <Heading fontWeight="bold" fontSize="25px" mb={5} fontFamily={"Fredoka"}>
                               The Next Couple of Weeks
                             </Heading>
-                            <Text>
+                            <Text fontFamily={"Fredoka"}>
                               Over the next few weeks, the CIO, Ben Carter, and
                               the Senior Vice President of Worldwide Customer
                               Service embarked on a series of meetings with key
                               customers to address concerns and rebuild trust.
                             </Text>
                             <br />
-                            <Text>
+                            <Text fontFamily={"Fredoka"}>
                               During these meetings, they discussed the recent
                               IT crisis, the measures taken to resolve it, and
                               the steps being implemented to prevent future
@@ -1161,10 +1161,10 @@ const Morning5 = () => {
                             bg="rgba(245, 255, 255, 0.8)"
                             p={10}
                           >
-                            <Heading fontWeight="bold" fontSize="25px" mb={5}>
+                            <Heading fontWeight="bold" fontSize="25px" mb={5} fontFamily={"Fredoka"}>
                               Epilog 1: The Debrief
                             </Heading>
-                            <Text>
+                            <Text fontFamily={"Fredoka"}>
                               The office is calm, a stark contrast to the
                               frenzied atmosphere of the crisis days. Ben Carter
                               sits at his desk, reading through the final report
@@ -1209,7 +1209,7 @@ const Morning5 = () => {
                             bg="rgba(245, 255, 255, 0.8)"
                             p={10}
                           >
-                            <Heading fontWeight="bold" fontSize="25px" mb={5}>
+                            <Heading fontWeight="bold" fontSize="25px" mb={5} fontFamily={"Fredoka"}>
                               A Conversation of Respect
                             </Heading>
 
@@ -1223,7 +1223,7 @@ const Morning5 = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   Inside a conference room, Ben Carter and Gajji
                                   sit across from each other. There's a sense of
                                   mutual respect between them.
@@ -1278,11 +1278,11 @@ const Morning5 = () => {
                             bg="rgba(245, 255, 255, 0.8)"
                             p={10}
                           >
-                            <Heading fontWeight="bold" fontSize="25px" mb={5}>
+                            <Heading fontWeight="bold" fontSize="25px" mb={5} fontFamily={"Fredoka"}>
                               {" "}
                               A Moment of Mutual Appreciation
                             </Heading>
-                            <Text>
+                            <Text fontFamily={"Fredoka"}>
                               The two leaders share a moment of mutual
                               appreciation, aware that the trials they faced
                               together have only deepened their bond.
@@ -1323,10 +1323,10 @@ const Morning5 = () => {
                             bg="rgba(245, 255, 255, 0.8)"
                             p={10}
                           >
-                            <Heading fontWeight="bold" fontSize="25px" mb={5}>
+                            <Heading fontWeight="bold" fontSize="25px" mb={5} fontFamily={"Fredoka"}>
                               Epilog - 2
                             </Heading>
-                            <Text>
+                            <Text fontFamily={"Fredoka"}>
                               After months of analysis, the storage vendor’s
                               final report indicated the site 2 (R2) mirrored
                               copy was never corrupted. While the data in the
@@ -1342,7 +1342,7 @@ const Morning5 = () => {
                             </Text>
 
                             <br />
-                            <Text>
+                            <Text fontFamily={"Fredoka"}>
                               The storage vendor provided approximately three
                               million dollars of new hardware and software to
                               provide two additional copies of the data as
@@ -1350,7 +1350,7 @@ const Morning5 = () => {
                             </Text>
                             <br />
                             <Image src={figure2} />
-                            <Text mt={2}>
+                            <Text mt={2} fontFamily={"Fredoka"}>
                               <strong>Note:</strong> You can see more details of
                               all diagrams in document section.
                             </Text>
@@ -1391,7 +1391,7 @@ const Morning5 = () => {
                             <img src={butterfly} alt="Moving Thumb" />
                           </Box>
 
-                          <Text textAlign={"center"} fontWeight={"bold"}>
+                          <Text textAlign={"center"} fontWeight={"bold"} fontFamily={"Fredoka"}>
                             We appreciate your feedback, and you are now ready
                             to move on to the next step by accessing the
                             deliverable section.

@@ -70,6 +70,7 @@ const EarlyMorning = () => {
   );
   const [ptr, setPtr] = useState(0);
 
+
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
@@ -265,6 +266,7 @@ const EarlyMorning = () => {
       users = final;
     }
   }
+  console.log(users,"users------");
 
 
   useEffect(() => {
@@ -335,7 +337,7 @@ const EarlyMorning = () => {
 
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
-  const userAvatarSize = isMobile ? "30px" : "55px";
+  const userAvatarSize = isMobile ? "20px" : "55px";
   const messageFontSize = isMobile ? "16px" : "18px";
 
   return (
@@ -369,7 +371,7 @@ const EarlyMorning = () => {
           <Flex h={"88vh"}>
             <Box
               h={isMobile ? "90vh" : "88vh"}
-              w={isMobile ? "27%" : "13%"}
+              w={isMobile ? "11%" : "13%"}
               overflow="auto"
               style={{
                 backgroundImage: isMobile
@@ -377,6 +379,75 @@ const EarlyMorning = () => {
                   : "linear-gradient(32deg,grey 0%, white 100%)",
               }}
             >
+              {isMobile ?  <Box
+                //bgColor="#948888"
+                pt={3}
+                flex="1"
+                pl={1}
+                pr={1}
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
+                justifyContent={"center"}
+                columnGap={3}
+              >
+                
+                <Box>
+                  {users.map((el) => {
+                    return (
+                      <Tooltip
+                        label={
+                          (el.name === "Ben Carter" && "CIO") ||
+                          (el.name === "Kate Sullivan" && "IT Director") ||
+                          (el.name === "Liam Turner" &&
+                            "Senior Systems Analyst") ||
+                          (el.name === "Sophia Kim" &&
+                            "Database Administrator") ||
+                          (el.name === "Mia Rodriguez" &&
+                            "Network Specialist") ||
+                          (el.name === "Tom Mitchell" &&
+                            "Application Vendor") ||
+                          (el.name === "Raj Patel" && "CFO") ||
+                          (el.name === "Grace Patterson" && "") ||
+                          (el.name === "Aisha Patel" && "COO") ||
+                          (el.name === "Julia Harper" && "Storage Vendor")
+                        }
+                      >
+                        <Box
+                          borderBottom="0px solid black"
+                          key={el.name}
+                          cursor="pointer"
+                          display="flex"
+                          flexDirection={isMobile ? "column" : "column"}
+                          alignItems="center"
+                        >
+                          <Box
+                            h={userAvatarSize}
+                            w={userAvatarSize}
+                            m="auto"
+                            mt={isMobile ? "17%" : 0}
+                            borderRadius="50%"
+                            className={el.name === activeUser ? "active" : ""}
+                          >
+                            <Image borderRadius={"50%"} src={el.url} alt="" />
+                          </Box>
+                          <Text
+                            className={el.name === activeUser ? "Tactive" : ""}
+                            fontSize={isMobile ? "10px" : "20px"}
+                            mb={isMobile ? 0 : 4}
+                            cursor="pointer"
+                          >
+                            {el.name === "Mr. Williams"
+                            ? "Williams"
+                            : el.name.split(" ")[0]}
+                          </Text>
+                        </Box>
+                      </Tooltip>
+                    );
+                  })}
+                </Box>
+               
+              </Box> :
               <Box
                 //bgColor="#948888"
                 pt={3}
@@ -387,12 +458,13 @@ const EarlyMorning = () => {
                 justifyContent={"center"}
                 columnGap={3}
               >
+
                 <Box>
                   {users.slice(0, 5).map((el) => {
                     return (
                       <Tooltip
                         label={
-                          (el.name === "Ben Carter" && "CEO") ||
+                          (el.name === "Ben Carter" && "CIO") ||
                           (el.name === "Kate Sullivan" && "IT Director") ||
                           (el.name === "Liam Turner" &&
                             "Senior Systems Analyst") ||
@@ -402,7 +474,7 @@ const EarlyMorning = () => {
                             "Network Specialist") ||
                           (el.name === "Tom Mitchell" &&
                             "Application Vendor") ||
-                          (el.name === "Raj Patel" && "") ||
+                          (el.name === "Raj Patel" && "CFO") ||
                           (el.name === "Grace Patterson" && "") ||
                           (el.name === "Aisha Patel" && "COO") ||
                           (el.name === "Julia Harper" && "Storage Vendor")
@@ -432,7 +504,9 @@ const EarlyMorning = () => {
                             mb={isMobile ? 0 : 4}
                             cursor="pointer"
                           >
-                            {el.name.split(" ")[0]}
+                            {el.name === "Mr. Williams"
+                            ? "Williams"
+                            : el.name.split(" ")[0]}
                           </Text>
                         </Box>
                       </Tooltip>
@@ -443,7 +517,7 @@ const EarlyMorning = () => {
                   {users.slice(5).map((el) => (
                     <Tooltip
                       label={
-                        (el.name === "Ben Carter" && "CEO") ||
+                        (el.name === "Ben Carter" && "CIO") ||
                         (el.name === "Kate Sullivan" && "IT Director") ||
                         (el.name === "Liam Turner" &&
                           "Senior Systems Analyst") ||
@@ -491,6 +565,7 @@ const EarlyMorning = () => {
                   ))}
                 </Box>
               </Box>
+}
             </Box>
             <Box
               maxH={isMobile ? "100vh" : "88vh"}

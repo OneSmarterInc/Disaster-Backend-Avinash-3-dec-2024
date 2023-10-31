@@ -177,10 +177,7 @@ const BringDown = () => {
       name: "Mia Rodriguez",
       url: mia,
     },
-    {
-      name: "Tom Mitchell",
-      url: tom,
-    },
+    
   ];
 
   useEffect(() => {
@@ -255,7 +252,7 @@ const BringDown = () => {
 
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
-  const userAvatarSize = isMobile ? "30px" : "55px";
+  const userAvatarSize = isMobile ? "20px" : "55px";
   const messageFontSize = isMobile ? "16px" : "18px";
 
   return (
@@ -289,14 +286,80 @@ const BringDown = () => {
           <Flex h={"88vh"}>
             <Box
               h={isMobile ? "90vh" : "88vh"}
-              w={isMobile ? "27%" : "13%"}
+              w={isMobile ? "10%" : "13%"}
               overflow="auto"
               style={{
                 backgroundImage: isMobile
                   ? "none"
                   : "linear-gradient(32deg,grey 0%, white 100%)",
               }}
+              border={"0px solid red"}
             >
+              {isMobile ?  <Box
+                //bgColor="#948888"
+                pt={3}
+                flex="1"
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
+                justifyContent={"center"}
+                columnGap={3}
+              >
+                <Box>
+                  {users.map((el) => {
+                    return (
+                      <Tooltip
+                        label={
+                          (el.name === "Ben Carter" && "CEO") ||
+                          (el.name === "Kate Sullivan" && "IT Director") ||
+                          (el.name === "Liam Turner" &&
+                            "Senior Systems Analyst") ||
+                          (el.name === "Sophia Kim" &&
+                            "Database Administrator") ||
+                          (el.name === "Mia Rodriguez" &&
+                            "Network Specialist") ||
+                          (el.name === "Tom Mitchell" &&
+                            "Application Vendor") ||
+                          (el.name === "Raj Patel" && "CFO") ||
+                          (el.name === "Grace Patterson" && "") ||
+                          (el.name === "Chloe Zhang" && "IT Manager")
+                        }
+                      >
+                        <Box
+                          borderBottom="0px solid black"
+                          key={el.name}
+                          cursor="pointer"
+                          display="flex"
+                          flexDirection={isMobile ? "column" : "column"}
+                          alignItems="center"
+                        >
+                          <Box
+                            h={userAvatarSize}
+                            w={userAvatarSize}
+                            m="auto"
+                            mt={isMobile ? "17%" : 0}
+                            borderRadius="50%"
+                            className={el.name === activeUser ? "active" : ""}
+                          >
+                            <Image borderRadius={"50%"} src={el.url} alt="" />
+                          </Box>
+                          <Text
+                            className={el.name === activeUser ? "Tactive" : ""}
+                            fontSize={isMobile ? "10px" : "20px"}
+                            mt={isMobile ? 0 : 6}
+                            cursor="pointer"
+                          >
+                            {el.name === "Tom Mitchell"
+                              ? "Tom"
+                              : el.name.split(" ")[0]}
+                          </Text>
+                        </Box>
+                      </Tooltip>
+                    );
+                  })}
+                </Box>
+                
+              </Box>:
               <Box
                 //bgColor="#948888"
                 pt={3}
@@ -312,7 +375,7 @@ const BringDown = () => {
                     return (
                       <Tooltip
                         label={
-                          (el.name === "Ben Carter" && "CEO") ||
+                          (el.name === "Ben Carter" && "CIO") ||
                           (el.name === "Kate Sullivan" && "IT Director") ||
                           (el.name === "Liam Turner" &&
                             "Senior Systems Analyst") ||
@@ -322,7 +385,7 @@ const BringDown = () => {
                             "Network Specialist") ||
                           (el.name === "Tom Mitchell" &&
                             "Application Vendor") ||
-                          (el.name === "Raj Patel" && "") ||
+                          (el.name === "Raj Patel" && "CFO") ||
                           (el.name === "Grace Patterson" && "") ||
                           (el.name === "Chloe Zhang" && "IT Manager")
                         }
@@ -411,6 +474,7 @@ const BringDown = () => {
                   ))}
                 </Box>
               </Box>
+}
             </Box>
             <Box
               maxH={isMobile ? "100vh" : "88vh"}

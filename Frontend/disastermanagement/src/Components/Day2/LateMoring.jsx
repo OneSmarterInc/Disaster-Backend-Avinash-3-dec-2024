@@ -243,7 +243,7 @@ const LateMorning = () => {
 
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
-  const userAvatarSize = isMobile ? "30px" : "55px";
+  const userAvatarSize = isMobile ? "20px" : "55px";
   const messageFontSize = isMobile ? "16px" : "18px";
 
   return (
@@ -277,7 +277,7 @@ const LateMorning = () => {
           <Flex h={"88vh"}>
           <Box
               h={isMobile ? "90vh" : "88vh"}
-              w={isMobile ? "27%" : "13%"}
+              w={isMobile ? "10%" : "13%"}
               overflow="auto"
               style={{
 
@@ -290,6 +290,7 @@ const LateMorning = () => {
               <Box
                 //bgColor="#948888"
                 pt={3}
+                pl={isMobile ? 2 : 0}
                 flex="1"
                 display="flex"
                 flexDirection="row"
@@ -302,7 +303,7 @@ const LateMorning = () => {
                     return (
                       <Tooltip
                         label={
-                          (el.name === "Ben Carter" && "CEO") ||
+                          (el.name === "Ben Carter" && "CIO") ||
                           (el.name === "Kate Sullivan" && "IT Director") ||
                           (el.name === "Liam Turner" &&
                             "Senior Systems Analyst") ||
@@ -312,7 +313,7 @@ const LateMorning = () => {
                             "Network Specialist") ||
                           (el.name === "Tom Mitchell" &&
                             "Application Vendor") ||
-                          (el.name === "Raj Patel" && "") ||
+                          (el.name === "Raj Patel" && "CFO") ||
                           (el.name === "Grace Patterson" && "") ||
                           (el.name === "Aisha Patel" && "COO")
                         }
@@ -337,7 +338,7 @@ const LateMorning = () => {
                           </Box>
                           <Text
                           className={el.name === activeUser ? "Tactive" : ""}
-                          fontSize={isMobile ? "14px" : "20px"}
+                          fontSize={isMobile ? "10px" : "20px"}
                           mb={isMobile ? 0 : 4}
                           cursor="pointer"
                         >
@@ -352,7 +353,7 @@ const LateMorning = () => {
                   {users.slice(5).map((el) => (
                     <Tooltip
                       label={
-                        (el.name === "Ben Carter" && "CEO") ||
+                        (el.name === "Ben Carter" && "CIO") ||
                         (el.name === "Kate Sullivan" && "IT Director") ||
                         (el.name === "Liam Turner" &&
                           "Senior Systems Analyst") ||

@@ -213,16 +213,14 @@ const Chat = () => {
 
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
-  const userAvatarSize = isMobile ? "30px" : "55px";
+  const userAvatarSize = isMobile ? "20px" : "55px";
   const messageFontSize = isMobile ? "16px" : "18px";
 
   return (
     <>
       {value ===
       "Emphasizing teamwork, both internally and with external partners" ? (
-
         <BringDown />
-
       ) : value === "Making clear and swift decisions under pressure" ? (
         <BringDown />
       ) : value === "Remaining calm and level-headed during challenges" ? (
@@ -258,11 +256,9 @@ const Chat = () => {
               w={isMobile ? "10%" : "13%"}
               overflow="auto"
               style={{
-
                 backgroundImage: isMobile
                   ? "none"
                   : "linear-gradient(32deg,grey 0%, white 100%)",
-
               }}
             >
               <Box pt={3} borderBottom={"0px solid black"}>
@@ -295,7 +291,7 @@ const Chat = () => {
                         <Text
                           className={el.name === activeUser ? "Tactive" : ""}
                           fontSize={isMobile ? "14px" : "20px"}
-                          mt={isMobile ? 0 : 6}
+                          mb={isMobile ? 0 : 4}
                           cursor="pointer"
                         >
                           {el.name.split(" ")[0]}
@@ -313,18 +309,15 @@ const Chat = () => {
               border="0px solid red"
               overflow="auto"
               ref={chatContainerRef}
-
               pb={5}
-
               bgImage={imgsrc}
               bgRepeat="no-repeat"
               bgSize={isMobile ? "cover" : "cover"}
-              bgPosition={"center"}
+              bgPosition={isMobile ? "center" : "none"}
               display="flex"
               flexDirection="column"
               alignItems={isMobile ? "center" : "flex-start"}
             >
-
               <Box
                 border={"1px solid black"}
                 bgColor={"#030405"}
@@ -386,7 +379,7 @@ const Chat = () => {
                             pl={isMobile ? 3 : 5}
                             pr={isMobile ? 3 : 5}
                             mt={2}
-                            fontSize={isMobile ? "13px" : "18px"}
+                            fontSize={isMobile ? "12px" : "15px"}
                           >
                             <Text>
                               <span id="sender">{el.sender}</span>: {el.message}
@@ -427,7 +420,7 @@ const Chat = () => {
                                 flex="1"
                               >
                                 <Text>
-                                  He opens the email.It's a brief report about
+                                  He opens the email. It's a brief report about
                                   some applications showing sporadic errors.
                                 </Text>
                               </Box>
@@ -642,14 +635,14 @@ const Chat = () => {
                               <Box
                                 className="flex2"
                                 w={isMobile ? "90%" : "80%"}
-                                m={'auto'}
+                                m={"auto"}
                                 pb={3}
                               >
                                 <Box
                                   border="1px solid black"
                                   borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                   // Add padding to the box
+                                  // Add padding to the box
                                   bgColor={
                                     isMobile ? "lightgray" : "transparent"
                                   } // Set background color
@@ -686,7 +679,7 @@ const Chat = () => {
                                   border="1px solid black"
                                   borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
                                   bgColor={
                                     isMobile ? "lightgray" : "transparent"
                                   } // Set background color
@@ -724,7 +717,7 @@ const Chat = () => {
                                   border="1px solid black"
                                   borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
                                   bgColor={
                                     isMobile ? "lightgray" : "transparent"
                                   } // Set background color
@@ -738,7 +731,7 @@ const Chat = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -762,7 +755,7 @@ const Chat = () => {
                                   border="1px solid black"
                                   borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
                                   bgColor={
                                     isMobile ? "lightgray" : "transparent"
                                   } // Set background color
@@ -776,7 +769,7 @@ const Chat = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -800,7 +793,7 @@ const Chat = () => {
                                   border="1px solid black"
                                   borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
                                   bgColor={
                                     isMobile ? "lightgray" : "transparent"
                                   } // Set background color
@@ -814,7 +807,7 @@ const Chat = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -838,7 +831,7 @@ const Chat = () => {
                                   border="1px solid black"
                                   borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
                                   bgColor={
                                     isMobile ? "lightgray" : "transparent"
                                   } // Set background color
@@ -852,7 +845,7 @@ const Chat = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
@@ -894,7 +887,6 @@ const Chat = () => {
                               bg={"#c8cfca"}
                               color={"black"}
                               fontWeight={"bold"}
-                              
                             >
                               <Text>
                                 Which quality of Ben Carter do you feel stands
@@ -908,15 +900,15 @@ const Chat = () => {
                             >
                               <Box
                                 className="flex"
-                                w={isMobile ? "90%" : "80%"}
-                                m={'auto'}
+                                w={isMobile ? "100%" : "80%"}
+                                m={"auto"}
                                 pb={4}
                               >
-                               <Box
+                                <Box
                                   border="1px solid black"
                                   borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
                                   bgColor={
                                     isMobile ? "lightgray" : "transparent"
                                   } // Set background color
@@ -930,12 +922,12 @@ const Chat = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
                                         fontFamily={"Fredoka"}
-                                        size={"lg"}
+                                        size={"sm"}
                                         colorScheme="orange"
                                         value="Making clear and swift decisions under pressure"
                                         style={{
@@ -953,7 +945,7 @@ const Chat = () => {
                                   border="1px solid black"
                                   borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
                                   bgColor={
                                     isMobile ? "lightgray" : "transparent"
                                   } // Set background color
@@ -967,13 +959,13 @@ const Chat = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
                                         border="1px solid black"
                                         fontFamily={"Fredoka"}
-                                        size={"lg"}
+                                        size={"sm"}
                                         colorScheme="orange"
                                         value="Remaining calm and level-headed during challenges"
                                         style={{
@@ -991,7 +983,7 @@ const Chat = () => {
                                   border="1px solid black"
                                   borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
                                   bgColor={
                                     isMobile ? "lightgray" : "transparent"
                                   } // Set background color
@@ -1005,13 +997,13 @@ const Chat = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
                                         border="1px solid black"
                                         fontFamily={"Fredoka"}
-                                        size={"lg"}
+                                        size={"sm"}
                                         colorScheme="orange"
                                         value="Emphasizing teamwork, both internally and with external partners"
                                         style={{
@@ -1029,7 +1021,7 @@ const Chat = () => {
                                   border="1px solid black"
                                   borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
                                   bgColor={
                                     isMobile ? "lightgray" : "transparent"
                                   } // Set background color
@@ -1043,13 +1035,13 @@ const Chat = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
                                         border="1px solid black"
                                         fontFamily={"Fredoka"}
-                                        size={"lg"}
+                                        size={"sm"}
                                         colorScheme="orange"
                                         value="Effectively conveying information, even in challenging circumstances"
                                         style={{
@@ -1067,7 +1059,7 @@ const Chat = () => {
                                   border="1px solid black"
                                   borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
                                   bgColor={
                                     isMobile ? "lightgray" : "transparent"
                                   } // Set background color
@@ -1081,13 +1073,13 @@ const Chat = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
                                         border="1px solid black"
                                         fontFamily={"Fredoka"}
-                                        size={"lg"}
+                                        size={"sm"}
                                         colorScheme="orange"
                                         value="Quickly adjusting strategies based on new information or changing scenarios"
                                         style={{
@@ -1105,7 +1097,7 @@ const Chat = () => {
                                   border="1px solid black"
                                   borderRadius="50px"
                                   _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "3" : "1"} // Add padding to the box
+                                  p={isMobile ? "1" : "1"} // Add padding to the box
                                   bgColor={
                                     isMobile ? "lightgray" : "transparent"
                                   } // Set background color
@@ -1119,13 +1111,13 @@ const Chat = () => {
                                       style={{
                                         cursor: "pointer",
                                         position: "relative",
-                                        flex:1
+                                        flex: 1,
                                       }}
                                     >
                                       <Radio
                                         border="1px solid black"
                                         fontFamily={"Fredoka"}
-                                        size={"lg"}
+                                        size={"sm"}
                                         colorScheme="orange"
                                         value="Keeping an eye on long-term impacts and future implications during the crisis"
                                         style={{

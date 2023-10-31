@@ -25,7 +25,7 @@ const LeadershipFramework = () => {
     <>
       <Box
         display={"flex"}
-        justifyContent={"space-between"}
+        justifyContent={isMobile ? "center" :"space-between"}
         alignItems={"center"}
         mt={isMobile ? 4 : 10}
         pl={5}

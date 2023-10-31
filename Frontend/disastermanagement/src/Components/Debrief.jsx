@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
 import "./Debrief.css";
 import AnalysisOfBen from "./AnalysisOfBen";
@@ -16,12 +16,16 @@ const Debrief = () => {
   },[])
   return (
     <>
+      
       <Box id="container"   >
         <AnalysisOfBen />
         <DimensionMatrix />
         <LeadershipFramework />
         <FinalThoughts />
       </Box>
+      <Text color={"gray.100"}>
+              -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </Text>
     </>
   );
 };

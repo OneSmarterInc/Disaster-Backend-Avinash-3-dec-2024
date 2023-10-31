@@ -59,6 +59,7 @@ const Sidebar = () => {
         bg={"white"}
         border={"0px solid red"}
         w={"100%"}
+        h={isMobile && "100vh"}
       >
         {showSidebar || isHovered ? (
           <VStack
@@ -173,7 +174,7 @@ const Sidebar = () => {
             </Flex>
           )}
 
-          {isDesktop && selectedSection === "debrief" && (
+          {/* {isDesktop && selectedSection === "debrief" && (
             <Text color={"gray.100"}>
               -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             </Text>
@@ -183,7 +184,7 @@ const Sidebar = () => {
             <Text color={"gray.100"}>
              --------------------------------------
             </Text>
-          )}
+          )} */}
 
           {selectedSection === "Chat" && <Chat />}
           {selectedSection === "deliverable" && <Deliverable />}

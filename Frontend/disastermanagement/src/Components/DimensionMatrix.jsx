@@ -34,7 +34,7 @@ const DimensionMatrix = () => {
         pl={5}
         pr={5}
         display={"flex"}
-        justifyContent={"space-between"}
+        justifyContent={isMobile ? "center" : "space-between"}
         alignItems={"center"}
         mt={isMobile ? 4 : 10}
         className="containerChild"

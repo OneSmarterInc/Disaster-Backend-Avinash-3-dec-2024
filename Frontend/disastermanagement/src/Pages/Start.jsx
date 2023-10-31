@@ -81,7 +81,7 @@ const Start = () => {
   };
 
   return (
-    <Box>
+    <Box >
       <Flex
         bgColor="#343541"
         justifyContent={"space-between"}
@@ -112,7 +112,7 @@ const Start = () => {
             )}
             </Show>
         <Box width={isMobile ? "40%" : "35%"} border={"0px solid white"}>
-          <Heading fontSize={isMobile ? 7 : 20} fontWeight={"500"} fontFamily={"Fredoka"}>
+          <Heading fontSize={isMobile ? 9 : 20} fontWeight={"500"} fontFamily={"Fredoka"}>
             {head}
           </Heading>
         </Box>

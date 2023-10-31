@@ -32,7 +32,7 @@ const Info = () => {
         bgRepeat={"no-repeat"}
         bgImage={homepage}
         position="relative" // Add this line
-        border={"1px solid red"}
+        border={"0px solid red"}
         w={isMobile && "100%"}
       >
         <Box
@@ -239,7 +239,7 @@ const Info = () => {
           <ul>
             <li>
               <Text
-                fontSize={14}
+                fontSize={isMobile ? 10 : 14}
                 textAlign="justify"
                 color={useColorModeValue("black", "gray.800")}
               >

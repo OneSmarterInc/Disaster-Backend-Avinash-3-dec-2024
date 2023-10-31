@@ -618,7 +618,7 @@ const Morning5 = () => {
             </Box>
 
             <Box
-              maxH={isMobile ? "100vh" : "88vh"}
+              h={isMobile ? "100vh" : "88vh"}
               w={isMobile ? "100%" : "90%"}
               border="0px solid red"
               overflow="auto"

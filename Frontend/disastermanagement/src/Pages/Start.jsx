@@ -88,7 +88,7 @@ const Start = () => {
         alignItems={"center"}
         w={"100%"}
         m={"auto"}
-        h={["80px", "20"]} // Adjust the height for mobile view
+        h={isMobile ? 10 : 20} // Adjust the height for mobile view
         pl={4}
         pr={4}
         color={"white"}
@@ -106,17 +106,17 @@ const Start = () => {
 
         <Show breakpoint="(max-width : 900px)">
         {showSidebar ? (
-          <AiOutlineClose onClick={handleclose} fontWeight={"bold"} fontSize={30} />
+          <AiOutlineClose onClick={handleclose} fontWeight={"bold"} fontSize={isMobile ? 15 :30} />
         ) : (
-            <HamburgerIcon onClick={handleopen} fontSize={30} />
+            <HamburgerIcon onClick={handleopen} fontSize={isMobile ? 15:30} />
             )}
             </Show>
         <Box width={isMobile ? "40%" : "35%"} border={"0px solid white"}>
-          <Heading size={isMobile ? "sm" : "md"} fontWeight={"500"} fontFamily={"Fredoka"}>
+          <Heading fontSize={isMobile ? 7 : 20} fontWeight={"500"} fontFamily={"Fredoka"}>
             {head}
           </Heading>
         </Box>
-        <Text cursor={"pointer"} fontSize={ isMobile ? 35 :45} onClick={handlePause}>
+        <Text cursor={"pointer"} fontSize={ isMobile ? 20 :45} onClick={handlePause}>
 
           {pauseBtn ? (
             <MdNotStarted color="green" />
@@ -135,7 +135,7 @@ const Start = () => {
             alignItems: "center",
           }}
         >
-          <Image src={folder} w={isMobile? 7:10} sizes="30px" cursor={"pointer"} />
+          <Image src={folder} w={isMobile? 5:10} sizes="30px" cursor={"pointer"} />
           {showDropdown && (
             <div
               style={{

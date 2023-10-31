@@ -266,7 +266,7 @@ const Chat = () => {
                   return (
                     <Tooltip
                       label={
-                        (el.name === "Ben Carter" && "CEO") ||
+                        (el.name === "Ben Carter" && "CIO") ||
                         (el.name === "Kate Sullivan" && "IT Director")
                       }
                     >
@@ -290,7 +290,7 @@ const Chat = () => {
                         </Box>
                         <Text
                           className={el.name === activeUser ? "Tactive" : ""}
-                          fontSize={isMobile ? "14px" : "20px"}
+                          fontSize={isMobile ? "10px" : "20px"}
                           mb={isMobile ? 0 : 4}
                           cursor="pointer"
                         >

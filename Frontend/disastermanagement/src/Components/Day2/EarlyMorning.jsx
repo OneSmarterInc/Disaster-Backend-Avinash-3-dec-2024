@@ -69,6 +69,7 @@ const EarlyMorning = () => {
     "Ben Carter is on the phone with Tom Mitchell, the VP of Customer Services from the applications vendor. They engage in a lengthy conversation, discussing the technical intricacies."
   );
   const [ptr, setPtr] = useState(0);
+  const [clName, setClName] = useState("Tactive");
 
 
   const chatContainerRef = useRef(null);
@@ -322,6 +323,7 @@ const EarlyMorning = () => {
           if (currentMessageIndex === dayTwoEarlyMorning.length) {
             // The chat has ended completely, set showBox to true
             setShowBox(true);
+            setClName("");
           }
         }
       }
@@ -440,6 +442,11 @@ const EarlyMorning = () => {
                             ? "Williams"
                             : el.name.split(" ")[0]}
                           </Text>
+                          <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                         </Box>
                       </Tooltip>
                     );
@@ -509,6 +516,11 @@ const EarlyMorning = () => {
                               : el.name.split(" ")[0]}
 
                           </Text>
+                          <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                         </Box>
                       </Tooltip>
                     );
@@ -561,6 +573,11 @@ const EarlyMorning = () => {
                             ? "Williams"
                             : el.name.split(" ")[0]}
                         </Text>
+                        <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                       </Box>
                     </Tooltip>
                   ))}

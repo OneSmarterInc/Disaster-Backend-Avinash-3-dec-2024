@@ -2,6 +2,7 @@ import { Box, Button, Heading, Text } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import "./intro.css";
 import { Link } from "react-router-dom";
+import "./Info.css";
 
 const Intro = () => {
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
@@ -177,6 +178,14 @@ const Intro = () => {
           </Link>
         </Box>
       </Box>
+      <footer>
+          <a
+            href="mailto:vikram@vikramsethi.com"
+            style={{ textDecoration: "none" }}
+          >
+            &copy; Vikram Sethi Contact :&nbsp;vikram@vikramsethi.com
+          </a>
+        </footer>
     </Box>
   );
 };

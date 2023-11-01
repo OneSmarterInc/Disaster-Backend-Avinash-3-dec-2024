@@ -65,7 +65,7 @@ const LateMorning = () => {
   const [day5Popup2, setDay5Popup2] = useState(true);
   const [day5Popup3, setDay5Popup3] = useState(true);
   const [day5Popup4, setDay5Popup4] = useState(true);
-
+  const [clName, setClName] = useState("Tactive");
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [chatPaused, setChatPaused] = useState(false);
 
@@ -228,6 +228,7 @@ const LateMorning = () => {
           if (currentMessageIndex === dayTwoLateMorning.length) {
             // The chat has ended completely, set showBox to true
             setShowBox(true);
+            setClName("");
           }
         }
       }
@@ -343,6 +344,11 @@ const LateMorning = () => {
 
                             {el.name.split(" ")[0]}
                           </Text>
+                          <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                         </Box>
                       </Tooltip>
                     );
@@ -392,6 +398,11 @@ const LateMorning = () => {
                         >
                           {el.name.split(" ")[0]}
                         </Text>
+                        <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                       </Box>
                     </Tooltip>
                   ))}

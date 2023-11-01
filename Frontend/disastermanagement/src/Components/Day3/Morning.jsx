@@ -67,7 +67,7 @@ const Morning = () => {
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const [ptr, setPtr] = useState(0);
-
+  
   const [day5Popup, setDay5Popup] = useState(true);
   const [day5Popup2, setDay5Popup2] = useState(true);
   const [day5Popup3, setDay5Popup3] = useState(true);
@@ -83,7 +83,7 @@ const Morning = () => {
 
   const [chatPaused, setChatPaused] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
-
+  const [clName, setClName] = useState("Tactive");
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
   const [ShowScroll, setShowScroll] = useState(false);
@@ -217,7 +217,7 @@ const Morning = () => {
         } else {
           if (currentMessageIndex === dayThreeMorning.length) {
             // The chat has ended completely, set showBox to true
-
+            setClName("");
             setShowBox(true);
           }
         }
@@ -404,6 +404,11 @@ const Morning = () => {
                           >
                             {el.name.split(" ")[0]}
                           </Text>
+                          <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                         </Box>
                       </Tooltip>
                     );
@@ -453,6 +458,11 @@ const Morning = () => {
                         >
                           {el.name.split(" ")[0]}
                         </Text>
+                        <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                       </Box>
                     </Tooltip>
                   ))}

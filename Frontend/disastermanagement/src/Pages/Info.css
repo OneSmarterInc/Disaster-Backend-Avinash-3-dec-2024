@@ -1,0 +1,27 @@
+footer {
+  position: fixed;
+  bottom: 1%; 
+  left: 50%;
+  z-index: 9999;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%; 
+  color: rgb(231, 225, 225);
+  font-size: 0.8rem;
+  text-shadow: 1px 1px 10px black;
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+  }
+  a {
+    color: grey;
+  }
+  a:hover {
+    color: white;
+  }
+}
+
+a {
+  text-decoration: none;
+}

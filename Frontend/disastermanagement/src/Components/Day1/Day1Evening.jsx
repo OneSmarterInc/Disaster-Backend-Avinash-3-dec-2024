@@ -61,7 +61,7 @@ const BringDown = () => {
   const [day5Popup, setDay5Popup] = useState(true);
   const [chatPaused, setChatPaused] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-
+  const [clName, setClName] = useState("Tactive");
   const [modalValue, setModalValue] = useState(null);
   const [modalValue1, setModalValue1] = useState(null);
   const [ShowScroll, setShowScroll] = useState(false);
@@ -204,6 +204,7 @@ const BringDown = () => {
           if (currentMessageIndex === dayOneEvening.length) {
             // The chat has ended completely, set showBox to true
             setShowBox(true);
+            setClName("");
           }
         }
       }
@@ -353,6 +354,11 @@ const BringDown = () => {
                               ? "Tom"
                               : el.name.split(" ")[0]}
                           </Text>
+                          <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                         </Box>
                       </Tooltip>
                     );
@@ -418,6 +424,11 @@ const BringDown = () => {
                               ? "Tom"
                               : el.name.split(" ")[0]}
                           </Text>
+                          <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                         </Box>
                       </Tooltip>
                     );
@@ -469,6 +480,11 @@ const BringDown = () => {
                             ? "Tom"
                             : el.name.split(" ")[0]}
                         </Text>
+                        <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                       </Box>
                     </Tooltip>
                   ))}

@@ -108,6 +108,7 @@ const Morning5 = () => {
   const [selectedValue, setSelectedValue] = useState(null);
   const [chatPaused, setChatPaused] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
+  const [clName, setClName] = useState("Tactive");
   const [textBox, setTextBox] = useState(
     " Morning light floods the office. There's a palpable sense of cautious optimism. Team members, though visibly exhausted, are in high spirits, closely monitoring systems and validating data."
   );
@@ -440,6 +441,7 @@ const Morning5 = () => {
     setChatPaused(false);
 
     setShowBox(true);
+    setClName("");
   };
 
   const closePopup12 = () => {
@@ -557,6 +559,11 @@ const Morning5 = () => {
                               : el.name.split(" ")[0]}
 
                           </Text>
+                          <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                         </Box>
                       </Tooltip>
                     );
@@ -610,6 +617,11 @@ const Morning5 = () => {
                             ? "CL"
                             : el.name.split(" ")[0]}
                         </Text>
+                        <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                       </Box>
                     </Tooltip>
                   ))}

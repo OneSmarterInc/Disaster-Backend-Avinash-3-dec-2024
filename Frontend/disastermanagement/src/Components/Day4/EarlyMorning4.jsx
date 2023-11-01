@@ -81,7 +81,7 @@ const EarlyMorning4 = () => {
   const [showPopup3, setShowPopup3] = useState(false);
   const [showPopup4, setShowPopup4] = useState(false);
   const [ShowScroll, setShowScroll] = useState(false);
-
+  const [clName, setClName] = useState("Tactive");
   const [showPopup5, setShowPopup5] = useState(false);
   const [showPopup6, setShowPopup6] = useState(false);
 
@@ -237,6 +237,7 @@ const EarlyMorning4 = () => {
           if (currentMessageIndex === dayFourMorning.length) {
             // The chat has ended completely, set showBox to true
             setShowBox(true);
+            setClName("");
           }
         }
       }
@@ -433,6 +434,11 @@ const EarlyMorning4 = () => {
                               "SOD 2") ||
                             el.name.split(" ")[0]}
                           </Text>
+                          <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                         </Box>
                       </Tooltip>
                     );
@@ -499,8 +505,16 @@ const EarlyMorning4 = () => {
                             mb={isMobile ? 0 : 4}
                             cursor="pointer"
                           >
-                            {el.name.split(" ")[0]}
+                             {(el.name === "System One Developer #1" && "SOD 1") ||
+                            (el.name === "System One Developer #2" &&
+                              "SOD 2") ||
+                            el.name.split(" ")[0]}
                           </Text>
+                          <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                         </Box>
                       </Tooltip>
                     );
@@ -557,6 +571,11 @@ const EarlyMorning4 = () => {
                               "SOD 2") ||
                             el.name.split(" ")[0]}
                         </Text>
+                        <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                       </Box>
                     </Tooltip>
                   ))}

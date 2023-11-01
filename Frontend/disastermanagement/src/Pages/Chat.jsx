@@ -52,6 +52,7 @@ const Chat = () => {
   const [textBox, setTextBox] = useState(
     " The office of Ben Carter. He's wrapping up for the day, shutting down his computer,gathering his things, and exchanging a few words with his colleagues before heading out."
   );
+  const [clName, setClName] = useState("Tactive");
 
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -132,6 +133,7 @@ const Chat = () => {
           if (currentMessageIndex === dayOneMorning.length) {
             // The chat has ended completely, set showBox to true
             setShowBox(true);
+            setClName("");
           }
         }
       }
@@ -228,6 +230,7 @@ const Chat = () => {
           display="flex"
           flexWrap="wrap"
         >
+         
           <Flex h={"88vh"}>
             <Box
               h={isMobile ? "100%" : "88vh"}
@@ -274,6 +277,14 @@ const Chat = () => {
                         >
                           {el.name.split(" ")[0]}
                         </Text>
+                        <div
+                          className="loading"
+                          id={el.name === activeUser ? clName : ""}
+                        >
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                          <span className="dot"></span>
+                        </div>
                       </Box>
                     </Tooltip>
                   );
@@ -311,7 +322,7 @@ const Chat = () => {
                 w={isMobile ? "100%" : "90%"}
                 pl={isMobile ? 2 : 5}
                 pr={isMobile ? 2 : 5}
-                m={ "0 auto"}
+                m={"0 auto"}
                 mt={3}
                 h={"68vh"}
               >
@@ -1121,6 +1132,7 @@ const Chat = () => {
             </Box>
           </Flex>
         </Box>
+        
       )}
     </>
   );

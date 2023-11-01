@@ -526,7 +526,7 @@ export const dayThreeMorning = [
       "(Voice slightly strained) Good morning. We've made progress, but ERP remains a challenge.",
   },
   {
-    sender: "COO",
+    sender: "Aisha Patel",
     message:
       "(On call) Ben, we've invested heavily in these systems. How did we end up here?",
   },

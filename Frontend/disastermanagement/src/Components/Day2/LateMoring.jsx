@@ -270,13 +270,13 @@ const LateMorning = () => {
           border={"0px solid red"}
           w={"100%"}
           m={"auto"}
-          h={isMobile ? "90vh" : "88vh"}
+          h={isMobile ? "100%" : "88vh"}
           display="flex"
           flexWrap="wrap"
         >
           <Flex h={"88vh"}>
             <Box
-              h={isMobile ? "90vh" : "88vh"}
+              h={isMobile ? "100%" : "88vh"}
               w={isMobile ? "10%" : "13%"}
               overflow="auto"
               style={{
@@ -410,7 +410,7 @@ const LateMorning = () => {
               </Box>
             </Box>
             <Box
-              h={isMobile ? "100vh" : "88vh"}
+              h={isMobile ? "100%" : "88vh"}
               w={isMobile ? "100%" : "90%"}
               border="0px solid red"
               overflow="auto"
@@ -535,7 +535,7 @@ const LateMorning = () => {
                                 borderRadius={10}
                                 p={{ base: 4, sm: 5 }}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   Ben Carter and his internal team are in a
                                   planning session.
                                 </Text>
@@ -600,7 +600,7 @@ const LateMorning = () => {
                                 borderRadius={10}
                                 p={{ base: 4, sm: 5 }}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   The room is bathed in the golden light of late
                                   afternoon. The clock reads 4:00 PM.
                                 </Text>
@@ -664,7 +664,7 @@ const LateMorning = () => {
                                 borderRadius={10}
                                 p={{ base: 4, sm: 5 }}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   The night deepens, and the office is quieter,
                                   with only the IT team still working
                                   diligently. The clock is about to strike
@@ -730,7 +730,7 @@ const LateMorning = () => {
                                 borderRadius={10}
                                 p={{ base: 4, sm: 5 }}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   The clock strikes 1:00 PM. The atmosphere in
                                   the room is cautiously optimistic.
                                 </Text>

@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
   Box,
+  Button,
   Divider,
   Flex,
+  HStack,
   Heading,
   Image,
   Modal,
@@ -13,6 +15,7 @@ import {
   ModalOverlay,
   Show,
   Text,
+  VStack,
   useDisclosure,
 } from "@chakra-ui/react";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -29,6 +32,11 @@ import figma from "../Images/figmabasic.png";
 import figure3 from "../Images/figmabasics3.png";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { AiOutlineClose } from "react-icons/ai";
+import {FiMinus} from "react-icons/fi";
+import {BiPlus} from "react-icons/bi";
+import {MdSpeed} from "react-icons/md"
+import "../Pages/Info.css";
+
 
 const Start = () => {
   const {
@@ -38,12 +46,24 @@ const Start = () => {
     showSidebar,
     setShowSideBar,
     showCloseBtn,
+    setSpeed,
+    speed
   } = useContext(MyContext);
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedSection, setSelectedSection] = useState(null);
 
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
+  const handleSpeed = (value) => {
+   
+      setSpeed((pre)=> pre+value);
+    
+    console.log(speed);
+  };
+
+  const handleNormalSpeed = (value)=>{
+    setSpeed(value);
+  }
 
   const handleclose = () => {
     setShowSideBar(false);
@@ -80,13 +100,14 @@ const Start = () => {
     }
   };
 
+
   useEffect(() => {
     // Scroll to the top of the page when the component mounts
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <Box >
+    <Box>
       <Flex
         bgColor="#343541"
         justifyContent={"space-between"}
@@ -103,32 +124,54 @@ const Start = () => {
         <Show above="md">
           <Heading fontFamily={"caliber"} size={"lg"}>
             Leading Through Disruption
-            <Text fontSize={17} display={"inline"}  >
-             <sup>&#169;</sup> 
+            <Text fontSize={17} display={"inline"}>
+              <sup>&#169;</sup>
             </Text>
           </Heading>
         </Show>
 
         <Show breakpoint="(max-width : 900px)">
-        {showSidebar ? (
-          <AiOutlineClose onClick={handleclose} fontWeight={"bold"} fontSize={isMobile ? 15 :30} />
-        ) : (
-            <HamburgerIcon onClick={handleopen} fontSize={isMobile ? 15:30} />
-            )}
-            </Show>
+          {showSidebar ? (
+            <AiOutlineClose
+              onClick={handleclose}
+              fontWeight={"bold"}
+              fontSize={isMobile ? 15 : 30}
+            />
+          ) : (
+            <HamburgerIcon onClick={handleopen} fontSize={isMobile ? 15 : 30} />
+          )}
+        </Show>
         <Box width={isMobile ? "40%" : "35%"} border={"0px solid white"}>
-          <Heading fontSize={isMobile ? 9 : 20} fontWeight={"500"} fontFamily={"Fredoka"}>
+          <Heading
+            fontSize={isMobile ? 9 : 20}
+            fontWeight={"500"}
+            fontFamily={"Fredoka"}
+          >
             {head}
           </Heading>
         </Box>
-        <Text cursor={"pointer"} fontSize={ isMobile ? 20 :45} onClick={handlePause}>
-
+        <Text
+          cursor={"pointer"}
+          fontSize={isMobile ? 20 : 45}
+          onClick={handlePause}
+        >
           {pauseBtn ? (
             <MdNotStarted color="green" />
           ) : (
             <BsPauseCircleFill color="#db1c50" />
           )}
         </Text>
+        <HStack  border={"0px solid white"}>
+          <Button size={isMobile ? 2 : "sm"} fontSize={isMobile ? 12 : 20}  _hover={{"bgColor":"white", "color":"black"}} color={"white"} bg={"transparent"} onClick={() => handleSpeed(1000)} isDisabled={speed >8000}>
+
+        <FiMinus  />
+          </Button>
+  
+            <MdSpeed fontSize={isMobile ? 20 : 30}/>
+          <Button size={isMobile ? 2 : "sm"} fontSize={isMobile ? 12 :20} _hover={{"bgColor":"white", "color":"black"}} color={"white"} bg={"transparent"}  onClick={() => handleSpeed(-1000)} isDisabled={speed <2000}>
+          <BiPlus  />
+          </Button>
+        </HStack>
 
         {/* <Text cursor={"pointer"} fontSize={35} onClick={handlePause}>{pauseBtn ? <MdNotStarted /> : <BsPauseCircleFill />}</Text> */}
         <div
@@ -140,7 +183,12 @@ const Start = () => {
             alignItems: "center",
           }}
         >
-          <Image src={folder} w={isMobile? 5:10} sizes="30px" cursor={"pointer"} />
+          <Image
+            src={folder}
+            w={isMobile ? 5 : 10}
+            sizes="30px"
+            cursor={"pointer"}
+          />
           {showDropdown && (
             <div
               style={{
@@ -246,6 +294,14 @@ const Start = () => {
           </ModalBody>
         </ModalContent>
       </Modal>
+      <footer>
+            <a
+              href="mailto:vikram@vikramsethi.com"
+              style={{ textDecoration: "none" }}
+            >
+              &copy; Vikram Sethi Contact :&nbsp;vikram@vikramsethi.com
+            </a>
+          </footer>
     </Box>
   );
 };

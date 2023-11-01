@@ -12,6 +12,7 @@ import {
 import dataware from "../Images/dataware.jpg";
 import { Link } from "react-router-dom";
 import homepage from "../Images/homepage.jpg";
+import "./Info.css";
 
 const Info = () => {
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
@@ -52,7 +53,7 @@ const Info = () => {
             mt={4}
             color={useColorModeValue("black", "white")}
           >
-            Leading Through Disruption 
+            Leading Through Disruption
           </Text>
           <Text
             fontSize={isMobile ? 12 : 24}
@@ -61,8 +62,10 @@ const Info = () => {
             mb={4}
             color={useColorModeValue("black", "white")}
           >
-           An Executive Simulation on Disaster
-            Managament <Text fontSize={isMobile ? 10 : 17} display={"inline"} ><sup>&#169;</sup></Text>
+            An Executive Simulation on Disaster Managament{" "}
+            <Text fontSize={isMobile ? 10 : 17} display={"inline"}>
+              <sup>&#169;</sup>
+            </Text>
           </Text>
           {/* ... Rest of your text content ... */}
           <Text
@@ -290,7 +293,7 @@ const Info = () => {
               </Text>
             </li>
           </ul>
-          <br/>
+          <br />
           <Text
             fontSize={isMobile ? 10 : 14}
             textAlign="justify"
@@ -306,17 +309,28 @@ const Info = () => {
         </Box>
 
         <Center mt={isMobile ? 2 : 4}>
-          <Button bgColor="#35A6F5" px={6} py={3} size={isMobile && "sm"} fontSize={isMobile && 10} mr={isMobile ? 0 : 3}>
+          <Button
+            bgColor="#35A6F5"
+            px={6}
+            py={3}
+            size={isMobile && "sm"}
+            fontSize={isMobile && 10}
+            mr={isMobile ? 0 : 3}
+          >
             <Link to={"/DSRBC"}>Start</Link>
           </Button>
         </Center>
+        <footer>
+          <a
+            href="mailto:vikram@vikramsethi.com"
+            style={{ textDecoration: "none" }}
+          >
+            &copy; Vikram Sethi Contact :&nbsp;vikram@vikramsethi.com
+          </a>
+        </footer>
       </Box>
     </>
   );
 };
 
 export default Info;
-
-
-
-

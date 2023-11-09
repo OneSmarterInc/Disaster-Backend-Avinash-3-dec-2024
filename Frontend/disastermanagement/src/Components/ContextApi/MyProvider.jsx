@@ -15,7 +15,9 @@ const MyProvider = ({ children }) => {
   const [showSidebar, setShowSideBar] = useState(true);
   const [speed, setSpeed] = useState(4000);
 
-  
+
+
+  const speed = 4000;
 
 
   const enableBox = () => {

@@ -584,7 +584,7 @@ const EarlyMorning4 = () => {
 }
             </Box>
             <Box
-              h={isMobile ? "100vh" : "88vh"}
+              h={isMobile ? "100%" : "88vh"}
               w={isMobile ? "100%" : "90%"}
               border="0px solid red"
               overflow="auto"
@@ -718,7 +718,7 @@ const EarlyMorning4 = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   Gajji's team begins their work, replacing the
                                   corrupted files. The room's screens display
                                   lines of code and logs. The atmosphere is
@@ -788,7 +788,7 @@ const EarlyMorning4 = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   A sudden error message pops up on the main
                                   screen. The room goes tense.
                                 </Text>
@@ -855,7 +855,7 @@ const EarlyMorning4 = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   Everyone watches with bated breath. Minutes
                                   feel like hours.
                                 </Text>
@@ -922,7 +922,7 @@ const EarlyMorning4 = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   The developers scramble, making adjustments.
                                   The room is silent except for the tapping of
                                   keyboards.
@@ -991,7 +991,7 @@ const EarlyMorning4 = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   After what feels like an eternity, the screens
                                   show positive signs. Processes start running
                                   smoothly.
@@ -1059,7 +1059,7 @@ const EarlyMorning4 = () => {
                                 borderRadius={10}
                                 p={5}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   A couple of hours pass. The super users are
                                   busy checking the system.
                                 </Text>

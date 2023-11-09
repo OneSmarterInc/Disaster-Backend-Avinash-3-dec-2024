@@ -365,13 +365,13 @@ const EarlyMorning = () => {
           border={"0px solid red"}
           w={"100%"}
           m={"auto"}
-          h={isMobile ? "90vh" : "88vh"}
+          h={isMobile ? "100%" : "88vh"}
           display="flex"
           flexWrap="wrap"
         >
           <Flex h={"88vh"}>
             <Box
-              h={isMobile ? "90vh" : "88vh"}
+              h={isMobile ? "100%" : "88vh"}
               w={isMobile ? "11%" : "13%"}
               overflow="auto"
               style={{
@@ -586,7 +586,7 @@ const EarlyMorning = () => {
 }
             </Box>
             <Box
-              h={isMobile ? "100vh" : "88vh"}
+              h={isMobile ? "100%" : "88vh"}
               w={isMobile ? "100%" : "90%"}
               border="0px solid red"
               overflow="auto"
@@ -703,7 +703,7 @@ const EarlyMorning = () => {
                                 borderRadius={10}
                                 p={{ base: 4, sm: 5 }}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   After briefing the CEO, Ben Carter gets back
                                   on the call with Julia Harper from the storage
                                   vendor's team.
@@ -769,7 +769,7 @@ const EarlyMorning = () => {
                                 borderRadius={10}
                                 p={{ base: 4, sm: 5 }}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   Ben Carter has another call with Tom Mitchell
                                   and adds Julia Harper to the conference.
                                 </Text>
@@ -833,7 +833,7 @@ const EarlyMorning = () => {
                                 borderRadius={10}
                                 p={{ base: 4, sm: 5 }}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   Ben Carter stands at the head of the
                                   conference table, addressing the executive
                                   team.
@@ -899,7 +899,7 @@ const EarlyMorning = () => {
                                 borderRadius={10}
                                 p={{ base: 4, sm: 5 }}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   Ben Carter is on a video call with a key
                                   client, Mr. Williams.
                                 </Text>
@@ -963,7 +963,7 @@ const EarlyMorning = () => {
                                 borderRadius={10}
                                 p={{ base: 4, sm: 5 }}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   Back in the war room, Ben gathers the
                                   executive team for a quick huddle.
                                 </Text>
@@ -1027,7 +1027,7 @@ const EarlyMorning = () => {
                                 borderRadius={10}
                                 p={{ base: 4, sm: 5 }}
                               >
-                                <Text>
+                                <Text fontFamily={"Fredoka"}>
                                   The executive team gathers around the
                                   conference table. The room's atmosphere is
                                   tense, but there's a shared determination to
@@ -1082,7 +1082,7 @@ const EarlyMorning = () => {
                             p={10}
                           >
                             <Heading>Note:</Heading>
-                            <Text>
+                            <Text fontFamily={"Fredoka"}>
                               While the storage platform replicates themselves
                               on a hardware basis, for applications with
                               databases (almost all) it is necessary to back up

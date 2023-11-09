@@ -14,8 +14,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import "./Debrief.css";
-import { FcPlus } from 'react-icons/fc';
-
+import { FcPlus } from "react-icons/fc";
 
 const BenAwareness = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -23,9 +22,17 @@ const BenAwareness = () => {
 
   return (
     <>
-      <Box fontSize={isMobile && 10} display={"flex"} justifyContent={"space-around"} alignItems={"center"} mt={10} className="containerChild" onClick={onOpen}>
+      <Box
+        fontSize={isMobile && 10}
+        display={"flex"}
+        justifyContent={"space-around"}
+        alignItems={"center"}
+        mt={10}
+        className="containerChild"
+        onClick={onOpen}
+      >
         Ben Carter's Awareness Strengths
-        <FcPlus/>
+        <FcPlus />
       </Box>
 
       <Modal isOpen={isOpen} onClose={onClose} size={"4xl"}>
@@ -54,8 +61,7 @@ const BenAwareness = () => {
                 </Text>
               </Text>
             </VStack>
-            
-           
+
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={18} mt={5}>
                 Interactions with External Partners:
@@ -114,19 +120,27 @@ const BenAwareness = () => {
               <Text>
                 <li>Dominant Awareness: Self Awareness.</li>
                 <li>
-                   Ben remains composed, reflective, and adapts his leadership
+                  Ben remains composed, reflective, and adapts his leadership
                   style based on the situation, indicating a strong sense of
                   self-awareness.
                 </li>
               </Text>
             </VStack>
-          </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
+            <Button
+              colorScheme="blue"
+              size={isMobile && "sm"}
+              fontSize={isMobile && 10}
+              mr={isMobile ? 0 : 3}
+              onClick={onClose}
+              p={2}
+              ml={isMobile ? "300px": '750px'}
+            >
               Close
             </Button>
-          </ModalFooter>
+          </ModalBody>
+
+          <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
     </>

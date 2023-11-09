@@ -32,11 +32,10 @@ import figma from "../Images/figmabasic.png";
 import figure3 from "../Images/figmabasics3.png";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { AiOutlineClose } from "react-icons/ai";
-import {FiMinus} from "react-icons/fi";
-import {BiPlus} from "react-icons/bi";
-import {MdSpeed} from "react-icons/md"
+import { FiMinus } from "react-icons/fi";
+import { BiPlus } from "react-icons/bi";
+import { MdSpeed } from "react-icons/md";
 import "../Pages/Info.css";
-
 
 const Start = () => {
   const {
@@ -47,7 +46,7 @@ const Start = () => {
     setShowSideBar,
     showCloseBtn,
     setSpeed,
-    speed
+    speed,
   } = useContext(MyContext);
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedSection, setSelectedSection] = useState(null);
@@ -55,15 +54,14 @@ const Start = () => {
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
   const handleSpeed = (value) => {
-   
-      setSpeed((pre)=> pre+value);
-    
+    setSpeed((pre) => pre + value);
+
     console.log(speed);
   };
 
-  const handleNormalSpeed = (value)=>{
+  const handleNormalSpeed = (value) => {
     setSpeed(value);
-  }
+  };
 
   const handleclose = () => {
     setShowSideBar(false);
@@ -99,7 +97,6 @@ const Start = () => {
       onMailsModalOpen();
     }
   };
-
 
   useEffect(() => {
     // Scroll to the top of the page when the component mounts
@@ -161,17 +158,32 @@ const Start = () => {
             <BsPauseCircleFill color="#db1c50" />
           )}
         </Text>
-        <HStack  border={"0px solid white"}>
-          <Button size={isMobile ? 2 : "sm"} fontSize={isMobile ? 12 : 20}  _hover={{"bgColor":"white", "color":"black"}} color={"white"} bg={"transparent"} onClick={() => handleSpeed(1000)} isDisabled={speed >8000}>
-
-        <FiMinus  />
+        {/* <HStack border={"0px solid white"}>
+          <Button
+            size={isMobile ? 2 : "sm"}
+            fontSize={isMobile ? 12 : 17}
+            _hover={{ bgColor: "white", color: "black" }}
+            color={"white"}
+            bg={"transparent"}
+            onClick={() => handleSpeed(1000)}
+            isDisabled={speed > 7000}
+          >
+            <FiMinus />
           </Button>
-  
-            <MdSpeed fontSize={isMobile ? 20 : 30}/>
-          <Button size={isMobile ? 2 : "sm"} fontSize={isMobile ? 12 :20} _hover={{"bgColor":"white", "color":"black"}} color={"white"} bg={"transparent"}  onClick={() => handleSpeed(-1000)} isDisabled={speed <2000}>
-          <BiPlus  />
+            <Text>{speed/1000}s</Text>
+          <MdSpeed fontSize={isMobile ? 17 : 27} />
+          <Button
+            size={isMobile ? 2 : "sm"}
+            fontSize={isMobile ? 12 : 17}
+            _hover={{ bgColor: "white", color: "black" }}
+            color={"white"}
+            bg={"transparent"}
+            onClick={() => handleSpeed(-1000)}
+            isDisabled={speed < 2000}
+          >
+            <BiPlus />
           </Button>
-        </HStack>
+        </HStack> */}
 
         {/* <Text cursor={"pointer"} fontSize={35} onClick={handlePause}>{pauseBtn ? <MdNotStarted /> : <BsPauseCircleFill />}</Text> */}
         <div
@@ -294,14 +306,6 @@ const Start = () => {
           </ModalBody>
         </ModalContent>
       </Modal>
-      <footer>
-            <a
-              href="mailto:vikram@vikramsethi.com"
-              style={{ textDecoration: "none" }}
-            >
-              &copy; Vikram Sethi Contact :&nbsp;vikram@vikramsethi.com
-            </a>
-          </footer>
     </Box>
   );
 };

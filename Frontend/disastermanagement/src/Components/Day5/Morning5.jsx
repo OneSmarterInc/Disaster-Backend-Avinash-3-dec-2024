@@ -247,7 +247,18 @@ const Morning5 = () => {
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayFiveMorning.length) {
-          const message = dayFiveMorning[currentMessageIndex];
+          let temp = currentMessageIndex;
+          let message;
+          
+          
+          if(currentMessageIndex + 1 === dayFiveMorning.length){
+            message = dayFiveMorning[temp];
+          }
+          else{
+            
+            message = dayFiveMorning[temp+1];
+          }
+
           setCurrentMessageIndex((prevIndex) => prevIndex + 1);
           handleUserMessage(message.sender);
           if (currentMessageIndex === 7) {
@@ -1394,7 +1405,7 @@ const Morning5 = () => {
                       size="md"
                     >
                       <ModalOverlay />
-                      <ModalContent mt={isMobile ? "50px" : "0px"}>
+                      <ModalContent mt={isMobile ? "50px" : "0px"} pb={"10px"}>
                         <ModalHeader>End of Simulation</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
@@ -1409,16 +1420,20 @@ const Morning5 = () => {
                             deliverable section.
                           </Text>
                         </ModalBody>
-                        <ModalFooter>
-                          <Button
+                        <Button
                             onClick={closePopup12}
                             onTouchEnd={closePopup12}
                             bgColor={"#A81B1B"}
                             color={"white"}
                             _hover={{ color: "black" }}
+                            // mr={isMobile ? "200px" : "500px"}
+                            // mb={50}
+                            m={5}
                           >
                             Close
                           </Button>
+                        <ModalFooter>
+                          
                         </ModalFooter>
                       </ModalContent>
                     </Modal>

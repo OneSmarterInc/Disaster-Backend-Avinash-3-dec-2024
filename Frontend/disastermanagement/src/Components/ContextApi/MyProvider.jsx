@@ -17,7 +17,6 @@ const MyProvider = ({ children }) => {
 
 
 
-  const speed = 4000;
 
 
   const enableBox = () => {

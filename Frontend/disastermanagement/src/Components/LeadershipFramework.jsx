@@ -188,12 +188,22 @@ const LeadershipFramework = () => {
                 </li>
               </Text>
             </VStack>
+
+            <Button
+              colorScheme="blue"
+              size={isMobile && "sm"}
+              fontSize={isMobile && 10}
+              mr={isMobile ? 0 : 3}
+              onClick={onClose}
+              p={2}
+              ml={isMobile ? "300px": '750px'}
+            >
+              Close
+            </Button>
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" size={isMobile && "sm"} fontSize={isMobile && 10} mr={isMobile ? 0 : 3} onClick={onClose} p={2}>
-              Close
-            </Button>
+            
           </ModalFooter>
         </ModalContent>
       </Modal>

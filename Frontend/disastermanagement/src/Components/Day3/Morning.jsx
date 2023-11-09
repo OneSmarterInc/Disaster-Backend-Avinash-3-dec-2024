@@ -180,7 +180,18 @@ const Morning = () => {
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayThreeMorning.length) {
-          const message = dayThreeMorning[currentMessageIndex];
+          let temp = currentMessageIndex;
+          let message;
+          
+          
+          if(currentMessageIndex + 1 === dayThreeMorning.length){
+            message = dayThreeMorning[temp];
+          }
+          else{
+            
+            message = dayThreeMorning[temp+1];
+          }
+
           setCurrentMessageIndex((prevIndex) => prevIndex + 1);
           setActiveUser(message.sender);
 

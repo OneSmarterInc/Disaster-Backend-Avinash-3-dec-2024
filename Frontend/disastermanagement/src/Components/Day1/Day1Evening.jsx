@@ -190,7 +190,18 @@ const BringDown = () => {
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayOneEvening.length) {
-          const message = dayOneEvening[currentMessageIndex];
+          let temp = currentMessageIndex;
+          let message;
+          
+          
+          if(currentMessageIndex + 1 === dayOneEvening.length){
+            message = dayOneEvening[temp];
+          }
+          else{
+            
+            message = dayOneEvening[temp+1];
+          }
+
           setCurrentMessageIndex((prevIndex) => prevIndex + 1);
           setActiveUser(message.sender);
 

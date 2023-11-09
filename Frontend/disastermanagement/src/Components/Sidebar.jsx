@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Box, Divider, Flex, Show, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, HStack, Show, Text, VStack } from "@chakra-ui/react";
 import Prepare from "../Pages/Prepare";
 import Chat from "../Pages/Chat";
 import StyledTreeExample from "./Hierarchy/StyledTreeExample";
@@ -9,6 +9,9 @@ import Deliverable from "./Deliverable";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsArrowRightSquareFill } from "react-icons/bs";
 import External from "./Hierarchy/External";
+import { FiMinus } from "react-icons/fi";
+import { BiPlus } from "react-icons/bi";
+import { MdSpeed } from "react-icons/md";
 
 const Sidebar = () => {
   const {
@@ -20,6 +23,8 @@ const Sidebar = () => {
     setShowSideBar,
     setHead,
     showCloseBtn,
+    setSpeed,
+    speed,
   } = useContext(MyContext);
 
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
@@ -50,6 +55,16 @@ const Sidebar = () => {
     }
   }, [selectedSection]);
 
+  const handleSpeed = (value) => {
+    setSpeed((pre) => pre + value);
+
+    console.log(speed);
+  };
+
+  const handleNormalSpeed = (value) => {
+    setSpeed(value);
+  };
+
   return (
     <>
       <Box
@@ -58,10 +73,11 @@ const Sidebar = () => {
         // height={"88vh"}
         bg={"white"}
         border={"0px solid red"}
-        w={"100%"}
+        minW={"100%"}
         h={isMobile ? "100%" : "88vh"}
       >
         {showSidebar || isHovered ? (
+          <>
           <VStack
             spacing={4}
             alignItems="flex-start"
@@ -126,12 +142,41 @@ const Sidebar = () => {
               onClick={() => handleSectionClick("debrief")}
               cursor="pointer"
               fontWeight={selectedSection === "debrief" ? "bold" : "none"}
-              pointerEvents={globalState ? "auto" : "none"}
+              // pointerEvents={globalState ? "auto" : "none"}
               color={globalState ? "black" : "gray"}
             >
               Debrief
             </Text>
-          </VStack>
+          
+          <HStack mt={isMobile ? "570px" : '270px'}>
+          <Button
+            size={isMobile ? 2 : "10px"}
+            fontSize={isMobile ? 12 : 17}
+            _hover={{ bgColor: "white", color: "black" }}
+            //color={"white"}
+            bg={"transparent"}
+            onClick={() => handleSpeed(1000)}
+            isDisabled={speed > 7000}
+          >
+            <FiMinus />
+          </Button>
+            <Text >{speed/1000}s</Text>
+          <MdSpeed fontSize={isMobile ? 17 : 27} />
+          <Button
+            size={isMobile ? 2 : "10px"}
+            fontSize={isMobile ? 12 : 17}
+            _hover={{ bgColor: "white", color: "black" }}
+            //color={"white"}
+            bg={"transparent"}
+            onClick={() => handleSpeed(-1000)}
+            isDisabled={speed < 2000}
+          >
+            <BiPlus />
+          </Button>
+          
+        </HStack>
+        </VStack>
+        </>
         ) : (
           <></>
         )}
@@ -159,7 +204,7 @@ const Sidebar = () => {
               ? "100%"
               : undefined
           }
-          h={isMobile && selectedSection === "Hierarchy" ? "100vh" : undefined}
+          h={isMobile && selectedSection === "Hierarchy" || selectedSection === "debrief" ? "100vh" : undefined}
         >
           {selectedSection === "Prepare" && <Prepare />}
           {selectedSection === "Hierarchy" && (

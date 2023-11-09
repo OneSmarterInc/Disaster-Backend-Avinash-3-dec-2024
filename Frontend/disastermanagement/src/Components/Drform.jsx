@@ -67,6 +67,8 @@ const Drform = () => {
     onOpen(); // Show the success alert
   };
 
+  const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
+
   return (
 
       <Box
@@ -384,16 +386,19 @@ const Drform = () => {
                   <FormLabel><strong>Additional Notes: {appendices}</strong></FormLabel>
                 </form>
               </div>
-            </ModalBody>
-            <ModalFooter>
+
               <Button
                 colorScheme="blue"
                 onClick={handleCloseModal}
                 bg="#691212"
                 color={"white"}
+                ml={isMobile ? "250px": '450px'}
               >
                 Confirm
               </Button>
+            </ModalBody>
+            <ModalFooter>
+              
             </ModalFooter>
           </ModalContent>
         </Modal>

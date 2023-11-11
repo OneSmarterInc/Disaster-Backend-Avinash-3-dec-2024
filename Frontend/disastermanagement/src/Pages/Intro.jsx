@@ -178,14 +178,15 @@ const Intro = () => {
           </Link>
         </Box>
       </Box>
-      <footer>
+      {/* <footer>
           <a
             href="mailto:vikram@vikramsethi.com"
             style={{ textDecoration: "none" }}
           >
-            &copy; Vikram Sethi Contact :&nbsp;vikram@vikramsethi.com
+            Copyright  
+            &copy; 2023 Vikram Sethi All rights reserved
           </a>
-        </footer>
+        </footer> */}
     </Box>
   );
 };

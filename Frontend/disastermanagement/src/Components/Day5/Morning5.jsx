@@ -118,8 +118,17 @@ const Morning5 = () => {
   const usersContainerRef = useRef();
   const spacerRef = useRef(null);
 
-  const { setHead, speed, enableDeliverable, pauseBtn, setPauseBtn } =
-    useContext(MyContext);
+  const {
+    setHead,
+    speed,
+    enableDeliverable,
+    pauseBtn,
+    setPauseBtn,
+    setComponent,
+    setSelectedSection,
+    flag7,
+    setFlag7,
+  } = useContext(MyContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -131,6 +140,7 @@ const Morning5 = () => {
   const handleChange = (value) => {
     setShowPopup12(true);
     enableDeliverable();
+
     setValue(value); // Store the selected value in the state
     Cookies.set("day5morning2", value);
   };
@@ -170,6 +180,7 @@ const Morning5 = () => {
 
   useEffect(() => {
     setHead("Day 5 - Morning: The day after...");
+    setComponent("morning5");
   }, []);
 
   const user = [
@@ -247,7 +258,15 @@ const Morning5 = () => {
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayFiveMorning.length) {
-          const message = dayFiveMorning[currentMessageIndex];
+          let temp = currentMessageIndex;
+          let message;
+
+          if (currentMessageIndex + 1 === dayFiveMorning.length) {
+            message = dayFiveMorning[temp];
+          } else {
+            message = dayFiveMorning[temp + 1];
+          }
+
           setCurrentMessageIndex((prevIndex) => prevIndex + 1);
           handleUserMessage(message.sender);
           if (currentMessageIndex === 7) {
@@ -441,12 +460,15 @@ const Morning5 = () => {
     setChatPaused(false);
 
     setShowBox(true);
+    setShowBox2(true);
     setClName("");
   };
 
   const closePopup12 = () => {
     setDay5Popup12(false);
     setSelectedValue(value);
+    setFlag7(false)
+    setSelectedSection("deliverable")
   };
 
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
@@ -456,121 +478,40 @@ const Morning5 = () => {
 
   return (
     <>
-      {selectedValue ===
-      "Emphasizing teamwork, both internally and with external partners" ? (
-        <Deliverable />
-      ) : selectedValue ===
-        "Making clear and swift decisions under pressure" ? (
-        <Deliverable />
-      ) : selectedValue ===
-        "Remaining calm and level-headed during challenges" ? (
-        <Deliverable />
-      ) : selectedValue ===
-        "Effectively conveying information, even in challenging circumstances" ? (
-        <Deliverable />
-      ) : selectedValue ===
-        "Quickly adjusting strategies based on new information or changing scenarios" ? (
-        <Deliverable />
-      ) : selectedValue ===
-        "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-        <Deliverable />
-      ) : (
-        <Box
-          // fontFamily={"Fredoka"}
-          border={"0px solid red"}
-          w={"100%"}
-          m={"auto"}
-          h={isMobile ? "90vh" : "88vh"}
-          display="flex"
-          flexWrap="wrap"
-        >
-          <Flex h={"88vh"}>
+      <Box
+        // fontFamily={"Fredoka"}
+        border={"0px solid red"}
+        w={"100%"}
+        m={"auto"}
+        h={isMobile ? "90vh" : "88vh"}
+        display="flex"
+        flexWrap="wrap"
+      >
+        <Flex h={"88vh"}>
+          <Box
+            h={isMobile ? "90vh" : "88vh"}
+            w={isMobile ? "10%" : "13%"}
+            overflow="auto"
+            style={{
+              backgroundImage: isMobile
+                ? "none"
+                : "linear-gradient(32deg,grey 0%, white 100%)",
+            }}
+          >
             <Box
-              h={isMobile ? "90vh" : "88vh"}
-              w={isMobile ? "10%" : "13%"}
-              overflow="auto"
-              style={{
-                backgroundImage: isMobile
-                  ? "none"
-                  : "linear-gradient(32deg,grey 0%, white 100%)",
-              }}
+              //bgColor="#948888"
+              pt={3}
+              flex="1"
+              pl={isMobile ? 2 : 0}
+              display="flex"
+              flexDirection="row"
+              alignItems="center"
+              justifyContent={"center"}
+              columnGap={3}
             >
-              <Box
-                //bgColor="#948888"
-                pt={3}
-                flex="1"
-                pl={isMobile ? 2 : 0}
-                display="flex"
-                flexDirection="row"
-                alignItems="center"
-                justifyContent={"center"}
-                columnGap={3}
-              >
-                <Box>
-                  {users.slice(0, 5).map((el) => {
-                    return (
-                      <Tooltip
-                        label={
-                          (el.name === "Ben Carter" && "CIO") ||
-                          (el.name === "Kate Sullivan" && "IT Director") ||
-                          (el.name === "Liam Turner" &&
-                            "Senior Systems Analyst") ||
-                          (el.name === "Sophia Kim" &&
-                            "Database Administrator") ||
-                          (el.name === "Mia Rodriguez" &&
-                            "Network Specialist") ||
-                          (el.name === "Tom Mitchell" &&
-                            "Application Vendor") ||
-                          (el.name === "Raj Patel" && "CFO") ||
-                          (el.name === "Grace Patterson" && "") ||
-                          (el.name === "Gajji" &&
-                            "Senior Vice President of Development (ERP Vendor)") ||
-                          (el.name === "Communications Lead" &&
-                            "Communications Lead")
-                        }
-                      >
-                        <Box
-                          borderBottom="0px solid black"
-                          key={el.name}
-                          cursor="pointer"
-                          display="flex"
-                          flexDirection={isMobile ? "column" : "column"}
-                          alignItems="center"
-                        >
-                          <Box
-                            h={userAvatarSize}
-                            w={userAvatarSize}
-                            m="auto"
-                            mt={isMobile ? "17%" : 0}
-                            borderRadius="50%"
-                            className={el.name === activeUser ? "active" : ""}
-                          >
-                            <Image borderRadius={"50%"} src={el.url} alt="" />
-                          </Box>
-                          <Text
-                            className={el.name === activeUser ? "Tactive" : ""}
-                            fontSize={isMobile ? "10px" : "20px"}
-                            mb={isMobile ? 0 : 4}
-                            cursor="pointer"
-                          >
-                            {el.name === "Communications Lead"
-
-                              ? "CL"
-                              : el.name.split(" ")[0]}
-
-                          </Text>
-                          <div className="loading"  id={el.name === activeUser ? clName : ""}>
-                          <span className="dot"></span>
-                          <span className="dot"></span>
-                          <span className="dot"></span>
-                        </div>
-                        </Box>
-                      </Tooltip>
-                    );
-                  })}
-                </Box>
-                <Box alignSelf={"flex-start"}>
-                  {users.slice(5).map((el) => (
+              <Box>
+                {users.slice(0, 5).map((el) => {
+                  return (
                     <Tooltip
                       label={
                         (el.name === "Ben Carter" && "CIO") ||
@@ -581,9 +522,9 @@ const Morning5 = () => {
                           "Database Administrator") ||
                         (el.name === "Mia Rodriguez" && "Network Specialist") ||
                         (el.name === "Tom Mitchell" && "Application Vendor") ||
-                        (el.name === "Aisha Patel" &&
-                          "Chief Operating Officer") ||
-                        (el.name === "GAjji" &&
+                        (el.name === "Raj Patel" && "CFO") ||
+                        (el.name === "Grace Patterson" && "") ||
+                        (el.name === "Gajji" &&
                           "Senior Vice President of Development (ERP Vendor)") ||
                         (el.name === "Communications Lead" &&
                           "Communications Lead")
@@ -609,7 +550,7 @@ const Morning5 = () => {
                         </Box>
                         <Text
                           className={el.name === activeUser ? "Tactive" : ""}
-                          fontSize={isMobile ? "14px" : "20px"}
+                          fontSize={isMobile ? "10px" : "20px"}
                           mb={isMobile ? 0 : 4}
                           cursor="pointer"
                         >
@@ -617,114 +558,226 @@ const Morning5 = () => {
                             ? "CL"
                             : el.name.split(" ")[0]}
                         </Text>
-                        <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                        <div
+                          className="loading"
+                          id={el.name === activeUser ? clName : ""}
+                        >
                           <span className="dot"></span>
                           <span className="dot"></span>
                           <span className="dot"></span>
                         </div>
                       </Box>
                     </Tooltip>
-                  ))}
-                </Box>
+                  );
+                })}
               </Box>
+              <Box alignSelf={"flex-start"}>
+                {users.slice(5).map((el) => (
+                  <Tooltip
+                    label={
+                      (el.name === "Ben Carter" && "CIO") ||
+                      (el.name === "Kate Sullivan" && "IT Director") ||
+                      (el.name === "Liam Turner" && "Senior Systems Analyst") ||
+                      (el.name === "Sophia Kim" && "Database Administrator") ||
+                      (el.name === "Mia Rodriguez" && "Network Specialist") ||
+                      (el.name === "Tom Mitchell" && "Application Vendor") ||
+                      (el.name === "Aisha Patel" &&
+                        "Chief Operating Officer") ||
+                      (el.name === "GAjji" &&
+                        "Senior Vice President of Development (ERP Vendor)") ||
+                      (el.name === "Communications Lead" &&
+                        "Communications Lead")
+                    }
+                  >
+                    <Box
+                      borderBottom="0px solid black"
+                      key={el.name}
+                      cursor="pointer"
+                      display="flex"
+                      flexDirection={isMobile ? "column" : "column"}
+                      alignItems="center"
+                    >
+                      <Box
+                        h={userAvatarSize}
+                        w={userAvatarSize}
+                        m="auto"
+                        mt={isMobile ? "17%" : 0}
+                        borderRadius="50%"
+                        className={el.name === activeUser ? "active" : ""}
+                      >
+                        <Image borderRadius={"50%"} src={el.url} alt="" />
+                      </Box>
+                      <Text
+                        className={el.name === activeUser ? "Tactive" : ""}
+                        fontSize={isMobile ? "14px" : "20px"}
+                        mb={isMobile ? 0 : 4}
+                        cursor="pointer"
+                      >
+                        {el.name === "Communications Lead"
+                          ? "CL"
+                          : el.name.split(" ")[0]}
+                      </Text>
+                      <div
+                        className="loading"
+                        id={el.name === activeUser ? clName : ""}
+                      >
+                        <span className="dot"></span>
+                        <span className="dot"></span>
+                        <span className="dot"></span>
+                      </div>
+                    </Box>
+                  </Tooltip>
+                ))}
+              </Box>
+            </Box>
+          </Box>
+
+          <Box
+            h={isMobile ? "100%" : "88vh"}
+            w={isMobile ? "100%" : "90%"}
+            border="0px solid red"
+            overflow="auto"
+            ref={chatContainerRef}
+            pb={5}
+            bgImage={imgSrc}
+            bgRepeat="no-repeat"
+            bgSize={isMobile ? "cover" : "cover"}
+            bgPosition={isMobile ? "center" : "none"}
+            display="flex"
+            flexDirection="column"
+            alignItems={isMobile ? "center" : "flex-start"}
+          >
+            <Box
+              bgColor={"#030405"}
+              color={"white"}
+              textAlign={"left"}
+              w={"100%"}
+              pl={3}
+              pt={3}
+              pb={3}
+              visibility={currentMessageIndex > 33 ? "hidden" : "auto"}
+            >
+              <Text fontSize={isMobile ? "15" : "20"}>{textBox}</Text>
             </Box>
 
             <Box
-              h={isMobile ? "100%" : "88vh"}
               w={isMobile ? "100%" : "90%"}
-              border="0px solid red"
-              overflow="auto"
-              ref={chatContainerRef}
-              pb={5}
-              bgImage={imgSrc}
-              bgRepeat="no-repeat"
-              bgSize={isMobile ? "cover" : "cover"}
-              bgPosition={isMobile ? "center" : "none"}
-              display="flex"
-              flexDirection="column"
-              alignItems={isMobile ? "center" : "flex-start"}
+              pl={isMobile ? 2 : 5}
+              pr={isMobile ? 2 : 5}
+              m={"0 auto"}
+              mt={3}
+              h={"68vh"}
             >
-              <Box
-                bgColor={"#030405"}
-                color={"white"}
-                textAlign={"left"}
-                w={"100%"}
-                pl={3}
-                pt={3}
-                pb={3}
-                visibility={currentMessageIndex > 33 ? "hidden" : "auto"}
-              >
-                <Text fontSize={isMobile ? "15" : "20"}>{textBox}</Text>
-              </Box>
-
-              <Box
-                w={isMobile ? "100%" : "90%"}
-                pl={isMobile ? 2 : 5}
-                pr={isMobile ? 2 : 5}
-                m={ "0 auto"}
-                mt={3}
-                h={"68vh"}
-              >
-                <TransitionGroup>
-                  {visibleMessages.map((el, i) => {
-                    const isCIO = el.sender === "Ben Carter";
-                    const senderName = el.sender;
-                    const messageClass = isCIO ? "CIO" : "OtherSender";
-                    // const messageClass = isCIO ? "KateSullivan" : "BenCarter";
-                    const alignMessage = isCIO ? "flex-start" : "flex-end";
-                    return (
-                      <CSSTransition
+              <TransitionGroup>
+                {visibleMessages.map((el, i) => {
+                  const isCIO = el.sender === "Ben Carter";
+                  const senderName = el.sender;
+                  const messageClass = isCIO ? "CIO" : "OtherSender";
+                  // const messageClass = isCIO ? "KateSullivan" : "BenCarter";
+                  const alignMessage = isCIO ? "flex-start" : "flex-end";
+                  return (
+                    <CSSTransition
+                      key={i}
+                      classNames="message"
+                      timeout={{ enter: 300, exit: 300 }}
+                    >
+                      <Box
                         key={i}
-                        classNames="message"
-                        timeout={{ enter: 300, exit: 300 }}
+                        border={"0px solid black"}
+                        w={"100%"}
+                        display="flex"
+                        justifyContent={alignMessage}
+                        className={`message ${messageClass} ${
+                          el.sender === "Ben Carter"
+                            ? "BenCarter"
+                            : "KateSullivan"
+                        }`}
+                        mb={4}
                       >
                         <Box
-                          key={i}
-                          border={"0px solid black"}
-                          w={"100%"}
-                          display="flex"
-                          justifyContent={alignMessage}
-                          className={`message ${messageClass} ${
-                            el.sender === "Ben Carter"
-                              ? "BenCarter"
-                              : "KateSullivan"
-                          }`}
-                          mb={4}
+                          boxShadow="rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                          border="0px solid red"
+                          bgColor={
+                            el.sender === "Ben Carter" ? "#f0f0f0" : "#030405"
+                          }
+                          color={el.sender === "Ben Carter" ? "black" : "white"}
+                          w={isMobile ? "70%" : "50%"}
+                          borderRadius="10px"
+                          textAlign={isMobile ? "left" : "justify"}
+                          p={isMobile ? 2 : 4}
+                          pl={isMobile ? 3 : 5}
+                          pr={isMobile ? 3 : 5}
+                          mt={2}
+                          fontSize={isMobile ? "12px" : "15px"}
                         >
-                          <Box
-                            boxShadow="rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                            border="0px solid red"
-                            bgColor={
-                              el.sender === "Ben Carter" ? "#f0f0f0" : "#030405"
-                            }
-                            color={
-                              el.sender === "Ben Carter" ? "black" : "white"
-                            }
-                            w={isMobile ? "70%" : "50%"}
-                            borderRadius="10px"
-                            textAlign={isMobile ? "left" : "justify"}
-                            p={isMobile ? 2 : 4}
-                            pl={isMobile ? 3 : 5}
-                            pr={isMobile ? 3 : 5}
-                            mt={2}
-                            fontSize={isMobile ? "12px" : "15px"}
-                          >
-                            <Text>
-                              <span id="sender">{senderName}</span> :{" "}
-                              {el.message}
-                            </Text>
-                          </Box>
+                          <Text>
+                            <span id="sender">{senderName}</span> : {el.message}
+                          </Text>
                         </Box>
-                      </CSSTransition>
-                    );
-                  })}
-                  {showPopup && (
-                    <Modal isOpen={day5Popup}>
-                      <ModalOverlay />
-                      <ModalContent bg={"transparent"}>
-                        <ModalHeader fontWeight="bold" fontSize="25px">
-                          {/* Add a header if needed */}
-                        </ModalHeader>
+                      </Box>
+                    </CSSTransition>
+                  );
+                })}
+                {showPopup && (
+                  <Modal isOpen={day5Popup}>
+                    <ModalOverlay />
+                    <ModalContent bg={"transparent"}>
+                      <ModalHeader fontWeight="bold" fontSize="25px">
+                        {/* Add a header if needed */}
+                      </ModalHeader>
+                      <ModalBody
+                        fontSize="18px"
+                        className="draggable-modal"
+                        borderRadius={10}
+                        bg="rgba(245, 255, 255, 0.8)"
+                        p={10}
+                      >
+                        <Heading
+                          as="h2"
+                          size="lg"
+                          mb={4}
+                          fontFamily={"Fredoka"}
+                        >
+                          Announcement
+                        </Heading>
+                        <Text fontFamily={"Fredoka"}>
+                          To all our valued team members and stakeholders, we
+                          are pleased to inform you that the recent IT crisis
+                          has been fully resolved. We appreciate your patience,
+                          support, and understanding during this challenging
+                          period. Thanks to the concerted efforts of our IT
+                          teams and partners, our systems are now fully
+                          operational. We remain committed to serving you with
+                          excellence and ensuring such disruptions are mitigated
+                          in the future.
+                        </Text>
+                        <Button
+                          colorScheme="teal"
+                          onClick={closePopup}
+                          onTouchEnd={closePopup}
+                          textAlign="center"
+                          fontFamily="Croissant One"
+                          bg="black"
+                          _hover={{ bgColor: "#a1e8f0", color: "black" }}
+                          w="100%"
+                          mt={3}
+                        >
+                          Close Announcement
+                        </Button>
+                      </ModalBody>
+                      <ModalFooter></ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+
+                {showPopup2 && (
+                  <Modal isOpen={day5Popup2}>
+                    <ModalOverlay />
+                    <ModalContent bg={"transparent"} maxW="600px">
+                      <ModalHeader fontWeight="bold" fontSize="25px">
+                        {/* Add a header if needed */}
+                      </ModalHeader>
+                      <Draggable>
                         <ModalBody
                           fontSize="18px"
                           className="draggable-modal"
@@ -732,1252 +785,1235 @@ const Morning5 = () => {
                           bg="rgba(245, 255, 255, 0.8)"
                           p={10}
                         >
-                          <Heading as="h2" size="lg" mb={4} fontFamily={"Fredoka"}>
-                            Announcement
+                          <Flex
+                            direction={{ base: "column", sm: "row" }}
+                            gap={4}
+                          >
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                              borderRadius={10}
+                              p={5}
+                            >
+                              <Text fontFamily={"Fredoka"}>
+                                At noon, the recovery process was complete.
+                              </Text>
+                            </Box>
+                            <Box>
+                              <Image
+                                src={crisis}
+                                borderRadius={10}
+                                maxW="100%"
+                                h="auto"
+                              />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup2}
+                                onTouchEnd={closePopup2}
+                                textAlign="center"
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{
+                                  bgColor: "#a1e8f0",
+                                  color: "black",
+                                }}
+                                w="100%"
+                                mt={3}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                      </Draggable>
+                      <ModalFooter></ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+                {showPopup3 && (
+                  <Modal isOpen={day5Popup3}>
+                    <ModalOverlay />
+                    <ModalContent bg={"transparent"} maxW="600px">
+                      <ModalHeader fontWeight="bold" fontSize="25px">
+                        {/* Add a header if needed */}
+                      </ModalHeader>
+                      <Draggable>
+                        <ModalBody
+                          fontSize="18px"
+                          className="draggable-modal"
+                          borderRadius={10}
+                          bg="rgba(245, 255, 255, 0.8)"
+                          p={10}
+                        >
+                          <Flex
+                            direction={{ base: "column", sm: "row" }}
+                            gap={4}
+                          >
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                              borderRadius={10}
+                              p={5}
+                            >
+                              <Text fontFamily={"Fredoka"}>
+                                Ben Carter stands at the head of the room,
+                                gathering everyone's attention.{" "}
+                              </Text>
+                            </Box>
+                            <Box>
+                              <Image
+                                src={strikes2}
+                                borderRadius={10}
+                                maxW="100%"
+                                h="auto"
+                              />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup3}
+                                onTouchEnd={closePopup3}
+                                textAlign="center"
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{
+                                  bgColor: "#a1e8f0",
+                                  color: "black",
+                                }}
+                                w="100%"
+                                mt={3}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                      </Draggable>
+                      <ModalFooter></ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+                {showPopup4 && (
+                  <Modal isOpen={day5Popup4} isCentered>
+                    <ModalOverlay />
+                    <ModalContent
+                      maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                      borderRadius={10}
+                      bg={"transparent"}
+                    >
+                      <ModalHeader
+                        fontWeight="bold"
+                        fontSize="25px"
+                      ></ModalHeader>
+                      <Draggable>
+                        <ModalBody
+                          fontSize="18px"
+                          className="draggable-modal"
+                          borderRadius={10}
+                          bg="rgba(245, 255, 255, 0.8)"
+                          p={10}
+                        >
+                          <Heading
+                            fontWeight="bold"
+                            fontSize="25px"
+                            mb={4}
+                            fontFamily={"Fredoka"}
+                          >
+                            Successful Recovery
+                          </Heading>
+                          <Flex
+                            direction={{ base: "column", sm: "row" }}
+                            gap={4}
+                          >
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                              borderRadius={10}
+                              p={5}
+                            >
+                              <Text fontFamily={"Fredoka"}>
+                                A loud cheer erupts as team members clap and
+                                some even hug each other. The crisis is over,
+                                and everyone can breathe a sigh of relief.
+                              </Text>
+                            </Box>
+                            <Box>
+                              <Image
+                                src={cheer}
+                                borderRadius={10}
+                                maxW="100%"
+                                h="auto"
+                              />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup4}
+                                onTouchEnd={closePopup4}
+                                textAlign="center"
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{
+                                  bgColor: "#a1e8f0",
+                                  color: "black",
+                                }}
+                                w="100%"
+                                mt={3}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                      </Draggable>
+                      <ModalFooter></ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+                {showPopup10 && (
+                  <Modal isOpen={day5Popup10} isCentered>
+                    <ModalOverlay />
+                    <ModalContent
+                      maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                      borderRadius={10}
+                      bg={"transparent"}
+                    >
+                      <ModalHeader
+                        fontWeight="bold"
+                        fontSize="25px"
+                      ></ModalHeader>
+                      <Draggable>
+                        <ModalBody
+                          fontSize="18px"
+                          className="draggable-modal"
+                          borderRadius={10}
+                          bg="rgba(245, 255, 255, 0.8)"
+                          p={10}
+                        >
+                          <Flex
+                            direction={{ base: "column", sm: "row" }}
+                            gap={4}
+                          >
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                              borderRadius={10}
+                              p={5}
+                            >
+                              <Text fontFamily={"Fredoka"}>
+                                The afternoon sun casts a warm glow. The
+                                Communications team is busy drafting an
+                                announcement.
+                              </Text>
+                            </Box>
+                            <Box>
+                              <Image
+                                src={suncast}
+                                borderRadius={10}
+                                maxW="100%"
+                                h="auto"
+                              />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup10}
+                                onTouchEnd={closePopup10}
+                                textAlign="center"
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{
+                                  bgColor: "#a1e8f0",
+                                  color: "black",
+                                }}
+                                w="100%"
+                                mt={3}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                      </Draggable>
+                      <ModalFooter></ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+
+                {showPopup5 && (
+                  <Modal isOpen={day5Popup5} isCentered>
+                    <ModalOverlay />
+                    <ModalContent
+                      maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                      borderRadius={10}
+                      bg={"transparent"}
+                    >
+                      <ModalHeader
+                        fontWeight="bold"
+                        fontSize="25px"
+                      ></ModalHeader>
+                      <Draggable>
+                        <ModalBody
+                          fontSize="18px"
+                          className="draggable-modal"
+                          borderRadius={10}
+                          bg="rgba(245, 255, 255, 0.8)"
+                          p={10}
+                        >
+                          <Heading
+                            ontWeight="bold"
+                            fontSize="25px"
+                            mb={4}
+                            fontFamily={"Fredoka"}
+                          >
+                            Successful Recovery Announcement
+                          </Heading>
+
+                          <Flex
+                            direction={{ base: "column", sm: "row" }}
+                            gap={4}
+                          >
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                              borderRadius={10}
+                              p={5}
+                            >
+                              <Text fontFamily={"Fredoka"}>
+                                At 4:00 PM, emails ping across the company, and
+                                an announcement is broadcasted on internal
+                                communication channels. The crisis is officially
+                                over, and everyone can return to normal
+                                operations.
+                              </Text>
+                            </Box>
+                            <Box>
+                              <Image
+                                src={tvscreen}
+                                borderRadius={10}
+                                maxW="100%"
+                                h="auto"
+                              />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup5}
+                                onTouchEnd={closePopup5}
+                                textAlign="center"
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{
+                                  bgColor: "#a1e8f0",
+                                  color: "black",
+                                }}
+                                w="100%"
+                                mt={3}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                      </Draggable>
+                      <ModalFooter></ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+                {showPopup6 && (
+                  <Modal isOpen={day5Popup6} isCentered>
+                    <ModalOverlay />
+                    <ModalContent
+                      maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                      borderRadius={10}
+                      bg={"transparent"}
+                    >
+                      <ModalHeader></ModalHeader>
+                      <Draggable>
+                        <ModalBody
+                          fontSize="18px"
+                          className="draggable-modal"
+                          borderRadius={10}
+                          bg="rgba(245, 255, 255, 0.8)"
+                          p={10}
+                        >
+                          <Heading
+                            fontWeight="bold"
+                            fontSize="25px"
+                            mb={5}
+                            fontFamily={"Fredoka"}
+                          >
+                            The Next Couple of Weeks
                           </Heading>
                           <Text fontFamily={"Fredoka"}>
-                            To all our valued team members and stakeholders, we
-                            are pleased to inform you that the recent IT crisis
-                            has been fully resolved. We appreciate your
-                            patience, support, and understanding during this
-                            challenging period. Thanks to the concerted efforts
-                            of our IT teams and partners, our systems are now
-                            fully operational. We remain committed to serving
-                            you with excellence and ensuring such disruptions
-                            are mitigated in the future.
+                            Over the next few weeks, the CIO, Ben Carter, and
+                            the Senior Vice President of Worldwide Customer
+                            Service embarked on a series of meetings with key
+                            customers to address concerns and rebuild trust.
+                          </Text>
+                          <br />
+                          <Text fontFamily={"Fredoka"}>
+                            During these meetings, they discussed the recent IT
+                            crisis, the measures taken to resolve it, and the
+                            steps being implemented to prevent future
+                            disruptions. The transparent communication went a
+                            long way in reaffirming the company's commitment to
+                            its clients.
                           </Text>
                           <Button
                             colorScheme="teal"
-                            onClick={closePopup}
-                            onTouchEnd={closePopup}
-                            textAlign="center"
+                            onClick={closePopup6}
+                            onTouchEnd={closePopup6}
                             fontFamily="Croissant One"
-                            bg="black"
-                            _hover={{ bgColor: "#a1e8f0", color: "black" }}
-                            w="100%"
-                            mt={3}
-                          >
-                            Close Announcement
-                          </Button>
-                        </ModalBody>
-                        <ModalFooter></ModalFooter>
-                      </ModalContent>
-                    </Modal>
-                  )}
-
-                  {showPopup2 && (
-                    <Modal isOpen={day5Popup2}>
-                      <ModalOverlay />
-                      <ModalContent bg={"transparent"} maxW="600px">
-                        <ModalHeader fontWeight="bold" fontSize="25px">
-                          {/* Add a header if needed */}
-                        </ModalHeader>
-                        <Draggable>
-                          <ModalBody
-                            fontSize="18px"
-                            className="draggable-modal"
+                            bg="teal.500"
+                            _hover={{ bgColor: "teal.600" }}
                             borderRadius={10}
-                            bg="rgba(245, 255, 255, 0.8)"
-                            p={10}
-                          >
-                            <Flex
-                              direction={{ base: "column", sm: "row" }}
-                              gap={4}
-                            >
-                              <Box
-                                bgColor="white"
-                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                                borderRadius={10}
-                                p={5}
-                              >
-                                <Text fontFamily={"Fredoka"}>
-                                  At noon, the recovery process was complete.
-                                </Text>
-                              </Box>
-                              <Box>
-                                <Image
-                                  src={crisis}
-                                  borderRadius={10}
-                                  maxW="100%"
-                                  h="auto"
-                                />
-                                <Button
-                                  colorScheme="teal"
-                                  onClick={closePopup2}
-                                  onTouchEnd={closePopup2}
-                                  textAlign="center"
-                                  fontFamily="Croissant One"
-                                  bg="black"
-                                  _hover={{
-                                    bgColor: "#a1e8f0",
-                                    color: "black",
-                                  }}
-                                  w="100%"
-                                  mt={3}
-                                  borderRadius={10}
-                                >
-                                  Close
-                                </Button>
-                              </Box>
-                            </Flex>
-                          </ModalBody>
-                        </Draggable>
-                        <ModalFooter></ModalFooter>
-                      </ModalContent>
-                    </Modal>
-                  )}
-                  {showPopup3 && (
-                    <Modal isOpen={day5Popup3}>
-                      <ModalOverlay />
-                      <ModalContent bg={"transparent"} maxW="600px">
-                        <ModalHeader fontWeight="bold" fontSize="25px">
-                          {/* Add a header if needed */}
-                        </ModalHeader>
-                        <Draggable>
-                          <ModalBody
-                            fontSize="18px"
-                            className="draggable-modal"
-                            borderRadius={10}
-                            bg="rgba(245, 255, 255, 0.8)"
-                            p={10}
-                          >
-                            <Flex
-                              direction={{ base: "column", sm: "row" }}
-                              gap={4}
-                            >
-                              <Box
-                                bgColor="white"
-                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                                borderRadius={10}
-                                p={5}
-                              >
-                                <Text fontFamily={"Fredoka"}>
-                                  Ben Carter stands at the head of the room,
-                                  gathering everyone's attention.{" "}
-                                </Text>
-                              </Box>
-                              <Box>
-                                <Image
-                                  src={strikes2}
-                                  borderRadius={10}
-                                  maxW="100%"
-                                  h="auto"
-                                />
-                                <Button
-                                  colorScheme="teal"
-                                  onClick={closePopup3}
-                                  onTouchEnd={closePopup3}
-                                  textAlign="center"
-                                  fontFamily="Croissant One"
-                                  bg="black"
-                                  _hover={{
-                                    bgColor: "#a1e8f0",
-                                    color: "black",
-                                  }}
-                                  w="100%"
-                                  mt={3}
-                                  borderRadius={10}
-                                >
-                                  Close
-                                </Button>
-                              </Box>
-                            </Flex>
-                          </ModalBody>
-                        </Draggable>
-                        <ModalFooter></ModalFooter>
-                      </ModalContent>
-                    </Modal>
-                  )}
-                  {showPopup4 && (
-                    <Modal isOpen={day5Popup4} isCentered>
-                      <ModalOverlay />
-                      <ModalContent
-                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
-                        borderRadius={10}
-                        bg={"transparent"}
-                      >
-                        <ModalHeader
-                          fontWeight="bold"
-                          fontSize="25px"
-                        ></ModalHeader>
-                        <Draggable>
-                          <ModalBody
-                            fontSize="18px"
-                            className="draggable-modal"
-                            borderRadius={10}
-                            bg="rgba(245, 255, 255, 0.8)"
-                            p={10}
-                          >
-                            <Heading fontWeight="bold" fontSize="25px" mb={4} fontFamily={"Fredoka"}>
-                              Successful Recovery
-                            </Heading>
-                            <Flex
-                              direction={{ base: "column", sm: "row" }}
-                              gap={4}
-                            >
-                              <Box
-                                bgColor="white"
-                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                                borderRadius={10}
-                                p={5}
-                              >
-                                <Text fontFamily={"Fredoka"}>
-                                  A loud cheer erupts as team members clap and
-                                  some even hug each other. The crisis is over,
-                                  and everyone can breathe a sigh of relief.
-                                </Text>
-                              </Box>
-                              <Box>
-                                <Image
-                                  src={cheer}
-                                  borderRadius={10}
-                                  maxW="100%"
-                                  h="auto"
-                                />
-                                <Button
-                                  colorScheme="teal"
-                                  onClick={closePopup4}
-                                  onTouchEnd={closePopup4}
-                                  textAlign="center"
-                                  fontFamily="Croissant One"
-                                  bg="black"
-                                  _hover={{
-                                    bgColor: "#a1e8f0",
-                                    color: "black",
-                                  }}
-                                  w="100%"
-                                  mt={3}
-                                  borderRadius={10}
-                                >
-                                  Close
-                                </Button>
-                              </Box>
-                            </Flex>
-                          </ModalBody>
-                        </Draggable>
-                        <ModalFooter></ModalFooter>
-                      </ModalContent>
-                    </Modal>
-                  )}
-                  {showPopup10 && (
-                    <Modal isOpen={day5Popup10} isCentered>
-                      <ModalOverlay />
-                      <ModalContent
-                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
-                        borderRadius={10}
-                        bg={"transparent"}
-                      >
-                        <ModalHeader
-                          fontWeight="bold"
-                          fontSize="25px"
-                        ></ModalHeader>
-                        <Draggable>
-                          <ModalBody
-                            fontSize="18px"
-                            className="draggable-modal"
-                            borderRadius={10}
-                            bg="rgba(245, 255, 255, 0.8)"
-                            p={10}
-                          >
-                            <Flex
-                              direction={{ base: "column", sm: "row" }}
-                              gap={4}
-                            >
-                              <Box
-                                bgColor="white"
-                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                                borderRadius={10}
-                                p={5}
-                              >
-                                <Text fontFamily={"Fredoka"}>
-                                  The afternoon sun casts a warm glow. The
-                                  Communications team is busy drafting an
-                                  announcement.
-                                </Text>
-                              </Box>
-                              <Box>
-                                <Image
-                                  src={suncast}
-                                  borderRadius={10}
-                                  maxW="100%"
-                                  h="auto"
-                                />
-                                <Button
-                                  colorScheme="teal"
-                                  onClick={closePopup10}
-                                  onTouchEnd={closePopup10}
-                                  textAlign="center"
-                                  fontFamily="Croissant One"
-                                  bg="black"
-                                  _hover={{
-                                    bgColor: "#a1e8f0",
-                                    color: "black",
-                                  }}
-                                  w="100%"
-                                  mt={3}
-                                  borderRadius={10}
-                                >
-                                  Close
-                                </Button>
-                              </Box>
-                            </Flex>
-                          </ModalBody>
-                        </Draggable>
-                        <ModalFooter></ModalFooter>
-                      </ModalContent>
-                    </Modal>
-                  )}
-
-                  {showPopup5 && (
-                    <Modal isOpen={day5Popup5} isCentered>
-                      <ModalOverlay />
-                      <ModalContent
-                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
-                        borderRadius={10}
-                        bg={"transparent"}
-                      >
-                        <ModalHeader
-                          fontWeight="bold"
-                          fontSize="25px"
-                        ></ModalHeader>
-                        <Draggable>
-                          <ModalBody
-                            fontSize="18px"
-                            className="draggable-modal"
-                            borderRadius={10}
-                            bg="rgba(245, 255, 255, 0.8)"
-                            p={10}
-                          >
-                            <Heading ontWeight="bold" fontSize="25px" mb={4} fontFamily={"Fredoka"}>
-                              Successful Recovery Announcement
-                            </Heading>
-
-                            <Flex
-                              direction={{ base: "column", sm: "row" }}
-                              gap={4}
-                            >
-                              <Box
-                                bgColor="white"
-                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                                borderRadius={10}
-                                p={5}
-                              >
-                                <Text fontFamily={"Fredoka"}>
-                                  At 4:00 PM, emails ping across the company,
-                                  and an announcement is broadcasted on internal
-                                  communication channels. The crisis is
-                                  officially over, and everyone can return to
-                                  normal operations.
-                                </Text>
-                              </Box>
-                              <Box>
-                                <Image
-                                  src={tvscreen}
-                                  borderRadius={10}
-                                  maxW="100%"
-                                  h="auto"
-                                />
-                                <Button
-                                  colorScheme="teal"
-                                  onClick={closePopup5}
-                                  onTouchEnd={closePopup5}
-                                  textAlign="center"
-                                  fontFamily="Croissant One"
-                                  bg="black"
-                                  _hover={{
-                                    bgColor: "#a1e8f0",
-                                    color: "black",
-                                  }}
-                                  w="100%"
-                                  mt={3}
-                                  borderRadius={10}
-                                >
-                                  Close
-                                </Button>
-                              </Box>
-                            </Flex>
-                          </ModalBody>
-                        </Draggable>
-                        <ModalFooter></ModalFooter>
-                      </ModalContent>
-                    </Modal>
-                  )}
-                  {showPopup6 && (
-                    <Modal isOpen={day5Popup6} isCentered>
-                      <ModalOverlay />
-                      <ModalContent
-                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
-                        borderRadius={10}
-                        bg={"transparent"}
-                      >
-                        <ModalHeader></ModalHeader>
-                        <Draggable>
-                          <ModalBody
-                            fontSize="18px"
-                            className="draggable-modal"
-                            borderRadius={10}
-                            bg="rgba(245, 255, 255, 0.8)"
-                            p={10}
-                          >
-                            <Heading fontWeight="bold" fontSize="25px" mb={5} fontFamily={"Fredoka"}>
-                              The Next Couple of Weeks
-                            </Heading>
-                            <Text fontFamily={"Fredoka"}>
-                              Over the next few weeks, the CIO, Ben Carter, and
-                              the Senior Vice President of Worldwide Customer
-                              Service embarked on a series of meetings with key
-                              customers to address concerns and rebuild trust.
-                            </Text>
-                            <br />
-                            <Text fontFamily={"Fredoka"}>
-                              During these meetings, they discussed the recent
-                              IT crisis, the measures taken to resolve it, and
-                              the steps being implemented to prevent future
-                              disruptions. The transparent communication went a
-                              long way in reaffirming the company's commitment
-                              to its clients.
-                            </Text>
-                            <Button
-                              colorScheme="teal"
-                              onClick={closePopup6}
-                              onTouchEnd={closePopup6}
-                              fontFamily="Croissant One"
-                              bg="teal.500"
-                              _hover={{ bgColor: "teal.600" }}
-                              borderRadius={10}
-                              mt={4}
-                              ml={isMobile ? "200px" : "450px"}
-                            >
-                              Close
-                            </Button>
-                          </ModalBody>
-                        </Draggable>
-                        <ModalFooter></ModalFooter>
-                      </ModalContent>
-                    </Modal>
-                  )}
-                  {showPopup7 && (
-                    <Modal isOpen={day5Popup7} isCentered>
-                      <ModalOverlay />
-                      <ModalContent
-                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
-                        borderRadius={10}
-                        bg={"transparent"}
-                      >
-                        <ModalHeader></ModalHeader>
-                        <Draggable>
-                          <ModalBody
-                            fontSize="18px"
-                            className="draggable-modal"
-                            borderRadius={10}
-                            bg="rgba(245, 255, 255, 0.8)"
-                            p={10}
-                          >
-                            <Heading fontWeight="bold" fontSize="25px" mb={5} fontFamily={"Fredoka"}>
-                              Epilog 1: The Debrief
-                            </Heading>
-                            <Text fontFamily={"Fredoka"}>
-                              The office is calm, a stark contrast to the
-                              frenzied atmosphere of the crisis days. Ben Carter
-                              sits at his desk, reading through the final report
-                              from the storage vendor. He looks contemplative.
-                            </Text>
-                            <Button
-                              colorScheme="teal"
-                              onClick={closePopup7}
-                              onTouchEnd={closePopup7}
-                              fontFamily="Croissant One"
-                              bg="teal.500"
-                              _hover={{ bgColor: "teal.600" }}
-                              borderRadius={10}
-                              mt={4}
-                              ml={isMobile ? "200px" : "450px"}
-                            >
-                              Close
-                            </Button>
-                          </ModalBody>
-                        </Draggable>
-                        <ModalFooter></ModalFooter>
-                      </ModalContent>
-                    </Modal>
-                  )}
-                  {showPopup8 && (
-                    <Modal isOpen={day5Popup8} isCentered>
-                      <ModalOverlay />
-                      <ModalContent
-                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
-                        borderRadius={10}
-                        bg={"transparent"}
-                      >
-                        <ModalHeader
-                          fontWeight="bold"
-                          fontSize="25px"
-                        ></ModalHeader>
-                        <Draggable>
-                          <ModalBody
-                            fontSize="18px"
-                            className="draggable-modal"
-                            borderRadius={10}
-                            bg="rgba(245, 255, 255, 0.8)"
-                            p={10}
-                          >
-                            <Heading fontWeight="bold" fontSize="25px" mb={5} fontFamily={"Fredoka"}>
-                              A Conversation of Respect
-                            </Heading>
-
-                            <Flex
-                              direction={{ base: "column", sm: "row" }}
-                              gap={4}
-                            >
-                              <Box
-                                bgColor="white"
-                                boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
-                                borderRadius={10}
-                                p={5}
-                              >
-                                <Text fontFamily={"Fredoka"}>
-                                  Inside a conference room, Ben Carter and Gajji
-                                  sit across from each other. There's a sense of
-                                  mutual respect between them.
-                                </Text>
-                              </Box>
-                              <Box>
-                                <Image
-                                  src={across}
-                                  borderRadius={10}
-                                  maxW="100%"
-                                  h="auto"
-                                />
-                                <Button
-                                  colorScheme="teal"
-                                  onClick={closePopup8}
-                                  onTouchEnd={closePopup8}
-                                  textAlign="center"
-                                  fontFamily="Croissant One"
-                                  bg="black"
-                                  _hover={{
-                                    bgColor: "#a1e8f0",
-                                    color: "black",
-                                  }}
-                                  w="100%"
-                                  mt={3}
-                                  borderRadius={10}
-                                >
-                                  Close
-                                </Button>
-                              </Box>
-                            </Flex>
-                          </ModalBody>
-                        </Draggable>
-                        <ModalFooter></ModalFooter>
-                      </ModalContent>
-                    </Modal>
-                  )}
-                  {showPopup9 && (
-                    <Modal isOpen={day5Popup9} isCentered>
-                      <ModalOverlay />
-                      <ModalContent
-                        maxW={{ base: "90%", sm: "80%", md: "600px" }}
-                        borderRadius={10}
-                        bg={"transparent"}
-                      >
-                        <ModalHeader></ModalHeader>
-                        <Draggable>
-                          <ModalBody
-                            fontSize="18px"
-                            className="draggable-modal"
-                            borderRadius={10}
-                            bg="rgba(245, 255, 255, 0.8)"
-                            p={10}
-                          >
-                            <Heading fontWeight="bold" fontSize="25px" mb={5} fontFamily={"Fredoka"}>
-                              {" "}
-                              A Moment of Mutual Appreciation
-                            </Heading>
-                            <Text fontFamily={"Fredoka"}>
-                              The two leaders share a moment of mutual
-                              appreciation, aware that the trials they faced
-                              together have only deepened their bond.
-                            </Text>
-                            <Button
-                              colorScheme="teal"
-                              onClick={closePopup9}
-                              onTouchEnd={closePopup9}
-                              fontFamily="Croissant One"
-                              bg="teal.500"
-                              _hover={{ bgColor: "teal.600" }}
-                              borderRadius={10}
-                              mt={4}
-                              ml={isMobile ? "200px" : "450px"}
-                            >
-                              Close
-                            </Button>
-                          </ModalBody>
-                        </Draggable>
-                        <ModalFooter></ModalFooter>
-                      </ModalContent>
-                    </Modal>
-                  )}
-                  {showPopup11 && (
-                    <Modal isOpen={day5Popup11} isCentered>
-                      <ModalOverlay />
-                      <ModalContent
-                        maxW={{ base: "90%", sm: "80%", md: "60%" }}
-                        borderRadius={10}
-                        bg={"transparent"}
-                      >
-                        <ModalHeader></ModalHeader>
-                        <Draggable>
-                          <ModalBody
-                            fontSize="18px"
-                            className="draggable-modal"
-                            borderRadius={10}
-                            bg="rgba(245, 255, 255, 0.8)"
-                            p={10}
-                          >
-                            <Heading fontWeight="bold" fontSize="25px" mb={5} fontFamily={"Fredoka"}>
-                              Epilog - 2
-                            </Heading>
-                            <Text fontFamily={"Fredoka"}>
-                              After months of analysis, the storage vendor’s
-                              final report indicated the site 2 (R2) mirrored
-                              copy was never corrupted. While the data in the
-                              controller buffers were corrupted, the controller
-                              had implemented defensive processes that prevented
-                              the controller from writing the corrupted data to
-                              the actual discs. The support team had viewed the
-                              buffers but never investigated whether the
-                              actually discs on the frames at site 2 were
-                              corrupted. If this information had been convened
-                              at the time of the incident, all applications
-                              could have safely been restored within 24 hours.
-                            </Text>
-
-                            <br />
-                            <Text fontFamily={"Fredoka"}>
-                              The storage vendor provided approximately three
-                              million dollars of new hardware and software to
-                              provide two additional copies of the data as
-                              restitution for the event.
-                            </Text>
-                            <br />
-                            <Image src={figure2} />
-                            <Text mt={2} fontFamily={"Fredoka"}>
-                              <strong>Note:</strong> You can see more details of
-                              all diagrams in document section.
-                            </Text>
-                            <Button
-                              colorScheme="teal"
-                              onClick={closePopup11}
-                              onTouchEnd={closePopup11}
-                              fontFamily="Croissant One"
-                              bg="teal.500"
-                              _hover={{ bgColor: "teal.600" }}
-                              borderRadius={10}
-                              mt={3}
-                              ml={isMobile ? "200px" : "700px"}
-                            >
-                              Close
-                            </Button>
-                            {/* <Image src={site}/> */}
-                          </ModalBody>
-                        </Draggable>
-                        <ModalFooter></ModalFooter>
-                      </ModalContent>
-                    </Modal>
-                  )}
-
-                  {showPopup12 && (
-                    <Modal
-                      isOpen={day5Popup12}
-                      onClose={closePopup12}
-                      size="md"
-                    >
-                      <ModalOverlay />
-                      <ModalContent mt={isMobile ? "50px" : "0px"}>
-                        <ModalHeader>End of Simulation</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>
-                          {/* Place your moving thumb GIF here */}
-                          <Box>
-                            <img src={butterfly} alt="Moving Thumb" />
-                          </Box>
-
-                          <Text textAlign={"center"} fontWeight={"bold"} fontFamily={"Fredoka"}>
-                            We appreciate your feedback, and you are now ready
-                            to move on to the next step by accessing the
-                            deliverable section.
-                          </Text>
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button
-                            onClick={closePopup12}
-                            onTouchEnd={closePopup12}
-                            bgColor={"#A81B1B"}
-                            color={"white"}
-                            _hover={{ color: "black" }}
+                            mt={4}
+                            ml={isMobile ? "200px" : "450px"}
                           >
                             Close
                           </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
-                  )}
+                        </ModalBody>
+                      </Draggable>
+                      <ModalFooter></ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+                {showPopup7 && (
+                  <Modal isOpen={day5Popup7} isCentered>
+                    <ModalOverlay />
+                    <ModalContent
+                      maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                      borderRadius={10}
+                      bg={"transparent"}
+                    >
+                      <ModalHeader></ModalHeader>
+                      <Draggable>
+                        <ModalBody
+                          fontSize="18px"
+                          className="draggable-modal"
+                          borderRadius={10}
+                          bg="rgba(245, 255, 255, 0.8)"
+                          p={10}
+                        >
+                          <Heading
+                            fontWeight="bold"
+                            fontSize="25px"
+                            mb={5}
+                            fontFamily={"Fredoka"}
+                          >
+                            Epilog 1: The Debrief
+                          </Heading>
+                          <Text fontFamily={"Fredoka"}>
+                            The office is calm, a stark contrast to the frenzied
+                            atmosphere of the crisis days. Ben Carter sits at
+                            his desk, reading through the final report from the
+                            storage vendor. He looks contemplative.
+                          </Text>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup7}
+                            onTouchEnd={closePopup7}
+                            fontFamily="Croissant One"
+                            bg="teal.500"
+                            _hover={{ bgColor: "teal.600" }}
+                            borderRadius={10}
+                            mt={4}
+                            ml={isMobile ? "200px" : "450px"}
+                          >
+                            Close
+                          </Button>
+                        </ModalBody>
+                      </Draggable>
+                      <ModalFooter></ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+                {showPopup8 && (
+                  <Modal isOpen={day5Popup8} isCentered>
+                    <ModalOverlay />
+                    <ModalContent
+                      maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                      borderRadius={10}
+                      bg={"transparent"}
+                    >
+                      <ModalHeader
+                        fontWeight="bold"
+                        fontSize="25px"
+                      ></ModalHeader>
+                      <Draggable>
+                        <ModalBody
+                          fontSize="18px"
+                          className="draggable-modal"
+                          borderRadius={10}
+                          bg="rgba(245, 255, 255, 0.8)"
+                          p={10}
+                        >
+                          <Heading
+                            fontWeight="bold"
+                            fontSize="25px"
+                            mb={5}
+                            fontFamily={"Fredoka"}
+                          >
+                            A Conversation of Respect
+                          </Heading>
 
-                  {showBox && (
-                    <>
-                      <Box
-                        bg={"white"}
-                        p={2}
-                        w={isMobile ? "100%" : "60%"} // Adjust the width for mobile view
-                        m={"auto"}
-                        mt={isMobile ? "20px" : "50px"} // Adjust the top margin for mobile view
-                        borderRadius={10}
+                          <Flex
+                            direction={{ base: "column", sm: "row" }}
+                            gap={4}
+                          >
+                            <Box
+                              bgColor="white"
+                              boxShadow="0 0 20px rgba(0, 0, 0, 0.2)"
+                              borderRadius={10}
+                              p={5}
+                            >
+                              <Text fontFamily={"Fredoka"}>
+                                Inside a conference room, Ben Carter and Gajji
+                                sit across from each other. There's a sense of
+                                mutual respect between them.
+                              </Text>
+                            </Box>
+                            <Box>
+                              <Image
+                                src={across}
+                                borderRadius={10}
+                                maxW="100%"
+                                h="auto"
+                              />
+                              <Button
+                                colorScheme="teal"
+                                onClick={closePopup8}
+                                onTouchEnd={closePopup8}
+                                textAlign="center"
+                                fontFamily="Croissant One"
+                                bg="black"
+                                _hover={{
+                                  bgColor: "#a1e8f0",
+                                  color: "black",
+                                }}
+                                w="100%"
+                                mt={3}
+                                borderRadius={10}
+                              >
+                                Close
+                              </Button>
+                            </Box>
+                          </Flex>
+                        </ModalBody>
+                      </Draggable>
+                      <ModalFooter></ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+                {showPopup9 && (
+                  <Modal isOpen={day5Popup9} isCentered>
+                    <ModalOverlay />
+                    <ModalContent
+                      maxW={{ base: "90%", sm: "80%", md: "600px" }}
+                      borderRadius={10}
+                      bg={"transparent"}
+                    >
+                      <ModalHeader></ModalHeader>
+                      <Draggable>
+                        <ModalBody
+                          fontSize="18px"
+                          className="draggable-modal"
+                          borderRadius={10}
+                          bg="rgba(245, 255, 255, 0.8)"
+                          p={10}
+                        >
+                          <Heading
+                            fontWeight="bold"
+                            fontSize="25px"
+                            mb={5}
+                            fontFamily={"Fredoka"}
+                          >
+                            {" "}
+                            A Moment of Mutual Appreciation
+                          </Heading>
+                          <Text fontFamily={"Fredoka"}>
+                            The two leaders share a moment of mutual
+                            appreciation, aware that the trials they faced
+                            together have only deepened their bond.
+                          </Text>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup9}
+                            onTouchEnd={closePopup9}
+                            fontFamily="Croissant One"
+                            bg="teal.500"
+                            _hover={{ bgColor: "teal.600" }}
+                            borderRadius={10}
+                            mt={4}
+                            ml={isMobile ? "200px" : "450px"}
+                          >
+                            Close
+                          </Button>
+                        </ModalBody>
+                      </Draggable>
+                      <ModalFooter></ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+                {showPopup11 && (
+                  <Modal isOpen={day5Popup11} isCentered>
+                    <ModalOverlay />
+                    <ModalContent
+                      maxW={{ base: "90%", sm: "80%", md: "60%" }}
+                      borderRadius={10}
+                      bg={"transparent"}
+                    >
+                      <ModalHeader></ModalHeader>
+                      <Draggable>
+                        <ModalBody
+                          fontSize="18px"
+                          className="draggable-modal"
+                          borderRadius={10}
+                          bg="rgba(245, 255, 255, 0.8)"
+                          p={10}
+                        >
+                          <Heading
+                            fontWeight="bold"
+                            fontSize="25px"
+                            mb={5}
+                            fontFamily={"Fredoka"}
+                          >
+                            Epilog - 2
+                          </Heading>
+                          <Text fontFamily={"Fredoka"}>
+                            After months of analysis, the storage vendor’s final
+                            report indicated the site 2 (R2) mirrored copy was
+                            never corrupted. While the data in the controller
+                            buffers were corrupted, the controller had
+                            implemented defensive processes that prevented the
+                            controller from writing the corrupted data to the
+                            actual discs. The support team had viewed the
+                            buffers but never investigated whether the actually
+                            discs on the frames at site 2 were corrupted. If
+                            this information had been convened at the time of
+                            the incident, all applications could have safely
+                            been restored within 24 hours.
+                          </Text>
+
+                          <br />
+                          <Text fontFamily={"Fredoka"}>
+                            The storage vendor provided approximately three
+                            million dollars of new hardware and software to
+                            provide two additional copies of the data as
+                            restitution for the event.
+                          </Text>
+                          <br />
+                          <Image src={figure2} />
+                          <Text mt={2} fontFamily={"Fredoka"}>
+                            <strong>Note:</strong> You can see more details of
+                            all diagrams in document section.
+                          </Text>
+                          <Button
+                            colorScheme="teal"
+                            onClick={closePopup11}
+                            onTouchEnd={closePopup11}
+                            fontFamily="Croissant One"
+                            bg="teal.500"
+                            _hover={{ bgColor: "teal.600" }}
+                            borderRadius={10}
+                            mt={3}
+                            ml={isMobile ? "200px" : "700px"}
+                          >
+                            Close
+                          </Button>
+                          {/* <Image src={site}/> */}
+                        </ModalBody>
+                      </Draggable>
+                      <ModalFooter></ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+
+                {showPopup12 && (
+                  <Modal isOpen={day5Popup12} onClose={closePopup12} size="md">
+                    <ModalOverlay />
+                    <ModalContent mt={isMobile ? "50px" : "0px"} pb={"10px"}>
+                      <ModalHeader>End of Simulation</ModalHeader>
+                      <ModalCloseButton />
+                      <ModalBody>
+                        {/* Place your moving thumb GIF here */}
+                        <Box>
+                          <img src={butterfly} alt="Moving Thumb" />
+                        </Box>
+
+                        <Text
+                          textAlign={"center"}
+                          fontWeight={"bold"}
+                          fontFamily={"Fredoka"}
+                        >
+                          We appreciate your feedback, and you are now ready to
+                          move on to the next step by accessing the deliverable
+                          section.
+                        </Text>
+                      </ModalBody>
+                      <Button
+                        onClick={closePopup12}
+                        onTouchEnd={closePopup12}
+                        bgColor={"#A81B1B"}
+                        color={"white"}
+                        _hover={{ color: "black" }}
+                        // mr={isMobile ? "200px" : "500px"}
+                        // mb={50}
+                        m={5}
                       >
-                        {showBoxContent1 && (
-                          <>
-                            <Image
-                              w={isMobile ? "80%" : "50%"} // Adjust the image width for mobile view
+                        Close
+                      </Button>
+                      <ModalFooter></ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                )}
+
+                {flag7 && showBox && (
+                  <>
+                    <Box
+                      bg={"white"}
+                      p={2}
+                      w={isMobile ? "100%" : "60%"} // Adjust the width for mobile view
+                      m={"auto"}
+                      mt={isMobile ? "20px" : "50px"} // Adjust the top margin for mobile view
+                      borderRadius={10}
+                    >
+                      {showBoxContent1 && (
+                        <>
+                          <Image
+                            w={isMobile ? "80%" : "50%"} // Adjust the image width for mobile view
+                            m={"auto"}
+                            src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
+                          />
+                          <Flex
+                            className="box"
+                            mb={5}
+                            mt={isMobile ? "5" : "5"} // Adjust the top margin for mobile view
+                            boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                            alignItems={"center"}
+                            justifyContent={"center"}
+                            h={isMobile ? "auto" : "50px"}
+                            bg={"#c8cfca"}
+                            color={"black"}
+                            fontWeight={"bold"}
+                          >
+                            <Text>
+                              Which of the following technical challenges do you
+                              see as dominant in the scripts which you just saw
+                              ?
+                            </Text>
+                          </Flex>
+
+                          <RadioGroup
+                            m={"auto"}
+                            onChange={handleChange2}
+                            value={value}
+                          >
+                            <Box
+                              className="flex2"
+                              w={isMobile ? "90%" : "80%"}
                               m={"auto"}
-                              src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
-                            />
-                            <Flex
-                              className="box"
-                              mb={5}
-                              mt={isMobile ? "5" : "5"} // Adjust the top margin for mobile view
-                              boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                              alignItems={"center"}
-                              justifyContent={"center"}
-                              h={isMobile ? "auto" : "50px"}
-                              bg={"#c8cfca"}
-                              color={"black"}
-                              fontWeight={"bold"}
-                            >
-                              <Text>
-                                Which of the following technical challenges do
-                                you see as dominant in the scripts which you
-                                just saw ?
-                              </Text>
-                            </Flex>
-
-                            <RadioGroup
-                              m={"auto"}
-                              onChange={handleChange2}
-                              value={value}
-                            >
-                              <Box
-                                className="flex2"
-                                w={isMobile ? "90%" : "80%"}
-                                m={"auto"}
-                                pb={3}
-                              >
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Weaknesses in the system that can be exploited, leading to potential disasters">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1, // Take up the available space for the label
-                                      }}
-                                    >
-                                      <Radio
-                                        fontFamily={"Fredoka"}
-                                        size={isMobile ? "sm" : "lg"}
-                                        colorScheme="orange"
-                                        value="Weaknesses in the system that can be exploited, leading to potential disasters"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      System Vulnerabilities
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "1" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1, // Take up the available space for the label
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"lg"}
-                                        colorScheme="orange"
-                                        value="Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Data Integrity
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "1" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Hardware or network breakdowns that can disrupt normal operations">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"lg"}
-                                        colorScheme="orange"
-                                        value="Hardware or network breakdowns that can disrupt normal operations"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Infrastructure Failures
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "1" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Inadequate or failed backups that prevent or delay recovery efforts">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"lg"}
-                                        colorScheme="orange"
-                                        value="Inadequate or failed backups that prevent or delay recovery efforts"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Backup Failures
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "1" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Failures in internal and external communication systems during critical times">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"lg"}
-                                        colorScheme="orange"
-                                        value="Failures in internal and external communication systems during critical times"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Communication Breakdowns
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "1" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Absence of failover systems or processes that can act as a backup during primary system failures">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"lg"}
-                                        colorScheme="orange"
-                                        value="Absence of failover systems or processes that can act as a backup during primary system failures"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Lack of Redundancy
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-                              </Box>
-                            </RadioGroup>
-                          </>
-                        )}
-
-                        {showBoxContent2 && (
-                          <>
-                            <Image
-                              w={isMobile ? "70%" : "50%"} // Adjust the image width for mobile view
-                              m={"auto"}
-                              src="https://img.freepik.com/free-vector/business-decisions-concept-illustration_114360-4096.jpg?w=740&t=st=1696672316~exp=1696672916~hmac=0b5a3d793d15d5eccf6f03a04e907baee2f1e59dc4292775fe4e025c871152be"
-                            />
-                            <Flex
-                              className="box"
-                              mb={"5"}
-                              mt={isMobile ? "5" : "5"} // Adjust the top margin for mobile view
-                              boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                              alignItems={"center"}
-                              justifyContent={"center"}
-                              h={"auto"}
-                              bg={"#c8cfca"}
-                              color={"black"}
-                              fontWeight={"bold"}
-                            >
-                              <Text>
-                                Which quality of Ben Carter do you feel stands
-                                out during the last conversation?
-                              </Text>
-                            </Flex>
-                            <RadioGroup
-                              m={"auto"}
-                              onChange={handleChange}
-                              value={value}
+                              pb={3}
                             >
                               <Box
-                                className="flex"
-                                w={isMobile ? "100%" : "80%"}
-                                m={"auto"}
-                                pb={4}
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                               >
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "0" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Making clear and swift decisions under pressure">
-                                    <label
+                                <Tooltip label="Weaknesses in the system that can be exploited, leading to potential disasters">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1, // Take up the available space for the label
+                                    }}
+                                  >
+                                    <Radio
+                                      fontFamily={"Fredoka"}
+                                      size={isMobile ? "sm" : "lg"}
+                                      colorScheme="orange"
+                                      value="Weaknesses in the system that can be exploited, leading to potential disasters"
                                       style={{
+                                        position: "absolute",
+                                        opacity: 0,
                                         cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
                                       }}
-                                    >
-                                      <Radio
-                                        fontFamily={"Fredoka"}
-                                        size={"10px"}
-                                        colorScheme="orange"
-                                        value="Making clear and swift decisions under pressure"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Decisive
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "0" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Remaining calm and level-headed during challenges">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"10px"}
-                                        colorScheme="orange"
-                                        value="Remaining calm and level-headed during challenges"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Composed
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "0" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Emphasizing teamwork, both internally and with external partners">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"10px"}
-                                        colorScheme="orange"
-                                        value="Emphasizing teamwork, both internally and with external partners"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Collaborative
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "0" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Effectively conveying information, even in challenging circumstances">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"10px"}
-                                        colorScheme="orange"
-                                        value="Effectively conveying information, even in challenging circumstances"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Communicative
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "0" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Quickly adjusting strategies based on new information or changing scenarios">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"10px"}
-                                        colorScheme="orange"
-                                        value="Quickly adjusting strategies based on new information or changing scenarios"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Adaptive
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "0" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Keeping an eye on long-term impacts and future implications during the crisis">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"10px"}
-                                        colorScheme="orange"
-                                        value="Keeping an eye on long-term impacts and future implications during the crisis"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Visionary
-                                    </label>
-                                  </Tooltip>
-                                </Box>
+                                    />
+                                    System Vulnerabilities
+                                  </label>
+                                </Tooltip>
                               </Box>
-                            </RadioGroup>
-                          </>
-                        )}
-                      </Box>
-                      <div ref={spacerRef} style={{ height: "40px" }}></div>
-                    </>
-                  )}
-                  <div ref={spacerRef} style={{ height: "40px" }}></div>
-                </TransitionGroup>
-              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "1" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1, // Take up the available space for the label
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"lg"}
+                                      colorScheme="orange"
+                                      value="Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Data Integrity
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "1" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Hardware or network breakdowns that can disrupt normal operations">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"lg"}
+                                      colorScheme="orange"
+                                      value="Hardware or network breakdowns that can disrupt normal operations"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Infrastructure Failures
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "1" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Inadequate or failed backups that prevent or delay recovery efforts">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"lg"}
+                                      colorScheme="orange"
+                                      value="Inadequate or failed backups that prevent or delay recovery efforts"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Backup Failures
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "1" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Failures in internal and external communication systems during critical times">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"lg"}
+                                      colorScheme="orange"
+                                      value="Failures in internal and external communication systems during critical times"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Communication Breakdowns
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "1" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Absence of failover systems or processes that can act as a backup during primary system failures">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"lg"}
+                                      colorScheme="orange"
+                                      value="Absence of failover systems or processes that can act as a backup during primary system failures"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Lack of Redundancy
+                                  </label>
+                                </Tooltip>
+                              </Box>
+                            </Box>
+                          </RadioGroup>
+                        </>
+                      )}
+
+                      {showBoxContent2 && (
+                        <>
+                          <Image
+                            w={isMobile ? "70%" : "50%"} // Adjust the image width for mobile view
+                            m={"auto"}
+                            src="https://img.freepik.com/free-vector/business-decisions-concept-illustration_114360-4096.jpg?w=740&t=st=1696672316~exp=1696672916~hmac=0b5a3d793d15d5eccf6f03a04e907baee2f1e59dc4292775fe4e025c871152be"
+                          />
+                          <Flex
+                            className="box"
+                            mb={"5"}
+                            mt={isMobile ? "5" : "5"} // Adjust the top margin for mobile view
+                            boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                            alignItems={"center"}
+                            justifyContent={"center"}
+                            h={"auto"}
+                            bg={"#c8cfca"}
+                            color={"black"}
+                            fontWeight={"bold"}
+                          >
+                            <Text>
+                              Which quality of Ben Carter do you feel stands out
+                              during the last conversation?
+                            </Text>
+                          </Flex>
+                          <RadioGroup
+                            m={"auto"}
+                            onChange={handleChange}
+                            value={value}
+                          >
+                            <Box
+                              className="flex"
+                              w={isMobile ? "100%" : "80%"}
+                              m={"auto"}
+                              pb={4}
+                            >
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "0" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Making clear and swift decisions under pressure">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      fontFamily={"Fredoka"}
+                                      size={"10px"}
+                                      colorScheme="orange"
+                                      value="Making clear and swift decisions under pressure"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Decisive
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "0" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Remaining calm and level-headed during challenges">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"10px"}
+                                      colorScheme="orange"
+                                      value="Remaining calm and level-headed during challenges"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Composed
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "0" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Emphasizing teamwork, both internally and with external partners">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"10px"}
+                                      colorScheme="orange"
+                                      value="Emphasizing teamwork, both internally and with external partners"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Collaborative
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "0" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Effectively conveying information, even in challenging circumstances">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"10px"}
+                                      colorScheme="orange"
+                                      value="Effectively conveying information, even in challenging circumstances"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Communicative
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "0" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Quickly adjusting strategies based on new information or changing scenarios">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"10px"}
+                                      colorScheme="orange"
+                                      value="Quickly adjusting strategies based on new information or changing scenarios"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Adaptive
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "0" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Keeping an eye on long-term impacts and future implications during the crisis">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"10px"}
+                                      colorScheme="orange"
+                                      value="Keeping an eye on long-term impacts and future implications during the crisis"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Visionary
+                                  </label>
+                                </Tooltip>
+                              </Box>
+                            </Box>
+                          </RadioGroup>
+                        </>
+                      )}
+                    </Box>
+                    <div ref={spacerRef} style={{ height: "40px" }}></div>
+                  </>
+                )}
+                {!flag7 && showBox2 && (
+                  <Box
+                    bgColor={"#030405"}
+                    color={"white"}
+                    textAlign={"left"}
+                    w={"100%"}
+                    pl={3}
+                    pt={3}
+                    pb={3}
+                  >
+                    <Text
+                      textAlign={"center"}
+                      fontSize={isMobile ? "15" : "20"}
+                    >
+                      Chat ends here, you can click on next button to continue
+                      your chat
+                    </Text>
+                  </Box>
+                )}
+                <div ref={spacerRef} style={{ height: "40px" }}></div>
+              </TransitionGroup>
             </Box>
-          </Flex>
-        </Box>
-      )}
+          </Box>
+        </Flex>
+      </Box>
     </>
   );
 };

@@ -32,11 +32,14 @@ import figma from "../Images/figmabasic.png";
 import figure3 from "../Images/figmabasics3.png";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { AiOutlineClose } from "react-icons/ai";
-import {FiMinus} from "react-icons/fi";
-import {BiPlus} from "react-icons/bi";
-import {MdSpeed} from "react-icons/md"
-import "../Pages/Info.css";
+import { GrChapterPrevious } from "react-icons/gr";
+import { GrChapterNext } from "react-icons/gr";
 
+import { FiMinus } from "react-icons/fi";
+import { BiPlus } from "react-icons/bi";
+import { MdSpeed } from "react-icons/md";
+import "../Pages/Info.css";
+import PreviousChat from "../Components/PreviousChat";
 
 const Start = () => {
   const {
@@ -47,23 +50,70 @@ const Start = () => {
     setShowSideBar,
     showCloseBtn,
     setSpeed,
-    speed
+    speed,
+    value,
+    setValue,
+    component,
+    setComponent,
+    setStartIndex,
+    setSelectedSection,
+    selectedSection,
+    flag1,
+    setFlag1,
+    flag2,
+    setFlag2,
+    flag3,
+    setFlag3,
+    flag4,
+    setFlag4,
+    flag5,
+    setFlag5,
+    flag6,
+    setFlag6,
+    flag7
   } = useContext(MyContext);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [selectedSection, setSelectedSection] = useState(null);
+  const [selectedSectionn, setSelectedSectionn] = useState(null);
 
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
-  const handleSpeed = (value) => {
-   
-      setSpeed((pre)=> pre+value);
-    
-    console.log(speed);
+  const handlePrevious = () => {
+    if (selectedSection === "BringDown") {
+      setSelectedSection("Chat");
+    } else if (selectedSection === "EarlyMorning2") {
+      setSelectedSection("BringDown");
+    } else if (selectedSection === "LateMorning2") {
+      setSelectedSection("EarlyMorning2");
+    } else if (selectedSection === "Morning3") {
+      setSelectedSection("LateMorning2");
+    } else if (selectedSection === "Morning4") {
+      setSelectedSection("Morning3");
+    } else if (selectedSection === "Morning5") {
+      setSelectedSection("Morning4");
+    }
+    else if(selectedSection === "deliverable"){
+      setSelectedSection("Morning5");
+    }
   };
 
-  const handleNormalSpeed = (value)=>{
-    setSpeed(value);
-  }
+  const handleNext = () => {
+    if (selectedSection === "Chat" && !flag1) {
+      setSelectedSection("BringDown");
+    } else if (selectedSection === "BringDown" && !flag2) {
+      setSelectedSection("EarlyMorning2");
+    } else if (selectedSection === "EarlyMorning2" && !flag3) {
+      setSelectedSection("LateMorning2");
+    } else if (selectedSection === "LateMorning2" && !flag4) {
+      setSelectedSection("Morning3");
+    } else if (selectedSection === "Morning3" && !flag5) {
+      setSelectedSection("Morning4");
+    } else if (selectedSection === "Morning4" && !flag6) {
+      setSelectedSection("Morning5");
+    }
+    else if(selectedSection === "Morning5" && !flag7){
+      setSelectedSection("deliverable")
+    }
+  };
 
   const handleclose = () => {
     setShowSideBar(false);
@@ -91,7 +141,7 @@ const Start = () => {
 
   const handleDropdownClick = (section) => {
     setShowDropdown(false);
-    setSelectedSection(section);
+    setSelectedSectionn(section);
 
     if (section === "Images") {
       onImagesModalOpen();
@@ -99,7 +149,6 @@ const Start = () => {
       onMailsModalOpen();
     }
   };
-
 
   useEffect(() => {
     // Scroll to the top of the page when the component mounts
@@ -150,28 +199,65 @@ const Start = () => {
             {head}
           </Heading>
         </Box>
-        <Text
-          cursor={"pointer"}
-          fontSize={isMobile ? 20 : 45}
-          onClick={handlePause}
-        >
-          {pauseBtn ? (
-            <MdNotStarted color="green" />
-          ) : (
-            <BsPauseCircleFill color="#db1c50" />
-          )}
-        </Text>
-        <HStack  border={"0px solid white"}>
-          <Button size={isMobile ? 2 : "sm"} fontSize={isMobile ? 12 : 20}  _hover={{"bgColor":"white", "color":"black"}} color={"white"} bg={"transparent"} onClick={() => handleSpeed(1000)} isDisabled={speed >8000}>
-
-        <FiMinus  />
-          </Button>
-  
-            <MdSpeed fontSize={isMobile ? 20 : 30}/>
-          <Button size={isMobile ? 2 : "sm"} fontSize={isMobile ? 12 :20} _hover={{"bgColor":"white", "color":"black"}} color={"white"} bg={"transparent"}  onClick={() => handleSpeed(-1000)} isDisabled={speed <2000}>
-          <BiPlus  />
-          </Button>
+        <HStack w={isMobile ? "10%" : "10%"} justifyContent={"space-evenly"}>
+          <Text
+            cursor={"pointer"}
+            fontSize={isMobile ? 10 : 20}
+            p={2}
+            onClick={handlePrevious}
+            borderRadius={"50%"}
+            bgColor={"gray"}
+          >
+            <GrChapterPrevious color="grey" />
+          </Text>
+          <Text
+            cursor={"pointer"}
+            fontSize={isMobile ? 20 : 45}
+            onClick={handlePause}
+          >
+            {pauseBtn ? (
+              <MdNotStarted color="green" />
+            ) : (
+              <BsPauseCircleFill color="#db1c50" />
+            )}
+          </Text>
+          <Text
+            cursor={"pointer"}
+            fontSize={isMobile ? 10 : 20}
+            p={2}
+            onClick={handleNext}
+            borderRadius={"50%"}
+            bgColor={"gray"}
+          >
+            <GrChapterNext color="grey" />
+          </Text>
         </HStack>
+        {/* <HStack border={"0px solid white"}>
+          <Button
+            size={isMobile ? 2 : "sm"}
+            fontSize={isMobile ? 12 : 17}
+            _hover={{ bgColor: "white", color: "black" }}
+            color={"white"}
+            bg={"transparent"}
+            onClick={() => handleSpeed(1000)}
+            isDisabled={speed > 7000}
+          >
+            <FiMinus />
+          </Button>
+            <Text>{speed/1000}s</Text>
+          <MdSpeed fontSize={isMobile ? 17 : 27} />
+          <Button
+            size={isMobile ? 2 : "sm"}
+            fontSize={isMobile ? 12 : 17}
+            _hover={{ bgColor: "white", color: "black" }}
+            color={"white"}
+            bg={"transparent"}
+            onClick={() => handleSpeed(-1000)}
+            isDisabled={speed < 2000}
+          >
+            <BiPlus />
+          </Button>
+        </HStack> */}
 
         {/* <Text cursor={"pointer"} fontSize={35} onClick={handlePause}>{pauseBtn ? <MdNotStarted /> : <BsPauseCircleFill />}</Text> */}
         <div
@@ -294,14 +380,6 @@ const Start = () => {
           </ModalBody>
         </ModalContent>
       </Modal>
-      <footer>
-            <a
-              href="mailto:vikram@vikramsethi.com"
-              style={{ textDecoration: "none" }}
-            >
-              &copy; Vikram Sethi Contact :&nbsp;vikram@vikramsethi.com
-            </a>
-          </footer>
     </Box>
   );
 };

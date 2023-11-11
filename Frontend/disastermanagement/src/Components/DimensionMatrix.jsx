@@ -205,12 +205,22 @@ const DimensionMatrix = () => {
               quadrant, reflecting a leader who not only thinks ahead but also
               deeply values teamwork and partnership in navigating challenges.
             </Text>
+
+            <Button
+              colorScheme="blue"
+              size={isMobile && "sm"}
+              fontSize={isMobile && 10}
+              mr={isMobile ? 0 : 3}
+              onClick={onClose}
+              p={2}
+              ml={isMobile ? "300px": '750px'}
+            >
+              Close
+            </Button>
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" size={isMobile && "sm"} fontSize={isMobile && 10} mr={isMobile ? 0 : 3} onClick={onClose} p={2}>
-              Close
-            </Button>
+          
           </ModalFooter>
         </ModalContent>
       </Modal>

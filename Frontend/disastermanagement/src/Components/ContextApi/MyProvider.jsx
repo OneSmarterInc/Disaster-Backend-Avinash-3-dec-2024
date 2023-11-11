@@ -11,13 +11,19 @@ const MyProvider = ({ children }) => {
   const [pauseBtn, setPauseBtn] = useState(false);
   const [head, setHead] = useState("");
   const [showCloseBtn, setShowCloseBtn] = useState(false);
-
+  const [value, setValue] = useState("");
+  const [startIndex, setStartIndex] = useState(0);
+  const [component, setComponent] = useState("");
   const [showSidebar, setShowSideBar] = useState(true);
+  const [flag1, setFlag1] = useState(true);
+  const [flag2, setFlag2] = useState(true);
+  const [flag3, setFlag3] = useState(true);
+  const [flag4, setFlag4] = useState(true);
+  const [flag5, setFlag5] = useState(true);
+  const [flag6, setFlag6] = useState(true);
+  const [flag7, setFlag7] = useState(true);
+
   const [speed, setSpeed] = useState(4000);
-
-
-
-
 
   const enableBox = () => {
     setGlobalState(true);
@@ -47,6 +53,26 @@ const MyProvider = ({ children }) => {
         setShowSideBar,
         showCloseBtn,
         setShowCloseBtn,
+        value,
+        setValue,
+        startIndex,
+        setStartIndex,
+        component,
+        setComponent,
+        flag1,
+        setFlag1,
+        flag2,
+        setFlag2,
+        flag3,
+        setFlag3,
+        flag4,
+        setFlag4,
+        flag5,
+        setFlag5,
+        flag6,
+        setFlag6,
+        flag7,
+        setFlag7
       }}
     >
       {children}

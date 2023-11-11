@@ -11,6 +11,7 @@ import { Signup } from "../Pages/Signup";
 import Info from "../Pages/Info";
 import GroupPage from "../Pages/GroupPage";
 import Payment from "../Pages/Payment";
+import BringDown from "./Day1/Day1Evening";
 
 const pageVariants = {
   initial: { opacity: 0, x: -50 },
@@ -74,6 +75,8 @@ const MainRoutes = () => {
           </motion.div>
         }
       />
+
+      <Route path="/evening" element={<BringDown/>} />
 
       {/* <Route path='/debrief' element={<motion.div
             initial="initial"

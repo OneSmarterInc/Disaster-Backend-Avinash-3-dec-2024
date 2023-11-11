@@ -316,18 +316,20 @@ const Info = () => {
             size={isMobile && "sm"}
             fontSize={isMobile && 10}
             mr={isMobile ? 0 : 3}
+            mb={4}
           >
             <Link to={"/DSRBC"}>Start</Link>
           </Button>
         </Center>
-        <footer>
+        {/* <footer>
           <a
             href="mailto:vikram@vikramsethi.com"
             style={{ textDecoration: "none" }}
           >
-            &copy; Vikram Sethi Contact :&nbsp;vikram@vikramsethi.com
+            Copyright  
+            &copy; 2023 Vikram Sethi All rights reserved
           </a>
-        </footer>
+        </footer> */}
       </Box>
     </>
   );

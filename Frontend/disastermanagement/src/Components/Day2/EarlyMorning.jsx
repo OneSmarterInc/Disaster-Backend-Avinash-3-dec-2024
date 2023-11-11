@@ -75,10 +75,12 @@ const EarlyMorning = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const { setHead, speed, pauseBtn, setPauseBtn } = useContext(MyContext);
+  const { setHead, speed, pauseBtn, setPauseBtn, setComponent ,setSelectedSection, flag3, setFlag3} = useContext(MyContext);
 
   const handleChange = (value) => {
     setValue(value);
+    setSelectedSection("LateMorning2");
+    setFlag3(false);
     Cookies.set("day2earlymorning2", value);
   };
 
@@ -142,6 +144,7 @@ const EarlyMorning = () => {
 
   useEffect(() => {
     setHead("Day 2 - Morning:  Call with applications vendor");
+    setComponent("earlymorning2")
   }, []);
 
   const closePopup = () => {
@@ -273,7 +276,18 @@ const EarlyMorning = () => {
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayTwoEarlyMorning.length) {
-          const message = dayTwoEarlyMorning[currentMessageIndex];
+          let temp = currentMessageIndex;
+          let message;
+          
+          
+          if(currentMessageIndex + 1 === dayTwoEarlyMorning.length){
+            message = dayTwoEarlyMorning[temp];
+          }
+          else{
+            
+            message = dayTwoEarlyMorning[temp+1];
+          }
+
           setCurrentMessageIndex((prevIndex) => prevIndex + 1);
           setActiveUser(message.sender);
 
@@ -323,6 +337,7 @@ const EarlyMorning = () => {
           if (currentMessageIndex === dayTwoEarlyMorning.length) {
             // The chat has ended completely, set showBox to true
             setShowBox(true);
+            setShowBox2(true);
             setClName("");
           }
         }
@@ -343,23 +358,7 @@ const EarlyMorning = () => {
 
   return (
     <>
-      {value ===
-      "Emphasizing teamwork, both internally and with external partners" ? (
-        <LateMorning />
-      ) : value === "Making clear and swift decisions under pressure" ? (
-        <LateMorning />
-      ) : value === "Remaining calm and level-headed during challenges" ? (
-        <LateMorning />
-      ) : value ===
-        "Effectively conveying information, even in challenging circumstances" ? (
-        <LateMorning />
-      ) : value ===
-        "Quickly adjusting strategies based on new information or changing scenarios" ? (
-        <LateMorning />
-      ) : value ===
-        "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-        <LateMorning />
-      ) : (
+     
         <Box
           // fontFamily={"Fredoka"}
           border={"0px solid red"}
@@ -1129,7 +1128,7 @@ const EarlyMorning = () => {
                       </ModalContent>
                     </Modal>
                   )}
-                  {showBox && (
+                  {flag3 && showBox && (
                     <>
                       <Box
                         bg={"white"}
@@ -1676,14 +1675,26 @@ const EarlyMorning = () => {
                       <div ref={spacerRef} style={{ height: "40px" }}></div>
                     </>
                   )}
-
+                  {!flag3 && showBox2 && (
+                  <Box
+                    bgColor={"#030405"}
+                    color={"white"}
+                    textAlign={"left"}
+                    w={"100%"}
+                    pl={3}
+                    pt={3}
+                    pb={3}
+                  >
+                    <Text textAlign={"center"} fontSize={isMobile ? "15" : "20"}>Chat ends here, you can click on next button to continue your chat</Text>
+                  </Box>
+                )}
                   <div ref={spacerRef} style={{ height: "40px" }}></div>
                 </TransitionGroup>
               </Box>
             </Box>
           </Flex>
         </Box>
-      )}
+      
     </>
   );
 };

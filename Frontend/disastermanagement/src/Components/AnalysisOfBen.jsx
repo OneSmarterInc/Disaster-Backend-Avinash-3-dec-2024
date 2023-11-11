@@ -33,20 +33,23 @@ const AnalysisOfBen = () => {
       >
         Analysis of Ben Carter's Leadership (Our View)
         {!isMobile && <FcPlus />}
-        
       </Box>
 
       <Modal isOpen={isOpen} onClose={onClose} size={"4xl"}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader fontFamily={"Fredoka"} w={isMobile && "90%"} fontSize={isMobile ? 12 : 25}>
+          <ModalHeader
+            fontFamily={"Fredoka"}
+            w={isMobile && "90%"}
+            fontSize={isMobile ? 12 : 25}
+          >
             Analysis of Ben Carter's Leadership (Our View)
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody fontFamily={"Fredoka"}>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18}>
-              1. Decisive in Action:
+                1. Decisive in Action:
               </Text>
               <Text fontSize={isMobile ? 10 : 18}>
                 At the onset of challenges, Ben Carter doesn't waver. His
@@ -59,7 +62,7 @@ const AnalysisOfBen = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
-              2. Master Communicator:
+                2. Master Communicator:
               </Text>
               <Text fontSize={isMobile ? 10 : 18}>
                 Whether it's with his internal team or external partners, Ben's
@@ -72,7 +75,7 @@ const AnalysisOfBen = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
-               3. Unwavering Composure:
+                3. Unwavering Composure:
               </Text>
               <Text fontSize={isMobile ? 10 : 18}>
                 Despite the prolonged nature of the crisis, repeated setbacks,
@@ -83,7 +86,7 @@ const AnalysisOfBen = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
-               4. Adaptive Thinker:
+                4. Adaptive Thinker:
               </Text>
               <Text fontSize={isMobile ? 10 : 18}>
                 Post-crisis reflection reveals a leader who values adaptability.
@@ -95,7 +98,7 @@ const AnalysisOfBen = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
-               5. Collaborative Spirit:
+                5. Collaborative Spirit:
               </Text>
               <Text fontSize={isMobile ? 10 : 18}>
                 Throughout the narrative, Ben's emphasis on teamwork and
@@ -108,7 +111,7 @@ const AnalysisOfBen = () => {
             </VStack>
             <VStack alignItems={"left"}>
               <Text fontWeight={"600"} fontSize={isMobile ? 11 : 18} mt={5}>
-               6. Visionary Outlook:
+                6. Visionary Outlook:
               </Text>
               <Text fontSize={isMobile ? 10 : 18}>
                 Beyond the immediate crisis, Ben's leadership reflects a
@@ -124,13 +127,21 @@ const AnalysisOfBen = () => {
                 best interests of his organization at the forefront.
               </Text>
             </VStack>
-          </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="blue" size={isMobile && "sm"} fontSize={isMobile && 10} mr={isMobile ? 0 : 3} onClick={onClose} p={2}>
+            <Button
+              colorScheme="blue"
+              size={isMobile && "sm"}
+              fontSize={isMobile && 10}
+              mr={isMobile ? 0 : 3}
+              onClick={onClose}
+              p={2}
+              ml={isMobile ? "300px": '750px'}
+            >
               Close
             </Button>
-          </ModalFooter>
+          </ModalBody>
+
+          <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
     </>

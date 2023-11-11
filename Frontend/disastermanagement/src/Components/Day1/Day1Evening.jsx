@@ -56,7 +56,6 @@ const BringDown = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
-
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [day5Popup, setDay5Popup] = useState(true);
   const [chatPaused, setChatPaused] = useState(false);
@@ -70,7 +69,8 @@ const BringDown = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const { setHead, speed, pauseBtn, setPauseBtn } = useContext(MyContext);
+  const { setHead, speed, pauseBtn, setPauseBtn, setComponent,setSelectedSection, flag2, setFlag2 } =
+    useContext(MyContext);
 
   const handlePause = () => {
     setPauseBtn(!pauseBtn);
@@ -78,6 +78,8 @@ const BringDown = () => {
 
   const handleChange = (value) => {
     setValue(value);
+    setFlag2(false);
+    setSelectedSection("EarlyMorning2");
     Cookies.set("day1evening2", value);
   };
 
@@ -88,60 +90,6 @@ const BringDown = () => {
     setShowBoxContent1(false);
     setshowBoxContent2(true);
     setShowScroll(true);
-  };
-
-  const handleClick2 = () => {
-    setIsModalOpen1(false);
-    setShowBox2(true);
-    setShowScroll(true);
-    if (
-      value1 ===
-      "Weaknesses in the system that can be exploited, leading to potential disasters"
-    ) {
-      Cookies.set("day1marks", "1");
-      Cookies.set("day1explaination", explaination);
-
-      setModalValue1(value1);
-    } else if (
-      value1 ===
-      "Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery"
-    ) {
-      // Cookies.set("day1marks", "0");
-      // Cookies.set("day1explaination", explaination);
-      // setModalValue(value1);
-    } else if (
-      value1 ===
-      "Hardware or network breakdowns that can disrupt normal operations"
-    ) {
-      // Cookies.set("day1marks", "1");
-      // Cookies.set("day1explaination", explaination);
-      // setModalValue(value1);
-    } else if (
-      value1 ===
-      "Inadequate or failed backups that prevent or delay recovery efforts"
-    ) {
-      // Cookies.set("day1marks", "0");
-      // Cookies.set("day1explaination", explaination);
-      // setModalValue(value1);
-    } else if (
-      value1 ===
-      "Failures in internal and external communication systems during critical times"
-    ) {
-      // Cookies.set("day1marks", "0");
-      // Cookies.set("day1explaination", explaination);
-      // setModalValue(value1);
-    } else if (
-      value1 ===
-      "Absence of failover systems or processes that can act as a backup during primary system failures"
-    ) {
-      // Cookies.set("day1marks", "0");
-      // Cookies.set("day1explaination", explaination);
-      // setModalValue(value1);
-    }
-
-    // const cookiemarks = Cookies.get('day1marks') || "";
-    //  const cookieex = Cookies.get('day1explaination') || "";
-    //  console.log( cookieex);
   };
 
   const scrollToBottom = () => {
@@ -177,7 +125,6 @@ const BringDown = () => {
       name: "Mia Rodriguez",
       url: mia,
     },
-    
   ];
 
   useEffect(() => {
@@ -190,7 +137,15 @@ const BringDown = () => {
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayOneEvening.length) {
-          const message = dayOneEvening[currentMessageIndex];
+          let temp = currentMessageIndex;
+          let message;
+
+          if (currentMessageIndex + 1 === dayOneEvening.length) {
+            message = dayOneEvening[temp];
+          } else {
+            message = dayOneEvening[temp + 1];
+          }
+
           setCurrentMessageIndex((prevIndex) => prevIndex + 1);
           setActiveUser(message.sender);
 
@@ -204,6 +159,7 @@ const BringDown = () => {
           if (currentMessageIndex === dayOneEvening.length) {
             // The chat has ended completely, set showBox to true
             setShowBox(true);
+            setShowBox2(true);
             setClName("");
           }
         }
@@ -243,13 +199,9 @@ const BringDown = () => {
     }
   }, [showBox, showBoxContent2]);
 
-  // const scrollToActiveUserItem = () => {
-  //   const activeUserItem = document.querySelector(".active-user");
-  //   console.log(activeUserItem);
-  //   if (activeUserItem && userListContainerRef.current) {
-  //     userListContainerRef.current.scrollBottom = activeUserItem.offsetTop;
-  //   }
-  // };
+  useEffect(() => {
+    setComponent("bringdown");
+  }, []);
 
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
 
@@ -258,45 +210,29 @@ const BringDown = () => {
 
   return (
     <>
-      {value ===
-      "Emphasizing teamwork, both internally and with external partners" ? (
-        <EarlyMorning />
-      ) : value === "Making clear and swift decisions under pressure" ? (
-        <EarlyMorning />
-      ) : value === "Remaining calm and level-headed during challenges" ? (
-        <EarlyMorning />
-      ) : value ===
-        "Effectively conveying information, even in challenging circumstances" ? (
-        <EarlyMorning />
-      ) : value ===
-        "Quickly adjusting strategies based on new information or changing scenarios" ? (
-        <EarlyMorning />
-      ) : value ===
-        "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-        <EarlyMorning />
-      ) : (
-        <Box
-          // fontFamily={"Fredoka"}
-          border={"0px solid red"}
-          w={"100%"}
-          m={"auto"}
-          h={isMobile ? "100%" : "88vh"}
-          display="flex"
-          flexWrap="wrap"
-        >
-          <Flex h={"88vh"}>
-            <Box
-              h={isMobile ? "100%" : "88vh"}
-              w={isMobile ? "10%" : "13%"}
-              overflow="auto"
-              style={{
-                backgroundImage: isMobile
-                  ? "none"
-                  : "linear-gradient(32deg,grey 0%, white 100%)",
-              }}
-              border={"0px solid red"}
-            >
-              {isMobile ?  <Box
+      <Box
+        // fontFamily={"Fredoka"}
+        border={"0px solid red"}
+        w={"100%"}
+        m={"auto"}
+        h={isMobile ? "100%" : "88vh"}
+        display="flex"
+        flexWrap="wrap"
+      >
+        <Flex h={"88vh"}>
+          <Box
+            h={isMobile ? "100%" : "88vh"}
+            w={isMobile ? "10%" : "13%"}
+            overflow="auto"
+            style={{
+              backgroundImage: isMobile
+                ? "none"
+                : "linear-gradient(32deg,grey 0%, white 100%)",
+            }}
+            border={"0px solid red"}
+          >
+            {isMobile ? (
+              <Box
                 //bgColor="#948888"
                 pt={3}
                 flex="1"
@@ -354,18 +290,21 @@ const BringDown = () => {
                               ? "Tom"
                               : el.name.split(" ")[0]}
                           </Text>
-                          <div className="loading"  id={el.name === activeUser ? clName : ""}>
-                          <span className="dot"></span>
-                          <span className="dot"></span>
-                          <span className="dot"></span>
-                        </div>
+                          <div
+                            className="loading"
+                            id={el.name === activeUser ? clName : ""}
+                          >
+                            <span className="dot"></span>
+                            <span className="dot"></span>
+                            <span className="dot"></span>
+                          </div>
                         </Box>
                       </Tooltip>
                     );
                   })}
                 </Box>
-                
-              </Box>:
+              </Box>
+            ) : (
               <Box
                 //bgColor="#948888"
                 pt={3}
@@ -424,11 +363,14 @@ const BringDown = () => {
                               ? "Tom"
                               : el.name.split(" ")[0]}
                           </Text>
-                          <div className="loading"  id={el.name === activeUser ? clName : ""}>
-                          <span className="dot"></span>
-                          <span className="dot"></span>
-                          <span className="dot"></span>
-                        </div>
+                          <div
+                            className="loading"
+                            id={el.name === activeUser ? clName : ""}
+                          >
+                            <span className="dot"></span>
+                            <span className="dot"></span>
+                            <span className="dot"></span>
+                          </div>
                         </Box>
                       </Tooltip>
                     );
@@ -480,7 +422,10 @@ const BringDown = () => {
                             ? "Tom"
                             : el.name.split(" ")[0]}
                         </Text>
-                        <div className="loading"  id={el.name === activeUser ? clName : ""}>
+                        <div
+                          className="loading"
+                          id={el.name === activeUser ? clName : ""}
+                        >
                           <span className="dot"></span>
                           <span className="dot"></span>
                           <span className="dot"></span>
@@ -490,658 +435,645 @@ const BringDown = () => {
                   ))}
                 </Box>
               </Box>
-}
-            </Box>
+            )}
+          </Box>
+          <Box
+            h={isMobile ? "100%" : "88vh"}
+            w={isMobile ? "100%" : "90%"}
+            border="0px solid red"
+            overflow="auto"
+            ref={chatContainerRef}
+            pb={5}
+            bgImage={figma}
+            bgRepeat="no-repeat"
+            bgSize={isMobile ? "cover" : "cover"}
+            bgPosition={isMobile ? "center" : "none"}
+            display="flex"
+            flexDirection="column"
+            alignItems={isMobile ? "center" : "flex-start"}
+          >
             <Box
-              h={isMobile ? "100%" : "88vh"}
-              w={isMobile ? "100%" : "90%"}
-              border="0px solid red"
-              overflow="auto"
-              ref={chatContainerRef}
-              pb={5}
-              bgImage={figma}
-              bgRepeat="no-repeat"
-              bgSize={isMobile ? "cover" : "cover"}
-              bgPosition={isMobile ? "center" : "none"}
-              display="flex"
-              flexDirection="column"
-              alignItems={isMobile ? "center" : "flex-start"}
+              bgColor={"#030405"}
+              color={"white"}
+              textAlign={"left"}
+              w={"100%"}
+              pl={3}
+              pt={3}
+              pb={3}
             >
-              <Box
-                bgColor={"#030405"}
-                color={"white"}
-                textAlign={"left"}
-                w={"100%"}
-                pl={3}
-                pt={3}
-                pb={3}
-              >
-                <Text fontSize={isMobile ? "15" : "20"}>
-                  {/* Ben Carter rubs his temples, trying to process the magnitude
+              <Text fontSize={isMobile ? "15" : "20"}>
+                {/* Ben Carter rubs his temples, trying to process the magnitude
                   of the situation. He can feel the eight of responsibility
                   pressing down on him, knowing that critical decisions lie
                   ahead. */}
-                  Ben's mind raced as he contemplated the intricacies of the
-                  current architectural design, his thoughts consumed by the
-                  nagging concern of an elusive vulnerability.
-                </Text>
-              </Box>
+                Ben's mind raced as he contemplated the intricacies of the
+                current architectural design, his thoughts consumed by the
+                nagging concern of an elusive vulnerability.
+              </Text>
+            </Box>
 
-              <Box
-                w={isMobile ? "100%" : "90%"}
-                pl={isMobile ? 2 : 5}
-                pr={isMobile ? 2 : 5}
-                m={ "0 auto"}
-                mt={3}
-                h={"68vh"}
-              >
-                <TransitionGroup>
-                  {dayOneEvening.slice(0, currentMessageIndex).map((el, i) => {
-                    const isCIO = el.sender === "Ben Carter";
-                    const messageClass = isCIO ? "KateSullivan" : "BenCarter";
-                    const alignMessage = isCIO ? "flex-start" : "flex-end";
-                    return (
-                      <CSSTransition
+            <Box
+              w={isMobile ? "100%" : "90%"}
+              pl={isMobile ? 2 : 5}
+              pr={isMobile ? 2 : 5}
+              m={"0 auto"}
+              mt={3}
+              h={"68vh"}
+            >
+              <TransitionGroup>
+                {dayOneEvening.slice(0, currentMessageIndex).map((el, i) => {
+                  const isCIO = el.sender === "Ben Carter";
+                  const messageClass = isCIO ? "KateSullivan" : "BenCarter";
+                  const alignMessage = isCIO ? "flex-start" : "flex-end";
+                  return (
+                    <CSSTransition
+                      key={i}
+                      classNames="message"
+                      timeout={{ enter: 300, exit: 300 }}
+                    >
+                      <Box
                         key={i}
-                        classNames="message"
-                        timeout={{ enter: 300, exit: 300 }}
+                        border={"0px solid black"}
+                        w={"100%"}
+                        display="flex"
+                        justifyContent={alignMessage}
+                        className={`message ${messageClass} ${
+                          el.sender === "Ben Carter"
+                            ? "BenCarter"
+                            : "KateSullivan"
+                        }`}
+                        mb={4}
                       >
                         <Box
-                          key={i}
-                          border={"0px solid black"}
-                          w={"100%"}
-                          display="flex"
-                          justifyContent={alignMessage}
-                          className={`message ${messageClass} ${
-                            el.sender === "Ben Carter"
-                              ? "BenCarter"
-                              : "KateSullivan"
-                          }`}
-                          mb={4}
+                          boxShadow="rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                          border="0px solid red"
+                          bgColor={
+                            el.sender === "Ben Carter" ? "#f0f0f0" : "#030405"
+                          }
+                          color={el.sender === "Ben Carter" ? "black" : "white"}
+                          w={isMobile ? "70%" : "50%"}
+                          borderRadius="10px"
+                          textAlign={isMobile ? "left" : "justify"}
+                          p={isMobile ? 2 : 4}
+                          pl={isMobile ? 3 : 5}
+                          pr={isMobile ? 3 : 5}
+                          mt={2}
+                          fontSize={isMobile ? "12px" : "15px"}
                         >
-                          <Box
-                            boxShadow="rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
-                            border="0px solid red"
-                            bgColor={
-                              el.sender === "Ben Carter" ? "#f0f0f0" : "#030405"
-                            }
-                            color={
-                              el.sender === "Ben Carter" ? "black" : "white"
-                            }
-                            w={isMobile ? "70%" : "50%"}
-                            borderRadius="10px"
-                            textAlign={isMobile ? "left" : "justify"}
-                            p={isMobile ? 2 : 4}
-                            pl={isMobile ? 3 : 5}
-                            pr={isMobile ? 3 : 5}
-                            mt={2}
-                            fontSize={isMobile ? "12px" : "15px"}
+                          <Text>
+                            <span id="sender">{el.sender}</span> : {el.message}
+                          </Text>
+                        </Box>
+                      </Box>
+                    </CSSTransition>
+                  );
+                })}
+
+                {flag2 && showBox && (
+                  <>
+                    <Box
+                      bg={"white"}
+                      p={2}
+                      w={isMobile ? "100%" : "60%"} // Adjust the width for mobile view
+                      m={"auto"}
+                      mt={isMobile ? "20px" : "50px"} // Adjust the top margin for mobile view
+                      borderRadius={10}
+                    >
+                      {showBoxContent1 && (
+                        <>
+                          <Image
+                            w={isMobile ? "80%" : "50%"} // Adjust the image width for mobile view
+                            m={"auto"}
+                            src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
+                          />
+                          <Flex
+                            className="box"
+                            mb={5}
+                            mt={isMobile ? "5" : "5"} // Adjust the top margin for mobile view
+                            boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                            alignItems={"center"}
+                            justifyContent={"center"}
+                            h={isMobile ? "auto" : "50px"}
+                            bg={"#c8cfca"}
+                            color={"black"}
+                            fontWeight={"bold"}
                           >
                             <Text>
-                              <span id="sender">{el.sender}</span> :{" "}
-                              {el.message}
+                              Which of the following technical challenges do you
+                              see as dominant in the scripts which you just saw
+                              ?
                             </Text>
-                          </Box>
-                        </Box>
-                      </CSSTransition>
-                    );
-                  })}
+                          </Flex>
 
-                  {showBox && (
-                    <>
-                      <Box
-                        bg={"white"}
-                        p={2}
-                        w={isMobile ? "100%" : "60%"} // Adjust the width for mobile view
-                        m={"auto"}
-                        mt={isMobile ? "20px" : "50px"} // Adjust the top margin for mobile view
-                        borderRadius={10}
-                      >
-                        {showBoxContent1 && (
-                          <>
-                            <Image
-                              w={isMobile ? "80%" : "50%"} // Adjust the image width for mobile view
+                          <RadioGroup
+                            m={"auto"}
+                            onChange={handleChange2}
+                            value={value}
+                          >
+                            <Box
+                              className="flex2"
+                              w={isMobile ? "90%" : "80%"}
                               m={"auto"}
-                              src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
-                            />
-                            <Flex
-                              className="box"
-                              mb={5}
-                              mt={isMobile ? "5" : "5"} // Adjust the top margin for mobile view
-                              boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                              alignItems={"center"}
-                              justifyContent={"center"}
-                              h={isMobile ? "auto" : "50px"}
-                              bg={"#c8cfca"}
-                              color={"black"}
-                              fontWeight={"bold"}
-                            >
-                              <Text>
-                                Which of the following technical challenges do
-                                you see as dominant in the scripts which you
-                                just saw ?
-                              </Text>
-                            </Flex>
-
-                            <RadioGroup
-                              m={"auto"}
-                              onChange={handleChange2}
-                              value={value}
+                              pb={3}
                             >
                               <Box
-                                className="flex2"
-                                w={isMobile ? "90%" : "80%"}
-                                m={"auto"}
-                                pb={3}
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                               >
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Weaknesses in the system that can be exploited, leading to potential disasters">
-                                    <label
+                                <Tooltip label="Weaknesses in the system that can be exploited, leading to potential disasters">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1, // Take up the available space for the label
+                                    }}
+                                  >
+                                    <Radio
+                                      fontFamily={"Fredoka"}
+                                      size={isMobile ? "sm" : "lg"}
+                                      colorScheme="orange"
+                                      value="Weaknesses in the system that can be exploited, leading to potential disasters"
                                       style={{
+                                        position: "absolute",
+                                        opacity: 0,
                                         cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1, // Take up the available space for the label
                                       }}
-                                    >
-                                      <Radio
-                                        fontFamily={"Fredoka"}
-                                        size={isMobile ? "sm" : "lg"}
-                                        colorScheme="orange"
-                                        value="Weaknesses in the system that can be exploited, leading to potential disasters"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      System Vulnerabilities
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "1" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1, // Take up the available space for the label
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"lg"}
-                                        colorScheme="orange"
-                                        value="Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Data Integrity
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "1" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Hardware or network breakdowns that can disrupt normal operations">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"lg"}
-                                        colorScheme="orange"
-                                        value="Hardware or network breakdowns that can disrupt normal operations"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Infrastructure Failures
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "1" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Inadequate or failed backups that prevent or delay recovery efforts">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"lg"}
-                                        colorScheme="orange"
-                                        value="Inadequate or failed backups that prevent or delay recovery efforts"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Backup Failures
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "1" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Failures in internal and external communication systems during critical times">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"lg"}
-                                        colorScheme="orange"
-                                        value="Failures in internal and external communication systems during critical times"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Communication Breakdowns
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "1" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Absence of failover systems or processes that can act as a backup during primary system failures">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"lg"}
-                                        colorScheme="orange"
-                                        value="Absence of failover systems or processes that can act as a backup during primary system failures"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Lack of Redundancy
-                                    </label>
-                                  </Tooltip>
-                                </Box>
+                                    />
+                                    System Vulnerabilities
+                                  </label>
+                                </Tooltip>
                               </Box>
-                            </RadioGroup>
-                          </>
-                        )}
 
-                        {showBoxContent2 && (
-                          <>
-                            <Image
-                              w={isMobile ? "70%" : "50%"} // Adjust the image width for mobile view
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "1" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1, // Take up the available space for the label
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"lg"}
+                                      colorScheme="orange"
+                                      value="Ensuring that data remains accurate and reliable throughout its entire lifecycle, especially post-recovery"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Data Integrity
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "1" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Hardware or network breakdowns that can disrupt normal operations">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"lg"}
+                                      colorScheme="orange"
+                                      value="Hardware or network breakdowns that can disrupt normal operations"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Infrastructure Failures
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "1" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Inadequate or failed backups that prevent or delay recovery efforts">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"lg"}
+                                      colorScheme="orange"
+                                      value="Inadequate or failed backups that prevent or delay recovery efforts"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Backup Failures
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "1" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Failures in internal and external communication systems during critical times">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"lg"}
+                                      colorScheme="orange"
+                                      value="Failures in internal and external communication systems during critical times"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Communication Breakdowns
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "1" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Absence of failover systems or processes that can act as a backup during primary system failures">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"lg"}
+                                      colorScheme="orange"
+                                      value="Absence of failover systems or processes that can act as a backup during primary system failures"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Lack of Redundancy
+                                  </label>
+                                </Tooltip>
+                              </Box>
+                            </Box>
+                          </RadioGroup>
+                        </>
+                      )}
+
+                      {showBoxContent2 && (
+                        <>
+                          <Image
+                            w={isMobile ? "70%" : "50%"} // Adjust the image width for mobile view
+                            m={"auto"}
+                            src="https://img.freepik.com/free-vector/business-decisions-concept-illustration_114360-4096.jpg?w=740&t=st=1696672316~exp=1696672916~hmac=0b5a3d793d15d5eccf6f03a04e907baee2f1e59dc4292775fe4e025c871152be"
+                          />
+                          <Flex
+                            className="box"
+                            mb={"5"}
+                            mt={isMobile ? "5" : "5"} // Adjust the top margin for mobile view
+                            boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                            alignItems={"center"}
+                            justifyContent={"center"}
+                            h={"auto"}
+                            bg={"#c8cfca"}
+                            color={"black"}
+                            fontWeight={"bold"}
+                          >
+                            <Text>
+                              Which quality of Ben Carter do you feel stands out
+                              during the last conversation?
+                            </Text>
+                          </Flex>
+                          <RadioGroup
+                            m={"auto"}
+                            onChange={handleChange}
+                            value={value}
+                          >
+                            <Box
+                              className="flex"
+                              w={isMobile ? "100%" : "80%"}
                               m={"auto"}
-                              src="https://img.freepik.com/free-vector/business-decisions-concept-illustration_114360-4096.jpg?w=740&t=st=1696672316~exp=1696672916~hmac=0b5a3d793d15d5eccf6f03a04e907baee2f1e59dc4292775fe4e025c871152be"
-                            />
-                            <Flex
-                              className="box"
-                              mb={"5"}
-                              mt={isMobile ? "5" : "5"} // Adjust the top margin for mobile view
-                              boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                              alignItems={"center"}
-                              justifyContent={"center"}
-                              h={"auto"}
-                              bg={"#c8cfca"}
-                              color={"black"}
-                              fontWeight={"bold"}
-                            >
-                              <Text>
-                                Which quality of Ben Carter do you feel stands
-                                out during the last conversation?
-                              </Text>
-                            </Flex>
-                            <RadioGroup
-                              m={"auto"}
-                              onChange={handleChange}
-                              value={value}
+                              pb={4}
                             >
                               <Box
-                                className="flex"
-                                w={isMobile ? "100%" : "80%"}
-                                m={"auto"}
-                                pb={4}
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "0" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
                               >
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "0" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Making clear and swift decisions under pressure">
-                                    <label
+                                <Tooltip label="Making clear and swift decisions under pressure">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      fontFamily={"Fredoka"}
+                                      size={"10px"}
+                                      colorScheme="orange"
+                                      value="Making clear and swift decisions under pressure"
                                       style={{
+                                        position: "absolute",
+                                        opacity: 0,
                                         cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
                                       }}
-                                    >
-                                      <Radio
-                                        fontFamily={"Fredoka"}
-                                        size={"10px"}
-                                        colorScheme="orange"
-                                        value="Making clear and swift decisions under pressure"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Decisive
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "0" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Remaining calm and level-headed during challenges">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"10px"}
-                                        colorScheme="orange"
-                                        value="Remaining calm and level-headed during challenges"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Composed
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "0" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Emphasizing teamwork, both internally and with external partners">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"10px"}
-                                        colorScheme="orange"
-                                        value="Emphasizing teamwork, both internally and with external partners"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Collaborative
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "0" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Effectively conveying information, even in challenging circumstances">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"10px"}
-                                        colorScheme="orange"
-                                        value="Effectively conveying information, even in challenging circumstances"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Communicative
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "0" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Quickly adjusting strategies based on new information or changing scenarios">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"10px"}
-                                        colorScheme="orange"
-                                        value="Quickly adjusting strategies based on new information or changing scenarios"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Adaptive
-                                    </label>
-                                  </Tooltip>
-                                </Box>
-
-                                <Box
-                                  border="1px solid black"
-                                  borderRadius="50px"
-                                  _hover={{ bgColor: "black", color: "white" }}
-                                  p={isMobile ? "0" : "1"} // Add padding to the box
-                                  bgColor={
-                                    isMobile ? "lightgray" : "transparent"
-                                  } // Set background color
-                                  display="flex" // Center radio button and label horizontally
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                >
-                                  <Tooltip label="Keeping an eye on long-term impacts and future implications during the crisis">
-                                    <label
-                                      style={{
-                                        cursor: "pointer",
-                                        position: "relative",
-                                        flex: 1,
-                                      }}
-                                    >
-                                      <Radio
-                                        border="1px solid black"
-                                        fontFamily={"Fredoka"}
-                                        size={"10px"}
-                                        colorScheme="orange"
-                                        value="Keeping an eye on long-term impacts and future implications during the crisis"
-                                        style={{
-                                          position: "absolute",
-                                          opacity: 0,
-                                          cursor: "pointer",
-                                        }}
-                                      />
-                                      Visionary
-                                    </label>
-                                  </Tooltip>
-                                </Box>
+                                    />
+                                    Decisive
+                                  </label>
+                                </Tooltip>
                               </Box>
-                            </RadioGroup>
-                          </>
-                        )}
-                      </Box>
-                      <div ref={spacerRef} style={{ height: "40px" }}></div>
-                    </>
-                  )}
 
-                  <div ref={spacerRef} style={{ height: "40px" }}></div>
-                </TransitionGroup>
-              </Box>
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "0" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Remaining calm and level-headed during challenges">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"10px"}
+                                      colorScheme="orange"
+                                      value="Remaining calm and level-headed during challenges"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Composed
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "0" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Emphasizing teamwork, both internally and with external partners">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"10px"}
+                                      colorScheme="orange"
+                                      value="Emphasizing teamwork, both internally and with external partners"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Collaborative
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "0" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Effectively conveying information, even in challenging circumstances">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"10px"}
+                                      colorScheme="orange"
+                                      value="Effectively conveying information, even in challenging circumstances"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Communicative
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "0" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Quickly adjusting strategies based on new information or changing scenarios">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"10px"}
+                                      colorScheme="orange"
+                                      value="Quickly adjusting strategies based on new information or changing scenarios"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Adaptive
+                                  </label>
+                                </Tooltip>
+                              </Box>
+
+                              <Box
+                                border="1px solid black"
+                                borderRadius="50px"
+                                _hover={{ bgColor: "black", color: "white" }}
+                                p={isMobile ? "0" : "1"} // Add padding to the box
+                                bgColor={isMobile ? "lightgray" : "transparent"} // Set background color
+                                display="flex" // Center radio button and label horizontally
+                                alignItems="center"
+                                justifyContent="space-between"
+                                boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+                              >
+                                <Tooltip label="Keeping an eye on long-term impacts and future implications during the crisis">
+                                  <label
+                                    style={{
+                                      cursor: "pointer",
+                                      position: "relative",
+                                      flex: 1,
+                                    }}
+                                  >
+                                    <Radio
+                                      border="1px solid black"
+                                      fontFamily={"Fredoka"}
+                                      size={"10px"}
+                                      colorScheme="orange"
+                                      value="Keeping an eye on long-term impacts and future implications during the crisis"
+                                      style={{
+                                        position: "absolute",
+                                        opacity: 0,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                    Visionary
+                                  </label>
+                                </Tooltip>
+                              </Box>
+                            </Box>
+                          </RadioGroup>
+                        </>
+                      )}
+                    </Box>
+                    <div ref={spacerRef} style={{ height: "40px" }}></div>
+                  </>
+                )}
+
+{!flag2 && showBox2 && (
+                  <Box
+                    bgColor={"#030405"}
+                    color={"white"}
+                    textAlign={"left"}
+                    w={"100%"}
+                    pl={3}
+                    pt={3}
+                    pb={3}
+                  >
+                    <Text textAlign={"center"} fontSize={isMobile ? "15" : "20"}>Chat ends here, you can click on next button to continue your chat</Text>
+                  </Box>
+                )}
+
+                <div ref={spacerRef} style={{ height: "40px" }}></div>
+              </TransitionGroup>
             </Box>
-          </Flex>
-        </Box>
-      )}{" "}
+          </Box>
+        </Flex>
+      </Box>
+      
     </>
   );
 };

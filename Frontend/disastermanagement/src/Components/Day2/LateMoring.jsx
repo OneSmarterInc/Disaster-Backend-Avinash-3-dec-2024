@@ -82,7 +82,7 @@ const LateMorning = () => {
   const chatContainerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  const { setHead, speed, pauseBtn, setPauseBtn } = useContext(MyContext);
+  const { setHead, speed, pauseBtn, setPauseBtn, setComponent,setSelectedSection, flag4, setFlag4 } = useContext(MyContext);
 
   const handlePause = () => {
     setPauseBtn(!pauseBtn);
@@ -90,6 +90,8 @@ const LateMorning = () => {
 
   const handleChange = (value) => {
     setValue(value);
+    setSelectedSection("Morning3");
+    setFlag4(false);
     Cookies.set("day2latemorning2", value);
   };
 
@@ -102,15 +104,7 @@ const LateMorning = () => {
   };
 
   const scrollToBottom = () => {
-    // if (currentMessageIndex > 6 && currentMessageIndex <= 11) {
-    //   setHead("Day 2 - Afternoon");
-    // } else if (currentMessageIndex > 11 && currentMessageIndex <= 14) {
-    //   setHead("Day 2 - Late Afternoon");
-    // } else if (currentMessageIndex > 14) {
-    //   setHead("Day 2 - Night");
-    // } else {
-    //   setHead("Day 2 -  Afternoon");
-    // }
+   
 
     const container = chatContainerRef.current;
     if (container) {
@@ -120,6 +114,7 @@ const LateMorning = () => {
 
   useEffect(() => {
     setHead("Day 2 -  Afternoon: Will a solution emerge?");
+    setComponent("latemorning2")
   }, []);
 
   const users = [
@@ -199,7 +194,19 @@ const LateMorning = () => {
     const displayNextMessage = () => {
       if (!pauseBtn) {
         if (!chatPaused && currentMessageIndex < dayTwoLateMorning.length) {
-          const message = dayTwoLateMorning[currentMessageIndex];
+          let temp = currentMessageIndex;
+          let message;
+          
+          
+          if(currentMessageIndex + 1 === dayTwoLateMorning.length){
+            message = dayTwoLateMorning[temp];
+          }
+          else{
+            
+            message = dayTwoLateMorning[temp+1];
+          }
+
+
           setCurrentMessageIndex((prevIndex) => prevIndex + 1);
           setActiveUser(message.sender);
 
@@ -228,6 +235,7 @@ const LateMorning = () => {
           if (currentMessageIndex === dayTwoLateMorning.length) {
             // The chat has ended completely, set showBox to true
             setShowBox(true);
+            setShowBox2(true);
             setClName("");
           }
         }
@@ -248,23 +256,7 @@ const LateMorning = () => {
 
   return (
     <>
-      {value ===
-      "Emphasizing teamwork, both internally and with external partners" ? (
-        <Morning />
-      ) : value === "Making clear and swift decisions under pressure" ? (
-        <Morning />
-      ) : value === "Remaining calm and level-headed during challenges" ? (
-        <Morning />
-      ) : value ===
-        "Effectively conveying information, even in challenging circumstances" ? (
-        <Morning />
-      ) : value ===
-        "Quickly adjusting strategies based on new information or changing scenarios" ? (
-        <Morning />
-      ) : value ===
-        "Keeping an eye on long-term impacts and future implications during the crisis" ? (
-        <Morning />
-      ) : (
+    
         <Box
           // fontFamily={"Fredoka"}
           border={"0px solid red"}
@@ -763,7 +755,7 @@ const LateMorning = () => {
                       </ModalContent>
                     </Modal>
                   )}
-                  {showBox && (
+                  {flag4 && showBox && (
                     <>
                       <Box
                         bg={"white"}
@@ -1310,13 +1302,27 @@ const LateMorning = () => {
                       <div ref={spacerRef} style={{ height: "40px" }}></div>
                     </>
                   )}
+
+{!flag4 && showBox2 && (
+                  <Box
+                    bgColor={"#030405"}
+                    color={"white"}
+                    textAlign={"left"}
+                    w={"100%"}
+                    pl={3}
+                    pt={3}
+                    pb={3}
+                  >
+                    <Text textAlign={"center"} fontSize={isMobile ? "15" : "20"}>Chat ends here, you can click on next button to continue your chat</Text>
+                  </Box>
+                )}  
                   <div ref={spacerRef} style={{ height: "40px" }}></div>
                 </TransitionGroup>
               </Box>
             </Box>
           </Flex>
         </Box>
-      )}
+      
     </>
   );
 };

@@ -12,6 +12,8 @@ import Info from "../Pages/Info";
 import GroupPage from "../Pages/GroupPage";
 import Payment from "../Pages/Payment";
 import BringDown from "./Day1/Day1Evening";
+import EntryForm from "../Pages/EntryForm";
+import { PrivateRoute } from "./PrivateRoute";
 
 const pageVariants = {
   initial: { opacity: 0, x: -50 },
@@ -44,7 +46,8 @@ const MainRoutes = () => {
             exit="exit"
             variants={pageVariants}
           >
-            <Intro />
+            <PrivateRoute><Intro /></PrivateRoute>
+            
           </motion.div>
         }
       />
@@ -57,7 +60,8 @@ const MainRoutes = () => {
             exit="exit"
             variants={pageVariants}
           >
-            <Chat />
+            <PrivateRoute><Chat /></PrivateRoute>
+            
           </motion.div>
         }
       />
@@ -71,25 +75,17 @@ const MainRoutes = () => {
             exit="exit"
             variants={pageVariants}
           >
-            <Start />
+            <PrivateRoute><Start /></PrivateRoute>
+            
           </motion.div>
         }
       />
 
-      <Route path="/evening" element={<BringDown/>} />
 
-      {/* <Route path='/debrief' element={<motion.div
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            variants={pageVariants}
-          ><Debrief/></motion.div>} /> */}
+      <Route path="/evening" element={<PrivateRoute><BringDown /></PrivateRoute> } />
 
-      {/* <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} /> */}
-      <Route path="/info" element={<Info />} />
-      {/* <Route path="/grouppage" element={<GroupPage />} />
-      <Route path="/payment" element={<Payment />}/> */}
+      {/* <Route path="/info" element={<Info />} /> */}
+      <Route path="/entryform" element={<EntryForm/>} />
     </Routes>
   );
 };

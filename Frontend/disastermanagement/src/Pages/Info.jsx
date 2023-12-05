@@ -318,7 +318,7 @@ const Info = () => {
             mr={isMobile ? 0 : 3}
             mb={4}
           >
-            <Link to={"/DSRBC"}>Start</Link>
+            <Link to={"/entryform"}>Start</Link>
           </Button>
         </Center>
         {/* <footer>

@@ -14,6 +14,7 @@ import Payment from "../Pages/Payment";
 import BringDown from "./Day1/Day1Evening";
 import EntryForm from "../Pages/EntryForm";
 import { PrivateRoute } from "./PrivateRoute";
+import AccessForm from "../Pages/Access";
 
 const pageVariants = {
   initial: { opacity: 0, x: -50 },
@@ -86,6 +87,7 @@ const MainRoutes = () => {
 
       {/* <Route path="/info" element={<Info />} /> */}
       <Route path="/entryform" element={<EntryForm/>} />
+      <Route path="/accessform" element={<AccessForm/>} />
     </Routes>
   );
 };

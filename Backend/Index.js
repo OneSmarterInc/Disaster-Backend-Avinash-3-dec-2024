@@ -6,9 +6,11 @@ const AllSimsRouter = require("./Routes/allsims.route");
 const StartSimRouter = require("./Routes/startsim.route");
 const JoinGroupRouter = require("./Routes/joingroup.route");
 const JoinLobbyRouter = require("./Routes/joinlobby.route");
+const EntryRouter = require("./Routes/entry.route");
+const AccessRouter = require("./Routes/access.route");
 require("dotenv").config();
 
-const PORT = 3500 || process.env.PORT;
+const PORT = 5500 || process.env.PORT;
 
 
 const app = express();
@@ -25,6 +27,8 @@ app.use("/api/allsim", AllSimsRouter);
 app.use("/api/startsim",StartSimRouter);
 app.use("/api/joingroup",JoinGroupRouter);
 app.use("/api/joinlobby",JoinLobbyRouter);
+app.use("/api/entry",EntryRouter);
+app.use("/api/access",AccessRouter);
 
 
 app.listen(PORT, ()=>{

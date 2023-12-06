@@ -9,6 +9,7 @@ const Intro = () => {
 
   useEffect(() => {
     // Scroll to the top of the page when the component mounts
+    localStorage.setItem("token",JSON.stringify("201"));
     window.scrollTo(0, 0);
   }, []);
 

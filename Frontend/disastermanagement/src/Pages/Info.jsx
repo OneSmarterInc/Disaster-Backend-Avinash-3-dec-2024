@@ -308,19 +308,22 @@ const Info = () => {
           </Text>
         </Box>
 
-        <Center mt={isMobile ? 2 : 4}>
+        <Flex w={"90%"} m={"auto"} mt={isMobile ? 2 : 4} border={"0px solid black"} justifyContent={"flex-end"}>
           <Button
             bgColor="#35A6F5"
+            color={"white"}
             px={6}
             py={3}
+            w={"20%"}
             size={isMobile && "sm"}
-            fontSize={isMobile && 10}
+
+            fontSize={isMobile ? 10 : 20}
             mr={isMobile ? 0 : 3}
             mb={4}
           >
             <Link to={"/entryform"}>Start</Link>
           </Button>
-        </Center>
+        </Flex>
         {/* <footer>
           <a
             href="mailto:vikram@vikramsethi.com"

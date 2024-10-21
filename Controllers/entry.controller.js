@@ -82,26 +82,31 @@ const sendEmailVikram = async (email, firstName, lastName, mobile) => {
 const postEntry = async (req, res) => {
     try {
         const payload = req.body;
-        console.log(payload);
         const data = await EntryModel.findOne({ email: payload.email });
+        console.log(data)
         const obj = {
             firstName: payload.firstName,
             lastName: payload.lastName,
             mobile: payload.mobile,
             email: payload.email,
-            access : payload.access
+            access: payload.access
         };
 
-        if(payload.email.endsWith('.edu')){
+        if (payload.email.endsWith('.edu')) {
             obj.access = true;
         }
-        else{
+        else {
             obj.access = false;
         }
 
-        if (data) {
-            res.status(203).send({ result: "Email already registered" });
-        } else {
+        if (data && data.access === true) {
+            res.status(203).send({ result: "Email already registered and have access" });
+        }
+        else if (data && data.access === false) {
+            res.status(203).send({ result: "Email already registered but don't have access" });
+
+        }
+        else {
             let saveResult;
             let saveEmail;
             if (payload.email.endsWith('.edu')) {

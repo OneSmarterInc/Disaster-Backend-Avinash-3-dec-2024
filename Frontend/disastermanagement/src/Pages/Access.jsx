@@ -9,15 +9,18 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import bgImage from "../Images/entrybg.jpg";
 import { useNavigate } from "react-router-dom";
+import MyContext from "../Components/ContextApi/MyContext";
 
 const AccessForm = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
+
+  const {api} = useContext(MyContext);
   const redTextStyle = {
     color: "red",
   };
@@ -49,7 +52,7 @@ const AccessForm = () => {
 
       setLoading(true);
       const response = await axios.post(
-        "https://cute-puce-sea-urchin-wrap.cyclic.app/api/access",
+        `http://localhost:8010/api2/access`,
         obj
       );
       setLoading(false);
@@ -117,7 +120,7 @@ const AccessForm = () => {
           </Heading>
           <Text mt={2}>
             Please enter your registered email to verify
-            <br /> Contact: vikram@vikramsethi.com
+            <br /> Contact: support@disruptionsim.com
           </Text>
         </Box>
         <Box
@@ -142,7 +145,7 @@ const AccessForm = () => {
               onChange={(e) => setEmail(e.target.value)}
               w={"100%"}
             />
-            <Text>Email: for ex. example@example.com</Text>
+            <Text>Please enter email in the below format only: <br /> example@wright.edu</Text>
           </VStack>
         </Box>
 

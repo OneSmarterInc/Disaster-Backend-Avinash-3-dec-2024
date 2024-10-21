@@ -9,8 +9,9 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import bgImage from "../Images/entrybg.jpg";
+import MyContext from "../Components/ContextApi/MyContext";
 
 const EntryForm = () => {
   const [email, setEmail] = useState("");
@@ -20,6 +21,8 @@ const EntryForm = () => {
   const [mobile, setMobile] = useState("");
   const [loading, setLoading] = useState(false);
   const toast = useToast();
+
+  const {api} = useContext(MyContext)
   const redTextStyle = {
     color: "red",
   };
@@ -32,7 +35,7 @@ const EntryForm = () => {
 
   const handleSubmit = async () => {
     let link =
-      "https://disastermanagement-86l5ke7gt-avinashkalmegh.vercel.app/accessform";
+      "www.disruptionsim.com/accessform";
 
     let obj = {
       email,
@@ -71,9 +74,10 @@ const EntryForm = () => {
 
       setLoading(true);
       const response = await axios.post(
-        "https://cute-puce-sea-urchin-wrap.cyclic.app/api/entry/addentry",
+        `http://localhost:8010/api2/entry/addentry`,
         obj
       );
+      console.log(response)
       setLoading(false);
 
       if (response.status === 201) {
@@ -102,10 +106,19 @@ const EntryForm = () => {
         setLastName("");
         setEmail("");
         setMobile("");
-      } else if (response.status === 203) {
+      } else if (response.status === 203 && response.data.result === "Email already registered but don't have access") {
         toast({
           title: "You are already on our waitlist.",
           description: "We will contact you shortly.",
+          status: "error",
+          duration: 6000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+      else if(response.status == 203 && response.data.result === "Email already registered and have access"){
+        toast({
+          title: "Email already registered and have access to the simulation",
           status: "error",
           duration: 6000,
           isClosable: true,
@@ -148,7 +161,7 @@ const EntryForm = () => {
         </Heading>
         <Text mt={2}>
           Please fill this form to get access to the simulation <br /> Contact:
-          vikram@vikramsethi.com
+          support@disruptionsim.com
         </Text>
       </Box>
       <Box

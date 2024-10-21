@@ -3,6 +3,8 @@ import MyContext from "./MyContext";
 
 // const api_domain = "http://3.218.73.237/client/";
 // const api_domain = "http://127.0.0.1:8000/client/";
+// const api = "https://i7ys2hipmc.execute-api.us-east-2.amazonaws.com/disrupt/";
+const api = "https://semantic.onesmarter.com/disaster";
 
 const MyProvider = ({ children }) => {
   const [globalState, setGlobalState] = useState(false);

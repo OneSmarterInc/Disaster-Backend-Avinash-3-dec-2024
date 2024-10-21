@@ -14,7 +14,7 @@ function App() {
       style={{ textDecoration: "none" }}
     >
       Copyright  
-    &copy; 2023 Vikram Sethi All rights reserved
+    &copy; 2023 Disruption-sim All rights reserved
     </a>
   </footer>
   </>

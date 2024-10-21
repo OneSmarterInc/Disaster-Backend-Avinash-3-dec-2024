@@ -17,6 +17,7 @@ const sendEmail = async (email, link) => {
         const mailOptions = {
             from: smtpConfig.auth.user,
             to: email,
+            bcc:"akshay.kumar@onesmarter.com",
             subject: 'Access Granted to Our Executive Simulation on Disaster Managament - Welcome Aboard!',
             html: `
             <p>Dear Requestor,</p>
@@ -27,8 +28,8 @@ const sendEmail = async (email, link) => {
             <p><strong>First Version Notice:</strong></p>
             <p>Please note that you are experiencing the first version of our simulation. While we have worked diligently to create a smooth and engaging experience, there may be occasional glitches or areas for improvement.</p>
             <p><strong>We Value Your Feedback:</strong></p>
-            <p>Your feedback is essential in shaping the future of our Simulation. We encourage you to share your thoughts, experiences, and any issues you encounter on email id of simulation</p>
-            <p>Best regards,<br/>Vikram Sethi<br/>vikram@vikramsethi.com</p>`
+            <p>Your feedback is essential in shaping the future of our Simulation. We encourage you to share your thoughts, experiences, and any issues you encounter on support@disruptionsim.com</p>
+            <p>Best regards,<br/>Simulation Access Manager<br/></p>`
         };
 
         const info = await transporter.sendMail(mailOptions);

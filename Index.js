@@ -22,13 +22,13 @@ app.get("/",(req,res)=>{
     res.send("Home Page");
 })
 
-app.use("/api2/user",UserRouter);
-app.use("/api2/allsim", AllSimsRouter);
-app.use("/api2/startsim",StartSimRouter);
-app.use("/api2/joingroup",JoinGroupRouter);
-app.use("/api2/joinlobby",JoinLobbyRouter);
-app.use("/api2/entry",EntryRouter);
-app.use("/api2/access",AccessRouter);
+app.use("/disaster/user",UserRouter);
+app.use("/disaster/allsim", AllSimsRouter);
+app.use("/disaster/startsim",StartSimRouter);
+app.use("/disaster/joingroup",JoinGroupRouter);
+app.use("/disaster/joinlobby",JoinLobbyRouter);
+app.use("/disaster/entry",EntryRouter);
+app.use("/disaster/access",AccessRouter);
 
 
 app.listen(PORT, ()=>{

@@ -9,9 +9,12 @@ const getAccess = async (req, res) => {
 
         const data = await EntryModel.findOne({ email: payload.email });
         // console.log(data.email);
-        if(data){
-            res.status(201).json({ "token" :"access" });
+        if (data && data.access) {
+            res.status(201).json({ "token": "access" });
 
+        }
+        else if(data && !data.access) {
+            res.status(201).json({ "token": "no access" });
         }
         else{
             res.status(400).json({"result":"wrong email"});

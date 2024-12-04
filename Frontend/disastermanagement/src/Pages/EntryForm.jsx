@@ -74,7 +74,7 @@ const EntryForm = () => {
 
       setLoading(true);
       const response = await axios.post(
-        `http://localhost:8010/api2/entry/addentry`,
+        `https://semantic.onesmarter.com/disaster/entry/addentry`,
         obj
       );
       console.log(response)

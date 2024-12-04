@@ -2,11 +2,11 @@ const EntryModel = require("../Models/entry.model");
 const nodemailer = require("nodemailer");
 
 const smtpConfig = {
-    host: 'smtp.ionos.com',
-    port: 587,
+    host: 'mail.privateemail.com',
+    port: 465,
     auth: {
-        user: 'newsletter@cyberbriefs.com',
-        pass: 'GetOurNewsletter12#$()'
+        user: 'support@disruptionsim.com',
+        pass: 'Onesmarter@2023'
     }
 };
 
@@ -17,8 +17,18 @@ const sendEmail = async (email, link) => {
         const mailOptions = {
             from: smtpConfig.auth.user,
             to: email,
-            subject: 'Disaster Management Simulation',
-            text: `Please click on the following link to proceed ${link}`
+            subject: 'Access Granted to Our Executive Simulation on Disaster Managament - Welcome Aboard!',
+            html: `
+            <p>Dear Requestor,</p>
+            <p>We are thrilled to extend to you immediate access to our latest simulation. As a valued member of our community, your participation and insights are crucial to the ongoing development of this innovative platform.</p>
+            <p><strong>Accessing the Simulation:</strong></p>
+            <p>You can access the Simulation directly through this link: <a href="${link}"><button style={{ cursor: "pointer", backgroundColor: "skyblue", color: "white" }}>Click here</button>
+            </a></p>
+            <p><strong>First Version Notice:</strong></p>
+            <p>Please note that you are experiencing the first version of our simulation. While we have worked diligently to create a smooth and engaging experience, there may be occasional glitches or areas for improvement.</p>
+            <p><strong>We Value Your Feedback:</strong></p>
+            <p>Your feedback is essential in shaping the future of our Simulation. We encourage you to share your thoughts, experiences, and any issues you encounter on email id of simulation</p>
+            <p>Best regards,<br/>Vikram Sethi<br/>vikram@vikramsethi.com</p>`
         };
 
         const info = await transporter.sendMail(mailOptions);

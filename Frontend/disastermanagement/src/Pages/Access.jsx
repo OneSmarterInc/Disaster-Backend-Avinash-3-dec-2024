@@ -52,7 +52,7 @@ const AccessForm = () => {
 
       setLoading(true);
       const response = await axios.post(
-        `http://localhost:8010/api2/access`,
+        `https://semantic.onesmarter.com/disaster/access`,
         obj
       );
       setLoading(false);

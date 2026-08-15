@@ -13,6 +13,10 @@ import React, { useContext, useState } from "react";
 import bgImage from "../Images/entrybg.jpg";
 import MyContext from "../Components/ContextApi/MyContext";
 
+// TEMPORARY: DB is unavailable, so skip the backend call and always respond
+// with the "email already registered" message. Set to false to restore the API call.
+const BYPASS_AUTH = true;
+
 const EntryForm = () => {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -70,6 +74,17 @@ const EntryForm = () => {
           position: "top",
         });
         return; // Don't proceed if required fields are empty
+      }
+
+      if (BYPASS_AUTH) {
+        toast({
+          title: "Email already registered and have access to the simulation",
+          status: "error",
+          duration: 6000,
+          isClosable: true,
+          position: "top",
+        });
+        return;
       }
 
       setLoading(true);

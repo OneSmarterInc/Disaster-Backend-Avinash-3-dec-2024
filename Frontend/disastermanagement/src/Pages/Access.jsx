@@ -14,6 +14,10 @@ import bgImage from "../Images/entrybg.jpg";
 import { useNavigate } from "react-router-dom";
 import MyContext from "../Components/ContextApi/MyContext";
 
+// TEMPORARY: DB is unavailable, so skip the backend call and verify every email.
+// Set to false to restore the API call.
+const BYPASS_AUTH = true;
+
 const AccessForm = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -50,15 +54,30 @@ const AccessForm = () => {
         return; // Don't proceed if required fields are empty
       }
 
+      if (BYPASS_AUTH) {
+        toast({
+          title: "Email verified. You are ready to play the simulation",
+          status: "success",
+          duration: 6000,
+          isClosable: true,
+          position: "top",
+        });
+        setEmail("");
+        localStorage.setItem("token", JSON.stringify("201"));
+        navigate("/DSRBC");
+        return;
+      }
+
       setLoading(true);
       const response = await axios.post(
-        `https://semantic.onesmarter.com/disaster/access`,
+        `http://localhost:5500/api/access`,
         obj
       );
       setLoading(false);
 
-      if (response.status === 201) {
+      if (response.status === 201 && response.data.token == "access") {
         // localStorage.setItem("token", JSON.stringify(response.status));
+        // console.log(response)
         toast({
           title: "Email verified. You are ready to play the simulation",
           status: "success",
@@ -70,7 +89,17 @@ const AccessForm = () => {
         setEmail("");
         localStorage.setItem("token", JSON.stringify("201"));
         navigate("/DSRBC");
-      } else if (response.status === 400) {
+      } 
+      else if(response.status === 201 && response.data.token == "no access"){
+        toast({
+          title: "Simulation access is unavailable. Please contact your administrator.",
+          status: "error",
+          duration: 6000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+      else if (response.status === 400) {
         toast({
           title: "Email is not registered.",
           description:
